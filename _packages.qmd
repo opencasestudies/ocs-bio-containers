@@ -13,8 +13,9 @@ library(here)
 
 Package    | Use
 ---------- |-------------
-[{Package Name}]({Documentation URL}){target="_blank"}      | {Package use}
-[{Package Name}]({Documentation URL}){target="_blank"}      | {Package use}
+[tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
+[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
 
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.

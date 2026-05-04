@@ -6,8 +6,34 @@ Videos or images may be helpful so this includes an example of embedding a video
 # **Context**
 ***
 
-{FILL IN}
+## Metabolomics
 
-{{< video https://www.youtube.com/watch?v=j-I0Zgicjsk >}}
+Discuss information such as ...
+
+* why the microbiome and metabolome datasets are related/considered together
+* what the study with the table we're looking at is analyzing
+* what a cohort is
+* what paired data means
+* what longitudinal means
+* what HMDB-annotated compounds are
+* what KEGG-annotated compounds are
+
+## Containers
+
+I. When is a container useful?
+
+* Especially if you need to move an analysis to another machine or environemnt like an HPC or the cloud
+--> Discuss Singularity and Apptainer for HPCs in this section
+--> Include why Docker is not appropriate for HPCs
+--> Recommendations for the cloud
+* If a collaborative team is working on a large analysis within a workflow or in different environments
+* If a collaborative team is having difficulty replicating results within the team
+* If dependencies are causing nightmares
+
+II. When is a container overkill? Do you really need a container or will session info work?
+
+III. Where can you find a container?
+
+... more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here... re point to the email
 
 ***

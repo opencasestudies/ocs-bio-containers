@@ -9,9 +9,7 @@ Statistical LOs were provided in the original open case studies but they may be 
 Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
 -->
 
-In this case study, we will explore {}.
-
-This case study will particularly focus on {}.
+In this case study, we will introduce containers and describe why and how to use them to standardize computing environments for scientific analyses. We will use Docker to specify the environment used to create several data visualizations of a table describing samples within a curated data resource.
 
 The skills, methods, and concepts that students will be familiar with by the end of this case study are:
 
