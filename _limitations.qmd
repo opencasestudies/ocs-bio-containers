@@ -12,7 +12,7 @@ There are some important considerations regarding this data analysis to keep in 
 1. This case study does not describe how to
 
     * develop containers from the ground up
-    * use containers within a workflow
+    * use containers within a workflow using tools like nextflow or WDL
     * use technologies such as Apptainer or Singularity
 
 2. This case study focuses on using containers and therefore the analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.
