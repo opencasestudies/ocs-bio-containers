@@ -25,21 +25,6 @@ raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-0
                                        method = "stream",
                                        col_names = FALSE
                                       )[[1]]
-
-table1_extract <- raw_table %>%
-    mutate(num_paired_samples = as.numeric(str_extract(X3, "\\d+$"))) %>%
-    mutate(X3Text = str_remove(X3, "\\d+$")) %>%
-    mutate(cohort_description = if_else(lead(is.na(X1), default = FALSE),
-                                        paste(X3Text, lead(X3Text), sep = ""),
-                                        X3Text)
-           ) %>%
-    filter(!is.na(X1)) %>%
-    select(!c(X3, X4, X3Text)) %>%
-    rename(c("dataset_name" = "X1",
-             "ref" = "X2",
-             "longitudinal" = "X5",
-             "hmdb_annotated_compounds" = "X6",
-             "kegg_annotated_compounds" = "X7"))
 ```
 
 <!--
@@ -48,7 +33,7 @@ to allow users to stop and pick up where they left off:
 -->
 
 ```{r, eval = FALSE}
-save(table1_extract, file = here::here("data", "imported", "table1.rda"))
+save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
 ```
 
 <!--
