@@ -7,6 +7,8 @@ If you have been following along but stopped, we could load our wrangled data li
 load(here::here("data", "wrangled", "wrangled_data.rda"))
 ```
 
+Even if you stop the container (as long as you don't delete it), you can restart it and the data will still be there as long as it was saved during wrangling
+
 ***
 
 KI note: again this section is likely infeasible and we'll likely have to remove for this case study

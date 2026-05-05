@@ -58,5 +58,6 @@ substeps
 tabulapdf
 Teichman
 th
+tidyverse
 unwrangled
 www
