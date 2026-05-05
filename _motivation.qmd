@@ -31,7 +31,7 @@ Outline
 I. What is a container? (above)
 
 * Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
-* make a diagram showing how Dockerfile relates to building an image ...
+* make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
 
 II. Why containers?
 

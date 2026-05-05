@@ -1,36 +1,15 @@
-<!--
-Update the file paths as needed throughout
--->
-
-<!--
-Not all case studies will need a Data Exploration subsection
--->
-
-<!--
-At the end of this section, save incremental data (if changes were made) so that users can pause and come back later
--->
-
 # **Data Exploration**
 ***
 
-If you have been following along but stopped, we could load our imported data like so:
+We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{r}
-load(here::here("data", "imported", "pm25_data_imported.rda"))
-```
+* Notice there are layers
+* Point out dependencies (Side quest: how do we know what depenencies we need?)
+* The software or packages of major interest
+* Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
 
-***
-<details> <summary> If you skipped the data import section click here. </summary>
+Activity: Add the `patchwork` package to the container
 
-An RDA version (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+We'll also utilize this section to explore what's not in a container! -- Data!
 
-```{r, eval=FALSE}
-load(here::here("data", "imported", "co2_data_imported.rda"))
-```
-
-</details>
-***
-
-<!--
-Use this section to walk through any exploration of the dataset conducted pre-analysis.
--->
+Side quest: Discuss mounting data/scripts in this section

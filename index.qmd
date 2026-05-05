@@ -3,7 +3,7 @@ title: "**Biomedical Open Case Studies: Using containers for collaborative, repr
 include-sections:
   stat-los: false
   data-import: true
-  data-exploration: false
+  data-exploration: true
   data-wrangling: true
   data-viz: true
   data-analysis: true

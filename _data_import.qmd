@@ -9,15 +9,21 @@ At the end of this section, save incremental data so that users can pause and co
 # **Data Import**
 ***
 
-<!--
-Describe how to import the case study data files into R or Python
--->
+## Container
 
-<!--
-Within your case study project folder,
-put the data files as they came from the source into a 'data/raw/' subfolder
-and use the `here` package. See the following example and update with your data:
--->
+Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
+
+Side quest: find a container on dockerhub (and discuss reputable sources)
+
+Note that although we can see the container -- this doesn't give us access to the data analysis data yet. For that we must build the image and run the container.
+
+## Data analysis data
+
+Using the tabulapdf package, we will extract a raw, unwrangled version of Table 1.
+
+Walk through how to run the container in order to run the analysis and extract the data.
+
+Side quest: what if you wanted to spin up an IDE with your container?
 
 ```{r, eval = FALSE}
 raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
