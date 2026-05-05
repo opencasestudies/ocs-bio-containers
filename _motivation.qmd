@@ -8,7 +8,7 @@ Images or videos may be helpful so this includes an example of including an imag
 # **Motivation**
 ***
 
-In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for study revisions. The study is a collaborative project spanning several teams. Therfore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility.
+In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for study revisions. The study is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility.
 
 ```{r echo=FALSE, warning = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3dad9407b30_0_0#slide=id.g3dad9407b30_0_0")
@@ -42,7 +42,7 @@ III. What are some general use cases for containers?
 
 * Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
 * Finding: search and find a container that meets your needs (you may have to modify it a bit/add a couple other packages)
-* Specified: A collaborator sends you a container and you need to use it (or add a pacakge or otherwise modify it in some way to suit your needs)
+* Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
 
 The last of these scenarios is the context for this case study.
 

@@ -22,7 +22,7 @@ Discuss information such as ...
 
 I. When is a container useful?
 
-* Especially if you need to move an analysis to another machine or environemnt like an HPC or the cloud
+* Especially if you need to move an analysis to another machine or environment like an HPC or the cloud
 --> Discuss Singularity and Apptainer for HPCs in this section
 --> Include why Docker is not appropriate for HPCs
 --> Recommendations for the cloud

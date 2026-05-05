@@ -5,7 +5,7 @@
 
 Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
 
-Side quest: find a container on dockerhub (and discuss reputable sources)
+Side quest: find a container on Docker Hub (and discuss reputable sources)
 
 Note that although we can see the container -- this doesn't give us access to the data analysis data yet. For that we must build the image and run the container.
 
@@ -23,7 +23,7 @@ Because we want to avoid mounting data and scripts in this case study (and leave
 
 For Docker Desktop:
 
-* grab the container from docker hub
+* grab the container from Docker Hub
 * run the container
 * navigate to the exec tab
 * `touch` an `analysis.R` script in `opt/case_study_analysis`, a folder the Dockerfile specifies creation of

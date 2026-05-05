@@ -58,7 +58,7 @@ table1_extract <- raw_table %>%
 2. Making a version of the text column that has those numbers of paired samples removed
 3. Setting up an if else that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the `lead` function to look for the next value. In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`
 4. If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text
-5. Otherwise if the `lead` function returns that hte next value is not NA (`FALSE`) (or is the last value/row), it will return the current cohorot text only.
+5. Otherwise if the `lead` function returns that the next value is not NA (`FALSE`) (or is the last value/row), it will return the current cohort text only.
 6. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows
 7. This removes the original X3 column (that had the cohort description plus number of paired samples), the X4 column which was all NAs, and the X3Text column which has incomplete cohort descriptions
 8. Rename the columns so they are descriptive

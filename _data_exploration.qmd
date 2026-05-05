@@ -41,7 +41,7 @@ RUN mkdir -p /opt/case_study_analysis /data/imported /data/wrangled /plots
 
 
 * Notice there are layers
-* Point out dependencies (Side quest: how do we know what depenencies we need?)
+* Point out dependencies (Side quest: how do we know what dependencies we need?)
 * The software or packages of major interest
 * It specifies creation of some directories
 * Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
