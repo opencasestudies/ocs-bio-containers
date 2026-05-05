@@ -1,11 +1,3 @@
-<!--
-Update the file paths as needed throughout
--->
-
-<!--
-At the end of this section, save incremental data so that users can pause and come back later
--->
-
 # **Data Visualization**
 ***
 
@@ -30,9 +22,32 @@ load(here::here("data", "wrangled", "wrangled_data.rda"))
 
 We'll use this section to make two scatter plots that are combined with `patchwork`, specifically using the modified container to run the code
 
-* labeling the points with the `dataset_name`
-* coloring the points based on `longitudinal` value
-* x-axis is either `hmdb_annotated_compounds` or `kegg_annotated_compounds`
-* y-axis is `num_paired_samples`
+  * labeling the points with the `dataset_name`
+  * coloring the points based on `longitudinal` value
+  * x-axis is either `hmdb_annotated_compounds` or `kegg_annotated_compounds`
+  * y-axis is `num_paired_samples`
+
+
+```{r, eval = FALSE}
+library(patchwork)
+
+hmdb_scatter + labs(title = NULL) +                                             #<1>
+  kegg_scatter +  labs(title = NULL) +                                          #<2>
+  plot_layout(guides = "collect") +                                             #<3>
+  plot_annotation(title = 'Paired sample count vs annotation coverage')         #<4>
+```
+
+1. Use the HMDB scatter plot from before, but remove its title
+2. Use the KEGG scatter plot from before, but remove its title
+3. Combine the legends
+4. Add a single title for the whole plot
+
+![](img/patchwork_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not."}
+
+`patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` in this case for illustrative purposes on adding a package to a container in an approachable example.
+
+<!--
+Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of patchwork?
+-->
 
 ***

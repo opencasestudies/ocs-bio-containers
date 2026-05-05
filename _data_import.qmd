@@ -1,11 +1,3 @@
-<!--
-Update the file paths as needed throughout
--->
-
-<!--
-At the end of this section, save incremental data so that users can pause and come back later
--->
-
 # **Data Import**
 ***
 
@@ -25,26 +17,39 @@ Walk through how to run the container in order to run the analysis and extract t
 
 Side quest: what if you wanted to spin up an IDE with your container?
 
+Activity -- Using the container from the collaborator to get the Table 1 data.
+
+Because we want to avoid mounting data and scripts in this case study (and leave that as a side quest/suggested hw), we'll use the following instructions for someone to interact with the data analysis data within a running container:
+
+For Docker Desktop:
+
+* grab the container from docker hub
+* run the container
+* navigate to the exec tab
+* `touch` an `analysis.R` script in `opt/case_study_analysis`, a folder the Dockerfile specifies creation of
+* navigate to the files tab
+* right click on the `analysis.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
+* notice that it outputs "Dimensions: 25 x 7"
+* notice that there is an rda file in the `data/imported` folder
+
 ```{r, eval = FALSE}
+#!/usr/bin/env Rscript
+
 raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
                                        pages = 2,
                                        method = "stream",
                                        col_names = FALSE
                                       )[[1]]
-```
 
-<!--
-At the end of the data import section, save the imported data as .rda files
-to allow users to stop and pick up where they left off:
--->
+message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
+```
 
 ```{r, eval = FALSE}
 save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
 ```
-
-<!--
-NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
-and may need to be imported from an external source
--->
 
 ***

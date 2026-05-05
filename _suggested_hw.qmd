@@ -6,6 +6,16 @@ Suggest extra exercises using this data for students to practice the skills used
 Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework
 -->
 
-Add ggrepel to the docker container, utilize ggrepel within the scatter plots made with patchwork, and rerun the analysis with the modified container
+Point out that text labels are overlapping each other in the right panel, and clipped on axis limits for both panels. The ggrepel package can be useful in fixing these problems.
+
+  * Add ggrepel to the Dockerfile
+  * build the Dockerfile
+  * run the image
+  * update the analysis.R script to utilize ggrepel within the scatter plots made with patchwork
+  * and rerun the analysis with the modified container
+
+![](img/patchwork_ggrepel_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not. Labels are clearer and not clipped."}
+
+Possible addition: Another suggested homework possibility is having people mount the data and scripts
 
 ***
