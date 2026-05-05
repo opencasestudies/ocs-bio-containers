@@ -1,13 +1,16 @@
 # **Data Visualization**
 ***
 
-If you have been following along but stopped, we could load our wrangled data like so:
+If you have been following along but stopped, we could load our wrangled data like so within the analysis script. We'd comment out the data import and wrangling steps and use this instead:
 
 ```{r, eval = FALSE}
 load(here::here("data", "wrangled", "wrangled_data.rda"))
 ```
 
 ***
+
+KI note: again this section is likely infeasible and we'll likely have to remove for this case study
+
 <details> <summary> If you skipped the data import section click here. </summary>
 
 An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
@@ -27,6 +30,16 @@ We'll use this section to make two scatter plots that are combined with `patchwo
   * x-axis is either `hmdb_annotated_compounds` or `kegg_annotated_compounds`
   * y-axis is `num_paired_samples`
 
+
+Use the following steps to edit the analysis and include these steps
+
+* run the container
+* navigate to the files tab
+* right click on the `analysis.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
 
 ```{r, eval = FALSE}
 library(patchwork)

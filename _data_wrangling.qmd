@@ -3,12 +3,14 @@
 
 ## Data analysis data
 
-If you have been following along but stopped, we could load our imported data like so:
+If you have been following along but stopped, we could load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code):
 
 ```{r, eval = FALSE}
 load(here::here("data", "imported", "raw_table1.rda"))
 ```
 ***
+
+KI note: I know this section is typically included in case studies, but if we're not storing data in a container, I'm not sure this is feasible and I think we need to remove this.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
@@ -20,6 +22,15 @@ load(here::here("data", "imported", "raw_table1.rda"))
 
 </details>
 ***
+
+We'll need to add this code to our `analysis.R` file using the same steps as before:
+
+* navigate to the files tab
+* right click on the `analysis.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
 
 ```{r, eval = FALSE}
 

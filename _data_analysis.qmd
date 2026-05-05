@@ -1,25 +1,6 @@
 # **Data Analysis**
 ***
 
-If you have been following along but stopped, we could load our wrangled data like so:
-
-```{r, eval = FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
-```
-
-***
-<details> <summary> If you skipped the data import section click here. </summary>
-
-An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
-
-
-```{r, eval = FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
-```
-
-</details>
-***
-
 :::{.think_question}
 ::::{.think_question_header}
 Question opportunity
@@ -36,6 +17,6 @@ You can use a collapsible details section to provide an answer
 We might use a column margin note to add an equation or some other annotation for learners or educators.
 :::
 
-In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container
+In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis? 
 
 ***
