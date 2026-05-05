@@ -6,4 +6,6 @@ Suggest extra exercises using this data for students to practice the skills used
 Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework
 -->
 
+Add ggrepel to the docker container, utilize ggrepel within the scatter plots made with patchwork, and rerun the analysis with the modified container
+
 ***

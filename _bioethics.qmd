@@ -11,8 +11,8 @@ Examples may include: how identifiable (or re-identifiable) is your data? cell l
 
 There are some important ethical considerations when working with data relating to this case study's main questions.
 
-1. {FILL IN}
-1. {FILL IN}
+1. Do not include data within a container!
+1. Something about security considerations and verified sources for containers....
 
 ***
 
