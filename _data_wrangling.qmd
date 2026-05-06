@@ -29,7 +29,7 @@ We'll need to add this code to our `analysis.R` file using the same steps as bef
 * copy paste the following code into the script
 * click save
 * navigate to the exec tab
-* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
+* use `Preprocessing.R` -- adjusting based on script location and learner's file location.
 
 ```{r, eval = FALSE}
 library(tidyverse)
