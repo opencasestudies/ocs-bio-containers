@@ -13,7 +13,7 @@ Side quest: find a container on Docker Hub (and discuss reputable sources)
 
 Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
 
-## Data analysis data
+## Revisions task
 
 Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
 
@@ -31,13 +31,13 @@ For Docker Desktop:
 * navigate to the exec tab
 * set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
   * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
-* `touch` an `analysis.R` script in `opt/case_study_analysis`
+* `touch` an `preprocessing.R` script in `opt/case_study_analysis`
 * navigate to the files tab
-* right click on the `analysis.R` script and click edit
+* right click on the `preprocessing.R` script and click edit
 * copy paste the following code into the script
 * click save
 * navigate to the exec tab
-* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
+* use `Rscript preprocessing.R` -- adjusting based on script location and learner's file location.
 * notice that it outputs "Dimensions: 25 x 7"
 * notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
 

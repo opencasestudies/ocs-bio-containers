@@ -20,8 +20,9 @@ We might use a column margin note to add an equation or some other annotation fo
 In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
 
 * Plan to have another image on Docker Hub with the patchwork package
-* Have an `analysis.R` script with all the steps together
-* Have an `run_analysis.sh` script that makes the directories and drives the analysis
+* Have a `preprocessing.R` script that grabs and wrangles the data
+* Have an `analysis.R` script with all the visualization steps together
+* Have an `run_analysis.sh` script that makes the directories and drives the preprocessing and analysis
 
 We'll also discuss how to mount a volume (with data and/or analysis script) and show that the validator can get the same results by having the learner run the `run_analysis.sh` script.
 

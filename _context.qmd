@@ -76,5 +76,14 @@ Notice that because this case study is focusing on working with containers and w
 * The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the analysis data
 
 
+## The revision task -- Extracting data from a PDF and data visualization
+
+While this example of data only being available from a PDF (especially within an active project) is a bit unconventional, we think that it will be a tangible and somewhat accessible example for learners. Previous public health case studies highlight various data mining and import tasks such as utilizing an API, scraping data from an HTML webpage, and importing data from Excel files, Google Sheets, and even PDFs. This specific package hasn't been used in previous case studies and it offers some benefits for this specific topic
+
+* This package has a function for reading tables from a PDF file. Several of the previously used tools do not, and the one that does is deprecated.
+* This package has some dependencies (namely Java) that we are excited to highlight within the context of containers and showing a tiny bit of complexity within the Dockerfile
+* Its use helps to justify to the learners why we might need a container (dependencies)
+* We don't intend to spend much of the main narrative on the tool or how to use it. Some of the explanation can go into collapsible sections to reduce cognitive load so that learners can focus on containers. Basically we'll tell them that the data retrieval and wrangling of the Table from a PDF can be achieved with this code and if you want to learn more about how it works (or want an advanced exercise of generalizing the process), click on an expandable section for details.
+* We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.
 
 ***

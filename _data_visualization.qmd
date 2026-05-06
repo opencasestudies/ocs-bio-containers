@@ -11,16 +11,9 @@ Even if you stop the container (as long as you don't delete it), you can restart
 
 ***
 
-KI note: for this section we'll have walk people through how to import the data into the container (or mount a volume)
-
 <details> <summary> If you skipped the data import section click here. </summary>
 
-An RDA file (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/wrangled) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled/wrangled_data.rda). Download this file and then place it in your current working directory within a subdirectory called "wrangled" within a subdirectory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
-
-
-```{r, eval = FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
-```
+KI note: for this section we'll have walk people through how to import the data into the container (or mount a volume)
 
 </details>
 ***
@@ -124,7 +117,7 @@ We can again use `ls plots/` to see the new png file that was saved. The logs sh
 `patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` in this case for illustrative purposes on adding a package to a container in an approachable example.
 
 <!--
-Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of patchwork?
+Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of `patchwork`?
 -->
 
 ***
