@@ -11,8 +11,10 @@ custimization
 cwrigh
 Dockerfile
 Dockerhub
+dropdown
 favicon
 frontmatter
+generalizable
 ggplot
 ggrepel
 GH
@@ -38,12 +40,14 @@ los
 metabolome
 Metabolomics
 microbiome
+NA's
 Nextflow
 NonCommercial
 ocs
 Oshane
 OTTR
 ottrproject
+png
 pre
 quarto
 qmd
@@ -61,5 +65,7 @@ Teichman
 th
 tidyverse
 unwrangled
+validator
+VSCode
 WDL
 www
