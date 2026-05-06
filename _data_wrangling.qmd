@@ -104,7 +104,7 @@ But if we make two separate scatter plots, they will be two separate panels/file
 
 ## Container
 
-As you can see from the visualization step above, these two panels are completely separate separate plots -- and we'd like them to be visible next to each other.... we can use `patchwor`k` for that, but we'll need to add `patchwork` to our visualization container....
+As you can see from the visualization step above, these two panels are completely separate separate plots -- and we'd like them to be visible next to each other.... we can use `patchwork` for that, but we'll need to add `patchwork` to our visualization container....
 
 Activity: Add `patchwork` to the container
 
