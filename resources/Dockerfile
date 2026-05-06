@@ -26,5 +26,3 @@ RUN install2.r --error --deps TRUE \
     rJava \
     tabulapdf \
     here
-
-RUN mkdir -p /opt/case_study_analysis /data/imported /data/wrangled /plots

@@ -46,6 +46,15 @@ Include bioOCSdata package information once ready/applicable
 
 ---
 
+Pre-requisites:
+
+* Learners will need to install Docker
+* Learners should install Docker Desktop (optional, but suggested)
+
+For the Advanced homework:
+
+* Learners will need a GitHub account
+
 <!--
 UPDATE: SYSTEM, SERVER, or MOCK COMPUTING Information:
 

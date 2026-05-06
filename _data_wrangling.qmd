@@ -10,7 +10,7 @@ load(here::here("data", "imported", "raw_table1.rda"))
 ```
 ***
 
-KI note: I know this section is typically included in case studies, but if we're not storing data in a container, I'm not sure this is feasible and I think we need to remove this.
+KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
@@ -33,13 +33,14 @@ We'll need to add this code to our `analysis.R` file using the same steps as bef
 * use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
 
 ```{r, eval = FALSE}
+library(tidyverse)
 
 table1_extract <- raw_table %>%
     mutate(num_paired_samples = as.numeric(str_extract(X3,                       #<1>
                                                       "\\d+$"))) %>%             #<1>
     mutate(X3Text = str_remove(X3,                                               #<2>
                                "\\d+$")) %>%                                     #<2>
-    mutate(cohort_description = if_else(lead(is.na(X1), FALSE),                  #<3>
+    mutate(cohort_description = if_else(lead(is.na(X1), default = FALSE),        #<3>
                                         paste0(X3Text,                           #<4>
                                               lead(X3Text)),                     #<4>
                                         X3Text)                                  #<5>
@@ -63,9 +64,16 @@ table1_extract <- raw_table %>%
 7. This removes the original X3 column (that had the cohort description plus number of paired samples), the X4 column which was all NAs, and the X3Text column which has incomplete cohort descriptions
 8. Rename the columns so they are descriptive
 
-<!--
-Can include instructions in a dropdown section on how to wrangle the data if there's more than one NA row that needs to be collapsed
--->
+Advanced side quest: Can challenge learners to come up with a more generalizable way to wrangle the data if there's more than one NA row that needs to be collapsed (e.g., some data has more than 2 lines) (use a dropdown section for this)
+
+As a way to spot check that the container is doing something up to this point, we can use some outputs
+
+```{r, eval = FALSE}
+message(table1_extract[4, "dataset_name"])
+message("Dimensions: ", paste(dim(table1_extract), collapse = " x "))
+```
+
+The Dimensions will have fewer rows (14 instead of 25) and the value of the dataset name should be `HE_INFANTS_MFGM_2019`
 
 To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.
 
@@ -81,65 +89,22 @@ readr::write_csv(table1_extract,                                 # <2>
 2. saving the data as a CSV file within the wrangled data subdirectory
 
 
-Now that we've wrangled the extracted table data into a dataframe, we can make the visualization!
+Now that we've wrangled the extracted table data into a dataframe, we want to plan out the visualizations we'll make using this dataframe!
 
-Add the following code from the code blocks to the running container as well, repeating the steps
+We want to make two scatter plots:
 
-* navigate to the files tab
-* right click on the `analysis.R` script and click edit
-* copy paste the following code into the script
-* click save
-* navigate to the exec tab
-* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
+* labeling the points with the `dataset_name`
+* coloring the points based on `longitudinal` value
+* y-axis
+  * `hmdb_annotated_compounds` for one plot
+  * `kegg_annotated_compounds` for the other plot
+* x-axis is `num_paired_samples`
 
-
-```{r, eval = FALSE}
-hmdb_scatter <- table1_extract %>%
-  mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
-  ggplot(aes(x = num_paired_samples,
-             y = hmdb_annotated_compounds,
-             color = longitudinal,
-             label = dataset_name)) +
-  geom_point(size = 2.5) +
-  geom_text(vjust = -0.5, size = 2.8, color = "black") +
-  scale_color_manual(values = c("No" = "#D27D2D",
-                                "Yes" = "#1D6F8A"), drop = FALSE) +
-  labs(title = "Paired sample count vs HMDB annotation coverage",
-       x = "No. samples with paired data",
-       y = "HMDB Annotated compounds",
-       color = "Longitudinal")  +
-  theme_minimal(base_size = 12) +
-  coord_fixed(ratio = 1)
-```
-
-![](img/hmdb_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
-
-
-```{r, eval = FALSE}
-kegg_scatter <- table1_extract %>%
-  mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
-  ggplot(aes(x = num_paired_samples,
-             y = kegg_annotated_compounds,
-             color = longitudinal,
-             label = dataset_name)) +
-  geom_point(size = 2.5) +
-  geom_text(vjust = -0.5, size = 2.8, color = "black") +
-  scale_color_manual(values = c("No" = "#D27D2D",
-                                "Yes" = "#1D6F8A"), drop = FALSE) +
-  labs(title = "Paired sample count vs KEGG annotation coverage",
-       x = "No. samples with paired data",
-       y = "KEGG Annotated compounds",
-       color = "Longitudinal")  +
-  theme_minimal(base_size = 12) +
-  coord_fixed(ratio = 1)
-```
-
-![](img/kegg_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
-
+But if we make two separate scatter plots, they will be two separate panels/files that won't be displayed next to each other unless we use design software like illustrator. But we could also use a package that allows us to combine plots, then the scatter plot will have two panels displayed next to each other. So let's "wrangle" the Dockerfile to include a package that will let us do that: `patchwork`.
 
 ## Container
 
-As you can see from the visualization step above, these two panels are completely separate separate plots -- and we'd like them to be visible next to each other.... we can use patchwork for that, but we'll need to add patchwork to our visualization container....
+As you can see from the visualization step above, these two panels are completely separate separate plots -- and we'd like them to be visible next to each other.... we can use `patchwor`k` for that, but we'll need to add `patchwork` to our visualization container....
 
 Activity: Add `patchwork` to the container
 

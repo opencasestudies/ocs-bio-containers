@@ -16,6 +16,6 @@ Point out that text labels are overlapping each other in the right panel, and cl
 
 ![](img/patchwork_ggrepel_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not. Labels are clearer and not clipped."}
 
-Possible addition: Another suggested homework possibility is having people mount the data and scripts
+More advanced homework: Use a container together with GitHub actions to extract the PDF data and make the visualization.
 
 ***

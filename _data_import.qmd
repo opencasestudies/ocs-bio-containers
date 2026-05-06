@@ -5,13 +5,17 @@
 
 Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
 
+* pull the container from Docker Hub
+
+The other option is that we can build a Dockerfile but since we'll do that in a later activity, we'd rather show pulling from Docker Hub in this example.
+
 Side quest: find a container on Docker Hub (and discuss reputable sources)
 
-Note that although we can see the container -- this doesn't give us access to the data analysis data yet. For that we must build the image and run the container.
+Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
 
 ## Data analysis data
 
-Using the tabulapdf package, we will extract a raw, unwrangled version of Table 1.
+Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
 
 Walk through how to run the container in order to run the analysis and extract the data.
 
@@ -19,14 +23,15 @@ Side quest: what if you wanted to spin up an IDE with your container?
 
 Activity -- Using the container from the collaborator to get the Table 1 data.
 
-Because we want to avoid mounting data and scripts in this case study (and leave that as a side quest/suggested hw), we'll use the following instructions for someone to interact with the data analysis data within a running container:
+Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we'll use the following instructions for someone to interact with the data analysis data within a running container:
 
 For Docker Desktop:
 
-* grab the container from Docker Hub
 * run the container
 * navigate to the exec tab
-* `touch` an `analysis.R` script in `opt/case_study_analysis`, a folder the Dockerfile specifies creation of
+* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
+  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
+* `touch` an `analysis.R` script in `opt/case_study_analysis`
 * navigate to the files tab
 * right click on the `analysis.R` script and click edit
 * copy paste the following code into the script
@@ -34,7 +39,7 @@ For Docker Desktop:
 * navigate to the exec tab
 * use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
 * notice that it outputs "Dimensions: 25 x 7"
-* notice that there is an rda file in the `data/imported` folder
+* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
 
 ```{r, eval = FALSE}
 #!/usr/bin/env Rscript

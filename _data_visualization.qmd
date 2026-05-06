@@ -11,7 +11,7 @@ Even if you stop the container (as long as you don't delete it), you can restart
 
 ***
 
-KI note: again this section is likely infeasible and we'll likely have to remove for this case study
+KI note: for this section we'll have walk people through how to import the data into the container (or mount a volume)
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
@@ -25,17 +25,75 @@ load(here::here("data", "wrangled", "wrangled_data.rda"))
 </details>
 ***
 
-We'll use this section to make two scatter plots that are combined with `patchwork`, specifically using the modified container to run the code
-
-  * labeling the points with the `dataset_name`
-  * coloring the points based on `longitudinal` value
-  * x-axis is either `hmdb_annotated_compounds` or `kegg_annotated_compounds`
-  * y-axis is `num_paired_samples`
+We'll use this section to make two scatter plots. And then combine the plots with `patchwork`, specifically using the modified container to run the code
 
 
-Use the following steps to edit the analysis and include these steps
+* run the newly modified and built image
+* navigate to the exec tab
+* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
+  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
+* `touch` an `analysis.R` script in `opt/case_study_analysis`
 
-* run the container
+Add the following code from the code blocks to the running container as well, repeating the steps
+* navigate to the files tab
+* right click on the `analysis.R` script and click edit
+* copy paste the following code into the script (we'll describe how to import the wrangled data or provide all the earlier code for the script as well)
+* click save
+* navigate to the exec tab
+* use `Rscript analysis.R` -- adjusting based on script location and learner's file location.
+
+
+```{r, eval = FALSE}
+hmdb_scatter <- table1_extract %>%
+  mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
+  ggplot(aes(x = num_paired_samples,
+             y = hmdb_annotated_compounds,
+             color = longitudinal,
+             label = dataset_name)) +
+  geom_point(size = 2.5) +
+  geom_text(vjust = -0.5, size = 2.8, color = "black") +
+  scale_color_manual(values = c("No" = "#D27D2D",
+                                "Yes" = "#1D6F8A"), drop = FALSE) +
+  labs(title = "Paired sample count vs HMDB annotation coverage",
+       x = "No. samples with paired data",
+       y = "HMDB Annotated compounds",
+       color = "Longitudinal")  +
+  theme_minimal(base_size = 12) +
+  coord_fixed(ratio = 1)
+
+ggsave(here::here("plots/hmdb_scatter.png"))
+```
+
+![](img/hmdb_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
+
+```{r, eval = FALSE}
+kegg_scatter <- table1_extract %>%
+  mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
+  ggplot(aes(x = num_paired_samples,
+             y = kegg_annotated_compounds,
+             color = longitudinal,
+             label = dataset_name)) +
+  geom_point(size = 2.5) +
+  geom_text(vjust = -0.5, size = 2.8, color = "black") +
+  scale_color_manual(values = c("No" = "#D27D2D",
+                                "Yes" = "#1D6F8A"), drop = FALSE) +
+  labs(title = "Paired sample count vs KEGG annotation coverage",
+       x = "No. samples with paired data",
+       y = "KEGG Annotated compounds",
+       color = "Longitudinal")  +
+  theme_minimal(base_size = 12) +
+  coord_fixed(ratio = 1)
+
+ggsave(here::here("plots/kegg_scatter.png"))
+```
+
+![](img/kegg_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
+
+We can use `ls plots/` to see that these png files exist. Though we'll have to use the file explorer to save any of those files to our system. Is there an easy way besides basing an image off of an IDE like VSCode or RStudio?
+
+
+Use the following steps to edit the analysis and include this visualization too
+
 * navigate to the files tab
 * right click on the `analysis.R` script and click edit
 * copy paste the following code into the script
@@ -50,12 +108,16 @@ hmdb_scatter + labs(title = NULL) +                                             
   kegg_scatter +  labs(title = NULL) +                                          #<2>
   plot_layout(guides = "collect") +                                             #<3>
   plot_annotation(title = 'Paired sample count vs annotation coverage')         #<4>
+
+ggsave(here::here("plots/combined_scatter.png"))
 ```
 
 1. Use the HMDB scatter plot from before, but remove its title
 2. Use the KEGG scatter plot from before, but remove its title
 3. Combine the legends
 4. Add a single title for the whole plot
+
+We can again use `ls plots/` to see the new png file that was saved. The logs should also say something about saving the file
 
 ![](img/patchwork_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not."}
 

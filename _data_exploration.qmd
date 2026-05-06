@@ -35,21 +35,23 @@ RUN install2.r --error --deps TRUE \
     tabulapdf \
     here
 
-RUN mkdir -p /opt/case_study_analysis /data/imported /data/wrangled /plots
-
 ```
-
 
 * Notice there are layers
 * Point out dependencies (Side quest: how do we know what dependencies we need?)
 * The software or packages of major interest
-* It specifies creation of some directories
 * Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
 
-We'll also utilize this section to explore what's not in a container! -- Data!
+We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
 
-Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab)
+We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what's in the Dockerfile.
+
+Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we'll be doing that later on in the Data Analysis section (though this isn't always possible depending on security settings on a system)
 
 ## Data analysis data
 
 Explore what the extracted table looks like and what sort of wrangling we might need to do in order to visualize the data -- we'll show them what the data looks like, but not have them do this
+
+* Note that the raw table data as extracted by `tabulapdf` has a 4th column that is all NA's where the data from that column are appended to the end of the 3rd column
+* Note that there are more rows than we expect and this is because the "multiline" data in the third column is split as separate rows (where all the rest of the columns have NA)
+* Note that all columns need a name/renamed

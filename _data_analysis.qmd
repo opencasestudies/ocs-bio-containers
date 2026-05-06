@@ -17,6 +17,15 @@ You can use a collapsible details section to provide an answer
 We might use a column margin note to add an equation or some other annotation for learners or educators.
 :::
 
-In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis? 
+In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
+
+* Plan to have another image on Docker Hub with the patchwork package
+* Have an `analysis.R` script with all the steps together
+* Have an `run_analysis.sh` script that makes the directories and drives the analysis
+
+We'll also discuss how to mount a volume (with data and/or analysis script) and show that the validator can get the same results by having the learner run the `run_analysis.sh` script.
+
+To make it easier to validate/compare instead of comparing plots (that will be difficult to compare especially since we seem to have to save plots out of the container to view them), we could add a summary stat that can be output in the logs.
+
 
 ***

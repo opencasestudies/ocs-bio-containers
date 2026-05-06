@@ -23,9 +23,11 @@ Discuss information such as ...
 I. When is a container useful?
 
 * Especially if you need to move an analysis to another machine or environment like an HPC or the cloud
---> Discuss Singularity and Apptainer for HPCs in this section
---> Include why Docker is not appropriate for HPCs
---> Recommendations for the cloud
+
+  --> Discuss Singularity and Apptainer for HPCs in this section <br>
+  --> Include why Docker is not appropriate for HPCs <br>
+  --> Recommendations for the cloud <br>
+
 * If a collaborative team is working on a large analysis within a workflow or in different environments
 * If a collaborative team is having difficulty replicating results within the team
 * If dependencies are causing nightmares
@@ -35,5 +37,44 @@ II. When is a container overkill? Do you really need a container or will session
 III. Where can you find a container?
 
 ... more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here... re point to the email
+
+IV. How do you work with a container and run an analysis with a container?
+
+* Terminal / Command Line
+  * If you only have a Dockerfile, you need to use this to build the image
+* Docker Desktop
+* An interactive Integrated Development Environment (IDE)
+* In combination with GitHub Actions
+
+Sometimes the process of running a container and interacting with it involves a combination of these options (because the container installs an IDE) that once you've run the container, you then develop an analysis within an IDE.
+
+We'll primarily walk learners through using Docker Desktop though we'll likely use a tab structure to give learners the optional methods to use Terminal / Command Line. We will also provide a side quest about using a container that installs an IDE and suggest an advanced homework for the final option of combining containers with GitHub Actions.
+
+The reason we're primarily walking learners through using Docker Desktop is because
+
+1. It separates out images and containers which will support learners trying to learn the difference
+2. Learners can create files, as well as import and export files within the files tab as opposed to mounting a volume
+3. Learners can also mount a volume which is an option
+4. Learners can easily see how many images and containers they have and while they are learning this can be extremely helpful so they don't tax their systems too much
+5. Docker Desktop has its own documentation that we can point to
+
+As for how we're working with data. Our options are to
+
+1. mount a volume (directory) from our system that has data (and possibly scripts) in it.
+2. `cp` files to and from the container
+3. Create an analysis script within the running container and edit it within the container. Use a URL to get the data PDF from within the container and create/keep raw data and intermediates within the container that won't be shared. Finally, creating plots within the container that we'll have to save to our system.
+
+While we will show examples of all of these, our primary interest is to work within the third option as much as possible. When we ran an event at a medical center, the devices were unable to mount data so we'd like to provide options separate from that as much as possible.
+
+Notice that because this case study is focusing on working with containers and will be doing an example data analysis to help teach these concepts, most sections will have two parts.
+
+* The data import section will focus on (A) "importing" a **container** and (B) importing the **analysis data** from Table 1 of the paper.
+* The data exploration section will explore (A) the **Dockerfile** that the container is built from and (B) explore the **raw analysis data** that was imported prior to wrangling.
+* The data wrangling section will wrangle (A) the imported **analysis data** making it data visualization ready and (B) "wrangle" the **Dockerfile** to include a package that will help with our data visualization
+* The data visualization section will (A) build the modified Dockerfile and run the image and setup the running container (file structure, analysis script) before (B) producing data visualizations of the analysis data (two separate panels and then those panels combined with `patchwork`)
+  * note the data visualization dealing with the container for this section could be designing a flowchart to summarize how the Dockerfile --> image --> container process goes.
+* The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the analysis data
+
+
 
 ***
