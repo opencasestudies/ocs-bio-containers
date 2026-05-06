@@ -6,15 +6,22 @@ Fill out the table and add rows as necessary providing a link to the source and 
 
 We will begin by loading the packages that we will need:
 
-```{r}
+```{r, eval = FALSE}
 #add library() calls
 library(here)
+library(tabulapdf)
+library(tidyverse)
 ```
 
 Package    | Use
 ---------- |-------------
-[{Package Name}]({Documentation URL}){target="_blank"}      | {Package use}
-[{Package Name}]({Documentation URL}){target="_blank"}      | {Package use}
+[here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Constructs paths within project
+[tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
+[tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Data wrangling
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
+[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
 
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
+
+`tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.

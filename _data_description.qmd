@@ -6,9 +6,15 @@ You may want to include a table about file or variable info.
 # **What are the data?**
 ***
 
+The data comes from [Table 1 in Muller, Algavi, & Borenstein 2022](https://www-nature-com.fhcrc.idm.oclc.org/articles/s41522-022-00345-5/tables/1). After using `tabulapdf` to extract the table from the PDF, some basic wrangling with `tidyverse` results in a tidy dataframe with multiple columns, but these are the most important for our visualization task (as outlined in Collab O. Rator's email). 
+
+
 Variable   | Details
 ---------- |-------------
-**variable1**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
-**variable2**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+**dataset_name**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+**samples_paired**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
+**longitudinal** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
+**hmdb_annotated_compounds** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
+**kegg_annotated_compounds** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
 
 ***

@@ -13,8 +13,9 @@ See this previous case study as an example: https://www.opencasestudies.org/ocs-
 Our main question(s)
 ::::
 ::::{.inner_block}
-1. Question 1
-1. Question 2
+1. How does one use containers to improve the reproducibility of their work? (Are containers always necessary?)
+1. How does one use a container and modify a container?
+1. What are microbiome and metabolome data and how can they be used together?
 ::::
 :::
 ***

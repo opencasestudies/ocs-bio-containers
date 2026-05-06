@@ -1,12 +1,18 @@
 # **Additional Information**
 ***
 
-<!--
-Use this section to provide any additional information or resources on the topic and methods covered in the case study
--->
+We'll include information in this section about
+
+* Security
+* Versioning
+* Sizes and not overburdening your system
+
 
 ## **Helpful Links**
 ***
+
+* ITCR Containers course
+* + other resources
 
 <u>Terms and concepts covered:</u>
 

@@ -12,6 +12,15 @@ Highlight conclusions made as well as limitations or future work to be done.
 Connect back to the main questions and what answers the analysis might have
 -->
 
+So if you do need to use a container:
+
+* It's going to be hard
+* Your needs may be beyond what's covered in this resource ... look at additional information for more resources
+
+But maybe you don't need a container ... include some sort of flowchart with recommendations on when you would use a container vs just using session information or something like that
+
+Highlight what we did and summarize what we learned
+
 ***
 
 ## **Summary Plot**
@@ -21,5 +30,7 @@ Connect back to the main questions and what answers the analysis might have
 construct a plot here that summarizes the conclusions found in the data, if applicable
 (connecting to a main question if possible)
 -->
+
+Put another flowchart that shows the process of using a container and how it related to the analysis (extracting the data and making a plot)
 
 ***

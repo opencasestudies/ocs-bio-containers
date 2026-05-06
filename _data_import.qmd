@@ -1,40 +1,60 @@
-<!--
-Update the file paths as needed throughout
--->
-
-<!--
-At the end of this section, save incremental data so that users can pause and come back later
--->
-
 # **Data Import**
 ***
 
-<!--
-Describe how to import the case study data files into R or Python
--->
+## Container
 
-<!--
-Within your case study project folder,
-put the data files as they came from the source into a 'data/raw/' subfolder
-and use the `here` package. See the following example and update with your data:
--->
+Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
 
-```{r}
-pm <-readr::read_csv(here("data", "raw", "pm25_data.csv"))
+* pull the container from Docker Hub
+
+The other option is that we can build a Dockerfile but since we'll do that in a later activity, we'd rather show pulling from Docker Hub in this example.
+
+Side quest: find a container on Docker Hub (and discuss reputable sources)
+
+Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
+
+## Revisions task
+
+Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
+
+Walk through how to run the container in order to run the analysis and extract the data.
+
+Side quest: what if you wanted to spin up an IDE with your container?
+
+Activity -- Using the container from the collaborator to get the Table 1 data.
+
+Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we'll use the following instructions for someone to interact with the data analysis data within a running container:
+
+For Docker Desktop:
+
+* run the container
+* navigate to the exec tab
+* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
+  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
+* `touch` an `preprocessing.R` script in `opt/case_study_analysis`
+* navigate to the files tab
+* right click on the `preprocessing.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript preprocessing.R` -- adjusting based on script location and learner's file location.
+* notice that it outputs "Dimensions: 25 x 7"
+* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
+
+```{r, eval = FALSE}
+#!/usr/bin/env Rscript
+
+raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
+                                       pages = 2,
+                                       method = "stream",
+                                       col_names = FALSE
+                                      )[[1]]
+
+message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
 ```
 
-<!--
-At the end of the data import section, save the imported data as .rda files
-to allow users to stop and pick up where they left off:
--->
-
-```{r}
-save(pm, file = here::here("data", "imported", "pm25_data_imported.rda"))
+```{r, eval = FALSE}
+save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
 ```
-
-<!--
-NOTE that depending on the size of the data for Bio-OCS, the data may not be in the case study project folder directly
-and may need to be imported from an external source
--->
 
 ***

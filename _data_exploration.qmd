@@ -1,36 +1,57 @@
-<!--
-Update the file paths as needed throughout
--->
-
-<!--
-Not all case studies will need a Data Exploration subsection
--->
-
-<!--
-At the end of this section, save incremental data (if changes were made) so that users can pause and come back later
--->
-
 # **Data Exploration**
 ***
 
-If you have been following along but stopped, we could load our imported data like so:
+## Container
 
-```{r}
-load(here::here("data", "imported", "pm25_data_imported.rda"))
+We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
+
+```
+FROM rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current
+ENV PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+    openjdk-11-jdk \
+    wget \
+    libpng-dev \
+    libicu-dev \
+    libpcre2-dev \
+    libdeflate-dev \
+    libzstd-dev \
+    liblzma-dev \
+    libbz2-dev \
+    zlib1g-dev \
+ && arch="$(dpkg --print-architecture)" \
+ && ln -sfn "/usr/lib/jvm/java-11-openjdk-${arch}" "${JAVA_HOME}" \
+ && printf 'JAVA_HOME=%s\n' "${JAVA_HOME}" >> /usr/local/lib/R/etc/Renviron.site \
+ && R CMD javareconf \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN install2.r --error --deps TRUE \
+    rJava \
+    tabulapdf \
+    here
+
 ```
 
-***
-<details> <summary> If you skipped the data import section click here. </summary>
+* Notice there are layers
+* Point out dependencies (Side quest: how do we know what dependencies we need?)
+* The software or packages of major interest
+* Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
 
-An RDA version (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
+We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
 
-```{r, eval=FALSE}
-load(here::here("data", "imported", "co2_data_imported.rda"))
-```
+We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what's in the Dockerfile.
 
-</details>
-***
+Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we'll be doing that later on in the Data Analysis section (though this isn't always possible depending on security settings on a system)
 
-<!--
-Use this section to walk through any exploration of the dataset conducted pre-analysis.
--->
+## Revisions task
+
+Explore what the extracted table looks like and what sort of wrangling we might need to do in order to visualize the data -- we'll show them what the data looks like, but not have them do this
+
+* Note that the raw table data as extracted by `tabulapdf` has a 4th column that is all NA's where the data from that column are appended to the end of the 3rd column
+* Note that there are more rows than we expect and this is because the "multiline" data in the third column is split as separate rows (where all the rest of the columns have NA)
+* Note that all columns need a name/renamed
