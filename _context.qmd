@@ -66,14 +66,14 @@ As for how we're working with data. Our options are to
 
 While we will show examples of all of these, our primary interest is to work within the third option as much as possible. When we ran an event at a medical center, the devices were unable to mount data so we'd like to provide options separate from that as much as possible.
 
-Notice that because this case study is focusing on working with containers and will be doing an example data analysis to help teach these concepts, most sections will have two parts.
+Notice that because this case study is focusing on working with containers and will be doing an example data analysis to help teach these concepts, most sections will have two parts. Within each section the subparts will be labeled as "Container" and "Revisions task".
 
-* The data import section will focus on (A) "importing" a **container** and (B) importing the **analysis data** from Table 1 of the paper.
-* The data exploration section will explore (A) the **Dockerfile** that the container is built from and (B) explore the **raw analysis data** that was imported prior to wrangling.
-* The data wrangling section will wrangle (A) the imported **analysis data** making it data visualization ready and (B) "wrangle" the **Dockerfile** to include a package that will help with our data visualization
-* The data visualization section will (A) build the modified Dockerfile and run the image and setup the running container (file structure, analysis script) before (B) producing data visualizations of the analysis data (two separate panels and then those panels combined with `patchwork`)
+* The data import section will focus on (A) "importing" a **container** and (B) importing the **data** from Table 1 of the paper for the revision task.
+* The data exploration section will explore (A) the **Dockerfile** that the container is built from and (B) explore the **raw analysis data** that was imported prior to wrangling for the revision task.
+* The data wrangling section will wrangle (A) the imported **data** making it data visualization ready for the revision task and (B) "wrangle" the **Dockerfile** to include a package that will help with our data visualization
+* The data visualization section will (A) build the modified Dockerfile and run the image and setup the running container (file structure, analysis script) before (B) producing data visualizations of the data (two separate panels and then those panels combined with `patchwork`) for the revision task
   * note the data visualization dealing with the container for this section could be designing a flowchart to summarize how the Dockerfile --> image --> container process goes.
-* The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the analysis data
+* The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the revision task
 
 
 ## The revision task -- Extracting data from a PDF and data visualization

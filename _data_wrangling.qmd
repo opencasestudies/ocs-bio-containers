@@ -1,7 +1,7 @@
 # **Data Wrangling**
 ***
 
-## Data analysis data
+## Revisions task
 
 If you have been following along but stopped, we could load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code):
 
@@ -10,10 +10,9 @@ load(here::here("data", "imported", "raw_table1.rda"))
 ```
 ***
 
-KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section.
-
 <details> <summary> If you skipped the data import section click here. </summary>
 
+KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section.
 
 ```{r, eval=FALSE}
 load(here::here("data", "imported", "raw_table1.rda"))
