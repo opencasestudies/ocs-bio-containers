@@ -14,7 +14,6 @@ KI note: We'll need to add instructions to this about mounting or importing data
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-An RDA version (stands for R data) of the data can be found [here](https://github.com//opencasestudies/ocs-bp-co2-emissions/tree/master/data/imported) or slightly more directly [here](https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/imported/co2_data_imported.rda). Download this file and then place it in your current working directory within a subdirectory called "imported" within a directory called "data" to use the following code. We used an RStudio project and the [`here` package](https://github.com/jennybc/here_here) to navigate to the file more easily.
 
 ```{r, eval=FALSE}
 load(here::here("data", "imported", "raw_table1.rda"))
