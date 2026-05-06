@@ -59,6 +59,7 @@ resubmission
 Rmd
 RStudio
 subdir
+subparts
 substeps
 tabulapdf
 Teichman
