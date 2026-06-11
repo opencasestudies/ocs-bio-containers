@@ -1,9 +1,10 @@
 ---
-title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
+title: "**Biomedical Open Case Studies: {Fill In Title}**"
+bibliography: resources/references.bib
 include-sections:
   stat-los: false
   data-import: true
-  data-exploration: true
+  data-exploration: false
   data-wrangling: true
   data-viz: true
   data-analysis: true
@@ -21,7 +22,6 @@ include-sections:
 
 {{< include _ocs_frontmatter.qmd >}}
 
-{{< include _cite.qmd >}}
 
 {{< include _motivation.qmd >}}
 
@@ -74,6 +74,10 @@ include-sections:
 {{< include _suggested_hw.qmd >}}
 
 {{< include _additional_info.qmd >}}
+
+{{< include _glossary_table.qmd >}}
+
+{{< include _bibliography.qmd >}}
 
 ## **Session Info**
 ***
