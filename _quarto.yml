@@ -3,18 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "Biomedical Open Case Studies: Using containers for collaborative, reproducible research"
+  title: "Biomedical Open Case Studies"
   navbar:
     search: true
     right:
       - icon: github
-        href: https://github.com/opencasestudies/ocs-bio-containers
+        href: https://github.com/opencasestudies/ocs-template-quarto
   sidebar:
     logo-href: "https://www.opencasestudies.org/"
     logo: "assets/Bio-OCS_Logo.png"
     foreground: "#1B365D"
   google-analytics:
-    tracking-id: "G-SP7FDE2GBQ"
+    tracking-id: "G-5R5B1JFCGE"
   page-footer:
     left: |
       This book was built with <a href="https://quarto.org/" style="color: #0000FF;">Quarto</a> using
@@ -25,11 +25,18 @@ website:
       All other materials <a href= "https://creativecommons.org/licenses/by-nc/4.0/us/" style="color: #0000FF;"> CC BY-NC 4.0 </a> unless noted otherwise.
     right:
       - icon: github
-        href: https://github.com/opencasestudies/ocs-bio-containers
+        href: https://github.com/opencasestudies/ocs-template-quarto
+
+glossary:
+  path: glossary.yml
+  popup: click
+  show: true
 
 brand: _brand.yml
 format:
   html:
+    code-copy: true
+    code-block-bg: true
     grid:
        sidebar-width: 260px
     theme: cosmo
@@ -38,3 +45,6 @@ format:
     toc: true
     toc-location: left
     license: "CC BY-NC 4.0"
+
+filters:
+  - auto-add-ai-disclaimer.lua
