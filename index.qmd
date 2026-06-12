@@ -1,10 +1,10 @@
 ---
-title: "**Biomedical Open Case Studies: {Fill In Title}**"
+title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
 bibliography: resources/references.bib
 include-sections:
   stat-los: false
   data-import: true
-  data-exploration: false
+  data-exploration: true
   data-wrangling: true
   data-viz: true
   data-analysis: true

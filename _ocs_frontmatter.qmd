@@ -14,7 +14,7 @@ as well as any system or server requirements to work with the data
 Disclaimer
 ::::
 ::::{.inner_block}
-The purpose of the [Open Case Studies](https://opencasestudies.github.io){target="_blank"} project is **to demonstrate the use of various data science methods, tools, and software in the context of messy, real-world data**. A given case study does not cover all aspects of the research process, is not claiming to be the most appropriate way to analyze a given data set, and should not be used in the context of making policy or clinical decisions without external consultation from scientific experts or medical care professionals. In addition, due to size constraints, datasets used within a case study may be subset of the original/full dataset.
+The purpose of the [Open Case Studies](https://opencasestudies.github.io){target="_blank"} project is **to demonstrate the use of various data science methods, tools, and software in the context of messy, real-world data**. A given case study does not cover all aspects of the research process, is not claiming to be the most appropriate way to analyze a given data set, and should not be used in the context of making policy or clinical decisions without external consultation from scientific experts or medical care professionals. In addition, due to size constraints, datasets used within a case study may be a subset of the original/full dataset.
 ::::
 :::
 
@@ -58,7 +58,7 @@ See the following example from a previous case study (prior to Motivation sectio
 GitHub repository
 ::::
 ::::{.inner_block}
-To access the GitHub repository for this case study see here: {LINK}
+To access the GitHub repository for this case study see here: [https://github.com/opencasestudies/ocs-bio-containers/](https://github.com/opencasestudies/ocs-bio-containers)
 ::::
 :::
 
@@ -95,7 +95,14 @@ Include bioOCSdata package information once ready/applicable
 Prerequisites
 ::::
 ::::{.inner_block}
-Add a list of prerequisites here.
+
+* Learners will need to install Docker
+* Learners should install Docker Desktop (optional, but suggested)
+
+For the Advanced homework:
+
+* Learners will need a GitHub account
+
 ::::
 :::
 
