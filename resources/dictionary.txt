@@ -49,6 +49,7 @@ OTTR
 ottrproject
 png
 pre
+prereq
 quarto
 qmd
 Rator's
@@ -61,6 +62,7 @@ RStudio
 subdir
 subparts
 substeps
+tabset
 tabulapdf
 Teichman
 th
