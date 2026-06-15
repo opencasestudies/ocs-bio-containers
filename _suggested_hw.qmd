@@ -1,22 +1,46 @@
-# **Suggested Homework**
+# **Continued Learning**
 ***
 
-<!--
-Suggest extra exercises using this data for students to practice the skills used in the case study.
-Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework
--->
+:::{.next_steps_box}
+::::{.next_steps_box_header}
+Common Next Steps
+::::
+::::{.inner_block}
+Discuss common next steps for this type of an analysis in this box. Is there a specific number of steps that you need to do before a specific step? Is a "next step" more of an alternate step?
+::::
+:::
+
+## Reinforcement Exercises
 
 Point out that text labels are overlapping each other in the right panel, and clipped on axis limits for both panels. The ggrepel package can be useful in fixing these problems.
 
-  * Add `ggrepel` to the Dockerfile
+* Add `ggrepel` to the Dockerfile
   * build the Dockerfile
   * run the image
   * extract and wrangle the data with the `preprocessing.R` script or mount the wrangled data when running the image
   * update the `analysis.R` script to utilize `ggrepel` within the scatter plots made with `patchwork`
   * and rerun the analysis with the modified container
-
+  * 
+  
 ![](img/patchwork_ggrepel_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not. Labels are clearer and not clipped."}
+  
 
-More advanced homework: Use a container together with GitHub actions to extract the PDF data and make the visualization.
+
+## Advancement Exercises
+
+Use this section to suggest different levels of exercises that build upon topics from the case study ... next steps, tangential skills, diving deeper into a side quest, etc.
+
+Perhaps explain how the suggested exercises relate to the common next steps.
+
+### Beginner
+
+### Intermediate
+
+### Advanced
+
+Use a container together with GitHub actions to extract the PDF data and make the visualization.
+<!--
+Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework (though this example doesn't include different levels like Beginner, Intermediate, and Advanced)
+-->
 
 ***
