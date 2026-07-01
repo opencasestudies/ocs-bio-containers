@@ -42,6 +42,7 @@ II. Why containers?
 * Describe why
 * Describe that a container isn't always necessary, but more on this later...
 
+
 III. What are some general use cases for containers?
 
 * Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
@@ -49,5 +50,9 @@ III. What are some general use cases for containers?
 * Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
 
 The last of these scenarios is the context for this case study.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
+```
 
 ***
