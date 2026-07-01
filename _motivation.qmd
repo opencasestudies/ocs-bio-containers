@@ -33,6 +33,10 @@ I. What is a container? (above)
 * Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
 * make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
 
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
+```
+
 II. Why containers?
 
 * Describe why

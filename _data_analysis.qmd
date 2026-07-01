@@ -19,6 +19,10 @@ We might use a column margin note to add an equation or some other annotation fo
 
 In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
 
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
+```
+
 * Plan to have another image on Docker Hub with the patchwork package
 * Have a `preprocessing.R` script that grabs and wrangles the data
 * Have an `analysis.R` script with all the visualization steps together
