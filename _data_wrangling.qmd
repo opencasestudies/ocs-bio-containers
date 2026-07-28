@@ -30,6 +30,7 @@ We'll need to add this code to our `analysis.R` file using the same steps as bef
 * navigate to the exec tab
 * use `preprocessing.R` -- adjusting based on script location and learner's file location.
 
+```{r, eval = FALSE}
 table1_extract <- raw_table %>%
     rename(c("dataset_name" = "X1",                                              #<1>
              "ref" = "X2",                                                       #<1>
