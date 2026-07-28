@@ -38,21 +38,22 @@ table1_extract <- raw_table %>%
              "longitudinal" = "X5",                                              #<1>
              "hmdb_annotated_compounds" = "X6",                                  #<1>
              "kegg_annotated_compounds" = "X7")) %>%                             #<1>
-    mutate(num_paired_samples = as.numeric(                                      #<2>
-                                  str_extract(                                   #<2>
-                                    cohort_description_num_paired_samples,       #<2>
-                                    "\\d+$"                                      #<2>
-                                    )                                            #<2>
-                                ),                                               #<2>
-           cohort_description_text = str_remove(                                 #<3>
-                                        cohort_description_num_paired_samples,   #<3>
-                                        "\\d+$"                                  #<3>
-                                      ),                                         #<3>
-           cohort_description = case_when(lead(is.na(dataset_name),              #<4>
-                                              default = FALSE) ~                 #<4>
-                                          paste0(cohort_description_text,        #<5>
-                                                 lead(cohort_description_text)), #<5>
-                                          .default = cohort_description_text)    #<6>
+    mutate(num_paired_samples =                                                  #<2>
+              as.numeric(                                                        #<2>
+                str_extract(cohort_description_num_paired_samples,               #<2>
+                            "\\d+$"                                              #<2>
+                           )                                                     #<2>
+              ),                                                                 #<2>
+           cohort_description_text =
+              str_remove(cohort_description_num_paired_samples,                  #<3>
+                         "\\d+$"                                                 #<3>
+                        ),                                                       #<3>
+           cohort_description =                                                  #<4>
+            case_when(lead(is.na(dataset_name),                                  #<4>
+                           default = FALSE) ~                                    #<4>
+                      paste0(cohort_description_text,                            #<5>
+                             lead(cohort_description_text)),                     #<5>
+                      .default = cohort_description_text)                        #<6>
            ) %>%
     filter(!is.na(dataset_name)) %>%                                             #<7>
     select(!c(X4,                                                                #<8>
