@@ -18,8 +18,9 @@ In this case study, you will learn how to use a pre-existing Docker container to
 
 Additional topics include
 
-* how to inspect the logs
-* how to mount a volume containing version controlled analysis files how to save results from an analysis run in a container
+* how to explore output from an analysis performed within a container
+* how to mount a volume containing version controlled analysis files 
+* how to save results from an analysis run in a container
 
 :::{.definition_box}
 ::::{.definition_box_header}
