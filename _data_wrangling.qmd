@@ -1,7 +1,7 @@
 # **Data Wrangling**
 ***
 
-## Revisions task
+## Application to data
 
 If you have been following along but stopped, we could load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code):
 
@@ -30,48 +30,60 @@ We'll need to add this code to our `analysis.R` file using the same steps as bef
 * navigate to the exec tab
 * use `preprocessing.R` -- adjusting based on script location and learner's file location.
 
-```{r, eval = FALSE}
-library(tidyverse)
-
 table1_extract <- raw_table %>%
-    mutate(num_paired_samples = as.numeric(str_extract(X3,                       #<1>
-                                                      "\\d+$"))) %>%             #<1>
-    mutate(X3Text = str_remove(X3,                                               #<2>
-                               "\\d+$")) %>%                                     #<2>
-    mutate(cohort_description = if_else(lead(is.na(X1), default = FALSE),        #<3>
-                                        paste0(X3Text,                           #<4>
-                                              lead(X3Text)),                     #<4>
-                                        X3Text)                                  #<5>
+    rename(c("dataset_name" = "X1",                                              #<1>
+             "ref" = "X2",                                                       #<1>
+             "cohort_description_num_paired_samples" = "X3",                     #<1>
+             "longitudinal" = "X5",                                              #<1>
+             "hmdb_annotated_compounds" = "X6",                                  #<1>
+             "kegg_annotated_compounds" = "X7")) %>%                             #<1>
+    mutate(num_paired_samples = as.numeric(                                      #<2>
+                                  str_extract(                                   #<2>
+                                    cohort_description_num_paired_samples,       #<2>
+                                    "\\d+$"                                      #<2>
+                                    )                                            #<2>
+                                ),                                               #<2>
+           cohort_description_text = str_remove(                                 #<3>
+                                        cohort_description_num_paired_samples,   #<3>
+                                        "\\d+$"                                  #<3>
+                                      ),                                         #<3>
+           cohort_description = case_when(lead(is.na(dataset_name),              #<4>
+                                              default = FALSE) ~                 #<4>
+                                          paste0(cohort_description_text,        #<5>
+                                                 lead(cohort_description_text)), #<5>
+                                          .default = cohort_description_text)    #<6>
            ) %>%
-    filter(!is.na(X1)) %>%                                                       #<6>
-    select(!c(X3, X4, X3Text)) %>%                                               #<7>
-    rename(c("dataset_name" = "X1",                                              #<8>
-             "ref" = "X2",                                                       #<8>
-             "longitudinal" = "X5",                                              #<8>
-             "hmdb_annotated_compounds" = "X6",                                  #<8>
-             "kegg_annotated_compounds" = "X7"))                                 #<8>
+    filter(!is.na(dataset_name)) %>%                                             #<7>
+    select(!c(X4,                                                                #<8>
+              cohort_description_num_paired_samples,                             #<8>
+              cohort_description_text))                                          #<8>
 
 ```
 
-1. Extracting the numbers (which represent the number of paired samples) at the end of the row to put them in their own column
-2. Making a version of the text column that has those numbers of paired samples removed
-3. Setting up an if else that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the `lead` function to look for the next value. In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`
-4. If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text
-5. Otherwise if the `lead` function returns that the next value is not NA (`FALSE`) (or is the last value/row), it will return the current cohort text only.
-6. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows
-7. This removes the original X3 column (that had the cohort description plus number of paired samples), the X4 column which was all NAs, and the X3Text column which has incomplete cohort descriptions
-8. Rename the columns so they are descriptive
+1. Rename the columns so they are descriptive
+2. Extracting the numbers (which represent the number of paired samples) at the end of the cohort descriptions to put them in their own column
+3. Making a intermediate column, specifically a version of the text column that has those numbers of paired samples removed
+4. Setting up a `case_when` that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the `lead` function to look for the next value. In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`
+5. If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text
+6. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
+7. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows
+8. This removes the `X4` column which was all `NAs`, the original third column (that had the cohort description plus number of paired samples), and the intermediate column which we made that has incomplete cohort descriptions
 
-Advanced side quest: Can challenge learners to come up with a more generalizable way to wrangle the data if there's more than one NA row that needs to be collapsed (e.g., some data has more than 2 lines) (use a dropdown section for this)
+If we were to inspect the `table1_extract` Data Frame, we would observe that the data now appears to match our expectations. There are 14 rows and 7 columns, though those columns don't follow the original order of Table 1 in @Muller_Algavi_Borenstein_2022. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data.
 
-As a way to spot check that the container is doing something up to this point, we can use some outputs
+```{r wrangled_data, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'The wrangled data appears to match our expectations.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_0#slide=id.g3f5db0d7ede_0_0")
+```
+If running code in a container in a non-interactive way (e.g., without an IDE) we could utilize output messages within our code to report on things like the dimensions of the Data Frame and to spot check specific values.
+
+As an example, the following two messages report first on the dimensions and then spot check the dataset name for the fourth row of data.
 
 ```{r, eval = FALSE}
-message(table1_extract[4, "dataset_name"])
 message("Dimensions: ", paste(dim(table1_extract), collapse = " x "))
+message(table1_extract[4, "dataset_name"])
 ```
 
-The Dimensions will have fewer rows (14 instead of 25) and the value of the dataset name should be `HE_INFANTS_MFGM_2019`
+The dimensions properly report a decrease in the number of rows compared to the raw extracted data (14 instead of 25), matching our expectation for both the number of rows and the number of columns given the source data. The dataset name in the fourth row is `HE_INFANTS_MFGM_2019`, again matching our expectations when comparing to the source data.
 
 To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.
 
@@ -86,23 +98,44 @@ readr::write_csv(table1_extract,                                 # <2>
 1. saving the data as an RDA file within the wrangled data subdirectory
 2. saving the data as a CSV file within the wrangled data subdirectory
 
+<details><summary>A more generalizable and robust wrangling approach</summary>
 
-Now that we've wrangled the extracted table data into a dataframe, we want to plan out the visualizations we'll make using this dataframe!
+This wrangling approach using the `lead` function to assess if there is multiline data that needs combined assumes that there are only ever 1 - 2 rows for each cohort description. What changes to this process could be utilized that would be more generalizable or robust with data that doesn't meet this assumption? Specifically, how could this process be changed to combine an unknown number of rows of data to the previous row when only one column has data?
 
-We want to make two scatter plots:
+<details><summary>A possible approach</summary>
 
-* labeling the points with the `dataset_name`
-* coloring the points based on `longitudinal` value
-* y-axis
-  * `hmdb_annotated_compounds` for one plot
-  * `kegg_annotated_compounds` for the other plot
-* x-axis is `num_paired_samples`
+One possible approach would:
 
-But if we make two separate scatter plots, they will be two separate panels/files that won't be displayed next to each other unless we use design software like illustrator. But we could also use a package that allows us to combine plots, then the scatter plot will have two panels displayed next to each other. So let's "wrangle" the Dockerfile to include a package that will let us do that: `patchwork`.
+1. Use the `cumsum()` function to assign a group ID to the rows.
+2. Use the `group_by()` function to group the data by that group ID.
+3. With the `summarize()` function, `paste()` the cohort descriptions within each group together.
+4. Either bring along the non-NA data for the other columns within the `summarize()` function, or join the datasets together using the group ID and drop unnecessary rows.
+
+</details>
+
+</details>
+
+
+Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this Data Frame!
+
+Collab O. Rator's email provided the following guidance regarding the data visualizations:
+
+>Specifically, I’d like to see scatter plots comparing the data from the final four columns for each dataset (No. samples w/ paired data, Longitudinal, No. HMDB-annotated compounds, and No. KEGG-annotated compounds).
+
+Collab O. Rator's instructions have asked us to visualize 4 variables or dimensions of the data with scatter plots. The axes (x- and y-) will account for two of those variables, and we can adjust the points (e.g., color or shape) to represent a third variable -- likely the `longitudinal` value as this is categorical ("Yes" vs "No"). To visualize the fourth variable, we would need to add a third axis (z-) or some other means of encoding the data, but this adds to the complexity of the plot. Instead, we could make two separate panels.
+
+Plot element | Data column
+-------------|------------
+x-axis       | `num_paired_samples`
+y-axis       | 'hmdb_annotated_compounds' or `kegg_annotated_compounds`
+point color or shape | `longitudinal`
+labels               | `dataset_name`
+
+But if we make two separate scatter plots, they will be two separate plots/files that won't be displayed next to each other unless we use design software like Illustrator to combine them later. Certain R packages allow you to combine plots and display them with each other. So let's "wrangle" the Dockerfile to include a package that will let us do that: `patchwork`.
 
 ## Container
 
-As you can see from the visualization step above, these two panels are completely separate separate plots -- and we'd like them to be visible next to each other.... we can use `patchwork` for that, but we'll need to add `patchwork` to our visualization container....
+As you can see from the visualization planning above, these two plots would be completely separate -- and we'd like them to be visible next to each other. A useful R package for this purpose is `patchwork`. However, our data visualization Docker image doesn't include that package.
 
 Activity: Add `patchwork` to the container
 

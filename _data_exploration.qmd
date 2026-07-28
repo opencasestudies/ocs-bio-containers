@@ -52,10 +52,26 @@ We can even explore the file structure of the running container in Docker Deskto
 
 Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we'll be doing that later on in the Data Analysis section (though this isn't always possible depending on security settings on a system)
 
-## Revisions task
+## Application to data
 
-Explore what the extracted table looks like and what sort of wrangling we might need to do in order to visualize the data -- we'll show them what the data looks like, but not have them do this
+Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
 
-* Note that the raw table data as extracted by `tabulapdf` has a 4th column that is all NA's where the data from that column are appended to the end of the 3rd column
-* Note that there are more rows than we expect and this is because the "multiline" data in the third column is split as separate rows (where all the rest of the columns have NA)
-* Note that all columns need a name/renamed
+```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
+ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
+```
+
+We would have expected the cohort descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that `X3` contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (`X4`) has all `NAs`. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have `NAs` in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.
+
+```{r raw_table_x3, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The X3 column contains both the cohort descriptions which are sometimes multi-row as well as the number of paired samples data which is appended to the end of the cohort description. Cohort descriptions are boxed in purple to show some examples and number of paired samples are circled in teal."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_212#slide=id.g3f96ddc37a7_0_212")
+```
+
+Notice also that none of the columns have descriptive names.
+
+Therefore, when we wrangle the data we will need to
+
+  * rename the columns
+  * separate out the number of paired samples from the cohort descriptions
+  * reunite the multiline cohort descriptions into a single line
+  * drop rows where the overflow cohort descriptions but no other data are
+  * drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)
