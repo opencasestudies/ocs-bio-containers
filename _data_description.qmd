@@ -6,15 +6,24 @@ You may want to include a table about file or variable info.
 # **What are the data?**
 ***
 
-The data comes from [Table 1 in Muller, Algavi, & Borenstein 2022](https://www-nature-com.fhcrc.idm.oclc.org/articles/s41522-022-00345-5/tables/1). After using `tabulapdf` to extract the table from the PDF, some basic wrangling with `tidyverse` results in a tidy dataframe with multiple columns, but these are the most important for our visualization task (as outlined in Collab O. Rator's email). 
+The data comes from Table 1 in @Muller_Algavi_Borenstein_2022.
 
+```{r data_table, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Table 1 from Muller et al 2022. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_25#slide=id.g3f5db0d7ede_0_25")
+```
+
+After using `tabulapdf` to extract the table from the PDF (see the `Data Import` section) and some basic wrangling with `tidyverse` (see the `Data Wrangling` section), we will extract a tidy dataframe with all of the columns displayed in the original table, but those boxed in purple and listed below are the most important for our visualization task (as outlined in Collab O. Rator's email).
+
+```{r data_table_highlight, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'The dataset name, number of paired samples, whether the sample is longitudinal, the number of HMDB annotated compounds, and the number of KEGG annotated compounds are the columns that we will use in building data visualizations.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_46#slide=id.g3f5db0d7ede_0_46")
+```
 
 Variable   | Details
 ---------- |-------------
-**dataset_name**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
-**samples_paired**  | Variable info  <br> -- more details <br> -- more details <br>  **Example**: Content content
-**longitudinal** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
-**hmdb_annotated_compounds** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
-**kegg_annotated_compounds** | Variable info <br> -- more details <br> -- more details </br> **Example**: Content content
+**dataset_name**  | A character/string identifying the dataset (often containing author, studied illness, and year of the study).
+**num_paired_samples**  | The number of samples within the dataset that have paired fecal microbiome-metabolome data.
+**longitudinal** | A character/string reporting whether that dataset has longitudinal data ("Yes" or "No").
+**hmdb_annotated_compounds** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
+**kegg_annotated_compounds** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
 
 ***

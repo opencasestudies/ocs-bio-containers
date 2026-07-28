@@ -14,14 +14,19 @@ In this case study, we ask you to imagine that you are working with a collaborat
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3dad9407b30_0_0#slide=id.g3dad9407b30_0_0")
 ```
 
-In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it. Additional topics include ...
+In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it.
+
+Additional topics include
+
+* how to inspect the logs
+* how to mount a volume containing version controlled analysis files how to save results from an analysis run in a container
 
 :::{.definition_box}
 ::::{.definition_box_header}
 Container
 ::::
 ::::{.inner_block}
-Add container definition here
+A container is a defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
 ::::
 :::
 
