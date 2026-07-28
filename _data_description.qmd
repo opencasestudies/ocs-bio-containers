@@ -1,14 +1,19 @@
-<!--
-Describe the data to be analyzed and where it came from.
-You may want to include a table about file or variable info.
--->
-
 # **What are the data?**
 ***
 
-The data comes from Table 1 in @Muller_Algavi_Borenstein_2022.
+The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing
 
-```{r data_table, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Table 1 from Muller et al 2022. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study.'}
+* the name of each dataset
+* which reference in the study relates to that data
+* a brief description of the cohort within that study
+* the number of samples with paired fecal microbiome-metabolome data within that cohort
+* whether the study contained longitudinal data
+* the number of HMDB annotated compounds
+* the number of KEGG annotated compounds
+
+Each row in the table is providing data for that source dataset itself. Figure 1 in @Muller_Algavi_Borenstein_2022 provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDBB annotated metabolites present). 
+
+```{r data_table, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Table 1 from Muller et al 2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_25#slide=id.g3f5db0d7ede_0_25")
 ```
 
