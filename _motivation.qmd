@@ -16,7 +16,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it.
 
-Additional topics include
+Additional topics include:
 
 * how to explore output from an analysis performed within a container
 * how to mount a volume containing version controlled analysis files 

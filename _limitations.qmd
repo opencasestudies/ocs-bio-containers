@@ -13,7 +13,7 @@ This case study specifically uses the technology Docker to build containers and 
 
 *Limitations regarding containerization and the scope of this case study:*
 
-This case study does **not** describe how to
+This case study does **not** describe how to:
 
   * develop containers from the ground up
   * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
