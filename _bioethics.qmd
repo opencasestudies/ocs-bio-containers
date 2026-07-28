@@ -8,16 +8,16 @@ There are some important ethical considerations when working with containerizati
 1. When defining and sharing a container image, **make sure to never include personally identifiable information (PII) or protected health information (PHI)**.
   * Even if you are sharing a Dockerfile or image using a private repository or in private communication within a team setting, do not include PII or PHI.
   * Data that is considered PII or PHI includes names, dates of birth, contact information, account or health plan numbers, IP addresses, and medical records. You can read more about PII and PHI and ethical data handling practices in [this course](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-privacy.html#pii-personal-identifiable-information) with broader information regarding proactive and ethical data management and sharing can be found in [this course](https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/).
-1. Container images should be minimal and non-interactive (e.g., able to install without user interaction).
+2. Container images should be minimal and non-interactive (e.g., able to install without user interaction).
   * In general, do not include any data (even if it's not PHI or PII) within an image that you share (ensuring a minimal image).
   * Remove unnecessary packages or dependencies (ensuring a minimal image).
   * Avoid adding software like `git` that would require user credentials or authentication to install or setup (ensuring a minimal, non-interactive image).
   * Do not include any credentials within the definition of a container image (ensuring a minimal, secure image).
-1. Only use containers from known and verified sources.
-1. While images provide a static snapshot of a computing environment, the security or health of a container isn't necessarily static and may need to be maintained over time.
-1. Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).
-1. Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science [@Wilkinson_etal_2016; @Barker_etal_2022]. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles.
-1. Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of [reproducible science](https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum) [@Sandve_Nekrutenko_Taylor_Hovig_2013].
+3. Only use containers from known and verified sources.
+4. While images provide a static snapshot of a computing environment, the security or health of a container isn't necessarily static and may need to be maintained over time.
+5. Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).
+6. Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science [@Wilkinson_etal_2016; @Barker_etal_2022]. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles.
+7. Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of [reproducible science](https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum) [@Sandve_Nekrutenko_Taylor_Hovig_2013].
 
 *Collaborative team considerations:*
 
@@ -26,7 +26,7 @@ There are some important ethical considerations when working with containerizati
 *Use of secondary and/or clinical/health data considerations:*
 
 1. Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways.
-1. Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html).
+2. Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html).
 
 
 ***

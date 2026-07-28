@@ -15,13 +15,13 @@ This case study specifically uses the technology Docker to build containers and 
 
 This case study does **not** describe how to
 
-    * develop containers from the ground up
-    * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
-    * use containers to support a remote analysis (e.g., in the cloud)
-    * use containers to deploy or support an application
-    * use technologies other than Docker such as Apptainer or Singularity
+  * develop containers from the ground up
+  * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
+  * use containers to support a remote analysis (e.g., in the cloud)
+  * use containers to deploy or support an application
+  * use technologies other than Docker such as Apptainer or Singularity
 
-Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, Docker's long-term availability is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
+Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
 
 *Limitations regarding the data analysis and using aggregated data:*
 

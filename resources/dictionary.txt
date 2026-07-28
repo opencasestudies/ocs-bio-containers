@@ -13,6 +13,7 @@ Dockerfile
 Dockerhub
 dropdown
 favicon
+findable
 frontmatter
 generalizable
 ggplot
@@ -29,6 +30,7 @@ HPCs
 HTTPS
 hw
 iconpacks
+interoperable
 ITCR
 kegg
 KEGG
@@ -47,6 +49,7 @@ ocs
 Oshane
 OTTR
 ottrproject
+PII
 png
 pre
 prereq

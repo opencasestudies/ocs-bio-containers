@@ -11,7 +11,7 @@ The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes
 * the number of HMDB annotated compounds
 * the number of KEGG annotated compounds
 
-Each row in the table is providing data for that source dataset itself. Figure 1 in @Muller_Algavi_Borenstein_2022 provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDBB annotated metabolites present).
+Each row in the table is providing data for that source dataset itself. Figure 1 in @Muller_Algavi_Borenstein_2022 provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated metabolites present).
 
 ```{r data_table, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Table 1 from Muller et al 2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_25#slide=id.g3f5db0d7ede_0_25")
@@ -25,10 +25,10 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Variable   | Details
 ---------- |-------------
-**dataset_name**  | A character/string identifying the dataset (often containing author, studied illness, and year of the study).
-**num_paired_samples**  | The number of samples within the dataset that have paired fecal microbiome-metabolome data.
-**longitudinal** | A character/string reporting whether that dataset has longitudinal data ("Yes" or "No").
-**hmdb_annotated_compounds** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
-**kegg_annotated_compounds** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
+**`dataset_name`**  | A character/string identifying the dataset (often containing author, studied illness, and year of the study).
+**`num_paired_samples`**  | The number of samples within the dataset that have paired fecal microbiome-metabolome data.
+**`longitudinal`** | A character/string reporting whether that dataset has longitudinal data ("Yes" or "No").
+**`hmdb_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
+**`kegg_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
 
 ***
