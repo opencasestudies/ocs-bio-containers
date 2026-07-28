@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -97,9 +98,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-b3bb40a8176a7974df64f59f1193bb6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -302,7 +303,7 @@ See image here for example: https://www.opencasestudies.org/ocs-bp-school-shooti
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3dc0981b1da_0_1.png" class="img-fluid figure-img" width="800"></p>
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f2e7d581cb_0_36.png" class="img-fluid figure-img" width="800"></p>
 </figure>
 </div>
 </div>
@@ -448,13 +449,19 @@ Images or videos may be helpful so this includes an example of including an imag
 </div>
 </div>
 </div>
-<p>In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it. Additional topics include …</p>
+<p>In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it.</p>
+<p>Additional topics include:</p>
+<ul>
+<li>how to explore output from an analysis performed within a container</li>
+<li>how to mount a volume containing version controlled analysis files</li>
+<li>how to save results from an analysis run in a container</li>
+</ul>
 <div class="definition_box">
 <div class="definition_box_header">
 <p>Container</p>
 </div>
 <div class="inner_block">
-<p>Add container definition here</p>
+<p>A container is a defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</p>
 </div>
 </div>
 <p>Outline</p>
@@ -463,6 +470,15 @@ Images or videos may be helpful so this includes an example of including an imag
 <li>Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.</li>
 <li>make a diagram showing how Dockerfile relates to building an image … (possibly borrow or adapt the crane one that Candace made for ITCR containers course)</li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_2_0.png" class="img-fluid figure-img" width="1250"></p>
+</figure>
+</div>
+</div>
+</div>
 <ol start="2" type="I">
 <li>Why containers?</li>
 </ol>
@@ -479,6 +495,15 @@ Images or videos may be helpful so this includes an example of including an imag
 <li>Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)</li>
 </ul>
 <p>The last of these scenarios is the context for this case study.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid figure-img" width="1250"></p>
+</figure>
+</div>
+</div>
+</div>
 <hr>
 <!--
 Describe the main biological questions for this case study.
@@ -671,16 +696,41 @@ Videos or images may be helpful so this includes an example of embedding a video
 <li>We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.</li>
 </ul>
 <hr>
-<!--
-Describe the data to be analyzed and where it came from.
-You may want to include a table about file or variable info.
--->
 </section>
 </section>
 <section id="what-are-the-data" class="level1">
 <h1><strong>What are the data?</strong></h1>
 <hr>
-<p>The data comes from <a href="https://www-nature-com.fhcrc.idm.oclc.org/articles/s41522-022-00345-5/tables/1">Table 1 in Muller, Algavi, &amp; Borenstein 2022</a>. After using <code>tabulapdf</code> to extract the table from the PDF, some basic wrangling with <code>tidyverse</code> results in a tidy dataframe with multiple columns, but these are the most important for our visualization task (as outlined in Collab O. Rator’s email).</p>
+<p>The data comes from Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Table 1 describes the curated gut microbiome-metabolome datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing</p>
+<ul>
+<li>the name of each dataset</li>
+<li>which reference in the study relates to that data</li>
+<li>a brief description of the cohort within that study</li>
+<li>the number of samples with paired fecal microbiome-metabolome data within that cohort</li>
+<li>whether the study contained longitudinal data</li>
+<li>the number of HMDB annotated compounds</li>
+<li>the number of KEGG annotated compounds</li>
+</ul>
+<p>Each row in the table is providing data for that source dataset itself. Figure 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated metabolites present).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_25.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Table 1 from Muller et al 2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>After using <code>tabulapdf</code> to extract the table from the PDF (see the <code>Data Import</code> section) and some basic wrangling with <code>tidyverse</code> (see the <code>Data Wrangling</code> section), we will extract a tidy dataframe with all of the columns displayed in the original table, but those boxed in purple and listed below are the most important for our visualization task (as outlined in Collab O. Rator’s email).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_46.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="The dataset name, number of paired samples, whether the sample is longitudinal, the number of HMDB annotated compounds, and the number of KEGG annotated compounds are the columns that we will use in building data visualizations."></p>
+</figure>
+</div>
+</div>
+</div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 43%">
@@ -694,24 +744,24 @@ You may want to include a table about file or variable info.
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>dataset_name</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td><strong><code>dataset_name</code></strong></td>
+<td>A character/string identifying the dataset (often containing author, studied illness, and year of the study).</td>
 </tr>
 <tr class="even">
-<td><strong>samples_paired</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td><strong><code>num_paired_samples</code></strong></td>
+<td>The number of samples within the dataset that have paired fecal microbiome-metabolome data.</td>
 </tr>
 <tr class="odd">
-<td><strong>longitudinal</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td><strong><code>longitudinal</code></strong></td>
+<td>A character/string reporting whether that dataset has longitudinal data (“Yes” or “No”).</td>
 </tr>
 <tr class="even">
-<td><strong>hmdb_annotated_compounds</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td><strong><code>hmdb_annotated_compounds</code></strong></td>
+<td>The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>.</td>
 </tr>
 <tr class="odd">
-<td><strong>kegg_annotated_compounds</strong></td>
-<td>Variable info <br> – more details <br> – more details <br> <strong>Example</strong>: Content content</td>
+<td><strong><code>kegg_annotated_compounds</code></strong></td>
+<td>The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) <span class="citation" data-cites="Kanehisa_Goto_2000 Kanehisa_etal_2025">(<a href="#ref-Kanehisa_Goto_2000" role="doc-biblioref">Kanehisa and Goto 2000</a>; <a href="#ref-Kanehisa_etal_2025" role="doc-biblioref">Kanehisa et al. 2025</a>)</span>.</td>
 </tr>
 </tbody>
 </table>
@@ -726,35 +776,60 @@ See the following example from a previous case study: https://www.opencasestudie
 <h1><strong>Limitations</strong></h1>
 <hr>
 <p>There are some important considerations regarding this data analysis to keep in mind:</p>
-<ol type="1">
-<li><p>This case study does not describe how to</p>
+<p>This case study specifically uses the technology Docker to build containers and run analyses within these isolated environments, on a local machine.</p>
+<p><em>Limitations regarding containerization and the scope of this case study:</em></p>
+<p>This case study does <strong>not</strong> describe how to:</p>
 <ul>
 <li>develop containers from the ground up</li>
-<li>use containers within a workflow using tools like Nextflow or WDL</li>
-<li>use technologies such as Apptainer or Singularity</li>
-</ul></li>
-<li><p>This case study focuses on using containers and therefore the analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.</p></li>
-</ol>
+<li>use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)</li>
+<li>use containers to support a remote analysis (e.g., in the cloud)</li>
+<li>use containers to deploy or support an application</li>
+<li>use technologies other than Docker such as Apptainer or Singularity</li>
+</ul>
+<p>Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
+<p><em>Limitations regarding the data analysis and using aggregated data:</em></p>
+<p>This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.</p>
+<p>In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. Steps involved in data harmonization include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, meta-analyses are synthesizing summarized information rather than aggregating the underlying, raw data <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate <span class="citation" data-cites="Nan_etal_2022">(<a href="#ref-Nan_etal_2022" role="doc-biblioref">Nan et al. 2022</a>)</span>.</p>
 <hr>
-<!--
-List any important bioethics considerations when performing an analysis like this or working with data like this.
-
-See doi: 10.1007/s41649-019-00099-x and https://depts.washington.edu/bhdept/ethics-medicine/bioethics-topics/articles/principles-bioethics for principles and considerations.
-Examples may include: how identifiable (or re-identifiable) is your data? cell lines or consent? specific considerations for a specific population?
--->
 </section>
 <section id="ethical-considerations" class="level1">
 <h1><strong>Ethical Considerations</strong></h1>
 <hr>
-<p>There are some important ethical considerations when working with data relating to this case study’s main questions.</p>
+<p>There are some important ethical considerations when working with containerization, as well as when working with clinical/health related data. Additional ethical considerations are relevant when working within a collaborative team environment and with secondary source data (data collected by others).</p>
+<p><em>Containerization and clinical/health data considerations:</em></p>
 <ol type="1">
-<li>Do not include data within an image or container that you share!</li>
-<li>Something about security considerations and verified sources for containers….</li>
+<li>When defining and sharing a container image, <strong>make sure to never include personally identifiable information (PII) or protected health information (PHI)</strong>.</li>
+</ol>
+<ul>
+<li>Even if you are sharing a Dockerfile or image using a private repository or in private communication within a team setting, do not include PII or PHI.</li>
+<li>Data that is considered PII or PHI includes names, dates of birth, contact information, account or health plan numbers, IP addresses, and medical records. You can read more about PII and PHI and ethical data handling practices in <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-privacy.html#pii-personal-identifiable-information">this course</a> with broader information regarding proactive and ethical data management and sharing can be found in <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/">this course</a>.</li>
+</ul>
+<ol start="2" type="1">
+<li>Container images should be minimal and non-interactive (e.g., able to install without user interaction).</li>
+</ol>
+<ul>
+<li>In general, do not include any data (even if it’s not PHI or PII) within an image that you share (ensuring a minimal image).</li>
+<li>Remove unnecessary packages or dependencies (ensuring a minimal image).</li>
+<li>Avoid adding software like <code>git</code> that would require user credentials or authentication to install or setup (ensuring a minimal, non-interactive image).</li>
+<li>Do not include any credentials within the definition of a container image (ensuring a minimal, secure image).</li>
+</ul>
+<ol start="3" type="1">
+<li>Only use containers from known and verified sources.</li>
+<li>While images provide a static snapshot of a computing environment, the security or health of a container isn’t necessarily static and may need to be maintained over time.</li>
+<li>Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).</li>
+<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
+<li>Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum">reproducible science</a> <span class="citation" data-cites="Sandve_Nekrutenko_Taylor_Hovig_2013">(<a href="#ref-Sandve_Nekrutenko_Taylor_Hovig_2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>.</li>
+</ol>
+<p><em>Collaborative team considerations:</em></p>
+<ol type="1">
+<li>For projects performed within large, collaborative teams performing transparent science can be even more of a challenge. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider <span class="citation" data-cites="Petersen_Pavlidis_Semendeferi_2014">Petersen, Pavlidis, and Semendeferi (<a href="#ref-Petersen_Pavlidis_Semendeferi_2014" role="doc-biblioref">2014</a>)</span>.</li>
+</ol>
+<p><em>Use of secondary and/or clinical/health data considerations:</em></p>
+<ol type="1">
+<li>Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>.</li>
+<li>Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html">how that data was collected and shared and the consent of participants</a>.</li>
 </ol>
 <hr>
-<!--
-Consider incorporating a checklist of statements that learners should answer/discuss for every case study for bioethics principles.
--->
 </section>
 <section id="data-import" class="level1">
 <h1><strong>Data Import</strong></h1>
@@ -846,6 +921,15 @@ RUN install2.r --error --deps TRUE \
     tabulapdf \
     here
 </code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f01a9d8250_0_17.png" class="img-fluid figure-img" width="1250"></p>
+</figure>
+</div>
+</div>
+</div>
 <ul>
 <li>Notice there are layers</li>
 <li>Point out dependencies (Side quest: how do we know what dependencies we need?)</li>
@@ -1142,6 +1226,15 @@ You can use a collapsible details section to provide an answer
 <div class="no-row-height column-margin column-container"><div class="">
 <p>We might use a column margin note to add an equation or some other annotation for learners or educators.</p>
 </div></div><p>In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f0102bcf57_7_5.png" class="img-fluid figure-img" width="1250"></p>
+</figure>
+</div>
+</div>
+</div>
 <ul>
 <li>Plan to have another image on Docker Hub with the patchwork package</li>
 <li>Have a <code>preprocessing.R</code> script that grabs and wrangles the data</li>
@@ -1279,8 +1372,37 @@ Automatically include the packages table from _packages.qmd?
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <hr>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Barker_etal_2022" class="csl-entry" role="listitem">
+Barker, Michelle, Neil P. Chue Hong, Daniel S. Katz, Anna-Lena Lamprecht, Carlos Martinez-Ortiz, Fotis Psomopoulos, Jennifer Harrow, et al. 2022. <span>“Introducing the FAIR Principles for Research Software.”</span> <em>Scientific Data</em> 9 (1): 622. <a href="https://doi.org/10.1038/s41597-022-01710-x">https://doi.org/10.1038/s41597-022-01710-x</a>.
+</div>
+<div id="ref-Cheng_etal_2024" class="csl-entry" role="listitem">
+Cheng, Cindy, Luca Messerschmidt, Isaac Bravo, Marco Waldbauer, Rohan Bhavikatti, Caress Schenk, Vanja Grujic, Tim Model, Robert Kubinec, and Joan Barceló. 2024. <span>“A General Primer for Data Harmonization.”</span> <em>Scientific Data</em> 11 (1): 152. <a href="https://doi.org/10.1038/s41597-024-02956-3">https://doi.org/10.1038/s41597-024-02956-3</a>.
+</div>
+<div id="ref-Kanehisa_etal_2025" class="csl-entry" role="listitem">
+Kanehisa, Minoru, Miho Furumichi, Yoko Sato, Yuriko Matsuura, and Mari Ishiguro-Watanabe. 2025. <span>“KEGG: Biological Systems Database as a Model of the Real World.”</span> <em>Nucleic Acids Research</em> 53 (D1): D672–77. <a href="https://doi.org/10.1093/nar/gkae909">https://doi.org/10.1093/nar/gkae909</a>.
+</div>
+<div id="ref-Kanehisa_Goto_2000" class="csl-entry" role="listitem">
+Kanehisa, Minoru, and Susumu Goto. 2000. <span>“KEGG: Kyoto Encyclopedia of Genes and Genomes.”</span> <em>Nucleic Acids Research</em> 28 (1): 27–30. <a href="https://doi.org/10.1093/nar/28.1.27">https://doi.org/10.1093/nar/28.1.27</a>.
+</div>
+<div id="ref-Muller_Algavi_Borenstein_2022" class="csl-entry" role="listitem">
+Muller, Efrat, Yadid M. Algavi, and Elhanan Borenstein. 2022. <span>“The Gut Microbiome-Metabolome Dataset Collection: A Curated Resource for Integrative Meta-Analysis.”</span> <em>Npj Biofilms and Microbiomes</em> 8 (1): 79. <a href="https://doi.org/10.1038/s41522-022-00345-5">https://doi.org/10.1038/s41522-022-00345-5</a>.
+</div>
+<div id="ref-Nan_etal_2022" class="csl-entry" role="listitem">
+Nan, Yang, Javier Del Ser, Simon Walsh, Carola Schönlieb, Michael Roberts, Ian Selby, Kit Howard, et al. 2022. <span>“Data Harmonisation for Information Fusion in Digital Healthcare: A State-of-the-Art Systematic Review, Meta-Analysis and Future Research Directions.”</span> <em>Information Fusion</em> 82: 99–122. <a href="https://doi.org/10.1016/j.inffus.2022.01.001">https://doi.org/10.1016/j.inffus.2022.01.001</a>.
+</div>
+<div id="ref-Petersen_Pavlidis_Semendeferi_2014" class="csl-entry" role="listitem">
+Petersen, Alexander M., Ioannis Pavlidis, and Ioanna Semendeferi. 2014. <span>“A Quantitative Perspective on Ethics in Large Team Science.”</span> <em>Science and Engineering Ethics</em> 20 (4): 923–45. <a href="https://doi.org/10.1007/s11948-014-9562-8">https://doi.org/10.1007/s11948-014-9562-8</a>.
+</div>
+<div id="ref-Sandve_Nekrutenko_Taylor_Hovig_2013" class="csl-entry" role="listitem">
+Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLOS Computational Biology</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.
+</div>
+<div id="ref-Wilkinson_etal_2016" class="csl-entry" role="listitem">
+Wilkinson, Mark D., Michel Dumontier, IJsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, et al. 2016. <span>“The FAIR Guiding Principles for Scientific Data Management and Stewardship.”</span> <em>Scientific Data</em> 3 (1): 160018. <a href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a>.
+</div>
+<div id="ref-Wishart_etal_2009" class="csl-entry" role="listitem">
+Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Gautam, David D. Hau, et al. 2009. <span>“HMDB: A Knowledgebase for the Human Metabolome.”</span> <em>Nucleic Acids Research</em> 37 (Database issue): D603–10. <a href="https://doi.org/10.1093/nar/gkn810">https://doi.org/10.1093/nar/gkn810</a>.
+</div>
 </div>
 </section>
 <section id="session-info" class="level2">
@@ -1299,7 +1421,7 @@ Automatically include the packages table from _packages.qmd?
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2026-06-15
+ date     2026-07-28
  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
