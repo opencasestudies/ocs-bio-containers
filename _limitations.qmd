@@ -9,12 +9,23 @@ See the following example from a previous case study: https://www.opencasestudie
 
 There are some important considerations regarding this data analysis to keep in mind:
 
-1. This case study does not describe how to
+This case study specifically uses the technology Docker to build containers and run analyses within these isolated environments, on a local machine.
+
+*Limitations regarding containerization and the scope of this case study:*
+
+This case study does **not** describe how to
 
     * develop containers from the ground up
-    * use containers within a workflow using tools like Nextflow or WDL
-    * use technologies such as Apptainer or Singularity
+    * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
+    * use containers to support a remote analysis (e.g., in the cloud)
+    * use containers to deploy or support an application
+    * use technologies other than Docker such as Apptainer or Singularity
 
-2. This case study focuses on using containers and therefore the analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.
+Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, Docker's long-term availability is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
+
+
+*Limitations regarding the data analysis:*
+
+This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.
 
 ***
