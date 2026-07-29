@@ -13,7 +13,37 @@ Side quest: find a container on Docker Hub (and discuss reputable sources)
 
 Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
 
-## Revisions task
+## Application to data
+
+### Analysis files
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+Setting up a project directory for an analysis is a best practice for reproducible data analyses.
+::::
+:::
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+Version controlling your analysis scripts is a best practice for reproducible data analyses.
+::::
+:::
+
+Because a container is isolated, it won't have access to files (data or locations to store outputs) unless you specifically **mount a volume**.
+
+### Extracting data from a PDF within a running container
+
+#### Running the container
+
+#### Running the analysis
+
+#### Inspecting the output
 
 Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
 
