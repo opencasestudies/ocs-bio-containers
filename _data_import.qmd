@@ -22,7 +22,13 @@ Note that although we can see the container (specifically an image at this step)
 Reproducibility considerations
 ::::
 ::::{.inner_block}
-Setting up a project directory for an analysis is a best practice for reproducible data analyses.
+Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
+
+A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+
+```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
+```
 ::::
 :::
 
@@ -61,17 +67,17 @@ For Docker Desktop:
 * navigate to the exec tab
 * set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
   * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
-* `touch` an `preprocessing.R` script in `opt/case_study_analysis`
+* `touch` an `01_extract_data.R` script in `opt/case_study_analysis`
 * navigate to the files tab
-* right click on the `preprocessing.R` script and click edit
+* right click on the `01_extract_data.R` script and click edit
 * copy paste the following code into the script
 * click save
 * navigate to the exec tab
-* use `Rscript preprocessing.R` -- adjusting based on script location and learner's file location.
+* use `Rscript 01_extract_data.R` -- adjusting based on script location and learner's file location.
 * notice that it outputs "Dimensions: 25 x 7"
 * notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, filename="01_extract_data.R"}
 #!/usr/bin/env Rscript
 
 raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",

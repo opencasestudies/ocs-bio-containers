@@ -21,16 +21,21 @@ load(here::here("data", "imported", "raw_table1.rda"))
 </details>
 ***
 
-We'll need to add this code to our `analysis.R` file using the same steps as before:
+We'll need to add this code to our `02_wrangle.R` file using the same steps as before:
 
 * navigate to the files tab
-* right click on the `preprocessing.R` script and click edit
+* right click on the `02_wrangle.R` script and click edit
 * copy paste the following code into the script
 * click save
 * navigate to the exec tab
-* use `preprocessing.R` -- adjusting based on script location and learner's file location.
+* use `02_wrangle.R` -- adjusting based on script location and learner's file location.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, filename="02_wrangle.R"}
+library(here)
+library(tidyverse)
+
+#load data
+
 table1_extract <- raw_table %>%
     rename(c("dataset_name" = "X1",                                              #<1>
              "ref" = "X2",                                                       #<1>

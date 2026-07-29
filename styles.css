@@ -294,15 +294,3 @@
 .frontmatter-tabs .nav-tabs li a.active {
   font-weight: bold;
 }
-
-
-/* Ensure the code container handles scroll overflow cleanly with annotations */
-div.sourceCode {
-  overflow-x: auto !important;
-}
-
-/* Ensure padding on the right accommodates annotation markers */
-.cell-output-display pre,
-div.sourceCode pre {
-  padding-right: 3rem !important;
-}
