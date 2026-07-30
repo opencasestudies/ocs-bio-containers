@@ -5,22 +5,11 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-library(httr)
-
-# 1. Fetch the content
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/main/ocs-bio-containers/base/Dockerfile"
-content <- content(GET(url), as = "text", encoding = "UTF-8")
-
-# 2. Build the Markdown block manually as a single text string
-markdown_block <- paste0(
-  "```dockerfile filename=\"Dockerfile\"\n",
-  content,
-  "\n```"
-)
-
-# 3. Use knitr's native function to safely push it out as raw markdown
-knitr::asis_output(markdown_block)
+```{r}
+#| code: readLines("resources/dockerfiles/starting/Dockerfile")
+#| class-output: "docker"
+#| echo: true
+#| eval: false
 ```
 
 ```{r, echo = FALSE}
