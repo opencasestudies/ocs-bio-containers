@@ -5,8 +5,14 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{.docker file="resources/dockerfiles/starting/Dockerfile" code-line-numbers="true" code-copy="true"}
+```{r}
+#| echo: false
+#| results: asis
+cat("```{.docker code-line-numbers=\"true\" code-copy=\"true\"}\n", 
+    readLines("resources/dockerfiles/starting/Dockerfile"), 
+    "\n```", sep = "\n")
 ```
+
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
