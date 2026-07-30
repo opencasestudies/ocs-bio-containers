@@ -11,10 +11,12 @@ url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/
 content <- content(GET(url), as = "text", encoding = "UTF-8")
 ```
 
-```{dockerfile}
+```{r}
 #| echo: false
+#| engine: "comment"
+#| comment: ""
 #| filename: "Dockerfile"
-#| code-expr: "content"
+#| code-expr: content
 ```
 
 ```{r, echo = FALSE}
