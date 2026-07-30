@@ -5,10 +5,7 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{r}
-#| echo: false
-#| results: asis
-cat("```docker\n", readLines("resources/dockerfiles/starting/Dockerfile"), "\n```", sep = "\n")
+```{.docker file="resources/dockerfiles/starting/Dockerfile" code-line-numbers="true" code-copy="true"}
 ```
 
 ```{r, echo = FALSE}
