@@ -5,17 +5,14 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-````{r echo = FALSE, results = 'asis'}
+```{r echo = FALSE}
 library(httr)
-
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/main/ocs-bio-containers/base/Dockerfile"
 content <- content(GET(url), as = "text", encoding = "UTF-8")
+```
 
-# Display as dockerfile
-cat("```dockerfile filename=\"Dockerfile\"\n")
-cat(content)
-cat("\n```")
-````
+```{dockerfile filename="Dockerfile" code-expr="content"}
+```
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
