@@ -6,10 +6,11 @@
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(httr)
 
 # 1. Fetch the content
 url <- "https://githubusercontent.com"
-content <- httr::content(GET(url), as = "text", encoding = "UTF-8")
+content <- content(GET(url), as = "text", encoding = "UTF-8")
 
 # 2. Build the Markdown block manually as a single text string
 markdown_block <- paste0(
