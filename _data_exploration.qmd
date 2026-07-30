@@ -9,7 +9,7 @@ We'll utilize this section to explore the Dockerfile specifically answering "Wha
 library(httr)
 
 # 1. Fetch the content
-url <- "https://githubusercontent.com"
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/main/ocs-bio-containers/base/Dockerfile"
 content <- content(GET(url), as = "text", encoding = "UTF-8")
 
 # 2. Build the Markdown block manually as a single text string
