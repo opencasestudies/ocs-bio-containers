@@ -12,7 +12,7 @@ url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/
 content <- content(GET(url), as = "text", encoding = "UTF-8")
 
 # Display as dockerfile
-cat("```{dockerfile, filename = "Dockerfile"}\n")
+cat("```{dockerfile, filename = 'Dockerfile'}\n")
 cat(content)
 cat("\n```")
 ```
