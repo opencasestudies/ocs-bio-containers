@@ -13,8 +13,8 @@ content <- content(GET(url), as = "text", encoding = "UTF-8")
 
 ```{dockerfile}
 #| echo: false
-#| filename="Dockerfile"
-#| code-expr="content"
+#| filename: "Dockerfile"
+#| code-expr: "content"
 ```
 
 ```{r, echo = FALSE}
