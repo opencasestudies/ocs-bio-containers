@@ -105,6 +105,8 @@ readr::write_csv(table1_extract,                                 # <2>
 1. saving the data as an RDA file within the wrangled data subdirectory
 2. saving the data as a CSV file within the wrangled data subdirectory
 
+::: {.emphasis_block}
+
 <details><summary>A more generalizable and robust wrangling approach</summary>
 
 This wrangling approach using the `lead` function to assess if there is multiline data that needs combined assumes that there are only ever 1 - 2 rows for each cohort description. What changes to this process could be utilized that would be more generalizable or robust with data that doesn't meet this assumption? Specifically, how could this process be changed to combine an unknown number of rows of data to the previous row when only one column has data?
@@ -122,6 +124,7 @@ One possible approach would:
 
 </details>
 
+:::
 
 Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this Data Frame!
 
