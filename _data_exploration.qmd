@@ -5,7 +5,7 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{r echo = false, results = 'asis', filename = "resources/dockerfiles/starting/Dockerfile"}
+```{r echo = FALSE, results = 'asis', filename = "resources/dockerfiles/starting/Dockerfile"}
 library(httr)
 
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/main/ocs-bio-containers/base/Dockerfile"
