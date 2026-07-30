@@ -8,7 +8,7 @@ We'll utilize this section to explore the Dockerfile specifically answering "Wha
 ```{r}
 #| echo: false
 #| results: asis
-cat("```{.docker code-line-numbers=\"true\" code-copy=\"true\"}\n", 
+cat("```{docker code-line-numbers=\"true\" code-copy=\"true\"}\n", 
     readLines("resources/dockerfiles/starting/Dockerfile"), 
     "\n```", sep = "\n")
 ```
