@@ -6,10 +6,9 @@
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
 ```{r}
-#| code: readLines("resources/dockerfiles/starting/Dockerfile")
-#| class-output: "docker"
-#| echo: true
-#| eval: false
+#| echo: false
+#| results: asis
+cat("```docker\n", readLines("resources/dockerfiles/starting/Dockerfile"), "\n```", sep = "\n")
 ```
 
 ```{r, echo = FALSE}
