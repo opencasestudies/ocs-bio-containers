@@ -5,13 +5,16 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
-```{r echo = FALSE}
+```{r echo = FALSE, message = FALSE, warning = FALSE}
 library(httr)
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-docker/refs/heads/main/ocs-bio-containers/base/Dockerfile"
 content <- content(GET(url), as = "text", encoding = "UTF-8")
 ```
 
-```{dockerfile filename="Dockerfile", code-expr="content"}
+```{dockerfile}
+#| echo: false
+#| filename="Dockerfile"
+#| code-expr="content"
 ```
 
 ```{r, echo = FALSE}
