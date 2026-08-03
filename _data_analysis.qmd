@@ -28,6 +28,25 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Have an `analysis.R` script with all the visualization steps together
 * Have an `run_analysis.sh` script that makes the directories and drives the preprocessing and analysis
 
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+Having a "run all" script that specifies what scripts were used and in what order for the analysis is a best practice for reproducibility [@Wilson_etal_2017].
+::::
+:::
+
+## Container
+
+::: {.panel-tabset}
+
+### Docker Desktop
+
+### Docker through a CLI
+
+:::
+
 We'll also discuss how to mount a volume (with data and/or analysis script) and show that the validator can get the same results by having the learner run the `run_analysis.sh` script.
 
 To make it easier to validate/compare instead of comparing plots (that will be difficult to compare especially since we seem to have to save plots out of the container to view them), we could add a summary stat that can be output in the logs.

@@ -21,6 +21,8 @@ load(here::here("data", "imported", "raw_table1.rda"))
 </details>
 ***
 
+::: {.panel-tabset}
+
 We'll need to add this code to our `02_wrangle.R` file using the same steps as before:
 
 * navigate to the files tab
@@ -76,6 +78,12 @@ table1_extract <- raw_table %>%
 7. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows
 8. This removes the `X4` column which was all `NAs`, the original third column (that had the cohort description plus number of paired samples), and the intermediate column which we made that has incomplete cohort descriptions
 
+### Docker through a CLI
+
+how to edit file and run analysis
+
+:::
+
 If we were to inspect the `table1_extract` Data Frame, we would observe that the data now appears to match our expectations. There are 14 rows and 7 columns, though those columns don't follow the original order of Table 1 in @Muller_Algavi_Borenstein_2022. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data.
 
 ```{r wrangled_data, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'The wrangled data appears to match our expectations.'}
@@ -83,11 +91,16 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```
 If running code in a container in a non-interactive way (e.g., without an IDE) we could utilize output messages within our code to report on things like the dimensions of the Data Frame and to spot check specific values.
 
-As an example, the following two messages report first on the dimensions and then spot check the dataset name for the fourth row of data.
+As an example, the following three messages report on 
+
+1. The dimensions of the data frame
+2. The number of NAs within the data frame
+3. The dataset name for the fourth row of data (spot checking a value)
 
 ```{r, eval = FALSE}
-message("Dimensions: ", paste(dim(table1_extract), collapse = " x "))
-message(table1_extract[4, "dataset_name"])
+cat("Dimensions: ", paste(dim(table1_extract), collapse = " x "), "\n")
+cat("Number of NAs: ", sum(is.na(table1_extract)), "\n")
+cat("Dataset Name (Row 4): ", unlist(table1_extract[4, "dataset_name"]), "\n")
 ```
 
 The dimensions properly report a decrease in the number of rows compared to the raw extracted data (14 instead of 25), matching our expectation for both the number of rows and the number of columns given the source data. The dataset name in the fourth row is `HE_INFANTS_MFGM_2019`, again matching our expectations when comparing to the source data.

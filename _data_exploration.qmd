@@ -24,7 +24,23 @@ We'll also utilize this section to explore what's not in a container! -- Data! (
 
 We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what's in the Dockerfile.
 
-Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we'll be doing that later on in the Data Analysis section (though this isn't always possible depending on security settings on a system)
+::: {.panel-tabset}
+
+### Docker Desktop
+
+Include instructions on viewing the file structure within the running container
+
+Include instructions on how to create / interact with files within the running container
+
+### Docker through a CLI
+
+Include instructions on viewing the file structure within the running container from the Command Line
+
+Include instructions on how to create / interact with files within the running container from the Command Line
+
+:::
+
+Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best pracitces (though it may not always be possible to mount files depending on security settings on a system)
 
 ## Application to data
 

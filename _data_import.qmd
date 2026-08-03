@@ -3,6 +3,12 @@
 
 ## Container
 
+:::{.panel-tabset}
+### Docker Desktop
+
+### Docker through a Command Line Interface (CLI)
+:::
+
 Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
 
 * pull the container from Docker Hub
