@@ -1,6 +1,6 @@
 <u>**Data Science/Bioinformatics Learning Objectives:**</u>
 
-1. Discuss ways in which containerization promotes reproduciblity within collaborative scientific research.
+1. Discuss ways in which containerization promotes reproducibility within collaborative scientific research.
 1. Describe how containerization is one of several tools to support the process of increasing the reproducibility of scientific research.
 1. Employ multiple reproducibility best practices together within the context of containerization.
 1. Evaluate what should or should not be included in a container.

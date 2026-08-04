@@ -52,7 +52,7 @@ Include instructions on how to create / interact with files within the running c
 
 :::
 
-Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best pracitces (though it may not always be possible to mount files depending on security settings on a system)
+Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best practices (though it may not always be possible to mount files depending on security settings on a system)
 
 ## Application to data
 

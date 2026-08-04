@@ -136,7 +136,7 @@ It will also be helpful to be have the following skills:
 ::::
 :::
 
-:::{.column_margin}
+:::{.column-margin}
 Need to create a cheatsheet on installation and verification instructions for Docker
 :::
 
