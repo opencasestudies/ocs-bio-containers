@@ -96,16 +96,49 @@ Prerequisites
 ::::
 ::::{.inner_block}
 
-* Learners will need to install Docker
-* Learners should install Docker Desktop (optional, but suggested)
+This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you following along with this case study using a Docker Desktop.
 
-For the Advanced homework:
+Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Select "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
 
-* Learners will need a GitHub account
+:::{.panel_tabest}
+
+### Docker Desktop
+
+You will need the following installed:
+
+* Docker Desktop (install [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/))
+* Notepad, Sublime, Visual Studio Code or another **text editor**
+
+### Docker through a CLI
+
+To follow along with this case study, you’ll need the following installed:
+
+* **Docker Engine** () **Need to provide instructions**
+* **Docker CLI** () **Need to provide instructions**
+* Have access to and familiarity with a local command line interface (CLI)
+* Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
+
+:::
+
+--
+
+You will need a **GitHub account** (see here).
+
+--
+
+It will also be helpful to be have the following skills:
+
+* basic R skills (many introductory courses can be found online, including [this one](https://hutchdatascience.org/Intro_to_R/))
+* familiarity with dplyr and ggplot2, or willingness to learn (these [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) and [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf) cheatsheets may be helpful, as well as the original [open case studies](https://www.opencasestudies.org/search.html))
+* minimal Git and GitHub knowledge or experience (see [this related case study](https://www.opencasestudies.org/ocs-bio-version-control/) for necessary skills)
+
 
 ::::
 :::
 
+:::{.column_margin}
+Need to create a cheatsheet on installation and verification instructions for Docker
+:::
 
 
 <!--
