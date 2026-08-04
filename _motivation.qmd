@@ -1,26 +1,15 @@
-<!--
-Describe the biological motivation for this case study.
-Include relevant explanatory images and references throughout.
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Motivation
-Images or videos may be helpful so this includes an example of including an image.
--->
-
 # **Motivation**
 ***
 
-In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for study revisions. The study is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility.
+In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for study revisions. The study is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility. Background on the context of the analysis will be provided later in the case study. 
 
 ```{r echo=FALSE, warning = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3dad9407b30_0_0#slide=id.g3dad9407b30_0_0")
 ```
 
-In this case study, you will learn how to use a pre-existing Docker container to run an existing analysis and further adapt the container to meet your needs by adding packages to it.
+In addition to the background and visualization request, your collaborator sends you the information on how to access both the pre-existing container and the analysis script to get started with the task.
 
-Additional topics include:
-
-* how to explore output from an analysis performed within a container
-* how to mount a volume containing version controlled analysis files 
-* how to save results from an analysis run in a container
+In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use Docker to specify the environment used to create several data visualizations of a table describing samples within a curated data resource. You will learn how to use a pre-existing Docker container to run an existing analysis. 
 
 :::{.definition_box}
 ::::{.definition_box_header}
@@ -31,34 +20,11 @@ A container is a defined packaging of code, dependencies, packages, etc. within 
 ::::
 :::
 
+You will learn how to further adapt the container to meet your needs by adding package(s) and extending the analysis. Additional topics that will be covered include:
 
-Outline
-
-I. What is a container? (above)
-
-* Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
-* make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
-
-```{r, echo = FALSE}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
-```
-
-II. Why containers?
-
-* Describe why
-* Describe that a container isn't always necessary, but more on this later...
-
-
-III. What are some general use cases for containers?
-
-* Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
-* Finding: search and find a container that meets your needs (you may have to modify it a bit/add a couple other packages)
-* Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
-
-The last of these scenarios is the context for this case study.
-
-```{r, echo = FALSE}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
-```
+* How to explore output from an analysis performed within a container.
+* How to mount a volume containing version controlled analysis scripts.
+* How to save results from an analysis run in a container.
+* How to find and share containers.
 
 ***
