@@ -100,7 +100,7 @@ This case study provides instructions for following along using either **Docker 
 
 Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Select "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
 
-:::{.panel_tabest}
+:::{.panel-tabset}
 
 ### Docker Desktop
 
