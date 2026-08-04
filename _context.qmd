@@ -11,16 +11,46 @@ Videos or images may be helpful so this includes an example of embedding a video
 Discuss information such as ...
 
 * why the microbiome and metabolome datasets are related/considered together
-* what the study with the table we're looking at is analyzing
+* what the study with the table we're looking at is analyzing or presenting to the scientific community
 * what a cohort is
 * what paired data means
 * what longitudinal means
 * what HMDB-annotated compounds are
 * what KEGG-annotated compounds are
+* possible uses of this data resource
 
 ## Containers
 
-I. When is a container useful?
+Outline
+
+I. What is a container? (above)
+
+* Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
+* make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
+```
+
+II. Why containers?
+
+* Describe why
+* Describe that a container isn't always necessary, but more on this later...
+
+
+III. What are some general use cases for containers?
+
+* Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
+* Finding: search and find a container that meets your needs (you may have to modify it a bit/add a couple other packages)
+* Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
+
+The last of these scenarios is the context for this case study.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
+```
+
+II. When is a container useful?
 
 * Especially if you need to move an analysis to another machine or environment like an HPC or the cloud
 
@@ -32,13 +62,13 @@ I. When is a container useful?
 * If a collaborative team is having difficulty replicating results within the team
 * If dependencies are causing nightmares
 
-II. When is a container overkill? Do you really need a container or will session info work?
+III. When is a container overkill? Do you really need a container or will session info work?
 
-III. Where can you find a container?
+IV. Where can you find a container?
 
 ... more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here... re point to the email
 
-IV. How do you work with a container and run an analysis with a container?
+V. How do you work with a container and run an analysis with a container?
 
 * Terminal / Command Line
   * If you only have a Dockerfile, you need to use this to build the image

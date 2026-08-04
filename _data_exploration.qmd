@@ -8,8 +8,10 @@ We'll utilize this section to explore the Dockerfile specifically answering "Wha
 ```{r}
 #| echo: false
 #| results: asis
-cat("```docker\n", readLines("resources/dockerfiles/starting/Dockerfile"), "\n```", sep = "\n")
+cat("```{docker, eval = FALSE, filename = 'Dockerfile'}\n", readLines("resources/dockerfiles/starting/Dockerfile"), "\n```", sep = "\n")
 ```
+
+Going forward we'll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")

@@ -1,11 +1,9 @@
 <u>**Data Science/Bioinformatics Learning Objectives:**</u>
 
-<!--
-Enumerate the Data Science or Bioinformatic specific learning objectives here.
-(Can have more than 3).
-For an example, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
--->
-
-1. {FILL IN}
-1. {FILL IN}
-1. {FILL IN}
+1. Discuss ways in which containerization promotes reproduciblity within collaborative scientific research.
+1. Describe how containerization is one of several tools to support the process of increasing the reproducibility of scientific research.
+1. Employ multiple reproducibility best practices together within the context of containerization.
+1. Evaluate what should or should not be included in a container.
+1. Identify contexts where containerization (potentially with Docker) is not appropriate or needed.
+1. Practice the containerization process to reproduce, extend, and share a data analysis.
+1. Verify that analysis results or outputs match expectations.

@@ -1,11 +1,6 @@
 <u>**Statistical Learning Objectives:**</u>
 
-<!--
-Enumerate the Statistical specific learning objectives here. (
-Can have more or less than 3 or be omitted completely dependent on the open case study overal topic).
-For an example, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
--->
+1. Explain how statistical power is impacted by the number of samples in an analysis.
+1. Recognize the need and considerations for data harmonization when utilizing multiple data sources.
+1. Describe how the number of observed metabolites is impacted by the number of samples in a dataset.
 
-1. {Fill In}
-1. {Fill In}
-1. {Fill In}

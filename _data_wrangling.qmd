@@ -78,6 +78,8 @@ table1_extract <- raw_table %>%
 7. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows
 8. This removes the `X4` column which was all `NAs`, the original third column (that had the cohort description plus number of paired samples), and the intermediate column which we made that has incomplete cohort descriptions
 
+### Docker Desktop
+
 ### Docker through a CLI
 
 how to edit file and run analysis

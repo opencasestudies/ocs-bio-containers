@@ -2,7 +2,7 @@
 title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
 bibliography: resources/references.bib
 include-sections:
-  stat-los: false
+  stat-los: true
   data-import: true
   data-exploration: true
   data-wrangling: true
