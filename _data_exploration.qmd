@@ -5,7 +5,12 @@
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/starting/Dockerfile >}}
+```
+
 ```{r}
+#| eval: false
 #| echo: false
 #| results: asis
 cat('```{.docker filename="Dockerfile"}', 
