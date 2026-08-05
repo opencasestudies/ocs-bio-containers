@@ -33,22 +33,14 @@ The first time we use a function, we will use the `::` to indicate which package
 
 :::
 
-This case study is focusing on how to work with containers while performing a data analysis. Therefore, most sections will have two parts:
+This case study is focusing on how to work with containers while performing a data analysis. Therefore, every subsequent section will have two parts:
 
-    1. Exploring container specific concepts (section labeled "**Container**")
-    2. Working with data within a container (section labeled "**Application to data**"), specifically working on the project from Collab O. Rator (described earlier in the Motivation section). 
+1. **Container**: Exploring container specific concepts
+2. **Application to data**: Working with data within a container, specifically working on the project from Collab O. Rator (described earlier in the Motivation section). 
     
-In all cases, code for the tasks within the **Application to data** sections will be provided for learners since the focus of this case study is to how to work with containers, not how to code with R. 
-
-
-::: {.emphasis_block}
-<details><summary>Section outline</summary>
-
 ::: {.panel-tabset}
 
 ## Data Import
-
-The **Data Import** section relates to import tasks.
 
 Portion of section      | Description of activity
 ----------------------- | -----------------------
@@ -85,7 +77,7 @@ Portion of section      | Description of activity
 
 :::
 
-</details>
+In all cases, code for the tasks within the **Application to data** sections will be provided for learners since the focus of this case study is to how to work with containers, not how to code with R. 
 
 :::
 
