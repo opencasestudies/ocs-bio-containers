@@ -122,7 +122,27 @@ To follow along with this case study, you’ll need the following installed:
 
 --
 
-You will need a **GitHub account** (see here).
+You will need a **GitHub account** (see [here to signup](https://github.com/signup)).
+
+<details><summary>New to GitHub?</summary>
+
+See this related case study for necessary skills to get started with GitHub: [https://www.opencasestudies.org/ocs-bio-version-control](https://www.opencasestudies.org/ocs-bio-version-control)
+
+The following sections specifically will be the most helpful in order to get started with this case study:
+
+* Sign up: [https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-github-account](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-github-account)
+* Installing GitHub Desktop: [https://www.opencasestudies.org/ocs-bio-version-control/#installing-github-desktop](https://www.opencasestudies.org/ocs-bio-version-control/#installing-github-desktop)
+* Alternatively, Installing Git: [https://www.opencasestudies.org/ocs-bio-version-control/#installing-git](https://www.opencasestudies.org/ocs-bio-version-control/#installing-git)
+* Connecting your account: [https://www.opencasestudies.org/ocs-bio-version-control/#connecting-git-to-github](https://www.opencasestudies.org/ocs-bio-version-control/#connecting-git-to-github)
+
+For following along with later steps in this containers case study, you may want to refer to the following sections:
+
+* (Note that this containers case study will have you create a repository from a "Template repository", a topic that the version control case study mentions, but does not specifically walk through.)
+* Creating a local repository clone: [https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository)
+* Project organization and typical files to track: [https://www.opencasestudies.org/ocs-bio-version-control/#project-organization-with-git-and-github](https://www.opencasestudies.org/ocs-bio-version-control/#project-organization-with-git-and-github)
+* Tracking files with GitHub: [https://www.opencasestudies.org/ocs-bio-version-control/#stage-commit-push](https://www.opencasestudies.org/ocs-bio-version-control/#stage-commit-push)
+
+</details>
 
 --
 
