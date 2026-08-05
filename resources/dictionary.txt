@@ -1,9 +1,13 @@
 acknowledgements
+ai
 Algavi
 Apptainer
 automations
 Bioinformatics
 Borenstein
+callout
+chatbot
+Chatbots
 cheatsheet
 Collab
 css
@@ -35,6 +39,7 @@ ITCR
 kegg
 KEGG
 KI
+knuth
 lightblue
 lightbox
 lightgreen
@@ -57,9 +62,11 @@ quarto
 qmd
 Rator's
 rda
+qs
 repo
 reproducibility
 resubmission
+Reproducibility
 Rmd
 RStudio
 subdir
@@ -75,3 +82,4 @@ validator
 VSCode
 WDL
 www
+Zotero
