@@ -9,6 +9,7 @@ Fill out the table and add rows as necessary providing a link to the source and 
 
 We will begin by loading the packages that we will need:
 
+```{r, eval = FALSE}
 #add library() calls
 library(here)
 library(tabulapdf)

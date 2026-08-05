@@ -59,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -205,30 +204,20 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation"><strong>Motivation</strong></a></li>
   <li><a href="#main-question" id="toc-main-question" class="nav-link" data-scroll-target="#main-question"><strong>Main Question</strong></a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a>
   <ul class="collapse">
-  <li><a href="#metabolomics" id="toc-metabolomics" class="nav-link" data-scroll-target="#metabolomics">Metabolomics</a></li>
-  <li><a href="#containers" id="toc-containers" class="nav-link" data-scroll-target="#containers">Containers</a></li>
-  <li><a href="#the-revision-task-extracting-data-from-a-pdf-and-data-visualization" id="toc-the-revision-task-extracting-data-from-a-pdf-and-data-visualization" class="nav-link" data-scroll-target="#the-revision-task-extracting-data-from-a-pdf-and-data-visualization">The revision task – Extracting data from a PDF and data visualization</a></li>
+  <li><a href="#objectives-map" id="toc-objectives-map" class="nav-link" data-scroll-target="#objectives-map"><strong>Objectives Map</strong></a></li>
   </ul></li>
-  <li><a href="#what-are-the-data" id="toc-what-are-the-data" class="nav-link" data-scroll-target="#what-are-the-data"><strong>What are the data?</strong></a></li>
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><strong>Limitations</strong></a></li>
-  <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations"><strong>Ethical Considerations</strong></a></li>
-  <li><a href="#data-import" id="toc-data-import" class="nav-link" data-scroll-target="#data-import"><strong>Data Import</strong></a>
+  <li><a href="#packages-and-setup" id="toc-packages-and-setup" class="nav-link" data-scroll-target="#packages-and-setup"><strong>Packages and Setup</strong></a></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration"><strong>Data Exploration</strong></a>
   <ul class="collapse">
   <li><a href="#container" id="toc-container" class="nav-link" data-scroll-target="#container">Container</a></li>
   <li><a href="#revisions-task" id="toc-revisions-task" class="nav-link" data-scroll-target="#revisions-task">Revisions task</a></li>
   </ul></li>
-  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration"><strong>Data Exploration</strong></a>
-  <ul class="collapse">
-  <li><a href="#container-1" id="toc-container-1" class="nav-link" data-scroll-target="#container-1">Container</a></li>
-  <li><a href="#revisions-task-1" id="toc-revisions-task-1" class="nav-link" data-scroll-target="#revisions-task-1">Revisions task</a></li>
-  </ul></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><strong>Data Wrangling</strong></a>
   <ul class="collapse">
-  <li><a href="#revisions-task-2" id="toc-revisions-task-2" class="nav-link" data-scroll-target="#revisions-task-2">Revisions task</a></li>
-  <li><a href="#container-2" id="toc-container-2" class="nav-link" data-scroll-target="#container-2">Container</a></li>
+  <li><a href="#revisions-task-1" id="toc-revisions-task-1" class="nav-link" data-scroll-target="#revisions-task-1">Revisions task</a></li>
+  <li><a href="#container-1" id="toc-container-1" class="nav-link" data-scroll-target="#container-1">Container</a></li>
   </ul></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization"><strong>Data Visualization</strong></a></li>
   <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><strong>Data Analysis</strong></a></li>
@@ -236,6 +225,7 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#synopsis" id="toc-synopsis" class="nav-link" data-scroll-target="#synopsis"><strong>Synopsis</strong></a></li>
   <li><a href="#summary-plot" id="toc-summary-plot" class="nav-link" data-scroll-target="#summary-plot"><strong>Summary Plot</strong></a></li>
+  <li><a href="#main-questions-revisited" id="toc-main-questions-revisited" class="nav-link" data-scroll-target="#main-questions-revisited"><strong>Main Questions Revisited</strong></a></li>
   </ul></li>
   <li><a href="#continued-learning" id="toc-continued-learning" class="nav-link" data-scroll-target="#continued-learning"><strong>Continued Learning</strong></a>
   <ul class="collapse">
@@ -285,6 +275,7 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
 
 
 <!--
+  Update above to exclude optional or new sections by changing from true to false.
   Update the various qmd documents below with each component of a Bio-OCS case study.
   Besides filling in the title in the header of this document, no other changes should be necessary within this file.
   Use the `include-sections` within the header to toggle section inclusion/exclusion as needed.
@@ -565,332 +556,352 @@ Previous Open Case Studies do not have an example of this.
 </ol>
 <hr>
 <!--
+Don't adjust the shortcode or the table header in this file, only the markdown table contents
+-->
+<section id="objectives-map" class="level2">
+<h2 class="anchored" data-anchor-id="objectives-map"><strong>Objectives Map</strong></h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Objectives Map: Where It Is Covered">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Objectives Map: Where It Is Covered
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Learning Goal</th>
+<th style="text-align: left;">Applications / Practice</th>
+<th style="text-align: left;">Location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Term related to a learning objective</td>
+<td style="text-align: left;">Description of action or activity that will reinforce that LO</td>
+<td style="text-align: left;"><a href="https://www.opencasestudies.org/ocs-template-quarto/#data-import">Data Import</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Another term</td>
+<td style="text-align: left;">Description of its activity</td>
+<td style="text-align: left;"><a href="https://www.opencasestudies.org/ocs-template-quarto/#data-wrangling">Data Wrangling</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Another learning objective concept</td>
+<td style="text-align: left;">Another description of this one’s activity</td>
+<td style="text-align: left;"><a href="https://www.opencasestudies.org/ocs-template-quarto/#data-visualization">Data Visualization</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="packages-and-setup" class="level1">
+<h1><strong>Packages and Setup</strong></h1>
+<hr>
+<!--
 load all the packages used in the case study analysis in the code chunk below
 (try to use tidyverse over base R).
 Fill out the table and add rows as necessary providing a link to the source and briefly explaining its use for each package
 -->
 <p>We will begin by loading the packages that we will need:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add library() calls</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tabulapdf)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Package</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://cran.r-project.org/web/packages/here/refman/here.html" target="_blank">here</a></td>
-<td>Constructs paths within project</td>
-</tr>
-<tr class="even">
-<td><a href="https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html" target="_blank">tabulapdf</a></td>
-<td>Extract data from a PDF</td>
-</tr>
-<tr class="odd">
-<td><a href="https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html" target="_blank">tidyverse</a></td>
-<td>Data wrangling</td>
-</tr>
-<tr class="even">
-<td><a href="https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html" target="_blank">ggplot2</a></td>
-<td>Visualize data</td>
-</tr>
-<tr class="odd">
-<td><a href="https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html" target="_blank">patchwork</a></td>
-<td>Combining multiple plots</td>
-</tr>
-</tbody>
-</table>
-<p>The first time we use a function, we will use the <code>::</code> to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.</p>
-<p><code>tabulapdf</code> is an example of a package that you may want to use a container for because of dependencies. <code>tabulapdf</code> requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.</p>
-<!--
+<p>#add library() calls library(here) library(tabulapdf) library(tidyverse)</p>
+<pre><code>
+Package    | Use
+---------- |-------------
+[here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Constructs paths within project
+[tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
+[tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Data wrangling
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
+[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
+
+
+The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
+
+`tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.
+
+
+&lt;!--
 More details on the background on the case study topic as well its relation to biomedical science.
 Videos or images may be helpful so this includes an example of embedding a video.
--->
-</section>
-<section id="context" class="level1">
-<h1><strong>Context</strong></h1>
-<hr>
-<section id="metabolomics" class="level2">
-<h2 class="anchored" data-anchor-id="metabolomics">Metabolomics</h2>
-<p>Discuss information such as …</p>
-<ul>
-<li>why the microbiome and metabolome datasets are related/considered together</li>
-<li>what the study with the table we’re looking at is analyzing</li>
-<li>what a cohort is</li>
-<li>what paired data means</li>
-<li>what longitudinal means</li>
-<li>what HMDB-annotated compounds are</li>
-<li>what KEGG-annotated compounds are</li>
-</ul>
-</section>
-<section id="containers" class="level2">
-<h2 class="anchored" data-anchor-id="containers">Containers</h2>
-<p>I. When is a container useful?</p>
-<ul>
-<li><p>Especially if you need to move an analysis to another machine or environment like an HPC or the cloud</p>
-<p>–&gt; Discuss Singularity and Apptainer for HPCs in this section <br> –&gt; Include why Docker is not appropriate for HPCs <br> –&gt; Recommendations for the cloud <br></p></li>
-<li><p>If a collaborative team is working on a large analysis within a workflow or in different environments</p></li>
-<li><p>If a collaborative team is having difficulty replicating results within the team</p></li>
-<li><p>If dependencies are causing nightmares</p></li>
-</ul>
-<ol start="2" type="I">
-<li><p>When is a container overkill? Do you really need a container or will session info work?</p></li>
-<li><p>Where can you find a container?</p></li>
-</ol>
-<p>… more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here… re point to the email</p>
-<ol start="4" type="I">
-<li>How do you work with a container and run an analysis with a container?</li>
-</ol>
-<ul>
-<li>Terminal / Command Line
-<ul>
-<li>If you only have a Dockerfile, you need to use this to build the image</li>
-</ul></li>
-<li>Docker Desktop</li>
-<li>An interactive Integrated Development Environment (IDE)</li>
-<li>In combination with GitHub Actions</li>
-</ul>
-<p>Sometimes the process of running a container and interacting with it involves a combination of these options (because the container installs an IDE) that once you’ve run the container, you then develop an analysis within an IDE.</p>
-<p>We’ll primarily walk learners through using Docker Desktop though we’ll likely use a tab structure to give learners the optional methods to use Terminal / Command Line. We will also provide a side quest about using a container that installs an IDE and suggest an advanced homework for the final option of combining containers with GitHub Actions.</p>
-<p>The reason we’re primarily walking learners through using Docker Desktop is because</p>
-<ol type="1">
-<li>It separates out images and containers which will support learners trying to learn the difference</li>
-<li>Learners can create files, as well as import and export files within the files tab as opposed to mounting a volume</li>
-<li>Learners can also mount a volume which is an option</li>
-<li>Learners can easily see how many images and containers they have and while they are learning this can be extremely helpful so they don’t tax their systems too much</li>
-<li>Docker Desktop has its own documentation that we can point to</li>
-</ol>
-<p>As for how we’re working with data. Our options are to</p>
-<ol type="1">
-<li>mount a volume (directory) from our system that has data (and possibly scripts) in it.</li>
-<li><code>cp</code> files to and from the container</li>
-<li>Create an analysis script within the running container and edit it within the container. Use a URL to get the data PDF from within the container and create/keep raw data and intermediates within the container that won’t be shared. Finally, creating plots within the container that we’ll have to save to our system.</li>
-</ol>
-<p>While we will show examples of all of these, our primary interest is to work within the third option as much as possible. When we ran an event at a medical center, the devices were unable to mount data so we’d like to provide options separate from that as much as possible.</p>
-<p>Notice that because this case study is focusing on working with containers and will be doing an example data analysis to help teach these concepts, most sections will have two parts. Within each section the subparts will be labeled as “Container” and “Revisions task”.</p>
-<ul>
-<li>The data import section will focus on (A) “importing” a <strong>container</strong> and (B) importing the <strong>data</strong> from Table 1 of the paper for the revision task.</li>
-<li>The data exploration section will explore (A) the <strong>Dockerfile</strong> that the container is built from and (B) explore the <strong>raw analysis data</strong> that was imported prior to wrangling for the revision task.</li>
-<li>The data wrangling section will wrangle (A) the imported <strong>data</strong> making it data visualization ready for the revision task and (B) “wrangle” the <strong>Dockerfile</strong> to include a package that will help with our data visualization</li>
-<li>The data visualization section will (A) build the modified Dockerfile and run the image and setup the running container (file structure, analysis script) before (B) producing data visualizations of the data (two separate panels and then those panels combined with <code>patchwork</code>) for the revision task
-<ul>
-<li>note the data visualization dealing with the container for this section could be designing a flowchart to summarize how the Dockerfile –&gt; image –&gt; container process goes.</li>
-</ul></li>
-<li>The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the revision task</li>
-</ul>
-</section>
-<section id="the-revision-task-extracting-data-from-a-pdf-and-data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="the-revision-task-extracting-data-from-a-pdf-and-data-visualization">The revision task – Extracting data from a PDF and data visualization</h2>
-<p>While this example of data only being available from a PDF (especially within an active project) is a bit unconventional, we think that it will be a tangible and somewhat accessible example for learners. Previous public health case studies highlight various data mining and import tasks such as utilizing an API, scraping data from an HTML webpage, and importing data from Excel files, Google Sheets, and even PDFs. This specific package hasn’t been used in previous case studies and it offers some benefits for this specific topic</p>
-<ul>
-<li>This package has a function for reading tables from a PDF file. Several of the previously used tools do not, and the one that does is deprecated.</li>
-<li>This package has some dependencies (namely Java) that we are excited to highlight within the context of containers and showing a tiny bit of complexity within the Dockerfile</li>
-<li>Its use helps to justify to the learners why we might need a container (dependencies)</li>
-<li>We don’t intend to spend much of the main narrative on the tool or how to use it. Some of the explanation can go into collapsible sections to reduce cognitive load so that learners can focus on containers. Basically we’ll tell them that the data retrieval and wrangling of the Table from a PDF can be achieved with this code and if you want to learn more about how it works (or want an advanced exercise of generalizing the process), click on an expandable section for details.</li>
-<li>We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="what-are-the-data" class="level1">
-<h1><strong>What are the data?</strong></h1>
-<hr>
-<p>The data comes from Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Table 1 describes the curated gut microbiome-metabolome datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing</p>
-<ul>
-<li>the name of each dataset</li>
-<li>which reference in the study relates to that data</li>
-<li>a brief description of the cohort within that study</li>
-<li>the number of samples with paired fecal microbiome-metabolome data within that cohort</li>
-<li>whether the study contained longitudinal data</li>
-<li>the number of HMDB annotated compounds</li>
-<li>the number of KEGG annotated compounds</li>
-</ul>
-<p>Each row in the table is providing data for that source dataset itself. Figure 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated metabolites present).</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_25.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Table 1 from Muller et al 2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study."></p>
-</figure>
-</div>
-</div>
-</div>
-<p>After using <code>tabulapdf</code> to extract the table from the PDF (see the <code>Data Import</code> section) and some basic wrangling with <code>tidyverse</code> (see the <code>Data Wrangling</code> section), we will extract a tidy dataframe with all of the columns displayed in the original table, but those boxed in purple and listed below are the most important for our visualization task (as outlined in Collab O. Rator’s email).</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_46.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="The dataset name, number of paired samples, whether the sample is longitudinal, the number of HMDB annotated compounds, and the number of KEGG annotated compounds are the columns that we will use in building data visualizations."></p>
-</figure>
-</div>
-</div>
-</div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong><code>dataset_name</code></strong></td>
-<td>A character/string identifying the dataset (often containing author, studied illness, and year of the study).</td>
-</tr>
-<tr class="even">
-<td><strong><code>num_paired_samples</code></strong></td>
-<td>The number of samples within the dataset that have paired fecal microbiome-metabolome data.</td>
-</tr>
-<tr class="odd">
-<td><strong><code>longitudinal</code></strong></td>
-<td>A character/string reporting whether that dataset has longitudinal data (“Yes” or “No”).</td>
-</tr>
-<tr class="even">
-<td><strong><code>hmdb_annotated_compounds</code></strong></td>
-<td>The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>.</td>
-</tr>
-<tr class="odd">
-<td><strong><code>kegg_annotated_compounds</code></strong></td>
-<td>The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) <span class="citation" data-cites="Kanehisa_Goto_2000 Kanehisa_etal_2025">(<a href="#ref-Kanehisa_Goto_2000" role="doc-biblioref">Kanehisa and Goto 2000</a>; <a href="#ref-Kanehisa_etal_2025" role="doc-biblioref">Kanehisa et al. 2025</a>)</span>.</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<!--
+--&gt;
+
+# **Context**
+***
+
+## Metabolomics
+
+Discuss information such as ...
+
+* why the microbiome and metabolome datasets are related/considered together
+* what the study with the table we're looking at is analyzing
+* what a cohort is
+* what paired data means
+* what longitudinal means
+* what HMDB-annotated compounds are
+* what KEGG-annotated compounds are
+
+## Containers
+
+I. When is a container useful?
+
+* Especially if you need to move an analysis to another machine or environment like an HPC or the cloud
+
+  --&gt; Discuss Singularity and Apptainer for HPCs in this section &lt;br&gt;
+  --&gt; Include why Docker is not appropriate for HPCs &lt;br&gt;
+  --&gt; Recommendations for the cloud &lt;br&gt;
+
+* If a collaborative team is working on a large analysis within a workflow or in different environments
+* If a collaborative team is having difficulty replicating results within the team
+* If dependencies are causing nightmares
+
+II. When is a container overkill? Do you really need a container or will session info work?
+
+III. Where can you find a container?
+
+... more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here... re point to the email
+
+IV. How do you work with a container and run an analysis with a container?
+
+* Terminal / Command Line
+  * If you only have a Dockerfile, you need to use this to build the image
+* Docker Desktop
+* An interactive Integrated Development Environment (IDE)
+* In combination with GitHub Actions
+
+Sometimes the process of running a container and interacting with it involves a combination of these options (because the container installs an IDE) that once you've run the container, you then develop an analysis within an IDE.
+
+We'll primarily walk learners through using Docker Desktop though we'll likely use a tab structure to give learners the optional methods to use Terminal / Command Line. We will also provide a side quest about using a container that installs an IDE and suggest an advanced homework for the final option of combining containers with GitHub Actions.
+
+The reason we're primarily walking learners through using Docker Desktop is because
+
+1. It separates out images and containers which will support learners trying to learn the difference
+2. Learners can create files, as well as import and export files within the files tab as opposed to mounting a volume
+3. Learners can also mount a volume which is an option
+4. Learners can easily see how many images and containers they have and while they are learning this can be extremely helpful so they don't tax their systems too much
+5. Docker Desktop has its own documentation that we can point to
+
+As for how we're working with data. Our options are to
+
+1. mount a volume (directory) from our system that has data (and possibly scripts) in it.
+2. `cp` files to and from the container
+3. Create an analysis script within the running container and edit it within the container. Use a URL to get the data PDF from within the container and create/keep raw data and intermediates within the container that won't be shared. Finally, creating plots within the container that we'll have to save to our system.
+
+While we will show examples of all of these, our primary interest is to work within the third option as much as possible. When we ran an event at a medical center, the devices were unable to mount data so we'd like to provide options separate from that as much as possible.
+
+Notice that because this case study is focusing on working with containers and will be doing an example data analysis to help teach these concepts, most sections will have two parts. Within each section the subparts will be labeled as "Container" and "Revisions task".
+
+* The data import section will focus on (A) "importing" a **container** and (B) importing the **data** from Table 1 of the paper for the revision task.
+* The data exploration section will explore (A) the **Dockerfile** that the container is built from and (B) explore the **raw analysis data** that was imported prior to wrangling for the revision task.
+* The data wrangling section will wrangle (A) the imported **data** making it data visualization ready for the revision task and (B) "wrangle" the **Dockerfile** to include a package that will help with our data visualization
+* The data visualization section will (A) build the modified Dockerfile and run the image and setup the running container (file structure, analysis script) before (B) producing data visualizations of the data (two separate panels and then those panels combined with `patchwork`) for the revision task
+  * note the data visualization dealing with the container for this section could be designing a flowchart to summarize how the Dockerfile --&gt; image --&gt; container process goes.
+* The data analysis section will (A) review the process of getting the fully modified container and describe mounting the data/analysis script to show that an external validator can repeat the process while (B) might compute some summary statistic for the revision task
+
+
+## The revision task -- Extracting data from a PDF and data visualization
+
+While this example of data only being available from a PDF (especially within an active project) is a bit unconventional, we think that it will be a tangible and somewhat accessible example for learners. Previous public health case studies highlight various data mining and import tasks such as utilizing an API, scraping data from an HTML webpage, and importing data from Excel files, Google Sheets, and even PDFs. This specific package hasn't been used in previous case studies and it offers some benefits for this specific topic
+
+* This package has a function for reading tables from a PDF file. Several of the previously used tools do not, and the one that does is deprecated.
+* This package has some dependencies (namely Java) that we are excited to highlight within the context of containers and showing a tiny bit of complexity within the Dockerfile
+* Its use helps to justify to the learners why we might need a container (dependencies)
+* We don't intend to spend much of the main narrative on the tool or how to use it. Some of the explanation can go into collapsible sections to reduce cognitive load so that learners can focus on containers. Basically we'll tell them that the data retrieval and wrangling of the Table from a PDF can be achieved with this code and if you want to learn more about how it works (or want an advanced exercise of generalizing the process), click on an expandable section for details.
+* We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.
+
+***
+
+
+# **What are the data?**
+***
+
+The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing
+
+* the name of each dataset
+* which reference in the study relates to that data
+* a brief description of the cohort within that study
+* the number of samples with paired fecal microbiome-metabolome data within that cohort
+* whether the study contained longitudinal data
+* the number of HMDB annotated compounds
+* the number of KEGG annotated compounds
+
+Each row in the table is providing data for that source dataset itself. Figure 1 in @Muller_Algavi_Borenstein_2022 provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated metabolites present).
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_25.png){fig-align='center' fig-alt='Table 1 from Muller et al 2022. Table 1 describes the curated gut microbiome-metabolome datasets that this study collected and analyzed as part of the meta-analysis. This table is a 14 row 7 column table with columns showing the name of each dataset, which reference in the study relates to that data, a brief description of the cohort within that study, the number of samples with paired data within that cohort, whether the study utilized longitudinal data, as well as the number of HMDB annotated compounds and finally the number of KEGG annotated compounds in each study.' width=100%}
+:::
+:::
+
+
+After using `tabulapdf` to extract the table from the PDF (see the `Data Import` section) and some basic wrangling with `tidyverse` (see the `Data Wrangling` section), we will extract a tidy dataframe with all of the columns displayed in the original table, but those boxed in purple and listed below are the most important for our visualization task (as outlined in Collab O. Rator's email).
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f5db0d7ede_0_46.png){fig-align='center' fig-alt='The dataset name, number of paired samples, whether the sample is longitudinal, the number of HMDB annotated compounds, and the number of KEGG annotated compounds are the columns that we will use in building data visualizations.' width=100%}
+:::
+:::
+
+
+Variable   | Details
+---------- |-------------
+**`dataset_name`**  | A character/string identifying the dataset (often containing author, studied illness, and year of the study).
+**`num_paired_samples`**  | The number of samples within the dataset that have paired fecal microbiome-metabolome data.
+**`longitudinal`** | A character/string reporting whether that dataset has longitudinal data ("Yes" or "No").
+**`hmdb_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
+**`kegg_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
+
+***
+
+
+&lt;!--
 Describe any limitations that exist in this analysis whether it be due to the data itself, methods used, nature of the topic, etc.
 You can list more than 2
 See the following example from a previous case study: https://www.opencasestudies.org/ocs-bp-opioid-rural-urban/#Limitations
--->
-</section>
-<section id="limitations" class="level1">
-<h1><strong>Limitations</strong></h1>
-<hr>
-<p>There are some important considerations regarding this data analysis to keep in mind:</p>
-<p>This case study specifically uses the technology Docker to build containers and run analyses within these isolated environments, on a local machine.</p>
-<p><em>Limitations regarding containerization and the scope of this case study:</em></p>
-<p>This case study does <strong>not</strong> describe how to:</p>
-<ul>
-<li>develop containers from the ground up</li>
-<li>use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)</li>
-<li>use containers to support a remote analysis (e.g., in the cloud)</li>
-<li>use containers to deploy or support an application</li>
-<li>use technologies other than Docker such as Apptainer or Singularity</li>
-</ul>
-<p>Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
-<p><em>Limitations regarding the data analysis and using aggregated data:</em></p>
-<p>This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.</p>
-<p>In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. Steps involved in data harmonization include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, meta-analyses are synthesizing summarized information rather than aggregating the underlying, raw data <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate <span class="citation" data-cites="Nan_etal_2022">(<a href="#ref-Nan_etal_2022" role="doc-biblioref">Nan et al. 2022</a>)</span>.</p>
-<hr>
-</section>
-<section id="ethical-considerations" class="level1">
-<h1><strong>Ethical Considerations</strong></h1>
-<hr>
-<p>There are some important ethical considerations when working with containerization, as well as when working with clinical/health related data. Additional ethical considerations are relevant when working within a collaborative team environment and with secondary source data (data collected by others).</p>
-<p><em>Containerization and clinical/health data considerations:</em></p>
-<ol type="1">
-<li>When defining and sharing a container image, <strong>make sure to never include personally identifiable information (PII) or protected health information (PHI)</strong>.</li>
-</ol>
-<ul>
-<li>Even if you are sharing a Dockerfile or image using a private repository or in private communication within a team setting, do not include PII or PHI.</li>
-<li>Data that is considered PII or PHI includes names, dates of birth, contact information, account or health plan numbers, IP addresses, and medical records. You can read more about PII and PHI and ethical data handling practices in <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-privacy.html#pii-personal-identifiable-information">this course</a> with broader information regarding proactive and ethical data management and sharing can be found in <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/">this course</a>.</li>
-</ul>
-<ol start="2" type="1">
-<li>Container images should be minimal and non-interactive (e.g., able to install without user interaction).</li>
-</ol>
-<ul>
-<li>In general, do not include any data (even if it’s not PHI or PII) within an image that you share (ensuring a minimal image).</li>
-<li>Remove unnecessary packages or dependencies (ensuring a minimal image).</li>
-<li>Avoid adding software like <code>git</code> that would require user credentials or authentication to install or setup (ensuring a minimal, non-interactive image).</li>
-<li>Do not include any credentials within the definition of a container image (ensuring a minimal, secure image).</li>
-</ul>
-<ol start="3" type="1">
-<li>Only use containers from known and verified sources.</li>
-<li>While images provide a static snapshot of a computing environment, the security or health of a container isn’t necessarily static and may need to be maintained over time.</li>
-<li>Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).</li>
-<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
-<li>Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum">reproducible science</a> <span class="citation" data-cites="Sandve_Nekrutenko_Taylor_Hovig_2013">(<a href="#ref-Sandve_Nekrutenko_Taylor_Hovig_2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>.</li>
-</ol>
-<p><em>Collaborative team considerations:</em></p>
-<ol type="1">
-<li>For projects performed within large, collaborative teams performing transparent science can be even more of a challenge. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider <span class="citation" data-cites="Petersen_Pavlidis_Semendeferi_2014">Petersen, Pavlidis, and Semendeferi (<a href="#ref-Petersen_Pavlidis_Semendeferi_2014" role="doc-biblioref">2014</a>)</span>.</li>
-</ol>
-<p><em>Use of secondary and/or clinical/health data considerations:</em></p>
-<ol type="1">
-<li>Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>.</li>
-<li>Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html">how that data was collected and shared and the consent of participants</a>.</li>
-</ol>
-<hr>
-</section>
-<section id="data-import" class="level1">
-<h1><strong>Data Import</strong></h1>
-<hr>
-<section id="container" class="level2">
-<h2 class="anchored" data-anchor-id="container">Container</h2>
-<p>Activity: access the container the collaborator shared with you (because this is how you’ll be able to get the data extracted from the PDF import).</p>
-<ul>
-<li>pull the container from Docker Hub</li>
-</ul>
-<p>The other option is that we can build a Dockerfile but since we’ll do that in a later activity, we’d rather show pulling from Docker Hub in this example.</p>
-<p>Side quest: find a container on Docker Hub (and discuss reputable sources)</p>
-<p>Note that although we can see the container (specifically an image at this step)– this doesn’t give us access to the data analysis data yet. For that we must run the container.</p>
-</section>
-<section id="revisions-task" class="level2">
-<h2 class="anchored" data-anchor-id="revisions-task">Revisions task</h2>
-<p>Using the <code>tabulapdf</code> package, we will extract a raw, unwrangled version of Table 1.</p>
-<p>Walk through how to run the container in order to run the analysis and extract the data.</p>
-<p>Side quest: what if you wanted to spin up an IDE with your container?</p>
-<p>Activity – Using the container from the collaborator to get the Table 1 data.</p>
-<p>Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we’ll use the following instructions for someone to interact with the data analysis data within a running container:</p>
-<p>For Docker Desktop:</p>
-<ul>
-<li>run the container</li>
-<li>navigate to the exec tab</li>
-<li>set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
-<ul>
-<li><code>mkdir opt/case_study_analysis plots/ data/imported data/wrangled</code></li>
-</ul></li>
-<li><code>touch</code> an <code>preprocessing.R</code> script in <code>opt/case_study_analysis</code></li>
-<li>navigate to the files tab</li>
-<li>right click on the <code>preprocessing.R</code> script and click edit</li>
-<li>copy paste the following code into the script</li>
-<li>click save</li>
-<li>navigate to the exec tab</li>
-<li>use <code>Rscript preprocessing.R</code> – adjusting based on script location and learner’s file location.</li>
-<li>notice that it outputs “Dimensions: 25 x 7”</li>
-<li>notice that there is an rda file in the <code>data/imported</code> folder (which we can <code>ls data/imported</code> to see)</li>
-</ul>
+--&gt;
+
+# **Limitations**
+***
+
+There are some important considerations regarding this data analysis to keep in mind:
+
+This case study specifically uses the technology Docker to build containers and run analyses within these isolated environments, on a local machine.
+
+*Limitations regarding containerization and the scope of this case study:*
+
+This case study does **not** describe how to:
+
+  * develop containers from the ground up
+  * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
+  * use containers to support a remote analysis (e.g., in the cloud)
+  * use containers to deploy or support an application
+  * use technologies other than Docker such as Apptainer or Singularity
+
+Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
+
+*Limitations regarding the data analysis and using aggregated data:*
+
+This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.
+
+In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable [@Cheng_etal_2024]. Steps involved in data harmonization include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, meta-analyses are synthesizing summarized information rather than aggregating the underlying, raw data [@Cheng_etal_2024]. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate [@Nan_etal_2022].
+
+***
+
+
+# **Ethical Considerations**
+***
+
+There are some important ethical considerations when working with containerization, as well as when working with clinical/health related data. Additional ethical considerations are relevant when working within a collaborative team environment and with secondary source data (data collected by others).
+
+*Containerization and clinical/health data considerations:*
+
+1. When defining and sharing a container image, **make sure to never include personally identifiable information (PII) or protected health information (PHI)**.
+  * Even if you are sharing a Dockerfile or image using a private repository or in private communication within a team setting, do not include PII or PHI.
+  * Data that is considered PII or PHI includes names, dates of birth, contact information, account or health plan numbers, IP addresses, and medical records. You can read more about PII and PHI and ethical data handling practices in [this course](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-privacy.html#pii-personal-identifiable-information) with broader information regarding proactive and ethical data management and sharing can be found in [this course](https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/).
+2. Container images should be minimal and non-interactive (e.g., able to install without user interaction).
+  * In general, do not include any data (even if it's not PHI or PII) within an image that you share (ensuring a minimal image).
+  * Remove unnecessary packages or dependencies (ensuring a minimal image).
+  * Avoid adding software like `git` that would require user credentials or authentication to install or setup (ensuring a minimal, non-interactive image).
+  * Do not include any credentials within the definition of a container image (ensuring a minimal, secure image).
+3. Only use containers from known and verified sources.
+4. While images provide a static snapshot of a computing environment, the security or health of a container isn't necessarily static and may need to be maintained over time.
+5. Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).
+6. Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science [@Wilkinson_etal_2016; @Barker_etal_2022]. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.
+7. Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of [reproducible science](https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum) [@Sandve_Nekrutenko_Taylor_Hovig_2013].
+
+*Collaborative team considerations:*
+
+1. For projects performed within large, collaborative teams performing transparent science can be even more of a challenge. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider @Petersen_Pavlidis_Semendeferi_2014.
+
+*Use of secondary and/or clinical/health data considerations:*
+
+1. Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways [@Cheng_etal_2024].
+2. Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html).
+
+
+***
+
+
+::: {.content-hidden unless-meta="include-sections.data-import"}
+
+# **Data Import**
+***
+
+## Container
+
+Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
+
+* pull the container from Docker Hub
+
+The other option is that we can build a Dockerfile but since we'll do that in a later activity, we'd rather show pulling from Docker Hub in this example.
+
+Side quest: find a container on Docker Hub (and discuss reputable sources)
+
+Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
+
+## Revisions task
+
+Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
+
+Walk through how to run the container in order to run the analysis and extract the data.
+
+Side quest: what if you wanted to spin up an IDE with your container?
+
+Activity -- Using the container from the collaborator to get the Table 1 data.
+
+Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we'll use the following instructions for someone to interact with the data analysis data within a running container:
+
+For Docker Desktop:
+
+* run the container
+* navigate to the exec tab
+* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
+  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
+* `touch` an `preprocessing.R` script in `opt/case_study_analysis`
+* navigate to the files tab
+* right click on the `preprocessing.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript preprocessing.R` -- adjusting based on script location and learner's file location.
+* notice that it outputs "Dimensions: 25 x 7"
+* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
+
+
+::: {.cell}
+
+```{.r .cell-code}
+#!/usr/bin/env Rscript
+
+raw_table &lt;- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
+                                       pages = 2,
+                                       method = "stream",
+                                       col_names = FALSE
+                                      )[[1]]
+
+message("Dimensions: ", paste(dim(raw_table), collapse = " x "))</code></pre>
+<p>:::</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>raw_table <span class="ot">&lt;-</span> tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(<span class="st">"https://www.nature.com/articles/s41522-022-00345-5.pdf"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">pages =</span> <span class="dv">2</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">"stream"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">col_names =</span> <span class="cn">FALSE</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                      )[[<span class="dv">1</span>]]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(raw_table), <span class="at">collapse =</span> <span class="st">" x "</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(raw_table, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(raw_table, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
-</section>
+<p>:::</p>
 </section>
 <section id="data-exploration" class="level1">
 <h1><strong>Data Exploration</strong></h1>
 <hr>
-<section id="container-1" class="level2">
-<h2 class="anchored" data-anchor-id="container-1">Container</h2>
+<section id="container" class="level2">
+<h2 class="anchored" data-anchor-id="container">Container</h2>
 <p>We’ll utilize this section to explore the Dockerfile specifically answering “What’s in a container?”</p>
 <pre><code>FROM rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a
 
@@ -940,8 +951,8 @@ RUN install2.r --error --deps TRUE \
 <p>We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what’s in the Dockerfile.</p>
 <p>Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we’ll be doing that later on in the Data Analysis section (though this isn’t always possible depending on security settings on a system)</p>
 </section>
-<section id="revisions-task-1" class="level2">
-<h2 class="anchored" data-anchor-id="revisions-task-1">Revisions task</h2>
+<section id="revisions-task" class="level2">
+<h2 class="anchored" data-anchor-id="revisions-task">Revisions task</h2>
 <p>Explore what the extracted table looks like and what sort of wrangling we might need to do in order to visualize the data – we’ll show them what the data looks like, but not have them do this</p>
 <ul>
 <li>Note that the raw table data as extracted by <code>tabulapdf</code> has a 4th column that is all NA’s where the data from that column are appended to the end of the 3rd column</li>
@@ -953,11 +964,11 @@ RUN install2.r --error --deps TRUE \
 <section id="data-wrangling" class="level1">
 <h1><strong>Data Wrangling</strong></h1>
 <hr>
-<section id="revisions-task-2" class="level2">
-<h2 class="anchored" data-anchor-id="revisions-task-2">Revisions task</h2>
+<section id="revisions-task-1" class="level2">
+<h2 class="anchored" data-anchor-id="revisions-task-1">Revisions task</h2>
 <p>If you have been following along but stopped, we could load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <details>
@@ -966,7 +977,7 @@ If you skipped the data import section click here.
 </summary>
 <p>KI note: We’ll need to add instructions to this about mounting or importing data if someone wants to pick up at this section.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 <hr>
@@ -980,58 +991,58 @@ If you skipped the data import section click here.
 <li>use <code>preprocessing.R</code> – adjusting based on script location and learner’s file location.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>table1_extract <span class="ot">&lt;-</span> raw_table <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">num_paired_samples =</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(X3,</span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"</span><span class="sc">\\</span><span class="st">d+$"</span>))) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-6" class="code-annotation-target"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">X3Text =</span> <span class="fu">str_remove</span>(X3,</span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"</span><span class="sc">\\</span><span class="st">d+$"</span>)) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-8-8" class="code-annotation-target"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cohort_description =</span> <span class="fu">if_else</span>(<span class="fu">lead</span>(<span class="fu">is.na</span>(X1), <span class="at">default =</span> <span class="cn">FALSE</span>),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-8-9" class="code-annotation-target"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">paste0</span>(X3Text,</span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">lead</span>(X3Text)),</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-8-11" class="code-annotation-target"><a href="#annotated-cell-8-11" aria-hidden="true" tabindex="-1"></a>                                        X3Text)</span>
-<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12" aria-hidden="true" tabindex="-1"></a>           ) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-8-13" class="code-annotation-target"><a href="#annotated-cell-8-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(X1)) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-8-14" class="code-annotation-target"><a href="#annotated-cell-8-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(X3, X4, X3Text)) <span class="sc">%&gt;%</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-8-15" class="code-annotation-target"><a href="#annotated-cell-8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="fu">c</span>(<span class="st">"dataset_name"</span> <span class="ot">=</span> <span class="st">"X1"</span>,</span>
-<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16" aria-hidden="true" tabindex="-1"></a>             <span class="st">"ref"</span> <span class="ot">=</span> <span class="st">"X2"</span>,</span>
-<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17" aria-hidden="true" tabindex="-1"></a>             <span class="st">"longitudinal"</span> <span class="ot">=</span> <span class="st">"X5"</span>,</span>
-<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18" aria-hidden="true" tabindex="-1"></a>             <span class="st">"hmdb_annotated_compounds"</span> <span class="ot">=</span> <span class="st">"X6"</span>,</span>
-<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19" aria-hidden="true" tabindex="-1"></a>             <span class="st">"kegg_annotated_compounds"</span> <span class="ot">=</span> <span class="st">"X7"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>table1_extract <span class="ot">&lt;-</span> raw_table <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">num_paired_samples =</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(X3,</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>                                                      <span class="st">"</span><span class="sc">\\</span><span class="st">d+$"</span>))) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">X3Text =</span> <span class="fu">str_remove</span>(X3,</span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"</span><span class="sc">\\</span><span class="st">d+$"</span>)) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cohort_description =</span> <span class="fu">if_else</span>(<span class="fu">lead</span>(<span class="fu">is.na</span>(X1), <span class="at">default =</span> <span class="cn">FALSE</span>),</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">paste0</span>(X3Text,</span>
+<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">lead</span>(X3Text)),</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a>                                        X3Text)</span>
+<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a>           ) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-7-13" class="code-annotation-target"><a href="#annotated-cell-7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(X1)) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7" onclick="event.preventDefault();">7</a><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(X3, X4, X3Text)) <span class="sc">%&gt;%</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8" onclick="event.preventDefault();">8</a><span id="annotated-cell-7-15" class="code-annotation-target"><a href="#annotated-cell-7-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="fu">c</span>(<span class="st">"dataset_name"</span> <span class="ot">=</span> <span class="st">"X1"</span>,</span>
+<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16" aria-hidden="true" tabindex="-1"></a>             <span class="st">"ref"</span> <span class="ot">=</span> <span class="st">"X2"</span>,</span>
+<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17" aria-hidden="true" tabindex="-1"></a>             <span class="st">"longitudinal"</span> <span class="ot">=</span> <span class="st">"X5"</span>,</span>
+<span id="annotated-cell-7-18"><a href="#annotated-cell-7-18" aria-hidden="true" tabindex="-1"></a>             <span class="st">"hmdb_annotated_compounds"</span> <span class="ot">=</span> <span class="st">"X6"</span>,</span>
+<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19" aria-hidden="true" tabindex="-1"></a>             <span class="st">"kegg_annotated_compounds"</span> <span class="ot">=</span> <span class="st">"X7"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="4,5" data-code-annotation="1">Extracting the numbers (which represent the number of paired samples) at the end of the row to put them in their own column</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="4,5" data-code-annotation="1">Extracting the numbers (which represent the number of paired samples) at the end of the row to put them in their own column</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="6,7" data-code-annotation="2">Making a version of the text column that has those numbers of paired samples removed</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="6,7" data-code-annotation="2">Making a version of the text column that has those numbers of paired samples removed</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="8" data-code-annotation="3">Setting up an if else that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the <code>lead</code> function to look for the next value. In the case of the last row, we’re using the <code>default</code> argument to pad the data with a <code>FALSE</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="3">Setting up an if else that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the <code>lead</code> function to look for the next value. In the case of the last row, we’re using the <code>default</code> argument to pad the data with a <code>FALSE</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="9,10" data-code-annotation="4">If the <code>lead</code> function returns that the next value is NA (<code>TRUE</code>), it will paste the current cohort text with the next row’s text</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="9,10" data-code-annotation="4">If the <code>lead</code> function returns that the next value is NA (<code>TRUE</code>), it will paste the current cohort text with the next row’s text</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="11" data-code-annotation="5">Otherwise if the <code>lead</code> function returns that the next value is not NA (<code>FALSE</code>) (or is the last value/row), it will return the current cohort text only.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="5">Otherwise if the <code>lead</code> function returns that the next value is not NA (<code>FALSE</code>) (or is the last value/row), it will return the current cohort text only.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="13" data-code-annotation="6">This filters to remove the rows where the dataset name is NA because we’ve already appended the important information from those rows</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="13" data-code-annotation="6">This filters to remove the rows where the dataset name is NA because we’ve already appended the important information from those rows</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="7">This removes the original X3 column (that had the cohort description plus number of paired samples), the X4 column which was all NAs, and the X3Text column which has incomplete cohort descriptions</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="14" data-code-annotation="7">This removes the original X3 column (that had the cohort description plus number of paired samples), the X4 column which was all NAs, and the X3Text column which has incomplete cohort descriptions</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="15,16,17,18,19" data-code-annotation="8">Rename the columns so they are descriptive</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="15,16,17,18,19" data-code-annotation="8">Rename the columns so they are descriptive</span>
 </dd>
 </dl>
 </div>
@@ -1039,26 +1050,26 @@ If you skipped the data import section click here.
 <p>Advanced side quest: Can challenge learners to come up with a more generalizable way to wrangle the data if there’s more than one NA row that needs to be collapsed (e.g., some data has more than 2 lines) (use a dropdown section for this)</p>
 <p>As a way to spot check that the container is doing something up to this point, we can use some outputs</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(table1_extract[<span class="dv">4</span>, <span class="st">"dataset_name"</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(table1_extract[<span class="dv">4</span>, <span class="st">"dataset_name"</span>])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The Dimensions will have fewer rows (14 instead of 25) and the value of the dataset name should be <code>HE_INFANTS_MFGM_2019</code></p>
 <p>To allow users to skip import and wrangling we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(table1_extract, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>,</span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.rda"</span>))</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(table1_extract,</span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"wrangled"</span>,</span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-1" class="code-annotation-target"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(table1_extract, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>,</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"wrangled_data.rda"</span>))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(table1_extract,</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"wrangled"</span>,</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"wrangled_data.csv"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1,2" data-code-annotation="1">saving the data as an RDA file within the wrangled data subdirectory</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="1,2" data-code-annotation="1">saving the data as an RDA file within the wrangled data subdirectory</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="3,4,5" data-code-annotation="2">saving the data as a CSV file within the wrangled data subdirectory</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3,4,5" data-code-annotation="2">saving the data as a CSV file within the wrangled data subdirectory</span>
 </dd>
 </dl>
 </div>
@@ -1077,8 +1088,8 @@ If you skipped the data import section click here.
 </ul>
 <p>But if we make two separate scatter plots, they will be two separate panels/files that won’t be displayed next to each other unless we use design software like illustrator. But we could also use a package that allows us to combine plots, then the scatter plot will have two panels displayed next to each other. So let’s “wrangle” the Dockerfile to include a package that will let us do that: <code>patchwork</code>.</p>
 </section>
-<section id="container-2" class="level2">
-<h2 class="anchored" data-anchor-id="container-2">Container</h2>
+<section id="container-1" class="level2">
+<h2 class="anchored" data-anchor-id="container-1">Container</h2>
 <p>As you can see from the visualization step above, these two panels are completely separate separate plots – and we’d like them to be visible next to each other…. we can use <code>patchwork</code> for that, but we’ll need to add <code>patchwork</code> to our visualization container….</p>
 <p>Activity: Add <code>patchwork</code> to the container</p>
 <ul>
@@ -1093,7 +1104,7 @@ If you skipped the data import section click here.
 <hr>
 <p>If you have been following along but stopped, we could load our wrangled data like so within the analysis script. We’d comment out the data import and wrangling steps and use this instead:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Even if you stop the container (as long as you don’t delete it), you can restart it and the data will still be there as long as it was saved during wrangling</p>
 <hr>
@@ -1116,45 +1127,45 @@ If you skipped the data import section click here.
 </ul>
 <p>Add the following code from the code blocks to the running container as well, repeating the steps * navigate to the files tab * right click on the <code>analysis.R</code> script and click edit * copy paste the following code into the script (we’ll describe how to import the wrangled data or provide all the earlier code for the script as well) * click save * navigate to the exec tab * use <code>Rscript analysis.R</code> – adjusting based on script location and learner’s file location.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> longitudinal,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#D27D2D"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#1D6F8A"</span>), <span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/hmdb_scatter.png"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><a href="img/hmdb_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/hmdb_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> longitudinal,</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#D27D2D"</span>,</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#1D6F8A"</span>), <span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/hmdb_scatter.png"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><a href="img/hmdb_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/hmdb_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> longitudinal,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"No"</span> <span class="ot">=</span> <span class="st">"#D27D2D"</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Yes"</span> <span class="ot">=</span> <span class="st">"#1D6F8A"</span>), <span class="at">drop =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/kegg_scatter.png"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/kegg_scatter.png"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="img/kegg_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/kegg_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
 <p>We can use <code>ls plots/</code> to see that these png files exist. Though we’ll have to use the file explorer to save any of those files to our system. Is there an easy way besides basing an image off of an IDE like VSCode or RStudio?</p>
@@ -1168,31 +1179,31 @@ If you skipped the data import section click here.
 <li>use <code>Rscript analysis.R</code> – adjusting based on script location and learner’s file location.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-5" class="code-annotation-target"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
-<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-14-8"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/combined_scatter.png"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"plots/combined_scatter.png"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="1">Use the HMDB scatter plot from before, but remove its title</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="1">Use the HMDB scatter plot from before, but remove its title</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="2">Use the KEGG scatter plot from before, but remove its title</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="4" data-code-annotation="2">Use the KEGG scatter plot from before, but remove its title</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="5" data-code-annotation="3">Combine the legends</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="3">Combine the legends</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="6" data-code-annotation="4">Add a single title for the whole plot</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="4">Add a single title for the whole plot</span>
 </dd>
 </dl>
 </div>
@@ -1275,6 +1286,59 @@ construct a plot here that summarizes the conclusions found in the data, if appl
 (connecting to a main question if possible)
 -->
 <p>Put another flowchart that shows the process of using a container and how it related to the analysis (extracting the data and making a plot)</p>
+<hr>
+<!--
+Don't adjust the shortcode or the table header in this file, only the markdown table contents
+-->
+</section>
+<section id="main-questions-revisited" class="level2">
+<h2 class="anchored" data-anchor-id="main-questions-revisited"><strong>Main Questions Revisited</strong></h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Main Questions Revisited: What Did We Learn">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Main Questions Revisited: What Did We Learn
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 38%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Current answer</th>
+<th style="text-align: left;">Caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Reiteration or restatement of main question</td>
+<td style="text-align: left;">Describe the answer based on case study activities</td>
+<td style="text-align: left;">List any important caveats potentially connecting to earlier limitations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Another main question</td>
+<td style="text-align: left;">Description of its activity</td>
+<td style="text-align: left;">Caveats for this Q &amp; A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Another of the main questions</td>
+<td style="text-align: left;">Another description of this one’s activity</td>
+<td style="text-align: left;">Q &amp; A specific caveats</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -1372,44 +1436,15 @@ Automatically include the packages table from _packages.qmd?
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <hr>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Barker_etal_2022" class="csl-entry" role="listitem">
-Barker, Michelle, Neil P. Chue Hong, Daniel S. Katz, Anna-Lena Lamprecht, Carlos Martinez-Ortiz, Fotis Psomopoulos, Jennifer Harrow, et al. 2022. <span>“Introducing the FAIR Principles for Research Software.”</span> <em>Scientific Data</em> 9 (1): 622. <a href="https://doi.org/10.1038/s41597-022-01710-x">https://doi.org/10.1038/s41597-022-01710-x</a>.
-</div>
-<div id="ref-Cheng_etal_2024" class="csl-entry" role="listitem">
-Cheng, Cindy, Luca Messerschmidt, Isaac Bravo, Marco Waldbauer, Rohan Bhavikatti, Caress Schenk, Vanja Grujic, Tim Model, Robert Kubinec, and Joan Barceló. 2024. <span>“A General Primer for Data Harmonization.”</span> <em>Scientific Data</em> 11 (1): 152. <a href="https://doi.org/10.1038/s41597-024-02956-3">https://doi.org/10.1038/s41597-024-02956-3</a>.
-</div>
-<div id="ref-Kanehisa_etal_2025" class="csl-entry" role="listitem">
-Kanehisa, Minoru, Miho Furumichi, Yoko Sato, Yuriko Matsuura, and Mari Ishiguro-Watanabe. 2025. <span>“KEGG: Biological Systems Database as a Model of the Real World.”</span> <em>Nucleic Acids Research</em> 53 (D1): D672–77. <a href="https://doi.org/10.1093/nar/gkae909">https://doi.org/10.1093/nar/gkae909</a>.
-</div>
-<div id="ref-Kanehisa_Goto_2000" class="csl-entry" role="listitem">
-Kanehisa, Minoru, and Susumu Goto. 2000. <span>“KEGG: Kyoto Encyclopedia of Genes and Genomes.”</span> <em>Nucleic Acids Research</em> 28 (1): 27–30. <a href="https://doi.org/10.1093/nar/28.1.27">https://doi.org/10.1093/nar/28.1.27</a>.
-</div>
-<div id="ref-Muller_Algavi_Borenstein_2022" class="csl-entry" role="listitem">
-Muller, Efrat, Yadid M. Algavi, and Elhanan Borenstein. 2022. <span>“The Gut Microbiome-Metabolome Dataset Collection: A Curated Resource for Integrative Meta-Analysis.”</span> <em>Npj Biofilms and Microbiomes</em> 8 (1): 79. <a href="https://doi.org/10.1038/s41522-022-00345-5">https://doi.org/10.1038/s41522-022-00345-5</a>.
-</div>
-<div id="ref-Nan_etal_2022" class="csl-entry" role="listitem">
-Nan, Yang, Javier Del Ser, Simon Walsh, Carola Schönlieb, Michael Roberts, Ian Selby, Kit Howard, et al. 2022. <span>“Data Harmonisation for Information Fusion in Digital Healthcare: A State-of-the-Art Systematic Review, Meta-Analysis and Future Research Directions.”</span> <em>Information Fusion</em> 82: 99–122. <a href="https://doi.org/10.1016/j.inffus.2022.01.001">https://doi.org/10.1016/j.inffus.2022.01.001</a>.
-</div>
-<div id="ref-Petersen_Pavlidis_Semendeferi_2014" class="csl-entry" role="listitem">
-Petersen, Alexander M., Ioannis Pavlidis, and Ioanna Semendeferi. 2014. <span>“A Quantitative Perspective on Ethics in Large Team Science.”</span> <em>Science and Engineering Ethics</em> 20 (4): 923–45. <a href="https://doi.org/10.1007/s11948-014-9562-8">https://doi.org/10.1007/s11948-014-9562-8</a>.
-</div>
-<div id="ref-Sandve_Nekrutenko_Taylor_Hovig_2013" class="csl-entry" role="listitem">
-Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLOS Computational Biology</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.
-</div>
-<div id="ref-Wilkinson_etal_2016" class="csl-entry" role="listitem">
-Wilkinson, Mark D., Michel Dumontier, IJsbrand Jan Aalbersberg, Gabrielle Appleton, Myles Axton, Arie Baak, Niklas Blomberg, et al. 2016. <span>“The FAIR Guiding Principles for Scientific Data Management and Stewardship.”</span> <em>Scientific Data</em> 3 (1): 160018. <a href="https://doi.org/10.1038/sdata.2016.18">https://doi.org/10.1038/sdata.2016.18</a>.
-</div>
-<div id="ref-Wishart_etal_2009" class="csl-entry" role="listitem">
-Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Gautam, David D. Hau, et al. 2009. <span>“HMDB: A Knowledgebase for the Human Metabolome.”</span> <em>Nucleic Acids Research</em> 37 (Database issue): D603–10. <a href="https://doi.org/10.1093/nar/gkn810">https://doi.org/10.1093/nar/gkn810</a>.
-</div>
+<div id="refs" role="list">
+
 </div>
 </section>
 <section id="session-info" class="level2">
 <h2 class="anchored" data-anchor-id="session-info"><strong>Session Info</strong></h2>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -1421,7 +1456,7 @@ Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Ga
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2026-07-28
+ date     2026-08-05
  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
