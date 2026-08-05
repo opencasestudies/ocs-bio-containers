@@ -39,6 +39,8 @@ include-sections:
 
 {{< include _context.qmd >}}
 
+{{< include _containers_intro.qmd >}}
+
 {{< include _data_description.qmd >}}
 
 {{< include _limitations.qmd >}}
@@ -84,6 +86,8 @@ include-sections:
 {{< include _main_qs_answers_table.qmd >}}
 
 :::
+
+{{< include _containers_troubleshooting.qmd >}}
 
 {{< include _suggested_hw.qmd >}}
 
