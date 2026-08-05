@@ -27,4 +27,66 @@ Package    | Use
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
 
+::: {.emphasis_block}
+
 `tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.
+
+:::
+
+This case study is focusing on how to work with containers while performing a data analysis. Therefore, most sections will have two parts:
+
+    1. Exploring container specific concepts (section labeled "**Container**")
+    2. Working with data within a container (section labeled "**Application to data**"), specifically working on the project from Collab O. Rator (described earlier in the Motivation section). 
+    
+In all cases, code for the tasks within the **Application to data** sections will be provided for learners since the focus of this case study is to how to work with containers, not how to code with R. 
+
+
+::: {.emphasis_block}
+<details><summary>Section outline</summary>
+
+::: {.panel-tabset}
+
+## Data Import
+
+The **Data Import** section relates to import tasks.
+
+Portion of section      | Description of activity
+----------------------- | -----------------------
+**Container**           | "Importing" a **container image** from Docker Hub as well as retrieving analysis scripts from GitHub; then running the image while mounting the volume with the analysis scripts
+**Application to data** | Using the running container (retrieved in the previous portion) to "import" the **data** from the PDF version of Table 1 of the paper
+
+## Data Exploration
+
+Portion of section      | Description of activity
+----------------------- | -----------------------
+**Container**           | "Exploring" the **Dockerfile** of **the container image** retrieved from Docker Hub in the Data Import section
+**Application to data** | "Exploring" the **raw data** which was retrieved from the PDF version of Table 1 of the paper in the Data Import section
+
+## Data Wrangling
+
+Portion of section      | Description of activity
+----------------------- | -----------------------
+**Application to data** | Using the running container, "wrangling" the **raw data** that was retrieved and explored in previous sections according to what was observed in the Data Exploration section
+**Container**           | Wrangling the **Dockerfile** for **the container image** to add a package that will help with the Data Visualization task
+
+## Data Visualization
+
+Portion of section      | Description of activity
+----------------------- | -----------------------
+**Container**           | Building the modified Dockerfile from the Data Wrangling section, running the image while mounting the volume with the analysis scripts. Additionally, learners will "visualize" this containerization process as a flowchart.
+**Application to data** | Using the running container (set up in the previous portion) to "visualize" the **wrangled data** from the Data Wrangling section
+
+## Data Analysis
+
+Portion of section      | Description of activity
+----------------------- | -----------------------
+**Application to data** | Adjusting the "analysis" to include a summary statistic about the **wrangled data** and visualization as well as a script that runs the whole process so that the analysis can be more easily validated
+**Container**           | Sharing the container, adjusted "analysis", and appropriate documentation with collaborators
+
+:::
+
+</details>
+
+:::
+
+
