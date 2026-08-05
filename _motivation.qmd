@@ -1,7 +1,7 @@
 # **Motivation**
 ***
 
-In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for study revisions. The study is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility. Background on the context of the analysis will be provided later in the case study. 
+In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility. Background on the context of the analysis will be provided later in the case study. 
 
 ```{r echo=FALSE, warning = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3dad9407b30_0_0#slide=id.g3dad9407b30_0_0")

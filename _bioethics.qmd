@@ -21,7 +21,7 @@ There are some important ethical considerations when working with containerizati
 
 *Collaborative team considerations:*
 
-1. For projects performed within large, collaborative teams performing transparent science can be even more of a challenge. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider @Petersen_Pavlidis_Semendeferi_2014.
+1. For projects performed within large, collaborative teams performing transparent science can be extra challenging. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider @Petersen_Pavlidis_Semendeferi_2014.
 
 *Use of secondary and/or clinical/health data considerations:*
 
