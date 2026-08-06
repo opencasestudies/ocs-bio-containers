@@ -62,7 +62,7 @@ Portion of section           | Description of activity
 
 :::
 
-In all cases, code for the tasks within the **Application to data** sections will be provided for learners since the focus of this case study is to how to work with containers, not how to code with R. 
+In all cases, code for the tasks within the **Container Application** portions will be provided for learners since the focus of this case study is **how to work with containers**, not how to code with R. 
 
 
 
