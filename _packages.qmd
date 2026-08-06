@@ -1,20 +1,7 @@
 # **Packages and Setup**
 ***
 
-<!--
-load all the packages used in the case study analysis in the code chunk below
-(try to use tidyverse over base R).
-Fill out the table and add rows as necessary providing a link to the source and briefly explaining its use for each package
--->
-
-We will begin by loading the packages that we will need:
-
-```{r, eval = FALSE}
-#add library() calls
-library(here)
-library(tabulapdf)
-library(tidyverse)
-```
+Before we get into fetching images, running containers, and running analyses, we want to describe the R packages that we'll use in this case study, or that are used within the analysis scripts for the project with Collab O. Rator.
 
 Package    | Use
 ---------- |-------------
@@ -28,52 +15,50 @@ Package    | Use
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
 
 ::: {.emphasis_block}
-
 `tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.
-
 :::
 
-This case study is focusing on how to work with containers while performing a data analysis. Therefore, every subsequent section will have two parts:
+This case study is focusing on **how to work with containers while performing a data analysis** (the project from Collab O. Rator described earlier in the Motivation section). Therefore, every subsequent section will have two portions:
 
-1. **Container**: Exploring container specific concepts
-2. **Application to data**: Working with data within a container, specifically working on the project from Collab O. Rator (described earlier in the Motivation section). 
+1. **Container Infrastructure Activities**: Exploring container specific concepts and performing containerization tasks to support the project.
+2. **Container Application Activities**: Working with data with the container (whose infrastructure you've set up by doing the Container Infrastructure Activities).
     
 ::: {.panel-tabset}
 
-## Data Import
+## Data<br>Import
 
-Portion of section      | Description of activity
------------------------ | -----------------------
-**Container**           | "Importing" a **container image** from Docker Hub as well as retrieving analysis scripts from GitHub; then running the image while mounting the volume with the analysis scripts
-**Application to data** | Using the running container (retrieved in the previous portion) to "import" the **data** from the PDF version of Table 1 of the paper
+Portion of section           | Description of activity
+-----------------------------| -----------------------
+**Container Infrastructure** | "Importing" a **container image** from Docker Hub as well as retrieving analysis scripts from GitHub; then running the image while mounting the volume with the analysis scripts.
+**Container Application**    | Using the running container (retrieved in the previous portion of Data Import) to "import" the **data** from the PDF version of Table 1 of the paper.
 
-## Data Exploration
+## Data<br>Exploration
 
-Portion of section      | Description of activity
------------------------ | -----------------------
-**Container**           | "Exploring" the **Dockerfile** of **the container image** retrieved from Docker Hub in the Data Import section
-**Application to data** | "Exploring" the **raw data** which was retrieved from the PDF version of Table 1 of the paper in the Data Import section
+Portion of section           | Description of activity
+-----------------------------| -----------------------
+**Container Infrastructure** | "Exploring" the **Dockerfile** of **the container image** retrieved from Docker Hub in the Data Import section.
+**Container Application**    | "Exploring" the **raw data** which was retrieved from the PDF version of Table 1 of the paper in the Data Import section. We will discuss how containers can be a part of this.
 
-## Data Wrangling
+## Data<br>Wrangling
 
-Portion of section      | Description of activity
------------------------ | -----------------------
-**Application to data** | Using the running container, "wrangling" the **raw data** that was retrieved and explored in previous sections according to what was observed in the Data Exploration section
-**Container**           | Wrangling the **Dockerfile** for **the container image** to add a package that will help with the Data Visualization task
+Portion of section           | Description of activity
+-----------------------------| -----------------------
+**Container Infrastructure** | Using the running container, "wrangling" the **raw data** that was retrieved and explored in previous sections according to what was observed in the Data Exploration section.
+**Container Application**    | Wrangling the **Dockerfile** for **the container image** to add a package that will help with the Data Visualization task.
 
-## Data Visualization
+## Data<br>Visualization
 
-Portion of section      | Description of activity
------------------------ | -----------------------
-**Container**           | Building the modified Dockerfile from the Data Wrangling section, running the image while mounting the volume with the analysis scripts. Additionally, learners will "visualize" this containerization process as a flowchart.
-**Application to data** | Using the running container (set up in the previous portion) to "visualize" the **wrangled data** from the Data Wrangling section
+Portion of section           | Description of activity
+-----------------------------| -----------------------
+**Container Infrastructure** | Building the modified **Dockerfile** from the Data Wrangling section, **running the image** while **mounting the volume** with the analysis scripts. Additionally, learners will "visualize" this **containerization process** as a flowchart.
+**Container Application**    | Using the running container (set up in the previous portion of Data Visualization) to "visualize" the **wrangled data** from the Data Wrangling section.
 
-## Data Analysis
+## Data<br>Analysis
 
-Portion of section      | Description of activity
------------------------ | -----------------------
-**Application to data** | Adjusting the "analysis" to include a summary statistic about the **wrangled data** and visualization as well as a script that runs the whole process so that the analysis can be more easily validated
-**Container**           | Sharing the container, adjusted "analysis", and appropriate documentation with collaborators
+Portion of section           | Description of activity
+-----------------------------| -----------------------
+**Container Infrastructure** | Using the running container, adjusting the "analysis" to include a summary statistic about the **wrangled data** and visualization as well as a script that runs the whole process so that the analysis can be more easily validated.
+**Container Application**    | Sharing the **container**, adjusted "analysis", and appropriate documentation with collaborators.
 
 :::
 
