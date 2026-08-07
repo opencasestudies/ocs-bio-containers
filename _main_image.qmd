@@ -8,7 +8,7 @@ See image here for example: https://www.opencasestudies.org/ocs-bp-school-shooti
 -->
 
 ```{r echo=FALSE, warning = FALSE, out.width=800}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f2e7d581cb_0_36#slide=id.g3f2e7d581cb_0_36")
+ottrpal::include_slide("https://docs.google.com/presentation/d/1VvmzKWBNHWQZW7XkDh1X43Zjhf7eEBMGYr3ac_80sCA/edit?slide=id.p#slide=id.p")
 ```
 
 ####

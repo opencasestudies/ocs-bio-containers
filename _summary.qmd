@@ -31,6 +31,8 @@ construct a plot here that summarizes the conclusions found in the data, if appl
 (connecting to a main question if possible)
 -->
 
-Put another flowchart that shows the process of using a container and how it related to the analysis (extracting the data and making a plot)
+```{r echo=FALSE, warning = FALSE, out.width=800}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1VvmzKWBNHWQZW7XkDh1X43Zjhf7eEBMGYr3ac_80sCA/edit?slide=id.p#slide=id.p")
+```
 
 ***
