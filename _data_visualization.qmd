@@ -1,25 +1,59 @@
 # **Data Visualization**
 ***
 
-If you have been following along but stopped, we could load our wrangled data like so within the analysis script. We'd comment out the data import and wrangling steps and use this instead:
+If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.
 
 ```{r, eval = FALSE}
 load(here::here("data", "wrangled", "wrangled_data.rda"))
 ```
 
-Even if you stop the container (as long as you don't delete it), you can restart it and the data will still be there as long as it was saved during wrangling
-
 ***
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-KI note: for this section we'll have walk people through how to import the data into the container (or mount a volume)
+KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. I don't think the container has `wget`, but I could set up a download that would have the file that they could then mount. Will do that and include instructions here for that.
 
 </details>
 ***
 
+## Container Infrastructure
+
+::: {.panel-tabset}
+
+### Docker Desktop
+
+Build the modified dockerfile --> Image
+
+Run the Image (while mounting the volume) -- > Container
+
+### Docker through a CLI
+
+Build the modified dockerfile --> Image
+
+Run the Image (while mounting the volume) -- > Container
+
+:::
+
+Include a thought question to give learners the opportunity to build a flowchart (e.g., moving nouns and verbs into blanks) that represents the containerization process.
+
+## Container Application
+
 We'll use this section to make two scatter plots. And then combine the plots with `patchwork`, specifically using the modified container to run the code
 
+
+### Docker Desktop
+
+In the running container, run the visualization script(s)
+
+Look at the output
+
+### Docker through a CLI
+
+In the running container, run the visualization script(s)
+
+Look at the output
+
+:::
 
 * run the newly modified and built image
 * navigate to the exec tab
@@ -116,8 +150,9 @@ We can again use `ls plots/` to see the new png file that was saved. The logs sh
 
 `patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` in this case for illustrative purposes on adding a package to a container in an approachable example.
 
-<!--
-Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of `patchwork`?
--->
+Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of `patchwork`
+
+Note that comparing plots can be pretty difficult and for someone who needs to validate the process, it's going to be easier if there's a summary stat. So what sort of summary stat should we add to the analysis?
+
 
 ***

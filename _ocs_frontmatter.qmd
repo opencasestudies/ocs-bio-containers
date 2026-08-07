@@ -96,9 +96,11 @@ Prerequisites
 ::::
 ::::{.inner_block}
 
-This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you following along with this case study using a Docker Desktop.
+This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. Note that you can still use command line within Docker Desktop and the application provides additional tools, documentation, and an [AI assistant, Gordon](https://docs.docker.com/ai/gordon/). 
 
-Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Select "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
+However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you follow along with this case study using Docker Desktop.
+
+Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Click the "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
 
 :::{.panel-tabset}
 

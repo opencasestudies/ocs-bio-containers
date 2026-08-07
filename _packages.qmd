@@ -43,8 +43,8 @@ Portion of section           | Description of activity
 
 Portion of section           | Description of activity
 -----------------------------| -----------------------
-**Container Infrastructure** | Using the running container, "wrangling" the **raw data** that was retrieved and explored in previous sections according to what was observed in the Data Exploration section.
-**Container Application**    | Wrangling the **Dockerfile** for **the container image** to add a package that will help with the Data Visualization task.
+**Container Application**    | Using the running container, "wrangling" the **raw data** that was retrieved and explored in previous sections according to what was observed in the Data Exploration section.
+**Container Infrastructure** | Wrangling the **Dockerfile** for **the container image** to add a package that will help with the Data Visualization task.
 
 ## Data<br>Visualization
 
@@ -57,8 +57,8 @@ Portion of section           | Description of activity
 
 Portion of section           | Description of activity
 -----------------------------| -----------------------
-**Container Infrastructure** | Using the running container, adjusting the "analysis" to include a summary statistic about the **wrangled data** and visualization as well as a script that runs the whole process so that the analysis can be more easily validated.
-**Container Application**    | Sharing the **container**, adjusted "analysis", and appropriate documentation with collaborators.
+**Container Application**    | Using the running container, adjusting the "analysis" to include a summary statistic about the **wrangled data** and visualization as well as a script that runs the whole process so that the analysis can be more easily validated.
+**Container Infrastructure** | Sharing the **container**, adjusted "analysis", and appropriate documentation with collaborators.
 
 :::
 

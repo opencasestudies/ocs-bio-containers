@@ -1,7 +1,7 @@
 # **Data Exploration**
 ***
 
-## Container
+## Container Infrastructure
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
@@ -22,7 +22,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
 
-We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what's in the Dockerfile.
+Side quest: We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what could be in the Dockerfile. In this case the directory structure is controlled by the mounted volume analysis scripts, but a Dockerfile could also specify directory structure.
+
+Side quest: what if you wanted to spin up an IDE with your container?
 
 ::: {.panel-tabset}
 
@@ -42,7 +44,7 @@ Include instructions on how to create / interact with files within the running c
 
 Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best practices (though it may not always be possible to mount files depending on security settings on a system)
 
-## Application to data
+## Container Application
 
 Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
 
@@ -65,3 +67,5 @@ Therefore, when we wrangle the data we will need to
   * reunite the multiline cohort descriptions into a single line
   * drop rows where the overflow cohort descriptions but no other data are
   * drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)
+
+include click to expand section describing how to interact with the data in an rstudio / positron IDE if they have it and see these things

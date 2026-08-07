@@ -1,6 +1,23 @@
 # **Data Analysis**
 ***
 
+## Container Application
+
+
+
+
+::: {.panel-tabset}
+
+### Docker Desktop
+
+Ask learners to try to run the analysis, editing the run all script to include the summary stat we've discussed
+
+### Docker through a CLI
+
+Ask learners to try to run the analysis, editing the run all script to include the summary stat we've discussed
+
+:::
+
 :::{.think_question}
 ::::{.think_question_header}
 Question opportunity
@@ -37,19 +54,23 @@ Having a "run all" script that specifies what scripts were used and in what orde
 ::::
 :::
 
-## Container
+## Container Infrastructure
 
 ::: {.panel-tabset}
 
 ### Docker Desktop
 
+Sharing the container
+
 ### Docker through a CLI
+
+Sharing the container
 
 :::
 
-We'll also discuss how to mount a volume (with data and/or analysis script) and show that the validator can get the same results by having the learner run the `run_analysis.sh` script.
+We'll also discuss how to document where the scripts are, how to mount a volume (with analysis scripts) and point out that the validator can get the same results as the learner did by running the `run_analysis.sh` script.
 
-To make it easier to validate/compare instead of comparing plots (that will be difficult to compare especially since we seem to have to save plots out of the container to view them), we could add a summary stat that can be output in the logs.
+Add a reproducibility box about pushing the new / adjusted scripts and plots as well as the documentation to the scaffold repo that they "used as a template/cloned" if they did the earlier extra reproducibility step.
 
 
 ***

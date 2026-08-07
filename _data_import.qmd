@@ -1,12 +1,19 @@
 # **Data Import**
 ***
 
-## Container
+## Container Infrastructure
+
+### Pulling the container image from Docker Hub
 
 :::{.panel-tabset}
 ### Docker Desktop
 
+Pulling the container instructions
+
 ### Docker through a Command Line Interface (CLI)
+
+Pulling the container instructions
+
 :::
 
 Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
@@ -19,9 +26,7 @@ Side quest: find a container on Docker Hub (and discuss reputable sources)
 
 Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
 
-## Application to data
-
-### Analysis files
+### Downloading version-controlled analysis files
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -47,25 +52,79 @@ Version controlling your analysis scripts is a best practice for reproducible da
 ::::
 :::
 
+
+#### Running the container image
+
 Because a container is isolated, it won't have access to files (data or locations to store outputs) unless you specifically **mount a volume**.
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Running the container instructions (including mounting the volume)
+
+### Docker through a CLI
+
+Running the container instructions (including mounting the volume)
+
+:::
+
+## Container Application
 
 ### Extracting data from a PDF within a running container
 
-#### Running the container
-
 #### Running the analysis
-
-#### Inspecting the output
 
 Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
 
+Update this to grab the script and show it with the shortcode notation
+
+```{r, eval = FALSE, filename="01_extract_data.R"}
+#!/usr/bin/env Rscript
+
+raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
+                                       pages = 2,
+                                       method = "stream",
+                                       col_names = FALSE
+                                      )[[1]]
+
+message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
+
+save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
+```
+
+Discuss what the above script is actually doing. Note that we're using a URL to read the PDF rather than including the PDF in the mounted volume.
+
 Walk through how to run the container in order to run the analysis and extract the data.
 
-Side quest: what if you wanted to spin up an IDE with your container?
+:::{.panel-tabset}
+### Docker Desktop
+
+Running the analysis instructions
+
+### Docker through a CLI
+
+Running the analysis instructions
+
+:::
+
+#### Inspecting the output
+
+In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  We also save an `rda` and `csv` version of the raw data. Where do we see those? Do we see those? 
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Looking at the outputs (new folders, files, and log messages)
+
+### Docker through a CLI
+
+Looking at the outputs (new folders, files, and log messages)
+
+:::
 
 Activity -- Using the container from the collaborator to get the Table 1 data.
 
-Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we'll use the following instructions for someone to interact with the data analysis data within a running container:
+Give side quest instructions on how to interact with a file system if you can't mount a volume for whatever reason
 
 For Docker Desktop:
 
@@ -83,20 +142,6 @@ For Docker Desktop:
 * notice that it outputs "Dimensions: 25 x 7"
 * notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
 
-```{r, eval = FALSE, filename="01_extract_data.R"}
-#!/usr/bin/env Rscript
 
-raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
-                                       pages = 2,
-                                       method = "stream",
-                                       col_names = FALSE
-                                      )[[1]]
-
-message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
-```
-
-```{r, eval = FALSE}
-save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
-```
 
 ***
