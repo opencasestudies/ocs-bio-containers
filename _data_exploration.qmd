@@ -1,41 +1,15 @@
 # **Data Exploration**
 ***
 
-## Container
+## Container Infrastructure
 
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/starting/Dockerfile >}}
 ```
-FROM rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current
-ENV PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}
-
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
-    openjdk-11-jdk \
-    wget \
-    libpng-dev \
-    libicu-dev \
-    libpcre2-dev \
-    libdeflate-dev \
-    libzstd-dev \
-    liblzma-dev \
-    libbz2-dev \
-    zlib1g-dev \
- && arch="$(dpkg --print-architecture)" \
- && ln -sfn "/usr/lib/jvm/java-11-openjdk-${arch}" "${JAVA_HOME}" \
- && printf 'JAVA_HOME=%s\n' "${JAVA_HOME}" >> /usr/local/lib/R/etc/Renviron.site \
- && R CMD javareconf \
- && rm -rf /var/lib/apt/lists/*
-
-RUN install2.r --error --deps TRUE \
-    rJava \
-    tabulapdf \
-    here
-
-```
+Going forward we'll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
@@ -48,14 +22,50 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
 
-We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what's in the Dockerfile.
+Side quest: We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what could be in the Dockerfile. In this case the directory structure is controlled by the mounted volume analysis scripts, but a Dockerfile could also specify directory structure.
 
-Side quest: Discuss mounting data/scripts in this section (as an alternative to editing the files in the file tab) and say that we'll be doing that later on in the Data Analysis section (though this isn't always possible depending on security settings on a system)
+Side quest: what if you wanted to spin up an IDE with your container?
 
-## Revisions task
+::: {.panel-tabset}
 
-Explore what the extracted table looks like and what sort of wrangling we might need to do in order to visualize the data -- we'll show them what the data looks like, but not have them do this
+### Docker Desktop
 
-* Note that the raw table data as extracted by `tabulapdf` has a 4th column that is all NA's where the data from that column are appended to the end of the 3rd column
-* Note that there are more rows than we expect and this is because the "multiline" data in the third column is split as separate rows (where all the rest of the columns have NA)
-* Note that all columns need a name/renamed
+Include instructions on viewing the file structure within the running container
+
+Include instructions on how to create / interact with files within the running container
+
+### Docker through a CLI
+
+Include instructions on viewing the file structure within the running container from the Command Line
+
+Include instructions on how to create / interact with files within the running container from the Command Line
+
+:::
+
+Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best practices (though it may not always be possible to mount files depending on security settings on a system)
+
+## Container Application
+
+Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
+
+```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
+ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
+```
+
+We would have expected the cohort descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that `X3` contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (`X4`) has all `NAs`. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have `NAs` in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.
+
+```{r raw_table_x3, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The X3 column contains both the cohort descriptions which are sometimes multi-row as well as the number of paired samples data which is appended to the end of the cohort description. Cohort descriptions are boxed in purple to show some examples and number of paired samples are circled in teal."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_212#slide=id.g3f96ddc37a7_0_212")
+```
+
+Notice also that none of the columns have descriptive names.
+
+Therefore, when we wrangle the data we will need to
+
+  * rename the columns
+  * separate out the number of paired samples from the cohort descriptions
+  * reunite the multiline cohort descriptions into a single line
+  * drop rows where the overflow cohort descriptions but no other data are
+  * drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)
+
+include click to expand section describing how to interact with the data in an rstudio / positron IDE if they have it and see these things

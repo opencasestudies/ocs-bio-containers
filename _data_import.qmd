@@ -1,7 +1,20 @@
 # **Data Import**
 ***
 
-## Container
+## Container Infrastructure
+
+### Pulling the container image from Docker Hub
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Pulling the container instructions
+
+### Docker through a Command Line Interface (CLI)
+
+Pulling the container instructions
+
+:::
 
 Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
 
@@ -13,35 +26,59 @@ Side quest: find a container on Docker Hub (and discuss reputable sources)
 
 Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
 
-## Revisions task
+### Downloading version-controlled analysis files
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
+
+A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+
+```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
+```
+::::
+:::
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+Version controlling your analysis scripts is a best practice for reproducible data analyses.
+::::
+:::
+
+
+#### Running the container image
+
+Because a container is isolated, it won't have access to files (data or locations to store outputs) unless you specifically **mount a volume**.
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Running the container instructions (including mounting the volume)
+
+### Docker through a CLI
+
+Running the container instructions (including mounting the volume)
+
+:::
+
+## Container Application
+
+### Extracting data from a PDF within a running container
+
+#### Running the analysis
 
 Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
 
-Walk through how to run the container in order to run the analysis and extract the data.
+Update this to grab the script and show it with the shortcode notation
 
-Side quest: what if you wanted to spin up an IDE with your container?
-
-Activity -- Using the container from the collaborator to get the Table 1 data.
-
-Because we want to avoid mounting data and scripts for most of this case study (and leave that as part of the Data Analysis section or a side quest), we'll use the following instructions for someone to interact with the data analysis data within a running container:
-
-For Docker Desktop:
-
-* run the container
-* navigate to the exec tab
-* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
-  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
-* `touch` an `preprocessing.R` script in `opt/case_study_analysis`
-* navigate to the files tab
-* right click on the `preprocessing.R` script and click edit
-* copy paste the following code into the script
-* click save
-* navigate to the exec tab
-* use `Rscript preprocessing.R` -- adjusting based on script location and learner's file location.
-* notice that it outputs "Dimensions: 25 x 7"
-* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
-
-```{r, eval = FALSE}
+```{r, eval = FALSE, filename="01_extract_data.R"}
 #!/usr/bin/env Rscript
 
 raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
@@ -51,10 +88,60 @@ raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-0
                                       )[[1]]
 
 message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
-```
 
-```{r, eval = FALSE}
 save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
 ```
+
+Discuss what the above script is actually doing. Note that we're using a URL to read the PDF rather than including the PDF in the mounted volume.
+
+Walk through how to run the container in order to run the analysis and extract the data.
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Running the analysis instructions
+
+### Docker through a CLI
+
+Running the analysis instructions
+
+:::
+
+#### Inspecting the output
+
+In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  We also save an `rda` and `csv` version of the raw data. Where do we see those? Do we see those? 
+
+:::{.panel-tabset}
+### Docker Desktop
+
+Looking at the outputs (new folders, files, and log messages)
+
+### Docker through a CLI
+
+Looking at the outputs (new folders, files, and log messages)
+
+:::
+
+Activity -- Using the container from the collaborator to get the Table 1 data.
+
+Give side quest instructions on how to interact with a file system if you can't mount a volume for whatever reason
+
+For Docker Desktop:
+
+* run the container
+* navigate to the exec tab
+* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
+  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
+* `touch` an `01_extract_data.R` script in `opt/case_study_analysis`
+* navigate to the files tab
+* right click on the `01_extract_data.R` script and click edit
+* copy paste the following code into the script
+* click save
+* navigate to the exec tab
+* use `Rscript 01_extract_data.R` -- adjusting based on script location and learner's file location.
+* notice that it outputs "Dimensions: 25 x 7"
+* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
+
+
 
 ***

@@ -34,13 +34,37 @@ Perhaps explain how the suggested exercises relate to the common next steps.
 
 ### Beginner
 
+Point out that the scatter plot lends itself to a linear regression because it seems generally that an increase in the number of paired samples leads to an increase in the number of observed compounds.
+
+However, note that the outcome variable (number of annotated compounds observed) is a truncated variable because resources with 0 compounds are likely not going to be included. So performing a truncated linear regression may be more appropriate than a regular linear regression.
+
+Edit the Dockerfile to install this package from github (using Pak): https://github.com/cran/truncreg.
+
+Add a script and call it in the overall process to add a truncated linear regression line to the plots.
+
+Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.
+
 ### Intermediate
+
+Create a Dockerfile from scratch which could be used to perform a similar analysis with Python. 
+
+  * https://pypi.org/project/tabula-py/
+  * pandas
+  * matplotlib
+  * https://github.com/ponnhide/patchworklib
+  * https://github.com/Phlya/adjustText
+  * https://pypi.org/project/pytruncreg/
+
+Add in an AI box to note that AI can often be helpful in refactoring code if they wanted to test out the process.
+
+Alternatively, find an image on Docker Hub that would meet their needs.
+
+Point them to the ITN capstone course if they wanted to develop a Dockerfile for their own research needs.
 
 ### Advanced
 
 Use a container together with GitHub actions to extract the PDF data and make the visualization.
-<!--
-Example from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Suggested_Homework (though this example doesn't include different levels like Beginner, Intermediate, and Advanced)
--->
+
+Again point them to the ITN capstone course if they wanted to develop this for their own research needs.
 
 ***

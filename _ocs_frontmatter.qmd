@@ -96,24 +96,72 @@ Prerequisites
 ::::
 ::::{.inner_block}
 
-* Learners will need to install Docker
-* Learners should install Docker Desktop (optional, but suggested)
+This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. Note that you can still use command line within Docker Desktop and the application provides additional tools, documentation, and an [AI assistant, Gordon](https://docs.docker.com/ai/gordon/). 
 
-For the Advanced homework:
+However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you follow along with this case study using Docker Desktop.
 
-* Learners will need a GitHub account
+Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Click the "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
+
+:::{.panel-tabset}
+
+### Docker Desktop
+
+You will need the following installed:
+
+* Docker Desktop (install [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/))
+* Notepad, Sublime, Visual Studio Code or another **text editor**
+
+### Docker through a CLI
+
+To follow along with this case study, you’ll need the following installed:
+
+* **Docker Engine** () **Need to provide instructions**
+* **Docker CLI** () **Need to provide instructions**
+* Have access to and familiarity with a local command line interface (CLI)
+* Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
+
+:::
+
+--
+
+It will also be helpful to be have the following skills:
+
+* basic R skills (many introductory courses can be found online, including [this one](https://hutchdatascience.org/Intro_to_R/))
+* familiarity with dplyr and ggplot2, or willingness to learn (these [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) and [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf) cheatsheets may be helpful, as well as the original [open case studies](https://www.opencasestudies.org/search.html))
+
+--
+
+For optional, more extensive reproducibility activities, you will need the following:
+
+
+* minimal Git and GitHub knowledge or experience (see [this related case study](https://www.opencasestudies.org/ocs-bio-version-control/) for necessary skills)
+* a **GitHub account** (see [here to signup](https://github.com/signup))
+
+<details><summary>New to GitHub?</summary>
+
+See this related case study for necessary skills to get started with GitHub: [https://www.opencasestudies.org/ocs-bio-version-control](https://www.opencasestudies.org/ocs-bio-version-control)
+
+The following sections specifically will be the most helpful in order to get started with this case study:
+
+* Sign up: [https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-github-account](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-github-account)
+* Installing GitHub Desktop: [https://www.opencasestudies.org/ocs-bio-version-control/#installing-github-desktop](https://www.opencasestudies.org/ocs-bio-version-control/#installing-github-desktop)
+* Alternatively, Installing Git: [https://www.opencasestudies.org/ocs-bio-version-control/#installing-git](https://www.opencasestudies.org/ocs-bio-version-control/#installing-git)
+* Connecting your account: [https://www.opencasestudies.org/ocs-bio-version-control/#connecting-git-to-github](https://www.opencasestudies.org/ocs-bio-version-control/#connecting-git-to-github)
+
+For following along with later steps in this containers case study, you may want to refer to the following sections:
+
+* (Note that this containers case study will have you create a repository from a "Template repository", a topic that the version control case study mentions, but does not specifically walk through.)
+* Creating a local repository clone: [https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository)
+* Project organization and typical files to track: [https://www.opencasestudies.org/ocs-bio-version-control/#project-organization-with-git-and-github](https://www.opencasestudies.org/ocs-bio-version-control/#project-organization-with-git-and-github)
+* Tracking files with GitHub: [https://www.opencasestudies.org/ocs-bio-version-control/#stage-commit-push](https://www.opencasestudies.org/ocs-bio-version-control/#stage-commit-push)
+
+</details>
 
 ::::
 :::
 
+:::{.column-margin}
+Need to create a cheatsheet on installation and verification instructions for Docker
+:::
 
-
-<!--
-UPDATE: SYSTEM, SERVER, or MOCK COMPUTING Information:
-
-In this space, provide any necessary system requirements or instructions on how to access a server (if necessary)
-or submit a mock computing job within the learnr environment in order to receive pre-processed datasets (if necessary).
-In essence this section is useful to provide information to learners on how to work with the data and follow along with this case study.
-This section may not be needed for all case studies and can be removed if not
--->
 

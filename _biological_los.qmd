@@ -1,11 +1,6 @@
 <u>**Biological/Topical Learning Objectives:**</u>
 
-<!--
-Enumerate the topical Biological specific learning objectives here.
-(Can have less or more than 3).
-Previous Open Case Studies do not have an example of this.
--->
-
-1. {FILL IN}
-1. {FILL IN}
-1. {FILL IN}
+1. List the value and potential applications of data collections.
+1. Explain the limitations and cautions associated with using a data collection for your own work.
+1. Relate the utility of pairing of microbiome and metabolome data for biological research.
+1. Build visualizations to communicate the relationship among variables in a table.

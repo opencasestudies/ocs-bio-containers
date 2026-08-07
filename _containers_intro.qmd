@@ -1,0 +1,84 @@
+# **Introduction to Containers**
+
+Before we start to address your project with Collab O. Rator, we will provide an introduction to containerization with Docker. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the microbiome-metabolome data collection project.
+
+## What is a container?
+
+* Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
+* make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
+```
+
+## Why containers?
+
+* Describe why
+* Describe that a container isn't always necessary, but more on this later...
+
+
+### What are general use cases for containers?
+
+* Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
+* Finding: search and find a container that meets your needs (you may have to modify it a bit/add a couple other packages)
+* Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
+
+The last of these scenarios is the context for this case study.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
+```
+
+### When is a container especially useful?
+
+* Especially if you need to move an analysis to another machine or environment like an HPC or the cloud
+
+  --> Discuss Singularity and Apptainer for HPCs in this section <br>
+  --> Include why Docker is not appropriate for HPCs <br>
+  --> Recommendations for the cloud <br>
+
+* If a collaborative team is working on a large analysis within a workflow or in different environments
+* If a collaborative team is having difficulty replicating results within the team
+* If dependencies are causing nightmares
+
+### When might a container be unnecessary?
+
+When is a container overkill? Do you really need a container or will session info work?
+
+## Where can you find and share containers?
+
+... more on this within the data import section but highlight Dockerhub, Github, and someone like a collaborator sending you a container here... re point to the email
+
+## How do you work with a container?
+
+### Options for interacting with the container
+
+How do you work with a container and run an analysis with a container?
+
+* Terminal / Command Line
+  * If you only have a Dockerfile, you need to use this to build the image
+* Docker Desktop
+* An interactive Integrated Development Environment (IDE)
+* In combination with GitHub Actions
+
+Sometimes the process of running a container and interacting with it involves a combination of these options (because the container installs an IDE) that once you've run the container, you then develop an analysis within an IDE.
+
+We'll primarily walk learners through using Docker Desktop though we'll likely use a tab structure to give learners the optional methods to use Terminal / Command Line. We will also provide a side quest about using a container that installs an IDE and suggest an advanced homework for the final option of combining containers with GitHub Actions.
+
+The reason we're primarily walking learners through using Docker Desktop is because
+
+1. It separates out images and containers which will support learners trying to learn the difference
+2. Learners can create files, as well as import and export files within the files tab as opposed to mounting a volume
+3. Learners can also mount a volume which is an option
+4. Learners can easily see how many images and containers they have and while they are learning this can be extremely helpful so they don't tax their systems too much
+5. Docker Desktop has its own documentation that we can point to
+
+### Options for interacting with data within a running container
+
+As for how we're working with data. Our options are to
+
+1. mount a volume (directory) from our system that has data (and possibly scripts) in it.
+2. `cp` files to and from the container
+3. Create an analysis script within the running container and edit it within the container. Use a URL to get the data PDF from within the container and create/keep raw data and intermediates within the container that won't be shared. Finally, creating plots within the container that we'll have to save to our system.
+
+While we will show examples of all of these, our primary interest is to work within the third option as much as possible. When we ran an event at a medical center, the devices were unable to mount data so we'd like to provide options separate from that as much as possible.

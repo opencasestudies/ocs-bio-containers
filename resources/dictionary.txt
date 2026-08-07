@@ -9,12 +9,14 @@ callout
 chatbot
 Chatbots
 cheatsheet
+CLI
 Collab
 css
 custimization
 cwrigh
 Dockerfile
 Dockerhub
+dplyr
 dropdown
 favicon
 findable
@@ -47,6 +49,7 @@ los
 metabolome
 Metabolomics
 microbiome
+nano
 NA's
 Nextflow
 NonCommercial

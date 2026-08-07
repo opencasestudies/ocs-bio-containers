@@ -2,7 +2,7 @@
 title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
 bibliography: resources/references.bib
 include-sections:
-  stat-los: false
+  stat-los: true
   lo-map: true
   data-import: true
   data-exploration: true
@@ -38,6 +38,8 @@ include-sections:
 :::
 
 {{< include _context.qmd >}}
+
+{{< include _containers_intro.qmd >}}
 
 {{< include _data_description.qmd >}}
 
@@ -84,6 +86,8 @@ include-sections:
 {{< include _main_qs_answers_table.qmd >}}
 
 :::
+
+{{< include _containers_troubleshooting.qmd >}}
 
 {{< include _suggested_hw.qmd >}}
 

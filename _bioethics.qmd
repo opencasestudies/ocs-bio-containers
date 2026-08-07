@@ -21,12 +21,12 @@ There are some important ethical considerations when working with containerizati
 
 *Collaborative team considerations:*
 
-1. For projects performed within large, collaborative teams performing transparent science can be even more of a challenge. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider @Petersen_Pavlidis_Semendeferi_2014.
+1. For projects performed within large, collaborative teams performing transparent science can be extra challenging. In addition, properly crediting contributions from team members may be difficult. Large teams may also struggle to utilize resources efficiently. Containerization offers a tool for large teams to combat this efficiency struggle, ensuring that all team members can access the same computing environment in order to reproduce, validate, or extend analyses. For more details about ethical considerations for science performed in large team settings consider @Petersen_Pavlidis_Semendeferi_2014.
 
 *Use of secondary and/or clinical/health data considerations:*
 
 1. Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways [@Cheng_etal_2024].
-2. Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html).
+2. Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html) [@Sterling_2011].
 
 
 ***

@@ -37,6 +37,7 @@ format:
   html:
     code-copy: true
     code-block-bg: true
+    code-line-numbers: true
     grid:
        sidebar-width: 260px
     theme: cosmo
