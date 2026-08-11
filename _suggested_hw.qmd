@@ -34,16 +34,14 @@ Perhaps explain how the suggested exercises relate to the common next steps.
 
 ### Beginner
 
-Point out that the scatter plot lends itself to a linear regression because it seems generally that an increase in the number of paired samples leads to an increase in the number of observed compounds.
-
-However, note that the outcome variable (number of annotated compounds observed) is a truncated variable because resources with 0 compounds are likely not going to be included. So performing a truncated linear regression may be more appropriate than a regular linear regression.
+Point out that the scatter plot loses the description about each dataset. We can add some interactivity with plotly that will allow us to display info like the dataset description when we hover over the points. 
 
 Edit the Dockerfile to install R `plotly` and `htmlwidgets` packages from github (using Pak)
 
 * https://github.com/plotly/plotly.R
 * https://github.com/ramnathv/htmlwidgets
 
-Have them add a script to the `run_analysis.sh` script that runs plotly to create an interactive graph that highlights points.
+Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the `run_analysis.sh` script 
 
 ```{r, eval = FALSE}
 library(plotly)
