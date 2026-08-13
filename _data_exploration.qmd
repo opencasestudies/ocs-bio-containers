@@ -6,7 +6,7 @@
 We'll utilize this section to explore the Dockerfile specifically answering "What's in a container?"
 
 ```{.dockerfile filename="Dockerfile"}
-{{< include resources/dockerfiles/starting/Dockerfile >}}
+{{< include resources/dockerfiles/base/Dockerfile >}}
 ```
 
 Going forward we'll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.
