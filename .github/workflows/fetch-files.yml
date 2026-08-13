@@ -1,0 +1,89 @@
+# Kate Isaac Aug 2026
+
+name: Fetch Files
+env: 
+  SOURCE_ANALYSIS_REPO: opencasestudies/ocs-bio-containers-scaffold
+  SOURCE_DOCKERFILE_REPO: opencasestudies/ocs-docker
+  ANALYSIS_TARGET: resources/analysis_scripts
+  DOCKERFILE_TARGET: resources/dockerfiles
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch-analysis-docker-files:
+    name: Fetch the analysis and Dockerfiles files
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out current repository
+      - name: Checkout Current Repo
+        uses: actions/checkout@v4
+        with:
+          # Check out the actual head branch of the PR, not the merge commit
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+
+      # Step 2: Fetch the target scaffold repository and associated analysis scripts into a specific subfolder
+      - name: Fetch Analysis Files
+        uses: actions/checkout@v4
+        with:
+          repository: "${{ env.SOURCE_ANALYSIS_REPO }}"
+          ref: 'main'
+          path: 'temp_analysis'
+          sparse-checkout: |                             # which files specifically to checkout
+            **/*.R
+            **/*.sh
+          sparse-checkout-cone-mode: false
+
+      # Step 3: Flatten the analysis scripts, removing source paths
+      - name: Flatten analysis script directory structure
+        run: |
+          mkdir -p ${{ env.ANALYSIS_TARGET}}
+          find temp_analysis -type f \( -name "*.R" -o -name "*.sh" \) -exec cp {} ${{ env.ANALYSIS_TARGET }}/ \;
+          rm -rf temp_analysis #remove temp directory
+
+      # Step 4: Fetch the target docker repository and associated Dockerfiles into a specific subfolder
+      - name: Fetch Dockerfiles
+        uses: actions/checkout@v4
+        with:
+          repository: "${{ env.SOURCE_DOCKERFILE_REPO }}"
+          ref: 'main'
+          path: 'temp_docker'
+          sparse-checkout: |
+            ocs-bio-containers/**/Dockerfile
+          sparse-checkout-cone-mode: false
+
+      # Step 5: Flatten the Dockerfiles, removing source paths
+      - name: Flatten Dockerfile directory structure
+        run: |
+          mkdir -p ${{ env.DOCKERFILE_TARGET }}
+          
+          # Find only the immediate subdirectories directly inside the source directory
+          find temp_docker/ocs-bio-containers -maxdepth 1 -mindepth 1 -type d | while read -r dir; do
+            
+            # Check if this subdirectory actually contains a Dockerfile before copying
+            if [ -f "$dir/Dockerfile" ]; then
+              # Copy the entire folder (and the Dockerfile inside it) to your target path
+              cp -r "$dir" "${{ env.DOCKERFILE_TARGET }}/"
+            fi
+            
+          done
+          
+          rm -rf temp_docker #remove temp directory
+
+      # Step 6: Update open PR or create one if manually dispatched
+      - name: Create or Update Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_PAT }}
+          commit-message: 'Automated sync: fetched analysis files'
+          body: 'This PR brings over updated analysis files fetched from the external repository.'
+          branch: ${{ github.event.pull_request.head.ref && format('sync-files-{0}', github.event.pull_request.head.ref) || 'automated-file-sync' }}
+          title: ${{ github.event.pull_request.head.ref && format('Automated Sync for PR {0}', github.event.pull_request.number) || 'Automated External File Sync' }}
+          base: ${{ github.event.pull_request.head.ref || 'main' }}
