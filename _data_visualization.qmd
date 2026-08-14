@@ -71,7 +71,7 @@ We can use `ls plots/` to see that these png files exist. Though we'll have to u
 
 
 ```{.R filename="03b_visualization.R"}
-{{< include resources/analysis_files/03b_visualization.R >}}
+{{< include resources/analysis_scripts/03b_visualization.R >}}
 ```
 
 1. Use the HMDB scatter plot from before, but remove its title

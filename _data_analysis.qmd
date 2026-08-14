@@ -40,10 +40,13 @@ In this section we can discuss that someone else (maybe the person validating th
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
 ```
 
-* Plan to have another image on Docker Hub with the patchwork package
-* Have a `preprocessing.R` script that grabs and wrangles the data
-* Have an `analysis.R` script with all the visualization steps together
-* Have an `run_analysis.sh` script that makes the directories and drives the preprocessing and analysis
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/activity/Dockerfile >}}
+```
+
+```{.bash filename="run_analysis.sh"}
+{{< include resources/analysis_scripts/run_analysis.sh >}}
+```
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
