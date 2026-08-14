@@ -34,13 +34,92 @@ Perhaps explain how the suggested exercises relate to the common next steps.
 
 ### Beginner
 
-Point out that the scatter plot lends itself to a linear regression because it seems generally that an increase in the number of paired samples leads to an increase in the number of observed compounds.
+Point out that the scatter plot loses the description about each dataset. We can add some interactivity with plotly that will allow us to display info like the dataset description when we hover over the points. 
 
-However, note that the outcome variable (number of annotated compounds observed) is a truncated variable because resources with 0 compounds are likely not going to be included. So performing a truncated linear regression may be more appropriate than a regular linear regression.
+Edit the Dockerfile to install R `plotly` and `htmlwidgets` packages from github (using Pak)
 
-Edit the Dockerfile to install this package from github (using Pak): https://github.com/cran/truncreg.
+* https://github.com/plotly/plotly.R
+* https://github.com/ramnathv/htmlwidgets
 
-Add a script and call it in the overall process to add a truncated linear regression line to the plots.
+Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the `run_analysis.sh` script 
+
+```{r, eval = FALSE}
+library(plotly)
+library(htmlwidgets)
+library(here)
+library(tidyverse)
+
+load(here("data", "wrangled", "wrangled_data.rda"))
+table1_extract <- table1_extract %>%
+    mutate(longitudinal = case_when(longitudinal == "Yes" ~ "Longitudinal", 
+                                    longitudinal == "No" ~ "Not longitudinal", 
+                                    TRUE ~ "Unknown"))
+
+hover_text_template <- paste(
+    "<b>Dataset:</b> %{text}<br>",
+    "<b>Description:</b> %{customdata}",
+    "<extra></extra>"
+)
+
+plotly_plot_hmdb <- table1_extract %>%
+    plotly::plot_ly(
+        x = ~num_paired_samples, 
+        y = ~hmdb_annotated_compounds,
+        color = ~longitudinal,
+        text = ~dataset_name,                 # Point label text
+        customdata = ~cohort_description,     # Hover description storage
+        legendgroup = ~longitudinal, 
+        showlegend = FALSE,
+        type = 'scatter', 
+        mode = "markers+text", 
+        textposition = "top center",
+        hovertemplate = hover_text_template   # Set hover text
+    ) %>% 
+    plotly::layout(
+        title = 'Paired sample count vs HMDB annotation coverage', 
+        xaxis = list(title = 'No. samples with paired data'), 
+        yaxis = list(title = 'HMDB Annotated compounds')
+    )
+
+plotly_plot_kegg <- table1_extract %>%
+    plotly::plot_ly(
+        x = ~num_paired_samples, 
+        y = ~kegg_annotated_compounds,
+        color = ~longitudinal,
+        text = ~dataset_name,
+        customdata = ~cohort_description,
+        legendgroup = ~longitudinal, 
+        showlegend = TRUE,
+        type = 'scatter', 
+        mode = "markers+text", 
+        textposition = "top center",
+        hovertemplate = hover_text_template
+    ) %>% 
+    plotly::layout(
+        title = 'Paired sample count vs KEGG annotation coverage', 
+        xaxis = list(title = 'No. samples with paired data'), 
+        yaxis = list(title = 'KEGG Annotated compounds')
+    )
+
+combined_plot <- subplot(style(plotly_plot_hmdb, showlegend = F), 
+        plotly_plot_kegg) %>% 
+    highlight(on = "plotly_hover", 
+              off = "plotly_doubleclick", 
+              persistent = FALSE, 
+              dynamic = FALSE) %>% 
+    layout(title = "Paired sample count vs annotation coverage")
+
+output_dir <- here::here("results", "plots")
+
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
+}
+
+saveWidget(combined_plot, 
+           file = here(output_dir, "interactive_combined_plot.html"), 
+           selfcontained = TRUE)
+```
+
 
 Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.
 
