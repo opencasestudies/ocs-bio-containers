@@ -98,9 +98,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-ce706aef3f93b6d158b493c7f42ffbbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -1894,10 +1894,89 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 <p>Perhaps explain how the suggested exercises relate to the common next steps.</p>
 <section id="beginner" class="level3">
 <h3 class="anchored" data-anchor-id="beginner">Beginner</h3>
-<p>Point out that the scatter plot lends itself to a linear regression because it seems generally that an increase in the number of paired samples leads to an increase in the number of observed compounds.</p>
-<p>However, note that the outcome variable (number of annotated compounds observed) is a truncated variable because resources with 0 compounds are likely not going to be included. So performing a truncated linear regression may be more appropriate than a regular linear regression.</p>
-<p>Edit the Dockerfile to install this package from github (using Pak): https://github.com/cran/truncreg.</p>
-<p>Add a script and call it in the overall process to add a truncated linear regression line to the plots.</p>
+<p>Point out that the scatter plot loses the description about each dataset. We can add some interactivity with plotly that will allow us to display info like the dataset description when we hover over the points.</p>
+<p>Edit the Dockerfile to install R <code>plotly</code> and <code>htmlwidgets</code> packages from github (using Pak)</p>
+<ul>
+<li>https://github.com/plotly/plotly.R</li>
+<li>https://github.com/ramnathv/htmlwidgets</li>
+</ul>
+<p>Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the <code>run_analysis.sh</code> script</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">library</span>(htmlwidgets)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb8-7"><a href="#cb8-7"></a>table1_extract <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">case_when</span>(longitudinal <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="st">"Longitudinal"</span>, </span>
+<span id="cb8-9"><a href="#cb8-9"></a>                                    longitudinal <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="st">"Not longitudinal"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Unknown"</span>))</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>hover_text_template <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="st">"&lt;b&gt;Dataset:&lt;/b&gt; %{text}&lt;br&gt;"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">"&lt;b&gt;Description:&lt;/b&gt; %{customdata}"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>)</span>
+<span id="cb8-17"><a href="#cb8-17"></a></span>
+<span id="cb8-18"><a href="#cb8-18"></a>plotly_plot_hmdb <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb8-20"><a href="#cb8-20"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb8-21"><a href="#cb8-21"></a>        <span class="at">y =</span> <span class="sc">~</span>hmdb_annotated_compounds,</span>
+<span id="cb8-22"><a href="#cb8-22"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb8-23"><a href="#cb8-23"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,                 <span class="co"># Point label text</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,     <span class="co"># Hover description storage</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb8-26"><a href="#cb8-26"></a>        <span class="at">showlegend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-27"><a href="#cb8-27"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb8-28"><a href="#cb8-28"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb8-29"><a href="#cb8-29"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb8-30"><a href="#cb8-30"></a>        <span class="at">hovertemplate =</span> hover_text_template   <span class="co"># Set hover text</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-32"><a href="#cb8-32"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb8-33"><a href="#cb8-33"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs HMDB annotation coverage'</span>, </span>
+<span id="cb8-34"><a href="#cb8-34"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb8-35"><a href="#cb8-35"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'HMDB Annotated compounds'</span>)</span>
+<span id="cb8-36"><a href="#cb8-36"></a>    )</span>
+<span id="cb8-37"><a href="#cb8-37"></a></span>
+<span id="cb8-38"><a href="#cb8-38"></a>plotly_plot_kegg <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb8-39"><a href="#cb8-39"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb8-40"><a href="#cb8-40"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb8-41"><a href="#cb8-41"></a>        <span class="at">y =</span> <span class="sc">~</span>kegg_annotated_compounds,</span>
+<span id="cb8-42"><a href="#cb8-42"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb8-43"><a href="#cb8-43"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,</span>
+<span id="cb8-44"><a href="#cb8-44"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,</span>
+<span id="cb8-45"><a href="#cb8-45"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb8-46"><a href="#cb8-46"></a>        <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-47"><a href="#cb8-47"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb8-48"><a href="#cb8-48"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb8-49"><a href="#cb8-49"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb8-50"><a href="#cb8-50"></a>        <span class="at">hovertemplate =</span> hover_text_template</span>
+<span id="cb8-51"><a href="#cb8-51"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-52"><a href="#cb8-52"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb8-53"><a href="#cb8-53"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs KEGG annotation coverage'</span>, </span>
+<span id="cb8-54"><a href="#cb8-54"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb8-55"><a href="#cb8-55"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'KEGG Annotated compounds'</span>)</span>
+<span id="cb8-56"><a href="#cb8-56"></a>    )</span>
+<span id="cb8-57"><a href="#cb8-57"></a></span>
+<span id="cb8-58"><a href="#cb8-58"></a>combined_plot <span class="ot">&lt;-</span> <span class="fu">subplot</span>(<span class="fu">style</span>(plotly_plot_hmdb, <span class="at">showlegend =</span> F), </span>
+<span id="cb8-59"><a href="#cb8-59"></a>        plotly_plot_kegg) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-60"><a href="#cb8-60"></a>    <span class="fu">highlight</span>(<span class="at">on =</span> <span class="st">"plotly_hover"</span>, </span>
+<span id="cb8-61"><a href="#cb8-61"></a>              <span class="at">off =</span> <span class="st">"plotly_doubleclick"</span>, </span>
+<span id="cb8-62"><a href="#cb8-62"></a>              <span class="at">persistent =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb8-63"><a href="#cb8-63"></a>              <span class="at">dynamic =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-64"><a href="#cb8-64"></a>    <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs annotation coverage"</span>)</span>
+<span id="cb8-65"><a href="#cb8-65"></a></span>
+<span id="cb8-66"><a href="#cb8-66"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb8-67"><a href="#cb8-67"></a></span>
+<span id="cb8-68"><a href="#cb8-68"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb8-69"><a href="#cb8-69"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-70"><a href="#cb8-70"></a>}</span>
+<span id="cb8-71"><a href="#cb8-71"></a></span>
+<span id="cb8-72"><a href="#cb8-72"></a><span class="fu">saveWidget</span>(combined_plot, </span>
+<span id="cb8-73"><a href="#cb8-73"></a>           <span class="at">file =</span> <span class="fu">here</span>(output_dir, <span class="st">"interactive_combined_plot.html"</span>), </span>
+<span id="cb8-74"><a href="#cb8-74"></a>           <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.</p>
 </section>
 <section id="intermediate" class="level3">
@@ -2014,7 +2093,7 @@ Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Ga
 <h2 class="anchored" data-anchor-id="session-info"><strong>Session Info</strong></h2>
 <hr>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
