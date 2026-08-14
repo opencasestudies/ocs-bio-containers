@@ -78,18 +78,8 @@ Using the `tabulapdf` package, we will extract a raw, unwrangled version of Tabl
 
 Update this to grab the script and show it with the shortcode notation
 
-```{r, eval = FALSE, filename="01_extract_data.R"}
-#!/usr/bin/env Rscript
-
-raw_table <- tabulapdf::extract_tables("https://www.nature.com/articles/s41522-022-00345-5.pdf",
-                                       pages = 2,
-                                       method = "stream",
-                                       col_names = FALSE
-                                      )[[1]]
-
-message("Dimensions: ", paste(dim(raw_table), collapse = " x "))
-
-save(raw_table, file = here::here("data", "imported", "raw_table1.rda"))
+```{.R filename="01_extract_data.R"}
+{{< include resources/analysis_scripts/01_extract_data.R >}}
 ```
 
 Discuss what the above script is actually doing. Note that we're using a URL to read the PDF rather than including the PDF in the mounted volume.

@@ -29,53 +29,10 @@ load(here::here("data", "imported", "raw_table1.rda"))
 
 We have a file that is part of the scaffold code that will wrangle the data in the ways we need.
 
-Update this to grab the script and show it with the shortcode notation
-
-```{r, eval = FALSE, filename="02_wrangle.R"}
-library(here)
-library(tidyverse)
-
-#load data
-
-table1_extract <- raw_table %>%
-    rename(c("dataset_name" = "X1",                                              #<1>
-             "ref" = "X2",                                                       #<1>
-             "cohort_description_num_paired_samples" = "X3",                     #<1>
-             "longitudinal" = "X5",                                              #<1>
-             "hmdb_annotated_compounds" = "X6",                                  #<1>
-             "kegg_annotated_compounds" = "X7")) %>%                             #<1>
-    mutate(num_paired_samples =                                                  #<2>
-              as.numeric(                                                        #<2>
-                str_extract(cohort_description_num_paired_samples,               #<2>
-                            "\\d+$"                                              #<2>
-                           )                                                     #<2>
-              ),                                                                 #<2>
-           cohort_description_text =
-              str_remove(cohort_description_num_paired_samples,                  #<3>
-                         "\\d+$"                                                 #<3>
-                        ),                                                       #<3>
-           cohort_description =                                                  #<4>
-            case_when(lead(is.na(dataset_name),                                  #<4>
-                           default = FALSE) ~                                    #<4>
-                      paste0(cohort_description_text,                            #<5>
-                             lead(cohort_description_text)),                     #<5>
-                      .default = cohort_description_text)                        #<6>
-           ) %>%
-    filter(!is.na(dataset_name)) %>%                                             #<7>
-    select(!c(X4,                                                                #<8>
-              cohort_description_num_paired_samples,                             #<8>
-              cohort_description_text))                                          #<8>
-
-cat("Dimensions: ", paste(dim(table1_extract), collapse = " x "), "\n")
-cat("Number of NAs: ", sum(is.na(table1_extract)), "\n")
-cat("Dataset Name (Row 4): ", unlist(table1_extract[4, "dataset_name"]), "\n")
-
-save(table1_extract, file = here::here("data", "wrangled",       
-                                       "wrangled_data.rda"))     
-readr::write_csv(table1_extract,                                 
-                 file = here::here("data","wrangled",            
-                                   "wrangled_data.csv"))         
+```{.R filename="02_wrangle.R"}
+{{< include resources/analysis_files/02_wrangle.R >}}
 ```
+
 
 1. Rename the columns so they are descriptive
 2. Extracting the numbers (which represent the number of paired samples) at the end of the cohort descriptions to put them in their own column
