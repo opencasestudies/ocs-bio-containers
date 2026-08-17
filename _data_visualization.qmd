@@ -53,9 +53,6 @@ In the running container, run the visualization script(s)
 
 Look at the output
 
-:::
-
-
 
 ```{.R filename="03a_visualization.R"}
 {{< include resources/analysis_scripts/03a_visualization.R >}}
