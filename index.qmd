@@ -102,7 +102,7 @@ include-sections:
 
 ### For the container infrastructure and application steps within this case study
 
-::: {.emphasis_block}
+::: {.emphasis_block style="white-space: pre-wrap;"}
 
 ```{r}
 #| echo: false
