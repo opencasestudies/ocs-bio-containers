@@ -102,7 +102,7 @@ include-sections:
 
 ### For the container infrastructure and application steps within this case study
 
-::: {.emphasis_block style="font-family: monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; display: block; line-height: 1;"}
+::: {.emphasis_block style="font-family: monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; display: block; line-height: 0.8;"}
 
 ```{r}
 #| echo: false
