@@ -37,8 +37,8 @@ jobs:
           ref: 'main'
           path: 'temp_analysis'
           sparse-checkout: |                             # which files specifically to checkout
-            **/*.R
-            **/*.sh
+            **/analysis_scripts/*.R
+            **/analysis_scripts/*.sh
           sparse-checkout-cone-mode: false
 
       # Step 3: Flatten the analysis scripts, removing source paths
