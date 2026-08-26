@@ -80,10 +80,10 @@ We need data analysis scripts, so we will need to **mount a volume** when we run
 
 Because the focus of this case study is working on a data analysis within the containerization framework and not on developing the data analysis itself or writing R and bash scripts, the analysis scripts to support this data analysis are provided for you in a [scaffold GitHub repository](https://github.com/opencasestudies/ocs-bio-containers-scaffold). 
 
-You can interact with the scripts within this scaffold GitHub repository in one of two ways. 
+You can interact with the scripts within this scaffold GitHub repository in one of two ways:
 
-Option A: Download the analysis scripts in a `.zip` file<br/>
-Option B: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
+*Option A*: Download the analysis scripts in a `.zip` file<br/>
+*Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
 Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
 
@@ -185,7 +185,7 @@ Running the analysis instructions
 
 #### Inspecting the output
 
-In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  We also save an `rda` and `csv` version of the raw data. Where do we see those? Do we see those? 
+In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  We also save an `rda` and `csv` version of the raw data. Where do we see those? Do we see those?
 
 :::{.panel-tabset}
 ### Docker Desktop
@@ -195,6 +195,22 @@ Looking at the outputs (new folders, files, and log messages)
 ### Docker through a CLI
 
 Looking at the outputs (new folders, files, and log messages)
+
+:::
+
+::: {.emphasis_block}
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_results/logs/data_extraction_logs.txt"
+
+# Fetch lines and print verbatim as Markdown
+file_lines <- readLines(url, warn = FALSE)
+cat(file_lines, sep = "\n")
+```
 
 :::
 

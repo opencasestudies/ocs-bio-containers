@@ -100,6 +100,22 @@ include-sections:
 ## **Session Info**
 ***
 
+### For the container infrastructure and application steps within this case study
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/session_info.txt"
+
+# Fetch lines and print verbatim as Markdown
+file_lines <- readLines(url, warn = FALSE)
+cat(file_lines, sep = "\n")
+```
+
+### For publishing of this case study
+
 ```{r}
 devtools::session_info()
 ```
