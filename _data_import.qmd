@@ -207,9 +207,10 @@ Looking at the outputs (new folders, files, and log messages)
 # Replace with your raw GitHub URL
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_results/logs/data_extraction_logs.txt"
 
-# Fetch lines and print verbatim as Markdown
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
 file_lines <- readLines(url, warn = FALSE)
-cat(file_lines, sep = "\n")
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
 ```
 
 :::

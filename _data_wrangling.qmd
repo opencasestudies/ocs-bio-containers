@@ -165,6 +165,7 @@ Modify the Dockerfile, then build, share, and run an image | All software we use
 </details>
 
 ::::
+:::
 
 Wanting to make sure that we're practicing reproducibility best practices when working with containers, especially in a team environment, we're going to add a package to our container by modifying the Dockerfile, rebuilding the image, and running the container from the new image.
 
@@ -185,6 +186,7 @@ Question opportunity
 No, just because a Dockerfile has the package listed doesn't mean that our running container has that package.
 </details>
 ::::
+:::
 
 ### Planning containerization next steps
 

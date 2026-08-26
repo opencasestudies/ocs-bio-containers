@@ -102,6 +102,8 @@ include-sections:
 
 ### For the container infrastructure and application steps within this case study
 
+::: {.emphasis_block}
+
 ```{r}
 #| echo: false
 #| output: asis
@@ -109,10 +111,13 @@ include-sections:
 # Replace with your raw GitHub URL
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/session_info.txt"
 
-# Fetch lines and print verbatim as Markdown
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
 file_lines <- readLines(url, warn = FALSE)
-cat(file_lines, sep = "\n")
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
 ```
+
+:::
 
 ### For publishing of this case study
 
