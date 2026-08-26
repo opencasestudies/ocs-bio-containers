@@ -132,7 +132,7 @@ On the new window "Create a new repository", fill in a repository name under "Ge
 
 It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green "<> Code" button to clone the repository for a local copy.  Refer to and follow [the instructions from the Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository) if needed. 
 
-[Create a branch](https://www.opencasestudies.org/ocs-bio-version-control/#create-a-new-branch-for-this-analysis) so that any changes you make to scripts can be commited and pushed to your remote repository as a pull request later.
+[Create a branch](https://www.opencasestudies.org/ocs-bio-version-control/#create-a-new-branch-for-this-analysis) so that any changes you make to scripts can be committed and pushed to your remote repository as a pull request later.
 
 :::
 
