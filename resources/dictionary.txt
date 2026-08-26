@@ -3,6 +3,7 @@ ai
 Algavi
 Apptainer
 automations
+bioconductor
 Bioinformatics
 Borenstein
 callout
@@ -38,6 +39,7 @@ hw
 iconpacks
 interoperable
 ITCR
+ITN
 kegg
 KEGG
 KI
@@ -46,6 +48,7 @@ lightblue
 lightbox
 lightgreen
 los
+matplotlib
 metabolome
 Metabolomics
 microbiome
@@ -55,15 +58,19 @@ Nextflow
 NonCommercial
 ocs
 Oshane
+OSS
 OTTR
 ottrproject
+Pak
 PII
+plotly
 png
 pre
 prereq
 quarto
 qmd
 Rator's
+Rator
 rda
 qs
 repo
@@ -72,6 +79,8 @@ resubmission
 Reproducibility
 Rmd
 RStudio
+shortcode
+signup
 subdir
 subparts
 substeps
@@ -85,4 +94,5 @@ validator
 VSCode
 WDL
 www
+yourinitials
 Zotero

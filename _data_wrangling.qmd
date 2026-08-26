@@ -137,13 +137,56 @@ Could potentially have learners run the data visualization script that produces 
 
 ## Container Infrastructure
 
-As you can see from the visualization planning above, these two plots would be completely separate -- and we'd like them to be visible next to each other. A useful R package for this purpose is `patchwork`. However, our data visualization Docker image doesn't include that package.
+As you can see from the visualization planning above, these two plots would be completely separate -- and we'd like them to be visible next to each other. A useful R package for this purpose is `patchwork`. However, our data visualization Docker container doesn't include that package.
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**How can we add a package to a container?**
+
+<details><summary>Answer</summary>
+
+There are multiple ways to add a package to a container.
+
+If the container is running, we could install the package, and it will be usable/available, while we are using the running container (or if we pause and later restart that container). However, that package won't be available to someone else who is using the same image that we used. 
+
+Another way to add a package to a container is to go back to the beginning definition of or recipe for that container (a Dockerfile), modify it, and then rebuild an image, and run the rebuilt image so that a new container has the additional package. 
+
+
+Approach      | Pro  | Con
+:-----------  | :---:|:---:
+Install package in running container | Fast and we can continue our work quickly | Package not available to others using the same image we did
+Modify the Dockerfile, then build, share, and run an image | All software we used is defined and available to others  | Longer containerization process before we can continue our work 
+
+
+</details>
+
+::::
+:::
+
+Wanting to make sure that we're practicing reproducibility best practices when working with containers, especially in a team environment, we're going to add a package to our container by modifying the Dockerfile, rebuilding the image, and running the container from the new image.
 
 ### Adding a package
 
-Activity: Add `patchwork` to the container
+Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-* edit the Dockerfile (in your favorite text editor)
+With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), modify the Dockerfile to also install the `patchwork` package.
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+**Is modifying the Dockerfile the only necessary step to add `patchwork` to the container?**
+
+<details><summary>Answer</summary>
+No, just because a Dockerfile has the package listed doesn't mean that our running container has that package.
+</details>
+::::
+:::
 
 ### Planning containerization next steps
 
@@ -152,17 +195,22 @@ Activity: Add `patchwork` to the container
 Question opportunity
 ::::
 ::::{.inner_block}
-**How does this package become useable for us?**:
+**How does this package become usable for us?**:
 
-Rephrase this question, but basically ask the learners to consider info from the Introduction to Containers and containerization process and plan what will need to be done so that this package is available to use by the analysis scripts within a running container
+Given what you know about the containerization process, what steps need to be done so that the `patchwork` package is available to use with the analysis scripts?
 
 <details><summary>Answer</summary>
 
-build the Dockerfile to be an image (will need to do this on terminal) 
+1. Build the modified Dockerfile to be an image (will need to do this using a command line interface)
+2. Run the image to create a container (CLI or Docker Desktop), mounting the directory or volume that has the analysis scripts within the run command.
+3. That running container now has `patchwork` available for use.
+
+You could push the image after building it (in order to share it), but don't need to do that in order to use the package within a running container. Definitely share it eventually so others in your team have access to all of the same software you used!
 
 </details>
 ::::
 :::
 
+We will perform these next steps of the containerization process in the Data Visualization section.
 
 ***

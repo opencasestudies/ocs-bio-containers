@@ -22,13 +22,13 @@ KI note: We'll need to add instructions to this about mounting or importing data
 
 ### Docker Desktop
 
-Build the modified dockerfile --> Image
+Build the modified Dockerfile --> Image
 
 Run the Image (while mounting the volume) -- > Container
 
 ### Docker through a CLI
 
-Build the modified dockerfile --> Image
+Build the modified Dockerfile --> Image
 
 Run the Image (while mounting the volume) -- > Container
 
@@ -52,9 +52,6 @@ Look at the output
 In the running container, run the visualization script(s)
 
 Look at the output
-
-:::
-
 
 
 ```{.R filename="03a_visualization.R"}
