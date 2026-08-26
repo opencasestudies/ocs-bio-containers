@@ -46,7 +46,7 @@ At the top of the Docker Desktop GUI window, in the search bar, type the name (o
 * Verify that the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
 * Click the "pull" button.
 
-#### Docker through a Command Line Interface (CLI)
+#### Docker through a CLI
 
 In your command line interface, use the following command to pull the docker image from Docker Hub.
 
@@ -61,7 +61,7 @@ Note that the command line interface will display progress messages for each lay
 
 <details><summary>Finding containers in a registry (e.g., Docker Hub)</summary>
 
-You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registery like Docker Hub. Docker Hub isn't the only container registry. ]This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
+You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registery like Docker Hub. Docker Hub isn't the only container registry. [This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
 
 Not all containers in a registry can or should be trusted. Look for containers from verified or trusted sources. These often have some sort of a badge (e.g., "Verified Publisher" or "Docker Official Image" on Docker Hub). `tidyverse` images from `rocker` (a base image we use throughout this case study) is from a ["Sponsored OSS" -- an open source project sponsored / recognized by Docker](https://docs.docker.com/docker-hub/repos/manage/trusted-content/dsos-program/). Other containers may be mentioned in a published paper or be from an organization / lab that you collaborate with. Not all trusted sources will have a badge. Look at the organization about page to see the company name and if a reputable website is linked (for example: [bioconductor organization](https://hub.docker.com/u/bioconductor)). 
 
@@ -82,10 +82,10 @@ Because the focus of this case study is working on a data analysis within the co
 
 You can interact with the scripts within this scaffold GitHub repository in one of two ways. 
 
-A. Download the analysis scripts in a `.zip` file
-B. Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
+Option A: Download the analysis scripts in a `.zip` file<br/>
+Option B: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
-With this second option, you can practice version-controlling an analysis (an additional reproducibility best practice).
+Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -106,13 +106,13 @@ This scaffold directory doesn't match the suggested project directory structure 
 
 :::{.panel-tabset}
 
-##### Option A: Download analysis scripts in a .zip file
+##### Option A: Download a .zip file
 
 Use this link to [download the analysis scripts](https://githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/ocs-bio-containers-scaffold-main.zip)
 
-You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac),[Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
+You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac), [Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
 
-##### Option B: Use a template GitHub repository and clone the new repository locally
+##### Option B: Use GitHub
 
 This options allows you to practice version-controlling an analysis. 
 
