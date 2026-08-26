@@ -68,4 +68,4 @@ Therefore, when we wrangle the data we will need to
   * drop rows where the overflow cohort descriptions but no other data are
   * drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)
 
-include click to expand section describing how to interact with the data in an rstudio / positron IDE if they have it and see these things
+include click to expand section describing how to interact with the data in an Rstudio / positron IDE if they have it and see these things

@@ -34,7 +34,7 @@ open -a Docker
 
 ### Step 2: Pulling the container image from Docker Hub
 
-Recall that a container image is the main way that containers are shared and these are often stored in registeries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
+Recall that a container image is the main way that containers are shared and these are often stored in registries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
 
 :::{.panel-tabset}
 #### Docker Desktop
@@ -61,7 +61,7 @@ Note that the command line interface will display progress messages for each lay
 
 <details><summary>Finding containers in a registry (e.g., Docker Hub)</summary>
 
-You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registery like Docker Hub. Docker Hub isn't the only container registry. [This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
+You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registry like Docker Hub. Docker Hub isn't the only container registry. [This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
 
 Not all containers in a registry can or should be trusted. Look for containers from verified or trusted sources. These often have some sort of a badge (e.g., "Verified Publisher" or "Docker Official Image" on Docker Hub). `tidyverse` images from `rocker` (a base image we use throughout this case study) is from a ["Sponsored OSS" -- an open source project sponsored / recognized by Docker](https://docs.docker.com/docker-hub/repos/manage/trusted-content/dsos-program/). Other containers may be mentioned in a published paper or be from an organization / lab that you collaborate with. Not all trusted sources will have a badge. Look at the organization about page to see the company name and if a reputable website is linked (for example: [bioconductor organization](https://hub.docker.com/u/bioconductor)). 
 
@@ -114,7 +114,7 @@ You will want to "unzip", "extract", or "decompress" this file ([Mac instruction
 
 ##### Option B: Use GitHub
 
-This options allows you to practice version-controlling an analysis. 
+This options allows you to practice more reproducibility best practices, specifically version-controlling an analysis.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -125,19 +125,23 @@ Version controlling your analysis scripts is a best practice for reproducible da
 ::::
 :::
 
-Navigate to the scaffold GitHub repository on your web browser: [https://github.com/opencasestudies/ocs-bio-containers-scaffold](https://github.com/opencasestudies/ocs-bio-containers-scaffold). Click the green "Use this template" button in the top right, and seelct "Create a new repository" option from the dropdown menu. 
+Navigate to the scaffold GitHub repository on your web browser: [https://github.com/opencasestudies/ocs-bio-containers-scaffold](https://github.com/opencasestudies/ocs-bio-containers-scaffold). Click the green "Use this template" button in the top right, and select "Create a new repository" option from the dropdown menu. 
 
 On the new window "Create a new repository", fill in a repository name under "General" (possibly something like "containers-case-study-yourinitials"). Because this is using a template to create a new repository, this screen doesn't have as many options as you might see if you are [creating a new repository from scratch on GitHub](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-new-github-repository). Click the green "Create repository" button on the bottom right.
 
 
 It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green "<> Code" button to clone the repository for a local copy.  Refer to and follow [the instructions from the Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository) if needed. 
 
+[Create a branch](https://www.opencasestudies.org/ocs-bio-version-control/#create-a-new-branch-for-this-analysis) so that any changes you make to scripts can be commited and pushed to your remote repository as a pull request later.
+
 :::
 
 
 #### Step 3b: Running the container image
 
-Because a container is isolated, it won't have access to files (data or locations to store outputs) unless you specifically **mount a volume**.
+Because a container is isolated, it won't have access to files (scripts, data, or locations to store outputs) unless you specifically **mount a volume**. Therefore, we will want to point the container to the files that we've just downloaded in Step 3a when we run the image. This gives the container access to the project directory (and our scripts). 
+
+If we don't mount the volume when we run the image, we won't have access to those files in the running container (and can't grant access to them within a running or paused container) and would have to create directories and scripts within the running container. Then we wouldn't be able to track revisions to scripts or easily view / save outputs.
 
 :::{.panel-tabset}
 ##### Docker Desktop
