@@ -102,7 +102,7 @@ include-sections:
 
 ### For the container infrastructure and application steps within this case study
 
-::: {.emphasis_block style="white-space: pre-wrap;"}
+::: {.emphasis_block"}
 
 ```{r}
 #| echo: false
@@ -113,6 +113,8 @@ url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-ana
 
 # Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
 file_lines <- readLines(url, warn = FALSE)
+# Replace every standard space with a non-breaking space HTML entity
+file_lines <- gsub(" ", "&nbsp;", file_lines)
 formatted_lines <- paste0(file_lines, "  ")
 cat(formatted_lines, sep = "\n")
 ```
