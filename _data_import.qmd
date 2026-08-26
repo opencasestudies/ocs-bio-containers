@@ -3,30 +3,89 @@
 
 ## Container Infrastructure
 
-### Pulling the container image from Docker Hub
+In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the container that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the `tabulapdf` package and any of its dependencies that we don't have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.
 
-:::{.panel-tabset}
-### Docker Desktop
+### Step 1: Starting docker
 
-Pulling the container instructions
+To pull the docker image, docker must first be running. 
 
-### Docker through a Command Line Interface (CLI)
+:::{.emphasis_block}
 
-Pulling the container instructions
+If you try to use a docker command like `docker pull` without first starting docker, you'll see an error message about "failure to connect" and recommending you check if the "daemon" is running. Docker Desktop can be resource intensive, so it's common to close Docker Desktop or stop docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure docker is running. 
 
 :::
 
-Activity: access the container the collaborator shared with you (because this is how you'll be able to get the data extracted from the PDF import).
+:::{.panel-tabset}
+#### Docker Desktop
 
-* pull the container from Docker Hub
+Open the Docker Desktop app.
 
-The other option is that we can build a Dockerfile but since we'll do that in a later activity, we'd rather show pulling from Docker Hub in this example.
+#### Docker through a Command Line Interface (CLI)
 
-Side quest: find a container on Docker Hub (and discuss reputable sources)
+Open your command line interface (e.g., Terminal on a Mac).
 
-Note that although we can see the container (specifically an image at this step)-- this doesn't give us access to the data analysis data yet. For that we must run the container.
+In your command line interface, use the following command to start docker.
 
-### Downloading version-controlled analysis files
+```{.bash}
+open -a Docker
+```
+
+:::
+
+### Step 2: Pulling the container image from Docker Hub
+
+Recall that a container image is the main way that containers are shared and these are often stored in registeries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
+
+:::{.panel-tabset}
+#### Docker Desktop
+
+At the top of the Docker Desktop GUI window, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
+
+* Type `ocs-bio-` and several images from the `bioocs` organization will be listed. 
+* Find `bioocs/ocs-bio-containers-base` in the list. 
+* Verify that the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
+* Click the "pull" button.
+
+#### Docker through a Command Line Interface (CLI)
+
+In your command line interface, use the following command to pull the docker image from Docker Hub.
+
+```{.bash}
+docker pull bioocs/ocs-bio-containers-base:main
+```
+
+Note that the command line interface will display progress messages for each layer of the image followed by confirmation or a status update that the image was successfully pulled.
+
+:::
+
+
+<details><summary>Finding containers in a registry (e.g., Docker Hub)</summary>
+
+You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registery like Docker Hub. Docker Hub isn't the only container registry. ]This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
+
+Not all containers in a registry can or should be trusted. Look for containers from verified or trusted sources. These often have some sort of a badge (e.g., "Verified Publisher" or "Docker Official Image" on Docker Hub). `tidyverse` images from `rocker` (a base image we use throughout this case study) is from a ["Sponsored OSS" -- an open source project sponsored / recognized by Docker](https://docs.docker.com/docker-hub/repos/manage/trusted-content/dsos-program/). Other containers may be mentioned in a published paper or be from an organization / lab that you collaborate with. Not all trusted sources will have a badge. Look at the organization about page to see the company name and if a reputable website is linked (for example: [bioconductor organization](https://hub.docker.com/u/bioconductor)). 
+
+</details>
+
+### Step 3: Running the image
+
+Now that we've pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn't give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container. 
+
+If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
+
+We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
+
+
+#### Step 3a: Downloading version-controlled analysis files
+
+Because the focus of this case study is working on a data analysis within the containerization framework and not on developing the data analysis itself or writing R and bash scripts, the analysis scripts to support this data analysis are provided for you in a [scaffold GitHub repository](https://github.com/opencasestudies/ocs-bio-containers-scaffold). 
+
+You can interact with the scripts within this scaffold GitHub repository in one of two ways. 
+
+A. Download the analysis scripts in a `.zip` file
+B. Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
+
+With this second option, you can practice version-controlling an analysis (an additional reproducibility best practice).
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -43,6 +102,20 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ::::
 :::
 
+This scaffold directory doesn't match the suggested project directory structure from above at first appearance. It only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs if the directories don't already exist.
+
+:::{.panel-tabset}
+
+##### Option A: Download analysis scripts in a .zip file
+
+Use this link to [download the analysis scripts](https://githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/ocs-bio-containers-scaffold-main.zip)
+
+You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac),[Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
+
+##### Option B: Use a template GitHub repository and clone the new repository locally
+
+This options allows you to practice version-controlling an analysis. 
+
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
 Reproducibility considerations
@@ -52,17 +125,26 @@ Version controlling your analysis scripts is a best practice for reproducible da
 ::::
 :::
 
+Navigate to the scaffold GitHub repository on your web browser: [https://github.com/opencasestudies/ocs-bio-containers-scaffold](https://github.com/opencasestudies/ocs-bio-containers-scaffold). Click the green "Use this template" button in the top right, and seelct "Create a new repository" option from the dropdown menu. 
 
-#### Running the container image
+On the new window "Create a new repository", fill in a repository name under "General" (possibly something like "containers-case-study-yourinitials"). Because this is using a template to create a new repository, this screen doesn't have as many options as you might see if you are [creating a new repository from scratch on GitHub](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-new-github-repository). Click the green "Create repository" button on the bottom right.
+
+
+It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green "<> Code" button to clone the repository for a local copy.  Refer to and follow [the instructions from the Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository) if needed. 
+
+:::
+
+
+#### Step 3b: Running the container image
 
 Because a container is isolated, it won't have access to files (data or locations to store outputs) unless you specifically **mount a volume**.
 
 :::{.panel-tabset}
-### Docker Desktop
+##### Docker Desktop
 
 Running the container instructions (including mounting the volume)
 
-### Docker through a CLI
+##### Docker through a CLI
 
 Running the container instructions (including mounting the volume)
 
