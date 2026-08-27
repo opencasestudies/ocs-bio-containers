@@ -46,7 +46,22 @@ Side quest: Discuss how mounting data/scripts allows for version controlled file
 
 ## Container Application
 
-Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
+Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
+
+::: {.emphasis_block}
+
+```{r}
+#| echo: false
+
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv"
+
+raw_table <- read_csv(url, warn = FALSE)
+raw_table %>% print(n=25)
+```
+
+:::
+
+Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
 
 ```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
 ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
@@ -58,14 +73,17 @@ We would have expected the cohort descriptions to be in that third column and th
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_212#slide=id.g3f96ddc37a7_0_212")
 ```
 
-Notice also that none of the columns have descriptive names.
+Notice also that none of the columns have descriptive names. Instead, the column names are `X1`, `X2`, ... , `X7`.
 
-Therefore, when we wrangle the data we will need to
+Therefore, when we wrangle the data we will need to:
 
-  * rename the columns
-  * separate out the number of paired samples from the cohort descriptions
-  * reunite the multiline cohort descriptions into a single line
-  * drop rows where the overflow cohort descriptions but no other data are
-  * drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)
+  1. Rename the columns, giving them descriptive variable names.
+  2. Separate out the number of paired samples from the cohort descriptions, storing the two sets of data in different columns.
+  3. Reunite the multiline cohort descriptions into a single line.
+  4. Drop rows where the overflow cohort descriptions are but otherwise the rows have no other relevant data.
+  5. Drop unnecessary columns.
+    * The fourth/empty column 
+    * The column containing a mixture of cohort descriptions and the number of paired samples 
+    * Any unnecessary/intermediate columns we make while performing the previous wrangling steps
 
 include click to expand section describing how to interact with the data in an RStudio / positron IDE if they have it and see these things

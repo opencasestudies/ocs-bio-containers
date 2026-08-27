@@ -109,7 +109,7 @@ include-sections:
 #| output: asis
 
 # Replace with your raw GitHub URL
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/session_info.txt"
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/full_analysis_results/logs/session_info.txt"
 
 # Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
 file_lines <- readLines(url, warn = FALSE)

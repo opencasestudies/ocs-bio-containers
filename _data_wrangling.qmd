@@ -73,10 +73,37 @@ Certain lines have certain information about the data -- what are they reporting
 
 <details><summary>Answer</summary>
 
-If we were to inspect the `table1_extract` Data Frame, we would observe that the data now appears to match our expectations. There are 14 rows and 7 columns, though those columns don't follow the original order of Table 1 in @Muller_Algavi_Borenstein_2022. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data.
+If we were to inspect the `table1_extract` Data Frame, we would observe that the data now appears to match our expectations. 
+
+```{r}
+#| echo: false
+
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/wrangle_data/wrangled/wrangled_data.csv"
+
+table1_extract <- read_csv(url, warn = FALSE)
+table1_extract %>% print(n=14)
+
+```
+
+There appear to be 14 rows and 7 columns, though those columns don't follow the original order of Table 1 in @Muller_Algavi_Borenstein_2022. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data. Spot checking a specific value will help us to verify this.
 
 ```{r wrangled_data, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'The wrangled data appears to match our expectations.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_0#slide=id.g3f5db0d7ede_0_0")
+```
+
+The log messages report the following:
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/wrangle_results/logs/wrangling_logs.txt"
+
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
+file_lines <- readLines(url, warn = FALSE)
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
 ```
 
 The dimensions properly report a decrease in the number of rows compared to the raw extracted data (14 instead of 25), matching our expectation for both the number of rows and the number of columns given the source data. The dataset name in the fourth row is `HE_INFANTS_MFGM_2019`, again matching our expectations when comparing to the source data.
