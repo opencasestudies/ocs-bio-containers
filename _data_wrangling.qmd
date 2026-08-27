@@ -80,7 +80,7 @@ If we were to inspect the `table1_extract` Data Frame, we would observe that the
 
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/wrangle_data/wrangled/wrangled_data.csv"
 
-table1_extract <- readr::read_csv(url, warn = FALSE)
+table1_extract <- readr::read_csv(url)
 table1_extract %>% print(n=14)
 
 ```

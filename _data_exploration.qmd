@@ -55,7 +55,7 @@ Using the `tabulapdf` package to extract the data table from the research study 
 
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv"
 
-raw_table <- readr::read_csv(url, warn = FALSE)
+raw_table <- readr::read_csv(url)
 raw_table %>% print(n=25)
 ```
 
