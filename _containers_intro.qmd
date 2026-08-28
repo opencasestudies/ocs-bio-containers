@@ -11,6 +11,28 @@ Before we start to address your project with Collab O. Rator, we will provide an
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
 ```
 
+The containerization process can be thought of like working in a kitchen for dinner service or holiday meal. 
+
+In the kitchen you have a recipe or a set of recipes each listing the necessary ingredients to stock as well as how much of each ingredient is needed and if there's any special preparation or considerations for an ingredient (e.g., chopping or peeling). Recipes also provide detailed instructions for the environment (desired pans, cooking temperature, time). Additionally, a kitchen has specific locations for specific tools, pans, and utensils -- perhaps there's a map or binder specifying where things are located and how they are to be cleaned and stored. All of these together specify how the kitchen should be provisioned.
+
+The Dockerfile is like a recipe and kitchen binder specifying what dependencies, packages, and environmental variables (ingredients) are needed, in what order, and what the environment needs to look like. While a Dockerfile contains a layered, step-by-step definition of the computing environment, it doesn't contain a step-by-step definition of how a specific analysis will utilize the computing environment. 
+
+Working in a kitchen, often the area and ingredients may be prepped before any combining, cooking, or baking actually happens. Pans, utensils, and tools are all cleaned and stored in specific, known locations. Ingredients that need peeled, chopped, or some other special preparation are prepared in those ways. This preparation allows for a more efficient or easier combination of ingredients within the cooking process. Everything is prepared (according to kitchen station expectations and the instructions for ingredients in the recipe), just sitting at the ready, but not actively being used. This is termed "mise en place".
+
+The "build" process (Dockerfile --> image) is the preparation of the environment and ingredients: the cleaning, stocking, chopping, dicing, peeling, measuring, etc. which leads to the docker image where everything is in a static, read-only, prepared state. The docker image is like "mise en place".
+
+The step-by-step instructions for specific dishes, and their utiliziation of specific ingredients may be needed as well (analysis scripts). Perhaps unusual ingredients (data) for special dishes are needed. These are not part of the building process, but instead are brought into the container once everything else is ready. The recipes, kitchen station and prep guidelines (Dockerfile), and prepared environment, and ingredients (image) provide a static and standardized setup -- one that can be used by any set of cooks or chefs. The mounted volume within a running container brings in the flexibility to use the static and standardized setup for your specific needs in your specific way.
+
+Once the kitchen is ready, they fire up a stovetop, heat an oven, or combine ingredients that will work together in a bowl. With the addition of heat or mixing of ingredients, the cooking process itself begins. Everything that was defined in the recipe or kitchen station instructions is at the kitchen's disposal. It's too late to go get different ingredients or supplies.
+
+The "run" process (image --> container) is like supplying the heat -- creating the environment where the cooking and combining of ingredients can happen -- the container. In the running container or environment, each of the ingredients (packages) are at your disposal, ready to use. Your analysis scripts and specific data will be incorporated here by mounting a volume during the "run" process. 
+
+Within the running container, you use the packages together with any data or analysis scripts to perform an analysis or provision a tool. Everything defined in the Dockerfile is at your disposal to use in the running container. And the running container is isolated from the rest of your computer -- so only what is defined in the Dockerfile is available unless you've mounted a volume to bring in specific data and scripts.
+
+The eventual meals produced by the kitchen are like the finished product: a tool, analysis, result, etc. that can be shared. And finally, as with any kitchen endeavour -- there has to be a clean up. Perhaps a container is paused or stopped (e.g., the heat is turned off but the pan is still available on the stove). Then eventually the container is removed -- (e.g., dishes are cleared, cleaned, and put away). Images may also be removed to save space -- like clearing out or storing unused ingredients. 
+
+In a kitchen, you may make multiple courses for a meal: an appetizer, the main course, and dessert. Each of these have their own process: own station in a professional kitchen, own set of recipes, own prep needs, and own tool needs. However, the end product is the whole meal. In a similar way, an analysis may have multiple parts each supported by its own container, all working together to produce the overall end product.
+
 ## Why containers?
 
 * Describe why
