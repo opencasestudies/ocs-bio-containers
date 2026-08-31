@@ -11,6 +11,10 @@ Before we start to address your project with Collab O. Rator, we will provide an
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
 ```
 
+::: {.emphasis_block}
+
+<details><summary><b>Cooking Analogy</b></summary>
+
 The containerization process can be thought of like working in a kitchen for dinner service or holiday meal. 
 
 In the kitchen you have a recipe or a set of recipes each listing the necessary ingredients to stock as well as how much of each ingredient is needed and if there's any special preparation or considerations for an ingredient (e.g., chopping or peeling). Recipes also provide detailed instructions for the environment (desired pans, cooking temperature, time). Additionally, a kitchen has specific locations for specific tools, pans, and utensils -- perhaps there's a map or binder specifying where things are located and how they are to be cleaned and stored. All of these together specify how the kitchen should be provisioned.
@@ -32,6 +36,26 @@ Within the running container, you use the packages together with any data or ana
 The eventual meals produced by the kitchen are like the finished product: a tool, analysis, result, etc. that can be shared. And finally, as with any kitchen endeavour -- there has to be a clean up. Perhaps a container is paused or stopped (e.g., the heat is turned off but the pan is still available on the stove). Then eventually the container is removed -- (e.g., dishes are cleared, cleaned, and put away). Images may also be removed to save space -- like clearing out or storing unused ingredients. 
 
 In a kitchen, you may make multiple courses for a meal: an appetizer, the main course, and dessert. Each of these have their own process: own station in a professional kitchen, own set of recipes, own prep needs, and own tool needs. However, the end product is the whole meal. In a similar way, an analysis may have multiple parts each supported by its own container, all working together to produce the overall end product.
+
+</details>
+
+<!--
+
+<details><summary><b>Hotel Analogy</b></summary>
+
+Add an analogy about hotel rooms
+
+</details>
+
+<details><summary><b>Lego Analogy</b></summary>
+
+Add an analogy about legos
+
+</details>
+
+-->
+
+:::
 
 ## Why containers?
 

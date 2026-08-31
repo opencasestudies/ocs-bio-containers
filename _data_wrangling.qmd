@@ -77,6 +77,8 @@ If we were to inspect the `table1_extract` Data Frame, we would observe that the
 
 ```{r}
 #| echo: false
+#| warning: false
+#| message: false
 
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/wrangle_data/wrangled/wrangled_data.csv"
 
@@ -154,7 +156,7 @@ Collab O. Rator's instructions have asked us to visualize 4 variables or dimensi
 Plot element | Data column
 -------------|------------
 x-axis       | `num_paired_samples`
-y-axis       | 'hmdb_annotated_compounds' or `kegg_annotated_compounds`
+y-axis       | `hmdb_annotated_compounds` or `kegg_annotated_compounds`
 point color or shape | `longitudinal`
 labels               | `dataset_name`
 

@@ -52,6 +52,8 @@ Using the `tabulapdf` package to extract the data table from the research study 
 
 ```{r}
 #| echo: false
+#| warning: false
+#| message: false
 
 library(tidyverse)
 library(readr)
