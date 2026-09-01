@@ -219,6 +219,23 @@ Activity -- Using the container from the collaborator to get the Table 1 data.
 
 Give side quest instructions on how to interact with a file system if you can't mount a volume for whatever reason
 
+::: {.think_question}
+:::: {.think_question_header}
+Question Opportunity
+::::
+:::: {.inner_block}
+
+Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF fiel instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps? 
+
+<details><summary>Possible Answer</summary>
+
+Reducing manual steps and rather automating them is an important step towards more reproducible science. In this specific case for data retrieval, data retrieval through automation is not only more transparent (regarding how things were done), it also can be less error prone than manual entry. 
+
+</details>
+
+::::
+:::
+
 For Docker Desktop:
 
 * run the container

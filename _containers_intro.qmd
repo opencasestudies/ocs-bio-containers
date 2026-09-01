@@ -13,15 +13,23 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ::: {.emphasis_block}
 
-<details><summary><b>Cooking Analogy</b></summary>
+<details><summary><b>Containerization Analogies</b></summary>
+
+::: {.panel-tabset}
+
+### Kitchen and cooking analogy
 
 The containerization process can be thought of like working in a kitchen for dinner service or holiday meal. 
+
+```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how working in a kitchen can be an analogy for the containerization process. Dockerfiles specify the recipe repertoire and kitchen organization standards while building is like the preparation process resulting in standardized resources, ready for active cooking, but not actively being used - an image. Running the image results in a container or an active kitchen where cooking is happening. It is like turning on the burner. In the running process you may mount a volume of scripts and data or in the kitchen this would be specific recipes. Finally, container clean up is removing the heat and resetting the environment by storing ingredients and cleaning up the space.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f88b06ed70_0_0#slide=id.g3f88b06ed70_0_0")
+```
 
 In the kitchen you have a recipe or a set of recipes each listing the necessary ingredients to stock as well as how much of each ingredient is needed and if there's any special preparation or considerations for an ingredient (e.g., chopping or peeling). Recipes also provide detailed instructions for the environment (desired pans, cooking temperature, time). Additionally, a kitchen has specific locations for specific tools, pans, and utensils -- perhaps there's a map or binder specifying where things are located and how they are to be cleaned and stored. All of these together specify how the kitchen should be provisioned.
 
 The Dockerfile is like a recipe and kitchen binder specifying what dependencies, packages, and environmental variables (ingredients) are needed, in what order, and what the environment needs to look like. While a Dockerfile contains a layered, step-by-step definition of the computing environment, it doesn't contain a step-by-step definition of how a specific analysis will utilize the computing environment. 
 
-Working in a kitchen, often the area and ingredients may be prepped before any combining, cooking, or baking actually happens. Pans, utensils, and tools are all cleaned and stored in specific, known locations. Ingredients that need peeled, chopped, or some other special preparation are prepared in those ways. This preparation allows for a more efficient or easier combination of ingredients within the cooking process. Everything is prepared (according to kitchen station expectations and the instructions for ingredients in the recipe), just sitting at the ready, but not actively being used. This is termed "mise en place".
+Working in a kitchen, often the area and ingredients may be prepped before any combining, cooking, or baking actually happens. Pans, utensils, and tools are all cleaned and stored in specific, known locations. Ingredients that need peeled, chopped, or some other special preparation are prepared in those ways. This preparation allows for a more efficient or easier combination of ingredients within the cooking process. Everything is prepared (according to kitchen station expectations and the instructions for ingredients in the recipe), just sitting at the ready, but not actively being used. This is termed "mise en place" (pronunciation: /ˌmiz ɑn ˈplɑs/ or meez ahn PLAHSS).
 
 The "build" process (Dockerfile --> image) is the preparation of the environment and ingredients: the cleaning, stocking, chopping, dicing, peeling, measuring, etc. which leads to the docker image where everything is in a static, read-only, prepared state. The docker image is like "mise en place".
 
@@ -37,23 +45,30 @@ The eventual meals produced by the kitchen are like the finished product: a tool
 
 In a kitchen, you may make multiple courses for a meal: an appetizer, the main course, and dessert. Each of these have their own process: own station in a professional kitchen, own set of recipes, own prep needs, and own tool needs. However, the end product is the whole meal. In a similar way, an analysis may have multiple parts each supported by its own container, all working together to produce the overall end product.
 
-</details>
 
-<!--
+### Hotel analogy
 
-<details><summary><b>Hotel Analogy</b></summary>
+The containerization process can be thought of like hotels. 
+
+```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as hotels.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
+```
 
 Add an analogy about hotel rooms
 
+### Lego analogy
+
+The containerization process can be thought of like building with Legos.s 
+
+```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
+```
+
+Add an analogy about building legos
+
+:::
+
 </details>
-
-<details><summary><b>Lego Analogy</b></summary>
-
-Add an analogy about legos
-
-</details>
-
--->
 
 :::
 
@@ -71,7 +86,7 @@ Add an analogy about legos
 
 The last of these scenarios is the context for this case study.
 
-```{r, echo = FALSE}
+```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = ''}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
 ```
 

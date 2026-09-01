@@ -6,7 +6,7 @@ Videos or images may be helpful so this includes an example of embedding a video
 # **Context**
 ***
 
-## Metabolomics
+## Metabolomics and Data Resources
 
 Discuss information such as ...
 
@@ -28,5 +28,22 @@ While this example of data only being available from a PDF (especially within an
 * Its use helps to justify to the learners why we might need a container (dependencies)
 * We don't intend to spend much of the main narrative on the tool or how to use it. Some of the explanation can go into collapsible sections to reduce cognitive load so that learners can focus on containers. Basically we'll tell them that the data retrieval and wrangling of the Table from a PDF can be achieved with this code and if you want to learn more about how it works (or want an advanced exercise of generalizing the process), click on an expandable section for details.
 * We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.
+
+## The need for containerization
+
+Data analysis, especially analysis of large data, relies on computers and the software tools installed on those copmuters. Depending on the computational needs of an analysis or a researcher's typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as institutional high performance computing (HPC) clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). [@Wright_Computing].
+
+Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different computing environments (potentially differences in operating systems, software, software versions, etc.). Beyond differences in operating systems, different institutions and the IT departments that manage the institution's computers may have specific setups and guidelines shaping the available software and computing environment for computers at the institution. Individuals with different needs will install and update software differentially. Even team members within the same lab will have different computing environments. Overtime, a single researcher's computer will evolve as well. Software and operating systems will be updated (sometimes automatically rather than manually) and new software, tools, or applications will be installed. Basically, computers are like snowflakes -- they are unique when compared to other computers. They make have similarities, but overall computers are their own unique entity.
+
+```{r fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = 'Within a team or collaborative environment, each computer is unique – like snowflakes.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f6b98e19f5_0_1#slide=id.g3f6b98e19f5_0_1")
+```
+
+The differences between computers can be problematic for performing and sharing reproducible research. 
+
+
+```{r fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = 'Containers provide a consistent computing environment for everyone on the team, isolated from the unique setups.'}
+ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f6b98e19f5_0_49#slide=id.g3f6b98e19f5_0_49')
+```
 
 ***
