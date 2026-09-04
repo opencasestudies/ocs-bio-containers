@@ -98,9 +98,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-f636a4ba9f8baff21ad862c8cdd28a94.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -211,8 +211,11 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context"><strong>Context</strong></a>
   <ul class="collapse">
-  <li><a href="#metabolomics" id="toc-metabolomics" class="nav-link" data-scroll-target="#metabolomics">Metabolomics</a></li>
-  <li><a href="#the-revision-task-extracting-data-from-a-pdf-and-data-visualization" id="toc-the-revision-task-extracting-data-from-a-pdf-and-data-visualization" class="nav-link" data-scroll-target="#the-revision-task-extracting-data-from-a-pdf-and-data-visualization">The revision task – Extracting data from a PDF and data visualization</a></li>
+  <li><a href="#what-is-the-metabolome" id="toc-what-is-the-metabolome" class="nav-link" data-scroll-target="#what-is-the-metabolome">What is the metabolome?</a></li>
+  <li><a href="#how-are-the-microbiome-and-the-metabolome-related" id="toc-how-are-the-microbiome-and-the-metabolome-related" class="nav-link" data-scroll-target="#how-are-the-microbiome-and-the-metabolome-related">How are the microbiome and the metabolome related?</a></li>
+  <li><a href="#what-is-a-curated-data-resource" id="toc-what-is-a-curated-data-resource" class="nav-link" data-scroll-target="#what-is-a-curated-data-resource">What is a curated data resource?</a></li>
+  <li><a href="#what-are-possible-uses-of-a-data-resource" id="toc-what-are-possible-uses-of-a-data-resource" class="nav-link" data-scroll-target="#what-are-possible-uses-of-a-data-resource">What are possible uses of a data resource?</a></li>
+  <li><a href="#the-need-for-containerization" id="toc-the-need-for-containerization" class="nav-link" data-scroll-target="#the-need-for-containerization">The need for containerization</a></li>
   </ul></li>
   <li><a href="#introduction-to-containers" id="toc-introduction-to-containers" class="nav-link" data-scroll-target="#introduction-to-containers"><strong>Introduction to Containers</strong></a>
   <ul class="collapse">
@@ -666,39 +669,138 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 </div>
 </div>
 <hr>
-<!--
-More details on the background on the case study topic as well its relation to biomedical science.
-Videos or images may be helpful so this includes an example of embedding a video.
--->
 </section>
 </section>
-<section id="context" class="level1">
+<section id="context" class="level1 page-columns page-full">
 <h1><strong>Context</strong></h1>
 <hr>
-<section id="metabolomics" class="level2">
-<h2 class="anchored" data-anchor-id="metabolomics">Metabolomics</h2>
-<p>Discuss information such as …</p>
+<section id="what-is-the-metabolome" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-is-the-metabolome">What is the metabolome?</h2>
+<p>The metabolome is a collection of metabolites or low-molecular weight organic (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: nucleic acids (DNA or RNA), proteins, carbohydrates, and lipids <span class="citation" data-cites="Cooper_2000">(<a href="#ref-Cooper_2000" role="doc-biblioref">Cooper 2000</a>)</span>. These categories represent large biomolecules (macromolecules) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include vitamins, organic acids, and other small organic molecules that don’t neatly relate to the larger classes of biomolecules <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
+<p>Metabolites may be endogenous or exogenous depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either primary or secondary metabolites where primary metabolites are required for the life-cycle: growth, development, and reproduction; secondary metabolites are instead used for non-life cycle tasks such as communication/signaling or defense. Note that within the context of the microbiome, a “secondary metabolite” has an additional meaning besides ones that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
+<p>Metabolites are detected, identified, and quantified using nuclear magnetic resonance (NMR), enzyme assays, or by pairing compound separation through Gas Chromatography (GC) or Liquid Chromatography (LC) with mass spectrometry (mass spec or MS), and working with the data from those experiments in downstream data processing <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>. A typical output of NMR and MS experiments are visual graphs called spectra.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Add a figure with an example of a spectrum output</p>
+</div></div><details>
+<summary>
+Resources for more details on NMR and mass spec
+</summary>
+<p><strong>NMR</strong></p>
+<p>For more details on how NMR works, visit this <a href="https://www.uwyo.edu/chemistry/instrumentation/NMR/Introduction.html">resource from the University of Wyoming about the basics of NMR spectroscopy</a>.</p>
+<p>Also consider <span class="citation" data-cites="Marion_2013">Marion (<a href="#ref-Marion_2013" role="doc-biblioref">2013</a>)</span> for “An Introduction to Biological NMR Spectroscopy” from the Journal of Molecular &amp; Cellular Proteomics.</p>
+<p><strong>Mass Spec</strong></p>
+<p>For more details on how mass spectrometry works, visit this <a href="https://www.broadinstitute.org/technology-areas/what-mass-spectrometry">resource from the Broad Institute explaining what mass spec is</a>, this <a href="https://masspec.scripps.edu/learn/ms/">resource from Scripps Research about the basics as well a more thorough discussion on the relevant technologies</a> or this <a href="https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/spectrpy/massspec/masspec1.htm">resource from Michigan State University about the basics with an associated practice problem set</a>.</p>
+<p>Additional resources include <span class="citation" data-cites="Garg_Zubair_2026">Garg and Zubair (<a href="#ref-Garg_Zubair_2026" role="doc-biblioref">2026</a>)</span> and <span class="citation" data-cites="Son_etal_2024">Son et al. (<a href="#ref-Son_etal_2024" role="doc-biblioref">2024</a>)</span>.</p>
+</details>
+<p>In human fecal samples, a mixture of metabolites would be expected – both endogenous and exogenous – due to physiology (endogenous), dietary intake (exogenous), and gut microbiota metabolism (considered exogenous due to the secondary metabolism of endogenous metabolites) <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Classes of expected metabolites that will be observed include fatty acids (a lipid building block), bile acid (steroid derivatives synthesized from cholesterol), amino acids and protein derivatives, intermediates of carbohydrate metabolism, and undigested dietary sugars <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
+<p>Historically, the “low-molecular weight” part of the definition of metabolites has been thresholded with a cutoff for molecules: &lt;1500 Daltons in molecular weight. A recent article <span class="citation" data-cites="Moreno-Ulloa_2026">(<a href="#ref-Moreno-Ulloa_2026" role="doc-biblioref">Moreno-Ulloa 2026</a>)</span> proposed a re-definition of metabolites that no longer restricts their identity based on size. However, this definition does not seem to be a widely accepted by the field at this time.</p>
+<p>To aide the downstream data processing (because of the vast number of metabolites that have been discovered and studied, their possible locations, and their many associations with different signaling, gene-regulatory, and metabolic pathways or disease implications), dedicated reference databases with known metabolites and related info were developed and are maintained by the scientific community. Some of these databases provide specialized metabolite information across a range of organisms where these metabolites would be found such as spectra from NMR or MS experiments (e.g., MassBank of North America or MoNA) <span class="citation" data-cites="MassBank">(<a href="#ref-MassBank" role="doc-biblioref"><span>“MassBank of North America (MoNA) - PubChem Data Source,”</span> n.d.</a>)</span>, names, structural, or chemical information about a specific class of metabolite (e.g., LIPID MAPS) <span class="citation" data-cites="Conroy_etal_2024">(<a href="#ref-Conroy_etal_2024" role="doc-biblioref">Conroy et al. 2024</a>)</span>, or metabolic pathways/networks (e.g., Kyoto Encyclopedia of Genes and Genomes or KEGG) <span class="citation" data-cites="Kanehisa_Goto_2000 Kanehisa_etal_2025">(<a href="#ref-Kanehisa_Goto_2000" role="doc-biblioref">Kanehisa and Goto 2000</a>; <a href="#ref-Kanehisa_etal_2025" role="doc-biblioref">Kanehisa et al. 2025</a>)</span>, while others provide a more comprehensive, but organism-specific databases like the Human Metabolome Database (HMDB) <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>.</p>
+<p>From the 2009 paper introducing HMDB <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>, the database is described in the following way:</p>
+<blockquote class="blockquote">
+<p>HMDB is … [an] organism-specific metabolomics database …. It contains spectroscopic, quantitative, analytic and molecular-scale information about human metabolites, their associated enzymes or transporters, their abundance and disease-related properties.</p>
+</blockquote>
+<p>The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a <strong>longitudinal</strong> study. Research participants within the same study (whether it is longitudinal or not) are termed a <strong>cohort</strong>.</p>
+<details>
+<summary>
+What are different applications of metabolomics within the scientific field&gt;
+</summary>
+<p>Some applications:</p>
 <ul>
-<li>why the microbiome and metabolome datasets are related/considered together</li>
-<li>what the study with the table we’re looking at is analyzing or presenting to the scientific community</li>
-<li>what a cohort is</li>
-<li>what paired data means</li>
-<li>what longitudinal means</li>
-<li>what HMDB-annotated compounds are</li>
-<li>what KEGG-annotated compounds are</li>
-<li>possible uses of this data resource</li>
+<li>Biomarker identification</li>
+<li>Drug discovery or development</li>
+<li>Clinical Toxicology</li>
+<li>Nutritional studies</li>
+<li>Quantitative phenotyping</li>
+<li>Interpretation and understanding of complex biological processes</li>
+</ul>
+</details>
+</section>
+<section id="how-are-the-microbiome-and-the-metabolome-related" class="level2">
+<h2 class="anchored" data-anchor-id="how-are-the-microbiome-and-the-metabolome-related">How are the microbiome and the metabolome related?</h2>
+<p>The microbiome is discussed in more <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-microbiome">detail within the Version Control Case Study</a>, but briefly, the microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. These microorganisms can impact metabolism and have been found to be associated with greater human health.</p>
+<p>Sequencing the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful.</p>
+<p>Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will “pair” microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed <strong>paired</strong> data. Considering connected data like this in an analysis is termed an <strong>integrative</strong> analysis because it is integrating multiple sources of data.</p>
+</section>
+<section id="what-is-a-curated-data-resource" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-is-a-curated-data-resource">What is a curated data resource?</h2>
+<p><span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> introduced and explored a <strong>curated data resource</strong>. Simply, this means a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. This often goes further than just collecting references of different studies who have made their data available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work. In this case, the researchers from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>, after identifying studies to include in the data resource had to</p>
+<ol type="1">
+<li>Download the data associated with each study.</li>
+<li>Link the paired data (microbiome and metabolome) for each sample within each study.</li>
+<li>Jointly reprocess all raw data from across the studies</li>
+<li>Annotate microbiome taxons and metabolite molecules according to relevant databases (e.g., KEGG and HMDB)</li>
+</ol>
+<p>Recall that the set of samples from a single study is typically referred to as being from a cohort. In a curated data resource, the different cohorts are pooled together.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Add a figure that shows this idea of cohorts being pooled together.</p>
+</div></div></section>
+<section id="what-are-possible-uses-of-a-data-resource" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-possible-uses-of-a-data-resource">What are possible uses of a data resource?</h2>
+<p>Curated data resources are useful for a variety of tasks such as:</p>
+<ul>
+<li>Working with more data for greater statistical power</li>
+<li>Perform a meta-analysis to compare results and associations among datasets (See the <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-meta-analysis">Version Control case study for an expanded discussion on meta-analyses</a>.)</li>
+<li>Benchmarking tools</li>
+<li>Comparing findings from an analysis to a different dataset (e.g., evaluating the replicability and generalizability of the research) <span class="citation" data-cites="Schloss_2018">(<a href="#ref-Schloss_2018" role="doc-biblioref">Schloss 2018</a>)</span></li>
 </ul>
 </section>
-<section id="the-revision-task-extracting-data-from-a-pdf-and-data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="the-revision-task-extracting-data-from-a-pdf-and-data-visualization">The revision task – Extracting data from a PDF and data visualization</h2>
-<p>While this example of data only being available from a PDF (especially within an active project) is a bit unconventional, we think that it will be a tangible and somewhat accessible example for learners. Previous public health case studies highlight various data mining and import tasks such as utilizing an API, scraping data from an HTML webpage, and importing data from Excel files, Google Sheets, and even PDFs. This specific package hasn’t been used in previous case studies and it offers some benefits for this specific topic</p>
-<ul>
-<li>This package has a function for reading tables from a PDF file. Several of the previously used tools do not, and the one that does is deprecated.</li>
-<li>This package has some dependencies (namely Java) that we are excited to highlight within the context of containers and showing a tiny bit of complexity within the Dockerfile</li>
-<li>Its use helps to justify to the learners why we might need a container (dependencies)</li>
-<li>We don’t intend to spend much of the main narrative on the tool or how to use it. Some of the explanation can go into collapsible sections to reduce cognitive load so that learners can focus on containers. Basically we’ll tell them that the data retrieval and wrangling of the Table from a PDF can be achieved with this code and if you want to learn more about how it works (or want an advanced exercise of generalizing the process), click on an expandable section for details.</li>
-<li>We can note that reducing manual steps and automating things (like data retrieval rather than manually creating a spreadsheet from visually inspecting the table) are important steps towards more reproducible analyses because they are less error prone and more transparent.</li>
-</ul>
+<section id="the-need-for-containerization" class="level2">
+<h2 class="anchored" data-anchor-id="the-need-for-containerization">The need for containerization</h2>
+<p>Data analysis, especially analysis of large data, relies on computers and the software tools installed on those computers. Depending on the computational needs of an analysis or a researcher’s typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as institutional high performance computing (HPC) clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). <span class="citation" data-cites="Wright_Computing">(<a href="#ref-Wright_Computing" role="doc-biblioref">Wright, n.d.</a>)</span>.</p>
+<p>Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different computing environments (potentially differences in operating systems, software, software versions, etc.). Beyond differences in operating systems, different institutions and the IT departments that manage the institution’s computers may have specific setups and guidelines shaping the available software and computing environment for computers at the institution. Individuals with different needs will install and update software differentially. Even team members within the same lab will have different computing environments. Overtime, a single researcher’s computer will evolve as well. Software and operating systems will be updated (sometimes automatically rather than manually) and new software, tools, or applications will be installed. Basically, computers are like snowflakes – they are unique when compared to other computers. They make have similarities, but overall computers are their own unique entity.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f6b98e19f5_0_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Within a team or collaborative environment, each computer is unique – like snowflakes."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The differences between computers can be problematic for performing and sharing reproducible research [@]. Several examples exist in the literature where different versions of software lead to different results when analyzing the same data [@].</p>
+<div class="reproducibility_box">
+<div class="reproducibility_box_header">
+<p>Reproducibility considerations</p>
+</div>
+<div class="inner_block">
+<p>Reproducible research is where the same methods (code, script, implementation based on description, etc.) can be used on the same data or within the same experimental system by a new researcher to recapitulate the results or findings of the original researcher.</p>
+<p>Note that just because a research result is reproducible doesn’t mean that it’s correct or valid. Research can be reproducibly wrong. However, reproducibility is always an important step towards useful, valid, and generalizable scientific discovery.</p>
+<details>
+<summary>
+What is reproducible research within the greater context of scientific discovery?
+</summary>
+<p><strong>Repeatability</strong>: Same researcher using the original data and process to repeat the same result.</p>
+<p><strong>Reproducibility</strong>: New researcher using the original data and process to repeat the same result.</p>
+<p><strong>Replicability</strong>: New researcher using new data with the original process to repeat the same result.</p>
+<p><strong>Extensibility</strong>: New researcher using the original data and process but expanding the method to repeat the same result but also produce an extension of the result.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Repeatability is the same researcher repeating the same result using the same data and methods. Reproducibility is another researcher repeating the same result using the same data and methods. Replicability is a new researcher using new data but the same process and repeating the result. Extensibility is using the same data with the original method, but also expanding it for an extended result."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As described in <span class="citation" data-cites="Schloss_2018">Schloss (<a href="#ref-Schloss_2018" role="doc-biblioref">2018</a>)</span>, preferably a research result can go beyond replicability and also be robust and generalizable.</p>
+<p><strong>Generalizability</strong>: Using different methods and different data but producing the same overall result.</p>
+<p><strong>Robustness</strong>: Using different methods but the same data and producing the same overall result.</p>
+</details>
+</div>
+</div>
+<p>One way people have tried to get around this challenge is reporting the exact versions of all software that were used. This may at times be sufficient, but other times more precision is necessary. Even if given a list the exact versions of all software and packages or libraries that were previously used, a researcher would need to install any new software and update or downgrade any software they’ve previously installed. Some software requires special dependencies that may not be known to be required until attempting to install a specific package or library and these dependencies may be especially difficult to install due to conflicting, missing, or mismatched version requirements among other software that is already installed. Teams may have a shared computing resource (like an institutional HPC), but even in that case different users have different software and configurations. Geographically dispersed teams can’t realistically mail a laptop to each other to have a standardized computing environment.</p>
+<p>Therefore, containers are often the solution used to standardize the computing environment within a team. Containers provide a standardized computing environment for everyone using it no matter what the software landscape of their personal laptop or workstation looks like.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f6b98e19f5_0_49.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Containers provide a consistent computing environment for everyone on the team, isolated from the unique setups."></p>
+</figure>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -720,6 +822,66 @@ Videos or images may be helpful so this includes an example of embedding a video
 </div>
 </div>
 </div>
+<div class="emphasis_block">
+<details>
+<summary>
+<b>Containerization Analogies</b>
+</summary>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Kitchen and cooking analogy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Hotel analogy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Lego analogy</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>The containerization process can be thought of like working in a kitchen for dinner service or a holiday meal.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f88b06ed70_0_0.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Diagram showing how working in a kitchen can be an analogy for the containerization process. Dockerfiles specify the recipe repertoire and kitchen organization standards while building is like the preparation process resulting in standardized resources, ready for active cooking, but not actively being used - an image. Running the image results in a container or an active kitchen where cooking is happening. It is like turning on the burner. In the running process you may mount a volume of scripts and data or in the kitchen this would be specific recipes. Finally, container clean up is removing the heat and resetting the environment by storing ingredients and cleaning up the space."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the kitchen you have a recipe or a set of recipes each listing the necessary ingredients to stock as well as how much of each ingredient is needed and if there’s any special preparation or considerations for an ingredient (e.g., chopping or peeling). Recipes also provide detailed instructions for the environment (desired pans, cooking temperature, time). Additionally, a kitchen has specific locations for specific tools, pans, and utensils – perhaps there’s a map or binder specifying where things are located and how they are to be cleaned and stored. All of these together specify how the kitchen should be provisioned.</p>
+<p>The Dockerfile is like a recipe and kitchen binder specifying what dependencies, packages, and environmental variables (ingredients) are needed, in what order, and what the environment needs to look like. While a Dockerfile contains a layered, step-by-step definition of the computing environment, it doesn’t contain a step-by-step definition of how a specific analysis will utilize the computing environment.</p>
+<p>Working in a kitchen, often the area and ingredients may be prepped before any combining, cooking, or baking actually happens. Pans, utensils, and tools are all cleaned and stored in specific, known locations. Ingredients that need peeled, chopped, or some other special preparation are prepared in those ways. This preparation allows for a more efficient or easier combination of ingredients within the cooking process. Everything is prepared (according to kitchen station expectations and the instructions for ingredients in the recipe), just sitting at the ready, but not actively being used. This is termed “mise en place” (pronunciation: /ˌmiz ɑn ˈplɑs/ or meez ahn PLAHSS).</p>
+<p>The “build” process (Dockerfile –&gt; image) is the preparation of the environment and ingredients: the cleaning, stocking, chopping, dicing, peeling, measuring, etc. which leads to the docker image where everything is in a static, read-only, prepared state. The docker image is like “mise en place”.</p>
+<p>The step-by-step instructions for specific dishes, and their utilization of specific ingredients may be needed as well (analysis scripts). Perhaps unusual ingredients (data) for special dishes are needed. These are not part of the building process, but instead are brought into the kitchen (container) once everything else is ready. The recipes, kitchen station and prep guidelines (Dockerfile), and prepared environment, and ingredients (image) provide a static and standardized setup – one that can be used by any set of cooks or chefs. The mounted volume within a running container brings in the flexibility to use the static and standardized setup for your specific needs in your specific way.</p>
+<p>Once the kitchen is ready, they fire up a stove top, heat an oven, or combine ingredients that will work together in a bowl. With the addition of heat or mixing of ingredients, the cooking process itself begins. Everything that was defined in the recipe or kitchen station instructions is at the kitchen’s disposal. It’s too late to go get different ingredients or supplies.</p>
+<p>The “run” process (image –&gt; container) is like supplying the heat – creating the environment where the cooking and combining of ingredients can happen – the container. In the running container or environment, each of the ingredients (packages) are at your disposal, ready to use. Your analysis scripts and specific data will be incorporated here by mounting a volume during the “run” process.</p>
+<p>Within the running container, you use the packages together with any data or analysis scripts to perform an analysis or provision a tool. Everything defined in the Dockerfile is at your disposal to use in the running container. And the running container is isolated from the rest of your computer – so only what is defined in the Dockerfile is available unless you’ve mounted a volume to bring in specific data and scripts.</p>
+<p>The eventual meals produced by the kitchen are like the finished product: a tool, analysis, result, etc. that can be shared. And finally, as with any kitchen endeavour – there has to be a clean up. Perhaps a container is paused or stopped (e.g., the heat is turned off but the pan is still available on the stove). Then eventually the container is removed – (e.g., dishes are cleared, cleaned, and put away). Images may also be removed to save space – like clearing out or storing unused ingredients.</p>
+<p>In a kitchen, you may make multiple courses for a meal: an appetizer, the main course, and dessert. Each of these have their own process: own station in a professional kitchen, own set of recipes, own prep needs, and own tool needs. However, the end product is the whole meal. In a similar way, an analysis may have multiple parts each supported by its own container, all working together to produce the overall end product.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>The containerization process can be thought of like hotels.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f8b4188434_0_21.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Diagram showing how the containerization process can be thought of as hotels."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add an analogy about hotel rooms</p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>The containerization process can be thought of like building with Legos.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f8b4188434_0_21.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Diagram showing how the containerization process can be thought of as building legos."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Add an analogy about building legos</p>
+</div>
+</div>
+</div>
+</details>
+</div>
 </section>
 <section id="why-containers" class="level2">
 <h2 class="anchored" data-anchor-id="why-containers">Why containers?</h2>
@@ -735,11 +897,11 @@ Videos or images may be helpful so this includes an example of embedding a video
 <li>Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)</li>
 </ul>
 <p>The last of these scenarios is the context for this case study.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid figure-img" width="1250"></p>
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -978,9 +1140,9 @@ See the following example from a previous case study: https://www.opencasestudie
 <li><strong>Container Application Activities</strong>: Working with data with the container (whose infrastructure you’ve set up by doing the Container Infrastructure Activities).</li>
 </ol>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Data<br>Import</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Data<br>Exploration</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">Data<br>Wrangling</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">Data<br>Visualization</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-5" role="tab" aria-controls="tabset-3-5" aria-selected="false" href="">Data<br>Analysis</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Data<br>Import</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Data<br>Exploration</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">Data<br>Wrangling</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">Data<br>Visualization</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false" href="">Data<br>Analysis</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
@@ -1004,7 +1166,7 @@ See the following example from a previous case study: https://www.opencasestudie
 </tbody>
 </table>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
@@ -1028,7 +1190,7 @@ See the following example from a previous case study: https://www.opencasestudie
 </tbody>
 </table>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
@@ -1052,7 +1214,7 @@ See the following example from a previous case study: https://www.opencasestudie
 </tbody>
 </table>
 </div>
-<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
@@ -1076,7 +1238,7 @@ See the following example from a previous case study: https://www.opencasestudie
 </tbody>
 </table>
 </div>
-<div id="tabset-3-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-5-tab">
+<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
@@ -1117,12 +1279,12 @@ See the following example from a previous case study: https://www.opencasestudie
 <p>If you try to use a docker command like <code>docker pull</code> without first starting docker, you’ll see an error message about “failure to connect” and recommending you check if the “daemon” is running. Docker Desktop can be resource intensive, so it’s common to close Docker Desktop or stop docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure docker is running.</p>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Docker through a Command Line Interface (CLI)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Docker through a Command Line Interface (CLI)</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>Open the Docker Desktop app.</p>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>Open your command line interface (e.g., Terminal on a Mac).</p>
 <p>In your command line interface, use the following command to start docker.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">open</span> <span class="at">-a</span> Docker</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1134,9 +1296,9 @@ See the following example from a previous case study: https://www.opencasestudie
 <h3 class="anchored" data-anchor-id="step-2-pulling-the-container-image-from-docker-hub">Step 2: Pulling the container image from Docker Hub</h3>
 <p>Recall that a container image is the main way that containers are shared and these are often stored in registries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the <code>bioocs</code> organization. Specifically the image is named <code>ocs-bio-containers-main</code> with a tag of “main”.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>At the top of the Docker Desktop GUI window, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image.</p>
 <ul>
 <li>Type <code>ocs-bio-</code> and several images from the <code>bioocs</code> organization will be listed.</li>
@@ -1145,7 +1307,7 @@ See the following example from a previous case study: https://www.opencasestudie
 <li>Click the “pull” button.</li>
 </ul>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <p>In your command line interface, use the following command to pull the docker image from Docker Hub.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">docker</span> pull bioocs/ocs-bio-containers-base:main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the command line interface will display progress messages for each layer of the image followed by confirmation or a status update that the image was successfully pulled.</p>
@@ -1169,7 +1331,10 @@ Finding containers in a registry (e.g., Docker Hub)
 <h4 class="anchored" data-anchor-id="step-3a-downloading-version-controlled-analysis-files">Step 3a: Downloading version-controlled analysis files</h4>
 <p>Because the focus of this case study is working on a data analysis within the containerization framework and not on developing the data analysis itself or writing R and bash scripts, the analysis scripts to support this data analysis are provided for you in a <a href="https://github.com/opencasestudies/ocs-bio-containers-scaffold">scaffold GitHub repository</a>.</p>
 <p>You can interact with the scripts within this scaffold GitHub repository in one of two ways:</p>
-<p><em>Option A</em>: Download the analysis scripts in a <code>.zip</code> file<br> <em>Option B</em>: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally.</p>
+<ol type="1">
+<li><em>Option A</em>: Download the analysis scripts in a <code>.zip</code> file<br></li>
+<li><em>Option B</em>: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally.</li>
+</ol>
 <p>Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.</p>
 <div class="reproducibility_box">
 <div class="reproducibility_box_header">
@@ -1191,13 +1356,13 @@ Finding containers in a registry (e.g., Docker Hub)
 </div>
 <p>This scaffold directory doesn’t match the suggested project directory structure from above at first appearance. It only contains the directory for <code>analysis_scripts</code> (and a directory with another set of scripts called <code>continued_learning_scripts</code>). The <code>data</code> and <code>results</code> directories as well as their subdirectories are automatically created by the scripts to store the outputs if the directories don’t already exist.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Option A: Download a .zip file</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Option B: Use GitHub</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Option A: Download a .zip file</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Option B: Use GitHub</a></li></ul>
 <div class="tab-content">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <p>Use this link to <a href="https://githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/ocs-bio-containers-scaffold-main.zip">download the analysis scripts</a></p>
 <p>You will want to “unzip”, “extract”, or “decompress” this file (<a href="https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac">Mac instructions</a>, <a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files">Windows instructions</a>). You can move the resulting file or keep it in your Downloads folder, but <strong>you will need to know where it is on your computer for the next step</strong>.</p>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <p>This options allows you to practice more reproducibility best practices, specifically version-controlling an analysis.</p>
 <div class="reproducibility_box">
 <div class="reproducibility_box_header">
@@ -1210,6 +1375,7 @@ Finding containers in a registry (e.g., Docker Hub)
 <p>Navigate to the scaffold GitHub repository on your web browser: <a href="https://github.com/opencasestudies/ocs-bio-containers-scaffold">https://github.com/opencasestudies/ocs-bio-containers-scaffold</a>. Click the green “Use this template” button in the top right, and select “Create a new repository” option from the dropdown menu.</p>
 <p>On the new window “Create a new repository”, fill in a repository name under “General” (possibly something like “containers-case-study-yourinitials”). Because this is using a template to create a new repository, this screen doesn’t have as many options as you might see if you are <a href="https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-new-github-repository">creating a new repository from scratch on GitHub</a>. Click the green “Create repository” button on the bottom right.</p>
 <p>It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green “&lt;&gt; Code” button to clone the repository for a local copy. Refer to and follow <a href="https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository">the instructions from the Version Control case study</a> if needed.</p>
+<p><strong>You will need to know where this local copy is located (e.g., what directory it is in) on your computer for the next step.</strong></p>
 <p><a href="https://www.opencasestudies.org/ocs-bio-version-control/#create-a-new-branch-for-this-analysis">Create a branch</a> so that any changes you make to scripts can be committed and pushed to your remote repository as a pull request later.</p>
 </div>
 </div>
@@ -1218,15 +1384,17 @@ Finding containers in a registry (e.g., Docker Hub)
 <section id="step-3b-running-the-container-image" class="level4">
 <h4 class="anchored" data-anchor-id="step-3b-running-the-container-image">Step 3b: Running the container image</h4>
 <p>Because a container is isolated, it won’t have access to files (scripts, data, or locations to store outputs) unless you specifically <strong>mount a volume</strong>. Therefore, we will want to point the container to the files that we’ve just downloaded in Step 3a when we run the image. This gives the container access to the project directory (and our scripts).</p>
-<p>If we don’t mount the volume when we run the image, we won’t have access to those files in the running container (and can’t grant access to them within a running or paused container) and would have to create directories and scripts within the running container. Then we wouldn’t be able to track revisions to scripts or easily view / save outputs.</p>
+<p>If we don’t mount the volume when we run the image, we won’t have access to those files in the running container (and can’t grant access to them within a running or paused container), and would have to create directories and scripts within the running container. Then we wouldn’t be able to track revisions to scripts or easily view / save outputs.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <p>Running the container instructions (including mounting the volume)</p>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p>Running the container instructions (including mounting the volume)</p>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Enter the following command in your CLI, replacing <code>[locationOfAnalysisFiles]</code> with the location of your analysis files (e.g., <code>~/Downloads/ocs--bio-containers-scaffold</code>)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="pp">[</span><span class="ss">locationOfAnalysisFiles</span><span class="pp">]</span> bioocs/ocs-bio-containers-base:main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>At the end of some progress messages, you should see <code>[services.d] done.</code> meaning that the container is ready for use.</p>
 </div>
 </div>
 </div>
@@ -1245,49 +1413,49 @@ Finding containers in a registry (e.g., Docker Hub)
 <div class="code-with-filename-file">
 <pre><strong>01_extract_data.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="01_extract_data.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(tabulapdf)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(here)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">library</span>(readr)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#extract the data</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>raw_table <span class="ot">&lt;-</span> tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(<span class="st">"https://www.nature.com/articles/s41522-022-00345-5.pdf"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9"></a>                                       <span class="at">pages =</span> <span class="dv">2</span>,</span>
-<span id="cb3-10"><a href="#cb3-10"></a>                                       <span class="at">method =</span> <span class="st">"stream"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11"></a>                                       <span class="at">col_names =</span> <span class="cn">FALSE</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>                                      )[[<span class="dv">1</span>]]</span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#output information about the extracted data</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(raw_table), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="fu">cat</span>(<span class="st">"Number of NAs: "</span>, <span class="fu">sum</span>(<span class="fu">is.na</span>(raw_table)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#save the data</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>)</span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb3-22"><a href="#cb3-22"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>}</span>
-<span id="cb3-24"><a href="#cb3-24"></a></span>
-<span id="cb3-25"><a href="#cb3-25"></a></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="fu">save</span>(raw_table,</span>
-<span id="cb3-27"><a href="#cb3-27"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir,</span>
-<span id="cb3-28"><a href="#cb3-28"></a>                      <span class="st">"raw_table1.rda"</span>))</span>
-<span id="cb3-29"><a href="#cb3-29"></a></span>
-<span id="cb3-30"><a href="#cb3-30"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(raw_table,</span>
-<span id="cb3-31"><a href="#cb3-31"></a>                 <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir,</span>
-<span id="cb3-32"><a href="#cb3-32"></a>                                   <span class="st">"raw_table1.csv"</span>))</span>
-<span id="cb3-33"><a href="#cb3-33"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="01_extract_data.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(tabulapdf)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">library</span>(here)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#extract the data</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>raw_table <span class="ot">&lt;-</span> tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(<span class="st">"https://www.nature.com/articles/s41522-022-00345-5.pdf"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>                                       <span class="at">pages =</span> <span class="dv">2</span>,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                                       <span class="at">method =</span> <span class="st">"stream"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>                                       <span class="at">col_names =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>                                      )[[<span class="dv">1</span>]]</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#output information about the extracted data</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(raw_table), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="fu">cat</span>(<span class="st">"Number of NAs: "</span>, <span class="fu">sum</span>(<span class="fu">is.na</span>(raw_table)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#save the data</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb4-22"><a href="#cb4-22"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-23"><a href="#cb4-23"></a>}</span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="fu">save</span>(raw_table,</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir,</span>
+<span id="cb4-28"><a href="#cb4-28"></a>                      <span class="st">"raw_table1.rda"</span>))</span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(raw_table,</span>
+<span id="cb4-31"><a href="#cb4-31"></a>                 <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir,</span>
+<span id="cb4-32"><a href="#cb4-32"></a>                                   <span class="st">"raw_table1.csv"</span>))</span>
+<span id="cb4-33"><a href="#cb4-33"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Discuss what the above script is actually doing. Note that we’re using a URL to read the PDF rather than including the PDF in the mounted volume.</p>
 <p>Walk through how to run the container in order to run the analysis and extract the data.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <p>Running the analysis instructions</p>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <p>Running the analysis instructions</p>
 </div>
 </div>
@@ -1297,12 +1465,12 @@ Finding containers in a registry (e.g., Docker Hub)
 <h4 class="anchored" data-anchor-id="inspecting-the-output">Inspecting the output</h4>
 <p>In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted. We also save an <code>rda</code> and <code>csv</code> version of the raw data. Where do we see those? Do we see those?</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>Looking at the outputs (new folders, files, and log messages)</p>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <p>Looking at the outputs (new folders, files, and log messages)</p>
 </div>
 </div>
@@ -1313,6 +1481,20 @@ Number of NAs: 80</p>
 </div>
 <p>Activity – Using the container from the collaborator to get the Table 1 data.</p>
 <p>Give side quest instructions on how to interact with a file system if you can’t mount a volume for whatever reason</p>
+<div class="think_question">
+<div class="think_question_header">
+<p>Question Opportunity</p>
+</div>
+<div class="inner_block">
+<p>Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps?</p>
+<details>
+<summary>
+Possible Answer
+</summary>
+<p>Reducing manual steps and rather automating them is an important step towards more reproducible science. In this specific case for data retrieval, data retrieval through automation is not only more transparent (regarding how things were done), it also can be less error prone than manual entry.</p>
+</details>
+</div>
+</div>
 <p>For Docker Desktop:</p>
 <ul>
 <li>run the container</li>
@@ -1346,30 +1528,30 @@ Number of NAs: 80</p>
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Install Java + minimal system libs needed for your R packages</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>    openjdk-11-jdk <span class="dt">\</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    libpng-dev <span class="dt">\</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>    libicu-dev <span class="dt">\</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>    libpcre2-dev <span class="dt">\</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co"># Install R packages</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>    rJava <span class="dt">\</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a>    tabulapdf <span class="dt">\</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a>    here <span class="dt">\</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>    bubbleHeatmap <span class="dt">\</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a>    ggnetwork <span class="dt">\</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a>    ggpubr <span class="dt">\</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a>    gt</span>
-<span id="cb4-24"><a href="#cb4-24"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># Install Java + minimal system libs needed for your R packages</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    openjdk-11-jdk <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>    libpng-dev <span class="dt">\</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>    libicu-dev <span class="dt">\</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>    libpcre2-dev <span class="dt">\</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Install R packages</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>    rJava <span class="dt">\</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>    tabulapdf <span class="dt">\</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>    here <span class="dt">\</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>    bubbleHeatmap <span class="dt">\</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>    ggnetwork <span class="dt">\</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>    ggpubr <span class="dt">\</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>    gt</span>
+<span id="cb5-24"><a href="#cb5-24"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Going forward we’ll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.</p>
 <div class="cell">
@@ -1391,13 +1573,13 @@ Number of NAs: 80</p>
 <p>Side quest: We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what could be in the Dockerfile. In this case the directory structure is controlled by the mounted volume analysis scripts, but a Dockerfile could also specify directory structure.</p>
 <p>Side quest: what if you wanted to spin up an IDE with your container?</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <p>Include instructions on viewing the file structure within the running container</p>
 <p>Include instructions on how to create / interact with files within the running container</p>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <p>Include instructions on viewing the file structure within the running container from the Command Line</p>
 <p>Include instructions on how to create / interact with files within the running container from the Command Line</p>
 </div>
@@ -1407,7 +1589,42 @@ Number of NAs: 80</p>
 </section>
 <section id="container-application-1" class="level2">
 <h2 class="anchored" data-anchor-id="container-application-1">Container Application</h2>
-<p>Using the <code>tabulapdf</code> package to extract the data table from the research study PDF, we defined a Data Frame (<code>raw_table</code>) that will need some wrangling to make it more accurately reflect Table 1 from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (<code>X4</code>) is all NAs.</p>
+<p>Using the <code>tabulapdf</code> package to extract the data table from the research study PDF, we defined a Data Frame (<code>raw_table</code>) that will need some wrangling to make it more accurately reflect Table 1 from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>.</p>
+<div class="emphasis_block">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 25 × 7
+   X1                         X2 X3                      X4    X5       X6    X7
+   &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;                   &lt;lgl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 YACHIDA_CRC_2019            8 Patients with colonosc… NA    No      407   431
+ 2 &lt;NA&gt;                       NA normal to stage 4 CRC,… NA    &lt;NA&gt;     NA    NA
+ 3 FRANZOSA_IBD_2019           9 IBD patients and contr… NA    No      199   174
+ 4 SINHA_CRC_2016             21 CRC patients and contr… NA    No      352   189
+ 5 HE_INFANTS_MFGM_2019       14 Infants on different d… NA    Yes     118   111
+ 6 &lt;NA&gt;                       NA year of life            NA    &lt;NA&gt;     NA    NA
+ 7 iHMP_IBDMDB_2019           15 HMP2 (iHMP) cohort: Lo… NA    Yes     455   276
+ 8 &lt;NA&gt;                       NA samples from IBD patie… NA    &lt;NA&gt;     NA    NA
+ 9 JACOBS_IBD_2016            16 IBD patients and their… NA    No       36    27
+10 &lt;NA&gt;                       NA (healthy) relatives     NA    &lt;NA&gt;     NA    NA
+11 POYET_BIO_ML_2019          20 Longitudinal samples f… NA    Yes     255   223
+12 &lt;NA&gt;                       NA ML (stool bank) donors  NA    &lt;NA&gt;     NA    NA
+13 ERAWIJANTARI_GC_2020       13 Patients with a histor… NA    No      462   505
+14 &lt;NA&gt;                       NA GC, and controls        NA    &lt;NA&gt;     NA    NA
+15 KIM_ADENOMAS               18 Patients with advanced… NA    No      358   262
+16 &lt;NA&gt;                       NA adenomas, CRC, and con… NA    &lt;NA&gt;     NA    NA
+17 MARS_IBS_2020              19 Longitudinal samples f… NA    Yes      40    36
+18 &lt;NA&gt;                       NA IBS and controls        NA    &lt;NA&gt;     NA    NA
+19 KANG_AUTISM_2018           17 Children with autism a… NA    No       58    57
+20 &lt;NA&gt;                       NA children                NA    &lt;NA&gt;     NA    NA
+21 KOSTIC_INFANTS_T1D_2015    10 Longitudinal samples f… NA    Yes     138   130
+22 &lt;NA&gt;                       NA for T1D (DIABIMMUNE co… NA    &lt;NA&gt;     NA    NA
+23 WANDRO_PRETERMS_2018       22 Preterm infants during… NA    Yes     198   199
+24 &lt;NA&gt;                       NA of life. Some develope… NA    &lt;NA&gt;     NA    NA
+25 WANG_ESRD_2020             23 Adults with ESRD and c… NA    No      148    87</code></pre>
+</div>
+</div>
+</div>
+<p>Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (<code>X4</code>) is all NAs.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1427,15 +1644,15 @@ Number of NAs: 80</p>
 </div>
 </div>
 </div>
-<p>Notice also that none of the columns have descriptive names.</p>
-<p>Therefore, when we wrangle the data we will need to</p>
-<ul>
-<li>rename the columns</li>
-<li>separate out the number of paired samples from the cohort descriptions</li>
-<li>reunite the multiline cohort descriptions into a single line</li>
-<li>drop rows where the overflow cohort descriptions but no other data are</li>
-<li>drop the fourth/empty column as well as the column containing a mixture of cohort descriptions and the number of paired samples (and any unnecessary/intermediate columns we make in wrangling)</li>
-</ul>
+<p>Notice also that none of the columns have descriptive names. Instead, the column names are <code>X1</code>, <code>X2</code>, … , <code>X7</code>.</p>
+<p>Therefore, when we wrangle the data we will need to:</p>
+<ol type="1">
+<li>Rename the columns, giving them descriptive variable names.</li>
+<li>Separate out the number of paired samples from the cohort descriptions, storing the two sets of data in different columns.</li>
+<li>Reunite the multiline cohort descriptions into a single line.</li>
+<li>Drop rows where the overflow cohort descriptions are but otherwise the rows have no other relevant data.</li>
+<li>Drop unnecessary columns. * The fourth/empty column * The column containing a mixture of cohort descriptions and the number of paired samples * Any unnecessary/intermediate columns we make while performing the previous wrangling steps</li>
+</ol>
 <p>include click to expand section describing how to interact with the data in an RStudio / positron IDE if they have it and see these things</p>
 </section>
 </section>
@@ -1446,7 +1663,7 @@ Number of NAs: 80</p>
 <h2 class="anchored" data-anchor-id="container-application-2">Container Application</h2>
 <p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code). make sure your container is running (probably will need a tab structure for this): &lt;- update to be more precise</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <p>Even if you stop the container (as long as you don’t delete it), you can restart it and the data will still be there as long as it was saved during wrangling</p>
@@ -1456,19 +1673,19 @@ If you skipped the data import section click here.
 </summary>
 <p>KI note: We’ll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. I don’t think the container has <code>wget</code>, but I could set up a download that would have the file that they could then mount. Will do that and include instructions here for that.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 <hr>
 <section id="wrangling-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="wrangling-the-data">Wrangling the data</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <p>how to run analysis in running container</p>
 </div>
-<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <p>how to run analysis</p>
 </div>
 </div>
@@ -1492,7 +1709,31 @@ If you skipped the data import section click here.
 <summary>
 Answer
 </summary>
-<p>If we were to inspect the <code>table1_extract</code> Data Frame, we would observe that the data now appears to match our expectations. There are 14 rows and 7 columns, though those columns don’t follow the original order of Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data.</p>
+<p>If we were to inspect the <code>table1_extract</code> Data Frame, we would observe that the data now appears to match our expectations.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 7
+   dataset_name   ref longitudinal hmdb_annotated_compo…¹ kegg_annotated_compo…²
+   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 YACHIDA_CRC…     8 No                              407                    431
+ 2 FRANZOSA_IB…     9 No                              199                    174
+ 3 SINHA_CRC_2…    21 No                              352                    189
+ 4 HE_INFANTS_…    14 Yes                             118                    111
+ 5 iHMP_IBDMDB…    15 Yes                             455                    276
+ 6 JACOBS_IBD_…    16 No                               36                     27
+ 7 POYET_BIO_M…    20 Yes                             255                    223
+ 8 ERAWIJANTAR…    13 No                              462                    505
+ 9 KIM_ADENOMAS    18 No                              358                    262
+10 MARS_IBS_20…    19 Yes                              40                     36
+11 KANG_AUTISM…    17 No                               58                     57
+12 KOSTIC_INFA…    10 Yes                             138                    130
+13 WANDRO_PRET…    22 Yes                             198                    199
+14 WANG_ESRD_2…    23 No                              148                     87
+# ℹ abbreviated names: ¹​hmdb_annotated_compounds, ²​kegg_annotated_compounds
+# ℹ 2 more variables: num_paired_samples &lt;dbl&gt;, cohort_description &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>There appear to be 14 rows and 7 columns, though those columns don’t follow the original order of Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Since the columns have descriptive names though, it will be fine that they are not in the same order. While the columns may not be in the same order as the source data, the rows should be in the same order as the source data. Spot checking a specific value will help us to verify this.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1502,6 +1743,10 @@ Answer
 </div>
 </div>
 </div>
+<p>The log messages report the following:</p>
+<p>Dimensions: 14 x 7<br>
+Number of NAs: 0<br>
+Dataset Name (Row 4): HE_INFANTS_MFGM_2019</p>
 <p>The dimensions properly report a decrease in the number of rows compared to the raw extracted data (14 instead of 25), matching our expectation for both the number of rows and the number of columns given the source data. The dataset name in the fourth row is <code>HE_INFANTS_MFGM_2019</code>, again matching our expectations when comparing to the source data.</p>
 <table class="caption-top table">
 <thead>
@@ -1581,7 +1826,7 @@ Answer
 </tr>
 <tr class="even">
 <td>y-axis</td>
-<td>‘hmdb_annotated_compounds’ or <code>kegg_annotated_compounds</code></td>
+<td><code>hmdb_annotated_compounds</code> or <code>kegg_annotated_compounds</code></td>
 </tr>
 <tr class="odd">
 <td>point color or shape</td>
@@ -1694,7 +1939,7 @@ Answer
 <hr>
 <p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <details>
@@ -1707,13 +1952,13 @@ If you skipped the data import section click here.
 <section id="container-infrastructure-3" class="level2">
 <h2 class="anchored" data-anchor-id="container-infrastructure-3">Container Infrastructure</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
 <p>Build the modified Dockerfile –&gt; Image</p>
 <p>Run the Image (while mounting the volume) – &gt; Container</p>
 </div>
-<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
 <p>Build the modified Dockerfile –&gt; Image</p>
 <p>Run the Image (while mounting the volume) – &gt; Container</p>
 </div>
@@ -1737,74 +1982,74 @@ If you skipped the data import section click here.
 <div class="code-with-filename-file">
 <pre><strong>03a_visualization.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="03a_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#HMDB plot</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb8-16"><a href="#cb8-16"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
-<span id="cb8-17"><a href="#cb8-17"></a>             <span class="at">color =</span> longitudinal,</span>
-<span id="cb8-18"><a href="#cb8-18"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
-<span id="cb8-23"><a href="#cb8-23"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb8-24"><a href="#cb8-24"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
-<span id="cb8-25"><a href="#cb8-25"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb8-28"><a href="#cb8-28"></a></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="co">#save the plot</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb8-31"><a href="#cb8-31"></a></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb8-33"><a href="#cb8-33"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-34"><a href="#cb8-34"></a>}</span>
-<span id="cb8-35"><a href="#cb8-35"></a></span>
-<span id="cb8-36"><a href="#cb8-36"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"hmdb_scatter.png"</span>))</span>
-<span id="cb8-37"><a href="#cb8-37"></a></span>
-<span id="cb8-38"><a href="#cb8-38"></a><span class="fu">cat</span>(<span class="st">"HMDB plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-39"><a href="#cb8-39"></a></span>
-<span id="cb8-40"><a href="#cb8-40"></a><span class="co">#KEGG plot</span></span>
-<span id="cb8-41"><a href="#cb8-41"></a></span>
-<span id="cb8-42"><a href="#cb8-42"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-44"><a href="#cb8-44"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb8-45"><a href="#cb8-45"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
-<span id="cb8-46"><a href="#cb8-46"></a>             <span class="at">color =</span> longitudinal,</span>
-<span id="cb8-47"><a href="#cb8-47"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
-<span id="cb8-48"><a href="#cb8-48"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb8-49"><a href="#cb8-49"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb8-50"><a href="#cb8-50"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb8-51"><a href="#cb8-51"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
-<span id="cb8-52"><a href="#cb8-52"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb8-53"><a href="#cb8-53"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
-<span id="cb8-54"><a href="#cb8-54"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
-<span id="cb8-55"><a href="#cb8-55"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb8-56"><a href="#cb8-56"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb8-57"><a href="#cb8-57"></a></span>
-<span id="cb8-58"><a href="#cb8-58"></a><span class="co">#save the plot</span></span>
-<span id="cb8-59"><a href="#cb8-59"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"kegg_scatter.png"</span>))</span>
-<span id="cb8-60"><a href="#cb8-60"></a></span>
-<span id="cb8-61"><a href="#cb8-61"></a></span>
-<span id="cb8-62"><a href="#cb8-62"></a><span class="fu">cat</span>(<span class="st">"KEGG plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-63"><a href="#cb8-63"></a></span>
-<span id="cb8-64"><a href="#cb8-64"></a><span class="co">#save the plot ggplot objects</span></span>
-<span id="cb8-65"><a href="#cb8-65"></a><span class="fu">save</span>(hmdb_scatter, kegg_scatter,</span>
-<span id="cb8-66"><a href="#cb8-66"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir, </span>
-<span id="cb8-67"><a href="#cb8-67"></a>                              <span class="st">"scatter_plots.rda"</span>))</span>
-<span id="cb8-68"><a href="#cb8-68"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="03a_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-6"><a href="#cb11-6"></a></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#HMDB plot</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
+<span id="cb11-16"><a href="#cb11-16"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
+<span id="cb11-17"><a href="#cb11-17"></a>             <span class="at">color =</span> longitudinal,</span>
+<span id="cb11-18"><a href="#cb11-18"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
+<span id="cb11-23"><a href="#cb11-23"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
+<span id="cb11-24"><a href="#cb11-24"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
+<span id="cb11-25"><a href="#cb11-25"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb11-27"><a href="#cb11-27"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb11-28"><a href="#cb11-28"></a></span>
+<span id="cb11-29"><a href="#cb11-29"></a><span class="co">#save the plot</span></span>
+<span id="cb11-30"><a href="#cb11-30"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb11-31"><a href="#cb11-31"></a></span>
+<span id="cb11-32"><a href="#cb11-32"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb11-33"><a href="#cb11-33"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-34"><a href="#cb11-34"></a>}</span>
+<span id="cb11-35"><a href="#cb11-35"></a></span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"hmdb_scatter.png"</span>))</span>
+<span id="cb11-37"><a href="#cb11-37"></a></span>
+<span id="cb11-38"><a href="#cb11-38"></a><span class="fu">cat</span>(<span class="st">"HMDB plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-39"><a href="#cb11-39"></a></span>
+<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#KEGG plot</span></span>
+<span id="cb11-41"><a href="#cb11-41"></a></span>
+<span id="cb11-42"><a href="#cb11-42"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb11-44"><a href="#cb11-44"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
+<span id="cb11-45"><a href="#cb11-45"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
+<span id="cb11-46"><a href="#cb11-46"></a>             <span class="at">color =</span> longitudinal,</span>
+<span id="cb11-47"><a href="#cb11-47"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
+<span id="cb11-48"><a href="#cb11-48"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb11-49"><a href="#cb11-49"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb11-50"><a href="#cb11-50"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb11-51"><a href="#cb11-51"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
+<span id="cb11-52"><a href="#cb11-52"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
+<span id="cb11-53"><a href="#cb11-53"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
+<span id="cb11-54"><a href="#cb11-54"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
+<span id="cb11-55"><a href="#cb11-55"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb11-56"><a href="#cb11-56"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb11-57"><a href="#cb11-57"></a></span>
+<span id="cb11-58"><a href="#cb11-58"></a><span class="co">#save the plot</span></span>
+<span id="cb11-59"><a href="#cb11-59"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"kegg_scatter.png"</span>))</span>
+<span id="cb11-60"><a href="#cb11-60"></a></span>
+<span id="cb11-61"><a href="#cb11-61"></a></span>
+<span id="cb11-62"><a href="#cb11-62"></a><span class="fu">cat</span>(<span class="st">"KEGG plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-63"><a href="#cb11-63"></a></span>
+<span id="cb11-64"><a href="#cb11-64"></a><span class="co">#save the plot ggplot objects</span></span>
+<span id="cb11-65"><a href="#cb11-65"></a><span class="fu">save</span>(hmdb_scatter, kegg_scatter,</span>
+<span id="cb11-66"><a href="#cb11-66"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir, </span>
+<span id="cb11-67"><a href="#cb11-67"></a>                              <span class="st">"scatter_plots.rda"</span>))</span>
+<span id="cb11-68"><a href="#cb11-68"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="img/hmdb_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/hmdb_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
 <p><a href="img/kegg_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/kegg_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
@@ -1813,29 +2058,29 @@ If you skipped the data import section click here.
 <div class="code-with-filename-file">
 <pre><strong>03b_visualization.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="03b_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb9-7"><a href="#cb9-7"></a></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>, <span class="st">"scatter_plots.rda"</span>))</span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
-<span id="cb9-14"><a href="#cb9-14"></a></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#save the plot</span></span>
-<span id="cb9-16"><a href="#cb9-16"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb9-17"><a href="#cb9-17"></a></span>
-<span id="cb9-18"><a href="#cb9-18"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb9-19"><a href="#cb9-19"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-20"><a href="#cb9-20"></a>}</span>
-<span id="cb9-21"><a href="#cb9-21"></a></span>
-<span id="cb9-22"><a href="#cb9-22"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"combined_scatter.png"</span>))</span>
-<span id="cb9-23"><a href="#cb9-23"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="03b_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>, <span class="st">"scatter_plots.rda"</span>))</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="co">#save the plot</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17"></a></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb12-19"><a href="#cb12-19"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-20"><a href="#cb12-20"></a>}</span>
+<span id="cb12-21"><a href="#cb12-21"></a></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"combined_scatter.png"</span>))</span>
+<span id="cb12-23"><a href="#cb12-23"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol type="1">
 <li>Use the HMDB scatter plot from before, but remove its title</li>
@@ -1852,40 +2097,101 @@ If you skipped the data import section click here.
 </section>
 </section>
 </section>
-<section id="data-analysis-1" class="level1 page-columns page-full">
+<section id="data-analysis-1" class="level1">
 <h1><strong>Data Analysis</strong></h1>
 <hr>
-<section id="container-application-4" class="level2 page-columns page-full">
+<section id="container-application-4" class="level2">
 <h2 class="anchored" data-anchor-id="container-application-4">Container Application</h2>
+<p>Finding the correlation between different variables in the dataset</p>
+<p>Looking at subsets of datasets for the same variables…</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>04_analysis_metric.R</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="04_analysis_metric.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a>cor_matrix_all <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span> </span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb13-10"><a href="#cb13-10"></a>           kegg_annotated_compounds, </span>
+<span id="cb13-11"><a href="#cb13-11"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13"></a></span>
+<span id="cb13-14"><a href="#cb13-14"></a><span class="co">#output information about the correlation analysis for all datasets</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="fu">cat</span>(<span class="st">"All Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (All Data): "</span>, <span class="fu">nrow</span>(table1_extract), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (All Data): "</span>, cor_matrix_all[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-19"><a href="#cb13-19"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-20"><a href="#cb13-20"></a></span>
+<span id="cb13-21"><a href="#cb13-21"></a>cor_matrix_non_longitudinal <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>    <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb13-24"><a href="#cb13-24"></a>           kegg_annotated_compounds, </span>
+<span id="cb13-25"><a href="#cb13-25"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb13-27"><a href="#cb13-27"></a></span>
+<span id="cb13-28"><a href="#cb13-28"></a><span class="co">#output information about non-longitudinal datasets correlation analysis</span></span>
+<span id="cb13-29"><a href="#cb13-29"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Non-longitudinal Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-30"><a href="#cb13-30"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Non-longitudinal Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-31"><a href="#cb13-31"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-33"><a href="#cb13-33"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-34"><a href="#cb13-34"></a></span>
+<span id="cb13-35"><a href="#cb13-35"></a></span>
+<span id="cb13-36"><a href="#cb13-36"></a>cor_matrix_adult <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb13-37"><a href="#cb13-37"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description),</span>
+<span id="cb13-38"><a href="#cb13-38"></a>                      <span class="st">"infants|children"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-39"><a href="#cb13-39"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb13-40"><a href="#cb13-40"></a>           kegg_annotated_compounds, </span>
+<span id="cb13-41"><a href="#cb13-41"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb13-43"><a href="#cb13-43"></a></span>
+<span id="cb13-44"><a href="#cb13-44"></a><span class="co">#output information about the Adult only datasets correlation analysis</span></span>
+<span id="cb13-45"><a href="#cb13-45"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Adult Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-46"><a href="#cb13-46"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Adult Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description), <span class="st">"infants|children"</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-47"><a href="#cb13-47"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-48"><a href="#cb13-48"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-49"><a href="#cb13-49"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-50"><a href="#cb13-50"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
-<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
-<p>Ask learners to try to run the analysis, editing the run all script to include the summary stat we’ve discussed</p>
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<p>Ask learners to try to run the analysis</p>
 </div>
-<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
-<p>Ask learners to try to run the analysis, editing the run all script to include the summary stat we’ve discussed</p>
-</div>
-</div>
-</div>
-<div class="think_question">
-<div class="think_question_header">
-<p>Question opportunity</p>
-</div>
-<div class="inner_block">
-Pose a question about the data analysis.
-<details>
-<summary>
-Answer
-</summary>
-You can use a collapsible details section to provide an answer
-</details>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<p>Ask learners to try to run the analysis</p>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>We might use a column margin note to add an equation or some other annotation for learners or educators.</p>
-</div></div><p>In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?</p>
+</div>
+<p>Look at the logs.</p>
+<div class="emphasis_block">
+<p>All Datasets<br>
+Number of Datasets per variable in correlation analysis (All Data): 14<br>
+Annoted Compounds Spearman Correlation (All Data): 0.9604396<br>
+Number of samples and KEGG Annotated Compounds Spearman Corelation (All Data): 0.1296703<br>
+HMDB Annotated Compounds and Number of samples Spearman Correlation (All Data): 0.2043956</p>
+<p>Non-longitudinal Datasets<br>
+Number of Datasets per variable in correlation analysis (Non-longitudinal Data): 8<br>
+Annoted Compounds Spearman Correlation (Non-longitudinal Data): 1<br>
+Number of samples and KEGG Annotated Compounds Spearman Corelation (Non-longitudinal Data): 0.452381<br>
+HMDB Annotated Compounds and Number of samples Spearman Correlation (Non-longitudinal Data): 0.452381</p>
+<p>Adult Datasets<br>
+Number of Datasets per variable in correlation analysis (Adult Data): 10<br>
+Annoted Compounds Spearman Correlation (Adult Data): 0.9757576<br>
+Number of samples and KEGG Annotated Compounds Spearman Corelation (Adult Data): 0.05454545<br>
+HMDB Annotated Compounds and Number of samples Spearman Correlation (Adult Data): 0.05454545</p>
+</div>
+</section>
+<section id="container-infrastructure-4" class="level2">
+<h2 class="anchored" data-anchor-id="container-infrastructure-4">Container Infrastructure</h2>
+<p>In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1899,71 +2205,72 @@ You can use a collapsible details section to provide an answer
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">ENV</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">ENV</span> PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}</span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>    openjdk-11-jdk <span class="dt">\</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>    wget <span class="dt">\</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>    libpng-dev <span class="dt">\</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a>    libicu-dev <span class="dt">\</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a>    libpcre2-dev <span class="dt">\</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a>    libdeflate-dev <span class="dt">\</span></span>
-<span id="cb10-15"><a href="#cb10-15"></a>    libzstd-dev <span class="dt">\</span></span>
-<span id="cb10-16"><a href="#cb10-16"></a>    liblzma-dev <span class="dt">\</span></span>
-<span id="cb10-17"><a href="#cb10-17"></a>    libbz2-dev <span class="dt">\</span></span>
-<span id="cb10-18"><a href="#cb10-18"></a>    zlib1g-dev <span class="dt">\</span></span>
-<span id="cb10-19"><a href="#cb10-19"></a> <span class="kw">&amp;&amp;</span> <span class="va">arch</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a> <span class="kw">&amp;&amp;</span> <span class="fu">ln</span> <span class="at">-sfn</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-</span><span class="va">${arch}</span><span class="st">"</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a> <span class="kw">&amp;&amp;</span> <span class="bu">printf</span> <span class="st">'JAVA_HOME=%s\n'</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> /usr/local/lib/R/etc/Renviron.site <span class="dt">\</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
-<span id="cb10-23"><a href="#cb10-23"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
-<span id="cb10-24"><a href="#cb10-24"></a></span>
-<span id="cb10-25"><a href="#cb10-25"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
-<span id="cb10-26"><a href="#cb10-26"></a>    rJava <span class="dt">\</span></span>
-<span id="cb10-27"><a href="#cb10-27"></a>    tabulapdf <span class="dt">\</span></span>
-<span id="cb10-28"><a href="#cb10-28"></a>    here <span class="dt">\</span></span>
-<span id="cb10-29"><a href="#cb10-29"></a>    bubbleHeatmap <span class="dt">\</span></span>
-<span id="cb10-30"><a href="#cb10-30"></a>    ggnetwork <span class="dt">\</span></span>
-<span id="cb10-31"><a href="#cb10-31"></a>    ggpubr <span class="dt">\</span></span>
-<span id="cb10-32"><a href="#cb10-32"></a>    gt <span class="dt">\</span></span>
-<span id="cb10-33"><a href="#cb10-33"></a>    patchwork</span>
-<span id="cb10-34"><a href="#cb10-34"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="kw">ENV</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">ENV</span> PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>    openjdk-11-jdk <span class="dt">\</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>    wget <span class="dt">\</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>    libpng-dev <span class="dt">\</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>    libicu-dev <span class="dt">\</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>    libpcre2-dev <span class="dt">\</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a>    libdeflate-dev <span class="dt">\</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>    libzstd-dev <span class="dt">\</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>    liblzma-dev <span class="dt">\</span></span>
+<span id="cb14-17"><a href="#cb14-17"></a>    libbz2-dev <span class="dt">\</span></span>
+<span id="cb14-18"><a href="#cb14-18"></a>    zlib1g-dev <span class="dt">\</span></span>
+<span id="cb14-19"><a href="#cb14-19"></a> <span class="kw">&amp;&amp;</span> <span class="va">arch</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-20"><a href="#cb14-20"></a> <span class="kw">&amp;&amp;</span> <span class="fu">ln</span> <span class="at">-sfn</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-</span><span class="va">${arch}</span><span class="st">"</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-21"><a href="#cb14-21"></a> <span class="kw">&amp;&amp;</span> <span class="bu">printf</span> <span class="st">'JAVA_HOME=%s\n'</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> /usr/local/lib/R/etc/Renviron.site <span class="dt">\</span></span>
+<span id="cb14-22"><a href="#cb14-22"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
+<span id="cb14-23"><a href="#cb14-23"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb14-24"><a href="#cb14-24"></a></span>
+<span id="cb14-25"><a href="#cb14-25"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
+<span id="cb14-26"><a href="#cb14-26"></a>    rJava <span class="dt">\</span></span>
+<span id="cb14-27"><a href="#cb14-27"></a>    tabulapdf <span class="dt">\</span></span>
+<span id="cb14-28"><a href="#cb14-28"></a>    here <span class="dt">\</span></span>
+<span id="cb14-29"><a href="#cb14-29"></a>    bubbleHeatmap <span class="dt">\</span></span>
+<span id="cb14-30"><a href="#cb14-30"></a>    ggnetwork <span class="dt">\</span></span>
+<span id="cb14-31"><a href="#cb14-31"></a>    ggpubr <span class="dt">\</span></span>
+<span id="cb14-32"><a href="#cb14-32"></a>    gt <span class="dt">\</span></span>
+<span id="cb14-33"><a href="#cb14-33"></a>    patchwork</span>
+<span id="cb14-34"><a href="#cb14-34"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Sharing the container image vs sharing the Dockerfile</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>run_analysis.sh</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="run_analysis.sh"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="bu">echo</span> <span class="st">"Extracting data"</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">mkdir</span> <span class="at">-p</span> ../results/logs</span>
-<span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="ex">Rscript</span> 01_extract_data.R <span class="op">&gt;</span> ../results/logs/data_extraction_logs.txt</span>
-<span id="cb11-8"><a href="#cb11-8"></a></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="bu">echo</span> <span class="st">"Wrangling data"</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">Rscript</span> 02_wrangle.R <span class="op">&gt;</span> ../results/logs/wrangling_logs.txt</span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="bu">echo</span> <span class="st">"Visualizing data"</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a></span>
-<span id="cb11-15"><a href="#cb11-15"></a><span class="ex">Rscript</span> 03a_visualization.R <span class="op">&gt;</span> ../results/logs/visualization_logs.txt</span>
-<span id="cb11-16"><a href="#cb11-16"></a></span>
-<span id="cb11-17"><a href="#cb11-17"></a><span class="ex">Rscript</span> 03b_visualization_patchwork.R <span class="op">&gt;&gt;</span> ../results/logs/visualization_logs.txt</span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-19"><a href="#cb11-19"></a><span class="bu">echo</span> <span class="st">"Analyzing data"</span></span>
-<span id="cb11-20"><a href="#cb11-20"></a></span>
-<span id="cb11-21"><a href="#cb11-21"></a><span class="ex">Rscript</span> 04_analysis_metric.R <span class="op">&gt;</span> ../results/logs/analysis_logs.txt</span>
-<span id="cb11-22"><a href="#cb11-22"></a></span>
-<span id="cb11-23"><a href="#cb11-23"></a><span class="bu">echo</span> <span class="st">"Process complete"</span></span>
-<span id="cb11-24"><a href="#cb11-24"></a></span>
-<span id="cb11-25"><a href="#cb11-25"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> <span class="pp">*</span>.R <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"library"</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">xargs</span> printf <span class="st">"%s; "</span><span class="va">)</span><span class="st"> sessionInfo()"</span> <span class="op">&gt;</span> ../results/logs/session_info.txt</span>
-<span id="cb11-26"><a href="#cb11-26"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="run_analysis.sh"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="bu">echo</span> <span class="st">"Extracting data"</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">mkdir</span> <span class="at">-p</span> ../results/logs</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="ex">Rscript</span> 01_extract_data.R <span class="op">&gt;</span> ../results/logs/data_extraction_logs.txt</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="bu">echo</span> <span class="st">"Wrangling data"</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="ex">Rscript</span> 02_wrangle.R <span class="op">&gt;</span> ../results/logs/wrangling_logs.txt</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="bu">echo</span> <span class="st">"Visualizing data"</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="ex">Rscript</span> 03a_visualization.R <span class="op">&gt;</span> ../results/logs/visualization_logs.txt</span>
+<span id="cb15-16"><a href="#cb15-16"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="ex">Rscript</span> 03b_visualization_patchwork.R <span class="op">&gt;&gt;</span> ../results/logs/visualization_logs.txt</span>
+<span id="cb15-18"><a href="#cb15-18"></a></span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="bu">echo</span> <span class="st">"Analyzing data"</span></span>
+<span id="cb15-20"><a href="#cb15-20"></a></span>
+<span id="cb15-21"><a href="#cb15-21"></a><span class="ex">Rscript</span> 04_analysis_metric.R <span class="op">&gt;</span> ../results/logs/analysis_logs.txt</span>
+<span id="cb15-22"><a href="#cb15-22"></a></span>
+<span id="cb15-23"><a href="#cb15-23"></a><span class="bu">echo</span> <span class="st">"Process complete"</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a></span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> <span class="pp">*</span>.R <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"library"</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">xargs</span> printf <span class="st">"%s; "</span><span class="va">)</span><span class="st"> sessionInfo()"</span> <span class="op">&gt;</span> ../results/logs/session_info.txt</span>
+<span id="cb15-26"><a href="#cb15-26"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="reproducibility_box">
 <div class="reproducibility_box_header">
@@ -1971,20 +2278,6 @@ You can use a collapsible details section to provide an answer
 </div>
 <div class="inner_block">
 <p>Having a “run all” script that specifies what scripts were used and in what order for the analysis is a best practice for reproducibility <span class="citation" data-cites="Wilson_etal_2017">(<a href="#ref-Wilson_etal_2017" role="doc-biblioref">Wilson et al. 2017</a>)</span>.</p>
-</div>
-</div>
-</section>
-<section id="container-infrastructure-4" class="level2">
-<h2 class="anchored" data-anchor-id="container-infrastructure-4">Container Infrastructure</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
-<div class="tab-content">
-<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
-<p>Sharing the container</p>
-</div>
-<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
-<p>Sharing the container</p>
-</div>
 </div>
 </div>
 <p>We’ll also discuss how to document where the scripts are, how to mount a volume (with analysis scripts) and point out that the validator can get the same results as the learner did by running the <code>run_analysis.sh</code> script.</p>
@@ -2131,80 +2424,80 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 </ul>
 <p>Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the <code>run_analysis.sh</code> script</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(htmlwidgets)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<span id="cb12-7"><a href="#cb12-7"></a>table1_extract <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">case_when</span>(longitudinal <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="st">"Longitudinal"</span>, </span>
-<span id="cb12-9"><a href="#cb12-9"></a>                                    longitudinal <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="st">"Not longitudinal"</span>, </span>
-<span id="cb12-10"><a href="#cb12-10"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Unknown"</span>))</span>
-<span id="cb12-11"><a href="#cb12-11"></a></span>
-<span id="cb12-12"><a href="#cb12-12"></a>hover_text_template <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
-<span id="cb12-13"><a href="#cb12-13"></a>    <span class="st">"&lt;b&gt;Dataset:&lt;/b&gt; %{text}&lt;br&gt;"</span>,</span>
-<span id="cb12-14"><a href="#cb12-14"></a>    <span class="st">"&lt;b&gt;Description:&lt;/b&gt; %{customdata}"</span>,</span>
-<span id="cb12-15"><a href="#cb12-15"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a></span>
-<span id="cb12-18"><a href="#cb12-18"></a>plotly_plot_hmdb <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
-<span id="cb12-20"><a href="#cb12-20"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
-<span id="cb12-21"><a href="#cb12-21"></a>        <span class="at">y =</span> <span class="sc">~</span>hmdb_annotated_compounds,</span>
-<span id="cb12-22"><a href="#cb12-22"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
-<span id="cb12-23"><a href="#cb12-23"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,                 <span class="co"># Point label text</span></span>
-<span id="cb12-24"><a href="#cb12-24"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,     <span class="co"># Hover description storage</span></span>
-<span id="cb12-25"><a href="#cb12-25"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
-<span id="cb12-26"><a href="#cb12-26"></a>        <span class="at">showlegend =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb12-27"><a href="#cb12-27"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
-<span id="cb12-28"><a href="#cb12-28"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
-<span id="cb12-29"><a href="#cb12-29"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
-<span id="cb12-30"><a href="#cb12-30"></a>        <span class="at">hovertemplate =</span> hover_text_template   <span class="co"># Set hover text</span></span>
-<span id="cb12-31"><a href="#cb12-31"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-32"><a href="#cb12-32"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
-<span id="cb12-33"><a href="#cb12-33"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs HMDB annotation coverage'</span>, </span>
-<span id="cb12-34"><a href="#cb12-34"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
-<span id="cb12-35"><a href="#cb12-35"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'HMDB Annotated compounds'</span>)</span>
-<span id="cb12-36"><a href="#cb12-36"></a>    )</span>
-<span id="cb12-37"><a href="#cb12-37"></a></span>
-<span id="cb12-38"><a href="#cb12-38"></a>plotly_plot_kegg <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb12-39"><a href="#cb12-39"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
-<span id="cb12-40"><a href="#cb12-40"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
-<span id="cb12-41"><a href="#cb12-41"></a>        <span class="at">y =</span> <span class="sc">~</span>kegg_annotated_compounds,</span>
-<span id="cb12-42"><a href="#cb12-42"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
-<span id="cb12-43"><a href="#cb12-43"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,</span>
-<span id="cb12-44"><a href="#cb12-44"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,</span>
-<span id="cb12-45"><a href="#cb12-45"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
-<span id="cb12-46"><a href="#cb12-46"></a>        <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-47"><a href="#cb12-47"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
-<span id="cb12-48"><a href="#cb12-48"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
-<span id="cb12-49"><a href="#cb12-49"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
-<span id="cb12-50"><a href="#cb12-50"></a>        <span class="at">hovertemplate =</span> hover_text_template</span>
-<span id="cb12-51"><a href="#cb12-51"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-52"><a href="#cb12-52"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
-<span id="cb12-53"><a href="#cb12-53"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs KEGG annotation coverage'</span>, </span>
-<span id="cb12-54"><a href="#cb12-54"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
-<span id="cb12-55"><a href="#cb12-55"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'KEGG Annotated compounds'</span>)</span>
-<span id="cb12-56"><a href="#cb12-56"></a>    )</span>
-<span id="cb12-57"><a href="#cb12-57"></a></span>
-<span id="cb12-58"><a href="#cb12-58"></a>combined_plot <span class="ot">&lt;-</span> <span class="fu">subplot</span>(<span class="fu">style</span>(plotly_plot_hmdb, <span class="at">showlegend =</span> F), </span>
-<span id="cb12-59"><a href="#cb12-59"></a>        plotly_plot_kegg) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-60"><a href="#cb12-60"></a>    <span class="fu">highlight</span>(<span class="at">on =</span> <span class="st">"plotly_hover"</span>, </span>
-<span id="cb12-61"><a href="#cb12-61"></a>              <span class="at">off =</span> <span class="st">"plotly_doubleclick"</span>, </span>
-<span id="cb12-62"><a href="#cb12-62"></a>              <span class="at">persistent =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb12-63"><a href="#cb12-63"></a>              <span class="at">dynamic =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-64"><a href="#cb12-64"></a>    <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs annotation coverage"</span>)</span>
-<span id="cb12-65"><a href="#cb12-65"></a></span>
-<span id="cb12-66"><a href="#cb12-66"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb12-67"><a href="#cb12-67"></a></span>
-<span id="cb12-68"><a href="#cb12-68"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb12-69"><a href="#cb12-69"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-70"><a href="#cb12-70"></a>}</span>
-<span id="cb12-71"><a href="#cb12-71"></a></span>
-<span id="cb12-72"><a href="#cb12-72"></a><span class="fu">saveWidget</span>(combined_plot, </span>
-<span id="cb12-73"><a href="#cb12-73"></a>           <span class="at">file =</span> <span class="fu">here</span>(output_dir, <span class="st">"interactive_combined_plot.html"</span>), </span>
-<span id="cb12-74"><a href="#cb12-74"></a>           <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">library</span>(htmlwidgets)</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb16-7"><a href="#cb16-7"></a>table1_extract <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>    <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">case_when</span>(longitudinal <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="st">"Longitudinal"</span>, </span>
+<span id="cb16-9"><a href="#cb16-9"></a>                                    longitudinal <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="st">"Not longitudinal"</span>, </span>
+<span id="cb16-10"><a href="#cb16-10"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Unknown"</span>))</span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>hover_text_template <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb16-13"><a href="#cb16-13"></a>    <span class="st">"&lt;b&gt;Dataset:&lt;/b&gt; %{text}&lt;br&gt;"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14"></a>    <span class="st">"&lt;b&gt;Description:&lt;/b&gt; %{customdata}"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a>)</span>
+<span id="cb16-17"><a href="#cb16-17"></a></span>
+<span id="cb16-18"><a href="#cb16-18"></a>plotly_plot_hmdb <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb16-20"><a href="#cb16-20"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb16-21"><a href="#cb16-21"></a>        <span class="at">y =</span> <span class="sc">~</span>hmdb_annotated_compounds,</span>
+<span id="cb16-22"><a href="#cb16-22"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb16-23"><a href="#cb16-23"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,                 <span class="co"># Point label text</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,     <span class="co"># Hover description storage</span></span>
+<span id="cb16-25"><a href="#cb16-25"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb16-26"><a href="#cb16-26"></a>        <span class="at">showlegend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-27"><a href="#cb16-27"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb16-28"><a href="#cb16-28"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb16-29"><a href="#cb16-29"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb16-30"><a href="#cb16-30"></a>        <span class="at">hovertemplate =</span> hover_text_template   <span class="co"># Set hover text</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-32"><a href="#cb16-32"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb16-33"><a href="#cb16-33"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs HMDB annotation coverage'</span>, </span>
+<span id="cb16-34"><a href="#cb16-34"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb16-35"><a href="#cb16-35"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'HMDB Annotated compounds'</span>)</span>
+<span id="cb16-36"><a href="#cb16-36"></a>    )</span>
+<span id="cb16-37"><a href="#cb16-37"></a></span>
+<span id="cb16-38"><a href="#cb16-38"></a>plotly_plot_kegg <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb16-39"><a href="#cb16-39"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb16-40"><a href="#cb16-40"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb16-41"><a href="#cb16-41"></a>        <span class="at">y =</span> <span class="sc">~</span>kegg_annotated_compounds,</span>
+<span id="cb16-42"><a href="#cb16-42"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb16-43"><a href="#cb16-43"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,</span>
+<span id="cb16-44"><a href="#cb16-44"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,</span>
+<span id="cb16-45"><a href="#cb16-45"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb16-46"><a href="#cb16-46"></a>        <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-47"><a href="#cb16-47"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb16-48"><a href="#cb16-48"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb16-49"><a href="#cb16-49"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb16-50"><a href="#cb16-50"></a>        <span class="at">hovertemplate =</span> hover_text_template</span>
+<span id="cb16-51"><a href="#cb16-51"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-52"><a href="#cb16-52"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb16-53"><a href="#cb16-53"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs KEGG annotation coverage'</span>, </span>
+<span id="cb16-54"><a href="#cb16-54"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb16-55"><a href="#cb16-55"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'KEGG Annotated compounds'</span>)</span>
+<span id="cb16-56"><a href="#cb16-56"></a>    )</span>
+<span id="cb16-57"><a href="#cb16-57"></a></span>
+<span id="cb16-58"><a href="#cb16-58"></a>combined_plot <span class="ot">&lt;-</span> <span class="fu">subplot</span>(<span class="fu">style</span>(plotly_plot_hmdb, <span class="at">showlegend =</span> F), </span>
+<span id="cb16-59"><a href="#cb16-59"></a>        plotly_plot_kegg) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-60"><a href="#cb16-60"></a>    <span class="fu">highlight</span>(<span class="at">on =</span> <span class="st">"plotly_hover"</span>, </span>
+<span id="cb16-61"><a href="#cb16-61"></a>              <span class="at">off =</span> <span class="st">"plotly_doubleclick"</span>, </span>
+<span id="cb16-62"><a href="#cb16-62"></a>              <span class="at">persistent =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb16-63"><a href="#cb16-63"></a>              <span class="at">dynamic =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-64"><a href="#cb16-64"></a>    <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs annotation coverage"</span>)</span>
+<span id="cb16-65"><a href="#cb16-65"></a></span>
+<span id="cb16-66"><a href="#cb16-66"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb16-67"><a href="#cb16-67"></a></span>
+<span id="cb16-68"><a href="#cb16-68"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb16-69"><a href="#cb16-69"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-70"><a href="#cb16-70"></a>}</span>
+<span id="cb16-71"><a href="#cb16-71"></a></span>
+<span id="cb16-72"><a href="#cb16-72"></a><span class="fu">saveWidget</span>(combined_plot, </span>
+<span id="cb16-73"><a href="#cb16-73"></a>           <span class="at">file =</span> <span class="fu">here</span>(output_dir, <span class="st">"interactive_combined_plot.html"</span>), </span>
+<span id="cb16-74"><a href="#cb16-74"></a>           <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.</p>
 </section>
@@ -2286,11 +2579,38 @@ Barker, Michelle, Neil P. Chue Hong, Daniel S. Katz, Anna-Lena Lamprecht, Carlos
 <div id="ref-Cheng_etal_2024" class="csl-entry" role="listitem">
 Cheng, Cindy, Luca Messerschmidt, Isaac Bravo, Marco Waldbauer, Rohan Bhavikatti, Caress Schenk, Vanja Grujic, Tim Model, Robert Kubinec, and Joan Barceló. 2024. <span>“A General Primer for Data Harmonization.”</span> <em>Scientific Data</em> 11 (1): 152. <a href="https://doi.org/10.1038/s41597-024-02956-3">https://doi.org/10.1038/s41597-024-02956-3</a>.
 </div>
+<div id="ref-Conroy_etal_2024" class="csl-entry" role="listitem">
+Conroy, Matthew J, Robert M Andrews, Simon Andrews, Lauren Cockayne, Edward A Dennis, Eoin Fahy, Caroline Gaud, et al. 2024. <span>“LIPID MAPS: Update to Databases and Tools for the Lipidomics Community.”</span> <em>Nucleic Acids Research</em> 52 (D1): D1677–82. <a href="https://doi.org/10.1093/nar/gkad896">https://doi.org/10.1093/nar/gkad896</a>.
+</div>
+<div id="ref-Cooper_2000" class="csl-entry" role="listitem">
+Cooper, Geoffrey M. 2000. <span>“The Molecular Composition of Cells.”</span> In <em>The Cell: A Molecular Approach. 2nd Edition</em>. Sinauer Associates. <a href="https://www.ncbi.nlm.nih.gov/books/NBK9879/">https://www.ncbi.nlm.nih.gov/books/NBK9879/</a>.
+</div>
+<div id="ref-Garg_Zubair_2026" class="csl-entry" role="listitem">
+Garg, Eshita, and Muhammad Zubair. 2026. <span>“Mass Spectrometer.”</span> In <em>StatPearls</em>. Treasure Island (FL): StatPearls Publishing. <a href="http://www.ncbi.nlm.nih.gov/books/NBK589702/">http://www.ncbi.nlm.nih.gov/books/NBK589702/</a>.
+</div>
 <div id="ref-Kanehisa_etal_2025" class="csl-entry" role="listitem">
 Kanehisa, Minoru, Miho Furumichi, Yoko Sato, Yuriko Matsuura, and Mari Ishiguro-Watanabe. 2025. <span>“KEGG: Biological Systems Database as a Model of the Real World.”</span> <em>Nucleic Acids Research</em> 53 (D1): D672–77. <a href="https://doi.org/10.1093/nar/gkae909">https://doi.org/10.1093/nar/gkae909</a>.
 </div>
 <div id="ref-Kanehisa_Goto_2000" class="csl-entry" role="listitem">
 Kanehisa, Minoru, and Susumu Goto. 2000. <span>“KEGG: Kyoto Encyclopedia of Genes and Genomes.”</span> <em>Nucleic Acids Research</em> 28 (1): 27–30. <a href="https://doi.org/10.1093/nar/28.1.27">https://doi.org/10.1093/nar/28.1.27</a>.
+</div>
+<div id="ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" class="csl-entry" role="listitem">
+Karu, Naama, Lu Deng, Mordechai Slae, An Chi Guo, Tanvir Sajed, Hien Huynh, Eytan Wine, and David S. Wishart. 2018. <span>“A Review on Human Fecal Metabolomics: Methods, Applications and the Human Fecal Metabolome Database.”</span> <em>Analytica Chimica Acta</em> 1030 (November): 1–24. <a href="https://doi.org/10.1016/j.aca.2018.05.031">https://doi.org/10.1016/j.aca.2018.05.031</a>.
+</div>
+<div id="ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" class="csl-entry" role="listitem">
+Liu, Juan, Yuzhu Tan, Hao Cheng, Dandan Zhang, Wuwen Feng, and Cheng Peng. 2022. <span>“Functions of Gut Microbiota Metabolites, Current Status and Future Perspectives.”</span> <em>Aging and Disease</em> 13 (4): 1106–26. <a href="https://doi.org/10.14336/AD.2022.0104">https://doi.org/10.14336/AD.2022.0104</a>.
+</div>
+<div id="ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" class="csl-entry" role="listitem">
+Lu, Wenyun, Xiaoyang Su, Matthias S. Klein, Ian A. Lewis, Oliver Fiehn, and Joshua D. Rabinowitz. 2017. <span>“Metabolite Measurement: Pitfalls to Avoid and Practices to Follow.”</span> <em>Annual Review of Biochemistry</em> 86: 277–304. <a href="https://doi.org/10.1146/annurev-biochem-061516-044952">https://doi.org/10.1146/annurev-biochem-061516-044952</a>.
+</div>
+<div id="ref-Marion_2013" class="csl-entry" role="listitem">
+Marion, Dominique. 2013. <span>“An Introduction to Biological NMR Spectroscopy.”</span> <em>Molecular &amp; Cellular Proteomics : MCP</em> 12 (11): 3006–25. <a href="https://doi.org/10.1074/mcp.O113.030239">https://doi.org/10.1074/mcp.O113.030239</a>.
+</div>
+<div id="ref-MassBank" class="csl-entry" role="listitem">
+<span>“MassBank of North America (MoNA) - PubChem Data Source.”</span> n.d. <a href="https://pubchem.ncbi.nlm.nih.gov/source/22043">https://pubchem.ncbi.nlm.nih.gov/source/22043</a>.
+</div>
+<div id="ref-Moreno-Ulloa_2026" class="csl-entry" role="listitem">
+Moreno-Ulloa, Aldo. 2026. <span>“Definition of Metabolite: Size as a Critical Criterion.”</span> <em>Journal of Proteome Research</em> 25 (3): 1244–52. <a href="https://doi.org/10.1021/acs.jproteome.5c00747">https://doi.org/10.1021/acs.jproteome.5c00747</a>.
 </div>
 <div id="ref-Muller_Algavi_Borenstein_2022" class="csl-entry" role="listitem">
 Muller, Efrat, Yadid M. Algavi, and Elhanan Borenstein. 2022. <span>“The Gut Microbiome-Metabolome Dataset Collection: A Curated Resource for Integrative Meta-Analysis.”</span> <em>Npj Biofilms and Microbiomes</em> 8 (1): 79. <a href="https://doi.org/10.1038/s41522-022-00345-5">https://doi.org/10.1038/s41522-022-00345-5</a>.
@@ -2304,6 +2624,12 @@ Petersen, Alexander M., Ioannis Pavlidis, and Ioanna Semendeferi. 2014. <span>�
 <div id="ref-Sandve_Nekrutenko_Taylor_Hovig_2013" class="csl-entry" role="listitem">
 Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLOS Computational Biology</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.
 </div>
+<div id="ref-Schloss_2018" class="csl-entry" role="listitem">
+Schloss, Patrick D. 2018. <span>“Identifying and Overcoming Threats to Reproducibility, Replicability, Robustness, and Generalizability in Microbiome Research.”</span> <em>mBio</em> 9 (3): 10.1128/mbio.00525–18. <a href="https://doi.org/10.1128/mbio.00525-18">https://doi.org/10.1128/mbio.00525-18</a>.
+</div>
+<div id="ref-Son_etal_2024" class="csl-entry" role="listitem">
+Son, Ahrum, Woojin Kim, Jongham Park, Yongho Park, Wonseok Lee, Sangwoon Lee, and Hyunsoo Kim. 2024. <span>“Mass Spectrometry Advancements and Applications for Biomarker Discovery, Diagnostic Innovations, and Personalized Medicine.”</span> <em>International Journal of Molecular Sciences</em> 25 (18): 9880. <a href="https://doi.org/10.3390/ijms25189880">https://doi.org/10.3390/ijms25189880</a>.
+</div>
 <div id="ref-Sterling_2011" class="csl-entry" role="listitem">
 Sterling, Robyn L. 2011. <span>“Genetic Research Among the Havasupai: A Cautionary Tale.”</span> <em>AMA Journal of Ethics</em> 13 (2): 113–17. <a href="https://doi.org/10.1001/virtualmentor.2011.13.2.hlaw1-1102">https://doi.org/10.1001/virtualmentor.2011.13.2.hlaw1-1102</a>.
 </div>
@@ -2316,6 +2642,9 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 <div id="ref-Wishart_etal_2009" class="csl-entry" role="listitem">
 Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Gautam, David D. Hau, et al. 2009. <span>“HMDB: A Knowledgebase for the Human Metabolome.”</span> <em>Nucleic Acids Research</em> 37 (Database issue): D603–10. <a href="https://doi.org/10.1093/nar/gkn810">https://doi.org/10.1093/nar/gkn810</a>.
 </div>
+<div id="ref-Wright_Computing" class="csl-entry" role="listitem">
+Wright, Carrie. n.d. <em>Chapter 4 Computing Resources | Computing for Cancer Informatics</em>. <a href="https://jhudatascience.org/Computing_for_Cancer_Informatics/computing-resources.html">https://jhudatascience.org/Computing_for_Cancer_Informatics/computing-resources.html</a>.
+</div>
 </div>
 </section>
 <section id="session-info" class="level2">
@@ -2323,7 +2652,7 @@ Wishart, David S., Craig Knox, An Chi Guo, Roman Eisner, Nelson Young, Bijaya Ga
 <hr>
 <section id="for-the-container-infrastructure-and-application-steps-within-this-case-study" class="level3">
 <h3 class="anchored" data-anchor-id="for-the-container-infrastructure-and-application-steps-within-this-case-study">For the container infrastructure and application steps within this case study</h3>
-<div class="{.emphasis_block&quot;}">
+<div class="emphasis_block" style="font-family: monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; display: block; line-height: 0.8;">
 <p>R&nbsp;version&nbsp;4.5.3&nbsp;(2026-03-11)<br>
 Platform:&nbsp;x86_64-pc-linux-gnu<br>
 Running&nbsp;under:&nbsp;Ubuntu&nbsp;24.04.4&nbsp;LTS</p>
@@ -2359,7 +2688,7 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
 <section id="for-publishing-of-this-case-study" class="level3">
 <h3 class="anchored" data-anchor-id="for-publishing-of-this-case-study">For publishing of this case study</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
@@ -2371,26 +2700,33 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2026-08-26
+ date     2026-09-04
  pandoc   3.1.1 @ /usr/local/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  package     * version date (UTC) lib source
+ bit           4.0.5   2022-11-15 [1] RSPM (R 4.3.0)
+ bit64         4.0.5   2020-08-30 [1] RSPM (R 4.3.0)
  cachem        1.0.8   2023-05-01 [1] RSPM (R 4.3.0)
  chromote      0.5.1   2025-04-24 [1] CRAN (R 4.3.2)
  cli           3.6.5   2025-04-23 [1] CRAN (R 4.3.2)
+ colorspace    2.1-0   2023-01-23 [1] RSPM (R 4.3.0)
+ crayon        1.5.2   2022-09-29 [1] RSPM (R 4.3.0)
  curl          7.0.0   2025-08-19 [1] CRAN (R 4.3.2)
  devtools      2.4.5   2022-10-11 [1] RSPM (R 4.3.0)
  digest        0.6.34  2024-01-11 [1] RSPM (R 4.3.0)
- dplyr         1.1.4   2023-11-17 [1] RSPM (R 4.3.0)
+ dplyr       * 1.1.4   2023-11-17 [1] RSPM (R 4.3.0)
  ellipsis      0.3.2   2021-04-29 [1] RSPM (R 4.3.0)
  evaluate      1.0.5   2025-08-27 [1] CRAN (R 4.3.2)
  fansi         1.0.6   2023-12-08 [1] RSPM (R 4.3.0)
  fastmap       1.1.1   2023-02-24 [1] RSPM (R 4.3.0)
+ forcats     * 1.0.0   2023-01-29 [1] RSPM (R 4.3.0)
  fs            1.6.3   2023-07-20 [1] RSPM (R 4.3.0)
  generics      0.1.3   2022-07-05 [1] RSPM (R 4.3.0)
+ ggplot2     * 3.5.0   2024-02-23 [1] RSPM (R 4.3.0)
  gitcreds      0.1.2   2022-09-08 [1] RSPM (R 4.3.0)
  glue          1.7.0   2024-01-09 [1] RSPM (R 4.3.0)
+ gtable        0.3.4   2023-08-21 [1] RSPM (R 4.3.0)
  hms           1.1.3   2023-03-21 [1] RSPM (R 4.3.0)
  htmltools     0.5.7   2023-11-03 [1] RSPM (R 4.3.0)
  htmlwidgets   1.6.4   2023-12-06 [1] RSPM (R 4.3.0)
@@ -2400,10 +2736,12 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
  knitr         1.50    2025-03-16 [1] CRAN (R 4.3.2)
  later         1.3.2   2023-12-06 [1] RSPM (R 4.3.0)
  lifecycle     1.0.4   2023-11-07 [1] RSPM (R 4.3.0)
+ lubridate   * 1.9.3   2023-09-27 [1] RSPM (R 4.3.0)
  magrittr      2.0.3   2022-03-30 [1] RSPM (R 4.3.0)
  memoise       2.0.1   2021-11-26 [1] RSPM (R 4.3.0)
  mime          0.12    2021-09-28 [1] RSPM (R 4.3.0)
  miniUI        0.1.1.1 2018-05-18 [1] RSPM (R 4.3.0)
+ munsell       0.5.0   2018-06-12 [1] RSPM (R 4.3.0)
  ottrpal       2.0.0   2025-12-16 [1] Github (ottrproject/ottrpal@6d1267e)
  pillar        1.9.0   2023-03-22 [1] RSPM (R 4.3.0)
  pkgbuild      1.4.3   2023-12-10 [1] RSPM (R 4.3.0)
@@ -2414,30 +2752,35 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
  profvis       0.3.8   2023-05-02 [1] RSPM (R 4.3.0)
  promises      1.2.1   2023-08-10 [1] RSPM (R 4.3.0)
  ps            1.9.1   2025-04-12 [1] CRAN (R 4.3.2)
- purrr         1.0.2   2023-08-10 [1] RSPM (R 4.3.0)
+ purrr       * 1.0.2   2023-08-10 [1] RSPM (R 4.3.0)
  R6            2.6.1   2025-02-15 [1] CRAN (R 4.3.2)
  Rcpp          1.0.12  2024-01-09 [1] RSPM (R 4.3.0)
- readr         2.1.5   2024-01-10 [1] RSPM (R 4.3.0)
+ readr       * 2.1.5   2024-01-10 [1] RSPM (R 4.3.0)
  remotes       2.4.2.1 2023-07-18 [1] RSPM (R 4.3.0)
  rlang         1.1.6   2025-04-11 [1] CRAN (R 4.3.2)
  rmarkdown     2.25    2023-09-18 [1] RSPM (R 4.3.0)
  rprojroot     2.1.1   2025-08-26 [1] CRAN (R 4.3.2)
  rvest         1.0.5   2025-08-29 [1] CRAN (R 4.3.2)
+ scales        1.3.0   2023-11-28 [1] RSPM (R 4.3.0)
  sessioninfo   1.2.2   2021-12-06 [1] RSPM (R 4.3.0)
  shiny         1.8.0   2023-11-17 [1] RSPM (R 4.3.0)
  spelling      2.3.2   2025-08-18 [1] CRAN (R 4.3.2)
  stringi       1.8.3   2023-12-11 [1] RSPM (R 4.3.0)
- stringr       1.5.1   2023-11-14 [1] RSPM (R 4.3.0)
- tibble        3.3.0   2025-06-08 [1] CRAN (R 4.3.2)
- tidyr         1.3.1   2024-01-24 [1] RSPM (R 4.3.0)
+ stringr     * 1.5.1   2023-11-14 [1] RSPM (R 4.3.0)
+ tibble      * 3.3.0   2025-06-08 [1] CRAN (R 4.3.2)
+ tidyr       * 1.3.1   2024-01-24 [1] RSPM (R 4.3.0)
  tidyselect    1.2.0   2022-10-10 [1] RSPM (R 4.3.0)
+ tidyverse   * 2.0.0   2023-02-22 [1] RSPM (R 4.3.0)
+ timechange    0.3.0   2024-01-18 [1] RSPM (R 4.3.0)
  tzdb          0.4.0   2023-05-12 [1] RSPM (R 4.3.0)
  urlchecker    1.0.1   2021-11-30 [1] RSPM (R 4.3.0)
  usethis       2.2.3   2024-02-19 [1] RSPM (R 4.3.0)
  utf8          1.2.4   2023-10-22 [1] RSPM (R 4.3.0)
  vctrs         0.6.5   2023-12-01 [1] RSPM (R 4.3.0)
+ vroom         1.6.5   2023-12-05 [1] RSPM (R 4.3.0)
  webshot2      0.1.2   2025-04-23 [1] CRAN (R 4.3.2)
  websocket     1.4.4   2025-04-10 [1] CRAN (R 4.3.2)
+ withr         3.0.2   2024-10-28 [1] CRAN (R 4.3.2)
  xfun          0.55    2025-12-16 [1] CRAN (R 4.3.2)
  xml2          1.5.1   2025-12-01 [1] CRAN (R 4.3.2)
  xtable        1.8-4   2019-04-21 [1] RSPM (R 4.3.0)
