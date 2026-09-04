@@ -19,7 +19,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ### Kitchen and cooking analogy
 
-The containerization process can be thought of like working in a kitchen for dinner service or holiday meal. 
+The containerization process can be thought of like working in a kitchen for dinner service or a holiday meal. 
 
 ```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how working in a kitchen can be an analogy for the containerization process. Dockerfiles specify the recipe repertoire and kitchen organization standards while building is like the preparation process resulting in standardized resources, ready for active cooking, but not actively being used - an image. Running the image results in a container or an active kitchen where cooking is happening. It is like turning on the burner. In the running process you may mount a volume of scripts and data or in the kitchen this would be specific recipes. Finally, container clean up is removing the heat and resetting the environment by storing ingredients and cleaning up the space.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f88b06ed70_0_0#slide=id.g3f88b06ed70_0_0")
@@ -33,9 +33,9 @@ Working in a kitchen, often the area and ingredients may be prepped before any c
 
 The "build" process (Dockerfile --> image) is the preparation of the environment and ingredients: the cleaning, stocking, chopping, dicing, peeling, measuring, etc. which leads to the docker image where everything is in a static, read-only, prepared state. The docker image is like "mise en place".
 
-The step-by-step instructions for specific dishes, and their utiliziation of specific ingredients may be needed as well (analysis scripts). Perhaps unusual ingredients (data) for special dishes are needed. These are not part of the building process, but instead are brought into the container once everything else is ready. The recipes, kitchen station and prep guidelines (Dockerfile), and prepared environment, and ingredients (image) provide a static and standardized setup -- one that can be used by any set of cooks or chefs. The mounted volume within a running container brings in the flexibility to use the static and standardized setup for your specific needs in your specific way.
+The step-by-step instructions for specific dishes, and their utilization of specific ingredients may be needed as well (analysis scripts). Perhaps unusual ingredients (data) for special dishes are needed. These are not part of the building process, but instead are brought into the kitchen (container) once everything else is ready. The recipes, kitchen station and prep guidelines (Dockerfile), and prepared environment, and ingredients (image) provide a static and standardized setup -- one that can be used by any set of cooks or chefs. The mounted volume within a running container brings in the flexibility to use the static and standardized setup for your specific needs in your specific way.
 
-Once the kitchen is ready, they fire up a stovetop, heat an oven, or combine ingredients that will work together in a bowl. With the addition of heat or mixing of ingredients, the cooking process itself begins. Everything that was defined in the recipe or kitchen station instructions is at the kitchen's disposal. It's too late to go get different ingredients or supplies.
+Once the kitchen is ready, they fire up a stove top, heat an oven, or combine ingredients that will work together in a bowl. With the addition of heat or mixing of ingredients, the cooking process itself begins. Everything that was defined in the recipe or kitchen station instructions is at the kitchen's disposal. It's too late to go get different ingredients or supplies.
 
 The "run" process (image --> container) is like supplying the heat -- creating the environment where the cooking and combining of ingredients can happen -- the container. In the running container or environment, each of the ingredients (packages) are at your disposal, ready to use. Your analysis scripts and specific data will be incorporated here by mounting a volume during the "run" process. 
 
@@ -58,7 +58,7 @@ Add an analogy about hotel rooms
 
 ### Lego analogy
 
-The containerization process can be thought of like building with Legos.s 
+The containerization process can be thought of like building with Legos.
 
 ```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
