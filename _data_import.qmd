@@ -187,7 +187,7 @@ Question Opportunity
 ::::
 :::: {.inner_block}
 
-Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF fiel instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps? 
+Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps? 
 
 <details><summary>Possible Answer</summary>
 
