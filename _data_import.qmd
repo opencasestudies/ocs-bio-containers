@@ -58,7 +58,6 @@ Note that the command line interface will display progress messages for each lay
 
 :::
 
-
 <details><summary>Finding containers in a registry (e.g., Docker Hub)</summary>
 
 You may want to look for a container that has packages that meets your needs, or you may know the organization name or a partial name of a container image and want to browse images from that organization or with matching names. In those cases, you'll want to search a registry like Docker Hub. Docker Hub isn't the only container registry. [This article describes additional registries](https://octopus.com/blog/top-8-container-registries).
@@ -75,15 +74,14 @@ If all you need is software and don't need data or analysis scripts (stored in a
 
 We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
 
-
 #### Step 3a: Downloading version-controlled analysis files
 
 Because the focus of this case study is working on a data analysis within the containerization framework and not on developing the data analysis itself or writing R and bash scripts, the analysis scripts to support this data analysis are provided for you in a [scaffold GitHub repository](https://github.com/opencasestudies/ocs-bio-containers-scaffold). 
 
 You can interact with the scripts within this scaffold GitHub repository in one of two ways:
 
-*Option A*: Download the analysis scripts in a `.zip` file<br/>
-*Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
+1. *Option A*: Download the analysis scripts in a `.zip` file<br/>
+2. *Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
 Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
 
@@ -132,6 +130,8 @@ On the new window "Create a new repository", fill in a repository name under "Ge
 
 It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green "<> Code" button to clone the repository for a local copy.  Refer to and follow [the instructions from the Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository) if needed. 
 
+**You will need to know where this local copy is located (e.g., what directory it is in) on your computer for the next step.**
+
 [Create a branch](https://www.opencasestudies.org/ocs-bio-version-control/#create-a-new-branch-for-this-analysis) so that any changes you make to scripts can be committed and pushed to your remote repository as a pull request later.
 
 :::
@@ -141,7 +141,7 @@ It will take a little time to generate the new repository. Once your new reposit
 
 Because a container is isolated, it won't have access to files (scripts, data, or locations to store outputs) unless you specifically **mount a volume**. Therefore, we will want to point the container to the files that we've just downloaded in Step 3a when we run the image. This gives the container access to the project directory (and our scripts). 
 
-If we don't mount the volume when we run the image, we won't have access to those files in the running container (and can't grant access to them within a running or paused container) and would have to create directories and scripts within the running container. Then we wouldn't be able to track revisions to scripts or easily view / save outputs.
+If we don't mount the volume when we run the image, we won't have access to those files in the running container (and can't grant access to them within a running or paused container), and would have to create directories and scripts within the running container. Then we wouldn't be able to track revisions to scripts or easily view / save outputs.
 
 :::{.panel-tabset}
 ##### Docker Desktop
@@ -150,7 +150,13 @@ Running the container instructions (including mounting the volume)
 
 ##### Docker through a CLI
 
-Running the container instructions (including mounting the volume)
+Enter the following command in your CLI, replacing `[locationOfAnalysisFiles]` with the location of your analysis files (e.g., `~/Downloads/ocs--bio-containers-scaffold`) 
+
+```{.bash}
+docker run -v [locationOfAnalysisFiles] bioocs/ocs-bio-containers-base:main
+```
+
+At the end of some progress messages, you should see `[services.d] done.` meaning that the container is ready for use.
 
 :::
 
