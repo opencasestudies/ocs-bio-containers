@@ -102,14 +102,14 @@ include-sections:
 
 ### For the container infrastructure and application steps within this case study
 
-::: {.emphasis_block"}
+::: {.emphasis_block style="font-family: monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; display: block; line-height: 0.8;"}
 
 ```{r}
 #| echo: false
 #| output: asis
 
 # Replace with your raw GitHub URL
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/session_info.txt"
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/full_analysis_results/logs/session_info.txt"
 
 # Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
 file_lines <- readLines(url, warn = FALSE)

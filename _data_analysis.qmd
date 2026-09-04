@@ -3,36 +3,48 @@
 
 ## Container Application
 
+Finding the correlation between different variables in the dataset
 
+Looking at subsets of datasets for the same variables...
 
+```{.R filename="04_analysis_metric.R"}
+{{< include resources/analysis_scripts/04_analysis_metric.R >}}
+```
 
 ::: {.panel-tabset}
 
 ### Docker Desktop
 
-Ask learners to try to run the analysis, editing the run all script to include the summary stat we've discussed
+Ask learners to try to run the analysis
 
 ### Docker through a CLI
 
-Ask learners to try to run the analysis, editing the run all script to include the summary stat we've discussed
+Ask learners to try to run the analysis
 
 :::
 
-:::{.think_question}
-::::{.think_question_header}
-Question opportunity
-::::
-::::{.inner_block}
-Pose a question about the data analysis.
-<details><summary>Answer</summary>
-You can use a collapsible details section to provide an answer
-</details>
-::::
+Look at the logs.
+
+
+::: {.emphasis_block}
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/analysis_logs.txt"
+
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
+file_lines <- readLines(url, warn = FALSE)
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
+```
+
 :::
 
-::: {.column-margin}
-We might use a column margin note to add an equation or some other annotation for learners or educators.
-:::
+
+## Container Infrastructure
 
 In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
 
@@ -43,6 +55,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```{.dockerfile filename="Dockerfile"}
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
+
+Sharing the container image vs sharing the Dockerfile
+
 
 ```{.bash filename="run_analysis.sh"}
 {{< include resources/analysis_scripts/run_analysis.sh >}}
@@ -57,23 +72,11 @@ Having a "run all" script that specifies what scripts were used and in what orde
 ::::
 :::
 
-## Container Infrastructure
-
-::: {.panel-tabset}
-
-### Docker Desktop
-
-Sharing the container
-
-### Docker through a CLI
-
-Sharing the container
-
-:::
 
 We'll also discuss how to document where the scripts are, how to mount a volume (with analysis scripts) and point out that the validator can get the same results as the learner did by running the `run_analysis.sh` script.
 
 Add a reproducibility box about pushing the new / adjusted scripts and plots as well as the documentation to the scaffold repo that they "used as a template/cloned" if they did the earlier extra reproducibility step.
+
 
 
 ***
