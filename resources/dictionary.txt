@@ -3,7 +3,7 @@ acis
 ahn
 ai
 Algavi
-an
+ɑn
 Apptainer
 automations
 Benchmarking
@@ -28,6 +28,7 @@ Dockerhub
 dplyr
 dropdown
 endeavour
+Extensibility
 favicon
 findable
 frontmatter
