@@ -1392,23 +1392,49 @@ Finding containers in a registry (e.g., Docker Hub)
 <p>Running the container instructions (including mounting the volume)</p>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
-<p>Enter the following command in your CLI, replacing <code>[locationOfAnalysisFiles]</code> with the location of your analysis files (e.g., <code>~/Downloads/ocs--bio-containers-scaffold</code>)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="pp">[</span><span class="ss">locationOfAnalysisFiles</span><span class="pp">]</span> bioocs/ocs-bio-containers-base:main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>At the end of some progress messages, you should see <code>[services.d] done.</code> meaning that the container is ready for use.</p>
+<ul>
+<li>Change directories (<code>cd</code>) to your local copy of the analysis files.</li>
+<li>Use the following command in your CLI to start a container
+<ul>
+<li>This will mount the current directory as the volume (<code>-v</code>)</li>
+<li>The working directory within the running container will point to your current directory (<code>-w</code>)</li>
+<li><code>-it</code> + <code>bash</code> opens an interactive CLI in the running container</li>
+<li>Note that the image name <code>bioocs/ocs-bio-containers-base:main</code> must be specified after all of the flags (<code>-w</code>, <code>-v</code>, <code>-it</code>, etc.), but before the <code>bash</code> specification or there will be errors such as “Error response from daemon” if specified before the flags or “No such file or directory” if specified after <code>bash</code>.</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="at">-w</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span> <span class="at">-it</span> bioocs/ocs-bio-containers-base:main bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The running container will have a different command prompt than the usual command line command prompt. It will start with something like <code>root@</code> followed by some letters and numbers and then the a colon with file path for your local copy of the analysis files.</p>
+<p><code>ls</code> and see what files or directories are shown to be there. You should see the directories <code>analysis_scripts</code> and <code>continued_learning_scripts</code> as well as the file <code>README.md</code>.</p>
 </div>
 </div>
 </div>
+<p>The container is running and now can be used for the project with Collab O. Rator!</p>
 </section>
 </section>
 </section>
 <section id="container-application" class="level2">
 <h2 class="anchored" data-anchor-id="container-application">Container Application</h2>
+<p>Now that the container is running, it can be used to work with data and perform tasks with the software packages inside the container. The first necessary step is to “import” the data needed to create data visualizations down the road.</p>
 <section id="extracting-data-from-a-pdf-within-a-running-container" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-data-from-a-pdf-within-a-running-container">Extracting data from a PDF within a running container</h3>
-<section id="running-the-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="running-the-analysis">Running the analysis</h4>
-<p>Using the <code>tabulapdf</code> package, we will extract a raw, unwrangled version of Table 1.</p>
-<p>Update this to grab the script and show it with the shortcode notation</p>
+<p>Collab O. Rator previously wrote a script to extract the data from the PDF using the <code>tabulapdf</code> file. Rather than providing a file with the extracted data, Collab O. Rator provided the container information and the script. Therefore, in this case, we’ll need to run the script from Collab O. Rator within the running container to extract and save the data so that we can work with it in other scripts.</p>
+<section id="step-1-running-the-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-running-the-analysis">Step 1: Running the analysis</h4>
+<p>Using the <code>tabulapdf</code> package within a script, we will extract a raw, unwrangled version of Table 1.</p>
+<div class="think_question">
+<div class="think_question_header">
+<p>Question Opportunity</p>
+</div>
+<div class="inner_block">
+<p>Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps?</p>
+<details>
+<summary>
+Possible Answer
+</summary>
+<p>Reducing manual steps and rather automating them is an important step towards more reproducible science. In this specific case for data retrieval, data retrieval through automation is not only more transparent (regarding how things were done), it also can be less error prone than manual entry.</p>
+</details>
+</div>
+</div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>01_extract_data.R</strong></pre>
@@ -1447,73 +1473,118 @@ Finding containers in a registry (e.g., Docker Hub)
 <span id="cb4-32"><a href="#cb4-32"></a>                                   <span class="st">"raw_table1.csv"</span>))</span>
 <span id="cb4-33"><a href="#cb4-33"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Discuss what the above script is actually doing. Note that we’re using a URL to read the PDF rather than including the PDF in the mounted volume.</p>
-<p>Walk through how to run the container in order to run the analysis and extract the data.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
-<div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
-<p>Running the analysis instructions</p>
-</div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
-<p>Running the analysis instructions</p>
-</div>
-</div>
-</div>
-</section>
-<section id="inspecting-the-output" class="level4">
-<h4 class="anchored" data-anchor-id="inspecting-the-output">Inspecting the output</h4>
-<p>In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted. We also save an <code>rda</code> and <code>csv</code> version of the raw data. Where do we see those? Do we see those?</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
-<div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
-<p>Looking at the outputs (new folders, files, and log messages)</p>
-</div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
-<p>Looking at the outputs (new folders, files, and log messages)</p>
-</div>
-</div>
-</div>
 <div class="emphasis_block">
-<p>Dimensions: 25 x 7<br>
-Number of NAs: 80</p>
+<details>
+<summary>
+What is this script doing?
+</summary>
+<p>Lines 1-5 of the script are setup lines including the script’s shebang in line 1 and loading necessary packages in lines 3-5. <code>tabulapdf</code> will be used to extract a table from the PDF starting on line 8. <code>here</code> will be used to build output file paths on lines 19, 27, and 31. <code>readr</code> will be used to write an output csv file on line 30.</p>
+<p>Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (<code>raw_table</code>). The arguments used within the <a href="https://docs.ropensci.org/tabulapdf/reference/extract_tables.html"><code>extract_tables()</code></a> function from <code>tabulapdf</code> specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (<code>col_names = FALSE</code>). If <code>col_names</code> is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation “a list of character matrices” is returned by default, therefore <code>[[1]]</code> is used at the end to access the first element of that list or this specific table.</p>
+<p>The rest of the script is used to output information about the extracted data or save the extracted data itself:</p>
+<ul>
+<li>Line 15 outputs the dimensions of the extracted table using the <code>dim()</code> function, specifically the number of rows first followed by the number of columns with a <code>x</code> pasted in between the two numbers.</li>
+<li>Line 16 outputs the number of NA values taht are in the extracted table by summing the number of TRUEs from the <code>is.na()</code> function.</li>
+<li>Line 19 specifies an output directory.</li>
+<li>Line 21 checks to see if that output directory exists, and if not creates it in line 22. Notice the <code>recursive = TRUE</code> argument means that it will create all levels of the output directory structure if they don’t already exist.</li>
+<li>Lines 26-28 save the extracted table as an <code>.rda</code> file.</li>
+<li>Lines 30-32 save the extracted table as a <code>.csv</code> file.</li>
+</ul>
+</details>
 </div>
-<p>Activity – Using the container from the collaborator to get the Table 1 data.</p>
-<p>Give side quest instructions on how to interact with a file system if you can’t mount a volume for whatever reason</p>
 <div class="think_question">
 <div class="think_question_header">
 <p>Question Opportunity</p>
 </div>
 <div class="inner_block">
-<p>Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps?</p>
+<p>Instead of using an internet URL as the source PDF where we are extracting the data from, could we extract the data from a PDF file on our local system?</p>
 <details>
 <summary>
 Possible Answer
 </summary>
-<p>Reducing manual steps and rather automating them is an important step towards more reproducible science. In this specific case for data retrieval, data retrieval through automation is not only more transparent (regarding how things were done), it also can be less error prone than manual entry.</p>
+<p>Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we “run” the container.</p>
 </details>
 </div>
-</div>
-<p>For Docker Desktop:</p>
+<p>To run the script to fetch the data in the running container, follow these steps:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <ul>
-<li>run the container</li>
-<li>navigate to the exec tab</li>
-<li>set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
-<ul>
-<li><code>mkdir opt/case_study_analysis plots/ data/imported data/wrangled</code></li>
-</ul></li>
-<li><code>touch</code> an <code>01_extract_data.R</code> script in <code>opt/case_study_analysis</code></li>
-<li>navigate to the files tab</li>
-<li>right click on the <code>01_extract_data.R</code> script and click edit</li>
-<li>copy paste the following code into the script</li>
-<li>click save</li>
-<li>navigate to the exec tab</li>
-<li>use <code>Rscript 01_extract_data.R</code> – adjusting based on script location and learner’s file location.</li>
-<li>notice that it outputs “Dimensions: 25 x 7”</li>
-<li>notice that there is an rda file in the <code>data/imported</code> folder (which we can <code>ls data/imported</code> to see)</li>
+<li>Navigate to the <code>exec</code> tab of the running container if you are not already there.</li>
+<li>Enter the following command and click return / enter.</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">Rscript</span> analysis_scripts/01_extract_data.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Notice the output messages from the script.</li>
+</ul>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>Enter the following command in your CLI and click return / enter.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">Rscript</span> analysis_scripts/01_extract_data.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Notice the output messages from the script.</p>
+</div>
+</div>
+</div>
+<section id="step-2-inspecting-the-output" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-inspecting-the-output">Step 2: Inspecting the output</h4>
+<p>In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.</p>
+<div class="emphasis_block">
+<p>Dimensions: 25 x 7<br>
+Number of NAs: 80</p>
+</div>
+<p>These messages communicate the the raw data table is 25 rows and 7 columns and has 80 NAs somewhere in the 175 cells (row/column intersections) of the table.</p>
+<p>We also save an <code>rda</code> and <code>csv</code> version of the raw data. We can confirm that the <code>rda</code> and <code>csv</code> versions of the raw data were saved in the running container.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<ul>
+<li>Confirm that you are still on the <code>exec</code> tab within the running container. If not, navigate there.</li>
+<li><ul>
+<li>Type <code>ls</code> and press enter / return.</li>
+<li>There will be a new directory <code>data</code> listed.</li>
+</ul></li>
+<li>Type <code>ls data</code> and press enter / return.
+<ul>
+<li>There will be a subdirectory called <code>imported</code> listed.</li>
+</ul></li>
+<li>Type <code>ls data/imported</code> and press enter / return.
+<ul>
+<li>There will be two files <code>raw_table1.csv</code> and <code>raw_table1.rda</code> listed.</li>
+</ul></li>
+<li>Type <code>wc -l data/imported/raw_table1.csv</code> and press enter / return.
+<ul>
+<li>The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)</li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>To confirm the creation of the data files,</p>
+<ul>
+<li>Type <code>ls</code> in the CLI and press enter / return.
+<ul>
+<li>There will be a new directory <code>data</code> listed.</li>
+</ul></li>
+<li>Type <code>ls data</code> in the CLI and press enter / return.
+<ul>
+<li>There will be a subdirectory called <code>imported</code> listed.</li>
+</ul></li>
+<li>Type <code>ls data/imported</code> in the CLI and press enter / return.
+<ul>
+<li>There will be two files <code>raw_table1.csv</code> and <code>raw_table1.rda</code> listed.</li>
+</ul></li>
+<li>Type <code>wc -l data/imported/raw_table1.csv</code> in the CLI and press enter / return.
+<ul>
+<li>The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<p>We now have the table data extracted from the PDF as a data frame in R – ready to be used for the next steps. But is it in a clean format or do we need to first wrangle it before we can visualize it?</p>
 <hr>
+</section>
+</div>
 </section>
 </section>
 </section>
@@ -1528,30 +1599,30 @@ Possible Answer
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># Install Java + minimal system libs needed for your R packages</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>    openjdk-11-jdk <span class="dt">\</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>    libpng-dev <span class="dt">\</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>    libicu-dev <span class="dt">\</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>    libpcre2-dev <span class="dt">\</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># Install R packages</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>    rJava <span class="dt">\</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a>    tabulapdf <span class="dt">\</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a>    here <span class="dt">\</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>    bubbleHeatmap <span class="dt">\</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a>    ggnetwork <span class="dt">\</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a>    ggpubr <span class="dt">\</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a>    gt</span>
-<span id="cb5-24"><a href="#cb5-24"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co"># Install Java + minimal system libs needed for your R packages</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>    openjdk-11-jdk <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>    libpng-dev <span class="dt">\</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>    libicu-dev <span class="dt">\</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    libpcre2-dev <span class="dt">\</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co"># Install R packages</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>    rJava <span class="dt">\</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>    tabulapdf <span class="dt">\</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a>    here <span class="dt">\</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>    bubbleHeatmap <span class="dt">\</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>    ggnetwork <span class="dt">\</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a>    ggpubr <span class="dt">\</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>    gt</span>
+<span id="cb7-24"><a href="#cb7-24"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Going forward we’ll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.</p>
 <div class="cell">
@@ -1663,7 +1734,7 @@ Possible Answer
 <h2 class="anchored" data-anchor-id="container-application-2">Container Application</h2>
 <p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code). make sure your container is running (probably will need a tab structure for this): &lt;- update to be more precise</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <p>Even if you stop the container (as long as you don’t delete it), you can restart it and the data will still be there as long as it was saved during wrangling</p>
@@ -1673,7 +1744,7 @@ If you skipped the data import section click here.
 </summary>
 <p>KI note: We’ll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. I don’t think the container has <code>wget</code>, but I could set up a download that would have the file that they could then mount. Will do that and include instructions here for that.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"imported"</span>, <span class="st">"raw_table1.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 <hr>
@@ -1939,7 +2010,7 @@ Answer
 <hr>
 <p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <details>
@@ -1982,74 +2053,74 @@ If you skipped the data import section click here.
 <div class="code-with-filename-file">
 <pre><strong>03a_visualization.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="03a_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<span id="cb11-8"><a href="#cb11-8"></a></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10"></a></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#HMDB plot</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb11-15"><a href="#cb11-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb11-16"><a href="#cb11-16"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
-<span id="cb11-17"><a href="#cb11-17"></a>             <span class="at">color =</span> longitudinal,</span>
-<span id="cb11-18"><a href="#cb11-18"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
-<span id="cb11-19"><a href="#cb11-19"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb11-20"><a href="#cb11-20"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb11-21"><a href="#cb11-21"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
-<span id="cb11-23"><a href="#cb11-23"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb11-24"><a href="#cb11-24"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
-<span id="cb11-25"><a href="#cb11-25"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
-<span id="cb11-26"><a href="#cb11-26"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb11-27"><a href="#cb11-27"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb11-28"><a href="#cb11-28"></a></span>
-<span id="cb11-29"><a href="#cb11-29"></a><span class="co">#save the plot</span></span>
-<span id="cb11-30"><a href="#cb11-30"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb11-31"><a href="#cb11-31"></a></span>
-<span id="cb11-32"><a href="#cb11-32"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb11-33"><a href="#cb11-33"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-34"><a href="#cb11-34"></a>}</span>
-<span id="cb11-35"><a href="#cb11-35"></a></span>
-<span id="cb11-36"><a href="#cb11-36"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"hmdb_scatter.png"</span>))</span>
-<span id="cb11-37"><a href="#cb11-37"></a></span>
-<span id="cb11-38"><a href="#cb11-38"></a><span class="fu">cat</span>(<span class="st">"HMDB plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb11-39"><a href="#cb11-39"></a></span>
-<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#KEGG plot</span></span>
-<span id="cb11-41"><a href="#cb11-41"></a></span>
-<span id="cb11-42"><a href="#cb11-42"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb11-43"><a href="#cb11-43"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb11-44"><a href="#cb11-44"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
-<span id="cb11-45"><a href="#cb11-45"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
-<span id="cb11-46"><a href="#cb11-46"></a>             <span class="at">color =</span> longitudinal,</span>
-<span id="cb11-47"><a href="#cb11-47"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
-<span id="cb11-48"><a href="#cb11-48"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb11-49"><a href="#cb11-49"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb11-50"><a href="#cb11-50"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb11-51"><a href="#cb11-51"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
-<span id="cb11-52"><a href="#cb11-52"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
-<span id="cb11-53"><a href="#cb11-53"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
-<span id="cb11-54"><a href="#cb11-54"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
-<span id="cb11-55"><a href="#cb11-55"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb11-56"><a href="#cb11-56"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb11-57"><a href="#cb11-57"></a></span>
-<span id="cb11-58"><a href="#cb11-58"></a><span class="co">#save the plot</span></span>
-<span id="cb11-59"><a href="#cb11-59"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"kegg_scatter.png"</span>))</span>
-<span id="cb11-60"><a href="#cb11-60"></a></span>
-<span id="cb11-61"><a href="#cb11-61"></a></span>
-<span id="cb11-62"><a href="#cb11-62"></a><span class="fu">cat</span>(<span class="st">"KEGG plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb11-63"><a href="#cb11-63"></a></span>
-<span id="cb11-64"><a href="#cb11-64"></a><span class="co">#save the plot ggplot objects</span></span>
-<span id="cb11-65"><a href="#cb11-65"></a><span class="fu">save</span>(hmdb_scatter, kegg_scatter,</span>
-<span id="cb11-66"><a href="#cb11-66"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir, </span>
-<span id="cb11-67"><a href="#cb11-67"></a>                              <span class="st">"scatter_plots.rda"</span>))</span>
-<span id="cb11-68"><a href="#cb11-68"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="03a_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="fu">cat</span>(<span class="st">"Dimensions: "</span>, <span class="fu">paste</span>(<span class="fu">dim</span>(table1_extract), <span class="at">collapse =</span> <span class="st">" x "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co">#HMDB plot</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a></span>
+<span id="cb13-13"><a href="#cb13-13"></a>hmdb_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
+<span id="cb13-16"><a href="#cb13-16"></a>             <span class="at">y =</span> hmdb_annotated_compounds,</span>
+<span id="cb13-17"><a href="#cb13-17"></a>             <span class="at">color =</span> longitudinal,</span>
+<span id="cb13-18"><a href="#cb13-18"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs HMDB annotation coverage"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
+<span id="cb13-24"><a href="#cb13-24"></a>       <span class="at">y =</span> <span class="st">"HMDB Annotated compounds"</span>,</span>
+<span id="cb13-25"><a href="#cb13-25"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb13-27"><a href="#cb13-27"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb13-28"><a href="#cb13-28"></a></span>
+<span id="cb13-29"><a href="#cb13-29"></a><span class="co">#save the plot</span></span>
+<span id="cb13-30"><a href="#cb13-30"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb13-31"><a href="#cb13-31"></a></span>
+<span id="cb13-32"><a href="#cb13-32"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb13-33"><a href="#cb13-33"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-34"><a href="#cb13-34"></a>}</span>
+<span id="cb13-35"><a href="#cb13-35"></a></span>
+<span id="cb13-36"><a href="#cb13-36"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"hmdb_scatter.png"</span>))</span>
+<span id="cb13-37"><a href="#cb13-37"></a></span>
+<span id="cb13-38"><a href="#cb13-38"></a><span class="fu">cat</span>(<span class="st">"HMDB plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-39"><a href="#cb13-39"></a></span>
+<span id="cb13-40"><a href="#cb13-40"></a><span class="co">#KEGG plot</span></span>
+<span id="cb13-41"><a href="#cb13-41"></a></span>
+<span id="cb13-42"><a href="#cb13-42"></a>kegg_scatter <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb13-43"><a href="#cb13-43"></a>  <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">factor</span>(longitudinal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb13-44"><a href="#cb13-44"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> num_paired_samples,</span>
+<span id="cb13-45"><a href="#cb13-45"></a>             <span class="at">y =</span> kegg_annotated_compounds,</span>
+<span id="cb13-46"><a href="#cb13-46"></a>             <span class="at">color =</span> longitudinal,</span>
+<span id="cb13-47"><a href="#cb13-47"></a>             <span class="at">label =</span> dataset_name)) <span class="sc">+</span></span>
+<span id="cb13-48"><a href="#cb13-48"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb13-49"><a href="#cb13-49"></a>  <span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">2.8</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb13-50"><a href="#cb13-50"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">end =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb13-51"><a href="#cb13-51"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs KEGG annotation coverage"</span>,</span>
+<span id="cb13-52"><a href="#cb13-52"></a>       <span class="at">x =</span> <span class="st">"No. samples with paired data"</span>,</span>
+<span id="cb13-53"><a href="#cb13-53"></a>       <span class="at">y =</span> <span class="st">"KEGG Annotated compounds"</span>,</span>
+<span id="cb13-54"><a href="#cb13-54"></a>       <span class="at">color =</span> <span class="st">"Longitudinal"</span>)  <span class="sc">+</span></span>
+<span id="cb13-55"><a href="#cb13-55"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb13-56"><a href="#cb13-56"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb13-57"><a href="#cb13-57"></a></span>
+<span id="cb13-58"><a href="#cb13-58"></a><span class="co">#save the plot</span></span>
+<span id="cb13-59"><a href="#cb13-59"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"kegg_scatter.png"</span>))</span>
+<span id="cb13-60"><a href="#cb13-60"></a></span>
+<span id="cb13-61"><a href="#cb13-61"></a></span>
+<span id="cb13-62"><a href="#cb13-62"></a><span class="fu">cat</span>(<span class="st">"KEGG plot completed</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb13-63"><a href="#cb13-63"></a></span>
+<span id="cb13-64"><a href="#cb13-64"></a><span class="co">#save the plot ggplot objects</span></span>
+<span id="cb13-65"><a href="#cb13-65"></a><span class="fu">save</span>(hmdb_scatter, kegg_scatter,</span>
+<span id="cb13-66"><a href="#cb13-66"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(output_dir, </span>
+<span id="cb13-67"><a href="#cb13-67"></a>                              <span class="st">"scatter_plots.rda"</span>))</span>
+<span id="cb13-68"><a href="#cb13-68"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="img/hmdb_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/hmdb_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
 <p><a href="img/kegg_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/kegg_scatter.png" class="img-fluid" alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width="800"></a></p>
@@ -2058,29 +2129,29 @@ If you skipped the data import section click here.
 <div class="code-with-filename-file">
 <pre><strong>03b_visualization.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="03b_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb12-7"><a href="#cb12-7"></a></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>, <span class="st">"scatter_plots.rda"</span>))</span>
-<span id="cb12-9"><a href="#cb12-9"></a></span>
-<span id="cb12-10"><a href="#cb12-10"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
-<span id="cb12-14"><a href="#cb12-14"></a></span>
-<span id="cb12-15"><a href="#cb12-15"></a><span class="co">#save the plot</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb12-17"><a href="#cb12-17"></a></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb12-19"><a href="#cb12-19"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-20"><a href="#cb12-20"></a>}</span>
-<span id="cb12-21"><a href="#cb12-21"></a></span>
-<span id="cb12-22"><a href="#cb12-22"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"combined_scatter.png"</span>))</span>
-<span id="cb12-23"><a href="#cb12-23"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="03b_visualization.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>, <span class="st">"scatter_plots.rda"</span>))</span>
+<span id="cb14-9"><a href="#cb14-9"></a></span>
+<span id="cb14-10"><a href="#cb14-10"></a>hmdb_scatter <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>  kegg_scatter <span class="sc">+</span>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">'Paired sample count vs annotation coverage'</span>)</span>
+<span id="cb14-14"><a href="#cb14-14"></a></span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="co">#save the plot</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17"></a></span>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb14-19"><a href="#cb14-19"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-20"><a href="#cb14-20"></a>}</span>
+<span id="cb14-21"><a href="#cb14-21"></a></span>
+<span id="cb14-22"><a href="#cb14-22"></a><span class="fu">ggsave</span>(here<span class="sc">::</span><span class="fu">here</span>(output_dir, <span class="st">"combined_scatter.png"</span>))</span>
+<span id="cb14-23"><a href="#cb14-23"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol type="1">
 <li>Use the HMDB scatter plot from before, but remove its title</li>
@@ -2108,56 +2179,56 @@ If you skipped the data import section click here.
 <div class="code-with-filename-file">
 <pre><strong>04_analysis_metric.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="04_analysis_metric.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<span id="cb13-7"><a href="#cb13-7"></a></span>
-<span id="cb13-8"><a href="#cb13-8"></a>cor_matrix_all <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span> </span>
-<span id="cb13-9"><a href="#cb13-9"></a>    <span class="fu">select</span>(num_paired_samples, </span>
-<span id="cb13-10"><a href="#cb13-10"></a>           kegg_annotated_compounds, </span>
-<span id="cb13-11"><a href="#cb13-11"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb13-13"><a href="#cb13-13"></a></span>
-<span id="cb13-14"><a href="#cb13-14"></a><span class="co">#output information about the correlation analysis for all datasets</span></span>
-<span id="cb13-15"><a href="#cb13-15"></a><span class="fu">cat</span>(<span class="st">"All Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-16"><a href="#cb13-16"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (All Data): "</span>, <span class="fu">nrow</span>(table1_extract), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-17"><a href="#cb13-17"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-18"><a href="#cb13-18"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (All Data): "</span>, cor_matrix_all[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-19"><a href="#cb13-19"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20"></a></span>
-<span id="cb13-21"><a href="#cb13-21"></a>cor_matrix_non_longitudinal <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb13-22"><a href="#cb13-22"></a>    <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-23"><a href="#cb13-23"></a>    <span class="fu">select</span>(num_paired_samples, </span>
-<span id="cb13-24"><a href="#cb13-24"></a>           kegg_annotated_compounds, </span>
-<span id="cb13-25"><a href="#cb13-25"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
-<span id="cb13-26"><a href="#cb13-26"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb13-27"><a href="#cb13-27"></a></span>
-<span id="cb13-28"><a href="#cb13-28"></a><span class="co">#output information about non-longitudinal datasets correlation analysis</span></span>
-<span id="cb13-29"><a href="#cb13-29"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Non-longitudinal Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-30"><a href="#cb13-30"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Non-longitudinal Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-31"><a href="#cb13-31"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-32"><a href="#cb13-32"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-33"><a href="#cb13-33"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-34"><a href="#cb13-34"></a></span>
-<span id="cb13-35"><a href="#cb13-35"></a></span>
-<span id="cb13-36"><a href="#cb13-36"></a>cor_matrix_adult <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb13-37"><a href="#cb13-37"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description),</span>
-<span id="cb13-38"><a href="#cb13-38"></a>                      <span class="st">"infants|children"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-39"><a href="#cb13-39"></a>    <span class="fu">select</span>(num_paired_samples, </span>
-<span id="cb13-40"><a href="#cb13-40"></a>           kegg_annotated_compounds, </span>
-<span id="cb13-41"><a href="#cb13-41"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
-<span id="cb13-42"><a href="#cb13-42"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb13-43"><a href="#cb13-43"></a></span>
-<span id="cb13-44"><a href="#cb13-44"></a><span class="co">#output information about the Adult only datasets correlation analysis</span></span>
-<span id="cb13-45"><a href="#cb13-45"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Adult Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-46"><a href="#cb13-46"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Adult Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description), <span class="st">"infants|children"</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-47"><a href="#cb13-47"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-48"><a href="#cb13-48"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-49"><a href="#cb13-49"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb13-50"><a href="#cb13-50"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="04_analysis_metric.R"><pre class="sourceCode numberSource R number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#!/usr/bin/env Rscript</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb15-7"><a href="#cb15-7"></a></span>
+<span id="cb15-8"><a href="#cb15-8"></a>cor_matrix_all <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span> </span>
+<span id="cb15-9"><a href="#cb15-9"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb15-10"><a href="#cb15-10"></a>           kegg_annotated_compounds, </span>
+<span id="cb15-11"><a href="#cb15-11"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#output information about the correlation analysis for all datasets</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="fu">cat</span>(<span class="st">"All Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (All Data): "</span>, <span class="fu">nrow</span>(table1_extract), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (All Data): "</span>, cor_matrix_all[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-19"><a href="#cb15-19"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (All Data): "</span>, cor_matrix_all[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-20"><a href="#cb15-20"></a></span>
+<span id="cb15-21"><a href="#cb15-21"></a>cor_matrix_non_longitudinal <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a>    <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb15-24"><a href="#cb15-24"></a>           kegg_annotated_compounds, </span>
+<span id="cb15-25"><a href="#cb15-25"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb15-26"><a href="#cb15-26"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb15-27"><a href="#cb15-27"></a></span>
+<span id="cb15-28"><a href="#cb15-28"></a><span class="co">#output information about non-longitudinal datasets correlation analysis</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Non-longitudinal Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Non-longitudinal Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(longitudinal <span class="sc">==</span> <span class="st">"No"</span>)), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-32"><a href="#cb15-32"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-33"><a href="#cb15-33"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Non-longitudinal Data): "</span>, cor_matrix_non_longitudinal[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-34"><a href="#cb15-34"></a></span>
+<span id="cb15-35"><a href="#cb15-35"></a></span>
+<span id="cb15-36"><a href="#cb15-36"></a>cor_matrix_adult <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb15-37"><a href="#cb15-37"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description),</span>
+<span id="cb15-38"><a href="#cb15-38"></a>                      <span class="st">"infants|children"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-39"><a href="#cb15-39"></a>    <span class="fu">select</span>(num_paired_samples, </span>
+<span id="cb15-40"><a href="#cb15-40"></a>           kegg_annotated_compounds, </span>
+<span id="cb15-41"><a href="#cb15-41"></a>           hmdb_annotated_compounds) <span class="sc">%&gt;%</span></span>
+<span id="cb15-42"><a href="#cb15-42"></a>    <span class="fu">cor</span>(., <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb15-43"><a href="#cb15-43"></a></span>
+<span id="cb15-44"><a href="#cb15-44"></a><span class="co">#output information about the Adult only datasets correlation analysis</span></span>
+<span id="cb15-45"><a href="#cb15-45"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Adult Datasets</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-46"><a href="#cb15-46"></a><span class="fu">cat</span>(<span class="st">"Number of Datasets per variable in correlation analysis (Adult Data): "</span>, <span class="fu">nrow</span>(table1_extract <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(<span class="fu">tolower</span>(cohort_description), <span class="st">"infants|children"</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-47"><a href="#cb15-47"></a><span class="fu">cat</span>(<span class="st">"Annoted Compounds Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"kegg_annotated_compounds"</span>, <span class="st">"hmdb_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-48"><a href="#cb15-48"></a><span class="fu">cat</span>(<span class="st">"Number of samples and KEGG Annotated Compounds Spearman Corelation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"num_paired_samples"</span>, <span class="st">"kegg_annotated_compounds"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-49"><a href="#cb15-49"></a><span class="fu">cat</span>(<span class="st">"HMDB Annotated Compounds and Number of samples Spearman Correlation (Adult Data): "</span>, cor_matrix_adult[<span class="st">"hmdb_annotated_compounds"</span>, <span class="st">"num_paired_samples"</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb15-50"><a href="#cb15-50"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
@@ -2205,72 +2276,72 @@ HMDB Annotated Compounds and Number of samples Spearman Correlation (Adult Data)
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="kw">ENV</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">ENV</span> PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}</span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>    openjdk-11-jdk <span class="dt">\</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a>    wget <span class="dt">\</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a>    libpng-dev <span class="dt">\</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a>    libicu-dev <span class="dt">\</span></span>
-<span id="cb14-13"><a href="#cb14-13"></a>    libpcre2-dev <span class="dt">\</span></span>
-<span id="cb14-14"><a href="#cb14-14"></a>    libdeflate-dev <span class="dt">\</span></span>
-<span id="cb14-15"><a href="#cb14-15"></a>    libzstd-dev <span class="dt">\</span></span>
-<span id="cb14-16"><a href="#cb14-16"></a>    liblzma-dev <span class="dt">\</span></span>
-<span id="cb14-17"><a href="#cb14-17"></a>    libbz2-dev <span class="dt">\</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a>    zlib1g-dev <span class="dt">\</span></span>
-<span id="cb14-19"><a href="#cb14-19"></a> <span class="kw">&amp;&amp;</span> <span class="va">arch</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb14-20"><a href="#cb14-20"></a> <span class="kw">&amp;&amp;</span> <span class="fu">ln</span> <span class="at">-sfn</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-</span><span class="va">${arch}</span><span class="st">"</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb14-21"><a href="#cb14-21"></a> <span class="kw">&amp;&amp;</span> <span class="bu">printf</span> <span class="st">'JAVA_HOME=%s\n'</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> /usr/local/lib/R/etc/Renviron.site <span class="dt">\</span></span>
-<span id="cb14-22"><a href="#cb14-22"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
-<span id="cb14-23"><a href="#cb14-23"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
-<span id="cb14-24"><a href="#cb14-24"></a></span>
-<span id="cb14-25"><a href="#cb14-25"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
-<span id="cb14-26"><a href="#cb14-26"></a>    rJava <span class="dt">\</span></span>
-<span id="cb14-27"><a href="#cb14-27"></a>    tabulapdf <span class="dt">\</span></span>
-<span id="cb14-28"><a href="#cb14-28"></a>    here <span class="dt">\</span></span>
-<span id="cb14-29"><a href="#cb14-29"></a>    bubbleHeatmap <span class="dt">\</span></span>
-<span id="cb14-30"><a href="#cb14-30"></a>    ggnetwork <span class="dt">\</span></span>
-<span id="cb14-31"><a href="#cb14-31"></a>    ggpubr <span class="dt">\</span></span>
-<span id="cb14-32"><a href="#cb14-32"></a>    gt <span class="dt">\</span></span>
-<span id="cb14-33"><a href="#cb14-33"></a>    patchwork</span>
-<span id="cb14-34"><a href="#cb14-34"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-filename="Dockerfile"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">FROM</span> rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80bb841830ac10278fd1a</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">ENV</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-current</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="kw">ENV</span> PATH=/usr/lib/jvm/java-11-openjdk-current/bin:${PATH}</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a> <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>    openjdk-11-jdk <span class="dt">\</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>    wget <span class="dt">\</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>    libpng-dev <span class="dt">\</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>    libicu-dev <span class="dt">\</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a>    libpcre2-dev <span class="dt">\</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a>    libdeflate-dev <span class="dt">\</span></span>
+<span id="cb16-15"><a href="#cb16-15"></a>    libzstd-dev <span class="dt">\</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a>    liblzma-dev <span class="dt">\</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>    libbz2-dev <span class="dt">\</span></span>
+<span id="cb16-18"><a href="#cb16-18"></a>    zlib1g-dev <span class="dt">\</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a> <span class="kw">&amp;&amp;</span> <span class="va">arch</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">dpkg</span> <span class="at">--print-architecture</span><span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a> <span class="kw">&amp;&amp;</span> <span class="fu">ln</span> <span class="at">-sfn</span> <span class="st">"/usr/lib/jvm/java-11-openjdk-</span><span class="va">${arch}</span><span class="st">"</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb16-21"><a href="#cb16-21"></a> <span class="kw">&amp;&amp;</span> <span class="bu">printf</span> <span class="st">'JAVA_HOME=%s\n'</span> <span class="st">"</span><span class="va">${JAVA_HOME}</span><span class="st">"</span> <span class="op">&gt;&gt;</span> /usr/local/lib/R/etc/Renviron.site <span class="dt">\</span></span>
+<span id="cb16-22"><a href="#cb16-22"></a> <span class="kw">&amp;&amp;</span> <span class="ex">R</span> CMD javareconf <span class="dt">\</span></span>
+<span id="cb16-23"><a href="#cb16-23"></a> <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a></span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> <span class="at">--error</span> <span class="at">--deps</span> TRUE <span class="dt">\</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a>    rJava <span class="dt">\</span></span>
+<span id="cb16-27"><a href="#cb16-27"></a>    tabulapdf <span class="dt">\</span></span>
+<span id="cb16-28"><a href="#cb16-28"></a>    here <span class="dt">\</span></span>
+<span id="cb16-29"><a href="#cb16-29"></a>    bubbleHeatmap <span class="dt">\</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a>    ggnetwork <span class="dt">\</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a>    ggpubr <span class="dt">\</span></span>
+<span id="cb16-32"><a href="#cb16-32"></a>    gt <span class="dt">\</span></span>
+<span id="cb16-33"><a href="#cb16-33"></a>    patchwork</span>
+<span id="cb16-34"><a href="#cb16-34"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sharing the container image vs sharing the Dockerfile</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>run_analysis.sh</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="run_analysis.sh"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="bu">echo</span> <span class="st">"Extracting data"</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">mkdir</span> <span class="at">-p</span> ../results/logs</span>
-<span id="cb15-6"><a href="#cb15-6"></a></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="ex">Rscript</span> 01_extract_data.R <span class="op">&gt;</span> ../results/logs/data_extraction_logs.txt</span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="bu">echo</span> <span class="st">"Wrangling data"</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="ex">Rscript</span> 02_wrangle.R <span class="op">&gt;</span> ../results/logs/wrangling_logs.txt</span>
-<span id="cb15-12"><a href="#cb15-12"></a></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="bu">echo</span> <span class="st">"Visualizing data"</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a></span>
-<span id="cb15-15"><a href="#cb15-15"></a><span class="ex">Rscript</span> 03a_visualization.R <span class="op">&gt;</span> ../results/logs/visualization_logs.txt</span>
-<span id="cb15-16"><a href="#cb15-16"></a></span>
-<span id="cb15-17"><a href="#cb15-17"></a><span class="ex">Rscript</span> 03b_visualization_patchwork.R <span class="op">&gt;&gt;</span> ../results/logs/visualization_logs.txt</span>
-<span id="cb15-18"><a href="#cb15-18"></a></span>
-<span id="cb15-19"><a href="#cb15-19"></a><span class="bu">echo</span> <span class="st">"Analyzing data"</span></span>
-<span id="cb15-20"><a href="#cb15-20"></a></span>
-<span id="cb15-21"><a href="#cb15-21"></a><span class="ex">Rscript</span> 04_analysis_metric.R <span class="op">&gt;</span> ../results/logs/analysis_logs.txt</span>
-<span id="cb15-22"><a href="#cb15-22"></a></span>
-<span id="cb15-23"><a href="#cb15-23"></a><span class="bu">echo</span> <span class="st">"Process complete"</span></span>
-<span id="cb15-24"><a href="#cb15-24"></a></span>
-<span id="cb15-25"><a href="#cb15-25"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> <span class="pp">*</span>.R <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"library"</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">xargs</span> printf <span class="st">"%s; "</span><span class="va">)</span><span class="st"> sessionInfo()"</span> <span class="op">&gt;</span> ../results/logs/session_info.txt</span>
-<span id="cb15-26"><a href="#cb15-26"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-filename="run_analysis.sh"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="bu">echo</span> <span class="st">"Extracting data"</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="fu">mkdir</span> <span class="at">-p</span> ../results/logs</span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="ex">Rscript</span> 01_extract_data.R <span class="op">&gt;</span> ../results/logs/data_extraction_logs.txt</span>
+<span id="cb17-8"><a href="#cb17-8"></a></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="bu">echo</span> <span class="st">"Wrangling data"</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="ex">Rscript</span> 02_wrangle.R <span class="op">&gt;</span> ../results/logs/wrangling_logs.txt</span>
+<span id="cb17-12"><a href="#cb17-12"></a></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="bu">echo</span> <span class="st">"Visualizing data"</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a></span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="ex">Rscript</span> 03a_visualization.R <span class="op">&gt;</span> ../results/logs/visualization_logs.txt</span>
+<span id="cb17-16"><a href="#cb17-16"></a></span>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="ex">Rscript</span> 03b_visualization_patchwork.R <span class="op">&gt;&gt;</span> ../results/logs/visualization_logs.txt</span>
+<span id="cb17-18"><a href="#cb17-18"></a></span>
+<span id="cb17-19"><a href="#cb17-19"></a><span class="bu">echo</span> <span class="st">"Analyzing data"</span></span>
+<span id="cb17-20"><a href="#cb17-20"></a></span>
+<span id="cb17-21"><a href="#cb17-21"></a><span class="ex">Rscript</span> 04_analysis_metric.R <span class="op">&gt;</span> ../results/logs/analysis_logs.txt</span>
+<span id="cb17-22"><a href="#cb17-22"></a></span>
+<span id="cb17-23"><a href="#cb17-23"></a><span class="bu">echo</span> <span class="st">"Process complete"</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a></span>
+<span id="cb17-25"><a href="#cb17-25"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"</span><span class="va">$(</span><span class="fu">cat</span> <span class="pp">*</span>.R <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"library"</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span> <span class="kw">|</span> <span class="fu">xargs</span> printf <span class="st">"%s; "</span><span class="va">)</span><span class="st"> sessionInfo()"</span> <span class="op">&gt;</span> ../results/logs/session_info.txt</span>
+<span id="cb17-26"><a href="#cb17-26"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="reproducibility_box">
 <div class="reproducibility_box_header">
@@ -2424,80 +2495,80 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 </ul>
 <p>Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the <code>run_analysis.sh</code> script</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">library</span>(htmlwidgets)</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(here)</span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
-<span id="cb16-7"><a href="#cb16-7"></a>table1_extract <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a>    <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">case_when</span>(longitudinal <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="st">"Longitudinal"</span>, </span>
-<span id="cb16-9"><a href="#cb16-9"></a>                                    longitudinal <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="st">"Not longitudinal"</span>, </span>
-<span id="cb16-10"><a href="#cb16-10"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Unknown"</span>))</span>
-<span id="cb16-11"><a href="#cb16-11"></a></span>
-<span id="cb16-12"><a href="#cb16-12"></a>hover_text_template <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
-<span id="cb16-13"><a href="#cb16-13"></a>    <span class="st">"&lt;b&gt;Dataset:&lt;/b&gt; %{text}&lt;br&gt;"</span>,</span>
-<span id="cb16-14"><a href="#cb16-14"></a>    <span class="st">"&lt;b&gt;Description:&lt;/b&gt; %{customdata}"</span>,</span>
-<span id="cb16-15"><a href="#cb16-15"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a>)</span>
-<span id="cb16-17"><a href="#cb16-17"></a></span>
-<span id="cb16-18"><a href="#cb16-18"></a>plotly_plot_hmdb <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb16-19"><a href="#cb16-19"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
-<span id="cb16-20"><a href="#cb16-20"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
-<span id="cb16-21"><a href="#cb16-21"></a>        <span class="at">y =</span> <span class="sc">~</span>hmdb_annotated_compounds,</span>
-<span id="cb16-22"><a href="#cb16-22"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
-<span id="cb16-23"><a href="#cb16-23"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,                 <span class="co"># Point label text</span></span>
-<span id="cb16-24"><a href="#cb16-24"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,     <span class="co"># Hover description storage</span></span>
-<span id="cb16-25"><a href="#cb16-25"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
-<span id="cb16-26"><a href="#cb16-26"></a>        <span class="at">showlegend =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb16-27"><a href="#cb16-27"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
-<span id="cb16-28"><a href="#cb16-28"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
-<span id="cb16-29"><a href="#cb16-29"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
-<span id="cb16-30"><a href="#cb16-30"></a>        <span class="at">hovertemplate =</span> hover_text_template   <span class="co"># Set hover text</span></span>
-<span id="cb16-31"><a href="#cb16-31"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-32"><a href="#cb16-32"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
-<span id="cb16-33"><a href="#cb16-33"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs HMDB annotation coverage'</span>, </span>
-<span id="cb16-34"><a href="#cb16-34"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
-<span id="cb16-35"><a href="#cb16-35"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'HMDB Annotated compounds'</span>)</span>
-<span id="cb16-36"><a href="#cb16-36"></a>    )</span>
-<span id="cb16-37"><a href="#cb16-37"></a></span>
-<span id="cb16-38"><a href="#cb16-38"></a>plotly_plot_kegg <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
-<span id="cb16-39"><a href="#cb16-39"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
-<span id="cb16-40"><a href="#cb16-40"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
-<span id="cb16-41"><a href="#cb16-41"></a>        <span class="at">y =</span> <span class="sc">~</span>kegg_annotated_compounds,</span>
-<span id="cb16-42"><a href="#cb16-42"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
-<span id="cb16-43"><a href="#cb16-43"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,</span>
-<span id="cb16-44"><a href="#cb16-44"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,</span>
-<span id="cb16-45"><a href="#cb16-45"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
-<span id="cb16-46"><a href="#cb16-46"></a>        <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-47"><a href="#cb16-47"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
-<span id="cb16-48"><a href="#cb16-48"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
-<span id="cb16-49"><a href="#cb16-49"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
-<span id="cb16-50"><a href="#cb16-50"></a>        <span class="at">hovertemplate =</span> hover_text_template</span>
-<span id="cb16-51"><a href="#cb16-51"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-52"><a href="#cb16-52"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
-<span id="cb16-53"><a href="#cb16-53"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs KEGG annotation coverage'</span>, </span>
-<span id="cb16-54"><a href="#cb16-54"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
-<span id="cb16-55"><a href="#cb16-55"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'KEGG Annotated compounds'</span>)</span>
-<span id="cb16-56"><a href="#cb16-56"></a>    )</span>
-<span id="cb16-57"><a href="#cb16-57"></a></span>
-<span id="cb16-58"><a href="#cb16-58"></a>combined_plot <span class="ot">&lt;-</span> <span class="fu">subplot</span>(<span class="fu">style</span>(plotly_plot_hmdb, <span class="at">showlegend =</span> F), </span>
-<span id="cb16-59"><a href="#cb16-59"></a>        plotly_plot_kegg) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-60"><a href="#cb16-60"></a>    <span class="fu">highlight</span>(<span class="at">on =</span> <span class="st">"plotly_hover"</span>, </span>
-<span id="cb16-61"><a href="#cb16-61"></a>              <span class="at">off =</span> <span class="st">"plotly_doubleclick"</span>, </span>
-<span id="cb16-62"><a href="#cb16-62"></a>              <span class="at">persistent =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb16-63"><a href="#cb16-63"></a>              <span class="at">dynamic =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-64"><a href="#cb16-64"></a>    <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs annotation coverage"</span>)</span>
-<span id="cb16-65"><a href="#cb16-65"></a></span>
-<span id="cb16-66"><a href="#cb16-66"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
-<span id="cb16-67"><a href="#cb16-67"></a></span>
-<span id="cb16-68"><a href="#cb16-68"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
-<span id="cb16-69"><a href="#cb16-69"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-70"><a href="#cb16-70"></a>}</span>
-<span id="cb16-71"><a href="#cb16-71"></a></span>
-<span id="cb16-72"><a href="#cb16-72"></a><span class="fu">saveWidget</span>(combined_plot, </span>
-<span id="cb16-73"><a href="#cb16-73"></a>           <span class="at">file =</span> <span class="fu">here</span>(output_dir, <span class="st">"interactive_combined_plot.html"</span>), </span>
-<span id="cb16-74"><a href="#cb16-74"></a>           <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">library</span>(htmlwidgets)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">library</span>(here)</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="fu">load</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span>
+<span id="cb18-7"><a href="#cb18-7"></a>table1_extract <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>    <span class="fu">mutate</span>(<span class="at">longitudinal =</span> <span class="fu">case_when</span>(longitudinal <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">~</span> <span class="st">"Longitudinal"</span>, </span>
+<span id="cb18-9"><a href="#cb18-9"></a>                                    longitudinal <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">~</span> <span class="st">"Not longitudinal"</span>, </span>
+<span id="cb18-10"><a href="#cb18-10"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Unknown"</span>))</span>
+<span id="cb18-11"><a href="#cb18-11"></a></span>
+<span id="cb18-12"><a href="#cb18-12"></a>hover_text_template <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb18-13"><a href="#cb18-13"></a>    <span class="st">"&lt;b&gt;Dataset:&lt;/b&gt; %{text}&lt;br&gt;"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    <span class="st">"&lt;b&gt;Description:&lt;/b&gt; %{customdata}"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>)</span>
+<span id="cb18-17"><a href="#cb18-17"></a></span>
+<span id="cb18-18"><a href="#cb18-18"></a>plotly_plot_hmdb <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb18-19"><a href="#cb18-19"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb18-20"><a href="#cb18-20"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb18-21"><a href="#cb18-21"></a>        <span class="at">y =</span> <span class="sc">~</span>hmdb_annotated_compounds,</span>
+<span id="cb18-22"><a href="#cb18-22"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb18-23"><a href="#cb18-23"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,                 <span class="co"># Point label text</span></span>
+<span id="cb18-24"><a href="#cb18-24"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,     <span class="co"># Hover description storage</span></span>
+<span id="cb18-25"><a href="#cb18-25"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb18-26"><a href="#cb18-26"></a>        <span class="at">showlegend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-27"><a href="#cb18-27"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb18-28"><a href="#cb18-28"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb18-29"><a href="#cb18-29"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb18-30"><a href="#cb18-30"></a>        <span class="at">hovertemplate =</span> hover_text_template   <span class="co"># Set hover text</span></span>
+<span id="cb18-31"><a href="#cb18-31"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-32"><a href="#cb18-32"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb18-33"><a href="#cb18-33"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs HMDB annotation coverage'</span>, </span>
+<span id="cb18-34"><a href="#cb18-34"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb18-35"><a href="#cb18-35"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'HMDB Annotated compounds'</span>)</span>
+<span id="cb18-36"><a href="#cb18-36"></a>    )</span>
+<span id="cb18-37"><a href="#cb18-37"></a></span>
+<span id="cb18-38"><a href="#cb18-38"></a>plotly_plot_kegg <span class="ot">&lt;-</span> table1_extract <span class="sc">%&gt;%</span></span>
+<span id="cb18-39"><a href="#cb18-39"></a>    plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb18-40"><a href="#cb18-40"></a>        <span class="at">x =</span> <span class="sc">~</span>num_paired_samples, </span>
+<span id="cb18-41"><a href="#cb18-41"></a>        <span class="at">y =</span> <span class="sc">~</span>kegg_annotated_compounds,</span>
+<span id="cb18-42"><a href="#cb18-42"></a>        <span class="at">color =</span> <span class="sc">~</span>longitudinal,</span>
+<span id="cb18-43"><a href="#cb18-43"></a>        <span class="at">text =</span> <span class="sc">~</span>dataset_name,</span>
+<span id="cb18-44"><a href="#cb18-44"></a>        <span class="at">customdata =</span> <span class="sc">~</span>cohort_description,</span>
+<span id="cb18-45"><a href="#cb18-45"></a>        <span class="at">legendgroup =</span> <span class="sc">~</span>longitudinal, </span>
+<span id="cb18-46"><a href="#cb18-46"></a>        <span class="at">showlegend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-47"><a href="#cb18-47"></a>        <span class="at">type =</span> <span class="st">'scatter'</span>, </span>
+<span id="cb18-48"><a href="#cb18-48"></a>        <span class="at">mode =</span> <span class="st">"markers+text"</span>, </span>
+<span id="cb18-49"><a href="#cb18-49"></a>        <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb18-50"><a href="#cb18-50"></a>        <span class="at">hovertemplate =</span> hover_text_template</span>
+<span id="cb18-51"><a href="#cb18-51"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-52"><a href="#cb18-52"></a>    plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb18-53"><a href="#cb18-53"></a>        <span class="at">title =</span> <span class="st">'Paired sample count vs KEGG annotation coverage'</span>, </span>
+<span id="cb18-54"><a href="#cb18-54"></a>        <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'No. samples with paired data'</span>), </span>
+<span id="cb18-55"><a href="#cb18-55"></a>        <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'KEGG Annotated compounds'</span>)</span>
+<span id="cb18-56"><a href="#cb18-56"></a>    )</span>
+<span id="cb18-57"><a href="#cb18-57"></a></span>
+<span id="cb18-58"><a href="#cb18-58"></a>combined_plot <span class="ot">&lt;-</span> <span class="fu">subplot</span>(<span class="fu">style</span>(plotly_plot_hmdb, <span class="at">showlegend =</span> F), </span>
+<span id="cb18-59"><a href="#cb18-59"></a>        plotly_plot_kegg) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-60"><a href="#cb18-60"></a>    <span class="fu">highlight</span>(<span class="at">on =</span> <span class="st">"plotly_hover"</span>, </span>
+<span id="cb18-61"><a href="#cb18-61"></a>              <span class="at">off =</span> <span class="st">"plotly_doubleclick"</span>, </span>
+<span id="cb18-62"><a href="#cb18-62"></a>              <span class="at">persistent =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb18-63"><a href="#cb18-63"></a>              <span class="at">dynamic =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-64"><a href="#cb18-64"></a>    <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Paired sample count vs annotation coverage"</span>)</span>
+<span id="cb18-65"><a href="#cb18-65"></a></span>
+<span id="cb18-66"><a href="#cb18-66"></a>output_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"results"</span>, <span class="st">"plots"</span>)</span>
+<span id="cb18-67"><a href="#cb18-67"></a></span>
+<span id="cb18-68"><a href="#cb18-68"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_dir)) {</span>
+<span id="cb18-69"><a href="#cb18-69"></a>  <span class="fu">dir.create</span>(output_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-70"><a href="#cb18-70"></a>}</span>
+<span id="cb18-71"><a href="#cb18-71"></a></span>
+<span id="cb18-72"><a href="#cb18-72"></a><span class="fu">saveWidget</span>(combined_plot, </span>
+<span id="cb18-73"><a href="#cb18-73"></a>           <span class="at">file =</span> <span class="fu">here</span>(output_dir, <span class="st">"interactive_combined_plot.html"</span>), </span>
+<span id="cb18-74"><a href="#cb18-74"></a>           <span class="at">selfcontained =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.</p>
 </section>
@@ -2688,7 +2759,7 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
 <section id="for-publishing-of-this-case-study" class="level3">
 <h3 class="anchored" data-anchor-id="for-publishing-of-this-case-study">For publishing of this case study</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
