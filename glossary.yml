@@ -5,21 +5,21 @@ Build: |
 Carbohydrates: |
   Definition
 Clinical data: |
-  Health-related data gathered from patients or research participants
+  Health-related data gathered from patients or research participants.
 Cohort: |
-  Research participants within the same study
+  Research participants within the same study.
 Command Line Interface (CLI): |
-  A window that lets a user interact with a computer through typing commands
+  A window that lets a user interact with a computer through typing commands.
 Computing Environment: |
   Definition
 Container: |
-  Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses
+  Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
 Containerization: |
   Definition 
 Daltons: |
   Definition
 Data collection or resource: |
-  A collection of datasets that have been gathered or curated by a group for secondary use within the field
+  A collection of datasets that have been gathered or curated by a group for secondary use within the field.
 Data harmonization: |
   Definition 
 Directory: |
@@ -31,11 +31,11 @@ Docker Hub: |
 Dockerfile: |
   Definition
 Endogenous: |
-  Metabolites that originate from the organism or source of the sample
+  Metabolites that originate from the organism or source of the sample.
 Enzyme assays: |
   Definition
 Exogenous: |
-  Metabolites that original from outside of the organism or source of the sample 
+  Metabolites that original from outside of the organism or source of the sample. 
 Extensibility: |
   Definition
 Gas Chromatography: |
@@ -45,15 +45,15 @@ Generalizability: |
 Gene-regulatory pathways: |
   Definition
 Gut microbiota: |
-  The set or collection of microorganisms whose particular environment is the gut
+  The set or collection of microorganisms whose particular environment is the gut.
 HMDB: |
   Definition
 Image: |
-  Main way to share containers
+  Main way to share containers.
 Institutional HPC: |
   Definition
 Integrated analysis: |
-  An analysis that integrates multiple sources of data together 
+  An analysis that integrates multiple sources of data together. 
 KEGG: |
   Definition
 Lipids: |
@@ -61,21 +61,21 @@ Lipids: |
 Liquid Chromatography: |
   Definition
 Longitudinal: |
-  A study that looks at the same set of research participants over a course of time
+  A study that looks at the same set of research participants over a course of time.
 Macromolecules: |
   Definition
 Mass Spectrometry: |
   Definition
 Meta-analysis: |
-  An analysis of data from a collection of studies targeting a common research question
+  An analysis of data from a collection of studies targeting a common research question.
 Metabolic pathways: |
   Definition
 Metabolites: |
   Definition
 Metabolome: |
-  A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism
+  A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.
 Microbiome: |
-  A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment
+  A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.
 Molecular weight: |
   Definition
 Mount: |
@@ -89,11 +89,11 @@ Organic: |
 Organic acids: |
   Definition
 Paired: |
-  Data that is collected from the same sample in a study
+  Data that is collected from the same sample in a study.
 Personally Identifiable Information: |
   Definition
 Primary: |
-  Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction)
+  Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).
 Protected Health Information: |
   Definition
 Proteins: |
@@ -103,15 +103,15 @@ Reference Databases: |
 Registry: |
   Definition 
 Repeatability: |
-  Definition
+  The ability the same researcher to run the same analysis on the same data and get the same results.
 Replicability: |
-  Definition
+  The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions.
 Reproducibility: |
-  The ability for someone else to run the same analysis on the same data and get the same results
+  The ability for a new researcher to run the same analysis on the same data and get the same results.
 Run: |
   Definition 
 Secondary: |
-  Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the mictobiome
+  Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the microbiome.
 Secondary data: |
   Definition
 Sequencing: |
@@ -121,9 +121,9 @@ Signaling pathways: |
 Spectra: |
   Definition
 Statistical power: |
-  The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists
+  The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.
 Version-controlled: |
-  A project with changes tracked over time using version control software such as Git and GitHub
+  A project with changes tracked over time using version control software such as Git and GitHub.
 Vitamins: |
   Definition
 Volume: |
