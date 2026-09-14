@@ -1,4 +1,130 @@
-Term 1: |
-  Definition of Term 1
-Term2: |
-  Definition of Term 2
+Benchmarking: |
+  Definition
+Build: |
+  Definition 
+Carbohydrates: |
+  Definition
+Clinical data: |
+  Health-related data gathered from patients or research participants
+Cohort: |
+  Research participants within the same study
+Command Line Interface (CLI): |
+  A window that lets a user interact with a computer through typing commands
+Computing Environment: |
+  Definition
+Container: |
+  Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses
+Containerization: |
+  Definition 
+Daltons: |
+  Definition
+Data collection or resource: |
+  A collection of datasets that have been gathered or curated by a group for secondary use within the field
+Data harmonization: |
+  Definition 
+Directory: |
+  Definition 
+Docker: |
+  Definition
+Docker Hub: |
+  Definition 
+Dockerfile: |
+  Definition
+Endogenous: |
+  Metabolites that originate from the organism or source of the sample
+Enzyme assays: |
+  Definition
+Exogenous: |
+  Metabolites that original from outside of the organism or source of the sample 
+Extensibility: |
+  Definition
+Gas Chromatography: |
+  Definition
+Generalizability: |
+  Definition
+Gene-regulatory pathways: |
+  Definition
+Gut microbiota: |
+  The set or collection of microorganisms whose particular environment is the gut
+HMDB: |
+  Definition
+Image: |
+  Main way to share containers
+Institutional HPC: |
+  Definition
+Integrated analysis: |
+  An analysis that integrates multiple sources of data together 
+KEGG: |
+  Definition
+Lipids: |
+  Definition
+Liquid Chromatography: |
+  Definition
+Longitudinal: |
+  A study that looks at the same set of research participants over a course of time
+Macromolecules: |
+  Definition
+Mass Spectrometry: |
+  Definition
+Meta-analysis: |
+  An analysis of data from a collection of studies targeting a common research question
+Metabolic pathways: |
+  Definition
+Metabolites: |
+  Definition
+Metabolome: |
+  A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism
+Microbiome: |
+  A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment
+Molecular weight: |
+  Definition
+Mount: |
+  Definition 
+Nuclear Magnetic Resonance (NMR): |
+  Definition 
+Nucleic acids: |
+  Definition
+Organic: |
+  Definition
+Organic acids: |
+  Definition
+Paired: |
+  Data that is collected from the same sample in a study
+Personally Identifiable Information: |
+  Definition
+Primary: |
+  Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction)
+Protected Health Information: |
+  Definition
+Proteins: |
+  Definition
+Reference Databases: |
+  Definition 
+Registry: |
+  Definition 
+Repeatability: |
+  Definition
+Replicability: |
+  Definition
+Reproducibility: |
+  The ability for someone else to run the same analysis on the same data and get the same results
+Run: |
+  Definition 
+Secondary: |
+  Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the mictobiome
+Secondary data: |
+  Definition
+Sequencing: |
+  Definition
+Signaling pathways: |
+  Definition
+Spectra: |
+  Definition
+Statistical power: |
+  The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists
+Version-controlled: |
+  A project with changes tracked over time using version control software such as Git and GitHub
+Vitamins: |
+  Definition
+Volume: |
+  Definition 
