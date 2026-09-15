@@ -20,9 +20,17 @@ If you try to use a docker command like `docker pull` without first starting doc
 
 Open the Docker Desktop app.
 
+<details><summary>What if Docker Desktop isn't opening?</summary>
+
+Docker Desktop may not appear to open if it was previously opened and closed because it may be a stagnant process that is attempting to open but is in the background. Use (Windows) Task Manager or (Apple) Activity Monitor to stop the background processes and attempt to launch the app again.
+
+[Related Forum Post](https://forums.docker.com/t/issue-with-docker-desktop-on-windows-11-wont-start-after-first-launch/144699/10), [Related Stack Overflow Post](https://stackoverflow.com/a/77473083)
+
+</details>
+
 #### Docker through a Command Line Interface (CLI)
 
-Open your command line interface (e.g., Terminal on a Mac).
+Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows).
 
 In your command line interface, use the following command to start docker.
 
@@ -39,12 +47,24 @@ Recall that a container image is the main way that containers are shared and the
 :::{.panel-tabset}
 #### Docker Desktop
 
-At the top of the Docker Desktop GUI window, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
+At the top of the Docker Hub section, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
 
-* Type `ocs-bio-` and several images from the `bioocs` organization will be listed. 
-* Find `bioocs/ocs-bio-containers-base` in the list. 
-* Verify that the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
-* Click the "pull" button.
+
+* Click on the "Docker Hub" option in the left side menu.
+* Type `bioocs` and several images from the `bioocs` organization will appear as cards. 
+* Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
+* Click on that card. 
+* Verify that in the header
+  * the name of the selected image is `bioocs/ocs-bio-containers-base` * the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
+* Click the "Pull" button.
+
+The bottom right of the Docker Desktop GUI will display progress messages such as: 
+
+  * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
+  * a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+
+* Click on the "Images" option in the left side menu.
+* Notice the `bioocs/ocs-bio-containers-base` image is listed there now.
 
 #### Docker through a CLI
 
@@ -55,6 +75,12 @@ docker pull bioocs/ocs-bio-containers-base:main
 ```
 
 Note that the command line interface will display progress messages for each layer of the image followed by confirmation or a status update that the image was successfully pulled.
+
+Use the following command to list available images and confirm that you've pulled the image.
+
+```{.bash}
+docker image ls
+```
 
 :::
 
@@ -92,21 +118,21 @@ Reproducibility considerations
 ::::{.inner_block}
 Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
 
-A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
 
-```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
+```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
 ```
 ::::
 :::
 
-This scaffold directory doesn't match the suggested project directory structure from above at first appearance. It only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs if the directories don't already exist.
+This scaffold directory doesn't match the suggested project directory structure from above at first appearance. Besides a README file, it only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs (though the scripts wouldn't overwrite existing directories).
 
 :::{.panel-tabset}
 
 ##### Option A: Download a .zip file
 
-Use this link to [download the analysis scripts](https://githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/ocs-bio-containers-scaffold-main.zip)
+Use this link to [download the analysis scripts](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/resources/ocs-bio-containers-scaffold-main.zip)
 
 You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac), [Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
 
@@ -146,11 +172,26 @@ If we don't mount the volume when we run the image, we won't have access to thos
 :::{.panel-tabset}
 ##### Docker Desktop
 
-Running the container instructions (including mounting the volume)
+* Ensure you are on the "Images" tab of Docker Desktop.
+* Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
+* In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
+* Under the "Volumes" section:
+  * Click the three dots for "Host path" and find/select the "ocs-bio-containers-scaffold-main" file that you downloaded and unzipped (Option A) or cloned (Option B) in Step 3a.
+  * Enter `/home` for the "Container path". This is the name of where those files will be stored in the running container.
+* Click the blue "Run" button at the bottom right of the window.
+* This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
+* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. Navigate to the "Exec" tab.
+* Type `ls` and press the return / enter key on your keyboard to list what files are in the running container. Notice that there are several folders like `bin`, `boot`, `home`, `init`, etc. `home` is the set of files that we added as a mounted volume when we ran the image to create the container. 
+* Type `ls home` and press the return / enter key. This will list the files in the `home` directory. As expected (described earlier in Step 3a) we see `analysis_scripts`, `continued_learning_scripts`, and the `README.md` file
+* Navigate to the "Files" tab (along the top in the running container).
+* Notice that the `home` folder has a blue oval with the word "MOUNT" on it under the "Note" column. This is because we mounted those files. 
+* Click the `home` folder to expand its contents, we again see the `README.md` file as well as the `analysis_scripts` and `continued_learning_scripts` directories.
+
+
 
 ##### Docker through a CLI
 
-* Change directories (`cd`) to your local copy of the analysis files. 
+* Change directories (`cd`) to your local copy of the analysis files (from Step 3a). 
 * Use the following command in your CLI to start a container
   * This will mount the current directory as the volume (`-v`)
   * The working directory within the running container will point to your current directory (`-w`)
@@ -244,18 +285,19 @@ To run the script to fetch the data in the running container, follow these steps
 :::{.panel-tabset}
 ##### Docker Desktop
 
-* Navigate to the `exec` tab of the running container if you are not already there. 
-* Enter the following command and click return / enter.
+* Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
+* Enter `cd /home/analysis_scripts` and press the return / enter key.
+* Enter the following command and press the return / enter key.
 
 ```{.bash}
-Rscript analysis_scripts/01_extract_data.R
+Rscript 01_extract_data.R
 ```
 
 * Notice the output messages from the script.
 
 ##### Docker through a CLI
 
-Enter the following command in your CLI and click return / enter.
+Enter the following command in your CLI.
 
 ```{.bash}
 Rscript analysis_scripts/01_extract_data.R
@@ -293,31 +335,31 @@ We also save an `rda` and `csv` version of the raw data. We can confirm that the
 :::{.panel-tabset}
 ##### Docker Desktop
 
-* Confirm that you are still on the `exec` tab within the running container. If not, navigate there.
-* * Type `ls` and press enter / return. 
-  * There will be a new directory `data` listed.
-* Type `ls data` and press enter / return.
-  * There will be a subdirectory called `imported` listed. 
-* Type `ls data/imported` and press enter / return.
-  * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
-* Type `wc -l data/imported/raw_table1.csv` and press enter / return.
-  * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
+* While still on the "Exec" tab within the running container:
+  * Type `ls ../` and press enter / return. 
+    * There will be a new directory `data` listed.
+  * Type `ls ../data` and press enter / return.
+    * There will be a subdirectory called `imported` listed. 
+  * Type `ls ../data/imported` and press enter / return.
+    * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
+  * Type `wc -l ../data/imported/raw_table1.csv` and press enter / return.
+    * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
 
 ##### Docker through a CLI
 
 To confirm the creation of the data files, 
 
-* Type `ls` in the CLI and press enter / return. 
+* Enter `ls` in the CLI. 
   * There will be a new directory `data` listed.
-* Type `ls data` in the CLI and press enter / return.
+* Enter `ls data` in the CLI.
   * There will be a subdirectory called `imported` listed. 
-* Type `ls data/imported` in the CLI and press enter / return.
+* Enter `ls data/imported` in the CLI.
   * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
-* Type `wc -l data/imported/raw_table1.csv` in the CLI and press enter / return.
+* Enter `wc -l data/imported/raw_table1.csv` in the CLI.
   * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
 
 :::
 
-We now have the table data extracted from the PDF as a data frame in R  -- ready to be used for the next steps. But is it in a clean format or do we need to first wrangle it before we can visualize it?
+We now have the table data extracted from the PDF as a data frame in R  -- ready to be used within our running container for the next steps. But is it in a clean format or do we need to first wrangle it before we can visualize it?
 
 ***
