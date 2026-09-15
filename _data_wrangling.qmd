@@ -3,22 +3,51 @@
 
 ## Container Application
 
-If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). Make sure your container is running. You can pause or unpause a container ...
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, or re-create the container (Step 3b from the Data Import section). 
 
-```{r, eval = FALSE}
-load(here::here("data", "imported", "raw_table1.rda"))
-```
+::: {.column-margin}
+Add instructions on pausing, stopping, and deleting containers.
+:::
+
 ***
-
-Even if you stop the container (as long as you don't delete it), you can restart it and the data will still be there as long as it was saved during wrangling.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. The container does have access to `wget`. 
+At the minimum, you will need to repeat the Container Infrastructure steps from the Data Import section. 
 
-```{r, eval=FALSE}
-load(here::here("data", "imported", "raw_table1.rda"))
+You can either perform Step 1 from the Data Import -- Container Application section, or in your now running container, you can use `wget` to fetch the data. 
+
+If using `wget` to fetch the data:
+
+:::{.panel-tabset}
+
+### Docker Desktop
+
+* Navigate to the "Exec" tab (along the top of the running container).
+* Type `cd /home` and press the return / enter key.
+* Type `mkdir -p data/imported` and press the return / enter key.
+* Type `cd data/imported` and press the return / enter key.
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
 ```
+
+* Type `cd /home` and press the return / enter key.
+
+### Docker through a CLI 
+
+* Enter `mkdir -p data/imported`
+* Enter `cd data/imported`
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
+```
+
+* Enter `cd ../../`
+
+:::
 
 </details>
 ***
