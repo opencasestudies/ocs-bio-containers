@@ -94,6 +94,7 @@ phenotyping
 PLAHSS
 plotly
 png
+PowerShell
 pre
 prereq
 Proteomics
@@ -102,6 +103,7 @@ qmd
 Rator's
 Rator
 rda
+README
 replicability
 Replicability
 qs
