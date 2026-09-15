@@ -322,6 +322,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 </details>
 ::::
+:::
 
 Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
 
