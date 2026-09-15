@@ -1,7 +1,7 @@
 Benchmarking: |
-  Definition
+  Comparing the performance, accuracy, reliability, and runtime of multiple tools that perform the same task. 
 Build: |
-  Definition 
+  The container image created from a Dockerfile.
 Carbohydrates: |
   Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
 Clinical data: |
@@ -11,25 +11,25 @@ Cohort: |
 Command Line Interface (CLI): |
   A window that lets a user interact with a computer through typing commands.
 Computing Environment: |
-  Definition
+  Specific features of a computational resource, including operating system, software, and software versions.
 Container: |
   Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
 Containerization: |
-  Definition 
+  The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.
 Daltons: |
   Standard units of molecular mass used to measure the weight of molecules.
 Data collection or resource: |
   A collection of datasets that have been gathered or curated by a group for secondary use within the field.
 Data harmonization: |
-  Definition 
+  Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.
 Directory: |
-  Definition 
+  A folder in a computing environment.
 Docker: |
-  Definition
+  A software platform for building, testing, and deploying containers.
 Docker Hub: |
-  Definition 
+  A large cloud-based public registry for Docker images, can be used to download pre-built Docker images or upload custom Docker images.
 Dockerfile: |
-  Definition
+  A text document that includes commands that are needed to assemble a Docker image. 
 Endogenous: |
   Metabolites that originate from the organism or source of the sample.
 Enzyme assays: |
@@ -37,11 +37,11 @@ Enzyme assays: |
 Exogenous: |
   Metabolites that original from outside of the organism or source of the sample. 
 Extensibility: |
-  Definition
+  The ability for a new researcher to use original data and process to repeat a result and produce an extension.
 Gas Chromatography: |
   A technique to detect and quantify metabolites by vaporizing and separating compounds.
 Generalizability: |
-  Definition
+  The ability to apply the findings from research to a broader setting.
 Gene-regulatory: |
   Pathways made up of molecular interactions that turn genes on and off to control protein and RNA production.
 Gut microbiota: |
@@ -50,8 +50,8 @@ HMDB: |
   A reference database that provides information about known metabolites within humans.
 Image: |
   Main way to share containers.
-Institutional HPC: |
-  Definition
+Institutional high performance computing (HPC): |
+  A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.
 Integrated analysis: |
   An analysis that integrates multiple sources of data together. 
 KEGG: |
@@ -79,7 +79,7 @@ Microbiome: |
 Molecular weight: |
   The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.
 Mount: |
-  Definition 
+  Connect a file or directory from the local machine to a location inside of a container.
 Nuclear Magnetic Resonance (NMR): |
   A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.
 Nucleic acids: |
@@ -91,17 +91,17 @@ Organic acids: |
 Paired: |
   Data that is collected from the same sample in a study.
 Personally Identifiable Information: |
-  Definition
+  Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc. 
 Primary: |
   Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).
 Protected Health Information: |
-  Definition
+  A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.
 Proteins: |
   Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
 Reference Databases: |
   Databases including known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
 Registry: |
-  Definition 
+  A central storage and distribution system for container images.
 Repeatability: |
   The ability the same researcher to run the same analysis on the same data and get the same results.
 Replicability: |
@@ -109,13 +109,13 @@ Replicability: |
 Reproducibility: |
   The ability for a new researcher to run the same analysis on the same data and get the same results.
 Run: |
-  Definition 
+  Creating a container from an image, providing an active and usable computing environment.
 Secondary: |
   Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the microbiome.
 Secondary data: |
-  Definition
+  Data collected originally by others for a different purpose.
 Sequencing: |
-  Definition
+  A laboratory technique that extracts and analyzes the genetic material from a sample.
 Signaling: |
   Series of chemical reactions that let groups of moleculars control a cell function.
 Spectra: |
@@ -127,4 +127,4 @@ Version-controlled: |
 Vitamins: |
   Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.
 Volume: |
-  Definition 
+  A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.
