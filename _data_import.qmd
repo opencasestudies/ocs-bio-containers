@@ -22,7 +22,7 @@ Open the Docker Desktop app.
 
 #### Docker through a Command Line Interface (CLI)
 
-Open your command line interface (e.g., Terminal on a Mac).
+Open your {{< glossary "Command Line Interface (CLI)" display = "command line interface (CLI)" >}} (e.g., Terminal on a Mac).
 
 In your command line interface, use the following command to start docker.
 

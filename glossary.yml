@@ -10,7 +10,7 @@ Cohort: |
   Research participants within the same study.
 Command Line Interface (CLI): |
   A window that lets a user interact with a computer through typing commands.
-Computing Environment: |
+Computing environment: |
   Specific features of a computational resource, including operating system, software, and software versions.
 Container: |
   Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
@@ -42,7 +42,7 @@ Gas Chromatography: |
   A technique to detect and quantify metabolites by vaporizing and separating compounds.
 Generalizability: |
   The ability to apply the findings from research to a broader setting.
-Gene-regulatory: |
+Gene-regulatory pathways: |
   Pathways made up of molecular interactions that turn genes on and off to control protein and RNA production.
 Gut microbiota: |
   The set or collection of microorganisms whose particular environment is the gut.
@@ -98,7 +98,7 @@ Protected Health Information: |
   A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.
 Proteins: |
   Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
-Reference Databases: |
+Reference databases: |
   Databases including known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
 Registry: |
   A central storage and distribution system for container images.
@@ -116,7 +116,7 @@ Secondary data: |
   Data collected originally by others for a different purpose.
 Sequencing: |
   A laboratory technique that extracts and analyzes the genetic material from a sample.
-Signaling: |
+Signaling pathways: |
   Series of chemical reactions that let groups of moleculars control a cell function.
 Spectra: |
   Graphical representations of NMR and mass spec results to display detected signals and their relative intensities. 

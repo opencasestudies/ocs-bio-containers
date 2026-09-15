@@ -1,7 +1,7 @@
 # **Motivation**
 ***
 
-In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility. Background on the context of the analysis will be provided later in the case study. 
+In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a {{< glossary "Container" display="container" >}} so that the team can easily share {{< glossary "Computing environment" display="computing environments" >}} and support {{< glossary "Reproducibility" display="reproducibility" >}}. Background on the context of the analysis will be provided later in the case study. 
 
 ```{r echo=FALSE, warning = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3dad9407b30_0_0#slide=id.g3dad9407b30_0_0")
@@ -9,7 +9,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 In addition to the background and visualization request, your collaborator sends you the information on how to access both the pre-existing container and the analysis script to get started with the task.
 
-In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use Docker to specify the environment used to create several data visualizations of a table describing samples within a curated data resource. You will learn how to use a pre-existing Docker container to run an existing analysis. 
+In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use {{< glossary "Docker" >}} to specify the environment used to create several data visualizations of a table describing samples within a curated {{< glossary "Data collection or resource" display="data resource" >}}. You will learn how to use a pre-existing Docker container to run an existing analysis. 
 
 :::{.definition_box}
 ::::{.definition_box_header}
@@ -23,7 +23,7 @@ A container is a defined packaging of code, dependencies, packages, etc. within 
 You will learn how to further adapt the container to meet your needs by adding package(s) and extending the analysis. Additional topics that will be covered include:
 
 * How to find and share container images.
-* How to mount a volume containing version-controlled analysis scripts.
+* How to {{< glossary "Mount" display="mount" >}} a {{< glossary "Volume" display="volume" >}} containing {{< glossary "Version-controlled" display="version-controlled" >}} analysis scripts.
 * How to explore output from an analysis performed within a container.
 * How to save results from an analysis run in a container.
 

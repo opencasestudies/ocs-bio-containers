@@ -5,7 +5,7 @@ The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes
 
 * the name of each dataset
 * which reference in the study relates to that data
-* a brief description of the cohort within that study
+* a brief description of the {{< glossary "Cohort" display="cohort" >}} within that study
 * the number of samples with paired fecal microbiome-metabolome data within that cohort
 * whether the study contained longitudinal data
 * the number of HMDB annotated compounds

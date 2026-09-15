@@ -230,7 +230,7 @@ Given what you know about the containerization process, what steps need to be do
 
 <details><summary>Answer</summary>
 
-1. Build the modified Dockerfile to be an image (will need to do this using a command line interface)
+1. {{< glossary "Build" >}} the modified Dockerfile to be an image (will need to do this using a {{< glossary "Command Line Interface (CLI)" display = "command line interface" >}})
 2. Run the image to create a container (CLI or Docker Desktop), mounting the directory or volume that has the analysis scripts within the run command.
 3. That running container now has `patchwork` available for use.
 
