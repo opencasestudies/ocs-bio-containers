@@ -87,7 +87,7 @@ Lines 10-36 are the actual wrangling steps of the process.
 
 The rest of the script is used to output information about the wrangled data or save the wrangled data itself:
 
-* Line 39 ouputs the dimensions of the wrangled table.
+* Line 39 outputs the dimensions of the wrangled table.
 * Line 40 outputs the number of NA values that are in the wrangled table.
 * Line 41 extracts a specific dataset name from row 4 of the table.
 * Line 44 specifies an output directory.
@@ -241,7 +241,7 @@ But if we make two separate scatter plots, they will be two separate plots/files
 
 Our current running container has several packages available to us, but `patchwork` is not one of them. If you want to verify this, type `Rscript -e "library(patchwork)"` in your running container (specifically in the "Exec" tab for Docker Desktop). You will see an error message.
 
->Error in library(patchwork) : there is no package called ‘patchwork’
+>Error in library(patchwork) : there is no package called 'patchwork'
 Execution halted
 
 </details>
@@ -286,7 +286,7 @@ Wanting to make sure that we're practicing reproducibility best practices when w
 
 <details><summary>How would you install an R package from CRAN within a running container?</summary>
 
-In the running container (specifically in the "Exec" tab for Docker Desktop), you could use `Rscript -e "install.packages('patchwork')"` to install the `patchwork` package -- replacing 'patchwork' with any other package availabe on CRAN. 
+In the running container (specifically in the "Exec" tab for Docker Desktop), you could use `Rscript -e "install.packages('patchwork')"` to install the `patchwork` package -- replacing 'patchwork' with any other package available on CRAN. 
 
 The [examples provided in this "Containers for Scientists" course from the ITN](https://hutchdatascience.org/Containers_for_Scientists/05-modifying-containers.html#templates-for-adding-packages) show different templates for how to specify the installation of different kinds of packages within a Dockerfile. If you remove the "RUN" from the example/template, the code will work to install the packages in a running container (as long as the container has Python, etc. already)
 
