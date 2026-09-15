@@ -335,7 +335,7 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
 
-</summary>
+</details>
 :::
 
 :::{.think_question}
