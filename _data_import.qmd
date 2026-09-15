@@ -95,7 +95,7 @@ Not all containers in a registry can or should be trusted. Look for containers f
 
 Now that we've pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn't give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container. 
 
-If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
+If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the image to create the container / set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
 
 We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
 
@@ -273,7 +273,7 @@ Instead of using an internet URL as the source PDF where we are extracting the d
 
 <details><summary>Possible Answer</summary>
 
-Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we "run" the container.
+Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we "run" the image to create the container.
 
 </details>
 
