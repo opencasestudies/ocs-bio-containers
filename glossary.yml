@@ -3,7 +3,7 @@ Benchmarking: |
 Build: |
   Definition 
 Carbohydrates: |
-  Definition
+  Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
 Clinical data: |
   Health-related data gathered from patients or research participants.
 Cohort: |
@@ -17,7 +17,7 @@ Container: |
 Containerization: |
   Definition 
 Daltons: |
-  Definition
+  Standard units of molecular mass used to measure the weight of molecules.
 Data collection or resource: |
   A collection of datasets that have been gathered or curated by a group for secondary use within the field.
 Data harmonization: |
@@ -33,21 +33,21 @@ Dockerfile: |
 Endogenous: |
   Metabolites that originate from the organism or source of the sample.
 Enzyme assays: |
-  Definition
+  A technique to detect and quantify metabolites using enzyme-catalyzed reactions.
 Exogenous: |
   Metabolites that original from outside of the organism or source of the sample. 
 Extensibility: |
   Definition
 Gas Chromatography: |
-  Definition
+  A technique to detect and quantify metabolites by vaporizing and separating compounds.
 Generalizability: |
   Definition
-Gene-regulatory pathways: |
-  Definition
+Gene-regulatory: |
+  Pathways made up of molecular interactions that turn genes on and off to control protein and RNA production.
 Gut microbiota: |
   The set or collection of microorganisms whose particular environment is the gut.
 HMDB: |
-  Definition
+  A reference database that provides information about known metabolites within humans.
 Image: |
   Main way to share containers.
 Institutional HPC: |
@@ -55,39 +55,39 @@ Institutional HPC: |
 Integrated analysis: |
   An analysis that integrates multiple sources of data together. 
 KEGG: |
-  Definition
+  A reference database that provides information about metabolic pathways and networks.
 Lipids: |
-  Definition
+  Macromolecules that are insoluble in water and provide structure for cells and serve as long-term energy sources.
 Liquid Chromatography: |
-  Definition
+  A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.
 Longitudinal: |
   A study that looks at the same set of research participants over a course of time.
 Macromolecules: |
-  Definition
+  Large complex molecules responsible for cell structure, energy storage, enzymatic catalysis, and genetic information storage and transfer, including nuceleic acids, proteins, carbohydrates, and lipids.
 Mass Spectrometry: |
-  Definition
+  A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.
 Meta-analysis: |
   An analysis of data from a collection of studies targeting a common research question.
 Metabolic pathways: |
-  Definition
+  Connected series of chemical reactions that occur within a cell during metabolic processes.
 Metabolites: |
-  Definition
+  Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.
 Metabolome: |
   A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.
 Microbiome: |
   A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.
 Molecular weight: |
-  Definition
+  The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.
 Mount: |
   Definition 
 Nuclear Magnetic Resonance (NMR): |
-  Definition 
+  A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.
 Nucleic acids: |
-  Definition
+  Macromolecules that store and transfer genetic information, including DNA and RNA. 
 Organic: |
-  Definition
+  Molecules containing carbon-hydrogen bonds. 
 Organic acids: |
-  Definition
+  Metabolites, primarily carboxylic acids, that neutralize bases and play important roles in cellular metabolism.
 Paired: |
   Data that is collected from the same sample in a study.
 Personally Identifiable Information: |
@@ -97,9 +97,9 @@ Primary: |
 Protected Health Information: |
   Definition
 Proteins: |
-  Definition
+  Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
 Reference Databases: |
-  Definition 
+  Databases including known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
 Registry: |
   Definition 
 Repeatability: |
@@ -116,15 +116,15 @@ Secondary data: |
   Definition
 Sequencing: |
   Definition
-Signaling pathways: |
-  Definition
+Signaling: |
+  Series of chemical reactions that let groups of moleculars control a cell function.
 Spectra: |
-  Definition
+  Graphical representations of NMR and mass spec results to display detected signals and their relative intensities. 
 Statistical power: |
   The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.
 Version-controlled: |
   A project with changes tracked over time using version control software such as Git and GitHub.
 Vitamins: |
-  Definition
+  Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.
 Volume: |
   Definition 
