@@ -59,7 +59,6 @@ At the top of the Docker Hub section, in the search bar, type the name (or part 
 * Click the "Pull" button.
 
 The bottom right of the Docker Desktop GUI will display progress messages such as: 
-
   * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
   * a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
 
@@ -247,14 +246,14 @@ Reducing manual steps and rather automating them is an important step towards mo
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `tabulapdf` will be used to extract a table from the PDF starting on line 8. `here` will be used to build output file paths on lines 19, 27, and 31. `readr` will be used to write an output csv file on line 30. 
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `tabulapdf` will be used to extract a table from the PDF starting on line 8. `here` will be used to build output file paths on lines 19, 27, and 31. `readr` will be used to write an output `csv` file on line 30. 
 
 Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
 
 The rest of the script is used to output information about the extracted data or save the extracted data itself:
 
 * Line 15 outputs the dimensions of the extracted table using the `dim()` function, specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
-* Line 16 outputs the number of NA values taht are in the extracted table by summing the number of TRUEs from the `is.na()` function.
+* Line 16 outputs the number of NA values that are in the extracted table by summing the number of TRUEs from the `is.na()` function.
 * Line 19 specifies an output directory.
 * Line 21 checks to see if that output directory exists, and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
 * Lines 26-28 save the extracted table as an `.rda` file.
@@ -279,6 +278,7 @@ Yes we could! However, we would need to make sure that the PDF was located in th
 </details>
 
 ::::
+:::
 
 To run the script to fetch the data in the running container, follow these steps:
 

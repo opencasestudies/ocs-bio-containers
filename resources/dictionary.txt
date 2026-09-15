@@ -7,6 +7,8 @@ Algavi
 Apptainer
 automations
 Benchmarking
+bioocs
+BioOCS
 bioconductor
 Bioinformatics
 Biomarker
@@ -121,7 +123,10 @@ tabset
 tabulapdf
 Teichman
 th
+tibble
 tidyverse
+TRUEs
+unpause
 unwrangled
 validator
 VSCode
