@@ -281,10 +281,15 @@ Our second visualization script combines the two `ggplot` objects into a single 
 
 <details><summary>What is this script doing?</summary>
 
-1. Use the HMDB scatter plot from before, but remove its title
-2. Use the KEGG scatter plot from before, but remove its title
-3. Combine the legends
-4. Add a single title for the whole plot
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build input and output file paths on lines 7, 15, and 21. The `ggplot2` package is used for the `labs()` function calls on lines 9 and 10. The `patchwork` package is used to combine the scatter plots and for the `plot_layout()` and `plot_annotation()` functions.
+
+Line 7 loads the `hmdb_scatter` and `kegg_scatter` `ggplot` objects that were saved previously.
+
+Lines 9 - 10 use the HMDB scatter plot from before, but remove its title and combine it with the KEGG scatter plot from before (also removing its title). 
+
+Line 11 combines the legends.
+
+Line 12 adds a single title for the whole plot.
 
 </details>
 
