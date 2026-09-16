@@ -47,11 +47,11 @@ Recall that a container image is the main way that containers are shared and the
 :::{.panel-tabset}
 #### Docker Desktop
 
-At the top of the Docker Hub section, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
+Within Docker Desktop, we can search for images of containers from Docker Hub. 
 
 
 * Click on the "Docker Hub" option in the left side menu.
-* Type `bioocs` and several images from the `bioocs` organization will appear as cards. 
+* In the search bar under the "Docker Hub" header, type `bioocs` and several images from the `bioocs` organization will appear as cards. 
 * Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
 * Click on that card. 
 * Verify that in the header
@@ -108,7 +108,7 @@ You can interact with the scripts within this scaffold GitHub repository in one 
 1. *Option A*: Download the analysis scripts in a `.zip` file<br/>
 2. *Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
-Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
+Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -117,7 +117,12 @@ Reproducibility considerations
 ::::{.inner_block}
 Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
 
-A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+Typical practices that support reproducibility for a project folder include: 
+- Often the project directory will have a name associated with the project (assuming that a project is version controlled, this is likely the repository name).  
+- The project directory will often have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. 
+- Analysis scripts may often be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). 
+- The data subdirectory will often have additional subdirectories separating out raw or imported data from wrangled data. 
+- Likewise, the results directory will also often  have additional subdirectories separating the different types of results (e.g., plots).
 
 ```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
@@ -171,7 +176,7 @@ If we don't mount the volume when we run the image, we won't have access to thos
 :::{.panel-tabset}
 ##### Docker Desktop
 
-* Ensure you are on the "Images" tab of Docker Desktop.
+* Ensure you are on the "Images" tab of Docker Desktop. (This can be found on the left menu.)
 * Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
 * In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
 * Under the "Volumes" section:
@@ -246,7 +251,7 @@ Reducing manual steps and rather automating them is an important step towards mo
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `tabulapdf` will be used to extract a table from the PDF starting on line 8. `here` will be used to build output file paths on lines 19, 27, and 31. `readr` will be used to write an output `csv` file on line 30. 
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `tabulapdf`  package will be used to extract a table from the PDF starting on line 8.  The `here`  package will be used to build output file paths on lines 19, 27, and 31.  The `readr` package will be used to write an output `csv` file on line 30. 
 
 Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
 
@@ -347,7 +352,7 @@ We also save an `rda` and `csv` version of the raw data. We can confirm that the
 
 ##### Docker through a CLI
 
-To confirm the creation of the data files, 
+To confirm the creation of the data files:
 
 * Enter `ls` in the CLI. 
   * There will be a new directory `data` listed.
