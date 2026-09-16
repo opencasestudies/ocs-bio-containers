@@ -145,15 +145,43 @@ Our first visualization script makes the two scatter plots and saves their `ggpl
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, [`mutate` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build input and output file paths on lines 7, 30, 36, 59, and 66. The `tidyverse` package is used to pipe the data from function to function and for the [`mutate` function (to modify an existing column)](https://dplyr.tidyverse.org/reference/mutate.html) in line 14. The `ggplot2` package is used throughout the script for the plotting functions.
 
-Line 7 - 9 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
+Line 7 - 9 loads the `table1_extract` variable that stores the wrangled Table 1 data that we extracted and wrangled previously throughout the Data Import and Data Wrangling sections. 
 
-Lines 13-27 are the actual data visualization steps of the process (for the HMDB reference database).
+Lines 13 - 27 are the actual data visualization steps of the process (for the HMDB reference database).
+
+* Lines 13 - 14 pipes the `table1_extract` data to the `mutate` function in order to ensure that the `longitudinal` data is represented by a [factor](https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors.html).
+* Lines 15 - 18 [creates a new ggplot object](https://ggplot2.tidyverse.org/reference/ggplot.html) and defines what columns of `table1_extract` will be used for each part of the plot (the [`aes()` function](https://ggplot2.tidyverse.org/reference/aes.html) "constructs aethetic mappings").
+    * `num_paired_samples`: on the x-axis
+    * `hmdb_annotated_compounds`: on the y-axis
+    * `longitudinal`: (point) color
+    * `dataset_name`: (point) text labels
+* Line 19 creates the scatter part of the plot ([`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html)) and specifies the size of the points.
+* Line 20 creates the text layer for the point labels ([`geom_text()`](https://ggplot2.tidyverse.org/reference/geom_text.html)), specifying the size, vertical justification, and color of the point text labels.
+* Line 21 changes the colors to use the viridis scale instead of the default colors ([`scale_color_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html)).
+* Lines 22-25 set the title, x- and y- axis text labels, and the legend title.
+* Line 26 set the theme to be [a minimalistic theme](https://ggplot2.tidyverse.org/reference/ggtheme.html) with no background annotations and sets the base font size to 12pt.
+* Line 27 sets the [aspect ratio](https://ggplot2.tidyverse.org/reference/coord_fixed.html) for the plot since both axes are numerical data.
+* Notice that in data wrangling, lines ended with `%>%` because we were piping the data between different functions. In most of the data visualization code, lines end with [`+` to add components or layers to the plot](https://ggplot2.tidyverse.org/reference/ggplot.html). 
+
 
 Lines 32 - 38 save the HMDB plot and prints a log message about completing that plot.
 
-Lines 42 - 56 are the actual data visualization steps of the process (for the KEGG reference database).
+Lines 42 - 56 are the actual data visualization steps of the process (for the KEGG reference database). These lines are practically an exact copy of lines 13-27, with differences happening on lines 45 (which column of data is used for the y-axis), 51 (the plot title), and 53 (the y-axis label).
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+
+When writing code for a data analysis or software development, it is best to follow the [DRY principle: "Don't repeat yourself"](https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/). Functions are often a good way to [reduce repetitiveness](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/writing-durable-code.html#dry-up-your-code).
+
+The code within the `03a_visualization.R` script is not DRY, but rather a little repetitive. 
+
+::::
+:::
 
 Lines 59 - 62 save the KEGG plot and prints a log message about completing that plot.
 
@@ -169,7 +197,7 @@ Advanced Question opportunity
 ::::
 ::::{.inner_block}
 
-**How can this visualization script be improved to be DRYer?**
+**How can this visualization script be improved to be DRYer (less repetitive)?**
 
 <details><summary>Hint</summary>
 DRY code often utilizes functions to make sure that code isn't repeated.
@@ -180,7 +208,7 @@ DRY code often utilizes functions to make sure that code isn't repeated.
 
 <details><summary>A possible answer</summary>
 
-Replace lines X-X and X-X with this instead:
+Replace lines 11-27 with this instead:
 
 ```{r, eval = FALSE}
 
@@ -202,7 +230,7 @@ plot_scatter <- function(to_be_visualized, y_axis_var, ref_db){
     scatter_plot <- to_be_visualized %>%
         mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
         ggplot(aes(x = num_paired_samples,
-                   y = y_axis_var,
+                   y = {{ y_axis_var }},
                    color = longitudinal,
                    label = dataset_name)) +
         geom_point(size = 2.5) +
@@ -210,7 +238,7 @@ plot_scatter <- function(to_be_visualized, y_axis_var, ref_db){
         scale_color_viridis_d(end = 0.6) +
         labs(title = paste0("Paired sample count vs ", ref_db, " annotation coverage"),
              x = "No. samples with paired data",
-             y = paste0(ref_db, " Annotated compounds",
+             y = paste0(ref_db, " Annotated compounds"),
              color = "Longitudinal") +
         theme_minimal(base_size = 12) +
         coord_fixed(ratio = 1)
@@ -218,9 +246,20 @@ plot_scatter <- function(to_be_visualized, y_axis_var, ref_db){
     return(scatter_plot)
 }
 
-
+#HMDB plot
+hmdb_scatter <- plot_scatter(table1_extract, hmdb_annotated_compounds, "HMDB")
 
 ```
+
+Then replace lines 41 - 56 with this:
+
+```{r, eval = FALSE}
+kegg_scatter <- plot_scatter(table1_extract, kegg_annotated_compounds, "KEGG")
+```
+
+Notice the new `plot_scatter()` function we define is mostly an exact copy of the original plotting code, except that it utilizes variables that can be specified when calling the function to specify the parts of the code that differed between the two instances of using it. We specifically use an ["embrace operator"](https://rlang.r-lib.org/reference/topic-data-mask-programming.html#embrace-with-) so that we can pass the variable/column name as an argument to the function.
+
+Also notice that we used an [roxygen block](https://roxygen2.r-lib.org/articles/rd.html) (the lines starting with `#'`) to document the function -- explaining what it does, what it needs (parameters/variables), and what it returns. This is a reproducibility best practice when writing R functions in your code.
 
 </details>
 
