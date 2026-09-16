@@ -257,10 +257,10 @@ Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf
 
 The rest of the script is used to output information about the extracted data or save the extracted data itself:
 
-* Line 15 outputs the dimensions of the extracted table using the `dim()` function, specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
-* Line 16 outputs the number of NA values that are in the extracted table by summing the number of TRUEs from the `is.na()` function.
+* Line 15 outputs the dimensions of the extracted table using the [`dim()` function](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/dim), specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
+* Line 16 outputs the number of NA values that are in the extracted table by [summing](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum) the number of TRUEs from the [`is.na()` function](https://www.rdocumentation.org/packages/cheapr/versions/1.5.2/topics/is_na).
 * Line 19 specifies an output directory.
-* Line 21 checks to see if that output directory exists, and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
+* Line 21 [checks to see if that output directory exists](https://www.rdocumentation.org/packages/logcondens.mode/versions/1.0.1/topics/dir.exists), and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
 * Lines 26-28 save the extracted table as an `.rda` file.
 * Lines 30-32 save the extracted table as a `.csv` file.
 
@@ -291,7 +291,7 @@ To run the script to fetch the data in the running container, follow these steps
 ##### Docker Desktop
 
 * Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
-* Enter `cd /home/analysis_scripts` and press the return / enter key.
+* Enter `cd /home/analysis_scripts` (`cd` stands for "change directory") and press the return / enter key.
 * Enter the following command and press the return / enter key.
 
 ```{.bash}
