@@ -1,4 +1,130 @@
-Term 1: |
-  Definition of Term 1
-Term2: |
-  Definition of Term 2
+Benchmarking: |
+  Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task. 
+Build: |
+  Verb for creating a container image from a Dockerfile.
+Carbohydrates: |
+  Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
+Clinical data: |
+  Health-related data gathered from patients or research participants.
+Cohort: |
+  Research participants within the same study.
+Command Line Interface (CLI): |
+  A window that lets a user interact with a computer through typing commands.
+Computing environment: |
+  Specific features of a computational resource, including operating system, software, and software versions.
+Container: |
+  Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
+Containerization: |
+  The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.
+Daltons: |
+  Standard units of molecular mass used to measure the weight of molecules.
+Data collection or resource: |
+  A collection of datasets that have been gathered or curated by a group for secondary use within the field.
+Data harmonization: |
+  Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.
+Directory: |
+  A folder in a computing environment.
+Docker: |
+  A software platform for building, testing, and deploying containers.
+Docker Hub: |
+  A large cloud-based public registry for Docker images, can be used to download pre-built Docker images or upload custom Docker images.
+Dockerfile: |
+  A text document that includes commands that are needed to build a Docker image and specify what will be available in a container. 
+Endogenous: |
+  Metabolites that originate from the organism or source of the sample.
+Enzyme assays: |
+  A technique to detect and quantify metabolites using enzyme-catalyzed reactions.
+Exogenous: |
+  Metabolites that originate from outside of the organism or source of the sample. 
+Extensibility: |
+  The ability for a new researcher to use original data and process to repeat a result and produce an extension of the process for a related result.
+Gas Chromatography: |
+  A technique to detect and quantify metabolites by vaporizing and separating compounds.
+Generalizability: |
+  The ability to apply the findings from research to a broader setting.
+Gene-regulatory pathways: |
+  Pathways made up of molecular interactions that reduce/suppress or increase/enhance gene expression (possibly, but not necessarily turning genes on and off) to control RNA production (and by extension may impact protein production).
+Gut microbiota: |
+  The set or collection of microorganisms whose particular environment is the gut.
+HMDB: |
+  A reference database that provides information about known metabolites within humans.
+Image: |
+  Main way to share containers because an image is a static, read-only configuration for creating a running container.
+Institutional high performance computing (HPC): |
+  A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.
+Integrative analysis: |
+  An analysis that integrates multiple sources of data together. 
+KEGG: |
+  A reference database that provides information about metabolic pathways and networks.
+Lipids: |
+  Macromolecules that are insoluble in water and provide structure for cells and serve as long-term energy sources.
+Liquid Chromatography: |
+  A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.
+Longitudinal: |
+  A study that looks at the same set of research participants over a course of time.
+Macromolecules: |
+  Large complex molecules responsible for cell structure, energy storage, enzymatic catalysis, and genetic information storage and transfer, including nuceleic acids, proteins, carbohydrates, and lipids.
+Mass Spectrometry: |
+  A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.
+Meta-analysis: |
+  An analysis of data from a collection of studies targeting a common research question.
+Metabolic pathways: |
+  Connected series of chemical reactions that occur within a cell during metabolic processes (e.g., glycolysis, digestion, protein synthesis, etc.) .
+Metabolites: |
+  Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.
+Metabolome: |
+  A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.
+Microbiome: |
+  A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.
+Molecular weight: |
+  The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.
+Mount: |
+  Connect a file or directory from the local machine to a location inside of a container.
+Nuclear Magnetic Resonance (NMR): |
+  A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.
+Nucleic acids: |
+  Macromolecules that store and transfer genetic information, including DNA and RNA. 
+Organic: |
+  Molecules containing carbon-hydrogen bonds. 
+Organic acids: |
+  Metabolites, primarily carboxylic acids, that neutralize bases and play important roles in cellular metabolism.
+Paired: |
+  Data that is collected from the same sample in a study.
+Personally Identifiable Information: |
+  Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc.; abbreviated as "PII".
+Primary: |
+  Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).
+Protected Health Information: |
+  A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.; abbreviated as "PHI".
+Proteins: |
+  Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
+Reference databases: |
+  Databases including known information about a topic. For metabolomics, reference databases may include known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
+Registry: |
+  A central storage and distribution system for container images.
+Repeatability: |
+  The ability for the same researcher to run the same analysis on the same data and get the same results.
+Replicability: |
+  The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions as the original researcher.
+Reproducibility: |
+  The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.
+Run: |
+  Creating a container from an image, providing an active and usable computing environment.
+Secondary: |
+  Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the microbiome.
+Secondary data: |
+  Data collected originally by others for a different purpose.
+Sequencing: |
+  A laboratory technique that extracts and analyzes the genetic material from a sample.
+Signaling pathways: |
+  Series of chemical reactions that let groups of molecules control a cell function (e.g., cell growth, gene expression, inflammation, or cell death).
+Spectra: |
+  Graphical representations of NMR and mass spec results to display detected signals and their relative intensities. 
+Statistical power: |
+  The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.
+Version-controlled: |
+  A project with changes tracked over time using version control software such as Git and GitHub.
+Vitamins: |
+  Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.
+Volume: |
+  A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.

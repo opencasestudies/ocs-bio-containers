@@ -1,7 +1,7 @@
 # **Packages and Setup**
 ***
 
-Before we get into fetching images, running containers, and running analyses, we want to describe the R packages that we'll use in this case study, or that are used within the analysis scripts for the project with Collab O. Rator.
+Before we get into fetching {{< glossary "Image" display="images" >}}, creating {{< glossary "Container" display="containers" >}}, and running analyses, we want to describe the R packages that we'll use in this case study, or that are used within the analysis scripts for the project with Collab O. Rator.
 
 Package    | Use
 ---------- |-------------

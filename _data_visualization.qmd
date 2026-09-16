@@ -1,7 +1,12 @@
 # **Data Visualization**
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Visualization section, you will be creating a new container from the modified Dockerfile in the previous section.
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Visualization section, you will be creating a new container from the modified {{< glossary "Dockerfile" >}} in the previous section.
+
+```{r, eval = FALSE}
+load(here::here("data", "wrangled", "wrangled_data.rda"))
+```
+>>>>>>> main
 
 ***
 
@@ -59,7 +64,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 Now that we have added the `patchwork` package to the original Dockerfile, we need to create a container that will have this package available in order to create our data visualization. As outlined in the previous section, we need to do the following steps:
 
-1. Build an image from the modified Dockerfile.
+1. {{< glossary "Build" >}} an image from the modified Dockerfile.
 2. Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.
 
 Step 1 is completely new since previously we pulled an image from Docker Hub rather than building the image from a Dockerfile..  
@@ -118,7 +123,7 @@ You can close the Docker Desktop Terminal by clicking the "x" in the upper right
 
 ### Docker through a CLI
 
-Build the modified Dockerfile --> Image
+{{< glossary "Build" >}} the modified Dockerfile --> Image
 
 Run the Image (while mounting the volume) -- > Container
 

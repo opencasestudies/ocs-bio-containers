@@ -3,11 +3,11 @@
 
 ## Container Infrastructure
 
-In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the container that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the `tabulapdf` package and any of its dependencies that we don't have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.
+In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the {{< glossary "Container" display="container" >}} that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the `tabulapdf` package and any of its dependencies that we don't have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.
 
 ### Step 1: Starting docker
 
-To pull the docker image, docker must first be running. 
+To pull the docker {{< glossary "Image" display="image" >}}, {{< glossary "Docker" >}}  must first be running. 
 
 :::{.emphasis_block}
 
@@ -30,7 +30,7 @@ Docker Desktop may not appear to open if it was previously opened and closed bec
 
 #### Docker through a Command Line Interface (CLI)
 
-Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows). The instructions in this case study best align with PowerShell for Windows machines. You may need to use backslashes (`\`) in place of forward slashes (`/`) when file navigation commands are provided for use outside of a running container.
+Open your {{< glossary "Command Line Interface (CLI)" display = "command line interface (CLI)" >}} (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows). The instructions in this case study best align with PowerShell for Windows machines. You may need to use backslashes (`\`) in place of forward slashes (`/`) when file navigation commands are provided for use outside of a running container.
 
 In your command line interface, use the following command to start docker.
 
@@ -42,7 +42,7 @@ open -a Docker
 
 ### Step 2: Pulling the container image from Docker Hub
 
-Recall that a container image is the main way that containers are shared and these are often stored in registries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
+Recall that a container image is the main way that containers are shared and these are often stored in {{< glossary "Registry" display="registries" >}} like {{< glossary "Docker Hub" >}}. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
 
 :::{.panel-tabset}
 #### Docker Desktop
@@ -95,7 +95,7 @@ Not all containers in a registry can or should be trusted. Look for containers f
 
 Now that we've pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn't give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container. 
 
-If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the image to create the container / set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
+If all you need is software and don't need data or analysis scripts (stored in a file or {{< glossary "Directory" display="directory" >}}), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **{{< glossary "Mount" display="mounting" >}} a {{< glossary "Volume" display="volume" >}}**. 
 
 We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
 
@@ -108,7 +108,7 @@ You can interact with the scripts within this scaffold GitHub repository in one 
 1. *Option A*: Download the analysis scripts in a `.zip` file<br/>
 2. *Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
-Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.
+Option B provides an opportunity to practice more advanced {{< glossary "Reproducibility" display="reproducibility" >}} best practices: {{< glossary "Version-controlled" display="version-controlling" >}} an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
