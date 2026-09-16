@@ -3,8 +3,7 @@
 
 ## Container Application
 
-<<<<<<< HEAD
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
 
 ::: {.column-margin}
 Add instructions on pausing, stopping, and deleting containers.
