@@ -137,8 +137,8 @@ Now within the modified, running container, we will use the wrangled data to mak
 
 Our first visualization script makes the two scatter plots and saves their `ggplot` objects.
 
-```{.R filename="03a_data_visualization.R"}
-{{< include resources/analysis_scripts/03a_data_visualization.R >}}
+```{.R filename="03a_visualization.R"}
+{{< include resources/analysis_scripts/03a_visualization.R >}}
 ```
 
 :::{.emphasis_block}
