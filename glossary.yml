@@ -1,5 +1,5 @@
 Benchmarking: |
-  Comparing the performance, accuracy, reliability, and runtime of multiple tools that perform the same task. 
+  Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task. 
 Build: |
   The container image created from a Dockerfile.
 Carbohydrates: |
@@ -29,15 +29,15 @@ Docker: |
 Docker Hub: |
   A large cloud-based public registry for Docker images, can be used to download pre-built Docker images or upload custom Docker images.
 Dockerfile: |
-  A text document that includes commands that are needed to assemble a Docker image. 
+  A text document that includes commands that are needed to build a Docker image and specify what will be available in a container. 
 Endogenous: |
   Metabolites that originate from the organism or source of the sample.
 Enzyme assays: |
   A technique to detect and quantify metabolites using enzyme-catalyzed reactions.
 Exogenous: |
-  Metabolites that original from outside of the organism or source of the sample. 
+  Metabolites that originate from outside of the organism or source of the sample. 
 Extensibility: |
-  The ability for a new researcher to use original data and process to repeat a result and produce an extension.
+  The ability for a new researcher to use original data and process to repeat a result and produce an extension of the process for a related result.
 Gas Chromatography: |
   A technique to detect and quantify metabolites by vaporizing and separating compounds.
 Generalizability: |
@@ -49,7 +49,7 @@ Gut microbiota: |
 HMDB: |
   A reference database that provides information about known metabolites within humans.
 Image: |
-  Main way to share containers.
+  Main way to share containers because an image is a static, read-only configuration for creating a running container.
 Institutional high performance computing (HPC): |
   A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.
 Integrative analysis: |
@@ -69,7 +69,7 @@ Mass Spectrometry: |
 Meta-analysis: |
   An analysis of data from a collection of studies targeting a common research question.
 Metabolic pathways: |
-  Connected series of chemical reactions that occur within a cell during metabolic processes.
+  Connected series of chemical reactions that occur within a cell during metabolic processes (e.g., glycolysis, digestion, protein synthesis, etc.) .
 Metabolites: |
   Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.
 Metabolome: |
@@ -91,23 +91,23 @@ Organic acids: |
 Paired: |
   Data that is collected from the same sample in a study.
 Personally Identifiable Information: |
-  Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc. 
+  Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc.; abbreviated as "PII".
 Primary: |
   Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).
 Protected Health Information: |
-  A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.
+  A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.; abbreviated as "PHI".
 Proteins: |
   Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
 Reference databases: |
-  Databases including known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
+  Databases including known information about a topic. For metabolomics, reference databases may include known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
 Registry: |
   A central storage and distribution system for container images.
 Repeatability: |
-  The ability the same researcher to run the same analysis on the same data and get the same results.
+  The ability for the same researcher to run the same analysis on the same data and get the same results.
 Replicability: |
-  The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions.
+  The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions as the original researcher.
 Reproducibility: |
-  The ability for a new researcher to run the same analysis on the same data and get the same results.
+  The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.
 Run: |
   Creating a container from an image, providing an active and usable computing environment.
 Secondary: |
@@ -117,7 +117,7 @@ Secondary data: |
 Sequencing: |
   A laboratory technique that extracts and analyzes the genetic material from a sample.
 Signaling pathways: |
-  Series of chemical reactions that let groups of moleculars control a cell function.
+  Series of chemical reactions that let groups of molecules control a cell function (e.g., cell growth, gene expression, inflammation, or cell death).
 Spectra: |
   Graphical representations of NMR and mass spec results to display detected signals and their relative intensities. 
 Statistical power: |
