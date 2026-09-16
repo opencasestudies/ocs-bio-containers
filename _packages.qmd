@@ -66,5 +66,8 @@ Portion of section           | Description of activity
 
 In all cases, code and scripts for the tasks within the **Container Application** portions will be provided for learners since the focus of this case study is **how to work with containers**, not how to code with R. 
 
+::: {.emphasis_block}
+**Disclaimer:** The instructions and visuals provided for interacting with Docker Desktop (throughout the Data Import, Data Wrangling, Data Visualization, and Data Analysis sections) are based off of working with Docker Desktop version 4.91.0 (Sept 2026). They may not be completely accurate regarding layout and available functionality for different versions of Docker Desktop.
+:::
 
 

@@ -20,9 +20,17 @@ If you try to use a docker command like `docker pull` without first starting doc
 
 Open the Docker Desktop app.
 
+<details><summary>What if Docker Desktop isn't opening?</summary>
+
+Docker Desktop may not appear to open if it was previously opened and closed because it may be a stagnant process that is attempting to open but is in the background. Use (Windows) Task Manager or (Apple) Activity Monitor to stop the background processes and attempt to launch the app again.
+
+[Related Forum Post](https://forums.docker.com/t/issue-with-docker-desktop-on-windows-11-wont-start-after-first-launch/144699/10), [Related Stack Overflow Post](https://stackoverflow.com/a/77473083)
+
+</details>
+
 #### Docker through a Command Line Interface (CLI)
 
-Open your command line interface (e.g., Terminal on a Mac).
+Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows).
 
 In your command line interface, use the following command to start docker.
 
@@ -39,12 +47,23 @@ Recall that a container image is the main way that containers are shared and the
 :::{.panel-tabset}
 #### Docker Desktop
 
-At the top of the Docker Desktop GUI window, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
+Within Docker Desktop, we can search for images of containers from Docker Hub. 
 
-* Type `ocs-bio-` and several images from the `bioocs` organization will be listed. 
-* Find `bioocs/ocs-bio-containers-base` in the list. 
-* Verify that the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
-* Click the "pull" button.
+
+* Click on the "Docker Hub" option in the left side menu.
+* In the search bar under the "Docker Hub" header, type `bioocs` and several images from the `bioocs` organization will appear as cards. 
+* Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
+* Click on that card. 
+* Verify that in the header
+  * the name of the selected image is `bioocs/ocs-bio-containers-base` * the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
+* Click the "Pull" button.
+
+The bottom right of the Docker Desktop GUI will display progress messages such as: 
+  * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
+  * a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+
+* Click on the "Images" option in the left side menu.
+* Notice the `bioocs/ocs-bio-containers-base` image is listed there now.
 
 #### Docker through a CLI
 
@@ -55,6 +74,12 @@ docker pull bioocs/ocs-bio-containers-base:main
 ```
 
 Note that the command line interface will display progress messages for each layer of the image followed by confirmation or a status update that the image was successfully pulled.
+
+Use the following command to list available images and confirm that you've pulled the image.
+
+```{.bash}
+docker image ls
+```
 
 :::
 
@@ -70,7 +95,7 @@ Not all containers in a registry can or should be trusted. Look for containers f
 
 Now that we've pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn't give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container. 
 
-If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
+If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the image to create the container / set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
 
 We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
 
@@ -83,7 +108,7 @@ You can interact with the scripts within this scaffold GitHub repository in one 
 1. *Option A*: Download the analysis scripts in a `.zip` file<br/>
 2. *Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
-Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
+Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -92,21 +117,26 @@ Reproducibility considerations
 ::::{.inner_block}
 Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
 
-A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+Typical practices that support reproducibility for a project folder include: 
+- Often the project directory will have a name associated with the project (assuming that a project is version controlled, this is likely the repository name).  
+- The project directory will often have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. 
+- Analysis scripts may often be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). 
+- The data subdirectory will often have additional subdirectories separating out raw or imported data from wrangled data. 
+- Likewise, the results directory will also often  have additional subdirectories separating the different types of results (e.g., plots).
 
-```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
+```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
 ```
 ::::
 :::
 
-This scaffold directory doesn't match the suggested project directory structure from above at first appearance. It only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs if the directories don't already exist.
+This scaffold directory doesn't match the suggested project directory structure from above at first appearance. Besides a README file, it only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs (though the scripts wouldn't overwrite existing directories).
 
 :::{.panel-tabset}
 
 ##### Option A: Download a .zip file
 
-Use this link to [download the analysis scripts](https://githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/ocs-bio-containers-scaffold-main.zip)
+Use this link to [download the analysis scripts](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/resources/ocs-bio-containers-scaffold-main.zip)
 
 You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac), [Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
 
@@ -146,84 +176,55 @@ If we don't mount the volume when we run the image, we won't have access to thos
 :::{.panel-tabset}
 ##### Docker Desktop
 
-Running the container instructions (including mounting the volume)
+* Ensure you are on the "Images" tab of Docker Desktop. (This can be found on the left menu.)
+* Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
+* In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
+* Under the "Volumes" section:
+  * Click the three dots for "Host path" and find/select the "ocs-bio-containers-scaffold-main" file that you downloaded and unzipped (Option A) or cloned (Option B) in Step 3a.
+  * Enter `/home` for the "Container path". This is the name of where those files will be stored in the running container.
+* Click the blue "Run" button at the bottom right of the window.
+* This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
+* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. Navigate to the "Exec" tab.
+* Type `ls` and press the return / enter key on your keyboard to list what files are in the running container. Notice that there are several folders like `bin`, `boot`, `home`, `init`, etc. `home` is the set of files that we added as a mounted volume when we ran the image to create the container. 
+* Type `ls home` and press the return / enter key. This will list the files in the `home` directory. As expected (described earlier in Step 3a) we see `analysis_scripts`, `continued_learning_scripts`, and the `README.md` file
+* Navigate to the "Files" tab (along the top in the running container).
+* Notice that the `home` folder has a blue oval with the word "MOUNT" on it under the "Note" column. This is because we mounted those files. 
+* Click the `home` folder to expand its contents, we again see the `README.md` file as well as the `analysis_scripts` and `continued_learning_scripts` directories.
+
+
 
 ##### Docker through a CLI
 
-Enter the following command in your CLI, replacing `[locationOfAnalysisFiles]` with the location of your analysis files (e.g., `~/Downloads/ocs--bio-containers-scaffold`) 
+* Change directories (`cd`) to your local copy of the analysis files (from Step 3a). 
+* Use the following command in your CLI to start a container
+  * This will mount the current directory as the volume (`-v`)
+  * The working directory within the running container will point to your current directory (`-w`)
+  * `-it` + `bash` opens an interactive CLI in the running container
+  * Note that the image name `bioocs/ocs-bio-containers-base:main` must be specified after all of the flags (`-w`, `-v`, `-it`, etc.), but before the `bash` specification or there will be errors such as "Error response from daemon" if specified before the flags or "No such file or directory" if specified after `bash`.  
 
 ```{.bash}
-docker run -v [locationOfAnalysisFiles] bioocs/ocs-bio-containers-base:main
+docker run -v $(pwd):$(pwd) -w $(pwd) -it bioocs/ocs-bio-containers-base:main bash
 ```
 
-At the end of some progress messages, you should see `[services.d] done.` meaning that the container is ready for use.
+The running container will have a different command prompt than the usual command line command prompt. It will start with something like `root@` followed by some letters and numbers and then the a colon with file path for your local copy of the analysis files.
+
+`ls` and see what files or directories are shown to be there. You should see the directories `analysis_scripts` and `continued_learning_scripts` as well as the file `README.md`. 
 
 :::
+
+The container is running and now can be used for the project with Collab O. Rator!
 
 ## Container Application
 
+Now that the container is running, it can be used to work with data and perform tasks with the software packages inside the container. The first necessary step is to "import" the data needed to create data visualizations down the road.
+
 ### Extracting data from a PDF within a running container
 
-#### Running the analysis
+Collab O. Rator previously wrote a script to extract the data from the PDF using the `tabulapdf` file. Rather than providing a file with the extracted data, Collab O. Rator provided the container information and the script. Therefore, in this case, we'll need to run the script from Collab O. Rator within the running container to extract and save the data so that we can work with it in other scripts.
 
-Using the `tabulapdf` package, we will extract a raw, unwrangled version of Table 1.
+#### Step 1: Running the analysis
 
-Update this to grab the script and show it with the shortcode notation
-
-```{.R filename="01_extract_data.R"}
-{{< include resources/analysis_scripts/01_extract_data.R >}}
-```
-
-Discuss what the above script is actually doing. Note that we're using a URL to read the PDF rather than including the PDF in the mounted volume.
-
-Walk through how to run the container in order to run the analysis and extract the data.
-
-:::{.panel-tabset}
-### Docker Desktop
-
-Running the analysis instructions
-
-### Docker through a CLI
-
-Running the analysis instructions
-
-:::
-
-#### Inspecting the output
-
-In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  We also save an `rda` and `csv` version of the raw data. Where do we see those? Do we see those?
-
-:::{.panel-tabset}
-### Docker Desktop
-
-Looking at the outputs (new folders, files, and log messages)
-
-### Docker through a CLI
-
-Looking at the outputs (new folders, files, and log messages)
-
-:::
-
-::: {.emphasis_block}
-
-```{r}
-#| echo: false
-#| output: asis
-
-# Replace with your raw GitHub URL
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_results/logs/data_extraction_logs.txt"
-
-# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
-file_lines <- readLines(url, warn = FALSE)
-formatted_lines <- paste0(file_lines, "  ")
-cat(formatted_lines, sep = "\n")
-```
-
-:::
-
-Activity -- Using the container from the collaborator to get the Table 1 data.
-
-Give side quest instructions on how to interact with a file system if you can't mount a volume for whatever reason
+Using the `tabulapdf` package within a script, we will extract a raw, unwrangled version of Table 1.
 
 ::: {.think_question}
 :::: {.think_question_header}
@@ -242,22 +243,128 @@ Reducing manual steps and rather automating them is an important step towards mo
 ::::
 :::
 
-For Docker Desktop:
+```{.R filename="01_extract_data.R"}
+{{< include resources/analysis_scripts/01_extract_data.R >}}
+```
 
-* run the container
-* navigate to the exec tab
-* set-up a file structure (motivate this by it being important to have a file structure in a data analysis, pointing to ITCR reproducibility resources):
-  * `mkdir opt/case_study_analysis plots/ data/imported data/wrangled`
-* `touch` an `01_extract_data.R` script in `opt/case_study_analysis`
-* navigate to the files tab
-* right click on the `01_extract_data.R` script and click edit
-* copy paste the following code into the script
-* click save
-* navigate to the exec tab
-* use `Rscript 01_extract_data.R` -- adjusting based on script location and learner's file location.
-* notice that it outputs "Dimensions: 25 x 7"
-* notice that there is an rda file in the `data/imported` folder (which we can `ls data/imported` to see)
+::: {.emphasis_block}
 
+<details><summary>What is this script doing?</summary>
 
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `tabulapdf`  package will be used to extract a table from the PDF starting on line 8.  The `here`  package will be used to build output file paths on lines 19, 27, and 31.  The `readr` package will be used to write an output `csv` file on line 30. 
+
+Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
+
+The rest of the script is used to output information about the extracted data or save the extracted data itself:
+
+* Line 15 outputs the dimensions of the extracted table using the [`dim()` function](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/dim), specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
+* Line 16 outputs the number of NA values that are in the extracted table by [summing](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum) the number of TRUEs from the [`is.na()` function](https://www.rdocumentation.org/packages/cheapr/versions/1.5.2/topics/is_na).
+* Line 19 specifies an output directory.
+* Line 21 [checks to see if that output directory exists](https://www.rdocumentation.org/packages/logcondens.mode/versions/1.0.1/topics/dir.exists), and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
+* Lines 26-28 save the extracted table as an `.rda` file.
+* Lines 30-32 save the extracted table as a `.csv` file.
+
+</details>
+
+:::
+
+:::{.think_question}
+::::{.think_question_header}
+Question Opportunity
+::::
+::::{.inner_block}
+
+Instead of using an internet URL as the source PDF where we are extracting the data from, could we extract the data from a PDF file on our local system?
+
+<details><summary>Possible Answer</summary>
+
+Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we "run" the image to create the container.
+
+</details>
+
+::::
+:::
+
+To run the script to fetch the data in the running container, follow these steps:
+
+:::{.panel-tabset}
+##### Docker Desktop
+
+* Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
+* Enter `cd /home/analysis_scripts` (`cd` stands for "change directory") and press the return / enter key.
+* Enter the following command and press the return / enter key.
+
+```{.bash}
+Rscript 01_extract_data.R
+```
+
+* Notice the output messages from the script.
+
+##### Docker through a CLI
+
+Enter the following command in your CLI.
+
+```{.bash}
+Rscript analysis_scripts/01_extract_data.R
+```
+
+Notice the output messages from the script.
+
+:::
+
+#### Step 2: Inspecting the output
+
+In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  
+
+::: {.emphasis_block}
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_results/logs/data_extraction_logs.txt"
+
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
+file_lines <- readLines(url, warn = FALSE)
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
+```
+
+:::
+
+These messages communicate the the raw data table is 25 rows and 7 columns and has 80 NAs somewhere in the 175 cells (row/column intersections) of the table.
+
+We also save an `rda` and `csv` version of the raw data. We can confirm that the `rda` and `csv` versions of the raw data were saved in the running container.
+
+:::{.panel-tabset}
+##### Docker Desktop
+
+* While still on the "Exec" tab within the running container:
+  * Type `ls ../` and press enter / return. 
+    * There will be a new directory `data` listed.
+  * Type `ls ../data` and press enter / return.
+    * There will be a subdirectory called `imported` listed. 
+  * Type `ls ../data/imported` and press enter / return.
+    * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
+  * Type `wc -l ../data/imported/raw_table1.csv` and press enter / return.
+    * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
+
+##### Docker through a CLI
+
+To confirm the creation of the data files:
+
+* Enter `ls` in the CLI. 
+  * There will be a new directory `data` listed.
+* Enter `ls data` in the CLI.
+  * There will be a subdirectory called `imported` listed. 
+* Enter `ls data/imported` in the CLI.
+  * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
+* Enter `wc -l data/imported/raw_table1.csv` in the CLI.
+  * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
+
+:::
+
+We now have the table data extracted from the PDF as a data frame in R  -- ready to be used within our running container for the next steps. But is it in a clean format or do we need to first wrangle it before we can visualize it?
 
 ***

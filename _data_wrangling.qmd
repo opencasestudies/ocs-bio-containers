@@ -3,56 +3,134 @@
 
 ## Container Application
 
-If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). make sure your container is running (probably will need a tab structure for this): <- update to be more precise
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, or re-create the container (Step 3b from the Data Import section). 
 
-```{r, eval = FALSE}
-load(here::here("data", "imported", "raw_table1.rda"))
-```
+::: {.column-margin}
+Add instructions on pausing, stopping, and deleting containers.
+:::
+
 ***
-
-Even if you stop the container (as long as you don't delete it), you can restart it and the data will still be there as long as it was saved during wrangling
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. I don't think the container has `wget`, but I could set up a download that would have the file that they could then mount. Will do that and include instructions here for that.
+At the minimum, you will need to repeat the Container Infrastructure steps from the Data Import section. 
 
-```{r, eval=FALSE}
-load(here::here("data", "imported", "raw_table1.rda"))
+You can either perform Step 1 from the Data Import -- Container Application section, or in your now running container, you can use `wget` to fetch the data. 
+
+If using `wget` to fetch the data:
+
+:::{.panel-tabset}
+
+### Docker Desktop
+
+* Navigate to the "Exec" tab (along the top of the running container).
+* Type `cd /home` and press the return / enter key.
+* Type `mkdir -p data/imported` and press the return / enter key.
+* Type `cd data/imported` and press the return / enter key.
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
 ```
+
+* Type `cd /home` and press the return / enter key.
+
+### Docker through a CLI 
+
+* Enter `mkdir -p data/imported`
+* Enter `cd data/imported`
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
+```
+
+* Enter `cd ../../`
+
+:::
 
 </details>
 ***
 
 ### Wrangling the data
 
-::: {.panel-tabset}
-
-We have a file that is part of the scaffold code that will wrangle the data in the ways we need.
+Using the `tidyverse`, we will wrangle the extracted version of Table 1. This script is provided for you as part of scaffold code in the `ocs-bio-containers-scaffold-main` directory that was mounted as a volume when running the image to create the container.
 
 ```{.R filename="02_wrangle.R"}
 {{< include resources/analysis_scripts/02_wrangle.R >}}
 ```
 
+:::{.emphasis_block}
 
+<details><summary>What is this script doing?</summary>
 
-1. Rename the columns so they are descriptive
-2. Extracting the numbers (which represent the number of paired samples) at the end of the cohort descriptions to put them in their own column
-3. Making a intermediate column, specifically a version of the text column that has those numbers of paired samples removed
-4. Setting up a `case_when` that evaluates whether the next value/row in the dataset name column is an NA value. This utilizes the `lead` function to look for the next value. In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`
-5. If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text
-6. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
-7. This filters to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows
-8. This removes the `X4` column which was all `NAs`, the original third column (that had the cohort description plus number of paired samples), and the intermediate column which we made that has incomplete cohort descriptions
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, [`mutate` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
 
-Discuss what the above script is actually doing.
+Line 7 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
+
+Lines 10-36 are the actual wrangling steps of the process.
+
+* Lines 11-16 rename the data frame columns so they are descriptive, reflecting the data they contain. This uses the [function `rename()`](https://dplyr.tidyverse.org/reference/rename.html)
+* Lines 17-22, 32 extract the numbers (which represent the number of paired samples) that were appended to the ends of the cohort descriptions from the `cohort_description_num_paired_samples` column, storing them in their own column `num_paired_samples`. This uses the [function `str_extract()`](https://stringr.tidyverse.org/reference/str_extract.html) and a regular expression for the "pattern" to extract.
+    * `\\d+$` is a [regular expression (regex)](https://r4ds.hadley.nz/regexps.html) that is used to match a pattern -- in this case all digits / numbers at the end of the string
+        * `\d` matches any digit.
+        * `+` is a quantifier and means 1 or more matches (digits in this case) will be included.
+        * `$` is an anchor and means a pattern at the end of the string.
+        * the starting backslash (`\`) is an escape character, necessary to escape the "matches any digit" part of the regular expression so R evaluates it. 
+* Lines 17, 23-26, 32 remove the numbers that we just extracted from the `cohort_description_num_paired_samples` column, creating an intermediate text column (named `cohort_description_text`) that only contains the cohort descriptions (though they are still incomplete for a given row because they are multi-line). This uses the same regular expression that we used in the previous step and the [function `str_remove()`](https://stringr.tidyverse.org/reference/str_remove.html)
+* Lines 17, 27-31, 32 sets up a [`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html) that evaluates whether the next value/row in the dataset name column is an NA value. 
+    * This utilizes the [`lead()` function](https://dplyr.tidyverse.org/reference/lead-lag.html) to look for the next value. 
+    * In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`. 
+    * If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text (the text that we stored in the intermediate `cohort_description_text` column in the previous step). 
+    *. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
+    * At the end of this, the `cohort_description` column contains complete, single line cohort descriptions. 
+* Line 33 is a filter to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows and we no longer need them. Specifically, the [`filter()` function](https://dplyr.tidyverse.org/reference/filter.html) will only keep rows where the dataset name is not NA.
+* Lines 34 - 36 use the [`select()` function](https://dplyr.tidyverse.org/reference/select.html) to select all but (because of the exclamation point (`!`)) the following columns (removing them):
+    * the `X4` column which was all `NAs`
+    * `cohort_description_num_paired_samples`: the original third column (that had the cohort description plus number of paired samples), 
+    * `cohort_description_text`: the intermediate column which we made that has incomplete cohort descriptions
+
+The rest of the script is used to output information about the wrangled data or save the wrangled data itself:
+
+* Line 39 outputs the dimensions of the wrangled table.
+* Line 40 outputs the number of NA values that are in the wrangled table.
+* Line 41 extracts a specific dataset name from row 4 of the table.
+* Line 44 specifies an output directory.
+* Line 46 checks to see if that output directory exists, and if not creates it in line 47.
+* Lines 50-51 save the wrangled data as an `.rda` file.
+* Lines 52-54 save the wrangled data as a `.csv` file.
+
+</details>
+
+:::
+
+::: {.panel-tabset}
+
+To run this script in the running container in order to wrangle the data, follow these steps:
+
 
 ### Docker Desktop
 
-how to run analysis in running container
+* Verify that you are in the "Exec" tab of running container. 
+* Verify which directory you are in by typing `pwd` (which stand for "print working directory") and pressing the enter / return key.
+* Navigate to the `/home/analysis_scripts` directory using `cd` (e.g., `cd analysis_scripts` if in `home`).
+* Enter the following command and press the return / enter key.
+
+```{.bash}
+Rscript 02_wrangle.R
+```
+
+* Notice the output messages from the script.
 
 ### Docker through a CLI
 
-how to run analysis
+Verify that you are in the top directory (`ocs-bio-containers-scaffold-main`) and Enter the following command in your CLI.
+
+```{.bash}
+Rscript analysis_scripts/02_wrangle.R
+```
+
+Notice the output messages from the script.
 
 :::
 
@@ -120,11 +198,11 @@ Specific value check| `HE_INFANTS_MFGM_2019` | `HE_INFANTS_MFGM_2019`
 ::::
 :::
 
-To allow learners to skip import and wrangling in later sections, we will save the data as an RDA file as well as a CSV file as this is often useful to send our data to collaborators. We will save this in a “wrangled” subdirectory of our “data” directory of our working directory.
+We can verify that the wrangled data was saved by following the same process that we did in the Data Import -- Container Application Step 2 section above. 
 
 :::{.think_question}
 ::::{.think_question_header}
-Question opportunity
+Advanced Question opportunity
 ::::
 ::::{.inner_block}
 **A more generalizable and robust wrangling approach**:
@@ -134,9 +212,9 @@ This wrangling approach using the `lead` function to assess if there is multilin
 <details><summary>Answer</summary>
 One possible approach would:
 
-1. Use the `cumsum()` function to assign a group ID to the rows.
-2. Use the `group_by()` function to group the data by that group ID.
-3. With the `summarize()` function, `paste()` the cohort descriptions within each group together.
+1. Use the [`cumsum()` function](https://rdrr.io/r/base/cumsum.html) to assign a group ID to the rows.
+2. Use the [`group_by()` function](https://dplyr.tidyverse.org/reference/group_by.html) to group the data by that group ID.
+3. With the [`summarize()` function](https://dplyr.tidyverse.org/reference/summarise.html), [`paste()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste) the cohort descriptions within each group together.
 4. Either bring along the non-NA data for the other columns within the `summarize()` function, or join the datasets together using the group ID and drop unnecessary rows.
 
 </details>
@@ -162,7 +240,18 @@ labels               | `dataset_name`
 
 But if we make two separate scatter plots, they will be two separate plots/files that won't be displayed next to each other unless we use design software like Illustrator to combine them later. Certain R packages allow you to combine plots and display them with each other. So let's "wrangle" the Dockerfile to include a package that will let us do that: `patchwork`.
 
-Could potentially have learners run the data visualization script that produces two separate data visualizations, but I think that's best kept for the next section?
+:::{.emphasis_block}
+
+<details><summary>Why can't we just run the data visualization scripts in our current running container?</summary>
+
+Our current running container has several packages available to us, but `patchwork` is not one of them. If you want to verify this, type `Rscript -e "library(patchwork)"` in your running container (specifically in the "Exec" tab for Docker Desktop). You will see an error message.
+
+>Error in library(patchwork) : there is no package called 'patchwork'
+Execution halted
+
+</details>
+
+:::
 
 ## Container Infrastructure
 
@@ -180,7 +269,7 @@ Question opportunity
 
 There are multiple ways to add a package to a container.
 
-If the container is running, we could install the package, and it will be usable/available, while we are using the running container (or if we pause and later restart that container). However, that package won't be available to someone else who is using the same image that we used. 
+If the container is running, we could install the package, and it will be usable/available, while we are using the running container (or if we pause and later restart that container). However, that package won't be available to someone else who is using the same image that we used to create the container. 
 
 Another way to add a package to a container is to go back to the beginning definition of or recipe for that container (a Dockerfile), modify it, and then rebuild an image, and run the rebuilt image so that a new container has the additional package. 
 
@@ -198,11 +287,62 @@ Modify the Dockerfile, then build, share, and run an image | All software we use
 
 Wanting to make sure that we're practicing reproducibility best practices when working with containers, especially in a team environment, we're going to add a package to our container by modifying the Dockerfile, rebuilding the image, and running the container from the new image.
 
+::: {.emphasis_block}
+
+<details><summary>How would you install an R package from CRAN within a running container?</summary>
+
+In the running container (specifically in the "Exec" tab for Docker Desktop), you could use `Rscript -e "install.packages('patchwork')"` to install the `patchwork` package -- replacing 'patchwork' with any other package available on CRAN. 
+
+The [examples provided in this "Containers for Scientists" course from the ITN](https://hutchdatascience.org/Containers_for_Scientists/05-modifying-containers.html#templates-for-adding-packages) show different templates for how to specify the installation of different kinds of packages within a Dockerfile. If you remove the "RUN" from the example/template, the code will work to install the packages in a running container (as long as the container has Python, etc. already)
+
+**It is best practice to modify the Dockerfile that specifies the image used to create the container in order to add package(s) to a container.**
+
+</details>
+
+:::
+
 ### Adding a package
 
 Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), modify the Dockerfile to also install the `patchwork` package.
+Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), modify the Dockerfile to also install the `patchwork` package.
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+**What steps do you need to do to add `patchwork` as a package that will be installed and available within the eventual running container?**
+
+<details><summary>Hint</summary>
+
+Several CRAN packages are already being installed in this Dockerfile. You can just add `patchwork` to the list.
+
+</details>
+
+<details><summary>Answer</summary>
+
+1. Add a space and backslash (` \`) to line 32 after the `gt` package.
+2. Add `patchwork` to line 33, indented the same way that the rest of the packages in that section are.
+
+</details>
+::::
+:::
+
+Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
+
+* Create a directory called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
+* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly.
+
+:::{.emphasis_block}
+<details><summary>Your modified Dockerfile should look like...</summary>
+
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/activity/Dockerfile >}}
+```
+
+</details>
+:::
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -224,7 +364,7 @@ No, just because a Dockerfile has the package listed doesn't mean that our runni
 Question opportunity
 ::::
 ::::{.inner_block}
-**How does this package become usable for us?**:
+**How does this package become usable for us?**
 
 Given what you know about the containerization process, what steps need to be done so that the `patchwork` package is available to use with the analysis scripts?
 
@@ -241,5 +381,9 @@ You could push the image after building it (in order to share it), but don't nee
 :::
 
 We will perform these next steps of the containerization process in the Data Visualization section.
+
+:::{.column-margin}
+Add instructions about container clean up for the starting container that doesn't have patchwork.
+:::
 
 ***
