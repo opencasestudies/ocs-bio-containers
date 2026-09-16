@@ -15,7 +15,7 @@ Discuss common next steps for this type of an analysis in this box. Is there a s
 Point out that text labels are overlapping each other in the right panel, and clipped on axis limits for both panels. The ggrepel package can be useful in fixing these problems.
 
 * Add `ggrepel` to the Dockerfile
-  * build the Dockerfile
+  * {{< glossary "Build" display = "build">}} the Dockerfile
   * run the image
   * extract and wrangle the data with the `preprocessing.R` script or mount the wrangled data when running the image
   * update the `analysis.R` script to utilize `ggrepel` within the scatter plots made with `patchwork`

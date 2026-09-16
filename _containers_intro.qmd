@@ -1,6 +1,6 @@
 # **Introduction to Containers**
 
-Before we start to address your project with Collab O. Rator, we will provide an introduction to containerization with Docker. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the microbiome-metabolome data collection project.
+Before we start to address your project with Collab O. Rator, we will provide an introduction to {{< glossary "Containerization" display="containerization" >}} with {{< glossary "Docker" >}}. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the {{< glossary "Microbiome" display="microbiome" >}}-{{< glossary "Metabolome" display="metabolome" >}} data collection project.
 
 ## What is a container?
 
@@ -117,7 +117,7 @@ When is a container overkill? Do you really need a container or will session inf
 How do you work with a container and run an analysis with a container?
 
 * Terminal / Command Line
-  * If you only have a Dockerfile, you need to use this to build the image
+  * If you only have a Dockerfile, you need to use this to {{< glossary "Build" display="build" >}} the image
 * Docker Desktop
 * An interactive Integrated Development Environment (IDE)
 * In combination with GitHub Actions

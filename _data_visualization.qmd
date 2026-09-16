@@ -1,7 +1,7 @@
 # **Data Visualization**
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.
+If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running {{< glossary "Container" display="container" >}} (without having to run the original `extract_tables` code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.
 
 ```{r, eval = FALSE}
 load(here::here("data", "wrangled", "wrangled_data.rda"))
@@ -22,13 +22,13 @@ KI note: We'll need to add instructions to this about mounting or importing data
 
 ### Docker Desktop
 
-Build the modified Dockerfile --> Image
+{{< glossary "Build" >}} the modified Dockerfile --> Image
 
 Run the Image (while mounting the volume) -- > Container
 
 ### Docker through a CLI
 
-Build the modified Dockerfile --> Image
+{{< glossary "Build" >}} the modified Dockerfile --> Image
 
 Run the Image (while mounting the volume) -- > Container
 

@@ -2,5 +2,5 @@
 
 1. List the value and potential applications of data collections.
 1. Explain the limitations and cautions associated with using a data collection for your own work.
-1. Relate the utility of pairing of microbiome and metabolome data for biological research.
+1. Relate the utility of pairing of {{< glossary "Microbiome" display="microbiome" >}} and {{< glossary "Metabolome" display="metabolome" >}} data for biological research.
 1. Build visualizations to communicate the relationship among variables in a table.

@@ -1,6 +1,6 @@
 <u>**Statistical Learning Objectives:**</u>
 
-1. Explain how statistical power is impacted by the number of samples in an analysis.
-1. Recognize the need and considerations for data harmonization when utilizing multiple data sources.
-1. Describe how the number of observed metabolites is impacted by the number of samples in a dataset.
+1. Explain how {{< glossary "Statistical power" display="statistical power" >}} is impacted by the number of samples in an analysis.
+1. Recognize the need and considerations for {{< glossary "Data harmonization" display="data harmonization" >}} when utilizing multiple data sources.
+1. Describe how the number of observed {{< glossary "Metabolites" display="metabolites" >}} is impacted by the number of samples in a dataset.
 
