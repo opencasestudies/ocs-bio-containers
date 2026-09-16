@@ -3,7 +3,7 @@
 
 ## Container Infrastructure
 
-We'll utilize this section to explore the {{< glossary "Dockerfile" >}} specifically answering "What's in a container?"
+We'll utilize this section to explore the {{< glossary "Dockerfile" >}} specifically answering "What's in a {{< glossary "Container" display="container" >}}?"
 
 ```{.dockerfile filename="Dockerfile"}
 {{< include resources/dockerfiles/base/Dockerfile >}}

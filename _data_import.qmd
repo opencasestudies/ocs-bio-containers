@@ -7,7 +7,7 @@ In order to extract the data from the table in the PDF and then work with that d
 
 ### Step 1: Starting docker
 
-To pull the {{< glossary "Docker" >}} {{< glossary "Image" display="image" >}}, Docker must first be running. 
+To pull the docker {{< glossary "Image" display="image" >}}, {{< glossary "Docker" >}}  must first be running. 
 
 :::{.emphasis_block}
 

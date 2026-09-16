@@ -22,7 +22,7 @@ A container is a defined packaging of code, dependencies, packages, etc. within 
 
 You will learn how to further adapt the container to meet your needs by adding package(s) and extending the analysis. Additional topics that will be covered include:
 
-* How to find and share container images.
+* How to find and share container {{< glossary "Image" display="images" >}}.
 * How to {{< glossary "Mount" display="mount" >}} a {{< glossary "Volume" display="volume" >}} containing {{< glossary "Version-controlled" display="version-controlled" >}} analysis scripts.
 * How to explore output from an analysis performed within a container.
 * How to save results from an analysis run in a container.
