@@ -64,23 +64,28 @@ Using the `tidyverse`, we will wrangle the extracted version of Table 1. This sc
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, `mutate`, `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, [`mutate` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
 
 Line 7 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
 
 Lines 10-36 are the actual wrangling steps of the process.
 
-* Lines 11-16 rename the data frame columns so they are descriptive, reflecting the data they contain.
-* Lines 17-22, 32 extract the numbers (which represent the number of paired samples) that were appended to the ends of the cohort descriptions from the `cohort_description_num_paired_samples` column, storing them in their own column `num_paired_samples`.
-* Lines 17, 23-26, 32 remove the numbers that we just extracted from the `cohort_description_num_paired_samples` column, creating an intermediate text column (named `cohort_description_text`) that only contains the cohort descriptions (though they are still incomplete for a given row because they are multi-line).
-* Lines 17, 27-31, 32 sets up a `case_when` that evaluates whether the next value/row in the dataset name column is an NA value. 
-    * This utilizes the `lead` function to look for the next value. 
+* Lines 11-16 rename the data frame columns so they are descriptive, reflecting the data they contain. This uses the [function `rename()`](https://dplyr.tidyverse.org/reference/rename.html)
+* Lines 17-22, 32 extract the numbers (which represent the number of paired samples) that were appended to the ends of the cohort descriptions from the `cohort_description_num_paired_samples` column, storing them in their own column `num_paired_samples`. This uses the [function `str_extract()`](https://stringr.tidyverse.org/reference/str_extract.html) and a regular expression for the "pattern" to extract.
+    * `\\d+$` is a [regular expression (regex)](https://r4ds.hadley.nz/regexps.html) that is used to match a pattern -- in this case all digits / numbers at the end of the string
+        * `\d` matches any digit.
+        * `+` is a quantifier and means 1 or more matches (digits in this case) will be included.
+        * `$` is an anchor and means a pattern at the end of the string.
+        * the starting backslash (`\`) is an escape character, necessary to escape the "matches any digit" part of the regular expression so R evaluates it. 
+* Lines 17, 23-26, 32 remove the numbers that we just extracted from the `cohort_description_num_paired_samples` column, creating an intermediate text column (named `cohort_description_text`) that only contains the cohort descriptions (though they are still incomplete for a given row because they are multi-line). This uses the same regular expression that we used in the previous step and the [function `str_remove()`](https://stringr.tidyverse.org/reference/str_remove.html)
+* Lines 17, 27-31, 32 sets up a [`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html) that evaluates whether the next value/row in the dataset name column is an NA value. 
+    * This utilizes the [`lead()` function](https://dplyr.tidyverse.org/reference/lead-lag.html) to look for the next value. 
     * In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`. 
     * If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text (the text that we stored in the intermediate `cohort_description_text` column in the previous step). 
     *. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
     * At the end of this, the `cohort_description` column contains complete, single line cohort descriptions. 
-* Line 33 is a filter to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows and we no longer need them. Specifically, the `filter` function will only keep rows where the dataset name is not NA.
-* Lines 34 - 36 remove 
+* Line 33 is a filter to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows and we no longer need them. Specifically, the [`filter()` function](https://dplyr.tidyverse.org/reference/filter.html) will only keep rows where the dataset name is not NA.
+* Lines 34 - 36 use the [`select()` function](https://dplyr.tidyverse.org/reference/select.html) to select all but (because of the exclamation point (`!`)) the following columns (removing them):
     * the `X4` column which was all `NAs`
     * `cohort_description_num_paired_samples`: the original third column (that had the cohort description plus number of paired samples), 
     * `cohort_description_text`: the intermediate column which we made that has incomplete cohort descriptions
@@ -107,7 +112,7 @@ To run this script in the running container in order to wrangle the data, follow
 ### Docker Desktop
 
 * Verify that you are in the "Exec" tab of running container. 
-* Verify which directory you are in by typing `pwd` and pressing the enter / return key.
+* Verify which directory you are in by typing `pwd` (which stand for "print working directory") and pressing the enter / return key.
 * Navigate to the `/home/analysis_scripts` directory using `cd` (e.g., `cd analysis_scripts` if in `home`).
 * Enter the following command and press the return / enter key.
 
@@ -207,9 +212,9 @@ This wrangling approach using the `lead` function to assess if there is multilin
 <details><summary>Answer</summary>
 One possible approach would:
 
-1. Use the `cumsum()` function to assign a group ID to the rows.
-2. Use the `group_by()` function to group the data by that group ID.
-3. With the `summarize()` function, `paste()` the cohort descriptions within each group together.
+1. Use the [`cumsum()` function](https://rdrr.io/r/base/cumsum.html) to assign a group ID to the rows.
+2. Use the [`group_by()` function](https://dplyr.tidyverse.org/reference/group_by.html) to group the data by that group ID.
+3. With the [`summarize()` function](https://dplyr.tidyverse.org/reference/summarise.html), [`paste()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste) the cohort descriptions within each group together.
 4. Either bring along the non-NA data for the other columns within the `summarize()` function, or join the datasets together using the group ID and drop unnecessary rows.
 
 </details>
@@ -322,6 +327,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 </details>
 ::::
+:::
 
 Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
 
@@ -335,7 +341,7 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
 
-</summary>
+</details>
 :::
 
 :::{.think_question}
@@ -358,7 +364,7 @@ No, just because a Dockerfile has the package listed doesn't mean that our runni
 Question opportunity
 ::::
 ::::{.inner_block}
-**How does this package become usable for us?**:
+**How does this package become usable for us?**
 
 Given what you know about the containerization process, what steps need to be done so that the `patchwork` package is available to use with the analysis scripts?
 

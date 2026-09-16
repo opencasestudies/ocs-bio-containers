@@ -47,11 +47,11 @@ Recall that a container image is the main way that containers are shared and the
 :::{.panel-tabset}
 #### Docker Desktop
 
-At the top of the Docker Hub section, in the search bar, type the name (or part of the name) of container you want to pull in order to search it and pull the image. 
+Within Docker Desktop, we can search for images of containers from Docker Hub. 
 
 
 * Click on the "Docker Hub" option in the left side menu.
-* Type `bioocs` and several images from the `bioocs` organization will appear as cards. 
+* In the search bar under the "Docker Hub" header, type `bioocs` and several images from the `bioocs` organization will appear as cards. 
 * Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
 * Click on that card. 
 * Verify that in the header
@@ -95,7 +95,7 @@ Not all containers in a registry can or should be trusted. Look for containers f
 
 Now that we've pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn't give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container. 
 
-If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
+If all you need is software and don't need data or analysis scripts (stored in a file or directory), you can simply run the image to create the container / set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won't be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called **mounting a volume**. 
 
 We need data analysis scripts, so we will need to **mount a volume** when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.
 
@@ -108,7 +108,7 @@ You can interact with the scripts within this scaffold GitHub repository in one 
 1. *Option A*: Download the analysis scripts in a `.zip` file<br/>
 2. *Option B*: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally. 
 
-Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely an a supported alternative rather than a requirement to follow along with this case study.
+Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -117,7 +117,12 @@ Reproducibility considerations
 ::::{.inner_block}
 Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
 
-A typical project directory will have a name associated with the project (assuming that a project is version controlled, this is the repository name). The project directory should have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. Analysis scripts should be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). The data subdirectory should have additional subdirectories separating out raw or imported data from wrangled data. Likewise, the results directory should have additional subdirectories separating the different types of results (e.g., plots).
+Typical practices that support reproducibility for a project folder include: 
+- Often the project directory will have a name associated with the project (assuming that a project is version controlled, this is likely the repository name).  
+- The project directory will often have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. 
+- Analysis scripts may often be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). 
+- The data subdirectory will often have additional subdirectories separating out raw or imported data from wrangled data. 
+- Likewise, the results directory will also often  have additional subdirectories separating the different types of results (e.g., plots).
 
 ```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
@@ -171,7 +176,7 @@ If we don't mount the volume when we run the image, we won't have access to thos
 :::{.panel-tabset}
 ##### Docker Desktop
 
-* Ensure you are on the "Images" tab of Docker Desktop.
+* Ensure you are on the "Images" tab of Docker Desktop. (This can be found on the left menu.)
 * Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
 * In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
 * Under the "Volumes" section:
@@ -246,16 +251,16 @@ Reducing manual steps and rather automating them is an important step towards mo
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `tabulapdf` will be used to extract a table from the PDF starting on line 8. `here` will be used to build output file paths on lines 19, 27, and 31. `readr` will be used to write an output `csv` file on line 30. 
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `tabulapdf`  package will be used to extract a table from the PDF starting on line 8.  The `here`  package will be used to build output file paths on lines 19, 27, and 31.  The `readr` package will be used to write an output `csv` file on line 30. 
 
 Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
 
 The rest of the script is used to output information about the extracted data or save the extracted data itself:
 
-* Line 15 outputs the dimensions of the extracted table using the `dim()` function, specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
-* Line 16 outputs the number of NA values that are in the extracted table by summing the number of TRUEs from the `is.na()` function.
+* Line 15 outputs the dimensions of the extracted table using the [`dim()` function](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/dim), specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
+* Line 16 outputs the number of NA values that are in the extracted table by [summing](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum) the number of TRUEs from the [`is.na()` function](https://www.rdocumentation.org/packages/cheapr/versions/1.5.2/topics/is_na).
 * Line 19 specifies an output directory.
-* Line 21 checks to see if that output directory exists, and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
+* Line 21 [checks to see if that output directory exists](https://www.rdocumentation.org/packages/logcondens.mode/versions/1.0.1/topics/dir.exists), and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
 * Lines 26-28 save the extracted table as an `.rda` file.
 * Lines 30-32 save the extracted table as a `.csv` file.
 
@@ -273,7 +278,7 @@ Instead of using an internet URL as the source PDF where we are extracting the d
 
 <details><summary>Possible Answer</summary>
 
-Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we "run" the container.
+Yes we could! However, we would need to make sure that the PDF was located in the directory or volume that we mount when we "run" the image to create the container.
 
 </details>
 
@@ -286,7 +291,7 @@ To run the script to fetch the data in the running container, follow these steps
 ##### Docker Desktop
 
 * Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
-* Enter `cd /home/analysis_scripts` and press the return / enter key.
+* Enter `cd /home/analysis_scripts` (`cd` stands for "change directory") and press the return / enter key.
 * Enter the following command and press the return / enter key.
 
 ```{.bash}
@@ -347,7 +352,7 @@ We also save an `rda` and `csv` version of the raw data. We can confirm that the
 
 ##### Docker through a CLI
 
-To confirm the creation of the data files, 
+To confirm the creation of the data files:
 
 * Enter `ls` in the CLI. 
   * There will be a new directory `data` listed.
