@@ -30,7 +30,7 @@ Docker Desktop may not appear to open if it was previously opened and closed bec
 
 #### Docker through a Command Line Interface (CLI)
 
-Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows).
+Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows). The instructions in this case study best align with PowerShell for Windows machines. You may need to use backslashes (`\`) in place of forward slashes (`/`) when file navigation commands are provided for use outside of a running container.
 
 In your command line interface, use the following command to start docker.
 
@@ -139,6 +139,8 @@ This scaffold directory doesn't match the suggested project directory structure 
 Use this link to [download the analysis scripts](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/resources/ocs-bio-containers-scaffold-main.zip)
 
 You will want to "unzip", "extract", or "decompress" this file ([Mac instructions](https://support.apple.com/en-au/guide/mac-help/mchlp2528/mac), [Windows instructions](https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/zip-and-unzip-files)). You can move the resulting file or keep it in your Downloads folder, but **you will need to know where it is on your computer for the next step**.
+
+We recommend either keeping it in the Downloads folder or moving it to your Desktop for this specific case study to make file navigation simpler while you are learning other topics, however, those are not necessarily locations you would want to keep your analysis files for your day-to-day work.
 
 ##### Option B: Use GitHub
 

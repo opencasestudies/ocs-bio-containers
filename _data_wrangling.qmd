@@ -26,6 +26,7 @@ If using `wget` to fetch the data:
 * Navigate to the "Exec" tab (along the top of the running container).
 * Type `cd /home` and press the return / enter key.
 * Type `mkdir -p data/imported` and press the return / enter key.
+    * This will make the "imported" directory under the "data" directory (and create the "data" directory if it doesn't already exist).
 * Type `cd data/imported` and press the return / enter key.
 * Copy and paste the following: 
 
@@ -34,6 +35,10 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 ```
 
 * Type `cd /home` and press the return / enter key.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_291#slide=id.g3fb50cd5a7c_0_291")
+```
 
 ### Docker through a CLI 
 
@@ -370,8 +375,8 @@ Given what you know about the containerization process, what steps need to be do
 
 <details><summary>Answer</summary>
 
-1. Build the modified Dockerfile to be an image (will need to do this using a command line interface)
-2. Run the image to create a container (CLI or Docker Desktop), mounting the directory or volume that has the analysis scripts within the run command.
+1. Build an image from the modified Dockerfile.
+2. Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.
 3. That running container now has `patchwork` available for use.
 
 You could push the image after building it (in order to share it), but don't need to do that in order to use the package within a running container. Definitely share it eventually so others in your team have access to all of the same software you used!

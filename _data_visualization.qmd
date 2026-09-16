@@ -57,13 +57,64 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 ## Container Infrastructure
 
+Now that we have added the `patchwork` package to the original Dockerfile, we need to create a container that will have this package available in order to create our data visualization. As outlined in the previous section, we need to do the following steps:
+
+1. Build an image from the modified Dockerfile.
+2. Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.
+
+Step 1 is completely new since previously we pulled an image from Docker Hub rather than building the image from a Dockerfile..  
+
+```{r, echo = FALSE}
+ottrpal::include_slide("http://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
+```
+
 ::: {.panel-tabset}
 
 ### Docker Desktop
 
-Build the modified Dockerfile --> Image
+#### Step 1: Build the image from the Dockerfile
 
-Run the Image (while mounting the volume) -- > Container
+* Navigate to the "Builds" tab of Docker Desktop. (This can be found on the left menu.)
+    * This will list a history of builds. Likely, you will see "No build record found" unless you've used Docker / Docker Desktop previously.
+* On the bottom right of window, click the ">_ Terminal" button.
+    * This will open a command line interface within Docker Desktop.
+* Navigate to where your `ocs-bio-containers-scaffold-main` directory is using `cd` (or a few `cd` commands). Use `pwd` and `ls` as needed to know where you are.
+
+<details><summary>How do I navigate to where I need to go?</summary>
+
+First, you need to know where you put the `ocs-bio-containers-scaffold-main` directory when you originally downloaded it. The goal is to navigate through the folder structure to get there.
+
+We recommend using the [Software Carpentry "Navigating Files and Directories" tutorial](https://swcarpentry.github.io/shell-novice/02-filedir.html) if you need more background information or help to navigate your file system.
+
+
+</details>
+
+* Once you've navigated to your `ocs-bio-containers-scaffold-main` directory, you will want to navigate to the location of the modified Dockerfile:
+    * `cd dockerfiles`
+* You will build this dockerfile using the following command:
+    * -t provides a tag or name for the image (in this case "ocs-bio-containers-activity"). Without it, the image's name is "<none>".
+    * We could specify a specific version tag by adding `:` and a name (like `main`) at the end
+    * the `.` means the `Dockerfile` that is in the directory we are in.
+
+```{.default bash}
+docker build -t ocs-bio-containers-activity .
+```
+
+You will see a variety of messages with steps as it's walking through the Dockerfile and performing the commands in there to set up the static, read-only, ready to use image. Near the end you might see messages like "=> exporting to image", "=> => exporting layers", and "=> => writing image [long alphanumeric....]". Also, in the above Build history, it will list your build once completed. This build is not the image though. Notice there is no Run button under the Actions column like there was previously when we pulled an image from Docker Hub.
+
+You can close the Docker Desktop Terminal by clicking the "x" in the upper right corner of the gray bar for the Terminal panel.
+
+#### Step 2: Run the image to create the container with the `patchwork` package
+
+* Navigate to the "Images" tab of Docker Desktop. (This can be found on the left menu.)
+* Your new "ocs-bio-containers-activity" image will be listed with the Tag "latest" (the default unless we specified it to be something else)
+* On the row for your "ocs-bio-containers-activity" image, to the right under the "Actions" column, click the blue "Run" triangle.
+* In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
+* Under the "Volumes" section:
+  * Click the three dots for "Host path" and find/select the "ocs-bio-containers-scaffold-main" file that you downloaded and unzipped (Option A) or cloned (Option B) in Step 3a.
+  * Enter `/home` for the "Container path". This is the name of where those files will be stored in the running container.
+* Click the blue "Run" button at the bottom right of the window.
+* This will automatically open the running container.
 
 ### Docker through a CLI
 
@@ -77,14 +128,133 @@ Include a thought question to give learners the opportunity to build a flowchart
 
 ## Container Application
 
-We'll use this section to make two scatter plots. And then combine the plots with `patchwork`, specifically using the modified container to run the code
+Now within the modified, running container, we will use the wrangled data to make two scatter plots and then use the `patchwork` package specifically to combine those two plots.
 
+Our first visualization script makes the two scatter plots and saves their `ggplot` objects.
+
+```{.R filename="03a_data_visualization.R"}
+{{< include resources/analysis_scripts/03a_data_visualization.R >}}
+```
+
+:::{.emphasis_block}
+
+<details><summary>What is this script doing?</summary>
+
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, [`mutate` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
+
+Line 7 - 9 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
+
+Lines 13-27 are the actual data visualization steps of the process (for the HMDB reference database).
+
+Lines 32 - 38 save the HMDB plot and prints a log message about completing that plot.
+
+Lines 42 - 56 are the actual data visualization steps of the process (for the KEGG reference database).
+
+Lines 59 - 62 save the KEGG plot and prints a log message about completing that plot.
+
+Lines 65 - 57 save the `ggplot` objects in an `.rda` file.
+
+</details>
+
+:::
+
+:::{.think_question}
+::::{.think_question_header}
+Advanced Question opportunity
+::::
+::::{.inner_block}
+
+**How can this visualization script be improved to be DRYer?**
+
+<details><summary>Hint</summary>
+DRY code often utilizes functions to make sure that code isn't repeated.
+
+`ggplot` also provides a [`set_theme()` function](https://ggplot2.tidyverse.org/reference/get_theme.html) that can be used to set an overall theme/aesthetic for plots.
+
+</details>
+
+<details><summary>A possible answer</summary>
+
+Replace lines X-X and X-X with this instead:
+
+```{r, eval = FALSE}
+
+#' A function to create scatter plots comparing the number of paired samples to the number of annotated compounds from a reference database for multiple studies, coloring by whether the study is longitudinal or not and labeling according to the study identifier 
+#'
+#' @param to_be_visualized the data frame with the data to be visualized. Should have the columns 
+#' `longitudinal` with values "Yes"/"No", 
+#' `num_paired_samples` (integers), 
+#' `kegg_annotated_compounds` (integers), 
+#' `hmdb_annotated_compounds` (integers), 
+#' and `dataset_name` (strings).
+#' @param y_axis_var name of variable / column in the data frame will be used for the y-axis
+#' @param ref_deb a string representing which reference database is being visualized (for the title, axis label, etc.) (e.g, "HMDBB" or "KEGG").
+#'
+#' @return scatter_plot the ggplot object
+
+
+plot_scatter <- function(to_be_visualized, y_axis_var, ref_db){
+    scatter_plot <- to_be_visualized %>%
+        mutate(longitudinal = factor(longitudinal, levels = c("No", "Yes"))) %>%
+        ggplot(aes(x = num_paired_samples,
+                   y = y_axis_var,
+                   color = longitudinal,
+                   label = dataset_name)) +
+        geom_point(size = 2.5) +
+        geom_text(vjust = -0.5, size = 2.8, color = "black") +
+        scale_color_viridis_d(end = 0.6) +
+        labs(title = paste0("Paired sample count vs ", ref_db, " annotation coverage"),
+             x = "No. samples with paired data",
+             y = paste0(ref_db, " Annotated compounds",
+             color = "Longitudinal") +
+        theme_minimal(base_size = 12) +
+        coord_fixed(ratio = 1)
+
+    return(scatter_plot)
+}
+
+
+
+```
+
+</details>
+
+::::
+:::
+
+
+Our second visualization script combines the two `ggplot` objects into a single plot.
+
+```{.R filename="03b_visualization_patchwork.R"}
+{{< include resources/analysis_scripts/03b_visualization_patchwork.R >}}
+```
+
+:::{.emphasis_block}
+
+<details><summary>What is this script doing?</summary>
+
+</details>
+
+:::
+
+We will run both of these scripts in the new running container to make the combined scatter plot that Collab O. Rator requested.
+
+::: {.emphasis_block}
+<details><summary>Why are these steps in two separate scripts?</summary>
+
+This steps are in two separate scripts for a couple of reasons:
+
+1. To reflect that when working on a data analysis, you may develop something iteratively. The first script (that doesn't require `patchwork`) may have been developed within the original container. In fact, we discussed planning these visualizations earlier in this case study and could have developed (and run) this script then.
+
+2. To highlight the versatility of `ggplot` and `patchwork` that you can save `ggplot` objects and work with them later (including removing a title!) rather than repeating plotting steps within your code.
+
+</details>
+:::
 
 ### Docker Desktop
 
-In the running container, run the visualization script(s)
-
-Look at the output
+* Navigate to the "Exec" tab within the running container.
+* Use the command `cd /home/analysis_scripts` to navigate to the `analysis_scripts` directory.
 
 ### Docker through a CLI
 
