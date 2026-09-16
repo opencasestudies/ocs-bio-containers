@@ -1,7 +1,7 @@
 Benchmarking: |
   Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task. 
 Build: |
-  The container image created from a Dockerfile.
+  Verb for creating a container image from a Dockerfile.
 Carbohydrates: |
   Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
 Clinical data: |
@@ -43,7 +43,7 @@ Gas Chromatography: |
 Generalizability: |
   The ability to apply the findings from research to a broader setting.
 Gene-regulatory pathways: |
-  Pathways made up of molecular interactions that turn genes on and off to control protein and RNA production.
+  Pathways made up of molecular interactions that reduce/suppress or increase/enhance gene expression (possibly, but not necessarily turning genes on and off) to control RNA production (and by extension may impact protein production).
 Gut microbiota: |
   The set or collection of microorganisms whose particular environment is the gut.
 HMDB: |
