@@ -101,6 +101,7 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/glossary/glossary.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -534,7 +535,7 @@ New to GitHub?
 <section id="motivation" class="level1">
 <h1><strong>Motivation</strong></h1>
 <hr>
-<p>In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a container so that the team can easily share computing environments and support reproducibility. Background on the context of the analysis will be provided later in the case study.</p>
+<p>In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> so that the team can easily share <button class="glossary"><span class="def">Specific features of a computational resource, including operating system, software, and software versions.</span>computing environments</button> and support <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button>. Background on the context of the analysis will be provided later in the case study.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -545,7 +546,7 @@ New to GitHub?
 </div>
 </div>
 <p>In addition to the background and visualization request, your collaborator sends you the information on how to access both the pre-existing container and the analysis script to get started with the task.</p>
-<p>In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use Docker to specify the environment used to create several data visualizations of a table describing samples within a curated data resource. You will learn how to use a pre-existing Docker container to run an existing analysis.</p>
+<p>In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to specify the environment used to create several data visualizations of a table describing samples within a curated <button class="glossary"><span class="def">A collection of datasets that have been gathered or curated by a group for secondary use within the field.</span>data resource</button>. You will learn how to use a pre-existing Docker container to run an existing analysis.</p>
 <div class="definition_box">
 <div class="definition_box_header">
 <p>Container</p>
@@ -556,8 +557,8 @@ New to GitHub?
 </div>
 <p>You will learn how to further adapt the container to meet your needs by adding package(s) and extending the analysis. Additional topics that will be covered include:</p>
 <ul>
-<li>How to find and share container images.</li>
-<li>How to mount a volume containing version-controlled analysis scripts.</li>
+<li>How to find and share container <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>images</button>.</li>
+<li>How to <button class="glossary"><span class="def">Connect a file or directory from the local machine to a location inside of a container.</span>mount</button> a <button class="glossary"><span class="def">A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</span>volume</button> containing <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlled</button> analysis scripts.</li>
 <li>How to explore output from an analysis performed within a container.</li>
 <li>How to save results from an analysis run in a container.</li>
 </ul>
@@ -578,9 +579,9 @@ See this previous case study as an example: https://www.opencasestudies.org/ocs-
 </div>
 <div class="inner_block">
 <ol type="1">
-<li>How does one use containers to improve the reproducibility of their work? (Are containers always necessary?)</li>
+<li>How does one use <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button> to improve the <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button> of their work? (Are containers always necessary?)</li>
 <li>How does one use a container and modify a container?</li>
-<li>What are microbiome and metabolome data and how can they be used together?</li>
+<li>What are <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button> and <button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data and how can they be used together?</li>
 </ol>
 </div>
 </div>
@@ -596,13 +597,13 @@ For an example of this section, see this previous Open Case Study: https://www.o
 Statistical LOs were provided in the original open case studies but they may be omitted here depending on the case study.
 Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
 -->
-<p>In this case study, we will use Docker to specify and run our container environments in order to create several data visualizations of a table describing samples within a curated data resource.</p>
+<p>In this case study, we will use <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to specify and run our <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> environments in order to create several data visualizations of a table describing samples within a curated <button class="glossary"><span class="def">A collection of datasets that have been gathered or curated by a group for secondary use within the field.</span>data resource</button>.</p>
 <p>The skills, methods, and concepts that students will be familiar with by the end of this case study are:</p>
 <p><u><strong>Data Science/Bioinformatics Learning Objectives:</strong></u></p>
 <ol type="1">
-<li>Discuss ways in which containerization promotes reproducibility within collaborative scientific research.</li>
+<li>Discuss ways in which <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button> promotes <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button> within collaborative scientific research.</li>
 <li>Describe how containerization is one of several tools to support the process of increasing the reproducibility of scientific research.</li>
-<li>Employ multiple reproducibility best practices together within the context of containerization (e.g., mounting a volume of version-controlled scripts, sharing a container image).</li>
+<li>Employ multiple reproducibility best practices together within the context of containerization (e.g., <button class="glossary"><span class="def">Connect a file or directory from the local machine to a location inside of a container.</span>mounting</button> a <button class="glossary"><span class="def">A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</span>volume</button> of <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlled</button> scripts, sharing a container <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>image</button>).</li>
 <li>Evaluate what should or should not be included in a container.</li>
 <li>Identify contexts where containerization (potentially with Docker) is not appropriate or needed.</li>
 <li>Practice the containerization process to reproduce, extend, and share a data analysis and its results.</li>
@@ -610,15 +611,15 @@ Biological LOS were not provided in the original open case studies and should be
 </ol>
 <p><u><strong>Statistical Learning Objectives:</strong></u></p>
 <ol type="1">
-<li>Explain how statistical power is impacted by the number of samples in an analysis.</li>
-<li>Recognize the need and considerations for data harmonization when utilizing multiple data sources.</li>
-<li>Describe how the number of observed metabolites is impacted by the number of samples in a dataset.</li>
+<li>Explain how <button class="glossary"><span class="def">The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.</span>statistical power</button> is impacted by the number of samples in an analysis.</li>
+<li>Recognize the need and considerations for <button class="glossary"><span class="def">Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.</span>data harmonization</button> when utilizing multiple data sources.</li>
+<li>Describe how the number of observed <button class="glossary"><span class="def">Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.</span>metabolites</button> is impacted by the number of samples in a dataset.</li>
 </ol>
 <p><u><strong>Biological/Topical Learning Objectives:</strong></u></p>
 <ol type="1">
 <li>List the value and potential applications of data collections.</li>
 <li>Explain the limitations and cautions associated with using a data collection for your own work.</li>
-<li>Relate the utility of pairing of microbiome and metabolome data for biological research.</li>
+<li>Relate the utility of pairing of <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button> and <button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data for biological research.</li>
 <li>Build visualizations to communicate the relationship among variables in a table.</li>
 </ol>
 <hr>
@@ -676,9 +677,9 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 <hr>
 <section id="what-is-the-metabolome" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-the-metabolome">What is the metabolome?</h2>
-<p>The metabolome is a collection of metabolites or low-molecular weight organic (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: nucleic acids (DNA or RNA), proteins, carbohydrates, and lipids <span class="citation" data-cites="Cooper_2000">(<a href="#ref-Cooper_2000" role="doc-biblioref">Cooper 2000</a>)</span>. These categories represent large biomolecules (macromolecules) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include vitamins, organic acids, and other small organic molecules that don’t neatly relate to the larger classes of biomolecules <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
-<p>Metabolites may be endogenous or exogenous depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either primary or secondary metabolites where primary metabolites are required for the life-cycle: growth, development, and reproduction; secondary metabolites are instead used for non-life cycle tasks such as communication/signaling or defense. Note that within the context of the microbiome, a “secondary metabolite” has an additional meaning besides ones that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
-<p>Metabolites are detected, identified, and quantified using nuclear magnetic resonance (NMR), enzyme assays, or by pairing compound separation through Gas Chromatography (GC) or Liquid Chromatography (LC) with mass spectrometry (mass spec or MS), and working with the data from those experiments in downstream data processing <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>. A typical output of NMR and MS experiments are visual graphs called spectra.</p>
+<p>The <button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> is a collection of <button class="glossary"><span class="def">Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.</span>metabolites</button> or low-molecular weight <button class="glossary"><span class="def">Molecules containing carbon-hydrogen bonds.</span>organic</button> (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: <button class="glossary"><span class="def">Macromolecules that store and transfer genetic information, including DNA and RNA.</span>nucleic acids</button> (DNA or RNA), <button class="glossary"><span class="def">Macromolecules made up of folded chains of amino acids that perform specific functions within organisms.</span>proteins</button>, <button class="glossary"><span class="def">Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells.</span>carbohydrates</button>, and <button class="glossary"><span class="def">Macromolecules that are insoluble in water and provide structure for cells and serve as long-term energy sources.</span>lipids</button> <span class="citation" data-cites="Cooper_2000">(<a href="#ref-Cooper_2000" role="doc-biblioref">Cooper 2000</a>)</span>. These categories represent large biomolecules (<button class="glossary"><span class="def">Large complex molecules responsible for cell structure, energy storage, enzymatic catalysis, and genetic information storage and transfer, including nuceleic acids, proteins, carbohydrates, and lipids.</span>(macromolecules)</button>) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include <button class="glossary"><span class="def">Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.</span>vitamins</button>, <button class="glossary"><span class="def">Metabolites, primarily carboxylic acids, that neutralize bases and play important roles in cellular metabolism.</span>organic acids</button>, and other small organic molecules that don’t neatly relate to the larger classes of biomolecules <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
+<p>Metabolites may be <button class="glossary"><span class="def">Metabolites that originate from the organism or source of the sample.</span>endogenous</button> or <button class="glossary"><span class="def">Metabolites that originate from outside of the organism or source of the sample.</span>exogenous</button> depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either <button class="glossary"><span class="def">Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</span>primary</button> or <button class="glossary"><span class="def">Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary “host” system but are then re-metabolized by the microbiome.</span>secondary</button> metabolites where primary metabolites are required for the life-cycle: growth, development, and reproduction; secondary metabolites are instead used for non-life cycle tasks such as communication/signaling or defense. Note that within the context of the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>, a “secondary metabolite” has an additional meaning besides ones that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
+<p>Metabolites are detected, identified, and quantified using <button class="glossary"><span class="def">A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.</span>Nuclear Magnetic Resonance (NMR)</button>, <button class="glossary"><span class="def">A technique to detect and quantify metabolites using enzyme-catalyzed reactions.</span>enzyme assays</button> or by pairing compound separation through <button class="glossary"><span class="def">A technique to detect and quantify metabolites by vaporizing and separating compounds.</span>Gas Chromatography (GC)</button> or <button class="glossary"><span class="def">A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.</span>Liquid Chromatography (LC)</button> with <button class="glossary"><span class="def">A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.</span>spectra</button>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Add a figure with an example of a spectrum output</p>
@@ -693,14 +694,14 @@ Resources for more details on NMR and mass spec
 <p>For more details on how mass spectrometry works, visit this <a href="https://www.broadinstitute.org/technology-areas/what-mass-spectrometry">resource from the Broad Institute explaining what mass spec is</a>, this <a href="https://masspec.scripps.edu/learn/ms/">resource from Scripps Research about the basics as well a more thorough discussion on the relevant technologies</a> or this <a href="https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/spectrpy/massspec/masspec1.htm">resource from Michigan State University about the basics with an associated practice problem set</a>.</p>
 <p>Additional resources include <span class="citation" data-cites="Garg_Zubair_2026">Garg and Zubair (<a href="#ref-Garg_Zubair_2026" role="doc-biblioref">2026</a>)</span> and <span class="citation" data-cites="Son_etal_2024">Son et al. (<a href="#ref-Son_etal_2024" role="doc-biblioref">2024</a>)</span>.</p>
 </details>
-<p>In human fecal samples, a mixture of metabolites would be expected – both endogenous and exogenous – due to physiology (endogenous), dietary intake (exogenous), and gut microbiota metabolism (considered exogenous due to the secondary metabolism of endogenous metabolites) <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Classes of expected metabolites that will be observed include fatty acids (a lipid building block), bile acid (steroid derivatives synthesized from cholesterol), amino acids and protein derivatives, intermediates of carbohydrate metabolism, and undigested dietary sugars <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
-<p>Historically, the “low-molecular weight” part of the definition of metabolites has been thresholded with a cutoff for molecules: &lt;1500 Daltons in molecular weight. A recent article <span class="citation" data-cites="Moreno-Ulloa_2026">(<a href="#ref-Moreno-Ulloa_2026" role="doc-biblioref">Moreno-Ulloa 2026</a>)</span> proposed a re-definition of metabolites that no longer restricts their identity based on size. However, this definition does not seem to be a widely accepted by the field at this time.</p>
-<p>To aide the downstream data processing (because of the vast number of metabolites that have been discovered and studied, their possible locations, and their many associations with different signaling, gene-regulatory, and metabolic pathways or disease implications), dedicated reference databases with known metabolites and related info were developed and are maintained by the scientific community. Some of these databases provide specialized metabolite information across a range of organisms where these metabolites would be found such as spectra from NMR or MS experiments (e.g., MassBank of North America or MoNA) <span class="citation" data-cites="MassBank">(<a href="#ref-MassBank" role="doc-biblioref"><span>“MassBank of North America (MoNA) - PubChem Data Source,”</span> n.d.</a>)</span>, names, structural, or chemical information about a specific class of metabolite (e.g., LIPID MAPS) <span class="citation" data-cites="Conroy_etal_2024">(<a href="#ref-Conroy_etal_2024" role="doc-biblioref">Conroy et al. 2024</a>)</span>, or metabolic pathways/networks (e.g., Kyoto Encyclopedia of Genes and Genomes or KEGG) <span class="citation" data-cites="Kanehisa_Goto_2000 Kanehisa_etal_2025">(<a href="#ref-Kanehisa_Goto_2000" role="doc-biblioref">Kanehisa and Goto 2000</a>; <a href="#ref-Kanehisa_etal_2025" role="doc-biblioref">Kanehisa et al. 2025</a>)</span>, while others provide a more comprehensive, but organism-specific databases like the Human Metabolome Database (HMDB) <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>.</p>
+<p>In human fecal samples, a mixture of metabolites would be expected – both endogenous and exogenous – due to physiology (endogenous), dietary intake (exogenous), and <button class="glossary"><span class="def">The set or collection of microorganisms whose particular environment is the gut.</span>gut microbiota</button> metabolism (considered exogenous due to the secondary metabolism of endogenous metabolites) <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Classes of expected metabolites that will be observed include fatty acids (a lipid building block), bile acid (steroid derivatives synthesized from cholesterol), amino acids and protein derivatives, intermediates of carbohydrate metabolism, and undigested dietary sugars <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
+<p>Historically, the “low-molecular weight” part of the definition of metabolites has been thresholded with a cutoff for molecules: &lt;1500 <button class="glossary"><span class="def">Standard units of molecular mass used to measure the weight of molecules.</span>Daltons</button> in <button class="glossary"><span class="def">The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.</span>molecular weight</button>. A recent article <span class="citation" data-cites="Moreno-Ulloa_2026">(<a href="#ref-Moreno-Ulloa_2026" role="doc-biblioref">Moreno-Ulloa 2026</a>)</span> proposed a re-definition of metabolites that no longer restricts their identity based on size. However, this definition does not seem to be a widely accepted by the field at this time.</p>
+<p>To aide the downstream data processing (because of the vast number of metabolites that have been discovered and studied, their possible locations, and their many associations with different <button class="glossary"><span class="def">Series of chemical reactions that let groups of molecules control a cell function (e.g., cell growth, gene expression, inflammation, or cell death).</span>signaling</button>, <button class="glossary"><span class="def">Pathways made up of molecular interactions that reduce/suppress or increase/enhance gene expression (possibly, but not necessarily turning genes on and off) to control RNA production (and by extension may impact protein production).</span>gene-regulatory</button>, and <button class="glossary"><span class="def">Connected series of chemical reactions that occur within a cell during metabolic processes (e.g., glycolysis, digestion, protein synthesis, etc.) .</span>metabolic pathways</button> or disease implications), dedicated <button class="glossary"><span class="def">Databases including known information about a topic. For metabolomics, reference databases may include known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.</span>reference databases</button> with known metabolites and related info were developed and are maintained by the scientific community. Some of these databases provide specialized metabolite information across a range of organisms where these metabolites would be found such as spectra from NMR or MS experiments (e.g., MassBank of North America or MoNA) <span class="citation" data-cites="MassBank">(<a href="#ref-MassBank" role="doc-biblioref"><span>“MassBank of North America (MoNA) - PubChem Data Source,”</span> n.d.</a>)</span>, names, structural, or chemical information about a specific class of metabolite (e.g., LIPID MAPS) <span class="citation" data-cites="Conroy_etal_2024">(<a href="#ref-Conroy_etal_2024" role="doc-biblioref">Conroy et al. 2024</a>)</span>, or metabolic pathways/networks (e.g., Kyoto Encyclopedia of Genes and Genomes or <button class="glossary"><span class="def">A reference database that provides information about metabolic pathways and networks.</span>KEGG</button>) <span class="citation" data-cites="Kanehisa_Goto_2000 Kanehisa_etal_2025">(<a href="#ref-Kanehisa_Goto_2000" role="doc-biblioref">Kanehisa and Goto 2000</a>; <a href="#ref-Kanehisa_etal_2025" role="doc-biblioref">Kanehisa et al. 2025</a>)</span>, while others provide a more comprehensive, but organism-specific databases like the Human Metabolome Database (<button class="glossary"><span class="def">A reference database that provides information about known metabolites within humans.</span>HMDB</button>) <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>.</p>
 <p>From the 2009 paper introducing HMDB <span class="citation" data-cites="Wishart_etal_2009">(<a href="#ref-Wishart_etal_2009" role="doc-biblioref">Wishart et al. 2009</a>)</span>, the database is described in the following way:</p>
 <blockquote class="blockquote">
 <p>HMDB is … [an] organism-specific metabolomics database …. It contains spectroscopic, quantitative, analytic and molecular-scale information about human metabolites, their associated enzymes or transporters, their abundance and disease-related properties.</p>
 </blockquote>
-<p>The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a <strong>longitudinal</strong> study. Research participants within the same study (whether it is longitudinal or not) are termed a <strong>cohort</strong>.</p>
+<p>The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a <button class="glossary"><span class="def">A study that looks at the same set of research participants over a course of time.</span>longitudinal</button> study. Research participants within the same study (whether it is longitudinal or not) are termed a <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button>.</p>
 <details>
 <summary>
 What are different applications of metabolomics within the scientific field&gt;
@@ -719,12 +720,12 @@ What are different applications of metabolomics within the scientific field&gt;
 <section id="how-are-the-microbiome-and-the-metabolome-related" class="level2">
 <h2 class="anchored" data-anchor-id="how-are-the-microbiome-and-the-metabolome-related">How are the microbiome and the metabolome related?</h2>
 <p>The microbiome is discussed in more <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-microbiome">detail within the Version Control Case Study</a>, but briefly, the microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. These microorganisms can impact metabolism and have been found to be associated with greater human health.</p>
-<p>Sequencing the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful.</p>
-<p>Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will “pair” microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed <strong>paired</strong> data. Considering connected data like this in an analysis is termed an <strong>integrative</strong> analysis because it is integrating multiple sources of data.</p>
+<p><button class="glossary"><span class="def">A laboratory technique that extracts and analyzes the genetic material from a sample.</span>Sequencing</button> the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful.</p>
+<p>Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will “pair” microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed <button class="glossary"><span class="def">Data that is collected from the same sample in a study.</span>paired</button> data. Considering connected data like this in an analysis is termed an <button class="glossary"><span class="def">An analysis that integrates multiple sources of data together.</span>integrative analysis</button> because it is integrating multiple sources of data.</p>
 </section>
 <section id="what-is-a-curated-data-resource" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-a-curated-data-resource">What is a curated data resource?</h2>
-<p><span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> introduced and explored a <strong>curated data resource</strong>. Simply, this means a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. This often goes further than just collecting references of different studies who have made their data available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work. In this case, the researchers from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>, after identifying studies to include in the data resource had to</p>
+<p><span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> introduced and explored a <strong>curated <button class="glossary"><span class="def">A collection of datasets that have been gathered or curated by a group for secondary use within the field.</span>data resource</button></strong>. Simply, this means a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. This often goes further than just collecting references of different studies who have made their data available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work. In this case, the researchers from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>, after identifying studies to include in the data resource had to</p>
 <ol type="1">
 <li>Download the data associated with each study.</li>
 <li>Link the paired data (microbiome and metabolome) for each sample within each study.</li>
@@ -740,16 +741,16 @@ What are different applications of metabolomics within the scientific field&gt;
 <h2 class="anchored" data-anchor-id="what-are-possible-uses-of-a-data-resource">What are possible uses of a data resource?</h2>
 <p>Curated data resources are useful for a variety of tasks such as:</p>
 <ul>
-<li>Working with more data for greater statistical power</li>
-<li>Perform a meta-analysis to compare results and associations among datasets (See the <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-meta-analysis">Version Control case study for an expanded discussion on meta-analyses</a>.)</li>
-<li>Benchmarking tools</li>
-<li>Comparing findings from an analysis to a different dataset (e.g., evaluating the replicability and generalizability of the research) <span class="citation" data-cites="Schloss_2018">(<a href="#ref-Schloss_2018" role="doc-biblioref">Schloss 2018</a>)</span></li>
+<li>Working with more data for greater <button class="glossary"><span class="def">The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.</span>statistical power</button></li>
+<li>Perform a <button class="glossary"><span class="def">An analysis of data from a collection of studies targeting a common research question.</span>meta-analysis</button> to compare results and associations among datasets (See the <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-meta-analysis">Version Control case study for an expanded discussion on meta-analyses</a>.)</li>
+<li><button class="glossary"><span class="def">Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task.</span>Benchmarking</button> tools</li>
+<li>Comparing findings from an analysis to a different dataset (e.g., evaluating the <button class="glossary"><span class="def">The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions as the original researcher.</span>replicability</button> and <button class="glossary"><span class="def">The ability to apply the findings from research to a broader setting.</span>generalizability</button> of the research) <span class="citation" data-cites="Schloss_2018">(<a href="#ref-Schloss_2018" role="doc-biblioref">Schloss 2018</a>)</span></li>
 </ul>
 </section>
 <section id="the-need-for-containerization" class="level2">
 <h2 class="anchored" data-anchor-id="the-need-for-containerization">The need for containerization</h2>
-<p>Data analysis, especially analysis of large data, relies on computers and the software tools installed on those computers. Depending on the computational needs of an analysis or a researcher’s typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as institutional high performance computing (HPC) clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). <span class="citation" data-cites="Wright_Computing">(<a href="#ref-Wright_Computing" role="doc-biblioref">Wright, n.d.</a>)</span>.</p>
-<p>Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different computing environments (potentially differences in operating systems, software, software versions, etc.). Beyond differences in operating systems, different institutions and the IT departments that manage the institution’s computers may have specific setups and guidelines shaping the available software and computing environment for computers at the institution. Individuals with different needs will install and update software differentially. Even team members within the same lab will have different computing environments. Overtime, a single researcher’s computer will evolve as well. Software and operating systems will be updated (sometimes automatically rather than manually) and new software, tools, or applications will be installed. Basically, computers are like snowflakes – they are unique when compared to other computers. They make have similarities, but overall computers are their own unique entity.</p>
+<p>Data analysis, especially analysis of large data, relies on computers and the software tools installed on those computers. Depending on the computational needs of an analysis or a researcher’s typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as <button class="glossary"><span class="def">A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</span>institutional high performance computing (HPC)</button> clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). <span class="citation" data-cites="Wright_Computing">(<a href="#ref-Wright_Computing" role="doc-biblioref">Wright, n.d.</a>)</span>.</p>
+<p>Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different <button class="glossary"><span class="def">Specific features of a computational resource, including operating system, software, and software versions.</span>computing environments</button> (potentially differences in operating systems, software, software versions, etc.). Beyond differences in operating systems, different institutions and the IT departments that manage the institution’s computers may have specific setups and guidelines shaping the available software and computing environment for computers at the institution. Individuals with different needs will install and update software differentially. Even team members within the same lab will have different computing environments. Overtime, a single researcher’s computer will evolve as well. Software and operating systems will be updated (sometimes automatically rather than manually) and new software, tools, or applications will be installed. Basically, computers are like snowflakes – they are unique when compared to other computers. They make have similarities, but overall computers are their own unique entity.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -791,7 +792,7 @@ What is reproducible research within the greater context of scientific discovery
 </div>
 </div>
 <p>One way people have tried to get around this challenge is reporting the exact versions of all software that were used. This may at times be sufficient, but other times more precision is necessary. Even if given a list the exact versions of all software and packages or libraries that were previously used, a researcher would need to install any new software and update or downgrade any software they’ve previously installed. Some software requires special dependencies that may not be known to be required until attempting to install a specific package or library and these dependencies may be especially difficult to install due to conflicting, missing, or mismatched version requirements among other software that is already installed. Teams may have a shared computing resource (like an institutional HPC), but even in that case different users have different software and configurations. Geographically dispersed teams can’t realistically mail a laptop to each other to have a standardized computing environment.</p>
-<p>Therefore, containers are often the solution used to standardize the computing environment within a team. Containers provide a standardized computing environment for everyone using it no matter what the software landscape of their personal laptop or workstation looks like.</p>
+<p>Therefore, <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button> are often the solution used to standardize the computing environment within a team. Containers provide a standardized computing environment for everyone using it no matter what the software landscape of their personal laptop or workstation looks like.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -806,7 +807,7 @@ What is reproducible research within the greater context of scientific discovery
 </section>
 <section id="introduction-to-containers" class="level1">
 <h1><strong>Introduction to Containers</strong></h1>
-<p>Before we start to address your project with Collab O. Rator, we will provide an introduction to containerization with Docker. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the microbiome-metabolome data collection project.</p>
+<p>Before we start to address your project with Collab O. Rator, we will provide an introduction to <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button> with <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button>. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>-<button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data collection project.</p>
 <section id="what-is-a-container" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-container">What is a container?</h2>
 <ul>
@@ -934,7 +935,7 @@ What is reproducible research within the greater context of scientific discovery
 <ul>
 <li>Terminal / Command Line
 <ul>
-<li>If you only have a Dockerfile, you need to use this to build the image</li>
+<li>If you only have a Dockerfile, you need to use this to <button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>build</button> the image</li>
 </ul></li>
 <li>Docker Desktop</li>
 <li>An interactive Integrated Development Environment (IDE)</li>
@@ -966,17 +967,17 @@ What is reproducible research within the greater context of scientific discovery
 <section id="what-are-the-data" class="level1">
 <h1><strong>What are the data?</strong></h1>
 <hr>
-<p>The data comes from Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Table 1 describes the curated gut microbiome-metabolome datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing</p>
+<p>The data comes from Table 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>. Table 1 describes the curated gut <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>-<button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing</p>
 <ul>
 <li>the name of each dataset</li>
 <li>which reference in the study relates to that data</li>
-<li>a brief description of the cohort within that study</li>
+<li>a brief description of the <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button> within that study</li>
 <li>the number of samples with paired fecal microbiome-metabolome data within that cohort</li>
-<li>whether the study contained longitudinal data</li>
-<li>the number of HMDB annotated compounds</li>
-<li>the number of KEGG annotated compounds</li>
+<li>whether the study contained <button class="glossary"><span class="def">A study that looks at the same set of research participants over a course of time.</span>longitudinal</button> data</li>
+<li>the number of <button class="glossary"><span class="def">A reference database that provides information about known metabolites within humans.</span>HMDB</button> annotated compounds</li>
+<li>the number of <button class="glossary"><span class="def">A reference database that provides information about metabolic pathways and networks.</span>KEGG</button> annotated compounds</li>
 </ul>
-<p>Each row in the table is providing data for that source dataset itself. Figure 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated metabolites present).</p>
+<p>Each row in the table is providing data for that source dataset itself. Figure 1 in <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> provides more information on the overlap between datasets (e.g., in how many datasets were observed HMDB annotated <button class="glossary"><span class="def">Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.</span>metabolites</button> present).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1041,7 +1042,7 @@ See the following example from a previous case study: https://www.opencasestudie
 <h1><strong>Limitations</strong></h1>
 <hr>
 <p>There are some important considerations regarding this data analysis to keep in mind:</p>
-<p>This case study specifically uses the technology Docker to build containers and run analyses within these isolated environments, on a local machine.</p>
+<p>This case study specifically uses the technology <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to <button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>build</button> <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button> and run analyses within these isolated environments, on a local machine.</p>
 <p><em>Limitations regarding containerization and the scope of this case study:</em></p>
 <p>This case study does <strong>not</strong> describe how to:</p>
 <ul>
@@ -1051,10 +1052,10 @@ See the following example from a previous case study: https://www.opencasestudie
 <li>use containers to deploy or support an application</li>
 <li>use technologies other than Docker such as Apptainer or Singularity</li>
 </ul>
-<p>Docker is a widely used tool for containerization. However, it is not the most appropriate tool for all use cases and within all contexts. For example, institutional High Performance Computing (HPC) often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
+<p>Docker is a widely used tool for <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button>. However, it is not the most appropriate tool for all use cases and within all contexts. For example, <button class="glossary"><span class="def">A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</span>institutional high performance computing (HPC)</button> often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
 <p><em>Limitations regarding the data analysis and using aggregated data:</em></p>
 <p>This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.</p>
-<p>In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. Steps involved in data harmonization include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, meta-analyses are synthesizing summarized information rather than aggregating the underlying, raw data <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate <span class="citation" data-cites="Nan_etal_2022">(<a href="#ref-Nan_etal_2022" role="doc-biblioref">Nan et al. 2022</a>)</span>.</p>
+<p>In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. Steps involved in <button class="glossary"><span class="def">Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.</span>data harmonization</button> include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, <button class="glossary"><span class="def">An analysis of data from a collection of studies targeting a common research question.</span>meta-analyses</button> are synthesizing summarized information rather than aggregating the underlying, raw data <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate <span class="citation" data-cites="Nan_etal_2022">(<a href="#ref-Nan_etal_2022" role="doc-biblioref">Nan et al. 2022</a>)</span>.</p>
 <hr>
 </section>
 <section id="ethical-considerations" class="level1">
@@ -1063,10 +1064,10 @@ See the following example from a previous case study: https://www.opencasestudie
 <p>There are some important ethical considerations when working with containerization, as well as when working with clinical/health related data. Additional ethical considerations are relevant when working within a collaborative team environment and with secondary source data (data collected by others).</p>
 <p><em>Containerization and clinical/health data considerations:</em></p>
 <ol type="1">
-<li>When defining and sharing a container image, <strong>make sure to never include personally identifiable information (PII) or protected health information (PHI)</strong>.</li>
+<li>When defining and sharing a container <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>image</button>, <strong>make sure to never include <button class="glossary"><span class="def">Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc.; abbreviated as “PII”.</span>Personally Identifiable Information</button> (PII) or <button class="glossary"><span class="def">A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.; abbreviated as “PHI”.</span>Protected Health Information</button> (PHI)</strong>.</li>
 </ol>
 <ul>
-<li>Even if you are sharing a Dockerfile or image using a private repository or in private communication within a team setting, do not include PII or PHI.</li>
+<li>Even if you are sharing a <button class="glossary"><span class="def">A text document that includes commands that are needed to build a Docker image and specify what will be available in a container.</span>Dockerfile</button> or image using a private repository or in private communication within a team setting, do not include PII or PHI.</li>
 <li>Data that is considered PII or PHI includes names, dates of birth, contact information, account or health plan numbers, IP addresses, and medical records. You can read more about PII and PHI and ethical data handling practices in <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-privacy.html#pii-personal-identifiable-information">this course</a> with broader information regarding proactive and ethical data management and sharing can be found in <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/">this course</a>.</li>
 </ul>
 <ol start="2" type="1">
@@ -1079,11 +1080,11 @@ See the following example from a previous case study: https://www.opencasestudie
 <li>Do not include any credentials within the definition of a container image (ensuring a minimal, secure image).</li>
 </ul>
 <ol start="3" type="1">
-<li>Only use containers from known and verified sources.</li>
-<li>While images provide a static snapshot of a computing environment, the security or health of a container isn’t necessarily static and may need to be maintained over time.</li>
-<li>Only use specific technology containers within the appropriate contexts (e.g., do not use Docker on an Institutional HPC unless explicitly allowed/supported by the institution).</li>
-<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. Containerization of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
-<li>Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing version-controlled records of analyses. Containerization is just a part of <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum">reproducible science</a> <span class="citation" data-cites="Sandve_Nekrutenko_Taylor_Hovig_2013">(<a href="#ref-Sandve_Nekrutenko_Taylor_Hovig_2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>.</li>
+<li>Only use container images from known and verified sources.</li>
+<li>While images provide a static snapshot of a <button class="glossary"><span class="def">Specific features of a computational resource, including operating system, software, and software versions.</span>computing environment</button>, the security or health of a container image isn’t necessarily static and may need to be maintained over time.</li>
+<li>Only use specific technology containers within the appropriate contexts (e.g., do not use <button class="glossary"><span class="def"></span>institutional HPC</button> unless explicitly allowed/supported by the institution).</li>
+<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>Containerization</button> of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
+<li>Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlled</button> records of analyses. Containerization is just a part of <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum">reproducible science</a> <span class="citation" data-cites="Sandve_Nekrutenko_Taylor_Hovig_2013">(<a href="#ref-Sandve_Nekrutenko_Taylor_Hovig_2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>.</li>
 </ol>
 <p><em>Collaborative team considerations:</em></p>
 <ol type="1">
@@ -1091,15 +1092,15 @@ See the following example from a previous case study: https://www.opencasestudie
 </ol>
 <p><em>Use of secondary and/or clinical/health data considerations:</em></p>
 <ol type="1">
-<li>Use of secondary data (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>.</li>
-<li>Use of secondary data, especially underlying clinical data (e.g., from patients or research participants) requires consideration on <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html">how that data was collected and shared and the consent of participants</a> <span class="citation" data-cites="Sterling_2011">(<a href="#ref-Sterling_2011" role="doc-biblioref">Sterling 2011</a>)</span>.</li>
+<li>Use of <button class="glossary"><span class="def">Data collected originally by others for a different purpose.</span>secondary data</button> (data collected originally by others), may need to be studied to ensure that researchers understand the variables within the data. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data is being combined in comparable and compatible ways <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>.</li>
+<li>Use of secondary data, especially underlying <button class="glossary"><span class="def">Health-related data gathered from patients or research participants.</span>clinical data</button> (e.g., from patients or research participants) requires consideration on <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html">how that data was collected and shared and the consent of participants</a> <span class="citation" data-cites="Sterling_2011">(<a href="#ref-Sterling_2011" role="doc-biblioref">Sterling 2011</a>)</span>.</li>
 </ol>
 <hr>
 </section>
 <section id="packages-and-setup" class="level1">
 <h1><strong>Packages and Setup</strong></h1>
 <hr>
-<p>Before we get into fetching images, running containers, and running analyses, we want to describe the R packages that we’ll use in this case study, or that are used within the analysis scripts for the project with Collab O. Rator.</p>
+<p>Before we get into fetching <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>images</button>, creating <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button>, and running analyses, we want to describe the R packages that we’ll use in this case study, or that are used within the analysis scripts for the project with Collab O. Rator.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1274,10 +1275,10 @@ See the following example from a previous case study: https://www.opencasestudie
 <hr>
 <section id="container-infrastructure" class="level2">
 <h2 class="anchored" data-anchor-id="container-infrastructure">Container Infrastructure</h2>
-<p>In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the container that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the <code>tabulapdf</code> package and any of its dependencies that we don’t have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.</p>
+<p>In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the <code>tabulapdf</code> package and any of its dependencies that we don’t have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.</p>
 <section id="step-1-starting-docker" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-starting-docker">Step 1: Starting docker</h3>
-<p>To pull the docker image, docker must first be running.</p>
+<p>To pull the docker <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>image</button>, <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> must first be running.</p>
 <div class="emphasis_block">
 <p>If you try to use a docker command like <code>docker pull</code> without first starting docker, you’ll see an error message about “failure to connect” and recommending you check if the “daemon” is running. Docker Desktop can be resource intensive, so it’s common to close Docker Desktop or stop docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure docker is running.</p>
 </div>
@@ -1295,7 +1296,7 @@ What if Docker Desktop isn’t opening?
 </details>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p>Open your command line interface (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows).</p>
+<p>Open your <button class="glossary"><span class="def">A window that lets a user interact with a computer through typing commands.</span>command line interface (CLI)</button> (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows).</p>
 <p>In your command line interface, use the following command to start docker.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">open</span> <span class="at">-a</span> Docker</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1304,7 +1305,7 @@ What if Docker Desktop isn’t opening?
 </section>
 <section id="step-2-pulling-the-container-image-from-docker-hub" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-pulling-the-container-image-from-docker-hub">Step 2: Pulling the container image from Docker Hub</h3>
-<p>Recall that a container image is the main way that containers are shared and these are often stored in registries like Docker Hub. For this activity, the data visualization container image is stored on Docker Hub by the <code>bioocs</code> organization. Specifically the image is named <code>ocs-bio-containers-main</code> with a tag of “main”.</p>
+<p>Recall that a container image is the main way that containers are shared and these are often stored in <button class="glossary"><span class="def">A central storage and distribution system for container images.</span>registries</button> like <button class="glossary"><span class="def">A large cloud-based public registry for Docker images, can be used to download pre-built Docker images or upload custom Docker images.</span>Docker Hub</button>. For this activity, the data visualization container image is stored on Docker Hub by the <code>bioocs</code> organization. Specifically the image is named <code>ocs-bio-containers-main</code> with a tag of “main”.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
@@ -1347,7 +1348,7 @@ Finding containers in a registry (e.g., Docker Hub)
 <section id="step-3-running-the-image" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-running-the-image">Step 3: Running the image</h3>
 <p>Now that we’ve pulled the container image, we will want to run the image to create a container. We have pulled the data visualization image, but that doesn’t give us the data from the PDF table or even software that we can use in R yet. Once we run the image to create a container, we have access to the software within the container.</p>
-<p>If all you need is software and don’t need data or analysis scripts (stored in a file or directory), you can simply run the image to create the container / set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won’t be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called <strong>mounting a volume</strong>.</p>
+<p>If all you need is software and don’t need data or analysis scripts (stored in a file or <button class="glossary"><span class="def">A folder in a computing environment.</span>directory</button>), you can simply run the container to set up the environment with the specified software. Because a container is an isolated environment, once it is running, you won’t be able to add data or analysis scripts into the environment. Therefore, if you need data or analysis scripts, you will need to point the container to the data/script location when you run the image so that they are included in the container environment. This is called <strong><button class="glossary"><span class="def">Connect a file or directory from the local machine to a location inside of a container.</span>mounting</button> a <button class="glossary"><span class="def">A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</span>volume</button></strong>.</p>
 <p>We need data analysis scripts, so we will need to <strong>mount a volume</strong> when we run the docker image. We will first download the data analysis scripts that we want to have access to in our container.</p>
 <section id="step-3a-downloading-version-controlled-analysis-files" class="level4">
 <h4 class="anchored" data-anchor-id="step-3a-downloading-version-controlled-analysis-files">Step 3a: Downloading version-controlled analysis files</h4>
@@ -1357,7 +1358,7 @@ Finding containers in a registry (e.g., Docker Hub)
 <li><em>Option A</em>: Download the analysis scripts in a <code>.zip</code> file<br></li>
 <li><em>Option B</em>: Set up a new GitHub repository, using the scaffold as a template and clone that repository locally.</li>
 </ol>
-<p>Option B provides an opportunity to practice more advanced reproducibility best practices: version-controlling an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.</p>
+<p>Option B provides an opportunity to practice more advanced <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button> best practices: <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlling</button> an analysis. However, this is merely a supported alternative rather than a requirement to follow along with this case study.</p>
 <div class="reproducibility_box">
 <div class="reproducibility_box_header">
 <p>Reproducibility considerations</p>
@@ -1637,7 +1638,7 @@ Number of NAs: 80</p>
 <hr>
 <section id="container-infrastructure-1" class="level2">
 <h2 class="anchored" data-anchor-id="container-infrastructure-1">Container Infrastructure</h2>
-<p>We’ll utilize this section to explore the Dockerfile specifically answering “What’s in a container?”</p>
+<p>We’ll utilize this section to explore the <button class="glossary"><span class="def">A text document that includes commands that are needed to build a Docker image and specify what will be available in a container.</span>Dockerfile</button> specifically answering “What’s in a <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button>?”</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
@@ -1748,7 +1749,7 @@ Number of NAs: 80</p>
 </div>
 </div>
 </div>
-<p>We would have expected the cohort descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that <code>X3</code> contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (<code>X4</code>) has all <code>NAs</code>. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have <code>NAs</code> in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.</p>
+<p>We would have expected the <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button> descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that <code>X3</code> contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (<code>X4</code>) has all <code>NAs</code>. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have <code>NAs</code> in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1775,7 +1776,7 @@ Number of NAs: 80</p>
 <hr>
 <section id="container-application-2" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-application-2">Container Application</h2>
-<p>If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the <code>ocs-bio-containers-scaffold-main</code> directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, or re-create the container (Step 3b from the Data Import section).</p>
+<p>If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the <code>ocs-bio-containers-scaffold-main</code> directory). Therefore in between sections, you should be able to pause, stop, or even delete a <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> and either unpause, re-start, or re-create the container (Step 3b from the Data Import section).</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Add instructions on pausing, stopping, and deleting containers.</p>
@@ -2276,7 +2277,7 @@ No, just because a Dockerfile has the package listed doesn’t mean that our run
 Answer
 </summary>
 <ol type="1">
-<li>Build the modified Dockerfile to be an image (will need to do this using a command line interface)</li>
+<li><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>Build</button> the modified Dockerfile to be an image (will need to do this using a <button class="glossary"><span class="def">A window that lets a user interact with a computer through typing commands.</span>command line interface</button>)</li>
 <li>Run the image to create a container (CLI or Docker Desktop), mounting the directory or volume that has the analysis scripts within the run command.</li>
 <li>That running container now has <code>patchwork</code> available for use.</li>
 </ol>
@@ -2295,7 +2296,7 @@ Answer
 <section id="data-visualization-1" class="level1">
 <h1><strong>Data Visualization</strong></h1>
 <hr>
-<p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original <code>extract_tables</code> code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.</p>
+<p>If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> (without having to run the original <code>extract_tables</code> code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">load</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"wrangled"</span>, <span class="st">"wrangled_data.rda"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2313,11 +2314,11 @@ If you skipped the data import section click here.
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Docker Desktop</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Docker through a CLI</a></li></ul>
 <div class="tab-content">
 <div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
-<p>Build the modified Dockerfile –&gt; Image</p>
+<p><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>Build</button> the modified Dockerfile –&gt; Image</p>
 <p>Run the Image (while mounting the volume) – &gt; Container</p>
 </div>
 <div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
-<p>Build the modified Dockerfile –&gt; Image</p>
+<p><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>Build</button> the modified Dockerfile –&gt; Image</p>
 <p>Run the Image (while mounting the volume) – &gt; Container</p>
 </div>
 </div>
@@ -2758,7 +2759,7 @@ Don't adjust the shortcode or the table header in this file, only the markdown t
 <ul>
 <li>Add <code>ggrepel</code> to the Dockerfile
 <ul>
-<li>build the Dockerfile</li>
+<li><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>build</button> the Dockerfile</li>
 <li>run the image</li>
 <li>extract and wrangle the data with the <code>preprocessing.R</code> script or mount the wrangled data when running the image</li>
 <li>update the <code>analysis.R</code> script to utilize <code>ggrepel</code> within the scatter plots made with <code>patchwork</code></li>
@@ -2917,12 +2918,264 @@ Automatically include the packages table from _packages.qmd?
 <th data-quarto-table-cell-role="th"><strong>Definition</strong></th>
 </tr>
 <tr class="even">
-<td>Term 1</td>
-<td>Definition of Term 1</td>
+<td>Benchmarking</td>
+<td>Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task.</td>
 </tr>
 <tr class="odd">
-<td>Term2</td>
-<td>Definition of Term 2</td>
+<td>Build</td>
+<td>Verb for creating a container image from a Dockerfile.</td>
+</tr>
+<tr class="even">
+<td>Carbohydrates</td>
+<td>Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells.</td>
+</tr>
+<tr class="odd">
+<td>Clinical data</td>
+<td>Health-related data gathered from patients or research participants.</td>
+</tr>
+<tr class="even">
+<td>Cohort</td>
+<td>Research participants within the same study.</td>
+</tr>
+<tr class="odd">
+<td>Command Line Interface (CLI)</td>
+<td>A window that lets a user interact with a computer through typing commands.</td>
+</tr>
+<tr class="even">
+<td>Computing environment</td>
+<td>Specific features of a computational resource, including operating system, software, and software versions.</td>
+</tr>
+<tr class="odd">
+<td>Container</td>
+<td>Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</td>
+</tr>
+<tr class="even">
+<td>Containerization</td>
+<td>The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</td>
+</tr>
+<tr class="odd">
+<td>Daltons</td>
+<td>Standard units of molecular mass used to measure the weight of molecules.</td>
+</tr>
+<tr class="even">
+<td>Data collection or resource</td>
+<td>A collection of datasets that have been gathered or curated by a group for secondary use within the field.</td>
+</tr>
+<tr class="odd">
+<td>Data harmonization</td>
+<td>Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.</td>
+</tr>
+<tr class="even">
+<td>Directory</td>
+<td>A folder in a computing environment.</td>
+</tr>
+<tr class="odd">
+<td>Docker</td>
+<td>A software platform for building, testing, and deploying containers.</td>
+</tr>
+<tr class="even">
+<td>Docker Hub</td>
+<td>A large cloud-based public registry for Docker images, can be used to download pre-built Docker images or upload custom Docker images.</td>
+</tr>
+<tr class="odd">
+<td>Dockerfile</td>
+<td>A text document that includes commands that are needed to build a Docker image and specify what will be available in a container.</td>
+</tr>
+<tr class="even">
+<td>Endogenous</td>
+<td>Metabolites that originate from the organism or source of the sample.</td>
+</tr>
+<tr class="odd">
+<td>Enzyme assays</td>
+<td>A technique to detect and quantify metabolites using enzyme-catalyzed reactions.</td>
+</tr>
+<tr class="even">
+<td>Exogenous</td>
+<td>Metabolites that originate from outside of the organism or source of the sample.</td>
+</tr>
+<tr class="odd">
+<td>Extensibility</td>
+<td>The ability for a new researcher to use original data and process to repeat a result and produce an extension of the process for a related result.</td>
+</tr>
+<tr class="even">
+<td>Gas Chromatography</td>
+<td>A technique to detect and quantify metabolites by vaporizing and separating compounds.</td>
+</tr>
+<tr class="odd">
+<td>Gene-regulatory pathways</td>
+<td>Pathways made up of molecular interactions that reduce/suppress or increase/enhance gene expression (possibly, but not necessarily turning genes on and off) to control RNA production (and by extension may impact protein production).</td>
+</tr>
+<tr class="even">
+<td>Generalizability</td>
+<td>The ability to apply the findings from research to a broader setting.</td>
+</tr>
+<tr class="odd">
+<td>Gut microbiota</td>
+<td>The set or collection of microorganisms whose particular environment is the gut.</td>
+</tr>
+<tr class="even">
+<td>HMDB</td>
+<td>A reference database that provides information about known metabolites within humans.</td>
+</tr>
+<tr class="odd">
+<td>Image</td>
+<td>Main way to share containers because an image is a static, read-only configuration for creating a running container.</td>
+</tr>
+<tr class="even">
+<td>Institutional high performance computing (HPC)</td>
+<td>A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</td>
+</tr>
+<tr class="odd">
+<td>Integrative analysis</td>
+<td>An analysis that integrates multiple sources of data together.</td>
+</tr>
+<tr class="even">
+<td>KEGG</td>
+<td>A reference database that provides information about metabolic pathways and networks.</td>
+</tr>
+<tr class="odd">
+<td>Lipids</td>
+<td>Macromolecules that are insoluble in water and provide structure for cells and serve as long-term energy sources.</td>
+</tr>
+<tr class="even">
+<td>Liquid Chromatography</td>
+<td>A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.</td>
+</tr>
+<tr class="odd">
+<td>Longitudinal</td>
+<td>A study that looks at the same set of research participants over a course of time.</td>
+</tr>
+<tr class="even">
+<td>Macromolecules</td>
+<td>Large complex molecules responsible for cell structure, energy storage, enzymatic catalysis, and genetic information storage and transfer, including nuceleic acids, proteins, carbohydrates, and lipids.</td>
+</tr>
+<tr class="odd">
+<td>Mass Spectrometry</td>
+<td>A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.</td>
+</tr>
+<tr class="even">
+<td>Meta-analysis</td>
+<td>An analysis of data from a collection of studies targeting a common research question.</td>
+</tr>
+<tr class="odd">
+<td>Metabolic pathways</td>
+<td>Connected series of chemical reactions that occur within a cell during metabolic processes (e.g., glycolysis, digestion, protein synthesis, etc.) .</td>
+</tr>
+<tr class="even">
+<td>Metabolites</td>
+<td>Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.</td>
+</tr>
+<tr class="odd">
+<td>Metabolome</td>
+<td>A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</td>
+</tr>
+<tr class="even">
+<td>Microbiome</td>
+<td>A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</td>
+</tr>
+<tr class="odd">
+<td>Molecular weight</td>
+<td>The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.</td>
+</tr>
+<tr class="even">
+<td>Mount</td>
+<td>Connect a file or directory from the local machine to a location inside of a container.</td>
+</tr>
+<tr class="odd">
+<td>Nuclear Magnetic Resonance (NMR)</td>
+<td>A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.</td>
+</tr>
+<tr class="even">
+<td>Nucleic acids</td>
+<td>Macromolecules that store and transfer genetic information, including DNA and RNA.</td>
+</tr>
+<tr class="odd">
+<td>Organic</td>
+<td>Molecules containing carbon-hydrogen bonds.</td>
+</tr>
+<tr class="even">
+<td>Organic acids</td>
+<td>Metabolites, primarily carboxylic acids, that neutralize bases and play important roles in cellular metabolism.</td>
+</tr>
+<tr class="odd">
+<td>Paired</td>
+<td>Data that is collected from the same sample in a study.</td>
+</tr>
+<tr class="even">
+<td>Personally Identifiable Information</td>
+<td>Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc.; abbreviated as "PII".</td>
+</tr>
+<tr class="odd">
+<td>Primary</td>
+<td>Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</td>
+</tr>
+<tr class="even">
+<td>Protected Health Information</td>
+<td>A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.; abbreviated as "PHI".</td>
+</tr>
+<tr class="odd">
+<td>Proteins</td>
+<td>Macromolecules made up of folded chains of amino acids that perform specific functions within organisms.</td>
+</tr>
+<tr class="even">
+<td>Reference databases</td>
+<td>Databases including known information about a topic. For metabolomics, reference databases may include known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.</td>
+</tr>
+<tr class="odd">
+<td>Registry</td>
+<td>A central storage and distribution system for container images.</td>
+</tr>
+<tr class="even">
+<td>Repeatability</td>
+<td>The ability for the same researcher to run the same analysis on the same data and get the same results.</td>
+</tr>
+<tr class="odd">
+<td>Replicability</td>
+<td>The ability for a new researcher to run the same experiment or analysis on new data and draw the same conclusions as the original researcher.</td>
+</tr>
+<tr class="even">
+<td>Reproducibility</td>
+<td>The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</td>
+</tr>
+<tr class="odd">
+<td>Run</td>
+<td>Creating a container from an image, providing an active and usable computing environment.</td>
+</tr>
+<tr class="even">
+<td>Secondary</td>
+<td>Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary "host" system but are then re-metabolized by the microbiome.</td>
+</tr>
+<tr class="odd">
+<td>Secondary data</td>
+<td>Data collected originally by others for a different purpose.</td>
+</tr>
+<tr class="even">
+<td>Sequencing</td>
+<td>A laboratory technique that extracts and analyzes the genetic material from a sample.</td>
+</tr>
+<tr class="odd">
+<td>Signaling pathways</td>
+<td>Series of chemical reactions that let groups of molecules control a cell function (e.g., cell growth, gene expression, inflammation, or cell death).</td>
+</tr>
+<tr class="even">
+<td>Spectra</td>
+<td>Graphical representations of NMR and mass spec results to display detected signals and their relative intensities.</td>
+</tr>
+<tr class="odd">
+<td>Statistical power</td>
+<td>The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.</td>
+</tr>
+<tr class="even">
+<td>Version-controlled</td>
+<td>A project with changes tracked over time using version control software such as Git and GitHub.</td>
+</tr>
+<tr class="odd">
+<td>Vitamins</td>
+<td>Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.</td>
+</tr>
+<tr class="even">
+<td>Volume</td>
+<td>A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</td>
 </tr>
 </tbody>
 </table>
