@@ -1,17 +1,56 @@
 # **Data Visualization**
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). Everyone is rerunning a new container at this section, so they should be good, just a reminder that the data should be there for them.
-
-```{r, eval = FALSE}
-load(here::here("data", "wrangled", "wrangled_data.rda"))
-```
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Visualization section, you will be creating a new container from the modified Dockerfile in the previous section.
 
 ***
 
-<details> <summary> If you skipped the data import section click here. </summary>
+<details> <summary> If you skipped the data wrangling section click here. </summary>
 
-KI note: We'll need to add instructions to this about mounting or importing data if someone wants to pick up at this section. I don't think the container has `wget`, but I could set up a download that would have the file that they could then mount. Will do that and include instructions here for that.
+You will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section.
+
+:::{.panel-tabset}
+
+To fetch the modified Dockerfile and wrangled data, follow these instructions:
+
+### Download from github.com
+
+* Modified Dockerfile
+    * Use this link to <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/dockerfiles/activity/Dockerfile" download> download the modified Dockerfile</a>.
+    * Create a `dockerfiles` folder in the top directory of your `ocs-bio-containers-scaffold-main` folder (e.g., the one with `analysis_scripts`, `continued_learning_scripts`, the `README.md`)
+    * Move the downloaded Dockerfile into the new `dockerfiles` folder. 
+* Wrangled data
+    * Use this link to [download the wrangled data as an `.rda` file](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda)
+    * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
+    * Move the downloaded `.rda` file into the new `wrangled` folder.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
+```
+
+### Command Line
+
+* Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
+    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
+* Enter `mkdir -p dockerfiles data/wrangled`. 
+    * This will create directories named "dockerfiles" in the top and "wrangled" under the "data" directory.
+* Enter `cd dockerfiles`
+* Copy and paste the following:
+
+```{.bash}
+wget "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/refs/heads/main/resources/dockerfiles/activity/Dockerfile" .
+```
+
+* Enter `cd ../data/wrangled`
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda" .
+```
+
+* Enter `cd ../../`
+
+:::
 
 </details>
 ***

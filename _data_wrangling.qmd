@@ -3,7 +3,7 @@
 
 ## Container Application
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, or re-create the container (Step 3b from the Data Import section). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a container and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
 
 ::: {.column-margin}
 Add instructions on pausing, stopping, and deleting containers.
@@ -13,7 +13,7 @@ Add instructions on pausing, stopping, and deleting containers.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-At the minimum, you will need to repeat the Container Infrastructure steps from the Data Import section. 
+At the minimum, you will need to repeat the steps from the Data Import -- Container Infrastructure section. 
 
 You can either perform Step 1 from the Data Import -- Container Application section, or in your now running container, you can use `wget` to fetch the data. 
 
