@@ -3,7 +3,7 @@
 
 ## Container Application
 
-If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running container (without having to run the original `extract_tables` code). make sure your container is running (probably will need a tab structure for this): <- update to be more precise
+If you have been following along but stopped, the scripts we are using are set up to load our imported data like so within our analysis script within the running {{< glossary "Container" display="container" >}} (without having to run the original `extract_tables` code). make sure your container is running (probably will need a tab structure for this): <- update to be more precise
 
 ```{r, eval = FALSE}
 load(here::here("data", "imported", "raw_table1.rda"))
