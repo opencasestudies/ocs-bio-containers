@@ -94,7 +94,7 @@ We recommend using the [Software Carpentry "Navigating Files and Directories" tu
 
 * Once you've navigated to your `ocs-bio-containers-scaffold-main` directory, you will want to navigate to the location of the modified Dockerfile:
     * `cd dockerfiles`
-* You will build this dockerfile using the following command:
+* You will build this Dockerfile using the following command:
     * -t provides a tag or name for the image (in this case "ocs-bio-containers-activity"). Without it, the image's name is "<none>".
     * We could specify a specific version tag by adding `:` and a name (like `main`) at the end
     * the `.` means the `Dockerfile` that is in the directory we are in.
@@ -121,9 +121,35 @@ You can close the Docker Desktop Terminal by clicking the "x" in the upper right
 
 ### Docker through a CLI
 
-{{< glossary "Build" >}} the modified Dockerfile --> Image
+#### Step 1: Build the image from the Dockerfile
 
-Run the Image (while mounting the volume) -- > Container
+* Navigate to the top level of your `ocs-bio-containers-scaffold-main` directory (if you're not already there).
+* Once you've navigated to your `ocs-bio-containers-scaffold-main` directory, you will want to navigate to the location of the modified Dockerfile:
+    * `cd dockerfiles`
+* You will build this Dockerfile using the following command:
+    * -t provides a tag or name for the image (in this case "ocs-bio-containers-activity"). Without it, the image's name is "<none>".
+    * We could specify a specific version tag by adding `:` and a name (like `main`) at the end
+    * the `.` means the `Dockerfile` that is in the directory we are in.
+
+```{.bash}
+docker build -t ocs-bio-containers-activity .
+```
+
+You will see a variety of messages with steps as it's walking through the Dockerfile and performing the commands in there to set up the static, read-only, ready to use image. Near the end you might see messages like `=> exporting to image`, `=> => exporting layers`, and `=> => writing image [long alphanumeric....]`. Once it's complete, the command prompt will appear again.
+
+#### Step 2: Run the image to create the container with the `patchwork` package
+
+* Navigate back to the top level of your `ocs-bio-containers-scaffold-main` directory
+    * `cd ../`
+* Use the following command to run the image to create the container:
+
+```{.bash}
+docker run -v $(pwd):$(pwd) -w $(pwd) -it ocs-bio-containers-activity bash
+```
+
+**Like the previous time, this command is using the working directory to mount the volume and set the current working directory of the running container. If you use command with your own work, make sure your current working directory is the volume you want to mount. It won't work the way you want if your current working is not the volume you want to mount.**
+
+This time, the command uses a different image name (the one we've just built) than previously (in the Data Import section) as the blueprint to create the container.
 
 :::
 
@@ -170,6 +196,33 @@ Lines 32 - 38 save the HMDB plot and prints a log message about completing that 
 
 Lines 42 - 56 are the actual data visualization steps of the process (for the KEGG reference database). These lines are practically an exact copy of lines 13-27, with differences happening on lines 45 (which column of data is used for the y-axis), 51 (the plot title), and 53 (the y-axis label).
 
+Lines 59 - 62 save the KEGG plot and prints a log message about completing that plot.
+
+Lines 65 - 57 save the `ggplot` objects in an `.rda` file.
+
+</details>
+
+:::
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**Why is the script using the `viridis` color palette?**
+
+<details><summary>Answer</summary>
+
+The `viridis` color palette is an **accessible** color palette with colors that can be distinguished by those with color vision deficiency. For more information on this topic, consult the [ITN Considerations for Data Visualization course](https://hutchdatascience.org/DataViz_Considerations/05_how_to_improve_viz.html#rule-1-using-accessible-color-palettes)
+
+</details>
+
+::::
+:::
+
+The `03a_visualization.R` script is rather repetitive, repeating the exact same lines of code between the two plots.
+
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
 Reproducibility considerations
@@ -178,14 +231,30 @@ Reproducibility considerations
 
 When writing code for a data analysis or software development, it is best to follow the [DRY principle: "Don't repeat yourself"](https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/). Functions are often a good way to [reduce repetitiveness](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/writing-durable-code.html#dry-up-your-code).
 
-The code within the `03a_visualization.R` script is not DRY, but rather a little repetitive. 
+The code within the `03a_visualization.R` script is not DRY and can be improved. 
 
 ::::
-:::
+::: 
 
-Lines 59 - 62 save the KEGG plot and prints a log message about completing that plot.
+Note that you can edit a script within a running container and the updated script will be available to use! If the script is in your mounted volume, you can still version-control the script, using `Git` (outside of the running container, within your CLI or GitHub Desktop) to commit and push changes.
 
-Lines 65 - 57 save the `ggplot` objects in an `.rda` file.
+:::{.emphasis_block}
+<details><summary>How would you edit a script?</summary>
+
+In Docker Desktop:
+
+* Navigate to the "Files" tab
+* Find the script within the `/home` directory
+* Right click on the script's name and click the "(Pencil icon) Edit file" option.
+* Alternatively, click the script's name and click the "Open file editor" button in the top right of the screen.
+* Either of these options which will open a file editor panel on the bottom of the Docker Desktop screen (like it did for `>_Terminal` earlier).
+* You can edit and save your changes to a script that way. Those changes are to the file in your mounted volume on your local system available outside of the container later.
+
+Outside of Docker Desktop:
+
+You can open the file from its `ocs-bio-containers-scaffold-main` location and use your favorite text editor (VSCode, Sublime, NotePad++, etc.) to edit and save the script. The changes will be available within the running container because you mounted the `ocs-bio-containers-scaffold-main`.
+
+**Mounting a volume provides researchers the flexibility to update or run an analysis while the container is running and have those analysis changes or outputs available outisde of the running container.**
 
 </details>
 
@@ -212,7 +281,7 @@ DRY code often utilizes functions to make sure that code isn't repeated.
 
 <details><summary>A possible answer</summary>
 
-Replace lines 11-27 with this instead:
+Edit the script to replace lines 11-27 with this instead:
 
 ```{r, eval = FALSE}
 
@@ -291,6 +360,8 @@ Line 11 combines the legends.
 
 Line 12 adds a single title for the whole plot.
 
+The rest of the script is used to save the combined plot as a `.png` file.
+
 </details>
 
 :::
@@ -311,38 +382,122 @@ This steps are in two separate scripts for a couple of reasons:
 
 ::: {.panel-tabset}
 
+First, run the `03a_visualization.R` script to create the separate plots and view the output.
+
 ### Docker Desktop
 
 * Navigate to the "Exec" tab within the running container.
 * Use the command `cd /home/analysis_scripts` to navigate to the `analysis_scripts` directory.
+* Use the command `Rscript 03a_visualization.R` to run the first visualization script.
+* Notice that the log messages we printed out while the script is running say each plot was being saved (a `ggsave` output message) and were completed (our script's message). Following the pattern from earlier sections in the case study, verify that the output `.png` files and `.rda` file were saved. They will be in the `/home/results/plots` directory rather than the `/home/data/` directory.
+* Navigate to the "Files" tab within the running container. 
+* Expand the folders within '/home' to find the plot files there as well.
+* Notice that if you double click the `.png` files you cannot view them. If you right click, there is a save option that would download the `.png`. However, you've saved the files to your mounted volume which means you can interact with them outside of the running container. They will be available there now while this container is running, once this container is no longer running, and if this container no longer exists. 
+* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_Terminal` within Docker Desktop, find and open the `.png` files within your `ocs-bio-containers-scaffold-main` directory to view them. 
 
 ### Docker through a CLI
 
-In the running container, run the visualization script(s)
+Verify that you are in the top directory (`ocs-bio-containers-scaffold-main`) and enter the following command in your CLI.
+
+```{.bash}
+Rscript analysis_scripts/03a_visualization.R
+```
+
+Notice the output messages from the script: They report that each plot was being saved (a `ggsave` output message) and were completed (our script's message). Verify that the output `.png` files and `.rda` file were saved in the `results/plots` subdirectory. 
+
+Open the plots to view them either by using the [`open`](https://linux.die.net/man/1/open) command within your CLI or using a file exploration app (e.g., Finder on Mac or File Explorer on Windows).
 
 :::
 
-Look at the output
-
-![](img/hmdb_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
+![](https://github.com/opencasestudies/ocs-bio-containers-analysis/blob/main/viz_results/plots/hmdb_scatter.png?raw=true){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of HMDB annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
 
 
-![](img/kegg_scatter.png){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
+![](https://github.com/opencasestudies/ocs-bio-containers-analysis/blob/main/viz_results/plots/kegg_scatter.png?raw=true){fig-alt="Scatter plot showing the number of paired samples in each dataset versus the number of KEGG annotated compounds within that dataset. Datasets are colored by whether they are longitudinal or not." width=800 .lightbox}
 
-We can use `ls plots/` to see that these png files exist. Though we'll have to use the file explorer to save any of those files to our system. Is there an easy way besides basing an image off of an IDE like VSCode or RStudio?
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**What do you observe about these plots?**
+
+<details><summary>Some observations</summary>
+
+* Both plots display a weak correlation between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database).
+* The correlation may be somewhat stronger if only non-longitudinal samples (purple dots) were compared rather than comparing all samples.
+* It's difficult to compare if studies are in a similar position (e.g, top left, bottom right, etc.) when looking in between the plots because they are separate.
+* Aesthetically some text labels are cutoff at the axis edges. 
+
+</details>
+
+::::
+:::
+
+::: {.panel-tabset}
+
+Then run the second visualization script `03b_visualization_patchwork.R` to combine the plots and view the output.
+
+### Docker Desktop
+
+* Navigate to the "Exec" tab within the running container.
+* Use the command `cd /home/analysis_scripts` to navigate to the `analysis_scripts` directory (unless you're already there).
+* Use the command `Rscript 03b_visualization_patchwork.R` to run the first visualization script.
+* Verify that the `combined_scatter.png` plot is in the `/home/results/plots` directory.
+* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_Terminal` within Docker Desktop, find and open the `combined_scatter.png` file within your `ocs-bio-containers-scaffold-main` directory to view them. 
+
+### Docker through a CLI
+
+In the running container, run the visualization script using this command:
+
+```{.bash}
+Rscript analysis_scripts/03b_visualization_patchwork.R
+```
+
+Verify that the output `combined_scatter.png` file was saved in the `results/plots` subdirectory and open the plot to view it.
+
+:::
 
 
+![](https://github.com/opencasestudies/ocs-bio-containers-analysis/blob/main/viz_results/plots/combined_scatter.png?raw=true){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not."}
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**What do you observe about this plot?**
+
+<details><summary>Some observations</summary>
+
+* The plots are mostly unchanged except:
+    * there's a single title rather than each having their own title
+    * aesthetically, not only are some text labels cutoff at the axis edges, they also overlap now.
+* Both plots display a weak correlation between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database).
+* Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots.
 
 
-We can again use `ls plots/` to see the new png file that was saved. The logs should also say something about saving the file
+</details>
 
-![](img/patchwork_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not."}
+::::
+:::
 
-`patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` in this case for illustrative purposes on adding a package to a container in an approachable example.
+
+:::{.think_question}
+::::{.think_question_header}
+Advanced Question opportunity
+::::
+::::{.inner_block}
+
+`patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` within this case study for illustrative purposes on adding a package to a container in an approachable example.
 
 Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of `patchwork`
 
-Note that comparing plots can be pretty difficult and for someone who needs to validate the process, it's going to be easier if there's a summary stat. So what sort of summary stat should we add to the analysis?
+::::
+:::
+
+If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the plots concerning correlation among the variables. Therefore, we can formally analyze the correlation among variables before we share this plot with Collab O. Rator!
 
 
 ***
