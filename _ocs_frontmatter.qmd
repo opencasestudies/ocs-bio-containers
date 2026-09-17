@@ -166,7 +166,7 @@ What is your preferred way to install Docker if not using Docker Desktop? The Do
 :::
 
 :::{.column-margin}
-Todo: Need to create a cheatsheet on installation and verification instructions for Docker
+To Do: Need to create a cheatsheet on installation and verification instructions for Docker
 :::
 
 

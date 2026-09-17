@@ -425,7 +425,7 @@ Question opportunity
 <details><summary>Some observations</summary>
 
 * Both plots display a weak but similar trend between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database). Specifically, as the number of samples with paired data increases, the number of annotated compounds in that dataset also tends to increase.
-* The trend may be somewhat stronger if only non-longitudinal samples (purple dots) were compared rather than comparing all samples. The longitudinal samples tend to appear lower in the plot with fewer annotated compounds than other studies (exception: iHMP_IBDMDB_2019 for HMDB but not KEGG).
+* The trend may be somewhat stronger if only non-longitudinal samples (purple dots) were compared rather than comparing all samples. The longitudinal samples tend to appear lower in the plot with fewer annotated compounds than other studies (exception: `iHMP_IBDMDB_2019` dataset for HMDB but not KEGG).
 * It's difficult to compare if studies are in a similar position (e.g, top left, bottom right, etc.) when looking in between the plots because they are separate.
 * Aesthetically some text labels are cutoff at the axis edges. 
 
