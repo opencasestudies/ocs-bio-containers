@@ -374,8 +374,8 @@ Question Opportunity
 <details><summary>Some observations</summary>
 
 * The correlation between the number of annotated compounds for the HMDB and KEGG reference databases is the highest. It isn't always 1 (perfect positive correlation), but it is a very strong monotonic correlation.
-* The correlation between the number of paired samples and the number of annotated compounds from a reference database is weaker. It's also not always equal if looking at number of paired samples compared to KEGG vs the number of paired samples compared to HMDB. This could be due to the dataset that we called out earlier `iHMP_IBDMDB_2019`. It is a longitudinal dataset so it would not be in the non-longitudinal dataset correlation analysis where now the correlation coefficients match (0.45). It is however an adult dataset and those correlation coefficients also match when compared (0.055).
-
+* The correlation between the number of paired samples and the number of annotated compounds from a reference database is weaker. It's also not always equal if looking at number of paired samples compared to KEGG vs the number of paired samples compared to HMDB. 
+    * This could be due in part to the dataset that we called out earlier `iHMP_IBDMDB_2019`. It is a longitudinal dataset so it would not be in the non-longitudinal dataset correlation analysis where now the correlation coefficients match (0.45). From this, we might hypothesize that the ordinal rankings of the non-longitudinal datasets are the same whether using the number of KEGG annotated compounds or the number of HMDB annotated compounds.
 </details>
 ::::
 :::
@@ -394,9 +394,49 @@ Having a "run all" script that specifies what scripts were used and in what orde
 ::::
 :::
 
+For this analysis, a run all script might look like the following:
+
 ```{.bash filename="run_analysis.sh"}
 {{< include resources/analysis_scripts/run_analysis.sh >}}
 ```
+
+:::{.emphasis_block}
+<details><summary>What's this script doing?</summary>
+
+This is not an R script like the other scripts have been throughout this case study. Instead this is a bash script. Every `cd`, `ls`, `pwd`, `docker build`, `Rscript [script name]`, `mkdir` command that you've used through out this case study is a "bash shell" command. Therefore this bash script is recording those commands in the correct order that they need to happen.
+
+Line 1 of the script is the script's shebang. Since this is a bash script, it has a different shebang than an R script would have.
+
+Lines 3, 9, 13, 19, and 23 all are messages describing where the run all process is / what it will be doing next. This is similar to the `cat` messages we had in the R scripts.
+
+Line 5 makes the `results/logs` directory like we did previously. All other directories are made by the scripts if they don't exist.
+
+Line 7 calls the first script that we used in the Data Import section and redirects the output messages to a log file.
+
+Line 11 calls the second script that we used in the Data Wrangling section and redirects the output messages to another log file.
+
+Line 15 calls the first data visualization script and redirects the output messages to another new log file.
+
+Line 17 calls the second data visualization script and redirects its output messages to the same log file used for the first script. This time the `>>` redirection operator is used. This appends to a pre-existing file rather than overwriting it.
+
+Line 21 calls the final R script with the correlation analysis and redirects its output messages to yet another new log file.
+
+Finally, line 25 is an inline command. Rather than saving everything that's in the quotes (`"`) inside of a script, we include it here and tell the Bash script to execute the command as if it was in an R script. This also allows us to mix bash commands with R code. 
+
+* The first portion that's inside the `$( ... )` is the bash part
+    * [`cat`](https://www.geeksforgeeks.org/linux-unix/cat-command-in-linux-with-examples/) (which we used earlier to look at the contents of a file) all of (`*`) the R scripts in this directory
+    * send the output of that (`|` -- bash's version of a pipe like the `%>%` R had) to ...
+    * [`grep`](https://www.geeksforgeeks.org/linux-unix/grep-command-in-unixlinux/) which will pull out only lines that have "library" in it
+    * send the output of that (`|`) to ...
+    * [`sort -u`](https://www.geeksforgeeks.org/linux-unix/sort-command-linuxunix-examples/) which will pull out only the unique (`-u`) lines. (It first sorts it for algorithmic efficiency.)
+    * send the output of that (`|`) to ...
+    * a bash function to take a stream of newline separated strings and format them into a single line separated by a semicolon and space. This allows us to pack a multi-step sequence into a single inline command. 
+* We finally combine this with a [`sessionInfo()`](https://sessioninfo.r-lib.org/) call (which is an R function)
+* And redirect the output of the whole thing into a log file
+* The purpose of that whole line was to output package versions and other session info for the R packages that we used in the analysis!
+
+</details>
+:::
 
 Point out that the validator can get the same results as the learner did by running the `run_analysis.sh` script.
 
