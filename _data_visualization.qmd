@@ -33,7 +33,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
     * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
 * Enter `mkdir -p dockerfiles data/wrangled`. 
-    * This will create directories named "dockerfiles" in the top and "wrangled" under the "data" directory.
+    * This will create directories named `dockerfiles` in the top and `wrangled` under the `data` directory.
 * Enter `cd dockerfiles`
 * Copy and paste the following:
 
@@ -147,7 +147,7 @@ You will see a variety of messages with steps as it's walking through the Docker
 docker run -v $(pwd):$(pwd) -w $(pwd) -it ocs-bio-containers-activity bash
 ```
 :::{.emphasis_block}
-Like the previous time we used `docker run` in the Data Import section of the case study, this command is using your current working directory to mount the volume and set the working directory of the running container to match it. If you use this command template within your own work, make sure your current working directory is the volume you want to mount. It won't work the way you want if your current working directroy is not the intended volume you want to mount.
+Like the previous time we used `docker run` in the Data Import section of the case study, this command is using your current working directory to mount the volume and set the working directory of the running container to match it. If you use this command template within your own work, make sure your current working directory is the volume you want to mount. It won't work the way you want if your current working directory is not the intended volume you want to mount.
 
 This time, the command uses a different image name (the one we've just built) than previously used as the blueprint to create the container.
 :::
@@ -178,14 +178,14 @@ Line 7 - 9 loads the `table1_extract` variable that stores the wrangled Table 1 
 Lines 13 - 27 are the actual data visualization steps of the process (for the HMDB reference database).
 
 * Lines 13 - 14 pipes the `table1_extract` data to the `mutate` function in order to ensure that the `longitudinal` data is represented by a [factor](https://swcarpentry.github.io/r-novice-inflammation/12-supp-factors.html).
-* Lines 15 - 18 [creates a new ggplot object](https://ggplot2.tidyverse.org/reference/ggplot.html) and defines what columns of `table1_extract` will be used for each part of the plot (the [`aes()` function](https://ggplot2.tidyverse.org/reference/aes.html) "constructs aethetic mappings").
+* Lines 15 - 18 [creates a new ggplot object](https://ggplot2.tidyverse.org/reference/ggplot.html) and defines what columns of `table1_extract` will be used for each part of the plot (the [`aes()` function](https://ggplot2.tidyverse.org/reference/aes.html) "constructs aesthetic mappings").
     * `num_paired_samples`: on the x-axis
     * `hmdb_annotated_compounds`: on the y-axis
     * `longitudinal`: (point) color
     * `dataset_name`: (point) text labels
 * Line 19 creates the scatter part of the plot ([`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html)) and specifies the size of the points.
 * Line 20 creates the text layer for the point labels ([`geom_text()`](https://ggplot2.tidyverse.org/reference/geom_text.html)), specifying the size, vertical justification, and color of the point text labels.
-* Line 21 changes the colors to use the viridis scale instead of the default colors ([`scale_color_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html)).
+* Line 21 changes the colors to use the `viridis` scale instead of the default colors ([`scale_color_viridis_d()`](https://ggplot2.tidyverse.org/reference/scale_viridis.html)).
 * Lines 22-25 set the title, x- and y- axis text labels, and the legend title.
 * Line 26 set the theme to be [a minimalistic theme](https://ggplot2.tidyverse.org/reference/ggtheme.html) with no background annotations and sets the base font size to 12pt.
 * Line 27 sets the [aspect ratio](https://ggplot2.tidyverse.org/reference/coord_fixed.html) for the plot since both axes are numerical data.
@@ -231,7 +231,7 @@ Reproducibility considerations
 
 When writing code for a data analysis or software development, it is best to follow the [DRY principle: "Don't repeat yourself"](https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/). Functions are often a good way to [reduce repetitiveness](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/writing-durable-code.html#dry-up-your-code).
 
-The code within the `03a_visualization.R` script is not DRY and can be improved. 
+The code within the `03a_visualization.R` script is not DRY and can be improved. But this is ok! Developing an analysis is often an iterative process. And this is a benefit of version-controlling analysis scripts: you can track updates to the analysis over time.
 
 ::::
 ::: 
@@ -254,7 +254,7 @@ Outside of Docker Desktop:
 
 You can open the file from its `ocs-bio-containers-scaffold-main` location and use your favorite text editor (VSCode, Sublime, NotePad++, etc.) to edit and save the script. The changes will be available within the running container because you mounted the `ocs-bio-containers-scaffold-main`.
 
-**Mounting a volume provides researchers the flexibility to update or run an analysis while the container is running and have those analysis changes or outputs available outisde of the running container.**
+**Mounting a volume provides researchers the flexibility to update or run an analysis while the container is running and have those analysis changes or outputs available outside of the running container.**
 
 </details>
 
@@ -332,7 +332,7 @@ kegg_scatter <- plot_scatter(table1_extract, kegg_annotated_compounds, "KEGG")
 
 Notice the new `plot_scatter()` function we define is mostly an exact copy of the original plotting code, except that it utilizes variables that can be specified when calling the function to specify the parts of the code that differed between the two instances of using it. We specifically use an ["embrace operator"](https://rlang.r-lib.org/reference/topic-data-mask-programming.html#embrace-with-) so that we can pass the variable/column name as an argument to the function.
 
-Also notice that we used an [roxygen block](https://roxygen2.r-lib.org/articles/rd.html) (the lines starting with `#'`) to document the function -- explaining what it does, what it needs (parameters/variables), and what it returns. This is a reproducibility best practice when writing R functions in your code.
+Also notice that we used an [`roxygen` block](https://roxygen2.r-lib.org/articles/rd.html) (the lines starting with `#'`) to document the function -- explaining what it does, what it needs (parameters/variables), and what it returns. This is a reproducibility best practice when writing R functions in your code.
 
 </details>
 
@@ -424,8 +424,8 @@ Question opportunity
 
 <details><summary>Some observations</summary>
 
-* Both plots display a weak correlation between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database).
-* The correlation may be somewhat stronger if only non-longitudinal samples (purple dots) were compared rather than comparing all samples.
+* Both plots display a weak but similar trend between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database). Specifically, as the number of samples with paired data increases, the number of annotated compounds in that dataset also tends to increase.
+* The trend may be somewhat stronger if only non-longitudinal samples (purple dots) were compared rather than comparing all samples. The longitudinal samples tend to appear lower in the plot with fewer annotated compounds than other studies (exception: iHMP_IBDMDB_2019 for HMDB but not KEGG).
 * It's difficult to compare if studies are in a similar position (e.g, top left, bottom right, etc.) when looking in between the plots because they are separate.
 * Aesthetically some text labels are cutoff at the axis edges. 
 
@@ -474,7 +474,6 @@ Question opportunity
 * The plots are mostly unchanged except:
     * there's a single title rather than each having their own title
     * aesthetically, not only are some text labels cutoff at the axis edges, they also overlap now.
-* Both plots display a weak correlation between the variables that are being compared (Number of samples with paired data and number of annotated compounds for that reference database).
 * Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots.
 
 
@@ -495,17 +494,6 @@ Advanced Question opportunity
 **How would you adjust the steps of the visualization process to use `pivot_longer` prior to plotting with `ggplot` and `facet_wrap` with `ggplot`?**
 
 <details><summary>A possible approach</summary>
-
-This approach uses pivot_longer:
-
-    * selecting the columns that end with the string "annotated_compounds" (because both `hmdb_annotated_compounds` and `kegg_annotated_compounds` end with that string and no other columns end with that string)
-    * piping that slightly longer but wider 
-
-Need to finish explanation of code and prettify slide.
-
-```{r, echo = FALSE}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_378#slide=id.g3fb50cd5a7c_0_378")
-```
 
 ```{r, eval = FALSE}
 table1_extract %>% 
@@ -530,12 +518,30 @@ table1_extract %>%
               )
 ```
 
+This approach uses `pivot_longer`:
+
+* selecting the columns that end with the string "annotated_compounds" (because both of the column names `hmdb_annotated_compounds` and `kegg_annotated_compounds` end with that string and no other column names end with that string)
+* moving the name of the columns that are being pivoted longer (`names_to` ) to a new column `ref_databse`
+* moving the values from the columns that are being pivoted longer (`values_to`) to a new column `num_annotated`
+* piping that slightly longer but wider dataset to `ggplot`
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_378#slide=id.g3fb50cd5a7c_0_378")
+```
+
+The `ggplot` code is mostly the same as was used in `03a_visualization.R` however ...
+
+Need to finish explanation of code and prettify slide above for wide vs long data.
+
 </details>
 
 ::::
 :::
 
-If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the plots concerning correlation among the variables. Therefore, we can formally analyze the correlation among variables before we share this plot with Collab O. Rator!
+If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the trends between the variables in the plot (e.g., their correlation). Therefore, we can formally analyze these trends/the correlation among variables before we share this plot with Collab O. Rator!
 
+:::{.column-margin}
+Add Correlation to glossary
+:::
 
 ***

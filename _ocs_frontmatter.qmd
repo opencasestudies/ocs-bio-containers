@@ -90,10 +90,6 @@ Include bioOCSdata package information once ready/applicable
 
 ## Prerequisites
 
-::: {.column-margin}
-What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
-:::
-
 :::{.prereq_box}
 ::::{.prereq_box_header}
 Prerequisites
@@ -165,8 +161,12 @@ For following along with later steps in this containers case study, you may want
 ::::
 :::
 
+::: {.column-margin}
+What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
+:::
+
 :::{.column-margin}
-Need to create a cheatsheet on installation and verification instructions for Docker
+Todo: Need to create a cheatsheet on installation and verification instructions for Docker
 :::
 
 
