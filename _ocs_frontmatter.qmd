@@ -90,6 +90,10 @@ Include bioOCSdata package information once ready/applicable
 
 ## Prerequisites
 
+::: {.column-margin}
+What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
+:::
+
 :::{.prereq_box}
 ::::{.prereq_box_header}
 Prerequisites
@@ -114,10 +118,6 @@ You will need the following installed:
 ### Docker through a CLI
 
 To follow along with this case study, you’ll need the following installed:
-
-::: {.column-margin}
-What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
-:::
 
 * **Docker Engine** () **Need to provide instructions**
 * **Docker CLI** () **Need to provide instructions**

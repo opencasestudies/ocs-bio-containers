@@ -109,10 +109,10 @@ The rest of the script is used to output information about the wrangled data or 
 
 :::
 
-::: {.panel-tabset}
 
 To run this script in the running container in order to wrangle the data, follow these steps:
 
+::: {.panel-tabset}
 
 ### Docker Desktop
 

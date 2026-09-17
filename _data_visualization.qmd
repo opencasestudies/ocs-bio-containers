@@ -9,9 +9,9 @@ If you have been following along but stopped, the scripts we are using are set u
 
 You will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section.
 
-:::{.panel-tabset}
-
 To fetch the modified Dockerfile and wrangled data, follow these instructions:
+
+:::{.panel-tabset}
 
 ### Download from github.com
 
@@ -146,11 +146,11 @@ You will see a variety of messages with steps as it's walking through the Docker
 ```{.bash}
 docker run -v $(pwd):$(pwd) -w $(pwd) -it ocs-bio-containers-activity bash
 ```
+:::{.emphasis_block}
+Like the previous time we used `docker run` in the Data Import section of the case study, this command is using your current working directory to mount the volume and set the working directory of the running container to match it. If you use this command template within your own work, make sure your current working directory is the volume you want to mount. It won't work the way you want if your current working directroy is not the intended volume you want to mount.
 
-**Like the previous time, this command is using the working directory to mount the volume and set the current working directory of the running container. If you use command with your own work, make sure your current working directory is the volume you want to mount. It won't work the way you want if your current working is not the volume you want to mount.**
-
-This time, the command uses a different image name (the one we've just built) than previously (in the Data Import section) as the blueprint to create the container.
-
+This time, the command uses a different image name (the one we've just built) than previously used as the blueprint to create the container.
+:::
 :::
 
 <!--
@@ -380,9 +380,9 @@ This steps are in two separate scripts for a couple of reasons:
 </details>
 :::
 
-::: {.panel-tabset}
+First, we will run the `03a_visualization.R` script to create the separate plots and view the output.
 
-First, run the `03a_visualization.R` script to create the separate plots and view the output.
+::: {.panel-tabset}
 
 ### Docker Desktop
 
@@ -434,9 +434,9 @@ Question opportunity
 ::::
 :::
 
-::: {.panel-tabset}
+Now we will run the second visualization script `03b_visualization_patchwork.R` to combine the plots and view the output.
 
-Then run the second visualization script `03b_visualization_patchwork.R` to combine the plots and view the output.
+::: {.panel-tabset}
 
 ### Docker Desktop
 
@@ -492,7 +492,45 @@ Advanced Question opportunity
 
 `patchwork` is a very useful package for combining plots. In this use case it isn't strictly necessary because we could use `pivot_longer` to wrangle the data and `facet_wrap` to split out the scatter plots for the different annotations. We chose to use `patchwork` within this case study for illustrative purposes on adding a package to a container in an approachable example.
 
-Add a click to expand details section about using `pivot_longer` and `facet_wrap` instead of `patchwork`
+**How would you adjust the steps of the visualization process to use `pivot_longer` prior to plotting with `ggplot` and `facet_wrap` with `ggplot`?**
+
+<details><summary>A possible approach</summary>
+
+This approach uses pivot_longer:
+
+    * selecting the columns that end with the string "annotated_compounds" (because both `hmdb_annotated_compounds` and `kegg_annotated_compounds` end with that string and no other columns end with that string)
+    * piping that slightly longer but wider 
+
+Need to finish explanation of code and prettify slide.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_378#slide=id.g3fb50cd5a7c_0_378")
+```
+
+```{r, eval = FALSE}
+table1_extract %>% 
+    pivot_longer(ends_with("annotated_compounds"), 
+                names_to = "ref_database", 
+                values_to = "num_annotated") %>% 
+    ggplot(aes(x = num_paired_samples, 
+               y = num_annotated, 
+               color = longitudinal, 
+               label = dataset_name)) + 
+    geom_point(size = 2.5) +
+    geom_text(vjust = -0.5, size = 2.8, color = "black") +
+    scale_color_viridis_d(end = 0.6) +
+    labs(x = "No. samples with paired data",
+         y = "No. Annotated compounds",
+         color = "Longitudinal")  +
+    theme_minimal(base_size = 12) +
+    coord_fixed(ratio = 1) + 
+    facet_wrap(~ref_database, labeller = labeller(ref_database = c("hmdb_annotated_compounds" = "HMDB", 
+                                                                   "kegg_annotated_compounds" = "KEGG")
+                                                 )
+              )
+```
+
+</details>
 
 ::::
 :::
