@@ -1,15 +1,259 @@
 # **Data Analysis**
 ***
 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the Data Visualization section. 
+
+***
+
+<details> <summary> If you skipped the Data Wrangling section or the Data Visualization section click here. </summary>
+
+If you only skipped the Data Wrangling section and went through the Data Visualization section, you should be fine to proceed with the Data Analysis section.
+
+If you only skipped the Data Visualization section but went through the Data Wrangling section, you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+
+If you skipped the data wrangling and the data visualization section, then you will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section and you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+
+To fetch the modified Dockerfile and wrangled data, follow these instructions:
+
+:::{.panel-tabset}
+
+### Download from github.com
+
+* Modified Dockerfile
+    * Use this link to <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/dockerfiles/activity/Dockerfile" download> download the modified Dockerfile</a>.
+    * Create a `dockerfiles` folder in the top directory of your `ocs-bio-containers-scaffold-main` folder (e.g., the one with `analysis_scripts`, `continued_learning_scripts`, the `README.md`)
+    * Move the downloaded Dockerfile into the new `dockerfiles` folder. 
+* Wrangled data
+    * Use this link to [download the wrangled data as an `.rda` file](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda)
+    * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
+    * Move the downloaded `.rda` file into the new `wrangled` folder.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
+```
+
+### Command Line
+
+* Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
+    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
+* Enter `mkdir -p dockerfiles data/wrangled`. 
+    * This will create directories named `dockerfiles` in the top and `wrangled` under the `data` directory.
+* Enter `cd dockerfiles`
+* Copy and paste the following:
+
+```{.bash}
+wget "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/refs/heads/main/resources/dockerfiles/activity/Dockerfile" .
+```
+
+* Enter `cd ../data/wrangled`
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda" .
+```
+
+* Enter `cd ../../`
+
+:::
+
+</details>
+***
+
 ## Container Application
 
-Finding the correlation between different variables in the dataset
+### Correlation 
 
-Looking at subsets of datasets for the same variables...
+The correlation between two variables is a statistical measure of their relationship -- how they occur or vary together. Correlation is often used to describe relationships between variables but does not provide any evidence towards a cause and effect relationship between the two. Correlations are described with a [**correlation coefficient**](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/scatterplots-and-correlation/a/correlation-coefficient-review?referrer=share_link) which ranges from -1 to 1, describing both the strength of the relationship and the direction of the relationship. Correlation coefficients often accompany scatter plots (like the ones produced in the Data Visualization section of this case study).
+
+#### Strength of the relationship
+
+* Correlation coefficient values equal to 0 mean that two variables don't seem to exhibit a relationship at all.
+* Correlation coefficient values close to 0 mean that the two variables exhibit a weak relationship.
+* Values close to -1 or 1 mean that the two variables exhibit a strong relationship. The closer to -1 or 1, the stronger the relationship.
+* Values equal to -1 or 1 mean that the two variables exhibit perfect correlation.
+
+#### Direction of the relationship
+
+* Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
+* Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
+
+::: {.column-margin}
+Make a figure like this one from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Correlation_coefficient
+:::
+
+### Spearman Correlation
+
+Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
+
+:::{.column-margin}
+Include a visual comparing linear (constant rate of change) vs monotonic relationships
+:::
+
+Because we don't know the underlying distribution of our variables (we haven't looked at that) and from the scatter plot there are a couple of points that separate from the others, Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots. We are assuming that samples in each dataset are unique to that dataset (e.g., a research participant is only part of the `KIM_ADENOMAS` and none of the other studies). This seems like a fairly likely assumption. If our datasets were studying a rare condition or disease this could be an unreasonable assumption. Given the data that we have, we may have to consult with the rest of the team to confirm the veracity of this assumption. However, since it's secondary data, we may not be able to confirm this across studies.
+
+### What correlation relationships do we want to measure or quantify?
+
+Our scatter plots are directly comparing the number of paired samples to the number of HMDB annotated compounds or KEGG annotated compounds in the dataset. So that's two correlations:
+
+1. Number of paired samples vs the Number of HMDB annotated compounds
+2. Number of paired samples vs the Number of KEGG annotated compounds
+
+We also observed earlier that the datasets are mostly located in the same region (e.g., top right, bottom left) when comparing between the two scatter plots, so we could also compare the coreelation between the number of annotated compounds for each database:
+
+3. Number of HMDB annotated compounds vs Number of KEGG annotated compounds
+
+We can consider all of the datasets together, or only look at subsets of the datasets. Previously, when looking at the scatter plots we observed that non-longitudinal datasets seemed to separate from longitudinal studies. We also have some datasets whose research participants are children or infants and others whose research participants are Adults. Therefore, we could filter our datasets a few ways:
+
+A. Find the correlation between the variables considering all datasets in the curated data resource.
+B. Find the correlation between the variables considering only non-longitudinal studies from the curated data resource.
+C. Find the correlation between the variables considering only datasets with Adult participants from the curated data resource.
+
+:::{.emphasis_block}
+
+<details><summary>Which studies are non-longitudinal?</summary>
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**How can we find non-longitudinal studies in our wrangled dataset? And how many are there?**
+
+<details><summary>Hint</summary>
+What are the possible values in the `longitudinal` column?
+</details>
+
+<details><summary>Answer</summary>
+
+We can find the datasets or studies whose value in the `longitudinal` column is "No". There are 8 studies. 
+
+```{r, echo = FALSE, fig.alt = "There are 8 datsets where the longitudinal column records No to represent that it is a non-longitudinal study."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_0#slide=id.g3fb8f9fbd14_0_0")
+```
+
+In R, we would use:
+
+```{r, eval = FALSE}
+table1_extract %>%
+    filter(longitudinal == "No")
+```
+
+</details>
+::::
+:::
+
+</details>
+
+<details><summary>Which datasets have Adult participants?</summary> 
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**How can we find datasets with Adult participants in our wrangled dataset? And how many are there?**
+
+<details><summary>Hint</summary>
+What are the possible values in the `cohort_description` column?
+</details>
+
+<details><summary>Answer</summary>
+
+The `cohort_description` column is much more complex than the `longitudinal` column. However, certain cohorts are described as being "Infants...", "Children....", "...from children...", "Preterm infants....". We could exclude those cohorts. Then there are 10 datasets.
+
+```{r, echo = FALSE, fig.alt = "There are 10 datasets where the cohort description does not include the mention of children or infants, representing adult cohorts."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_11#slide=id.g3fb8f9fbd14_0_11")
+```
+
+In R, we would use:
+
+```{r, eval = FALSE}
+table1_extract %>%
+    filter(!str_detect(tolower(cohort_description),
+                      "infants|children"))
+```
+
+We will unpack this code later.
+
+</details>
+::::
+:::
+
+</details>
+
+:::
+
+We will therefore find 9 correlation coefficients: 
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**What will the 9 correlation coefficients represent?**
+
+<details><summary>Hint</summary>
+
+We are looking at 3 different comparisons for the variables in the datasets (1-3 above) and 3 different sets within the datasets (A-C above)
+
+</details>
+
+<details><summary>Answer</summary>
+
+* A1: Correlation between number of paired samples and number of HMDB annotated compounds, considering all datasets within the curated data resource.
+* A2: Correlation between number of paired samples and number of KEGG annotated compounds, considering all datasets within the curated data resource.
+* A3: Correlation between number of HMDB annotated compounds and number of KEGG annotated compounds, considering all datasets within the curated data resource.
+* B1: Correlation between number of paired samples and number of HMDB annotated compounds, considering only non-longitudinal studies within the curated data resource.
+* B2: Correlation between number of paired samples and number of KEGG annotated compounds, considering only non-longitudinal studies within the curated data resource.
+* B3: Correlation between number of HMDB annotated compounds and number of KEGG annotated compounds, considering only non-longitudinal studies within the curated data resource.
+* C1: Correlation between number of paired samples and number of HMDB annotated compounds, considering only datasets with Adult participants within the curated data resource.
+* C2: Correlation between number of paired samples and number of KEGG annotated compounds, considering only datasets with Adult participants within the curated data resource.
+* C3: Correlation between number of HMDB annotated compounds and number of KEGG annotated compounds, considering only datasets with Adult participants within the curated data resource.
+
+</details>
+
+::::
+:::
+
+### Correlation Coefficient Matrices
+
+A correlation coefficient matrix is a square table that displays the pairwise correlations between multiple variables in a dataset. Because we are comparing three variables from our dataset, our results will be in a correlation coefficient matrix.
+
+```{r, echo = FALSE, fig.alt = "Correlation coefficient matrices are square & symmetric with the diagonal being irrelevant ones."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_22#slide=id.g3fb8f9fbd14_0_22")
+```
+
+### Running the correlation analysis
 
 ```{.R filename="04_analysis_metric.R"}
 {{< include resources/analysis_scripts/04_analysis_metric.R >}}
 ```
+
+:::{.emphasis-block}
+<details><summary>What is this script doing? </summary>
+
+
+
+</details>
+:::
+
+Knowing that this script is in the `analysis_scripts` directory and is an `.R` like all of the other scripts that we have run throughout this case study, enter a command to run this script in your running container.
+
+### Reviewing the output
+
+
+
+:::{.emphasis-block}
+For a discussion on the limitations of correlation, consider this summary from a previous case study: [https://www.opencasestudies.org/ocs-bp-co2-emissions/#Limitations_of_Correlation](https://www.opencasestudies.org/ocs-bp-co2-emissions/#Limitations_of_Correlation)
+:::
+
+
+### Team Collaboration
+
+
 
 ::: {.panel-tabset}
 
