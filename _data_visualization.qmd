@@ -474,7 +474,7 @@ Question opportunity
 * The plots are mostly unchanged except:
     * there's a single title rather than each having their own title
     * aesthetically, not only are some text labels cutoff at the axis edges, they also overlap now.
-* Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots.
+* Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots. An exception to this is the `iHMP_IBDMDB_2019` dataset that isn't as high on the axis for the number of KEGG annotated compounds as it is on the axis for the number of KEGG annotated compounds.
 
 
 </details>
