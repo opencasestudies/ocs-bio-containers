@@ -242,7 +242,7 @@ We will use the following script to find the correlations that we described prev
 {{< include resources/analysis_scripts/04_analysis_metric.R >}}
 ```
 
-:::{.emphasis-block}
+:::{.emphasis_block}
 <details><summary>What is this script doing? </summary>
 
 Lines 1-4 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-4. The `here` package will be used to build input the file path on line 6. The `tidyverse` is used to pipe the data from function to function (with `%>%`) and for functions like `filter` from `dplyr`, and `select` from `dplyr` that we've used before, as well as `str_detect` from `stringr`.
@@ -347,6 +347,23 @@ cat results/logs/correlation_result.txt
 
 :::
 
+::: {.emphasis_block}
+
+```{r}
+#| echo: false
+#| output: asis
+
+# Replace with your raw GitHub URL
+url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/analysis_logs.txt"
+
+# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
+file_lines <- readLines(url, warn = FALSE)
+formatted_lines <- paste0(file_lines, "  ")
+cat(formatted_lines, sep = "\n")
+```
+
+:::
+
 :::{.think_question}
 ::::{.think_question_header}
 Question Opportunity
@@ -395,25 +412,6 @@ Ask learners to try to run the analysis
 
 :::
 
-Look at the logs.
-
-
-::: {.emphasis_block}
-
-```{r}
-#| echo: false
-#| output: asis
-
-# Replace with your raw GitHub URL
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/analysis_results/logs/analysis_logs.txt"
-
-# Fetch lines and print verbatim as Markdown with two spaces in between lines to enforce lines breaks
-file_lines <- readLines(url, warn = FALSE)
-formatted_lines <- paste0(file_lines, "  ")
-cat(formatted_lines, sep = "\n")
-```
-
-:::
 
 
 ## Container Infrastructure
