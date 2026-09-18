@@ -383,7 +383,7 @@ Question Opportunity
 
 ### Team Collaboration
 
-An analysis changes over time as you develop it. Even with numbering our scripts and using a container, team members may have a difficult time reproducing our analysis unless they know exactly what was run in what order.
+An analysis changes over time as you develop it. Even with numbering our scripts and using a container, team members may have a difficult time reproducing our analysis unless they know exactly what was run in what order. You can should keep notes in an laboratory notebook [@Schnell_2015] about your computational analyses and these can often be shared among a team, but they typically won't be shared when publishing a study. However, computational scripts are shared when publishing a study [@Sandve_Nekrutenko_Taylor_Hovig_2013]. Therefore, having a script or very detailed README file that explains what is run when is beneficial both for collaborative work and the eventual sharing of the work. 
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
