@@ -517,7 +517,7 @@ Stopping a container allows you to restart it to resume your work at a later tim
 
 <details><summary>Stop vs Pause</summary>
 
-You can pause a container rather than stopping it. Pausing a container allows for quicker resumption of work when un-pausing a container than stopping a container would allow for. However, stopping a container frees up more memory resources for your computer than pausing a container. 
+You can pause a container rather than stopping it. Pausing a container allows for quicker resumption of work when unpausing a container than stopping a container would allow for. However, stopping a container frees up more memory resources for your computer than pausing a container. 
 
 [To see more about pausing vs stopping, consult this GitHub gist post](https://gist.github.com/faboulaws/d0362b904d78f7be6338297a55410106)
 
