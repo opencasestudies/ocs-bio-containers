@@ -288,8 +288,6 @@ Notice that this script is outputing messages like previous scripts have done, b
 
 Knowing that this script is in the `analysis_scripts` directory and is an `.R` like all of the other scripts that we have run throughout this case study, enter a command to run this script in your running container.
 
-```suggestion
-
 ::: {.emphasis_block}
 <details><summary>Reminder of the correct command:</summary>
 
@@ -307,7 +305,7 @@ Rscript analysis_scripts/04_analysis_metric.R
 
 </details>
 :::
-```
+
 
 ### Reviewing the output
 
