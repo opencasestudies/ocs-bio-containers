@@ -3,7 +3,7 @@
 
 ## Container Application
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our mounted volume (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import section). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
 
 ::: {.column-margin}
 Add instructions on pausing, stopping, and deleting containers.
@@ -13,7 +13,7 @@ Add instructions on pausing, stopping, and deleting containers.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-At the minimum, you will need to repeat the Container Infrastructure steps from the Data Import section. 
+At the minimum, you will need to repeat the steps from the Data Import -- Container Infrastructure section. 
 
 You can either perform Step 1 from the Data Import -- Container Application section, or in your now running container, you can use `wget` to fetch the data. 
 
@@ -26,6 +26,7 @@ If using `wget` to fetch the data:
 * Navigate to the "Exec" tab (along the top of the running container).
 * Type `cd /home` and press the return / enter key.
 * Type `mkdir -p data/imported` and press the return / enter key.
+    * This will make the "imported" directory under the "data" directory (and create the "data" directory if it doesn't already exist).
 * Type `cd data/imported` and press the return / enter key.
 * Copy and paste the following: 
 
@@ -34,6 +35,10 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 ```
 
 * Type `cd /home` and press the return / enter key.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_291#slide=id.g3fb50cd5a7c_0_291")
+```
 
 ### Docker through a CLI 
 
@@ -64,22 +69,22 @@ Using the `tidyverse`, we will wrangle the extracted version of Table 1. This sc
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. `here` will be used to build input and output file paths on lines 7, 44, 50, and 53. `tidyverse` is used to pipe the data from function to function and for functions like `rename`, [`mutate` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter`, and `select` throughout the script. `readr` will be used to write an output `csv` file on line 52.
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build relative input and output file paths on lines 7, 44, 50, and 53. The `tidyverse` is used to pipe the data from function to function (with `%>%`) and for functions like `rename` from the package `dplyr`, [`mutate` from `dplyr` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter` from `dplyr`, and `select` from `dplyr` throughout the script. The `readr` package will be used to write an output `csv` file on line 52.
 
 Line 7 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
 
-Lines 10-36 are the actual wrangling steps of the process.
+Lines 10-36 are the actual wrangling steps of the process:
 
 * Lines 11-16 rename the data frame columns so they are descriptive, reflecting the data they contain. This uses the [function `rename()`](https://dplyr.tidyverse.org/reference/rename.html)
-* Lines 17-22, 32 extract the numbers (which represent the number of paired samples) that were appended to the ends of the cohort descriptions from the `cohort_description_num_paired_samples` column, storing them in their own column `num_paired_samples`. This uses the [function `str_extract()`](https://stringr.tidyverse.org/reference/str_extract.html) and a regular expression for the "pattern" to extract.
+* Lines 17-22, 32 extract the numbers (which represent the number of paired samples) that were appended to the ends of the cohort descriptions from the `cohort_description_num_paired_samples` column, storing them in their own column `num_paired_samples`. This uses the [function `str_extract()`](https://stringr.tidyverse.org/reference/str_extract.html) from the package `stringr` and a regular expression for the "pattern" to extract.
     * `\\d+$` is a [regular expression (regex)](https://r4ds.hadley.nz/regexps.html) that is used to match a pattern -- in this case all digits / numbers at the end of the string
         * `\d` matches any digit.
         * `+` is a quantifier and means 1 or more matches (digits in this case) will be included.
         * `$` is an anchor and means a pattern at the end of the string.
         * the starting backslash (`\`) is an escape character, necessary to escape the "matches any digit" part of the regular expression so R evaluates it. 
-* Lines 17, 23-26, 32 remove the numbers that we just extracted from the `cohort_description_num_paired_samples` column, creating an intermediate text column (named `cohort_description_text`) that only contains the cohort descriptions (though they are still incomplete for a given row because they are multi-line). This uses the same regular expression that we used in the previous step and the [function `str_remove()`](https://stringr.tidyverse.org/reference/str_remove.html)
+* Lines 17, 23-26, 32 remove the numbers that we just extracted from the `cohort_description_num_paired_samples` column, creating an intermediate text column (named `cohort_description_text`) that only contains the cohort descriptions (though they are still incomplete for a given row because they are multi-line). This uses the same regular expression that we used in the previous step and the [function `str_remove()`](https://stringr.tidyverse.org/reference/str_remove.html) from `stringr`.
 * Lines 17, 27-31, 32 sets up a [`case_when`](https://dplyr.tidyverse.org/reference/case-and-replace-when.html) that evaluates whether the next value/row in the dataset name column is an NA value. 
-    * This utilizes the [`lead()` function](https://dplyr.tidyverse.org/reference/lead-lag.html) to look for the next value. 
+    * This utilizes the [`lead()` function](https://dplyr.tidyverse.org/reference/lead-lag.html) from `dplyr` to look for the next value. 
     * In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`. 
     * If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text (the text that we stored in the intermediate `cohort_description_text` column in the previous step). 
     *. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
@@ -104,10 +109,10 @@ The rest of the script is used to output information about the wrangled data or 
 
 :::
 
-::: {.panel-tabset}
 
 To run this script in the running container in order to wrangle the data, follow these steps:
 
+::: {.panel-tabset}
 
 ### Docker Desktop
 
@@ -370,8 +375,8 @@ Given what you know about the containerization process, what steps need to be do
 
 <details><summary>Answer</summary>
 
-1. {{< glossary "Build" >}} the modified Dockerfile to be an image (will need to do this using a {{< glossary "Command Line Interface (CLI)" display = "command line interface" >}})
-2. Run the image to create a container (CLI or Docker Desktop), mounting the directory or volume that has the analysis scripts within the run command.
+1. {{< glossary "Build" >}} an image from the modified Dockerfile.
+2. Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.
 3. That running container now has `patchwork` available for use.
 
 You could push the image after building it (in order to share it), but don't need to do that in order to use the package within a running container. Definitely share it eventually so others in your team have access to all of the same software you used!

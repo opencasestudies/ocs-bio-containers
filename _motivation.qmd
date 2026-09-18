@@ -9,7 +9,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 In addition to the background and visualization request, your collaborator sends you the information on how to access both the pre-existing container and the analysis script to get started with the task.
 
-In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use {{< glossary "Docker" >}} to specify the environment used to create several data visualizations of a table describing samples within a curated {{< glossary "Data collection or resource" display="data resource" >}}. You will learn how to use a pre-existing Docker container to run an existing analysis. 
+In this case study, we will introduce containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments. We will use {{< glossary "Docker" >}} to specify the environment used to create several data visualizations of a table describing samples within a curated {{< glossary "Data collection or resource" display="data resource" >}} from @Muller_Algavi_Borenstein_2022. You will learn how to use a pre-existing Docker container to run an existing analysis. 
 
 :::{.definition_box}
 ::::{.definition_box_header}

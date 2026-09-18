@@ -29,6 +29,7 @@ Dockerfile
 Dockerhub
 dplyr
 dropdown
+DRYer
 endeavour
 Extensibility
 favicon
@@ -54,6 +55,7 @@ hw
 iconpacks
 interoperable
 ITCR
+iteratively
 ITN
 kegg
 KEGG
@@ -75,6 +77,7 @@ metabolomics
 Metabolomics
 microbiome
 microbiota
+minimalistic
 mise
 MoNA
 monospace
@@ -83,6 +86,7 @@ NA's
 Nextflow
 NMR
 NonCommercial
+NotePad
 ocs
 Oshane
 OSS
@@ -104,6 +108,7 @@ Rator's
 Rator
 rda
 README
+readr
 replicability
 Replicability
 qs

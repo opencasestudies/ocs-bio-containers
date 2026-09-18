@@ -126,6 +126,7 @@ To follow along with this case study, you’ll need the following installed:
 
 It will also be helpful to be have the following skills:
 
+* ability to navigate file systems. Please use or review the [Software Carpentry "Navigating Files and Directories" tutorial](https://swcarpentry.github.io/shell-novice/02-filedir.html) if needed.
 * basic R skills (many introductory courses can be found online, including [this one](https://hutchdatascience.org/Intro_to_R/))
 * familiarity with dplyr and ggplot2, or willingness to learn (these [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) and [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf) cheatsheets may be helpful, as well as the original [open case studies](https://www.opencasestudies.org/search.html))
 
@@ -160,8 +161,12 @@ For following along with later steps in this containers case study, you may want
 ::::
 :::
 
+::: {.column-margin}
+What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
+:::
+
 :::{.column-margin}
-Need to create a cheatsheet on installation and verification instructions for Docker
+To Do: Need to create a cheatsheet on installation and verification instructions for Docker
 :::
 
 

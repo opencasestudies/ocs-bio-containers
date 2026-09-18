@@ -7,10 +7,12 @@ Package    | Use
 ---------- |-------------
 [here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Constructs paths within project
 [tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
+[readr](https://cran.r-project.org/web/packages/readr/refman/readr.html){target="_blank"} | Read and write rectangular data (like `.csv`, `.tsv`, etc.)
 [tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Data wrangling
 [ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
 [patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
 
+[Loading the `tidyverse` loads several specialized packages to support data wrangling](https://tidyverse.org/packages/) such as `stringr` (used to work with strings) and `dplyr` (used to wrangle, transform, and summarize tabular data like data frames). You can think of the `tidyverse` as providing a universe of related R packages. Rather than using `library(...)` multiple times to call each package, we can call `library(tidyverse)` once to load all of them. You may still want to load a package explicitly even if it's packaged within the tidyverse for greater clarity. This [posit forum thread](https://forum.posit.co/t/teaching-install-load-packages-individually-or-use-tidyverse-package/71) provides some relevant points about the topic. Also note that the `%>%` (pipe) is loaded thanks to the `tidyverse`, `dplyr`, or `magrittr` packages. Load any of those packages and you'll have access to it.
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
 
