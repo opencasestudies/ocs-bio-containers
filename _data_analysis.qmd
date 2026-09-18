@@ -119,8 +119,6 @@ We can consider all of the datasets together, or only look at subsets of the dat
 A. Find the correlation between the variables considering all datasets in the curated data resource.<br>
 B. Find the correlation between the variables considering only non-longitudinal studies from the curated data resource.<br>
 
-Researchers utilizing the curated data resource may focus on the `cohort_description` column to select studies that focus on a specific disease or research study participant age (e.g., infants or children vs adults). We also have some datasets whose research participants are children or infants and others whose research participants are adults. Therefore, we could filter our datasets a few ways:
-
 :::{.emphasis_block}
 
 <details><summary>Which studies are non-longitudinal?</summary>
@@ -384,7 +382,9 @@ Question Opportunity
 ::::
 :::
 
-We observe a weak to intermediate positive correlation suggesting that as the number of samples in a datset grows, the number of observed metabolites (annotated in a referene database) also grows. The strength of this relationship can be stronger if we consider more similar datasets (e.g., the non-longitudinal datasets). However, recall that a correlation does not imply a causation and their are other experimental or pre-analytical factors that may impact this including extraction solvent used for samples, sample storage, diet of the host prior to sample collection, etc. [@JOHNSON_GONZALEZ_2012; @Smith_etal_2020; @Pope_etal_2025; @Dovhalyuk_Globisch_2026]. 
+We observe a weak to intermediate positive correlation suggesting that as the number of samples in a dataset grows, the number of observed metabolites (annotated in a referene database) also grows. The strength of this relationship can be stronger if we consider more similar datasets (e.g., the non-longitudinal datasets). However, recall that a correlation does not imply a causation and their are other experimental or pre-analytical factors that may impact this including extraction solvent used for samples, sample storage, diet of the host prior to sample collection, etc. [@JOHNSON_GONZALEZ_2012; @Smith_etal_2020; @Pope_etal_2025; @Dovhalyuk_Globisch_2026]. 
+
+We previously mentioned that metabolomics and microbiome data are paired so that researchers can get a better idea of the actual activity or impact of microbes in the microbiome. Researchers who would be utilizing this data resource likely care about the impact within a specific use case (e.g., may focus on the `cohort_description` column to select studies that focus on a specific disease or research study participant age (e.g., infants or children vs adults) or some other demographic information), they may have to balance increasing their sample size with picking datasets that are similar or relevant enough to their specific use case.
 
 ### Team Collaboration
 
