@@ -153,6 +153,10 @@ This time, the command uses a different image name (the one we've just built) th
 :::
 :::
 
+::: {.column-margin}
+Add a thought question about the mounted volume and what's in it if it's mounted for two different running containers. Does the running container have a snapshot of the volume, or is the volume up to date? (up to date)
+:::
+
 <!--
 Include a thought question to give learners the opportunity to build a flowchart (e.g., moving nouns and verbs into blanks) that represents the containerization process?
 -->
