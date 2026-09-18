@@ -241,7 +241,7 @@ Lines 8-19 provide an `roxygen` block documenting a function `find_cor_matrix()`
 * Lines 8-10 provide descriptions of the overall function.
 * Lines 12-15 provide descriptions of the two parameters that are used to control the functionality or behavior of this function (`input_df` -- the input dataset and `filter_description` to control how that dataset should be filtered).
 * Line 19 describes what the function returns to the user.
-* Line 20 names the function and the paramters that control its behavior, including specifying that the `filter_description` parameter has a default value "All Data".
+* Line 20 names the function and the parameters that control its behavior, including specifying that the `filter_description` parameter has a default value "All Data".
 * Line 23 checks the `filter_description` parameter value using the [base R function `stopifnot()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/stopifnot). This means that only those 2 values are allowed values for the function. Any other values and the function wouldn't know how to proceed correctly or what the user wants, so the function stops.
 * Lines 26-32 use the actual value of the `filter_description` parameter to filter the input dataset (the A, B, C parts of the comparisons we enumerated earlier). 
     * If the `filter_description` is `"Non-longitudinal"`, then we use the `dplyr` `filter()` function to keep only rows from the input dataframe where the `longitudinal` column are equal to  (`==`) "No" (lines 26-29).
@@ -263,7 +263,7 @@ Lines 50 and 53 call the `find_cor_matrix()` function, each for different (sub)s
 * Line 53 uses non-longitudinal studies
 
 
-Notice that this script is outputing messages like previous scripts have done, but it is not saving any files. **Therefore, we will have to be intentional in how we capture the output from it when we run it.**
+Notice that this script is outputting messages like previous scripts have done, but it is not saving any files. **Therefore, we will have to be intentional in how we capture the output from it when we run it.**
 
 </details>
 :::
@@ -382,7 +382,7 @@ Question Opportunity
 ::::
 :::
 
-We observe a weak to intermediate positive correlation suggesting that as the number of samples in a dataset grows, the number of observed metabolites (annotated in a referene database) also grows. The strength of this relationship can be stronger if we consider more similar datasets (e.g., the non-longitudinal datasets). However, recall that a correlation does not imply a causation and their are other experimental or pre-analytical factors that may impact this including extraction solvent used for samples, sample storage, diet of the host prior to sample collection, etc. [@JOHNSON_GONZALEZ_2012; @Smith_etal_2020; @Pope_etal_2025; @Dovhalyuk_Globisch_2026]. 
+We observe a weak to intermediate positive correlation suggesting that as the number of samples in a dataset grows, the number of observed metabolites (annotated in a reference database) also grows. The strength of this relationship can be stronger if we consider more similar datasets (e.g., the non-longitudinal datasets). However, recall that a correlation does not imply a causation and their are other experimental or pre-analytical factors that may impact this including extraction solvent used for samples, sample storage, diet of the host prior to sample collection, etc. [@JOHNSON_GONZALEZ_2012; @Smith_etal_2020; @Pope_etal_2025; @Dovhalyuk_Globisch_2026]. 
 
 We previously mentioned that metabolomics and microbiome data are paired so that researchers can get a better idea of the actual activity or impact of microbes in the microbiome. Researchers who would be utilizing this data resource likely care about the impact within a specific use case (e.g., may focus on the `cohort_description` column to select studies that focus on a specific disease or research study participant age (e.g., infants or children vs adults) or some other demographic information), they may have to balance increasing their sample size with picking datasets that are similar or relevant enough to their specific use case.
 
@@ -517,7 +517,7 @@ Stopping a container allows you to restart it to resume your work at a later tim
 
 <details><summary>Stop vs Pause</summary>
 
-You can pause a container rather than stopping it. Pausing a container allows for quicker resumption of work when unpausing a container than stopping a container would allow for. However, stopping a container frees up more memory resources for your computer than pausing a container. 
+You can pause a container rather than stopping it. Pausing a container allows for quicker resumption of work when un-pausing a container than stopping a container would allow for. However, stopping a container frees up more memory resources for your computer than pausing a container. 
 
 [To see more about pausing vs stopping, consult this GitHub gist post](https://gist.github.com/faboulaws/d0362b904d78f7be6338297a55410106)
 
@@ -656,7 +656,7 @@ Consult the [Version Control case study](https://www.opencasestudies.org/ocs-bio
 ::: {.emphasis_block}
 **Which should you share -- the Dockerfile or the image?**
 
-Typically, sharing a container **image** is better for reproduciblity, even though the Dockerfile is smaller and more readable.
+Typically, sharing a container **image** is better for reproducibility, even though the Dockerfile is smaller and more readable.
 :::
 
 |               | Sharing a Dockerfile | Sharing a Container Image |

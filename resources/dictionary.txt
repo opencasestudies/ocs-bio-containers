@@ -33,6 +33,7 @@ DRYer
 endeavour
 Extensibility
 favicon
+Figshare
 findable
 frontmatter
 GC
@@ -57,6 +58,7 @@ interoperable
 ITCR
 iteratively
 ITN
+ITN's
 kegg
 KEGG
 KI
@@ -88,6 +90,7 @@ NMR
 NonCommercial
 NotePad
 ocs
+OneDrive
 Oshane
 OSS
 OTTR
@@ -140,6 +143,7 @@ VSCode
 WDL
 www
 yourinitials
+Zenodo
 Zotero
 ˈplɑs
 ˌmiz
