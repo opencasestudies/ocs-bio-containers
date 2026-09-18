@@ -102,15 +102,15 @@ Our scatter plots are directly comparing the number of paired samples to the num
 1. Number of paired samples vs the Number of HMDB annotated compounds
 2. Number of paired samples vs the Number of KEGG annotated compounds
 
-We also observed earlier that the datasets are mostly located in the same region (e.g., top right, bottom left) when comparing between the two scatter plots, so we could also compare the coreelation between the number of annotated compounds for each database:
+We also observed earlier that the datasets are mostly located in the same region (e.g., top right, bottom left) when comparing between the two scatter plots, so we could also compare the correlation between the number of annotated compounds for each database:
 
 3. Number of HMDB annotated compounds vs Number of KEGG annotated compounds
 
-We can consider all of the datasets together, or only look at subsets of the datasets. Previously, when looking at the scatter plots we observed that non-longitudinal datasets seemed to separate from longitudinal studies. We also have some datasets whose research participants are children or infants and others whose research participants are Adults. Therefore, we could filter our datasets a few ways:
+We can consider all of the datasets together, or only look at subsets of the datasets. Previously, when looking at the scatter plots we observed that non-longitudinal datasets seemed to separate from longitudinal studies. We also have some datasets whose research participants are children or infants and others whose research participants are adults. Therefore, we could filter our datasets a few ways:
 
 A. Find the correlation between the variables considering all datasets in the curated data resource.<br>
 B. Find the correlation between the variables considering only non-longitudinal studies from the curated data resource.<br>
-C. Find the correlation between the variables considering only datasets with Adult participants from the curated data resource.<br>
+C. Find the correlation between the variables considering only datasets with adult participants from the curated data resource.<br>
 
 :::{.emphasis_block}
 
@@ -122,7 +122,7 @@ Question opportunity
 ::::
 ::::{.inner_block}
 
-**How can we find non-longitudinal studies in our wrangled dataset? And how many are there?**
+**How can we find non-longitudinal studies in our wrangled dataset and how many are there?**
 
 <details><summary>Hint</summary>
 What are the possible values in the `longitudinal` column?
@@ -149,7 +149,7 @@ table1_extract %>%
 
 </details>
 
-<details><summary>Which datasets have Adult participants?</summary> 
+<details><summary>Which datasets have adult participants?</summary> 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -201,7 +201,7 @@ Question opportunity
 
 <details><summary>Hint</summary>
 
-We are looking at 3 different comparisons for the variables in the datasets (1-3 above) and 3 different sets within the datasets (A-C above)
+We are looking at 3 different comparisons for the variables in the datasets (1-3 above) and 3 different sets within the datasets (A-C above).
 
 </details>
 
@@ -251,9 +251,9 @@ Line 6 of the script loads the `table1_extract` variable that stores the wrangle
 
 Lines 8-19 provide an `roxygen` block documenting a function `find_cor_matrix()` that is defined in lines 20 - 51.
 
-* Lines 8-10 provide descriptions of the overall function
-* Lines 12-15 provide descriptions of the two parameters that are used to control the functionality or behavior of this function (`input_df` -- the input dataset and `filter_description` to control how that dataset should be filtered)
-* Line 19 describes what the function returns to the user
+* Lines 8-10 provide descriptions of the overall function.
+* Lines 12-15 provide descriptions of the two parameters that are used to control the functionality or behavior of this function (`input_df` -- the input dataset and `filter_description` to control how that dataset should be filtered).
+* Line 19 describes what the function returns to the user.
 * Line 20 names the function and the paramters that control its behavior, including specifying that the `filter_description` parameter has a default value "All Data".
 * Line 23 checks the `filter_description` parameter value using the [base R function `stopifnot()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/stopifnot). This means that only those 3 values are allowed values for the function. Any other values and the function wouldn't know how to proceed correctly or what the user wants, so the function stops.
 * Lines 26-36 use the actual value of the `filter_description` parameter to filter the input dataset (the A, B, C parts of the comparisons we enumerated earlier). 
@@ -278,7 +278,7 @@ Lines 54, 57, and 60 call the `find_cor_matrix()` function, each for a different
 
 * Line 54 uses all datasets
 * Line 57 uses non-longitudinal studies
-* Line 60 uses datasets with Adult cohorts
+* Line 60 uses datasets with adult cohorts.
 
 
 Notice that this script is outputing messages like previous scripts have done, but it is not saving any files. **Therefore, we will have to be intentional in how we capture the output from it when we run it.**
@@ -287,6 +287,25 @@ Notice that this script is outputing messages like previous scripts have done, b
 :::
 
 Knowing that this script is in the `analysis_scripts` directory and is an `.R` like all of the other scripts that we have run throughout this case study, enter a command to run this script in your running container.
+
+::: {.emphasis_block}
+<details><summary>Reminder of the correct command:</summary>
+
+Making sure that you're in the appropriate directory use either: 
+
+```{.bash}
+Rscript 04_analysis_metric.R
+```
+
+or
+
+```{.bash}
+Rscript analysis_scripts/04_analysis_metric.R
+```
+
+</details>
+:::
+
 
 ### Reviewing the output
 
@@ -456,7 +475,7 @@ Ask learners to try to run the analysis
 
 ## Container Infrastructure
 
-In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
+In this section we can discuss how someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
