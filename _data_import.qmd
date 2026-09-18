@@ -249,6 +249,10 @@ Reducing manual steps and rather automating them is an important step towards mo
 {{< include resources/analysis_scripts/01_extract_data.R >}}
 ```
 
+:::{.column-margin}
+Add shebang to glossary
+:::
+
 ::: {.emphasis_block}
 
 <details><summary>What is this script doing?</summary>

@@ -153,6 +153,10 @@ This time, the command uses a different image name (the one we've just built) th
 :::
 :::
 
+::: {.column-margin}
+Add a thought question about the mounted volume and what's in it if it's mounted for two different running containers. Does the running container have a snapshot of the volume, or is the volume up to date? (up to date)
+:::
+
 <!--
 Include a thought question to give learners the opportunity to build a flowchart (e.g., moving nouns and verbs into blanks) that represents the containerization process?
 -->
@@ -229,7 +233,7 @@ Reproducibility considerations
 ::::
 ::::{.inner_block}
 
-When writing code for a data analysis or software development, it is best to follow the [DRY principle: "Don't repeat yourself"](https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/). Functions are often a good way to [reduce repetitiveness](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/writing-durable-code.html#dry-up-your-code).
+When writing code for a data analysis or software development, it is best to follow the [DRY principle: "Don't repeat yourself"](https://www.geeksforgeeks.org/software-engineering/dont-repeat-yourselfdry-in-software-development/). Functions are often a good way to [reduce repetitiveness](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/writing-durable-code.html#dry-up-your-code) [@Wilson_etal_2017].
 
 The code within the `03a_visualization.R` script is not DRY and can be improved. But this is ok! Developing an analysis is often an iterative process. And this is a benefit of version-controlling analysis scripts: you can track updates to the analysis over time.
 
@@ -467,7 +471,7 @@ Question opportunity
 * The plots are mostly unchanged except:
     * there's a single title rather than each having their own title
     * aesthetically, not only are some text labels cutoff at the axis edges, they also overlap now.
-* Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots.
+* Studies appear to mostly be in a similar position (e.g, top left, bottom right, etc.) when comparing between the plots. An exception to this is the `iHMP_IBDMDB_2019` dataset that isn't as high on the axis for the number of KEGG annotated compounds as it is on the axis for the number of KEGG annotated compounds.
 
 
 </details>

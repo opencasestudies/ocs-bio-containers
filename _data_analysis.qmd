@@ -1,30 +1,352 @@
 # **Data Analysis**
 ***
 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the Data Visualization section. 
+
+***
+
+<details> <summary> If you skipped the Data Wrangling section or the Data Visualization section click here. </summary>
+
+If you only skipped the Data Wrangling section and went through the Data Visualization section, you should be fine to proceed with the Data Analysis section.
+
+If you only skipped the Data Visualization section but went through the Data Wrangling section, you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+
+If you skipped the data wrangling and the data visualization section, then you will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section and you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+
+To fetch the modified Dockerfile and wrangled data, follow these instructions:
+
+:::{.panel-tabset}
+
+### Download from github.com
+
+* Modified Dockerfile
+    * Use this link to <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/dockerfiles/activity/Dockerfile" download> download the modified Dockerfile</a>.
+    * Create a `dockerfiles` folder in the top directory of your `ocs-bio-containers-scaffold-main` folder (e.g., the one with `analysis_scripts`, `continued_learning_scripts`, the `README.md`)
+    * Move the downloaded Dockerfile into the new `dockerfiles` folder. 
+* Wrangled data
+    * Use this link to [download the wrangled data as an `.rda` file](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda)
+    * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
+    * Move the downloaded `.rda` file into the new `wrangled` folder.
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
+```
+
+### Command Line
+
+* Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
+    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
+* Enter `mkdir -p dockerfiles data/wrangled`. 
+    * This will create directories named `dockerfiles` in the top and `wrangled` under the `data` directory.
+* Enter `cd dockerfiles`
+* Copy and paste the following:
+
+```{.bash}
+wget "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/refs/heads/main/resources/dockerfiles/activity/Dockerfile" .
+```
+
+* Enter `cd ../data/wrangled`
+* Copy and paste the following: 
+
+```{.bash}
+wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda" .
+```
+
+* Enter `cd ../../`
+
+:::
+
+</details>
+***
+
 ## Container Application
 
-Finding the correlation between different variables in the dataset
+### Correlation 
 
-Looking at subsets of datasets for the same variables...
+We might expect that as the number of samples in a dataset increase, the number of observed metabolites would also increase [@Hubert_etal_2026]. This trend is non-linear, however; discovery rates ultimately plateau as sampling approaches saturation due to diminishing returns. We can statistically measure the trend using a correlation analysis.
+
+The correlation between two variables is a statistical measure of their relationship -- how they occur or vary together. Correlation is often used to describe relationships between variables but does not provide any evidence towards a cause and effect relationship between the two. Correlations are described with a [**correlation coefficient**](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/scatterplots-and-correlation/a/correlation-coefficient-review?referrer=share_link) which ranges from -1 to 1, describing both the strength of the relationship and the direction of the relationship. Correlation coefficients often accompany scatter plots (like the ones produced in the Data Visualization section of this case study).
+
+#### Strength of the relationship
+
+* Correlation coefficient values equal to 0 mean that two variables don't seem to exhibit a relationship at all.
+* Correlation coefficient values close to 0 mean that the two variables exhibit a weak relationship.
+* Values close to -1 or 1 mean that the two variables exhibit a strong relationship. The closer to -1 or 1, the stronger the relationship.
+* Values equal to -1 or 1 mean that the two variables exhibit perfect correlation.
+
+#### Direction of the relationship
+
+* Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
+* Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
+
+::: {.column-margin}
+Make a figure like this one from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Correlation_coefficient
+:::
+
+#### Spearman Correlation
+
+Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
+
+:::{.column-margin}
+Include a visual comparing linear (constant rate of change) vs monotonic relationships
+:::
+
+Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots:
+
+*We don't know the underlying distribution of our variables (we haven't looked at that)
+* We are expecting a non-linear (but still monotonic) trend
+* From the scatter plot, there appears to be a couple of points that separate from the others and could be outliers.
+
+We are assuming that samples in each dataset are unique to that dataset (e.g., a research participant is only part of the `KIM_ADENOMAS` and none of the other studies). This seems like a fairly likely assumption. If our datasets were studying a rare condition or disease this could be an unreasonable assumption. Given the data that we have, we may have to consult with the rest of the team to confirm the veracity of this assumption. However, since it's secondary data, we may not be able to confirm this across studies.
+
+:::{.emphasis-block}
+For a discussion on the limitations of correlation, consider this summary from a previous case study: [https://www.opencasestudies.org/ocs-bp-co2-emissions/#Limitations_of_Correlation](https://www.opencasestudies.org/ocs-bp-co2-emissions/#Limitations_of_Correlation)
+:::
+
+#### What correlation relationships do we want to measure or quantify?
+
+Our scatter plots are directly comparing the number of paired samples to the number of HMDB annotated compounds or KEGG annotated compounds in the dataset. So that's two correlations:
+
+1. Number of paired samples vs the Number of HMDB annotated compounds
+2. Number of paired samples vs the Number of KEGG annotated compounds
+
+We also observed earlier that the datasets are mostly located in the same region (e.g., top right, bottom left) when comparing between the two scatter plots, so we could also compare the correlation between the number of annotated compounds for each database:
+
+3. Number of HMDB annotated compounds vs Number of KEGG annotated compounds
+
+We can consider all of the datasets together, or only look at subsets of the datasets. Previously, when looking at the scatter plots we observed that non-longitudinal datasets seemed to separate from longitudinal studies. 
+
+A. Find the correlation between the variables considering all datasets in the curated data resource.<br>
+B. Find the correlation between the variables considering only non-longitudinal studies from the curated data resource.<br>
+
+:::{.emphasis_block}
+
+<details><summary>Which studies are non-longitudinal?</summary>
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**How can we find non-longitudinal studies in our wrangled dataset and how many are there?**
+
+<details><summary>Hint</summary>
+What are the possible values in the `longitudinal` column?
+</details>
+
+<details><summary>Answer</summary>
+
+We can find the datasets or studies whose value in the `longitudinal` column is "No". There are 8 studies. 
+
+```{r, echo = FALSE, fig.alt = "There are 8 datsets where the longitudinal column records No to represent that it is a non-longitudinal study."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_0#slide=id.g3fb8f9fbd14_0_0")
+```
+
+In R, we would use:
+
+```{r, eval = FALSE}
+table1_extract %>%
+    filter(longitudinal == "No")
+```
+
+</details>
+::::
+:::
+
+</details>
+
+:::
+
+We will therefore find 6 correlation coefficients: 
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**What will the 6 correlation coefficients represent?**
+
+<details><summary>Hint</summary>
+
+We are looking at 3 different comparisons for the variables in the datasets (1-3 above) and 2 different sets within the datasets (A-B above).
+
+</details>
+
+<details><summary>Answer</summary>
+
+* A1: Correlation between number of paired samples and number of HMDB annotated compounds, considering all datasets within the curated data resource.
+* A2: Correlation between number of paired samples and number of KEGG annotated compounds, considering all datasets within the curated data resource.
+* A3: Correlation between number of HMDB annotated compounds and number of KEGG annotated compounds, considering all datasets within the curated data resource.
+* B1: Correlation between number of paired samples and number of HMDB annotated compounds, considering only non-longitudinal studies within the curated data resource.
+* B2: Correlation between number of paired samples and number of KEGG annotated compounds, considering only non-longitudinal studies within the curated data resource.
+* B3: Correlation between number of HMDB annotated compounds and number of KEGG annotated compounds, considering only non-longitudinal studies within the curated data resource.
+
+</details>
+
+::::
+:::
+
+#### Correlation Coefficient Matrices
+
+A correlation coefficient matrix is a square table that displays the pairwise correlations between multiple variables in a dataset. Because we are comparing three variables from our dataset (for each subset of our dataset that we consider (e.g., all data, non-longitudinal, adult)), each set of our results will be in a correlation coefficient matrix.
+
+```{r, echo = FALSE, fig.alt = "Correlation coefficient matrices are square & symmetric with the diagonal being irrelevant ones."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_22#slide=id.g3fb8f9fbd14_0_22")
+```
+
+<details><summary>Code to make this graph</summary>
+
+```{r, eval = FALSE}
+
+cor(table1_extract %>% 
+      select(num_paired_samples, 
+             hmdb_annotated_compounds, 
+             kegg_annotated_compounds), 
+    method = "spearman") %>% 
+  ggcorrplot(type = "full", 
+             method = "square", 
+             colors = c("#440154", 
+                        "white", 
+                        "#21918c"), 
+             lab = TRUE) +
+  scale_y_discrete(limits = rev)
+
+```
+
+</details>
+
+Correlation coefficient matrices are symmetric meaning that they provide redundant information: The correlation between Variable A and Variable B is the same as the correlation between Variable B and Variable A (Correlation is commutative, like addition -- changing the order of the inputs does not change the final result). The diagonal of the matrix (dashed diagonal line from the top left to the bottom right in the figure above) is always 1 because every variable is always perfectly positively correlated with itself.
+
+Because these values are stored in a matrix, if we want to extract a specific correlation coefficient, we will have to provide two names or indices to the matrix -- the row and column. It doesn't matter what order we provide these in since the matrix is symmetric/redundant.
+
+### Running the correlation analysis
+
+We will use the following script to find the correlations that we described previously.
 
 ```{.R filename="04_analysis_metric.R"}
 {{< include resources/analysis_scripts/04_analysis_metric.R >}}
 ```
 
-::: {.panel-tabset}
+:::{.emphasis_block}
+<details><summary>What is this script doing? </summary>
 
-### Docker Desktop
+Lines 1-4 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-4. The `here` package will be used to build input the file path on line 6. The `tidyverse` is used to pipe the data from function to function (with `%>%`) and for functions like `filter` from `dplyr`, and `select` from `dplyr` that we've used before, as well as `str_detect` from `stringr`.
 
-Ask learners to try to run the analysis
+Line 6 of the script loads the `table1_extract` variable that stores the wrangled Table 1 data that we extracted and wrangled previously throughout the Data Import and Data Wrangling sections.
 
-### Docker through a CLI
+Lines 8-19 provide an `roxygen` block documenting a function `find_cor_matrix()` that is defined in lines 20 - 47.
 
-Ask learners to try to run the analysis
+* Lines 8-10 provide descriptions of the overall function.
+* Lines 12-15 provide descriptions of the two parameters that are used to control the functionality or behavior of this function (`input_df` -- the input dataset and `filter_description` to control how that dataset should be filtered).
+* Line 19 describes what the function returns to the user.
+* Line 20 names the function and the parameters that control its behavior, including specifying that the `filter_description` parameter has a default value "All Data".
+* Line 23 checks the `filter_description` parameter value using the [base R function `stopifnot()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/stopifnot). This means that only those 2 values are allowed values for the function. Any other values and the function wouldn't know how to proceed correctly or what the user wants, so the function stops.
+* Lines 26-32 use the actual value of the `filter_description` parameter to filter the input dataset (the A, B, C parts of the comparisons we enumerated earlier). 
+    * If the `filter_description` is `"Non-longitudinal"`, then we use the `dplyr` `filter()` function to keep only rows from the input dataframe where the `longitudinal` column are equal to  (`==`) "No" (lines 26-29).
+    *If `filter_description` didn't equal "Non-longitudinal" then it must equal "All Data" because we already checked in line 23 that it was one of those 2. So in that case we just keep the whole dataset (lines 29-32).
+* Lines 35-39 now run the creation of the correlation coefficient matrix (`cor_matrix`):
+    * Lines 35-38 uses the filtered dataset, passing it to the `dplyr` `select` function to keep only the `num_paired_samples`, `kegg_annotated_compounds`, and `hmdb_annotated_compounds` column that we discussed earlier (the 1, 2, 3 parts of the comparisons we enumerated earlier).
+    * This is then passed to the [`stats` `cor()` function](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor) (which is available through base R) on line 39.
+        * The `.` specifies that the piped data frame is the input. Depending on the parameters given to the function when it's called this will have the exact number of datasets included (rows) we want and only 3 columns.
+        * The `method` argument is used to specify that the Spearman correlation should be found.
+* Lines 42-43 output information about the correlations such as which filter was used (All Data or Non-longitudinal studies) and the number of datasets per variable (e.g., the number of rows of the `to_assess` data frame following filtering).
+* Lines 44-46 output correlation coefficients for each of the 1, 2, 3 comparisons.
+    * First, the correlation between the number of KEGG annotated compounds and the number of HMDB annotated compounds. Notice that we provide both the row and column names to the correlation matrix as described earlier.
+    * Second, the correlation between the number of paired samples and the number of KEGG annotated compounds.
+    * Finally, the correlation between the number of HMDB annotated compounds and the number of paired samples.
 
+Lines 50 and 53 call the `find_cor_matrix()` function, each for different (sub)sets of the datasets from the curated data resource.
+
+* Line 50 uses all datasets
+* Line 53 uses non-longitudinal studies
+
+
+Notice that this script is outputting messages like previous scripts have done, but it is not saving any files. **Therefore, we will have to be intentional in how we capture the output from it when we run it.**
+
+</details>
 :::
 
-Look at the logs.
+Knowing that this script is in the `analysis_scripts` directory and is an `.R` like all of the other scripts that we have run throughout this case study, enter a command to run this script in your running container.
 
+::: {.emphasis_block}
+<details><summary>Reminder of the correct command:</summary>
+
+Making sure that you're in the appropriate directory use either: 
+
+```{.bash}
+Rscript 04_analysis_metric.R
+```
+
+or
+
+```{.bash}
+Rscript analysis_scripts/04_analysis_metric.R
+```
+
+</details>
+:::
+
+
+### Reviewing the output
+
+Notice that (most likely) the output of the script is printed to the Docker Desktop or CLI console, but isn't stored in a file. You could potentially copy/paste them into a document, or take a screenshot, but it would be better, if we captured the output in a file within our mounted volume when we run the script.
+
+### Running the analysis again
+
+This time, use the output redirection operator (`>`) when you run the script to redirect the output from the script into a file. Consider [this article for more information about output redirection](https://www.geeksforgeeks.org/linux-unix/input-output-redirection-in-linux/).
+
+:::{.panel-tabset}
+
+#### Docker Desktop
+
+* On the "Exec" tab of the running container, ensure that you are in the `analysis_scripts` directory of the mounted volume.
+* Enter the following command:
+
+```{.bash}
+mkdir -p ../results/logs
+```
+
+This creates a directory within the `results` directory called "logs" and will create the `results` directory (on the same level as `analysis_scripts`) if it doesn't already exist.
+
+* Enter the following command:
+
+```{.bash}
+Rscript 04_analysis_metric.R > ../results/logs/correlation_result.txt
+```
+
+This runs the script, redirecting its standard output (our messages and correlation coefficients) to a text file named `correlation_result.txt` within the directory you just created.
+
+* Enter the following command to check the contents of that file:
+
+```{.bash}
+cat ../results/logs/correlation_result.txt
+```
+
+
+#### Docker through a CLI
+
+* Ensure that you are in the root directory of your mounted volume.
+* Enter the following command to create a new subdirectory for output in the `results` directory:
+
+```{.bash}
+mkdir -p results/logs
+```
+
+* Enter the following command to run the script and redirect the standard output from the script to a file in that new directory:
+
+```{.bash}
+Rscript analysis_scripts/04_analysis_metric.R > results/logs/correlation_result.txt
+```
+
+* Enter the following command to view the contents of that file:
+
+```{.bash}
+cat results/logs/correlation_result.txt
+```
+
+:::
 
 ::: {.emphasis_block}
 
@@ -43,25 +365,30 @@ cat(formatted_lines, sep = "\n")
 
 :::
 
+:::{.think_question}
+::::{.think_question_header}
+Question Opportunity
+::::
+::::{.inner_block}
+**What do you observe about the correlation coefficients?**
 
-## Container Infrastructure
+<details><summary>Some observations</summary>
 
-In this section we can discuss that someone else (maybe the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. Specifically, what should you share with someone so they can rerun the analysis?
+* The correlation between the number of annotated compounds for the HMDB and KEGG reference databases is the highest. It isn't always 1 (perfect positive correlation), but it is a very strong monotonic correlation.
+* The correlation between the number of paired samples and the number of annotated compounds from a reference database is weaker. It's also not always equal if looking at number of paired samples compared to KEGG vs the number of paired samples compared to HMDB. 
+    * This could be due in part to the dataset that we called out earlier `iHMP_IBDMDB_2019`. It is a longitudinal dataset so it would not be in the non-longitudinal dataset correlation analysis where now the correlation coefficients match (0.45). From this, we might hypothesize that the ordinal rankings of the non-longitudinal datasets are the same whether using the number of KEGG annotated compounds or the number of HMDB annotated compounds.
 
-```{r, echo = FALSE}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
-```
+</details>
+::::
+:::
 
-```{.dockerfile filename="Dockerfile"}
-{{< include resources/dockerfiles/activity/Dockerfile >}}
-```
+We observe a weak to intermediate positive correlation suggesting that as the number of samples in a dataset grows, the number of observed metabolites (annotated in a reference database) also grows. The strength of this relationship can be stronger if we consider more similar datasets (e.g., the non-longitudinal datasets). However, recall that a correlation does not imply a causation and their are other experimental or pre-analytical factors that may impact this including extraction solvent used for samples, sample storage, diet of the host prior to sample collection, etc. [@JOHNSON_GONZALEZ_2012; @Smith_etal_2020; @Pope_etal_2025; @Dovhalyuk_Globisch_2026]. 
 
-Sharing the container image vs sharing the Dockerfile
+We previously mentioned that metabolomics and microbiome data are paired so that researchers can get a better idea of the actual activity or impact of microbes in the microbiome. Researchers who would be utilizing this data resource likely care about the impact within a specific use case (e.g., may focus on the `cohort_description` column to select studies that focus on a specific disease or research study participant age (e.g., infants or children vs adults) or some other demographic information), they may have to balance increasing their sample size with picking datasets that are similar or relevant enough to their specific use case.
 
+### Team Collaboration
 
-```{.bash filename="run_analysis.sh"}
-{{< include resources/analysis_scripts/run_analysis.sh >}}
-```
+An analysis changes over time as you develop it. Even with numbering our scripts and using a container, team members may have a difficult time reproducing our analysis unless they know exactly what was run in what order. You can should keep notes in an laboratory notebook [@Schnell_2015] about your computational analyses and these can often be shared among a team, but they typically won't be shared when publishing a study. However, computational scripts are shared when publishing a study [@Sandve_Nekrutenko_Taylor_Hovig_2013]. Therefore, having a script or very detailed README file that explains what is run when is beneficial both for collaborative work and the eventual sharing of the work. 
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -72,10 +399,339 @@ Having a "run all" script that specifies what scripts were used and in what orde
 ::::
 :::
 
+For this analysis, a run all script might look like the following:
 
-We'll also discuss how to document where the scripts are, how to mount a volume (with analysis scripts) and point out that the validator can get the same results as the learner did by running the `run_analysis.sh` script.
+```{.bash filename="run_analysis.sh"}
+{{< include resources/analysis_scripts/run_analysis.sh >}}
+```
 
-Add a reproducibility box about pushing the new / adjusted scripts and plots as well as the documentation to the scaffold repo that they "used as a template/cloned" if they did the earlier extra reproducibility step.
+:::{.emphasis_block}
+<details><summary>What's this script doing?</summary>
+
+This is not an R script like the other scripts have been throughout this case study. Instead this is a bash script. Every `cd`, `ls`, `pwd`, `docker build`, `Rscript [script name]`, `mkdir` command that you've used thus far within this case study is a "bash shell" command. Therefore this bash script is recording those commands in the correct order that they need to happen.
+
+Line 1 of the script is the script's shebang. Since this is a bash script, it has a different shebang than an R script would have.
+
+Lines 3, 9, 13, 19, and 23 all are messages describing where the run all process is / what it will be doing next. This is similar to the `cat` messages we had in the R scripts.
+
+Line 5 makes the `results/logs` directory like we did previously. All other directories are made by the scripts if they don't exist.
+
+Line 7 calls the first script that we used in the Data Import section and redirects the output messages to a log file.
+
+Line 11 calls the second script that we used in the Data Wrangling section and redirects the output messages to another log file.
+
+Line 15 calls the first data visualization script and redirects the output messages to another new log file.
+
+Line 17 calls the second data visualization script and redirects its output messages to the same log file used for the first script. This time the `>>` redirection operator is used. This appends to a pre-existing file rather than overwriting it.
+
+Line 21 calls the final R script with the correlation analysis and redirects its output messages to yet another new log file.
+
+Finally, line 25 is an inline command. Rather than saving everything that's in the quotes (`"`) inside of a script, we include it here and tell the Bash script to execute the command as if it was in an R script. This also allows us to mix bash commands with R code. 
+
+* The first portion that's inside the `$( ... )` is the bash part
+    * [`cat`](https://www.geeksforgeeks.org/linux-unix/cat-command-in-linux-with-examples/) (which we used earlier to look at the contents of a file) all of (`*`) the R scripts in this directory
+    * send the output of that (`|` -- bash's version of a pipe like the `%>%` R had) to ...
+    * [`grep`](https://www.geeksforgeeks.org/linux-unix/grep-command-in-unixlinux/) which will pull out only lines that have "library" in it
+    * send the output of that (`|`) to ...
+    * [`sort -u`](https://www.geeksforgeeks.org/linux-unix/sort-command-linuxunix-examples/) which will pull out only the unique (`-u`) lines. (It first sorts it for algorithmic efficiency.)
+    * send the output of that (`|`) to ...
+    * a bash function to take a stream of newline separated strings and format them into a single line separated by a semicolon and space. This allows us to pack a multi-step sequence into a single inline command. 
+* We finally combine this with a [`sessionInfo()`](https://sessioninfo.r-lib.org/) call (which is an R function)
+* And redirect the output of the whole thing into a log file
+* The purpose of that whole line was to output package versions and other session info for the R packages that we used in the analysis!
+
+</details>
+:::
+
+Someone else on the team will be able to rerun the whole process and get the same results using this collection of scripts (the run all script together with the scripts it's calling) within a container created from the Dockerfile.
+
+To see that this is the case, you can remove the `data` and `results` directories and run this `run_analysis.sh` script. It will drive the whole analysis and produce the same results. 
+
+::: {.panel-tabset}
+
+### Docker Desktop
+
+* Navigate to the "Exec" tab of the running container if you're not there already.
+* Enter `cd /home`
+* Enter `rm -r data results` to [remove](https://man7.org/linux/man-pages/man1/rm.1.html) the full `data` and `results` directories.
+* You can verify that these directories are no longer present using `ls`.
+* Enter `cd analysis_scripts`.
+* Use the following command to run the whole analysis:
+
+```{.bash}
+bash run_analysis.sh
+```
+
+* Explore the outputs (e.g., plots and `analysis_logs.txt`) to convince yourself that every result is reproduced.
+
+
+### Docker through a CLI
+
+* Ensure that you are in the root directory of your mounted volume.
+* Enter `rm -r data results` to [remove](https://man7.org/linux/man-pages/man1/rm.1.html) the full `data` and `results` directories.
+* Enter the following command to run the whole analysis:
+
+```{.bash}
+bash analysis_scripts/run_analysis.sh 
+```
+* Explore the outputs (e.g., plots and `analysis_logs.txt`) to convince yourself that every result is reproduced.
+
+
+:::
+
+:::{.emphasis_block}
+<details><summary>But this isn't a new container. Would I still get the same results in a new container?</summary>
+
+Yes, you should still get the same results. To confirm this, you can create a new container from your Dockerfile or pull the equivalent `bioocs/ocs-bio-containers-wrangling` image from Docker Hub and create a new container from that -- make sure to mount the analysis files when you run the container.
+
+</details>
+:::
+
+## Container Infrastructure
+
+### Container Housekeeping
+
+Whether you're using Docker Desktop or Docker through a CLI, you often need to perform container housekeeping -- stopping and removing unneeded containers or images from your system. Images can get quite large (in the Gigabytes range) and running containers / Docker Desktop can be taxing to a computer, using a lot of resources.
+
+#### Find your container (or its ID or name)
+
+:::{.panel-tabset}
+
+##### Docker Desktop
+
+On Docker Desktop, make sure that you are on the "Containers" tab (an option in the left side menu).
+
+You may still be viewing the running container (e.g., can see the "Exec", "Files", etc. tabs) or may see a list of containers. Locate the container(s) you've been using for this case study. They should have names with `ocs-bio-` in them.
+
+##### Docker through a CLI
+
+In a CLI tab separate from your running container, use the [`docker ps`](https://docs.docker.com/reference/cli/docker/container/ls/) command to list all of your containers. 
+
+Copy or take note of the CONTAINER ID(s) for the container(s) you've been using for this case study. They should have names with `ocs-bio-` in them.
+
+:::
+
+#### Stop the running container
+
+Stopping a container allows you to restart it to resume your work at a later time without needing to create a new container. 
+
+<details><summary>Stop vs Pause</summary>
+
+You can pause a container rather than stopping it. Pausing a container allows for quicker resumption of work when unpausing a container than stopping a container would allow for. However, stopping a container frees up more memory resources for your computer than pausing a container. 
+
+[To see more about pausing vs stopping, consult this GitHub gist post](https://gist.github.com/faboulaws/d0362b904d78f7be6338297a55410106)
+
+</details>
+
+::: {.panel-tabset}
+
+##### Docker Desktop
+
+At the top right of the screen if you are in the running container, there are icons for "Stop" (rectangle), "Run" (triangle, though this one is grayed out/not available), "Restart" (arrow), and "Delete Container" (trash can). Click the "Stop" button to stop the running container.
+
+If you are instead on the Containers window that lists all containers, the stop button (a blue rectangle) is located under the "Actions" column. Click the "Stop" button to stop the running container. 
+
+<details><summary>What if I were pausing a container instead</summary>
+
+The containers window allows you to pause a container instead of stopping it by clicking the three vertical dots under the "Actions" column and selecting pause from there.
+
+</details>
+
+##### Docker through a CLI
+
+Type `exit` and press the enter / return key to stop the running container. Your usual CLI command prompt should return at the beginning of the line.
+
+If you are now or in the future using another CLI tab or window that isn't part of your interactive bash / running container, you can use [`docker stop [container name or ID]`](https://docs.docker.com/reference/cli/docker/container/stop/) to stop a container.
+
+<details><summary>What if I were pausing a container instead</summary>
+
+To instead pause a container, you would use the [`docker pause` command](https://docs.docker.com/reference/cli/docker/container/pause/)
+
+</details>
+:::
+
+#### Delete the container
+
+Always make sure that you've completed your work and have access to any files produced in the container that you will need later before you delete it. This may not be a major concern for light-weight analyses because you can regenerate outputs, and this is especially less of a concern if you mounted a volume when you ran the container and only put files that you updated or will need later in that volume.
+
+::: {.panel-tabset}
+
+##### Docker Desktop
+
+At the top right of the screen if you are in the now stopped container (but still see the "Exec", "Files", etc. tabs ), click the "Delete container" button to delete it. A popup window will ask you to confirm that you want to "Delete [the container] forever". Confirm by clicking the "Delete forever" button.
+
+If you are instead on the Containers window that lists all containers, the delete button (a trash can icon) is located to the right of the icons in the "Actions" column. Click the "Delete" button to delete the container.
+
+##### Docker through a CLI
+
+Use the command [`docker rm [container name or ID]`](https://docs.docker.com/reference/cli/docker/container/rm/) to delete your stopped container.
+
+<details><summary>What if I wanted to delete a running container</summary>
+If you wanted to delete a running container without first stopping it, you would use the [`docker kill` command](https://docs.docker.com/reference/cli/docker/container/kill/) in a new CLI tab outside of the running container.
+</details>
+
+:::
+
+#### Images
+
+We did some housekeeping for our containers so now we need to do some housekeeping for our images.
+
+But wait -- we need to make sure that we share the modified image with our collaborators so they can validate or reproduce the analysis!
+
+### Containers as a Reproducibility Tool
+
+Throughout this section we have discussed how someone else (perhaps the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. 
+
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
+```
+
+
+### What and how do you share?
+
+:::{.emphasis_block}
+**Specifically, what should you share with someone so they can reproduce or validate the analysis?**
+
+1. The scripts (`01_extract_data.R`, `02_wrangle.R`, `03a_visualization.R`, `03b_visualization_patchwork.R`, `04_analysis_metric.R`, and `run_analysis.sh`)
+2. The Dockerfile or image for the modified container that contains `patchwork`.
+
+:::
+
+#### Sharing scripts
+
+Typically, you should share your scripts as version-controlled files through an open-source repository (e.g., GitHub). The benefits of this include:
+
+* the ability to document and revisit how an analysis changed over time. 
+    * For more information, consult the [Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/)
+* the ability for teams to collaboratively review each other's code. 
+    * For more information, consult the [ITN's Introduction to Reproducibility course](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/code-review.html).
+* the ability for others in the scientific field to see what was done [@Sandve_Nekrutenko_Taylor_Hovig_2013].
+
+A complete analysis may be shared through a frozen archive using [Figshare](https://info.figshare.com/), [Zenodo](https://zenodo.org/), or another [public repository](https://journals.plos.org/plosone/s/recommended-repositories). 
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+
+**Is it enough to share the `run_analysis.sh` (run all) script? Or do we need to share every script?**
+
+<details><summary>Hint</summary>
+
+What is actually in the `run_analysis.sh` script?
+
+</details>
+
+<details><summary>Answer</summary>
+
+You will need to share every script. The `run_analysis.sh` script doesn't contain the actual code / steps necessary to extract the data from a PDF, wrangle that data, visualize that wrangled data, and run a correlation analysis with that wrangled data. It instead contains a way to drive the whole analysis and call the scripts that contain the actual code / steps necessary for each of those steps.
+
+</details>
+
+::::
+:::
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+
+If within the Data Import section, you made a copy of the Template `ocs-bio-containers-scaffold` repository and have been using a local clone (rather than downloading the files from the link), then consider opening a pull request in your repository that:
+
+1. reflects any changes you've made to the scripts (e.g., perhaps you simplified the visualization script?).
+2. adds the Dockerfile.
+3. adds the plots.
+4. adds the log files.
+5. updates the README file to reflect what you did and the files that are there. [see here](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/documenting-analyses.html#readmes)
+
+Consult the [Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#pull-requests) or the [ITN's course on Advanced Reproducibility](https://jhudatascience.org/Adv_Reproducibility_in_Cancer_Informatics/using-version-control-with-github.html#create-a-branch) for more information on pull requests. 
+
+::::
+:::
+
+#### Sharing containers
+
+::: {.emphasis_block}
+**Which should you share -- the Dockerfile or the image?**
+
+Typically, sharing a container **image** is better for reproducibility, even though the Dockerfile is smaller and more readable.
+:::
+
+|               | Sharing a Dockerfile | Sharing a Container Image |
+|:--------------|:---------------------|:--------------------------|
+| Reproducibility | Re-executing build steps later could lead to the installation of different dependency or package versions unless versions are all specified. <br> Dependencies or packages may not be available at a later time | Dependency and package versions are frozen and already bundled/available within the image.|
+| Size          | Small, just a text file | Large, can be several Gigabytes |
+| Transparency / Readability | High -- mostly exact record of how the environment was built (exception: unless versions were not included) | Low -- Often need to run the image, rely on documentation, or use Docker Desktop to "Inspect" it in order to know what's available in the image |
+
+
+We have the modified Dockerfile and will be able to share that (which well help with the readability/transparency). Let's make sure we know how to (theoretically) share the image as well. 
+
+We've seen that images can be pulled from a registry (e.g., Docker Hub) which means that they can added or "pushed" to the registries as well. However, to push an image to Docker Hub, you'll need an account and credentials. Likely your collaborative team would have an account and how to access it would need to be discussed within the team. Alternatively, you can share a compressed version of the image itself through private communication (like over email, through OneDrive, etc.). This is done by using the [`docker image save`](https://docs.docker.com/reference/cli/docker/image/save/) command. This command typically sends the output to standard out and needs to be redirected or combined with the `-o` flag to save the output to a `.tar` file. If you redirect it, you can further compress it using the [bash shell command `gzip`](https://www.geeksforgeeks.org/linux-unix/gzip-command-linux/). In Docker Desktop, you would have to run this command with the `>_ Terminal` window. Note size could still be prohibitive for sharing this way even if you compress it. Therefore, setting up an account or access to a group account on Docker Hub is likely preferable for your day-to-day collaborative team work.
+
+We don't recommend running this because the compressed file is still over a GB, but for this image, you could use the following command:
+
+```{.bash}
+docker image save ocs-bio-containers-activity:latest | gzip > ocs-bio-containers-activity_latest.tar.gz
+```
+
+Collaborators would be able to load the image using [`docker load -i [path-to-image.tar]`](https://docs.docker.com/reference/cli/docker/image/load/).
+
+::: {.emphasis_block}
+
+<details><summary>Pushing an image to Docker Hub</summary>
+
+If you did have an account / credentials for Docker Hub and have set up your account already, you would be able to push your Docker image.
+
+:::{.panel-tabset}
+
+#### Docker Desktop
+
+You would ...
+
+* Use the left side menu to access the Images tab.
+* Find the image you want to share.
+* Click the vertical three dots under the "Actions" column.
+* Select the "Push to Docker Hub" option.
+
+If you are not properly signed in, you will see a message like "denied: requested access to the resource is denied" pop up in the bottom right of the window.
+
+#### Docker through a CLI
+
+You may need to use the [`docker image ls`](https://docs.docker.com/reference/cli/docker/image/ls/) command to view a list of your images and find its name.
+
+You would then use the [`docker push NAME[:TAG]`](https://docs.docker.com/reference/cli/docker/image/push/) command to push the image to Docker Hub.
+
+:::
+
+</details>
+
+:::
+
+#### Container Housekeeping Revisited
+
+Now that we've discussed how we would (theoretically) share our image, we can remove any images associated with this project / case study too.
+
+::: {.panel-tabset}
+
+##### Docker Desktop
+
+* Use the left side menu to access the Images tab.
+* Find the image you want to delete
+* Click the "Delete" (trash icon) button to the right of the "Actions" column.
+* A popup window will ask you to confirm that you want to "Delete [the image] forever". Confirm by clicking the "Delete forever" button.
+* Repeat for any images associated with this project.
+
+##### Docker through a CLI
+
+Use [`docker image ls`](https://docs.docker.com/reference/cli/docker/image/ls/) to list images and their IDs.
+
+The [`docker image rm`](https://docs.docker.com/reference/cli/docker/image/rm/) command remove any listed images that are from this case study (e.g., `bioocs/ocs-bio-containers-base:main` and `ocs-bio-containers-activity:latest`). Note that if you don't include the word `image` as part of that command, then Docker will try to find and delete a container, not an image. Therefore, follow this pattern to remove the listed images:
+
+`docker image rm [image name or ID]`
+
+:::
 
 
 
