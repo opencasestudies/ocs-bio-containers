@@ -96,7 +96,7 @@ We recommend using the [Software Carpentry "Navigating Files and Directories" tu
     * `cd dockerfiles`
 * You will build this Dockerfile using the following command:
     * -t provides a tag or name for the image (in this case "ocs-bio-containers-activity"). Without it, the image's name is "<none>".
-    * We could specify a specific version tag by adding `:` and a name (like `main`) at the end
+    * We could specify a specific version tag by adding `:` and a name (like `main`) at the end.
     * the `.` means the `Dockerfile` that is in the directory we are in.
 
 ```{.bash}
@@ -214,7 +214,7 @@ Question opportunity
 
 <details><summary>Answer</summary>
 
-The `viridis` color palette is an **accessible** color palette with colors that can be distinguished by those with color vision deficiency. For more information on this topic, consult the [ITN Considerations for Data Visualization course](https://hutchdatascience.org/DataViz_Considerations/05_how_to_improve_viz.html#rule-1-using-accessible-color-palettes)
+The `viridis` color palette is an **accessible** color palette with colors that can be distinguished by those with color vision deficiency. For more information on this topic, consult the [ITN Considerations for Data Visualization course](https://hutchdatascience.org/DataViz_Considerations/05_how_to_improve_viz.html#rule-1-using-accessible-color-palettes).
 
 </details>
 
@@ -243,8 +243,8 @@ Note that you can edit a script within a running container and the updated scrip
 
 In Docker Desktop:
 
-* Navigate to the "Files" tab
-* Find the script within the `/home` directory
+* Navigate to the "Files" tab.
+* Find the script within the `/home` directory.
 * Right click on the script's name and click the "(Pencil icon) Edit file" option.
 * Alternatively, click the script's name and click the "Open file editor" button in the top right of the screen.
 * Either of these options which will open a file editor panel on the bottom of the Docker Desktop screen (like it did for `>_Terminal` earlier).
@@ -270,13 +270,6 @@ Advanced Question opportunity
 
 <details><summary>Hint</summary>
 DRY code often utilizes functions to make sure that code isn't repeated.
-
-<!--
-`ggplot` also provides a [`set_theme()` function](https://ggplot2.tidyverse.org/reference/get_theme.html) that can be used to set an overall theme/aesthetic for plots.
-
-^I don't use this in the possible answer below so not sure that it's worth mentioning.
---> 
-
 </details>
 
 <details><summary>A possible answer</summary>
@@ -350,15 +343,15 @@ Our second visualization script combines the two `ggplot` objects into a single 
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build input and output file paths on lines 7, 15, and 21. The `ggplot2` package is used for the `labs()` function calls on lines 9 and 10. The `patchwork` package is used to combine the scatter plots and for the `plot_layout()` and `plot_annotation()` functions.
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build input and output file paths on lines 7, 15, and 21. The `ggplot2` package is used for the `labs()` function calls on lines 9 and 10. The `patchwork` package is used to combine the scatter plots with the `plot_layout()` and `plot_annotation()` functions. 
 
 Line 7 loads the `hmdb_scatter` and `kegg_scatter` `ggplot` objects that were saved previously.
 
-Lines 9 - 10 use the HMDB scatter plot from before, but remove its title and combine it with the KEGG scatter plot from before (also removing its title). 
+Lines 9 - 10 use the HMDB scatter plot from before, but remove its title and combine it with the KEGG scatter plot from before (also removing its title). The combining of the plots using the plus sign (`+`) is made possible by the `patchwork` package.
 
-Line 11 combines the legends.
+Line 11 combines the legends. According to the documentation, 'plot_layout(guides = "collect")' will collect guides or legends and remove duplicates.
 
-Line 12 adds a single title for the whole plot.
+Line 12 adds a single title for the whole plot. The `plot_annotation()` function helps us put a title across the combined plot. 
 
 The rest of the script is used to save the combined plot as a `.png` file.
 

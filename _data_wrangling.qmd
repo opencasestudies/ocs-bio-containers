@@ -69,7 +69,7 @@ Using the `tidyverse`, we will wrangle the extracted version of Table 1. This sc
 
 <details><summary>What is this script doing?</summary>
 
-Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build input and output file paths on lines 7, 44, 50, and 53. The `tidyverse` is used to pipe the data from function to function (with `%>%`) and for functions like `rename` from the package `dplyr`, [`mutate` from `dplyr` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter` from `dplyr`, and `select` from `dplyr` throughout the script. The `readr` package will be used to write an output `csv` file on line 52.
+Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `here` package will be used to build relative input and output file paths on lines 7, 44, 50, and 53. The `tidyverse` is used to pipe the data from function to function (with `%>%`) and for functions like `rename` from the package `dplyr`, [`mutate` from `dplyr` (to create new columns)](https://dplyr.tidyverse.org/reference/mutate.html), `filter` from `dplyr`, and `select` from `dplyr` throughout the script. The `readr` package will be used to write an output `csv` file on line 52.
 
 Line 7 loads the `raw_table` variable that stores the Raw Table 1 data that we extracted and saved using `tabulapdf` in the Data Import Section. 
 
