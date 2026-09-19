@@ -20,6 +20,8 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * The software or packages of major interest
 * Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
 
+Version pinning
+
 We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
 
 Side quest: We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what could be in the Dockerfile. In this case the directory structure is controlled by the mounted volume analysis scripts, but a Dockerfile could also specify directory structure.
@@ -91,4 +93,20 @@ Therefore, when we wrangle the data we will need to:
     * The column containing a mixture of cohort descriptions and the number of paired samples 
     * Any unnecessary/intermediate columns we make while performing the previous wrangling steps
 
-include click to expand section describing how to interact with the data in an RStudio / positron IDE if they have it and see these things
+<details><summary>If you want to explore this dataset in RStudio, Positron, or another IDE</summary>
+
+Because our data is in a mounted volume, we have access to it outside of the container.
+
+Our `01_extract_data.R` script saves the extracted data in both a `.csv` and an `.rda` file. [`.rda` files](https://www.r-bloggers.com/2017/04/load-save-and-rda-files/) allow users to store and load R data structures or objects (in a compressed format).
+
+If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE using the `load()` function: 
+
+```{r, eval = FALSE}
+file_path <- "[your_path_to_]/ocs-bio-containers-scaffold-main/data/imported/raw_table1.rda"
+load(file_path)
+```
+
+This will load an R object named `raw_table` that you can interact with in your IDE. You can use [`view()`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View) to look at the object and other functions to look at unique values, counts of values, etc. in columns.
+
+</details>
+
