@@ -50,7 +50,7 @@ An image that is pulled from a registry will match the image that was pushed to 
 
 "Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developingAny changes made to those files will still be available to you once the container is no longer running.
 
-```{r, eval = FALSE, fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
+```{r, echo = FALSE, fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
 ```
 
