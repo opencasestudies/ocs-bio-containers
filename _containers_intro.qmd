@@ -4,12 +4,66 @@ Before we start to address your project with Collab O. Rator, we will provide an
 
 ## What is a container?
 
-* Describe images, containers, and other vocabulary around the subject such as Dockerfile, building an image, etc.
-* make a diagram showing how Dockerfile relates to building an image ... (possibly borrow or adapt the crane one that Candace made for ITCR containers course)
+A [container is an active computing environment](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) that is isolated from the rest of the user's system. Containers are the operational ending point of the containerization process (involving Dockerfiles and images), define and instantiate or produce containers. 
 
-```{r, echo = FALSE}
+You can think of containers like the countryside world from the Mary Poppins scene where Mary Poppins, Bert, and the kids jump from a London park into the chalk drawing of the countryside. The chalk drawing is the "Image" that is "run" to launch the running container. 
+
+```{r, echo = FALSE, fig.alt = "Images are a frozen snapshot of what the computing environment will be in a container or what will be in the running container, while a container is the isolated, specified computing environment that you can work in. This is like the Mary Poppins scene where Mary Poppins, Bert, and the kids are looking at chalk drawings (images) and jump into one which has its own isolated environment (container)."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
 ```
+
+We will discuss the containerization process that leads to containers, starting at the beginning:
+
+### Dockerfiles
+
+Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, Dockerfiles are a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include speciyfing a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables. 
+
+```{r, echo = FALSE, fig.alt = "Dockerfiles are the starting point in the containerization process "}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f3ca37d253_0_0#slide=id.g3f3ca37d253_0_0")
+```
+
+### Building
+
+"Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
+
+### Images
+
+[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Each layer is related to a command from the Dockerfile: adding or modifying to what the container will contain. Once images are created they are immutable (e.g., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it. Or removing a package because it's no longer needed and you can have a smaller image. Images are much larger than Dockerfiles (often Gigabytes (GB) in size) and not as readable. Images are the main way that containers are shared. 
+
+```{r, echo = FALSE, fig.alt = "Images are layered and built by processing the sequential commands in a Dockerfile, stacking each layer on the previous layer according to the commands in the Dockerfile."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
+```
+
+### Registries
+
+Images can be stored within your local file system but you might want to free up space (due to their large size) or share them with team members, collaborators, another machine you use, or because you are publishing a study. This is where [registeries](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) are useful. A registry is a centralized location for storing and sharing container images. Docker Hub is a common, but not the only, registry used to share Docker images.
+
+```{r, echo = FALSE, fig.alt = "Images are stored in registries and can be pushed or pulled from a registry. The images that are pushed to a registry are built from a Dockerfile. The images that are pulled from the registry will match the images that were pushed. If you pull an image and later use the original Dockerfile to build an image, these could be the same image or they might be different if undefined package or dependency versions have changed."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
+```
+
+Images can be "pushed" or "pulled" from a registry. If an image has multiple tags or are built for multiple architectures, the related images (with different tags or built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository).  If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
+
+An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the Dockerfile that was used to build the original image (that was pushed to the registry), these images may no longer match. Unless versions are explicitly controlled within the Dockerfile, versions of dependencies or packages may have changes or may no longer be available. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes like this can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share. 
+
+### Running
+
+"Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developingAny changes made to those files will still be available to you once the container is no longer running.
+
+```{r, eval = FALSE, fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
+```
+
+If your instiution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. 
+
+::: {.column-margin}
+Find alternatives to suggest for these cases.
+:::
+
+
+::: {.emphasis_block}
+In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.
+:::
 
 ::: {.emphasis_block}
 
@@ -44,7 +98,6 @@ Within the running container, you use the packages together with any data or ana
 The eventual meals produced by the kitchen are like the finished product: a tool, analysis, result, etc. that can be shared. And finally, as with any kitchen endeavour -- there has to be a clean up. Perhaps a container is paused or stopped (e.g., the heat is turned off but the pan is still available on the stove). Then eventually the container is removed -- (e.g., dishes are cleared, cleaned, and put away). Images may also be removed to save space -- like clearing out or storing unused ingredients. 
 
 In a kitchen, you may make multiple courses for a meal: an appetizer, the main course, and dessert. Each of these have their own process: own station in a professional kitchen, own set of recipes, own prep needs, and own tool needs. However, the end product is the whole meal. In a similar way, an analysis may have multiple parts each supported by its own container, all working together to produce the overall end product.
-
 
 ### Hotel analogy
 
