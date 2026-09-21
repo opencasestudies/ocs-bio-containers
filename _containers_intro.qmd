@@ -12,13 +12,13 @@ You can think of containers like the countryside world from the Mary Poppins sce
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
 ```
 
-Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is one of the industry-standard and most popular of the tools and primarily will be the one discussed and utilized within this case study. 
+Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is one of the industry-standard and most popular of the tools and primarily will be the one discussed and utilized within this case study. However, Docker is not always the appropriate tool to use in every context.
 
 We will discuss the containerization process that leads to containers, starting at the beginning:
 
 ### Dockerfiles
 
-Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, Dockerfiles are a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include speciyfing a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables. 
+Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, Dockerfiles are a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include speciyfing a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
 
 ```{r, echo = FALSE, fig.alt = "Dockerfiles are the starting point in the containerization process "}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f3ca37d253_0_0#slide=id.g3f3ca37d253_0_0")
@@ -32,7 +32,24 @@ For other tools (e.g., Singularity or Apptainer) the equivalent of these files a
 
 ### Images
 
-[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Each layer is related to a command from the Dockerfile: adding or modifying to what the container will contain. Once images are created they are immutable (e.g., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it. Or removing a package because it's no longer needed and you can have a smaller image. Images are much larger than Dockerfiles (often Gigabytes (GB) in size) and not as readable. Images are the main way that containers are shared. 
+[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Each layer is related to a command from the Dockerfile: adding or modifying to what the container will contain. Once images are created they are immutable (e.g., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it (e.g., the [base image](https://docs.docker.com/build/building/base-images/) that is specified in the Dockerfile). Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Also images are not as readable as a Dockerfile, but images are the main way that containers are shared. 
+
+Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
+
+:::{.emphasis_block}
+<details><summary>Picking Base Images and keeping an image "minimal"</summary>
+
+Picking the right base image when writing a Dockerfile requires a balance: finding one that has the packages/ecosystem you need while not including too much extraneous stuff you don't need (e.g., compability vs size).
+
+When defining what your container should look like, there are two important considerations as [discussed in the ITN Containers for Scientists course](https://hutchdatascience.org/Conatainers_for_Scientists/05-modifying-containers.html#activity-instructions):
+
+1. Start with a small base image that provides the ecosystem you need (e.g., Python or R) and add only the fewest number of packages that you need for your specific project. 
+2. If a project has a lot of steps or would need a very large image, you could split the project into smaller units and have a docker image for each segment of the project. This is especially useful if the project is utilizing workflows (e.g., WDL, Snakemake) where different containers can be specified for different steps.
+
+Some base images on Docker Hub (such as Python) provide [`slim`](https://hub.docker.com/_/python#pythonversion-slim) or [`alpine`](https://hub.docker.com/_/python#pythonversion-alpine) options that are scaled down in what they include and are helpful when size is a major concern. However, they may also cause compatability issues if you need to install and use some additional packages. 
+
+</details>
+:::
 
 ```{r, echo = FALSE, fig.alt = "Images are layered and built by processing the sequential commands in a Dockerfile, stacking each layer on the previous layer according to the commands in the Dockerfile."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
@@ -58,11 +75,8 @@ An image that is pulled from a registry will match the image that was pushed to 
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
 ```
 
-If your instiution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. 
+If your instiution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
 
-<!--
-Discuss daemon, root level permissions, and principle of least privilege here? 
--->
 
 ::: {.column-margin}
 Find alternatives to suggest for these cases. I think using Podman is one we can mention, but are there others for working with Docker?
@@ -70,7 +84,7 @@ Find alternatives to suggest for these cases. I think using Podman is one we can
 
 
 ::: {.emphasis_block}
-In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.
+In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.
 :::
 
 ::: {.emphasis_block}
@@ -115,17 +129,32 @@ The containerization process can be thought of like hotels.
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
 ```
 
-Add an analogy about hotel rooms
+* Dockerfile: The blueprint for the room plus the instructions for cleaning/resetting it in between guests.
+* Build: Cleaning/resetting the room in between guests.
+* Image: The room cleaned and prepped for check-in. It's identical every time you look at it.
+* Run: Check-in/ handing the room key to the guest.
+* Container: The active occupied room during a specific guest's stay.
+* Note each room is isolated from the others and the amenities that can be shared by multiple rooms can be thought of like a mounted volume.
+* Cleanup steps: checking out.
+* Different hotel chains will look different and may provide different amenities (base impages), but they will all have similarities in providing a bed, bathroom, etc. In a similar way containers will have different packages and you bring in different date or scripts when mounting a volume, but they all are similar in that they provide an isolated environment.
+
 
 ### Lego analogy
 
-The containerization process can be thought of like building with Legos.
+The containerization process can be thought of like building with LEGOs.
 
 ```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
 ```
 
-Add an analogy about building legos
+* Dockerfile: Instruction booklet that comes with a set
+* Build: LEGO assembly line: gathering the necessary pieces, packing them into sealed bags, putting them and the manual (what's necessary for the set) in a sealed box
+* Registry: Lego.com or a LEGO store
+* Image: The sealed box for the set with pieces in bags and booklet included.
+* Run: Opening the box and dumping the pieces on the table.
+* Container: Actively putting the set together and playing with it.
+* Different sets will have different things available the same way that different containers will have different things available.
+* Mounting a volume: bringing LEGOs that you have outide of the set into the act of putting the set together to modify it or make it your own. 
 
 :::
 
@@ -153,24 +182,23 @@ Containers are especially useful in the following cases:
 * If a collaborative team is having difficulty replicating results within the team
 * If dependencies are causing nightmares
 
- --> Discuss Singularity and Apptainer for HPCs in this section <br>
-  --> Include why Docker is not appropriate for HPCs <br>
-  --> Recommendations for the cloud <br>
+If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.
 
 ### What are general use cases for containers?
 
-There are several different use cases for containers: 
+There are several different (downstream) use cases for containers: 
 
-* Supporting an analysis
-* Deploying an app
+* Supporting an analysis: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis. Containers are especially useful in the team environment for supporting an analysis when it comes to debugging and reproducibility. Team members may find that analyses have different results if they do not have standardized software versions and computing environments.
+* Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software.
+* Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash it won't impact other apps on the server because of the app's isolated environment.
+
+When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workfows, a container may be unnecessary. The first of these use cases (supporting an analysis) is the context for this case study.
 
 ### What are the first steps for working with a container?
 
-* Developing: starting from the beginning, setting up a base image, specifying dependencies, actual packages of interest
-* Finding: search and find a container that meets your needs (you may have to modify it a bit/add a couple other packages)
-* Specified: A collaborator sends you a container and you need to use it (or add a package or otherwise modify it in some way to suit your needs)
+If a container is necessary for you work, the first steps largely depend on how the container will be used and what stage the project is in. For a project that is starting from the beginning, you may need to develop the container from the beginning by defining a Dockerfile. This would include choosing a base image and specifying dependencies and the actual packages of interest. Alternatively, you may be able to find a container in a registry that meets your needs already because it was referenced in a published paper. As the project evolves, you may have to further modify the container so that it contains more or different packages than you expected. Be sure to remove any unnecessary packages that you didn't actually need. For projects that are more mature, a container may already be largely defined / available. In such cases a team member or collaborator may have to give you access instructions.
 
-The last of these scenarios is the context for this case study.
+The last of these scenarios (already specified container) is the context for this case study.
 
 ```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = ''}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
@@ -178,24 +206,20 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ## How do you work with a container?
 
-### Options for interacting with the container
+Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/). Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
-How do you work with a container and run an analysis with a container?
+Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote ocation.
 
-* Terminal / Command Line
-  * If you only have a Dockerfile, you need to use this to {{< glossary "Build" display="build" >}} the image
-* Docker Desktop
-* An interactive Integrated Development Environment (IDE)
-* In combination with GitHub Actions
+Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
 
-Sometimes the process of running a container and interacting with it involves a combination of these options (because the container installs an IDE) that once you've run the container, you then develop an analysis within an IDE.
+## Summary
 
-#### Docker Desktop vs Docker through a Command Line Interface (CLI)
+::: {.emphasis_block}
 
-The reason we're primarily walking learners through using Docker Desktop is because
+Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely.
 
-1. It separates out images and containers which will support learners trying to learn the difference
-2. Learners can create files, as well as import and export files within the files tab as opposed to mounting a volume
-3. Learners can also mount a volume which is an option
-4. Learners can easily see how many images and containers they have and while they are learning this can be extremely helpful so they don't tax their systems too much
-5. Docker Desktop has its own documentation that we can point to
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
+```
+
+:::
