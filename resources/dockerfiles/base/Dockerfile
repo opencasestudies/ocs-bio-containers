@@ -2,7 +2,7 @@ FROM rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install Java + minimal system libs needed for your R packages
+# Install Java + minimal system libs needed for R packages
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     openjdk-11-jdk \
@@ -14,10 +14,12 @@ RUN apt-get update \
 
 # Install R packages
 RUN install2.r --error --deps TRUE \
-    rJava \
-    tabulapdf \
-    here \
     bubbleHeatmap \
     ggnetwork \
     ggpubr \
-    gt
+    gt \
+    here \
+    rJava \
+    tabulapdf \
+ && rm -rf /tmp/downloaded_packages \
+ && rm -rf /root/.cache
