@@ -30,6 +30,8 @@ For other tools (e.g., Singularity or Apptainer) the equivalent of these files a
 
 "Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
 
+[Best practices for writing a `Dockerfile` to optimize the building process](https://docs.docker.com/build/building/best-practices/#run) are provided by Docker documentation. Many of these will be discussed later in the Data Exploration section.
+
 ### Images
 
 [Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Each layer is related to a command from the Dockerfile: adding or modifying to what the container will contain. Once images are created they are immutable (e.g., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it (e.g., the [base image](https://docs.docker.com/build/building/base-images/) that is specified in the Dockerfile). Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Also images are not as readable as a Dockerfile, but images are the main way that containers are shared. 
@@ -173,14 +175,21 @@ Containers are not always necessary. The complexity of setting up, sharing, and 
 * If an analysis can stay in one place.
 * If the computing platform already supports analyses through the use of containers (e.g., The NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.
 
+In cases where you don't need a container, consider printing out [Session Info](https://sessioninfo.r-lib.org/) or setting up an [`renv`](https://rstudio.github.io/renv/) to more transparently report your reproducible environments for your analyses.
+
 ### When is a container especially useful?
 
 Containers are especially useful in the following cases:
 
-* If you need to move an analysis to another machine or environment like an HPC or the cloud
-* If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments
-* If a collaborative team is having difficulty replicating results within the team
-* If dependencies are causing nightmares
+* If you need to move an analysis to another machine or environment like an HPC or the cloud.
+* If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.
+* If a collaborative team is having difficulty replicating results within the team.
+* If a team wants to both replicate and extend an analysis.
+* If dependencies are causing nightmares.
+
+```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = ''}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
+```
 
 If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.
 
@@ -200,13 +209,9 @@ If a container is necessary for you work, the first steps largely depend on how 
 
 The last of these scenarios (already specified container) is the context for this case study.
 
-```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = ''}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
-```
-
 ## How do you work with a container?
 
-Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/). Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
+Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/), and once you enable it, it doesn't work quite in the way you would expect it to while interacting with and running files in the "Exec" tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
 Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote ocation.
 

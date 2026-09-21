@@ -5,46 +5,107 @@
 
 We'll utilize this section to explore the {{< glossary "Dockerfile" >}} specifically answering "What's in a {{< glossary "Container" display="container" >}}?"
 
-```{.dockerfile filename="Dockerfile"}
-{{< include resources/dockerfiles/base/Dockerfile >}}
-```
-
-Going forward we'll use an approach like the one above to load the files from this repository rather than copy/pasting code and needing to update it in multiple places.
+As previously described, a container is created from an image which is built from a `Dockerfile`. Therefore, to know what's in a container, we have to know what's in the image or the `Dockerfile` defining the image. Also as previously described, images have layers. Each command (`FROM`, `ENV`, `RUN`, etc.) in the Dockerfile adds another layer to the image.
 
 ```{r, echo = FALSE}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
 ```
 
-* Notice there are layers
-* Point out dependencies (Side quest: how do we know what dependencies we need?)
-* The software or packages of major interest
-* Keeping it modular or small and having multiple containers for the same project/different substeps (note that in this case study we're using the data visualization container the team is using...it'll have some visualization packages that are reasonably being used by the team for visualizations, but not the visualization steps within this case study)
+The `Dockerfile` below is the Dockerfile that was used to define the image that we've pulled and run within the previous Data Import section.
 
-Version pinning
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/base/Dockerfile >}}
+```
 
-We'll also utilize this section to explore what's not in a container! -- Data! (noting that yes we're storing some intermediate data in the container while we're using it, but we won't include that in a Dockerfile or an image / container we share with others)
+### FROM: Base image
 
-Side quest: We can even explore the file structure of the running container in Docker Desktop a bit and connect how those directories are related to what could be in the Dockerfile. In this case the directory structure is controlled by the mounted volume analysis scripts, but a Dockerfile could also specify directory structure.
+Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. Our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, Rstudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
 
-Side quest: what if you wanted to spin up an IDE with your container?
+Specifically this is a [version-pinned base image](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions) meaning that it's specifying a tag for the base image (R version 4.5.3 as opposed to `latest` -- whichever is the most recent version) and a ["digest"](https://docs.docker.com/dhi/explore/security-concepts/digests/) (everything after the at sign /`@`) -- a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a "digest" from the "Tag summary" panel under the "Overview" tab on Docker Hub. Pinning the version of the base image is a good practice.
 
-::: {.panel-tabset}
 
-### Docker Desktop
+:::{.think_question}
+::::{.think_question_header}
+Question Opportunity
+::::
+::::{.inner_block}
+If we wanted to make the image more minimal, we could use a base image that doesn't have Rstudio in it (because we don't exactly need Rstudio). **What are some alternative base images that would give us the R ecosystem? Would they have `tidyverse` already or would we need to install it?**
 
-Include instructions on viewing the file structure within the running container
+<details><summary>A possible answer</summary>
 
-Include instructions on how to create / interact with files within the running container
+* [`r-base`](https://hub.docker.com/_/r-base): Supports the use of R/the R ecosystem. It does not have `tidyverse` and we would have to install `tidyverse` explicitly in our Dockerfile.
+* [`rocker/r-ver`](https://rocker-project.org/images/versioned/r-ver.html): `r-ver` is similar to `r-base` but notes that it provides an emphasis on reproducibility and is set up such that "the same version of the R package is installed no matter when the installation is performed." `rver` does not have `tidyverse` and we would have to install `tidyverse` explicitly in our Dockerfile.
 
-### Docker through a CLI
-
-Include instructions on viewing the file structure within the running container from the Command Line
-
-Include instructions on how to create / interact with files within the running container from the Command Line
-
+</details>
+::::
 :::
 
-Side quest: Discuss how mounting data/scripts allows for version controlled files and that while editing the files in the file tab is possible without mounting a volume, it's not best practices (though it may not always be possible to mount files depending on security settings on a system)
+### ENV
+
+Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com/reference/dockerfile/#env) to set an environment variable for the build process and will persist in the eventual running container. This environment variable [`DEBIAN_FRONTEND` specifically controls the user interface](https://unix.stackexchange.com/questions/701285/is-debian-frontend-noninteractive-redundant-with-apt-get-yqq) during Debian and Ubuntu package installations, setting it to non-interactive, ensuring that default answers are automatically accepted. It's [not necessarily a good idea to set it as an environment variable](https://github.com/moby/moby/issues/4032) because this can impact behavior in the running container in unintentional ways later.
+
+### RUN: Dependencies
+
+Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openajdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
+
+* Lines 6-11 use `apt-get` to install the listed dependencies.
+  * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install pacakges that no longer exist or aren't available in the expected location any longer. 
+  * In shell commands where successful execution is important, commands are often chained together using a double ampersand (`&&`) representing "and". It ensures the second command is executed if and only if the first command completes successfully. [Docker documentation stipulates that `apt-get update` and `apt-get install` should always be chained together this way.](https://docs.docker.com/build/building/best-practices/#run)
+  * [The `-y` flag](https://linux.die.net/man/8/apt-get) for `apt-get install` tells the command to assume an automatic yes to prompts so installations can happen non-interactively (important for a non-interactive building of an image). 
+  * The [`--no-install-recommends` option](https://askubuntu.com/questions/65081/what-are-the-implications-of-no-install-recommends-apt-get-install) specifies that recommended but non-required packages should not be installed (important when building a minimal image).
+  * Lines within this block end with a backslash (`\`) which acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
+  * Note that the [Docker documenation highly recommends](https://docs.docker.com/build/building/best-practices/#run) the use of the double ampresand (`&&`) and backslash (`\`) to keep `Dockerfiles` readable.
+  * The ecosystem impacts what tool is used after the `RUN` instruction. `apt-get` is used here because the base image (`rocker/tidyverse`) is based on Ubuntu. `apk` is an alternative to `apt-get` for certain ecosystems like those supported by Alpine instead of Ubuntu. You can trace the "image ancestry chain" by looking at each image's base image if you are unsure which ecosystem is being used.
+* Line 12 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
+* Line 13 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
+
+We could improve this `Dockerfile` by [sorting multi-line arguments alphabetically](https://docs.docker.com/build/building/best-practices/#sort-multi-line-arguments) -- not super necessary for a small list like this, but if the list was longer, sorting alphabetically could help to ensure there are no duplications. 
+
+**How do you know what dependencies you need?**
+
+* Some packages may tell you that you will need a specific library or dependency in order to install it. `tabulapdf` is an example of this where it [lists Java under the System Requirements](https://cran.r-project.org/web/packages/tabulapdf/index.html).
+* Sometimes you will try to build a `Dockerfile` and get a message saying it doesn't have a library it needs.
+* You could list common dependencies for your ecosystem and then remove one at a time to see if the image still builds and the analysis still run sucessfully.
+* You could ask a chatbot to suggest dependencies that may be necessary given your base image and the packages you need to include.
+
+:::{.ai_box}
+::::{.ai_box_header}
+AI use considerations
+::::
+::::{.inner_block}
+<u>Context:</u>
+Within your prompt, provide the chatbot 1) what base image your Dockerfile is using, 2) any other depenencies you know you need to include, 3) a list of packages that you want to install, and 4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
+
+<u>Suggested Prompt:</u>
+
+```{ .default .code-overflow-wrap }
+I am building a container image for the purpose of {FILL IN short purpose}. My Dockerfile is using the {FILL IN} image as a base image. I already know that I need the {FILL IN (Java, etc.)} dependencies because I'm installing {FILL IN packages (tabulapdf, etc.)}. Other packages that I'm installing include {FILL IN}. What other dependencies will I need? Can I get them all using `apt-get install`? Are there any other set up steps that I will need for these dependencies to make sure that {R or Python} is configured to use them?
+```
+
+Note that the chatbot may ask for a copy of your Dockerfile in case there are environmental variables or other steps (like the R configuration steps earlier) that may be impacting the observed error message.
+
+<u>Validation:</u>
+Rather than copy/pasting any `Dockerfile` or lines that chatbot recommends for you, you should have a dialog with the chatbot to make sure you understand its recommendations. You can also check the documentation for the packages to see if they recommend or require any of those libraries. You should check to make sure that the libraries are real/not hallucinated and are from trusted sources by googling them. After that, you can try to incorporate the recommendations into your Dockerfile and try to rebuild the image (and rerun the analysis if applicable).
+::::
+:::
+
+
+### RUN: Packages
+
+Lines 16 - 23 install the libraries for R packages. These are the packages of major interest for our analysis. Every package here is a data visualization package (or will support data extraction and wrangling from a table for a data visualization). Notice that every package is on a separate line and lines are separated by a backslash again (`\`). This time, these packages are listed alphabetically following the best practices recommendations. While we won't be using every listed package within this case study, they are included to demonstrate a scenario where a team may break a project up into steps and have different containers for those steps. In this case, Collab O. Rator's team has broken the project up into steps where one step in the process is data visualization. This container will then be used to create all of the data visualizations for the project. If the steps within this case study were the only parts of the analysis utilizing this container, we should remove any packages we do not directly use (e.g., `bubbleHeatmap`, `ggnetwork`, etc.)
+
+This `Dockerfile` uses [`install2.r`](https://rocker-project.org/use/extending.html) to install packages from CRAN. The `--error` option specifies that the build process will halt if there are any installation issues. The `--deps TRUE` specifies that all dependencies (e.g., suggestions) whether required or not are installed. By default, if we didn't include this argument, it would only install needed dependencies. For a more minimal image, it may be better to not set `--deps` to TRUE.
+
+Both `install2.r` or `Rscript -e 'install.packages()'` can be used to install R packages from CRAN. The [ITN's Containers for Scientists course](https://hutchdatascience.org/Containers_for_Scientists/06-writing-dockerfiles.html) shows examples of the latter. Our use of the former is because `rocker` base images typically have access to the `install2.r` method, which not all base images within the R ecosystem will. Much like including` the `--error` option for `install2.r`, the `install.packages()` method can be modified to halt the build process, but you would have to include `options(warn = 2);` within the quotes prior to the call to `install.packages()`. If the `install2.r` method isn't available, [you can first install it in your Dockerfile](https://stackoverflow.com/a/71079625), and then it will be available for the later steps of the build process.
+
+If packages aren't available on CRAN, but are available on GitHub, `rocker` images include the [`installGithub.r`](https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html) helper script (from `littler` like the `install2.r` script) or you can use [`pak`](https://pak.r-lib.org/), [`remotes`](https://remotes.r-lib.org/reference/install_github.html), or [`devtools`](https://www.rdocumentation.org/packages/devtools/versions/1.13.6/topics/install_github) to install from GitHub. If packages are available from BioConductor, you can use `BiocManager` or the `installBioc.r` `littler` script. Note, if not using the `littler helper scripts` or using a non-rocker base image, you may first need to install these packages before you can use them within the `Dockerfile`, but then following the `Run Rscript -e ''` template, you can use functions later in the `Dockerfile`. [For `Bioconductor` packages](https://support.bioconductor.org/p/p134101/), it may be worthwhile to use a [multi-stage build (a second `FROM`)](https://docs.docker.com/build/building/multi-stage/) to use a [Bioconductor image as a second base image](https://www.bioconductor.org/help/docker/).
+
+
+Finally lines 24-25 clean up temporary files much like line 13 did earlier. 
+
+### Final notes
+
+Notice what is **not** in this container image: Data! When we run a container from a image, we can mount data, but that data is not part of the definition of the image or the image itself and won't be shared in registeries. Data should not be included when building an image!
 
 ## Container Application
 
