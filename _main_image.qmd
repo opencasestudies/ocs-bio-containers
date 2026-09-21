@@ -1,4 +1,4 @@
-#### {.outline }
+:::{.outline }
 
 <!--
 Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
@@ -11,4 +11,4 @@ See image here for example: https://www.opencasestudies.org/ocs-bp-school-shooti
 ottrpal::include_slide("https://docs.google.com/presentation/d/1Y2UAXo61mDtFkfToWYTIzcGzGfLzbpQ79I9ccD05A8c/edit?slide=id.p#slide=id.p")
 ```
 
-####
+:::
