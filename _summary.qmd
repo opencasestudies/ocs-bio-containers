@@ -3,33 +3,21 @@
 ## **Synopsis**
 ***
 
-<!--
-briefly recap everything that was covered in the case study from the motivation to the data analysis.
-Highlight conclusions made as well as limitations or future work to be done.
--->
+In this case study, you’ve learned about why containerization is used as part of reproducible science workflows. You’ve been introduced to Docker, and learned procedures for creating and modifying containers. You’ve practiced using the "Dockerfile -(build)-> image -(mount and run)-> container" process to create an active, isolated environment where you can perform an analysis. For your analysis, you pulled an image and created a container from it, running scripts and inspecting output within the container; and you modified the Dockerfile to contain a new package, built a new image, created another container and ran additional scripts, inspecting and saving the output from those. Finally, you created a script to drive the whole analysis and reviewed what needed to be shared with a collaborator or team member so they could validate the process.
 
-<!--
-Connect back to the main questions and what answers the analysis might have
--->
+Along the way, you’ve also learned about the advantages and challenges of containerization as well as secondary data resources and best practices for scientific project organization. We've seen that microbiome and metabolome data are combined to better understand the actual impact, not just the potential of the microorganisms within a microbiome. You've also learned that, in general, the greater the number of samples in a study, the higher the statistical power of a study, and more metabolites that are expected to be observed throughout the study.
 
-So if you do need to use a container:
+You've learned that containers aren't always necessary and in some cases might not be worth the hassle, but in other cases they are beneficial and worth the challenge to learn and incorporate into your work. Your needs may go beyond what's covered in this resource which focused on using local containerization to run an analysis where the scripts were located in and results were saved to a mounted volume. Beyond the decision of whether containers are the right choice for you and your downstream use/work, working with containers requires decisions throughout the process.
 
-* It's going to be hard
-* Your needs may be beyond what's covered in this resource ... look at additional information for more resources
-
-But maybe you don't need a container ... include some sort of flowchart with recommendations on when you would use a container vs just using session information or something like that
-
-Highlight what we did and summarize what we learned
+```{r, echo = FALSE}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
+```
 
 ***
 
 ## **Summary Plot**
 ***
 
-<!--
-construct a plot here that summarizes the conclusions found in the data, if applicable
-(connecting to a main question if possible)
--->
 
 ```{r echo=FALSE, warning = FALSE, out.width=800}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1Y2UAXo61mDtFkfToWYTIzcGzGfLzbpQ79I9ccD05A8c/edit?slide=id.p#slide=id.p")

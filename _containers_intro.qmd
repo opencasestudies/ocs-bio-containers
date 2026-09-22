@@ -18,7 +18,7 @@ We will discuss the containerization process that leads to containers, starting 
 
 ### Dockerfiles
 
-Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, Dockerfiles are a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include speciyfing a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
+Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, Dockerfiles are a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include specifying a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
 
 ```{r, echo = FALSE, fig.alt = "Dockerfiles are the starting point in the containerization process "}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f3ca37d253_0_0#slide=id.g3f3ca37d253_0_0")
@@ -41,14 +41,14 @@ Because images are the main way that containers are shared and they tend to be l
 :::{.emphasis_block}
 <details><summary>Picking Base Images and keeping an image "minimal"</summary>
 
-Picking the right base image when writing a Dockerfile requires a balance: finding one that has the packages/ecosystem you need while not including too much extraneous stuff you don't need (e.g., compability vs size).
+Picking the right base image when writing a Dockerfile requires a balance: finding one that has the packages/ecosystem you need while not including too much extraneous stuff you don't need (e.g., compatibility vs size).
 
 When defining what your container should look like, there are two important considerations as [discussed in the ITN Containers for Scientists course](https://hutchdatascience.org/Conatainers_for_Scientists/05-modifying-containers.html#activity-instructions):
 
 1. Start with a small base image that provides the ecosystem you need (e.g., Python or R) and add only the fewest number of packages that you need for your specific project. 
 2. If a project has a lot of steps or would need a very large image, you could split the project into smaller units and have a docker image for each segment of the project. This is especially useful if the project is utilizing workflows (e.g., WDL, Snakemake) where different containers can be specified for different steps.
 
-Some base images on Docker Hub (such as Python) provide [`slim`](https://hub.docker.com/_/python#pythonversion-slim) or [`alpine`](https://hub.docker.com/_/python#pythonversion-alpine) options that are scaled down in what they include and are helpful when size is a major concern. However, they may also cause compatability issues if you need to install and use some additional packages. 
+Some base images on Docker Hub (such as Python) provide [`slim`](https://hub.docker.com/_/python#pythonversion-slim) or [`alpine`](https://hub.docker.com/_/python#pythonversion-alpine) options that are scaled down in what they include and are helpful when size is a major concern. However, they may also cause compatibility issues if you need to install and use some additional packages. 
 
 </details>
 :::
@@ -86,13 +86,13 @@ An image that is pulled from a registry will match the image that was pushed to 
 
 ### Mounting
 
-When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developingAny changes made to those files will still be available to you once the container is no longer running.
+When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developing. Any changes made to those files will still be available to you once the container is no longer running.
 
 ```{r, echo = FALSE, fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
 ```
 
-If your instiution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
+If your institution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
 
 :::{.emphasis_block}
 <details><summary>Alternatives for machines with strict security configurations</summary>
@@ -157,7 +157,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Container: The active occupied room during a specific guest's stay.
 * Note each room is isolated from the others and the amenities that can be shared by multiple rooms can be thought of like a mounted volume.
 * Cleanup steps: checking out.
-* Different hotel chains will look different and may provide different amenities (base impages), but they will all have similarities in providing a bed, bathroom, etc. In a similar way containers will have different packages and you bring in different date or scripts when mounting a volume, but they all are similar in that they provide an isolated environment.
+* Different hotel chains will look different and may provide different amenities (base images), but they will all have similarities in providing a bed, bathroom, etc. In a similar way containers will have different packages and you bring in different date or scripts when mounting a volume, but they all are similar in that they provide an isolated environment.
 
 
 ### Lego analogy
@@ -175,7 +175,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Run: Opening the box and dumping the pieces on the table.
 * Container: Actively putting the set together and playing with it.
 * Different sets will have different things available the same way that different containers will have different things available.
-* Mounting a volume: bringing LEGOs that you have outide of the set into the act of putting the set together to modify it or make it your own. 
+* Mounting a volume: bringing LEGOs that you have outside of the set into the act of putting the set together to modify it or make it your own. 
 
 :::
 
@@ -189,11 +189,11 @@ Will embed a survey to ask learners to suggest other analogies.
 
 ## Why containers?
 
-As previously described, containers are usefufl for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
+As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
 
-Containers are not always necessary. The complexity of setting up, sharing, and documeting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
+Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
 
-* If you're working on an anlysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn't expect many people in your field to work with.
+* If you're working on an analysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn't expect many people in your field to work with.
 * If you're **not** working within a large collaborative team.
 * If your analysis is tied to a single machine or static compute environment, and won't need to move between systems or machines.
 * If the computing platform already supports analyses through the use of containers (e.g., The NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.
@@ -224,7 +224,7 @@ There are several different (downstream) use cases for containers:
 * Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software.
 * Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash it won't impact other apps on the server because of the app's isolated environment.
 
-When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workfows, a container may be unnecessary. The first of these use cases (supporting an analysis) is the context for this case study.
+When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. The first of these use cases (supporting an analysis) is the context for this case study.
 
 ### What are the first steps for working with a container?
 
