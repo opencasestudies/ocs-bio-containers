@@ -146,7 +146,7 @@ In a kitchen, you may make multiple courses for a meal: an appetizer, the main c
 
 The containerization process can be thought of like hotels. 
 
-```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as hotels.'}
+```{r eval = FALSE, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as hotels.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
 ```
 
@@ -164,8 +164,8 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 The containerization process can be thought of like building with LEGOs.
 
-```{r fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
+```{r eval = FALSE, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_63#slide=id.g3f8b4188434_0_63")
 ```
 
 * Dockerfile: Instruction booklet that comes with a set
@@ -221,7 +221,7 @@ If you need to move an analysis to another machine or environment like an HPC, i
 There are several different (downstream) use cases for containers: 
 
 * Supporting an analysis: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis. Containers are especially useful in the team environment for supporting an analysis when it comes to debugging and reproducibility. Team members may find that analyses have different results if they do not have standardized software versions and computing environments.
-* Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software.
+* Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software [@Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015].
 * Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash it won't impact other apps on the server because of the app's isolated environment.
 
 When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. The first of these use cases (supporting an analysis) is the context for this case study.
