@@ -4,9 +4,9 @@ Before we start to address your project with Collab O. Rator, we will provide an
 
 ## What is a container?
 
-A [container is an active computing environment](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) that is isolated from the rest of the user's system. Containers are the operational ending point of the containerization process (involving Dockerfiles and images), define and instantiate or produce containers. 
+A [container is an active computing environment](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) that is isolated from the rest of the user's system. Containers are the operational ending point of the containerization process. The containerization process also involves Dockerfiles and images (upstream of containers) which define and instantiate or produce containers. 
 
-You can think of containers like the countryside world from the Mary Poppins scene where Mary Poppins, Bert, and the kids jump from a London park into the chalk drawing of the countryside. The chalk drawing is the "Image" that is "run" to launch the running container. 
+Images are a frozen snapshot of what the computing environment will be in a container or what will be in the running container, while a container is the isolated, specified computing environment that you can work in. This is like the Mary Poppins scene where Mary Poppins, Bert, and the kids are looking at chalk drawings (images) and jump into one which has its own isolated environment (container). 
 
 ```{r, echo = FALSE, fig.alt = "Images are a frozen snapshot of what the computing environment will be in a container or what will be in the running container, while a container is the isolated, specified computing environment that you can work in. This is like the Mary Poppins scene where Mary Poppins, Bert, and the kids are looking at chalk drawings (images) and jump into one which has its own isolated environment (container)."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
@@ -59,7 +59,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ### Registries
 
-Images can be stored within your local file system but you might want to free up space (due to their large size) or share them with team members, collaborators, another machine you use, or because you are publishing a study. This is where [registeries](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) are useful. A registry is a centralized location for storing and sharing container images. Docker Hub is a common, but not the only, registry used to share Docker images.
+Images can be stored within your local file system but you might want to free up space (due to their large size) or share them with team members, collaborators, another machine you use, or publicly because you are publishing a study. This is where [registries](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) are useful. A registry is a centralized location for storing and sharing container images. Docker Hub is a common, but not the only, registry used to share Docker images. Registries like Docker Hub are useful for finding base images or full images that can be used as is for your particular use case.
 
 ```{r, echo = FALSE, fig.alt = "Images are stored in registries and can be pushed or pulled from a registry. The images that are pushed to a registry are built from a Dockerfile. The images that are pulled from the registry will match the images that were pushed. If you pull an image and later use the original Dockerfile to build an image, these could be the same image or they might be different if undefined package or dependency versions have changed."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
@@ -67,11 +67,26 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Images can be "pushed" or "pulled" from a registry. If an image has multiple tags or are built for multiple architectures, the related images (with different tags or built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository).  If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
 
+:::{.column-margin
+Add push and pull to the glossary as well as a dictionary box.
+:::
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
 An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the Dockerfile that was used to build the original image (that was pushed to the registry), these images may no longer match. Unless versions are explicitly controlled within the Dockerfile, versions of dependencies or packages may have changes or may no longer be available. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes like this can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share. 
+::::
+:::
 
 ### Running
 
-"Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developingAny changes made to those files will still be available to you once the container is no longer running.
+"Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. 
+
+### Mounting
+
+When you "run" an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developingAny changes made to those files will still be available to you once the container is no longer running.
 
 ```{r, echo = FALSE, fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
@@ -79,9 +94,13 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 If your instiution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
 
+:::{.emphasis_block}
+<details><summary>Alternatives for machines with strict security configurations</summary>
 
-::: {.column-margin}
-Find alternatives to suggest for these cases. I think using Podman is one we can mention, but are there others for working with Docker?
+* [Podman](https://podman.io/) may be able to be used and has many similarities to Docker while more closely aligning with the principle of least privilege.
+* [Docker can work with singularity](https://docs.sylabs.io/guides/2.6/user-guide/singularity_and_docker.html), enabling you to still use Docker and Docker containers without needing root access.
+
+</details>
 :::
 
 
@@ -164,6 +183,10 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 :::
 
+:::{.column-margin}
+Will embed a survey to ask learners to suggest other analogies.
+:::
+
 ## Why containers?
 
 As previously described, containers are usefufl for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
@@ -172,7 +195,7 @@ Containers are not always necessary. The complexity of setting up, sharing, and 
 
 * If you're working on an anlysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn't expect many people in your field to work with.
 * If you're **not** working within a large collaborative team.
-* If an analysis can stay in one place.
+* If your analysis is tied to a single machine or static compute environment, and won't need to move between systems or machines.
 * If the computing platform already supports analyses through the use of containers (e.g., The NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.
 
 In cases where you don't need a container, consider printing out [Session Info](https://sessioninfo.r-lib.org/) or setting up an [`renv`](https://rstudio.github.io/renv/) to more transparently report your reproducible environments for your analyses.
@@ -185,7 +208,7 @@ Containers are especially useful in the following cases:
 * If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.
 * If a collaborative team is having difficulty replicating results within the team.
 * If a team wants to both replicate and extend an analysis.
-* If dependencies are causing nightmares.
+* If there are many dependencies that could cause nightmares.
 
 ```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = ''}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
@@ -213,7 +236,7 @@ The last of these scenarios (already specified container) is the context for thi
 
 Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/), and once you enable it, it doesn't work quite in the way you would expect it to while interacting with and running files in the "Exec" tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
-Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote ocation.
+Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.
 
 Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
 
