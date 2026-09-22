@@ -77,6 +77,6 @@ Test the scripts that AI suggests within the container created from your new Doc
 
 ### Advanced
 
-[Build a GitHub action](https://hutchdatascience.org/reproducibility_capstone/building-a-github-action.html) that uses the original container pulled from Docker Hub to run the `01_extract_data.R` script. Can you extend the GitHub action to perform the whole analysis with the second container ([available from Docker Hub here](https://hub.docker.com/r/bioocs/ocs-bio-containers-wrangling)? 
+[Build a GitHub action](https://hutchdatascience.org/reproducibility_capstone/building-a-github-action.html) that uses the original container pulled from Docker Hub to run the `01_extract_data.R` script. Can you extend the GitHub action to perform the whole analysis with the second container ([available from Docker Hub here](https://hub.docker.com/r/bioocs/ocs-bio-containers-wrangling))? 
 
 ***
