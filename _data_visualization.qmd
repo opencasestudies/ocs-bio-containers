@@ -68,7 +68,7 @@ Now that we have added the `patchwork` package to the original Dockerfile, we ne
 
 Step 1 is completely new since previously we pulled an image from Docker Hub rather than building the image from a Dockerfile..  
 
-```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = Images can be built or instead pulled from a registry. The image that was built and pushed to the registry will be the same as the image pulled from the registry."}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Images can be built or instead pulled from a registry. The image that was built and pushed to the registry will be the same as the image pulled from the registry."}
 ottrpal::include_slide("http://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
 ```
 

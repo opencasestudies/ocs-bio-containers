@@ -38,6 +38,7 @@ duplications
 endeavour
 ENV
 Extensibility
+extensibility
 favicon
 Figshare
 findable
