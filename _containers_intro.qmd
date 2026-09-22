@@ -107,11 +107,14 @@ If your institution has strict security configurations set on your machine (poss
 </details>
 :::
 
-*** 
+### Vocabulary Summary
 
 ::: {.emphasis_block}
 In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.
 :::
+
+
+## Containerization Analogies
 
 ***
 
@@ -194,8 +197,6 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 Will embed a survey to ask learners to suggest other analogies.
 :::
 
-***
-
 ## Why containers?
 
 ***
@@ -245,13 +246,14 @@ The last of these scenarios (already specified container) is the context for thi
 
 ## How do you work with a container?
 
+***
+
 Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/), and once you enable it, it doesn't work quite in the way you would expect it to while interacting with and running files in the "Exec" tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
 Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.
 
 Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
 
-***
 
 ## Summary
 
@@ -268,3 +270,4 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 :::
 
 ***
+

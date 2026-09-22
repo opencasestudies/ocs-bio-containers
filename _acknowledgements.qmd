@@ -10,11 +10,9 @@ Icons are from [iconpacks](https://www.iconpacks.net/).
 
 Avatars are from [avataaars](https://getavataaars.com/).
 
-***
 
 ### AI Attribution Statement
 
-***
 
 This work was primarily human-created. AI was used to make stylistic edits, such as changes to structure, wording, and clarity. AI was prompted for its contributions, or AI assistance was enabled. AI-generated content was reviewed and approved. The following model(s) or application(s) were used: Google Gemini, Microsoft 356 Copilot (GPT-5).
 
@@ -22,7 +20,6 @@ AIA Primarily human, Stylistic edits, Human-initiated, Reviewed, Google Gemini, 
 
 More information about this AI attribution can be found [here](https://aiattribution.github.io/).
 
-***
 
 <!-- Author information -->
 [Candace Savonen]: https://www.cansavvy.com/

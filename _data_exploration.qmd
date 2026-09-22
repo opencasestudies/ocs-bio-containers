@@ -129,7 +129,6 @@ For more information about the motivation for version-pinning throughout a Docke
 
 Notice what is **not** in this container image: Data! When we run a container from a image, we can mount data, but that data is not part of the definition of the image or the image itself and won't be shared in registries. Data should not be included when building an image!
 
-***
 
 ## Container Application
 

@@ -219,8 +219,6 @@ The running container will have a different command prompt than the usual comman
 
 The container is running and now can be used for the project with Collab O. Rator!
 
-***
-
 ## Container Application
 
 ***

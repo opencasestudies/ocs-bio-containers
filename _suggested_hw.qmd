@@ -17,7 +17,6 @@ We noted that in the combined scatter plot, text labels were both cutoff along a
 * Use the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script to create a modified visualization to fix the overlapping and cutoff text labels.
 * Be sure to clean up your container and image.
 
-***
 
 ## Advancement Exercises
 

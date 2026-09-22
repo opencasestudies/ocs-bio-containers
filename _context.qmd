@@ -58,7 +58,6 @@ Some applications:
 
 </details>
 
-***
 
 ## How are the microbiome and the metabolome related?
 
@@ -70,7 +69,6 @@ The microbiome is discussed in more [detail within the Version Control Case Stud
 
 Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will "pair" microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed {{< glossary "Paired" display="paired" >}} data. Considering connected data like this in an analysis is termed an {{< glossary "Integrative analysis" display="integrative analysis" >}} because it is integrating multiple sources of data.
 
-***
 
 ## What is a curated data resource?
 
@@ -89,7 +87,6 @@ Recall that the set of samples from a single study is typically referred to as b
 Add a figure that shows this idea of cohorts being pooled together.
 :::
 
-***
 
 ## What are possible uses of a data resource?
 
@@ -102,7 +99,6 @@ Curated data resources are useful for a variety of tasks such as:
 * {{< glossary "Benchmarking" >}} tools
 * Comparing findings from an analysis to a different dataset (e.g., evaluating the {{< glossary "Replicability" display ="replicability">}} and {{< glossary "Generalizability" display ="generalizability">}} of the research) [@Schloss_2018]
 
-***
 
 ## The need for containerization
 

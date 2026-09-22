@@ -261,7 +261,6 @@ Execution halted
 
 :::
 
-***
 
 ## Container Infrastructure
 

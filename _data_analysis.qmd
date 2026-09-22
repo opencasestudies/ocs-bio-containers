@@ -491,7 +491,6 @@ Yes, you should still get the same results. To confirm this, you can create a ne
 </details>
 :::
 
-***
 
 ## Container Infrastructure
 

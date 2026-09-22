@@ -165,7 +165,6 @@ Add a thought question about the mounted volume and what's in it if it's mounted
 Include a thought question to give learners the opportunity to build a flowchart (e.g., moving nouns and verbs into blanks) that represents the containerization process?
 -->
 
-***
 
 ## Container Application
 

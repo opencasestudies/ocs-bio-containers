@@ -16,8 +16,6 @@ You've learned that containers aren't always necessary and in some cases might n
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
 ```
 
-***
-
 ## **Summary Plot**
 
 ***
