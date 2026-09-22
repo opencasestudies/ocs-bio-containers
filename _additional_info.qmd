@@ -1,7 +1,9 @@
 # **Additional Information**
+
 ***
 
 ## **Helpful Links**
+
 ***
 
 * [ITN Containers for Scientists course](https://hutchdatascience.org/ITN_course_search/Containers_for_Scientists_coursePage.html)

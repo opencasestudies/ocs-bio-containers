@@ -1,6 +1,3 @@
-<!--
-Don't adjust the shortcode or the table header in this file, only the markdown table contents
--->
 
 ## **Objectives Map**
 

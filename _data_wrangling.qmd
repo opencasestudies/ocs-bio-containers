@@ -1,7 +1,6 @@
 # **Data Wrangling**
-***
 
-## Container Application
+***
 
 If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
 
@@ -55,6 +54,11 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 :::
 
 </details>
+
+***
+
+## Container Application
+
 ***
 
 ### Wrangling the data
@@ -108,7 +112,6 @@ The rest of the script is used to output information about the wrangled data or 
 </details>
 
 :::
-
 
 To run this script in the running container in order to wrangle the data, follow these steps:
 
@@ -258,7 +261,11 @@ Execution halted
 
 :::
 
+***
+
 ## Container Infrastructure
+
+***
 
 As you can see from the visualization planning above, these two plots would be completely separate -- and we'd like them to be visible next to each other. A useful R package for this purpose is `patchwork`. However, our data visualization Docker container doesn't include that package.
 

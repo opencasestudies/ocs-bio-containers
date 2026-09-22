@@ -1,6 +1,8 @@
 # **Troubleshooting Containers**
 
-Working with containers, you may encounter issues and error messages. Google, Stack Overflow, and Chatbots are useful for understanding and handling these error messages. Docker recently developed [Gordon AI](https://docs.docker.com/ai/gordon/) -- a chatbot meant for helping with containerization and Docker errors/issues specifically. It is connected to Docker documentation and related web resources, searching those for answers. Gordon AI is not just a chatbot because it can also take action to fix problems (with your permission). Gordon will propose every action before it executes it, asking you to approve it. Gordon will specifically mark actions as low-risk, destructive, etc. so you can make a more informed decision to accept the proposed action or not. Gordon AI is [available to interact with in several ways](https://docs.docker.com/ai/gordon/#where-to-use-gordon): within Docker Desktop, online throughout Docker Documentation pages, online at Docker Hub, and on the terminal. 
+***
+
+Working with containers, you may encounter issues and error messages. Google, Stack Overflow, and Chatbots are useful for understanding and handling these error messages. Docker recently developed [Gordon AI](https://docs.docker.com/ai/gordon/) -- a chatbot meant for helping with containerization and Docker errors/issues specifically. It is connected to Docker documentation and related web resources, searching those for answers. Gordon AI is not just a chatbot because it can also take action to fix problems (with your permission). Gordon will propose every action before it executes it, asking you to approve it. Gordon will specifically mark actions as low-risk, destructive, etc. This is so that you can make a more informed decision to accept the proposed action or not. Gordon AI is [available to interact with in several ways](https://docs.docker.com/ai/gordon/#where-to-use-gordon): within Docker Desktop, online throughout Docker Documentation pages, online at Docker Hub, and on the terminal. 
 
 :::{.ai_box}
 ::::{.ai_box_header}
@@ -18,3 +20,7 @@ It's very important to not get into a habit of just accepting whatever Gordon AI
 :::
 
 At times, you may have to reach out to your institutional IT for support, especially if you are having trouble installing a containerization tool or unsuccessfully trying to mount a volume. 
+
+For some common issues, troubleshooting tips, and exercises, visit the [ITN's Containers for Scientists course](https://hutchdatascience.org/Containers_for_Scientists/09-troubleshooting.html).
+
+***

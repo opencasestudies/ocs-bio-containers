@@ -1,7 +1,10 @@
 # **Continued Learning**
+
 ***
 
 ## Reinforcement Exercises
+
+***
 
 A good way to practice the skills from this case study is to practice the containerization process again.
 
@@ -14,7 +17,11 @@ We noted that in the combined scatter plot, text labels were both cutoff along a
 * Use the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script to create a modified visualization to fix the overlapping and cutoff text labels.
 * Be sure to clean up your container and image.
 
+***
+
 ## Advancement Exercises
+
+***
 
 ### Beginner
 
@@ -57,7 +64,7 @@ AI can be especially useful in refactoring code from one language to another. Fo
 
 <u>Suggested Prompt:</u>
 
-```{ .default .code-overflow-wrap }
+```{ .default .code-overflow-wrap code-line-numbers="false" }
 I would like to refactor this R script that [goal of the code], to create a python equivalent. I would like to use the following Python packages within the scripts [Python packages]. 
 ```
 
