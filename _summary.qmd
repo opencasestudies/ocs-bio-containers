@@ -1,6 +1,9 @@
 # **Summary**
+
 ***
+
 ## **Synopsis**
+
 ***
 
 In this case study, you’ve learned about why containerization is used as part of reproducible science workflows. You’ve been introduced to Docker, and learned procedures for creating and modifying containers. You’ve practiced using the "Dockerfile -(build)-> image -(mount and run)-> container" process to create an active, isolated environment where you can perform an analysis. For your analysis, you pulled an image and created a container from it, running scripts and inspecting output within the container; and you modified the Dockerfile to contain a new package, built a new image, created another container and ran additional scripts, inspecting and saving the output from those. Finally, you created a script to drive the whole analysis and reviewed what needed to be shared with a collaborator or team member so they could validate the process.
@@ -13,9 +16,8 @@ You've learned that containers aren't always necessary and in some cases might n
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
 ```
 
-***
-
 ## **Summary Plot**
+
 ***
 
 

@@ -1,7 +1,9 @@
 # **Additional Information**
+
 ***
 
 ## **Helpful Links**
+
 ***
 
 * [ITN Containers for Scientists course](https://hutchdatascience.org/ITN_course_search/Containers_for_Scientists_coursePage.html)
@@ -14,4 +16,3 @@
 * For a discussion on security vulnerabilities, especially for images, see @Kaur_Dugré_Hanna_Glatard_2021.
 
 
-***

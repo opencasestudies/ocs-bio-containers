@@ -1,7 +1,10 @@
 # **Data Exploration**
+
 ***
 
 ## Container Infrastructure
+
+***
 
 We'll utilize this section to explore the {{< glossary "Dockerfile" >}} specifically answering "What's in a {{< glossary "Container" display="container" >}}?"
 
@@ -21,7 +24,7 @@ The `Dockerfile` below is the Dockerfile that was used to define the image that 
 
 Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. Our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, RStudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
 
-Specifically this is a [version-pinned base image](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions) meaning that it's specifying a tag for the base image (R version 4.5.3 as opposed to `latest` -- whichever is the most recent version) and a ["digest"](https://docs.docker.com/dhi/explore/security-concepts/digests/) (everything after the at sign /`@`) -- a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a "digest" from the "Tag summary" panel under the "Overview" tab on Docker Hub. Pinning the version of the base image is a good practice.
+Specifically this is a [version-pinned base image](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions) meaning that it's specifying a tag for the base image (R version 4.5.3 as opposed to `latest` -- whichever is the most recent version) and a ["digest"](https://docs.docker.com/dhi/explore/security-concepts/digests/) (everything after the at sign /`@`) -- a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a "digest" from the "Tag summary" panel under the "Overview" tab on Docker Hub. Pinning the version of the base image is a good practice. If you don't version pin the base image, any additional dependencies or packages may not be able to be version pinned long-term because the base image will be updated and compatible package versions will change.
 
 
 :::{.think_question}
@@ -61,6 +64,15 @@ Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/docke
 
 We could improve this `Dockerfile` by [sorting multi-line arguments alphabetically](https://docs.docker.com/build/building/best-practices/#sort-multi-line-arguments) -- not super necessary for a small list like this, but if the list was longer, sorting alphabetically could help to ensure there are no duplications. 
 
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+The dependencies specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same libraries available as those in the original image. For guidance on version pinning packages from `apt-get`, [review this blog](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view#level-2-pin-system-packages).  
+::::
+:::
+
 **How do you know what dependencies you need?**
 
 * Some packages may tell you that you will need a specific library or dependency in order to install it. `tabulapdf` is an example of this where it [lists Java under the System Requirements](https://cran.r-project.org/web/packages/tabulapdf/index.html).
@@ -78,7 +90,7 @@ Within your prompt, provide the chatbot 1) what base image your Dockerfile is us
 
 <u>Suggested Prompt:</u>
 
-```{ .default .code-overflow-wrap }
+```{ .default .code-overflow-wrap code-line-numbers="false" }
 I am building a container image for the purpose of {FILL IN short purpose}. My Dockerfile is using the {FILL IN} image as a base image. I already know that I need the {FILL IN (Java, etc.)} dependencies because I'm installing {FILL IN packages (tabulapdf, etc.)}. Other packages that I'm installing include {FILL IN}. What other dependencies will I need? Can I get them all using `apt-get install`? Are there any other set up steps that I will need for these dependencies to make sure that {R or Python} is configured to use them?
 ```
 
@@ -100,14 +112,27 @@ Both `install2.r` or `Rscript -e 'install.packages()'` can be used to install R 
 
 If packages aren't available on CRAN, but are available on GitHub, `rocker` images include the [`installGithub.r`](https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html) helper script (from `littler` like the `install2.r` script) or you can use [`pak`](https://pak.r-lib.org/), [`remotes`](https://remotes.r-lib.org/reference/install_github.html), or [`devtools`](https://www.rdocumentation.org/packages/devtools/versions/1.13.6/topics/install_github) to install from GitHub. If packages are available from Bioconductor, you can use `BiocManager` or the `installBioc.r` `littler` script. Note, if not using the `littler helper scripts` or using a non-rocker base image, you may first need to install these packages before you can use them within the `Dockerfile`, but then following the `Run Rscript -e ''` template, you can use functions later in the `Dockerfile`. [For `Bioconductor` packages](https://support.bioconductor.org/p/p134101/), it may be worthwhile to use a [multi-stage build (a second `FROM`)](https://docs.docker.com/build/building/multi-stage/) to use a [Bioconductor image as a second base image](https://www.bioconductor.org/help/docker/).
 
-
 Finally lines 24-25 clean up temporary files much like line 13 did earlier. 
+
+:::{.reproducibility_box}
+::::{.reproducibility_box_header}
+Reproducibility considerations
+::::
+::::{.inner_block}
+The dependencies specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same packages available as those in the original image. To version pin R packages in a Dockerfile, consider using an [`renv` file to specify packages and their versions](https://rstudio.github.io/renv/articles/docker.html) or utilizing the [`remotes` `install_version()`](https://remotes.r-lib.org/reference/install_version.html) function. 
+
+For more information about the motivation for version-pinning throughout a Dockerfile, examples beyond `apt-get` and `R`, and a discussion on balancing version pinning with maintenance or development, [review this blog](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view).
+::::
+:::
 
 ### Final notes
 
 Notice what is **not** in this container image: Data! When we run a container from a image, we can mount data, but that data is not part of the definition of the image or the image itself and won't be shared in registries. Data should not be included when building an image!
 
+
 ## Container Application
+
+***
 
 Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
 
@@ -171,3 +196,4 @@ This will load an R object named `raw_table` that you can interact with in your 
 
 </details>
 
+***

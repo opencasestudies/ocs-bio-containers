@@ -1,4 +1,5 @@
 # **What are the data?**
+
 ***
 
 The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes the curated gut {{< glossary "Microbiome" display="microbiome" >}}-{{< glossary "Metabolome" display="metabolome" >}} datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing
@@ -31,4 +32,3 @@ Variable   | Details
 **`hmdb_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
 **`kegg_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
 
-***

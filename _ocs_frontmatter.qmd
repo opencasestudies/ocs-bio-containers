@@ -1,10 +1,3 @@
-<!--
-The disclaimer block, license block, and funding info generally will not need updated
-
-Please update the access information (e.g., github link and data access)
-as well as any system or server requirements to work with the data
--->
-
 ::: {.panel-tabset .frontmatter-tabs}
 
 #### Disclaimer
@@ -46,13 +39,6 @@ This work is funded through the National Institutes of Health, specifically the 
 
 #### GitHub Repository 
 
-<!--
-UPDATE: ACCESS Information (github source and data)
-In this space, provide an open access link to the case study source files.
-This is necessary for users to get access to case study data, at a minimum.
-See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
--->
-
 :::{.github_repo_box}
 ::::{.github_repo_box_header}
 GitHub repository
@@ -62,9 +48,6 @@ To access the GitHub repository for this case study see here: [https://github.co
 ::::
 :::
 
-<!--
-If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
--->
 
 #### Keywords
 
@@ -73,22 +56,31 @@ If the data isn't in the main github repository, be sure to describe and link to
 Keywords
 ::::
 ::::{.inner_block}
-* Keyword 1
-* Keyword 2
-* Keyword 3
-* ...Keyword n
-
-<!-- Note that keywords should be the types of words that you'd use for a conference abstract or grant submission; focus on the emerging tech or best practice that is being covered as well as the specific part of the task/analysis/visualization that is being shown. Just a quick way to overview what skills/topics are part of the case study -->
+* Containers
+* Docker
+* Dockerfile
+* Image
+* Volumes
+* Registries
+* Curated data resources
+* Secondary data
+* Data harmonization
+* Collaboration
+* Microbiome
+* Metabolome
+* Metabolites
+* Scatter plots
+* Spearman correlation
+* Reproducibility
 
 ::::
 :::
 
-<!--
-Include bioOCSdata package information once ready/applicable
--->
 :::
 
 ## Prerequisites
+
+***
 
 :::{.prereq_box}
 ::::{.prereq_box_header}
@@ -122,17 +114,14 @@ To follow along with this case study, you’ll need the following installed:
 
 :::
 
---
-
-It will also be helpful to be have the following skills:
+<u>It will also be helpful to be have the following skills:</u>
 
 * ability to navigate file systems. Please use or review the [Software Carpentry "Navigating Files and Directories" tutorial](https://swcarpentry.github.io/shell-novice/02-filedir.html) if needed.
 * basic R skills (many introductory courses can be found online, including [this one](https://hutchdatascience.org/Intro_to_R/))
 * familiarity with dplyr and ggplot2, or willingness to learn (these [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) and [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf) cheatsheets may be helpful, as well as the original [open case studies](https://www.opencasestudies.org/search.html))
 
---
 
-For optional, more extensive reproducibility activities, you will need the following:
+<u>For optional, more extensive reproducibility activities, you will need the following:</u>
 
 
 * minimal Git and GitHub knowledge or experience (see [this related case study](https://www.opencasestudies.org/ocs-bio-version-control/) for necessary skills)

@@ -1,4 +1,5 @@
 # **Motivation**
+
 ***
 
 In this case study, we ask you to imagine that you are working with a collaborator on a scientific project. You receive the following email with a request to help with making some data visualizations for revisions to a manuscript. The study described in the manuscript is a collaborative project spanning several teams. Therefore, each part of the analysis has a {{< glossary "Container" display="container" >}} so that the team can easily share {{< glossary "Computing environment" display="computing environments" >}} and support {{< glossary "Reproducibility" display="reproducibility" >}}. Background on the context of the analysis will be provided later in the case study. 
@@ -26,6 +27,5 @@ You will learn how to further adapt the container to meet your needs by adding p
 * How to {{< glossary "Mount" display="mount" >}} a {{< glossary "Volume" display="volume" >}} containing {{< glossary "Version-controlled" display="version-controlled" >}} analysis scripts.
 * How to explore output from an analysis performed within a container.
 * How to save results from an analysis run in a container.
-
 
 ***

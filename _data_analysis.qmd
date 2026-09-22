@@ -1,4 +1,5 @@
 # **Data Analysis**
+
 ***
 
 If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the Data Visualization section. 
@@ -57,9 +58,12 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 :::
 
 </details>
+
 ***
 
 ## Container Application
+
+***
 
 ### Correlation 
 
@@ -487,7 +491,10 @@ Yes, you should still get the same results. To confirm this, you can create a ne
 </details>
 :::
 
+
 ## Container Infrastructure
+
+***
 
 ### Container Housekeeping
 
@@ -732,7 +739,5 @@ The [`docker image rm`](https://docs.docker.com/reference/cli/docker/image/rm/) 
 `docker image rm [image name or ID]`
 
 :::
-
-
 
 ***

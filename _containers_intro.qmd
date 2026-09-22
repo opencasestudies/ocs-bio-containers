@@ -1,8 +1,12 @@
 # **Introduction to Containers**
 
+***
+
 Before we start to address your project with Collab O. Rator, we will provide an introduction to {{< glossary "Containerization" display="containerization" >}} with {{< glossary "Docker" >}}. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the {{< glossary "Microbiome" display="microbiome" >}}-{{< glossary "Metabolome" display="metabolome" >}} data collection project.
 
 ## What is a container?
+
+***
 
 A [container is an active computing environment](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) that is isolated from the rest of the user's system. Containers are the operational ending point of the containerization process. The containerization process also involves Dockerfiles and images (upstream of containers) which define and instantiate or produce containers. 
 
@@ -67,7 +71,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Images can be "pushed" or "pulled" from a registry. If an image has multiple tags or are built for multiple architectures, the related images (with different tags or built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository).  If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
 
-:::{.column-margin
+:::{.column-margin}
 Add push and pull to the glossary as well as a dictionary box.
 :::
 
@@ -76,7 +80,7 @@ Add push and pull to the glossary as well as a dictionary box.
 Reproducibility considerations
 ::::
 ::::{.inner_block}
-An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the Dockerfile that was used to build the original image (that was pushed to the registry), these images may no longer match. Unless versions are explicitly controlled within the Dockerfile, versions of dependencies or packages may have changes or may no longer be available. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes like this can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share. 
+An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the same `Dockerfile` that was used to build the original image (the one that was pushed to the registry), these images may no longer match. After some time, rebuilding an image later using the same Dockerfile may yield a different result because dependencies change over time/may no longer be available and base images using "latest" tags can also change over time. Therefore unless versions are explicitly controlled within the `Dockerfile` ([see this blog for more information](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view)), rebuilt images may not match images on a registry even if they originate from the same Dockerfile. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes due to differing build options and time passing can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share rather than sharing a `Dockerfile` (which may or may not version pin all software). 
 ::::
 :::
 
@@ -103,10 +107,16 @@ If your institution has strict security configurations set on your machine (poss
 </details>
 :::
 
+### Vocabulary Summary
 
 ::: {.emphasis_block}
 In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.
 :::
+
+
+## Containerization Analogies
+
+***
 
 ::: {.emphasis_block}
 
@@ -189,6 +199,8 @@ Will embed a survey to ask learners to suggest other analogies.
 
 ## Why containers?
 
+***
+
 As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
 
 Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
@@ -234,13 +246,18 @@ The last of these scenarios (already specified container) is the context for thi
 
 ## How do you work with a container?
 
+***
+
 Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/), and once you enable it, it doesn't work quite in the way you would expect it to while interacting with and running files in the "Exec" tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
 Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.
 
 Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
 
+
 ## Summary
+
+***
 
 ::: {.emphasis_block}
 
@@ -251,3 +268,6 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```
 
 :::
+
+***
+

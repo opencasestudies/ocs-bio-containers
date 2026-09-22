@@ -1,5 +1,4 @@
 ## Glossary
-***
 
 ```{r}
 #| results: asis

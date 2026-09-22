@@ -1,4 +1,5 @@
 # **Ethical Considerations**
+
 ***
 
 There are some important ethical considerations when working with containerization, as well as when working with clinical/health related data. Additional ethical considerations are relevant when working within a collaborative team environment and with secondary source data (data collected by others).

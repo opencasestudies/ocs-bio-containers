@@ -325,3 +325,9 @@
 .frontmatter-tabs .nav-tabs li a.active {
   font-weight: bold;
 }
+
+
+/* Strip lines from under subheading anchor links */
+h1, h2, h3, h4, .anchored, .anchorjs-link {
+  border-bottom: none !important;
+}

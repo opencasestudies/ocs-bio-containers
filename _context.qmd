@@ -1,7 +1,10 @@
 # **Context**
+
 ***
 
 ## What is the metabolome?
+
+***
 
 The {{< glossary "Metabolome" display="metabolome" >}} is a collection of {{< glossary "Metabolites" display="metabolites" >}} or low-molecular weight {{< glossary "Organic" display="organic" >}} (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: {{< glossary "Nucleic acids" display="nucleic acids" >}} (DNA or RNA), {{< glossary "Proteins" display="proteins" >}}, {{< glossary "Carbohydrates" display="carbohydrates" >}}, and {{< glossary "Lipids" display="lipids" >}} [@Cooper_2000]. These categories represent large biomolecules ({{< glossary "Macromolecules" display="(macromolecules)" >}}) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include {{< glossary "Vitamins" display="vitamins" >}}, {{< glossary "Organic acids" display="organic acids" >}}, and other small organic molecules that don't neatly relate to the larger classes of biomolecules [@Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018]. 
 
@@ -55,7 +58,10 @@ Some applications:
 
 </details>
 
+
 ## How are the microbiome and the metabolome related?
+
+***
 
 The microbiome is discussed in more [detail within the Version Control Case Study](https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-microbiome), but briefly, the microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. These microorganisms can impact metabolism and have been found to be associated with greater human health.
 
@@ -63,7 +69,10 @@ The microbiome is discussed in more [detail within the Version Control Case Stud
 
 Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will "pair" microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed {{< glossary "Paired" display="paired" >}} data. Considering connected data like this in an analysis is termed an {{< glossary "Integrative analysis" display="integrative analysis" >}} because it is integrating multiple sources of data.
 
+
 ## What is a curated data resource?
+
+***
 
 @Muller_Algavi_Borenstein_2022 introduced and explored a **curated {{< glossary "Data collection or resource" display ="data resource">}}**. Simply, this means a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. This often goes further than just collecting references of different studies who have made their data available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work. In this case, the researchers from @Muller_Algavi_Borenstein_2022, after identifying studies to include in the data resource had to 
 
@@ -78,7 +87,10 @@ Recall that the set of samples from a single study is typically referred to as b
 Add a figure that shows this idea of cohorts being pooled together.
 :::
 
+
 ## What are possible uses of a data resource?
+
+***
 
 Curated data resources are useful for a variety of tasks such as:
 
@@ -89,6 +101,8 @@ Curated data resources are useful for a variety of tasks such as:
 
 
 ## The need for containerization
+
+***
 
 Data analysis, especially analysis of large data, relies on computers and the software tools installed on those computers. Depending on the computational needs of an analysis or a researcher's typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as {{< glossary "Institutional high performance computing (HPC)" display ="institutional high performance computing (HPC)">}} clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). [@Wright_Computing].
 
