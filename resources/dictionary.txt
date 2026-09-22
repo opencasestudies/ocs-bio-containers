@@ -72,7 +72,7 @@ KEGG
 KI
 knuth
 Kubernetes
-Lauthouwers
+Lathouwers
 legos
 Legos
 LEGOs
