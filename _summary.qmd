@@ -12,7 +12,7 @@ Along the way, you’ve also learned about the advantages and challenges of cont
 
 You've learned that containers aren't always necessary and in some cases might not be worth the hassle, but in other cases they are beneficial and worth the challenge to learn and incorporate into your work. Your needs may go beyond what's covered in this resource which focused on using local containerization to run an analysis where the scripts were located in and results were saved to a mounted volume. Beyond the decision of whether containers are the right choice for you and your downstream use/work, working with containers requires decisions throughout the process.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely. This case study focuses on using containers to run an analysis locally (the bolded options), working with all parts of the containerization process."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
 ```
 
@@ -21,7 +21,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ***
 
 
-```{r echo=FALSE, warning = FALSE, out.width=800}
+```{r echo=FALSE, warning = FALSE, out.width=800, fig.alt = "Containers enhance reproducibility and scientific collaboration by providing a shareable and consistent computing environment. Multiple people in a team can contribute the software that they need for their part of the analysis into a visualization software container. This container can be stored on Docker Hub so they all can access it. Then the validator in the team can replicate everyone's work (perhaps data visualizations) using the same container without having to individually install the software from each team member."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1Y2UAXo61mDtFkfToWYTIzcGzGfLzbpQ79I9ccD05A8c/edit?slide=id.p#slide=id.p")
 ```
 

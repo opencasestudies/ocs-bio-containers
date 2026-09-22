@@ -127,7 +127,7 @@ Typical practices that support reproducibility for a project folder include:
 - The data subdirectory will often have additional subdirectories separating out raw or imported data from wrangled data. 
 - Likewise, the results directory will also often  have additional subdirectories separating the different types of results (e.g., plots).
 
-```{r project_directory, echo = FALSE, fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
+```{r project_directory, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
 ```
 ::::

@@ -10,7 +10,7 @@ We'll utilize this section to explore the {{< glossary "Dockerfile" >}} specific
 
 As previously described, a container is created from an image which is built from a `Dockerfile`. Therefore, to know what's in a container, we have to know what's in the image or the `Dockerfile` defining the image. Also as previously described, images have layers. Each command (`FROM`, `ENV`, `RUN`, etc.) in the Dockerfile adds another layer to the image.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Container images are layered with each Dockerfile command stacking another layer on top. The from command produces the base layer(s) by bringing over a whole base image. Each run command creates another layer for each dependency or package that is specified by that command."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
 ```
 
