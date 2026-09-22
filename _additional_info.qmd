@@ -1,25 +1,17 @@
 # **Additional Information**
 ***
 
-We'll include information in this section about
-
-* Security
-* Versioning
-* Sizes and not overburdening your system
-
-
 ## **Helpful Links**
 ***
 
-* ITCR Containers course
-* + other resources
+* [ITN Containers for Scientists course](https://hutchdatascience.org/ITN_course_search/Containers_for_Scientists_coursePage.html)
+* [ITN Making Science Reproducible - A Capstone Project Course](https://hutchdatascience.org/ITN_course_search/reproducibility_capstone_coursePage.html)
+* [Docker Documentation](https://docs.docker.com/)
+* [Docker 101 Tutorial](https://www.docker.com/101-tutorial/)
+* [Gordon AI](https://docs.docker.com/ai/gordon/)
+* [Podman](https://docs.podman.io/en/latest/)
+* [Singularity / Apptainer](https://docs.sylabs.io/guides/latest/user-guide/)
+* For a discussion on security vulnerabilities, especially for images, see @Kaur_Dugré_Hanna_Glatard_2021.
 
-<u>Terms and concepts covered:</u>
-
-<u>Packages used in this case study: </u>
-
-<!--
-Automatically include the packages table from _packages.qmd?
--->
 
 ***

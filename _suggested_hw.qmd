@@ -1,149 +1,76 @@
 # **Continued Learning**
 ***
 
-:::{.next_steps_box}
-::::{.next_steps_box_header}
-Common Next Steps
-::::
-::::{.inner_block}
-Discuss common next steps for this type of an analysis in this box. Is there a specific number of steps that you need to do before a specific step? Is a "next step" more of an alternate step?
-::::
-:::
-
 ## Reinforcement Exercises
 
-Point out that text labels are overlapping each other in the right panel, and clipped on axis limits for both panels. The ggrepel package can be useful in fixing these problems.
+A good way to practice the skills from this case study is to practice the containerization process again.
 
-* Add `ggrepel` to the Dockerfile
-  * {{< glossary "Build" display = "build">}} the Dockerfile
-  * run the image
-  * extract and wrangle the data with the `preprocessing.R` script or mount the wrangled data when running the image
-  * update the `analysis.R` script to utilize `ggrepel` within the scatter plots made with `patchwork`
-  * and rerun the analysis with the modified container
-  * 
-  
-![](img/patchwork_ggrepel_scatter.png){fig-alt="Two panel scatter plots showing the number of paired samples in each dataset versus the number of annotated compounds within that dataset. HMDB annotation on the left panel and KEGG annotation on the right panel. Datasets are colored by whether they are longitudinal or not. Labels are clearer and not clipped."}
-  
+We noted that in the combined scatter plot, text labels were both cutoff along axes edges and text labels were overlapping each other. The `ggrepel` package can be useful in fixing these problems.
 
+* Add `ggrepel` to the Dockerfile.
+* {{< glossary "Build" display = "build">}} the Dockerfile.
+* Run the image, mounting the `ocs-bio-containers-scaffold-main` volume as you've done previously.
+* Look at the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script within the `ocs-bio-containers-scaffold-main` directory and try to understand what it's doing.
+* Use the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script to create a modified visualization to fix the overlapping and cutoff text labels.
+* Be sure to clean up your container and image.
 
 ## Advancement Exercises
 
-Use this section to suggest different levels of exercises that build upon topics from the case study ... next steps, tangential skills, diving deeper into a side quest, etc.
-
-Perhaps explain how the suggested exercises relate to the common next steps.
-
 ### Beginner
 
-Point out that the scatter plot loses the description about each dataset. We can add some interactivity with plotly that will allow us to display info like the dataset description when we hover over the points. 
+The table provides cohort descriptions about each dataset that are lost within the scatter plot. We can add some interactivity with `plotly` that will allow us to display info like the dataset description when we hover over the points. 
 
-Edit the Dockerfile to install R `plotly` and `htmlwidgets` packages from github (using Pak)
-
-* https://github.com/plotly/plotly.R
-* https://github.com/ramnathv/htmlwidgets
-
-Have them create a script that runs plotly to create an interactive graph that highlights points by adding this code to it and then add that script to the `run_analysis.sh` script 
-
-```{r, eval = FALSE}
-library(plotly)
-library(htmlwidgets)
-library(here)
-library(tidyverse)
-
-load(here("data", "wrangled", "wrangled_data.rda"))
-table1_extract <- table1_extract %>%
-    mutate(longitudinal = case_when(longitudinal == "Yes" ~ "Longitudinal", 
-                                    longitudinal == "No" ~ "Not longitudinal", 
-                                    TRUE ~ "Unknown"))
-
-hover_text_template <- paste(
-    "<b>Dataset:</b> %{text}<br>",
-    "<b>Description:</b> %{customdata}",
-    "<extra></extra>"
-)
-
-plotly_plot_hmdb <- table1_extract %>%
-    plotly::plot_ly(
-        x = ~num_paired_samples, 
-        y = ~hmdb_annotated_compounds,
-        color = ~longitudinal,
-        text = ~dataset_name,                 # Point label text
-        customdata = ~cohort_description,     # Hover description storage
-        legendgroup = ~longitudinal, 
-        showlegend = FALSE,
-        type = 'scatter', 
-        mode = "markers+text", 
-        textposition = "top center",
-        hovertemplate = hover_text_template   # Set hover text
-    ) %>% 
-    plotly::layout(
-        title = 'Paired sample count vs HMDB annotation coverage', 
-        xaxis = list(title = 'No. samples with paired data'), 
-        yaxis = list(title = 'HMDB Annotated compounds')
-    )
-
-plotly_plot_kegg <- table1_extract %>%
-    plotly::plot_ly(
-        x = ~num_paired_samples, 
-        y = ~kegg_annotated_compounds,
-        color = ~longitudinal,
-        text = ~dataset_name,
-        customdata = ~cohort_description,
-        legendgroup = ~longitudinal, 
-        showlegend = TRUE,
-        type = 'scatter', 
-        mode = "markers+text", 
-        textposition = "top center",
-        hovertemplate = hover_text_template
-    ) %>% 
-    plotly::layout(
-        title = 'Paired sample count vs KEGG annotation coverage', 
-        xaxis = list(title = 'No. samples with paired data'), 
-        yaxis = list(title = 'KEGG Annotated compounds')
-    )
-
-combined_plot <- subplot(style(plotly_plot_hmdb, showlegend = F), 
-        plotly_plot_kegg) %>% 
-    highlight(on = "plotly_hover", 
-              off = "plotly_doubleclick", 
-              persistent = FALSE, 
-              dynamic = FALSE) %>% 
-    layout(title = "Paired sample count vs annotation coverage")
-
-output_dir <- here::here("results", "plots")
-
-if (!dir.exists(output_dir)) {
-  dir.create(output_dir, recursive = TRUE)
-}
-
-saveWidget(combined_plot, 
-           file = here(output_dir, "interactive_combined_plot.html"), 
-           selfcontained = TRUE)
-```
-
-
-Point them to the ITN courses for templates/recipes on adding packages to a Dockerfile.
+* Edit the Dockerfile to install the [`plotly`](https://github.com/plotly/plotly.R) and [`htmlwidgets`]( https://github.com/ramnathv/htmlwidgets) packages from GitHub. We recommend using either `Pak` or the `littler` `installGithub.R` helper script to install from GitHub).
+* Build the Dockerfile.
+* Run the image, mounting the `ocs-bio-containers-scaffold-main` volume as you've done previously.
+* Look at the `continued_learning_scripts/beginner/03_alt_visualization_plotly.R` script within the `ocs-bio-containers-scaffold-main` directory and try to understand what it's doing. It may be helpful to ask AI to explain what various steps are doing.
+* Use the `continued_learning_scripts/beginner/03_alt_visualization_plotly.R` script to create an interactive version of the scatter plots.
+* Open the resulting `.html` file and inspect the output.
+* Can you edit the `run_analysis.sh` script or create a new one to run the whole process including the creation of the interactive plot (`.html` file)?
+* Be sure to clean up your container and image.
 
 ### Intermediate
 
-Create a Dockerfile from scratch which could be used to perform a similar analysis with Python. 
+Create a Dockerfile from scratch which could be used to perform a similar analysis with Python.
+
+Packages that you should add to the Dockerfile include:
 
   * https://pypi.org/project/tabula-py/
   * pandas
   * matplotlib
   * https://github.com/ponnhide/patchworklib
   * https://github.com/Phlya/adjustText
-  * https://pypi.org/project/pytruncreg/
 
-Add in an AI box to note that AI can often be helpful in refactoring code if they wanted to test out the process.
+Consult the [ITN's Reproducibility Capstone Project Course for additional guidance](https://hutchdatascience.org/reproducibility_capstone/building-a-docker-image.html#phase-2-dockerfile-development) on developing a Dockerfile from scratch.
 
-Alternatively, find an image on Docker Hub that would meet their needs.
+Alternatively, you may be able to find an image on Docker Hub that would meet your needs.
 
-Point them to the ITN capstone course if they wanted to develop a Dockerfile for their own research needs.
+After creating the Dockerfile, you may be interested in testing it out. Recreate the analysis done in R for this case study using Python. Can you successfully recreate the original outputs using the refactored code (e.g., robustness)?
+
+:::{.ai_box}
+::::{.ai_box_header}
+AI use considerations
+::::
+::::{.inner_block}
+<u>Context</u>
+AI can be especially useful in refactoring code from one language to another. For each script, provide an AI chatbot with the goal of refactoring the code, which relevant Python packages will be available, the original R code, and what the goal of that code is.
+
+<u>Suggested Prompt:</u>
+
+```{ .default .code-overflow-wrap }
+I would like to refactor this R script that [goal of the code], to create a python equivalent. I would like to use the following Python packages within the scripts [Python packages]. 
+```
+
+
+<u>Validation:</u>
+Test the scripts that AI suggests within the container created from your new Dockerfile. Do you successfully create the outputs seen from the R analysis?
+
+::::
+:::
+
 
 ### Advanced
 
-Use a container together with GitHub actions to extract the PDF data and make the visualization.
-
-Again point them to the ITN capstone course if they wanted to develop this for their own research needs.
+[Build a GitHub action](https://hutchdatascience.org/reproducibility_capstone/building-a-github-action.html) that uses the original container pulled from Docker Hub to run the `01_extract_data.R` script. Can you extend the GitHub action to perform the whole analysis with the second container ([available from Docker Hub here](https://hub.docker.com/r/bioocs/ocs-bio-containers-wrangling)? 
 
 ***

@@ -327,8 +327,9 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 <details><summary>Answer</summary>
 
-1. Add a space and backslash (` \`) to line 32 after the `gt` package.
-2. Add `patchwork` to line 33, indented the same way that the rest of the packages in that section are.
+1. Add a newline after line 21 (`p` comes after `h` but before `r` alphabetically).
+2. Add `patchwork` to line 22, indented the same way that the rest of the packages in that section are.
+3. Add a space and a backslash (`\`) after the name of the package (to the end of the new line).
 
 </details>
 ::::
@@ -348,6 +349,9 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 
 </details>
 :::
+
+Note that another alternative is that you could create a completely new `Dockerfile`, use the original image as your base image (`FROM bioocs/ocs-bio-containers-base:main@[digest]`), and then install the single R package (in essence using a [reusable stage](https://docs.docker.com/build/building/best-practices/#create-reusable-stages)).
+
 
 :::{.think_question}
 ::::{.think_question_header}

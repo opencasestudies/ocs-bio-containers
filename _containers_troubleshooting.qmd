@@ -1,3 +1,20 @@
 # **Troubleshooting Containers**
 
-Working with containers, you may encounter issues and error messages.
+Working with containers, you may encounter issues and error messages. Google, Stack Overflow, and Chatbots are useful for understanding and handling these error messages. Docker recently developed [Gordon AI](https://docs.docker.com/ai/gordon/) -- a chatbot meant for helping with containerization and Docker errors/issues specifically. It is connected to Docker documentation and related web resources, searching those for answers. Gordon AI is not just a chatbot because it can also take action to fix problems (with your permission). Gordon will propose every action before it executes it, asking you to approve it. Gordon will specifically mark actions as low-risk, destructive, etc. so you can make a more informed decision to accept the proposed action or not. Gordon AI is [available to interact with in several ways](https://docs.docker.com/ai/gordon/#where-to-use-gordon): within Docker Desktop, online throughout Docker Documentation pages, online at Docker Hub, and on the terminal. 
+
+:::{.ai_box}
+::::{.ai_box_header}
+AI use considerations
+::::
+::::{.inner_block}
+<u>Context and Suggested Prompts:</u>
+Often after an error is encountered the system may suggest a prompt to ask. This isn't to say that you can't provide additional context to explain why you've been trying certain things or a customized prompt. Helpful context may include why you are trying to do something or what you would like to accomplish. Some [example use cases with prompts](https://docs.docker.com/ai/gordon/#try-these-examples) are provided in the documentation. [Specific guidance is also provided](https://docs.docker.com/ai/gordon/use-cases/#writing-effective-prompts) on how to write effective prompts. In short be specific and precise about what you want to accomplish/your goal, what is involved, and any relevant error messages. 
+
+
+<u>Validation:</u>
+It's very important to not get into a habit of just accepting whatever Gordon AI suggests without critically evaluating if the solution is worth trying and a safe action or at least a risk you're willing to take. Human oversight is critical.
+
+::::
+:::
+
+At times, you may have to reach out to your institutional IT for support, especially if you are having trouble installing a containerization tool or unsuccessfully trying to mount a volume. 

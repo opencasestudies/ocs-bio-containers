@@ -98,7 +98,7 @@ Different researchers, especially those located at different institutions, those
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f6b98e19f5_0_1#slide=id.g3f6b98e19f5_0_1")
 ```
 
-The differences between computers can be problematic for performing and sharing reproducible research [@]. Several examples exist in the literature where different versions of software lead to different results when analyzing the same data [@].
+The differences between computers can be problematic for performing and sharing reproducible research [@Schloss_2018; @Moreau_Wiebels_Boettiger_2023]. Several examples exist in the literature where different versions of software lead to different results when analyzing the same data [@Beaulieu-Jones_Greene_2017; @Filip_etal_2022].
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
