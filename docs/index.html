@@ -98,9 +98,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-31e90097cc70b629543000df370c8fd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1f5e8a4531b23126c45ce8230f2b000b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1f5e8a4531b23126c45ce8230f2b000b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1f5e8a4531b23126c45ce8230f2b000b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/glossary/glossary.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
@@ -225,7 +225,9 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   <li><a href="#registries" id="toc-registries" class="nav-link" data-scroll-target="#registries">Registries</a></li>
   <li><a href="#running" id="toc-running" class="nav-link" data-scroll-target="#running">Running</a></li>
   <li><a href="#mounting" id="toc-mounting" class="nav-link" data-scroll-target="#mounting">Mounting</a></li>
+  <li><a href="#vocabulary-summary" id="toc-vocabulary-summary" class="nav-link" data-scroll-target="#vocabulary-summary">Vocabulary Summary</a></li>
   </ul></li>
+  <li><a href="#containerization-analogies" id="toc-containerization-analogies" class="nav-link" data-scroll-target="#containerization-analogies">Containerization Analogies</a></li>
   <li><a href="#why-containers" id="toc-why-containers" class="nav-link" data-scroll-target="#why-containers">Why containers?</a>
   <ul class="collapse">
   <li><a href="#when-is-a-container-especially-useful" id="toc-when-is-a-container-especially-useful" class="nav-link" data-scroll-target="#when-is-a-container-especially-useful">When is a container especially useful?</a></li>
@@ -369,12 +371,6 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
 -->
 <div class="outline">
-<!--
-Replace the `img/mainplot.png` image with the appropriate case study image or consider using ottrpal::include_slide() with a publicly viewable slide deck as needed.
-See image here for example: https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/
-
-![](img/mainplot.png){fig-alt="Map showing amount of pollution across the US localized to monitors." width=800 .lightbox}
--->
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -385,12 +381,6 @@ See image here for example: https://www.opencasestudies.org/ocs-bp-school-shooti
 </div>
 </div>
 </div>
-<!--
-The disclaimer block, license block, and funding info generally will not need updated
-
-Please update the access information (e.g., github link and data access)
-as well as any system or server requirements to work with the data
--->
 <div class="tabset-margin-container"></div><div class="panel-tabset frontmatter-tabs">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Disclaimer</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">License</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Funding</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Citation</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">GitHub Repository</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Keywords</a></li></ul>
 <div class="tab-content frontmatter-tabs">
@@ -425,9 +415,6 @@ as well as any system or server requirements to work with the data
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<!--
-The reference block (specifically the inner_block) should be updated to reflect how this case study should be cited
--->
 <div class="reference_box">
 <div class="reference_box_header">
 <p>To cite this case study, please use:</p>
@@ -438,12 +425,6 @@ The reference block (specifically the inner_block) should be updated to reflect 
 </div>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-<!--
-UPDATE: ACCESS Information (github source and data)
-In this space, provide an open access link to the case study source files.
-This is necessary for users to get access to case study data, at a minimum.
-See the following example from a previous case study (prior to Motivation section): https://www.opencasestudies.org/ocs-bp-co2-emissions/
--->
 <div class="github_repo_box">
 <div class="github_repo_box_header">
 <p>GitHub repository</p>
@@ -452,9 +433,6 @@ See the following example from a previous case study (prior to Motivation sectio
 <p>To access the GitHub repository for this case study see here: <a href="https://github.com/opencasestudies/ocs-bio-containers">https://github.com/opencasestudies/ocs-bio-containers/</a></p>
 </div>
 </div>
-<!--
-If the data isn't in the main github repository, be sure to describe and link to the open source location of the data and how to access it
--->
 </div>
 <div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
 <div class="keyword_box">
@@ -463,22 +441,31 @@ If the data isn't in the main github repository, be sure to describe and link to
 </div>
 <div class="inner_block">
 <ul>
-<li>Keyword 1</li>
-<li>Keyword 2</li>
-<li>Keyword 3</li>
-<li>…Keyword n</li>
+<li>Containers</li>
+<li>Docker</li>
+<li>Dockerfile</li>
+<li>Image</li>
+<li>Volumes</li>
+<li>Registries</li>
+<li>Curated data resources</li>
+<li>Secondary data</li>
+<li>Data harmonization</li>
+<li>Collaboration</li>
+<li>Microbiome</li>
+<li>Metabolome</li>
+<li>Metabolites</li>
+<li>Scatter plots</li>
+<li>Spearman correlation</li>
+<li>Reproducibility</li>
 </ul>
-<!-- Note that keywords should be the types of words that you'd use for a conference abstract or grant submission; focus on the emerging tech or best practice that is being covered as well as the specific part of the task/analysis/visualization that is being shown. Just a quick way to overview what skills/topics are part of the case study -->
 </div>
 </div>
-<!--
-Include bioOCSdata package information once ready/applicable
--->
 </div>
 </div>
 </div>
 <section id="prerequisites" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<hr>
 <div class="prereq_box">
 <div class="prereq_box_header">
 <p>Prerequisites</p>
@@ -508,15 +495,13 @@ Include bioOCSdata package information once ready/applicable
 </div>
 </div>
 </div>
-<p>–</p>
-<p>It will also be helpful to be have the following skills:</p>
+<p><u>It will also be helpful to be have the following skills:</u></p>
 <ul>
 <li>ability to navigate file systems. Please use or review the <a href="https://swcarpentry.github.io/shell-novice/02-filedir.html">Software Carpentry “Navigating Files and Directories” tutorial</a> if needed.</li>
 <li>basic R skills (many introductory courses can be found online, including <a href="https://hutchdatascience.org/Intro_to_R/">this one</a>)</li>
 <li>familiarity with dplyr and ggplot2, or willingness to learn (these <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr</a> and <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2</a> cheatsheets may be helpful, as well as the original <a href="https://www.opencasestudies.org/search.html">open case studies</a>)</li>
 </ul>
-<p>–</p>
-<p>For optional, more extensive reproducibility activities, you will need the following:</p>
+<p><u>For optional, more extensive reproducibility activities, you will need the following:</u></p>
 <ul>
 <li>minimal Git and GitHub knowledge or experience (see <a href="https://www.opencasestudies.org/ocs-bio-version-control/">this related case study</a> for necessary skills)</li>
 <li>a <strong>GitHub account</strong> (see <a href="https://github.com/signup">here to signup</a>)</li>
@@ -581,12 +566,6 @@ New to GitHub?
 <li>How to save results from an analysis run in a container.</li>
 </ul>
 <hr>
-<!--
-Describe the main biological questions for this case study.
-What will our analysis aim to answer? There can be more than 2.
-Fill them in within the inner_block section, but leave the custom box syntax
-See this previous case study as an example: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Main_Questions
--->
 </section>
 <section id="main-question" class="level1">
 <h1><strong>Main Question</strong></h1>
@@ -608,18 +587,11 @@ See this previous case study as an example: https://www.opencasestudies.org/ocs-
 <section id="learning-objectives" class="level1">
 <h1><strong>Learning Objectives</strong></h1>
 <hr>
-<!--
-Replace the shell content and enumerate the learning objectives in the referenced qmd files.
-For an example of this section, see this previous Open Case Study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Learning_Objectives
-
-Statistical LOs were provided in the original open case studies but they may be omitted here depending on the case study.
-Biological LOS were not provided in the original open case studies and should be included in all Bio-OCS case studies.
--->
 <p>In this case study, we will use <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to specify and run our <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> environments in order to create several data visualizations of a table describing samples within a curated <button class="glossary"><span class="def">A collection of datasets that have been gathered or curated by a group for secondary use within the field.</span>data resource</button>.</p>
 <p>The skills, methods, and concepts that students will be familiar with by the end of this case study are:</p>
 <p><u><strong>Data Science/Bioinformatics Learning Objectives:</strong></u></p>
 <ol type="1">
-<li>Discuss ways in which <button class="glossary"><span class="def"></span>containerization</button> promotes <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button> within collaborative scientific research.</li>
+<li>Discuss ways in which <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button> promotes <button class="glossary"><span class="def">The ability for a new researcher to run the same analysis on the same data and get the same results as the original researcher.</span>reproducibility</button> within collaborative scientific research.</li>
 <li>Describe how containerization is one of several tools to support the process of increasing the reproducibility of scientific research.</li>
 <li>Employ multiple reproducibility best practices together within the context of containerization (e.g., <button class="glossary"><span class="def">Connect a file or directory from the local machine to a location inside of a container.</span>mounting</button> a <button class="glossary"><span class="def">A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</span>volume</button> of <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlled</button> scripts, sharing a container <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>image</button>).</li>
 <li>Evaluate what should or should not be included in a container.</li>
@@ -647,8 +619,9 @@ Biological LOS were not provided in the original open case studies and should be
 <hr>
 <section id="what-is-the-metabolome" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-the-metabolome">What is the metabolome?</h2>
+<hr>
 <p>The <button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> is a collection of <button class="glossary"><span class="def">Low-weight organic molecules found in a sample or organism, produced as intermediate or end products of metabolism.</span>metabolites</button> or low-molecular weight <button class="glossary"><span class="def">Molecules containing carbon-hydrogen bonds.</span>organic</button> (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: <button class="glossary"><span class="def">Macromolecules that store and transfer genetic information, including DNA and RNA.</span>nucleic acids</button> (DNA or RNA), <button class="glossary"><span class="def">Macromolecules made up of folded chains of amino acids that perform specific functions within organisms.</span>proteins</button>, <button class="glossary"><span class="def">Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells.</span>carbohydrates</button>, and <button class="glossary"><span class="def">Macromolecules that are insoluble in water and provide structure for cells and serve as long-term energy sources.</span>lipids</button> <span class="citation" data-cites="Cooper_2000">(<a href="#ref-Cooper_2000" role="doc-biblioref">Cooper 2000</a>)</span>. These categories represent large biomolecules (<button class="glossary"><span class="def">Large complex molecules responsible for cell structure, energy storage, enzymatic catalysis, and genetic information storage and transfer, including nuceleic acids, proteins, carbohydrates, and lipids.</span>(macromolecules)</button>) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include <button class="glossary"><span class="def">Metabolites that are needed for growth, development, and metabolic processes, but are not synthesized adequately within the body and therefore must be obtained from external sources.</span>vitamins</button>, <button class="glossary"><span class="def">Metabolites, primarily carboxylic acids, that neutralize bases and play important roles in cellular metabolism.</span>organic acids</button>, and other small organic molecules that don’t neatly relate to the larger classes of biomolecules <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
-<p>Metabolites may be <button class="glossary"><span class="def">Metabolites that originate from the organism or source of the sample.</span>endogenous</button> or <button class="glossary"><span class="def">Metabolites that originate from outside of the organism or source of the sample.</span>exogenous</button> depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either <button class="glossary"><span class="def">Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</span>primary</button> or <button class="glossary"><span class="def">Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary “host” system but are then re-metabolized by the microbiome.</span>secondary</button> metabolites where primary metabolites are required for the life-cycle: growth, development, and reproduction; secondary metabolites are instead used for non-life cycle tasks such as communication/signaling or defense. Note that within the context of the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>, a “secondary metabolite” has an additional meaning besides ones that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
+<p>Metabolites may be <button class="glossary"><span class="def"></span>endogenous</button> or <button class="glossary"><span class="def">Metabolites that originate from outside of the organism or source of the sample.</span>exogenous</button> depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either <button class="glossary"><span class="def">Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</span>primary</button> or <button class="glossary"><span class="def">Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary “host” system but are then re-metabolized by the microbiome.</span>secondary</button> metabolites where primary metabolites are required for the life-cycle: growth, development, and reproduction; secondary metabolites are instead used for non-life cycle tasks such as communication/signaling or defense. Note that within the context of the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>, a “secondary metabolite” has an additional meaning besides ones that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
 <p>Metabolites are detected, identified, and quantified using <button class="glossary"><span class="def">A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.</span>Nuclear Magnetic Resonance (NMR)</button>, <button class="glossary"><span class="def">A technique to detect and quantify metabolites using enzyme-catalyzed reactions.</span>enzyme assays</button> or by pairing compound separation through <button class="glossary"><span class="def">A technique to detect and quantify metabolites by vaporizing and separating compounds.</span>Gas Chromatography (GC)</button> or <button class="glossary"><span class="def">A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.</span>Liquid Chromatography (LC)</button> with <button class="glossary"><span class="def">A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.</span>spectra</button>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -689,12 +662,14 @@ What are different applications of metabolomics within the scientific field&gt;
 </section>
 <section id="how-are-the-microbiome-and-the-metabolome-related" class="level2">
 <h2 class="anchored" data-anchor-id="how-are-the-microbiome-and-the-metabolome-related">How are the microbiome and the metabolome related?</h2>
+<hr>
 <p>The microbiome is discussed in more <a href="https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-microbiome">detail within the Version Control Case Study</a>, but briefly, the microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. These microorganisms can impact metabolism and have been found to be associated with greater human health.</p>
 <p><button class="glossary"><span class="def">A laboratory technique that extracts and analyzes the genetic material from a sample.</span>Sequencing</button> the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful.</p>
 <p>Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will “pair” microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed <button class="glossary"><span class="def">Data that is collected from the same sample in a study.</span>paired</button> data. Considering connected data like this in an analysis is termed an <button class="glossary"><span class="def">An analysis that integrates multiple sources of data together.</span>integrative analysis</button> because it is integrating multiple sources of data.</p>
 </section>
 <section id="what-is-a-curated-data-resource" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-a-curated-data-resource">What is a curated data resource?</h2>
+<hr>
 <p><span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span> introduced and explored a <strong>curated <button class="glossary"><span class="def">A collection of datasets that have been gathered or curated by a group for secondary use within the field.</span>data resource</button></strong>. Simply, this means a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. This often goes further than just collecting references of different studies who have made their data available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work. In this case, the researchers from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>, after identifying studies to include in the data resource had to</p>
 <ol type="1">
 <li>Download the data associated with each study.</li>
@@ -709,6 +684,7 @@ What are different applications of metabolomics within the scientific field&gt;
 </div></div></section>
 <section id="what-are-possible-uses-of-a-data-resource" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-possible-uses-of-a-data-resource">What are possible uses of a data resource?</h2>
+<hr>
 <p>Curated data resources are useful for a variety of tasks such as:</p>
 <ul>
 <li>Working with more data for greater <button class="glossary"><span class="def">The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists.</span>statistical power</button></li>
@@ -719,6 +695,7 @@ What are different applications of metabolomics within the scientific field&gt;
 </section>
 <section id="the-need-for-containerization" class="level2">
 <h2 class="anchored" data-anchor-id="the-need-for-containerization">The need for containerization</h2>
+<hr>
 <p>Data analysis, especially analysis of large data, relies on computers and the software tools installed on those computers. Depending on the computational needs of an analysis or a researcher’s typical work, that computer or work station may be a personal computer / laptop (Operating system: Microsoft Windows, Apple MacOS, Google ChromeOS, or Linux), a desktop, a Graphics Processing Unit (GPU) server, shared computing resources such as <button class="glossary"><span class="def">A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</span>institutional high performance computing (HPC)</button> clusters or supercomputers, or the cloud (Amazon Web Services, Google Cloud Platform, Microsoft Azure). <span class="citation" data-cites="Wright_Computing">(<a href="#ref-Wright_Computing" role="doc-biblioref">Wright, n.d.</a>)</span>.</p>
 <p>Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different <button class="glossary"><span class="def">Specific features of a computational resource, including operating system, software, and software versions.</span>computing environments</button> (potentially differences in operating systems, software, software versions, etc.). Beyond differences in operating systems, different institutions and the IT departments that manage the institution’s computers may have specific setups and guidelines shaping the available software and computing environment for computers at the institution. Individuals with different needs will install and update software differentially. Even team members within the same lab will have different computing environments. Overtime, a single researcher’s computer will evolve as well. Software and operating systems will be updated (sometimes automatically rather than manually) and new software, tools, or applications will be installed. Basically, computers are like snowflakes – they are unique when compared to other computers. They make have similarities, but overall computers are their own unique entity.</p>
 <div class="cell" data-layout-align="center">
@@ -777,9 +754,11 @@ What is reproducible research within the greater context of scientific discovery
 </section>
 <section id="introduction-to-containers" class="level1 page-columns page-full">
 <h1><strong>Introduction to Containers</strong></h1>
-<p>Before we start to address your project with Collab O. Rator, we will provide an introduction to <button class="glossary"><span class="def"></span>containerization</button> with <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button>. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>-<button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data collection project.</p>
+<hr>
+<p>Before we start to address your project with Collab O. Rator, we will provide an introduction to <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button> with <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button>. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>-<button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data collection project.</p>
 <section id="what-is-a-container" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-a-container">What is a container?</h2>
+<hr>
 <p>A <a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">container is an active computing environment</a> that is isolated from the rest of the user’s system. Containers are the operational ending point of the containerization process. The containerization process also involves Dockerfiles and images (upstream of containers) which define and instantiate or produce containers.</p>
 <p>Images are a frozen snapshot of what the computing environment will be in a container or what will be in the running container, while a container is the isolated, specified computing environment that you can work in. This is like the Mary Poppins scene where Mary Poppins, Bert, and the kids are looking at chalk drawings (images) and jump into one which has its own isolated environment (container).</p>
 <div class="cell">
@@ -840,7 +819,7 @@ Picking Base Images and keeping an image “minimal”
 </div>
 </div>
 </section>
-<section id="registries" class="level3">
+<section id="registries" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="registries">Registries</h3>
 <p>Images can be stored within your local file system but you might want to free up space (due to their large size) or share them with team members, collaborators, another machine you use, or publicly because you are publishing a study. This is where <a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/">registries</a> are useful. A registry is a centralized location for storing and sharing container images. Docker Hub is a common, but not the only, registry used to share Docker images. Registries like Docker Hub are useful for finding base images or full images that can be used as is for your particular use case.</p>
 <div class="cell">
@@ -853,15 +832,15 @@ Picking Base Images and keeping an image “minimal”
 </div>
 </div>
 <p>Images can be “pushed” or “pulled” from a registry. If an image has multiple tags or are built for multiple architectures, the related images (with different tags or built for different architectures) will be stored in a <a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository">repository within the registry</a>. If an image contains proprietary information, it likely shouldn’t be shared in a public registry like Docker Hub.</p>
-<div class="{.column-margin">
+
+<div class="no-row-height column-margin column-container"><div class="">
 <p>Add push and pull to the glossary as well as a dictionary box.</p>
-</div>
-<div class="reproducibility_box">
+</div></div><div class="reproducibility_box">
 <div class="reproducibility_box_header">
 <p>Reproducibility considerations</p>
 </div>
 <div class="inner_block">
-<p>An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the Dockerfile that was used to build the original image (that was pushed to the registry), these images may no longer match. Unless versions are explicitly controlled within the Dockerfile, versions of dependencies or packages may have changes or may no longer be available. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes like this can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share.</p>
+<p>An image that is pulled from a registry will match the image that was pushed to the registry. If after some time (after pushing the image to the registry) an image is built from the same <code>Dockerfile</code> that was used to build the original image (the one that was pushed to the registry), these images may no longer match. After some time, rebuilding an image later using the same Dockerfile may yield a different result because dependencies change over time/may no longer be available and base images using “latest” tags can also change over time. Therefore unless versions are explicitly controlled within the <code>Dockerfile</code> (<a href="https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view">see this blog for more information</a>), rebuilt images may not match images on a registry even if they originate from the same Dockerfile. Also, you may be using different options or parameters to build the Docker image than were originally used. Small changes due to differing build options and time passing can impact how reproducible a container actually is in practice and is a reason why Images are typically stored in registries to share rather than sharing a <code>Dockerfile</code> (which may or may not version pin all software).</p>
 </div>
 </div>
 </section>
@@ -869,7 +848,7 @@ Picking Base Images and keeping an image “minimal”
 <h3 class="anchored" data-anchor-id="running">Running</h3>
 <p>“Run” is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container – the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use <a href="https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/"><code>wget</code></a> to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well.</p>
 </section>
-<section id="mounting" class="level3 page-columns page-full">
+<section id="mounting" class="level3">
 <h3 class="anchored" data-anchor-id="mounting">Mounting</h3>
 <p>When you “run” an image to create a container you can mount a volume of your local files so that files from your system are available to the container. These files may be a analysis scripts, data files, package that you are writing/developing. Any changes made to those files will still be available to you once the container is no longer running.</p>
 <div class="cell">
@@ -893,9 +872,17 @@ Alternatives for machines with strict security configurations
 </ul>
 </details>
 </div>
+</section>
+<section id="vocabulary-summary" class="level3">
+<h3 class="anchored" data-anchor-id="vocabulary-summary">Vocabulary Summary</h3>
 <div class="emphasis_block">
 <p>In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. Dockerfiles serve as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are a frozen, layered snapshot of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data and any updates to those are available outside of the container as well.</p>
 </div>
+</section>
+</section>
+<section id="containerization-analogies" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="containerization-analogies">Containerization Analogies</h2>
+<hr>
 <div class="emphasis_block">
 <details>
 <summary>
@@ -960,9 +947,9 @@ Alternatives for machines with strict security configurations
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Will embed a survey to ask learners to suggest other analogies.</p>
 </div></div></section>
-</section>
 <section id="why-containers" class="level2">
 <h2 class="anchored" data-anchor-id="why-containers">Why containers?</h2>
+<hr>
 <p>As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).</p>
 <p>Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include:</p>
 <ul>
@@ -1011,12 +998,14 @@ Alternatives for machines with strict security configurations
 </section>
 <section id="how-do-you-work-with-a-container" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-you-work-with-a-container">How do you work with a container?</h2>
+<hr>
 <p>Using Docker through Docker Desktop vs through a Command Line Interface (CLI) has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, do everything within the GUI without having to switch between windows (<a href="https://docs.docker.com/desktop/use-desktop/">Explore what the Docker Desktop GUI has.</a>). Docker Desktop also has <a href="https://docs.docker.com/desktop/">extensive documentation</a> about working with the GUI. However, <a href="https://docs.docker.com/desktop/settings-and-maintenance/settings/">Docker Desktop does not provide tab completion by default</a>, and once you enable it, it doesn’t work quite in the way you would expect it to while interacting with and running files in the “Exec” tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.</p>
 <p>Depending on how a container is defined / setup, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.</p>
 <p>Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.</p>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<hr>
 <div class="emphasis_block">
 <p>Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you’ll need to mount (if any) when you run the container; whether you’re running the container locally or remotely.</p>
 <div class="cell">
@@ -1029,6 +1018,7 @@ Alternatives for machines with strict security configurations
 </div>
 </div>
 </div>
+<hr>
 </section>
 </section>
 <section id="what-are-the-data" class="level1">
@@ -1098,18 +1088,12 @@ Alternatives for machines with strict security configurations
 </tr>
 </tbody>
 </table>
-<hr>
-<!--
-Describe any limitations that exist in this analysis whether it be due to the data itself, methods used, nature of the topic, etc.
-You can list more than 2
-See the following example from a previous case study: https://www.opencasestudies.org/ocs-bp-opioid-rural-urban/#Limitations
--->
 </section>
 <section id="limitations" class="level1">
 <h1><strong>Limitations</strong></h1>
 <hr>
 <p>There are some important considerations regarding this data analysis to keep in mind:</p>
-<p>This case study specifically uses the technology <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to <button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>build</button> <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button> and run analyses within these isolated environments, on a local machine.</p>
+<p>This case study specifically uses the technology <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button> to <button class="glossary"><span class="def"></span>build</button> <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>containers</button> and run analyses within these isolated environments, on a local machine.</p>
 <p><em>Limitations regarding containerization and the scope of this case study:</em></p>
 <p>This case study does <strong>not</strong> describe how to:</p>
 <ul>
@@ -1119,7 +1103,7 @@ See the following example from a previous case study: https://www.opencasestudie
 <li>use containers to deploy or support an application</li>
 <li>use technologies other than Docker such as Apptainer or Singularity</li>
 </ul>
-<p>Docker is a widely used tool for <button class="glossary"><span class="def"></span>containerization</button>. However, it is not the most appropriate tool for all use cases and within all contexts. For example, <button class="glossary"><span class="def">A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</span>institutional high performance computing (HPC)</button> often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
+<p>Docker is a widely used tool for <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button>. However, it is not the most appropriate tool for all use cases and within all contexts. For example, <button class="glossary"><span class="def">A shared computing cluster or supercomputer that aggregates computing resources to provide greater performance than individual computers and is typically hosted and maintained by an institution for internal research and computing needs.</span>institutional high performance computing (HPC)</button> often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.</p>
 <p><em>Limitations regarding the data analysis and using aggregated data:</em></p>
 <p>This case study focuses on practicing best practices in using containers to support reproducible and extensible scientific analyses. To support this goal, the example analysis is a straightforward visualization of narrow scope data. There could be additional context and characteristics (e.g., quality) about the data that are not considered or visualized within this analysis.</p>
 <p>In addition, the harmonization of aggregated data requires careful consideration to ensure that data from multiple, different sources is both compatible and comparable <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. Steps involved in <button class="glossary"><span class="def">Ensuring that data from multiple sources is compatible and comparable, includes mapping related variables across datasets, adjusting scales, units, and formats, and reducing bias from differences in data collection.</span>data harmonization</button> include mapping related variables across datasets, adjusting scales, units, or formats for proper comparison, and reducing bias due to differences in data collection. Harmonization is not performed within this case study. Typically, <button class="glossary"><span class="def">An analysis of data from a collection of studies targeting a common research question.</span>meta-analyses</button> are synthesizing summarized information rather than aggregating the underlying, raw data <span class="citation" data-cites="Cheng_etal_2024">(<a href="#ref-Cheng_etal_2024" role="doc-biblioref">Cheng et al. 2024</a>)</span>. If using this curated resource to aggregate the underlying data, carefully consider what data harmonization may be appropriate <span class="citation" data-cites="Nan_etal_2022">(<a href="#ref-Nan_etal_2022" role="doc-biblioref">Nan et al. 2022</a>)</span>.</p>
@@ -1150,7 +1134,7 @@ See the following example from a previous case study: https://www.opencasestudie
 <li>Only use container images from known and verified sources.</li>
 <li>While images provide a static snapshot of a <button class="glossary"><span class="def">Specific features of a computational resource, including operating system, software, and software versions.</span>computing environment</button>, the security or health of a container image isn’t necessarily static and may need to be maintained over time.</li>
 <li>Only use specific technology containers within the appropriate contexts (e.g., do not use <button class="glossary"><span class="def"></span>institutional HPC</button> unless explicitly allowed/supported by the institution). Certain containerization tools are not as consistent with the <a href="https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege">principle of least privilege</a> as others (e.g., Docker is not as consistent with these principles as Singularity / Apptainer, and Podman).</li>
-<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. <button class="glossary"><span class="def"></span>Containerization</button> of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
+<li>Use of open-source software that is broadly accessible is a part of ensuring findable, accessible, interoperable, and reusable (FAIR) science <span class="citation" data-cites="Wilkinson_etal_2016 Barker_etal_2022">(<a href="#ref-Wilkinson_etal_2016" role="doc-biblioref">Wilkinson et al. 2016</a>; <a href="#ref-Barker_etal_2022" role="doc-biblioref">Barker et al. 2022</a>)</span>. Docker is consistent with these principles because it is a partially open-source software that is free to use for individuals and small organizations. <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>Containerization</button> of analysis software and depositing it in repositories further aligns with these principles by making tools and analyses more accessible and transparent to others.</li>
 <li>Keep comprehensive documentation for scientific projects regarding sources and handling of data as well as steps in the analysis process. Further, be transparent, sharing <button class="glossary"><span class="def">A project with changes tracked over time using version control software such as Git and GitHub.</span>version-controlled</button> records of analyses. Containerization is just a part of <a href="https://hutchdatascience.org/Proactive_Data_Management_and_Sharing/defining-reproducibility.html#reproducibility-exists-on-a-continuum">reproducible science</a> <span class="citation" data-cites="Sandve_Nekrutenko_Taylor_Hovig_2013">(<a href="#ref-Sandve_Nekrutenko_Taylor_Hovig_2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>.</li>
 </ol>
 <p><em>Collaborative team considerations:</em></p>
@@ -1347,12 +1331,14 @@ If you want to learn more about the R code used throughout…
 <div class="emphasis_block">
 <p><strong>Disclaimer:</strong> The instructions and visuals provided for interacting with Docker Desktop (throughout the Data Import, Data Wrangling, Data Visualization, and Data Analysis sections) are based off of working with Docker Desktop version 4.91.0 (Sept 2026). They may not be completely accurate regarding layout and available functionality for different versions of Docker Desktop.</p>
 </div>
+<hr>
 </section>
 <section id="data-import-1" class="level1 page-columns page-full">
 <h1><strong>Data Import</strong></h1>
 <hr>
 <section id="container-infrastructure" class="level2">
 <h2 class="anchored" data-anchor-id="container-infrastructure">Container Infrastructure</h2>
+<hr>
 <p>In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the <code>tabulapdf</code> package and any of its dependencies that we don’t have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.</p>
 <section id="step-1-starting-docker" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-starting-docker">Step 1: Starting docker</h3>
@@ -1534,6 +1520,7 @@ Finding containers in a registry (e.g., Docker Hub)
 </section>
 <section id="container-application" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-application">Container Application</h2>
+<hr>
 <p>Now that the container is running, it can be used to work with data and perform tasks with the software packages inside the container. The first necessary step is to “import” the data needed to create data visualizations down the road.</p>
 <section id="extracting-data-from-a-pdf-within-a-running-container" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="extracting-data-from-a-pdf-within-a-running-container">Extracting data from a PDF within a running container</h3>
@@ -1720,6 +1707,7 @@ Number of NAs: 80</p>
 <hr>
 <section id="container-infrastructure-1" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-infrastructure-1">Container Infrastructure</h2>
+<hr>
 <p>We’ll utilize this section to explore the <button class="glossary"><span class="def">A text document that includes commands that are needed to build a Docker image and specify what will be available in a container.</span>Dockerfile</button> specifically answering “What’s in a <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button>?”</p>
 <p>As previously described, a container is created from an image which is built from a <code>Dockerfile</code>. Therefore, to know what’s in a container, we have to know what’s in the image or the <code>Dockerfile</code> defining the image. Also as previously described, images have layers. Each command (<code>FROM</code>, <code>ENV</code>, <code>RUN</code>, etc.) in the Dockerfile adds another layer to the image.</p>
 <div class="cell">
@@ -1766,7 +1754,7 @@ Number of NAs: 80</p>
 <section id="from-base-image" class="level3">
 <h3 class="anchored" data-anchor-id="from-base-image">FROM: Base image</h3>
 <p>Line 1 of this <code>Dockerfile</code> uses the <a href="https://docs.docker.com/reference/dockerfile/#from"><code>FROM</code> instruction</a> to define the base image. Our base image is the <a href="https://hub.docker.com/r/rocker/tidyverse"><code>rocker/tidyverse</code></a> image which includes R, RStudio, and common R packages like <code>tidyverse</code>. You can <a href="https://hub.docker.com/r/rocker/tidyverse">explore this image on Docker Hub</a> to see its description of what is included and the various tags that are available for it.</p>
-<p>Specifically this is a <a href="https://docs.docker.com/build/building/best-practices/#pin-base-image-versions">version-pinned base image</a> meaning that it’s specifying a tag for the base image (R version 4.5.3 as opposed to <code>latest</code> – whichever is the most recent version) and a <a href="https://docs.docker.com/dhi/explore/security-concepts/digests/">“digest”</a> (everything after the at sign /<code>@</code>) – a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a “digest” from the “Tag summary” panel under the “Overview” tab on Docker Hub. Pinning the version of the base image is a good practice.</p>
+<p>Specifically this is a <a href="https://docs.docker.com/build/building/best-practices/#pin-base-image-versions">version-pinned base image</a> meaning that it’s specifying a tag for the base image (R version 4.5.3 as opposed to <code>latest</code> – whichever is the most recent version) and a <a href="https://docs.docker.com/dhi/explore/security-concepts/digests/">“digest”</a> (everything after the at sign /<code>@</code>) – a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a “digest” from the “Tag summary” panel under the “Overview” tab on Docker Hub. Pinning the version of the base image is a good practice. If you don’t version pin the base image, any additional dependencies or packages may not be able to be version pinned long-term because the base image will be updated and compatible package versions will change.</p>
 <div class="think_question">
 <div class="think_question_header">
 <p>Question Opportunity</p>
@@ -1807,6 +1795,14 @@ A possible answer
 <li>Line 13 deletes the metadata lists downloaded by <code>apt-get update</code> to save space in the final Docker image.</li>
 </ul>
 <p>We could improve this <code>Dockerfile</code> by <a href="https://docs.docker.com/build/building/best-practices/#sort-multi-line-arguments">sorting multi-line arguments alphabetically</a> – not super necessary for a small list like this, but if the list was longer, sorting alphabetically could help to ensure there are no duplications.</p>
+<div class="reproducibility_box">
+<div class="reproducibility_box_header">
+<p>Reproducibility considerations</p>
+</div>
+<div class="inner_block">
+<p>The dependencies specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same libraries available as those in the original image. For guidance on version pinning packages from <code>apt-get</code>, <a href="https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view#level-2-pin-system-packages">review this blog</a>.</p>
+</div>
+</div>
 <p><strong>How do you know what dependencies you need?</strong></p>
 <ul>
 <li>Some packages may tell you that you will need a specific library or dependency in order to install it. <code>tabulapdf</code> is an example of this where it <a href="https://cran.r-project.org/web/packages/tabulapdf/index.html">lists Java under the System Requirements</a>.</li>
@@ -1821,7 +1817,7 @@ A possible answer
 <div class="inner_block">
 <p><u>Context:</u> Within your prompt, provide the chatbot 1) what base image your Dockerfile is using, 2) any other dependencies you know you need to include, 3) a list of packages that you want to install, and 4) (if you’ve already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it’s an error message from the build process or an error message while working on your analysis within a running container.</p>
 <p><u>Suggested Prompt:</u></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default code-overflow-wrap number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1"></a>I am building a container image for the purpose of {FILL IN short purpose}. My Dockerfile is using the {FILL IN} image as a base image. I already know that I need the {FILL IN (Java, etc.)} dependencies because I'm installing {FILL IN packages (tabulapdf, etc.)}. Other packages that I'm installing include {FILL IN}. What other dependencies will I need? Can I get them all using `apt-get install`? Are there any other set up steps that I will need for these dependencies to make sure that {R or Python} is configured to use them?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode default code-overflow-wrap code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>I am building a container image for the purpose of {FILL IN short purpose}. My Dockerfile is using the {FILL IN} image as a base image. I already know that I need the {FILL IN (Java, etc.)} dependencies because I'm installing {FILL IN packages (tabulapdf, etc.)}. Other packages that I'm installing include {FILL IN}. What other dependencies will I need? Can I get them all using `apt-get install`? Are there any other set up steps that I will need for these dependencies to make sure that {R or Python} is configured to use them?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Note that the chatbot may ask for a copy of your Dockerfile in case there are environmental variables or other steps (like the R configuration steps earlier) that may be impacting the observed error message.</p>
 <p><u>Validation:</u> Rather than copy/pasting any <code>Dockerfile</code> or lines that chatbot recommends for you, you should have a dialog with the chatbot to make sure you understand its recommendations. You can also check the documentation for the packages to see if they recommend or require any of those libraries. You should check to make sure that the libraries are real/not hallucinated and are from trusted sources by googling them. After that, you can try to incorporate the recommendations into your Dockerfile and try to rebuild the image (and rerun the analysis if applicable).</p>
 </div>
@@ -1870,6 +1866,15 @@ A possible answer
 <p>Both <code>install2.r</code> or <code>Rscript -e 'install.packages()'</code> can be used to install R packages from CRAN. The <a href="https://hutchdatascience.org/Containers_for_Scientists/06-writing-dockerfiles.html">ITN’s Containers for Scientists course</a> shows examples of the latter. Our use of the former is because <code>rocker</code> base images typically have access to the <code>install2.r</code> method, which not all base images within the R ecosystem will. Much like including the <code>--error</code> option for <code>install2.r</code>, the <code>install.packages()</code> method can be modified to halt the build process, but you would have to include <code>options(warn = 2);</code> within the quotes prior to the call to <code>install.packages()</code>. If the <code>install2.r</code> method isn’t available, <a href="https://stackoverflow.com/a/71079625">you can first install it in your Dockerfile</a>, and then it will be available for the later steps of the build process.</p>
 <p>If packages aren’t available on CRAN, but are available on GitHub, <code>rocker</code> images include the <a href="https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html"><code>installGithub.r</code></a> helper script (from <code>littler</code> like the <code>install2.r</code> script) or you can use <a href="https://pak.r-lib.org/"><code>pak</code></a>, <a href="https://remotes.r-lib.org/reference/install_github.html"><code>remotes</code></a>, or <a href="https://www.rdocumentation.org/packages/devtools/versions/1.13.6/topics/install_github"><code>devtools</code></a> to install from GitHub. If packages are available from Bioconductor, you can use <code>BiocManager</code> or the <code>installBioc.r</code> <code>littler</code> script. Note, if not using the <code>littler helper scripts</code> or using a non-rocker base image, you may first need to install these packages before you can use them within the <code>Dockerfile</code>, but then following the <code>Run Rscript -e ''</code> template, you can use functions later in the <code>Dockerfile</code>. <a href="https://support.bioconductor.org/p/p134101/">For <code>Bioconductor</code> packages</a>, it may be worthwhile to use a <a href="https://docs.docker.com/build/building/multi-stage/">multi-stage build (a second <code>FROM</code>)</a> to use a <a href="https://www.bioconductor.org/help/docker/">Bioconductor image as a second base image</a>.</p>
 <p>Finally lines 24-25 clean up temporary files much like line 13 did earlier.</p>
+<div class="reproducibility_box">
+<div class="reproducibility_box_header">
+<p>Reproducibility considerations</p>
+</div>
+<div class="inner_block">
+<p>The dependencies specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same packages available as those in the original image. To version pin R packages in a Dockerfile, consider using an <a href="https://rstudio.github.io/renv/articles/docker.html"><code>renv</code> file to specify packages and their versions</a> or utilizing the <a href="https://remotes.r-lib.org/reference/install_version.html"><code>remotes</code> <code>install_version()</code></a> function.</p>
+<p>For more information about the motivation for version-pinning throughout a Dockerfile, examples beyond <code>apt-get</code> and <code>R</code>, and a discussion on balancing version pinning with maintenance or development, <a href="https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view">review this blog</a>.</p>
+</div>
+</div>
 </section>
 <section id="final-notes" class="level3">
 <h3 class="anchored" data-anchor-id="final-notes">Final notes</h3>
@@ -1878,6 +1883,7 @@ A possible answer
 </section>
 <section id="container-application-1" class="level2">
 <h2 class="anchored" data-anchor-id="container-application-1">Container Application</h2>
+<hr>
 <p>Using the <code>tabulapdf</code> package to extract the data table from the research study PDF, we defined a Data Frame (<code>raw_table</code>) that will need some wrangling to make it more accurately reflect Table 1 from <span class="citation" data-cites="Muller_Algavi_Borenstein_2022">Muller, Algavi, and Borenstein (<a href="#ref-Muller_Algavi_Borenstein_2022" role="doc-biblioref">2022</a>)</span>.</p>
 <div class="emphasis_block">
 <div class="cell">
@@ -1955,13 +1961,12 @@ If you want to explore this dataset in RStudio, Positron, or another IDE
 </div>
 <p>This will load an R object named <code>raw_table</code> that you can interact with in your IDE. You can use <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View"><code>view()</code></a> to look at the object and other functions to look at unique values, counts of values, etc. in columns.</p>
 </details>
+<hr>
 </section>
 </section>
 <section id="data-wrangling-1" class="level1 page-columns page-full">
 <h1><strong>Data Wrangling</strong></h1>
 <hr>
-<section id="container-application-2" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="container-application-2">Container Application</h2>
 <p>If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our <button class="glossary"><span class="def">Connect a file or directory from the local machine to a location inside of a container.</span>mounted</button> <button class="glossary"><span class="def">A directory or file from the local system that is mounted into a container, allowing the container to access, read, and write data outside of its computing environment.</span>volume</button> (the <code>ocs-bio-containers-scaffold-main</code> directory). Therefore in between sections, you should be able to pause, stop, or even delete a <button class="glossary"><span class="def">Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.</span>container</button> and either unpause, re-start, or re-create the container (Step 3b from the Data Import – Container Infrastructure section).</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -2016,6 +2021,9 @@ If you skipped the data import section click here.
 </div>
 </div>
 </details>
+<hr>
+<section id="container-application-2" class="level2">
+<h2 class="anchored" data-anchor-id="container-application-2">Container Application</h2>
 <hr>
 <section id="wrangling-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="wrangling-the-data">Wrangling the data</h3>
@@ -2315,6 +2323,7 @@ Why can’t we just run the data visualization scripts in our current running co
 </section>
 <section id="container-infrastructure-2" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-infrastructure-2">Container Infrastructure</h2>
+<hr>
 <p>As you can see from the visualization planning above, these two plots would be completely separate – and we’d like them to be visible next to each other. A useful R package for this purpose is <code>patchwork</code>. However, our data visualization Docker container doesn’t include that package.</p>
 <div class="think_question">
 <div class="think_question_header">
@@ -2471,7 +2480,7 @@ No, just because a Dockerfile has the package listed doesn’t mean that our run
 Answer
 </summary>
 <ol type="1">
-<li><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>Build</button> an image from the modified Dockerfile.</li>
+<li><button class="glossary"><span class="def"></span>Build</button> an image from the modified Dockerfile.</li>
 <li>Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.</li>
 <li>That running container now has <code>patchwork</code> available for use.</li>
 </ol>
@@ -2555,9 +2564,10 @@ If you skipped the data wrangling section click here.
 <hr>
 <section id="container-infrastructure-3" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-infrastructure-3">Container Infrastructure</h2>
+<hr>
 <p>Now that we have added the <code>patchwork</code> package to the original Dockerfile, we need to create a container that will have this package available in order to create our data visualization. As outlined in the previous section, we need to do the following steps:</p>
 <ol type="1">
-<li><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>Build</button> an image from the modified Dockerfile.</li>
+<li><button class="glossary"><span class="def"></span>Build</button> an image from the modified Dockerfile.</li>
 <li>Run the image to create a container, mounting the directory or volume that has the analysis scripts within the run command.</li>
 </ol>
 <p>Step 1 is completely new since previously we pulled an image from Docker Hub rather than building the image from a Dockerfile..</p>
@@ -2675,6 +2685,7 @@ Include a thought question to give learners the opportunity to build a flowchart
 </div></div></section>
 <section id="container-application-3" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-application-3">Container Application</h2>
+<hr>
 <p>Now within the modified, running container, we will use the wrangled data to make two scatter plots and then use the <code>patchwork</code> package specifically to combine those two plots.</p>
 <p>Our first visualization script makes the two scatter plots and saves their <code>ggplot</code> objects.</p>
 <div class="code-with-filename">
@@ -3161,6 +3172,7 @@ If you skipped the Data Wrangling section or the Data Visualization section clic
 <hr>
 <section id="container-application-4" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="container-application-4">Container Application</h2>
+<hr>
 <section id="correlation" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
 <p>We might expect that as the number of samples in a dataset increase, the number of observed metabolites would also increase <span class="citation" data-cites="Hubert_etal_2026">(<a href="#ref-Hubert_etal_2026" role="doc-biblioref">Hubert et al. 2026</a>)</span>. This trend is non-linear, however; discovery rates ultimately plateau as sampling approaches saturation due to diminishing returns. We can statistically measure the trend using a correlation analysis.</p>
@@ -3631,6 +3643,7 @@ But this isn’t a new container. Would I still get the same results in a new co
 </section>
 <section id="container-infrastructure-4" class="level2">
 <h2 class="anchored" data-anchor-id="container-infrastructure-4">Container Infrastructure</h2>
+<hr>
 <section id="container-housekeeping" class="level3">
 <h3 class="anchored" data-anchor-id="container-housekeeping">Container Housekeeping</h3>
 <p>Whether you’re using Docker Desktop or Docker through a CLI, you often need to perform container housekeeping – stopping and removing unneeded containers or images from your system. Images can get quite large (in the Gigabytes range) and running containers / Docker Desktop can be taxing to a computer, using a lot of resources.</p>
@@ -3903,7 +3916,6 @@ Pushing an image to Docker Hub
 </div>
 </div>
 </div>
-<hr>
 </section>
 <section id="summary-plot" class="level2">
 <h2 class="anchored" data-anchor-id="summary-plot"><strong>Summary Plot</strong></h2>
@@ -3922,7 +3934,8 @@ Pushing an image to Docker Hub
 </section>
 <section id="troubleshooting-containers" class="level1 page-columns page-full">
 <h1><strong>Troubleshooting Containers</strong></h1>
-<p>Working with containers, you may encounter issues and error messages. Google, Stack Overflow, and Chatbots are useful for understanding and handling these error messages. Docker recently developed <a href="https://docs.docker.com/ai/gordon/">Gordon AI</a> – a chatbot meant for helping with containerization and Docker errors/issues specifically. It is connected to Docker documentation and related web resources, searching those for answers. Gordon AI is not just a chatbot because it can also take action to fix problems (with your permission). Gordon will propose every action before it executes it, asking you to approve it. Gordon will specifically mark actions as low-risk, destructive, etc. so you can make a more informed decision to accept the proposed action or not. Gordon AI is <a href="https://docs.docker.com/ai/gordon/#where-to-use-gordon">available to interact with in several ways</a>: within Docker Desktop, online throughout Docker Documentation pages, online at Docker Hub, and on the terminal.</p>
+<hr>
+<p>Working with containers, you may encounter issues and error messages. Google, Stack Overflow, and Chatbots are useful for understanding and handling these error messages. Docker recently developed <a href="https://docs.docker.com/ai/gordon/">Gordon AI</a> – a chatbot meant for helping with containerization and Docker errors/issues specifically. It is connected to Docker documentation and related web resources, searching those for answers. Gordon AI is not just a chatbot because it can also take action to fix problems (with your permission). Gordon will propose every action before it executes it, asking you to approve it. Gordon will specifically mark actions as low-risk, destructive, etc. This is so that you can make a more informed decision to accept the proposed action or not. Gordon AI is <a href="https://docs.docker.com/ai/gordon/#where-to-use-gordon">available to interact with in several ways</a>: within Docker Desktop, online throughout Docker Documentation pages, online at Docker Hub, and on the terminal.</p>
 <div class="ai_box">
 <div class="ai_box_header">
 <p>AI use considerations</p>
@@ -3969,17 +3982,20 @@ Pushing an image to Docker Hub
 <li><p>Recognize that you may need to iteratively improve your prompt to reach the desired output.</p></li>
 </ul>
 </div></div><p>At times, you may have to reach out to your institutional IT for support, especially if you are having trouble installing a containerization tool or unsuccessfully trying to mount a volume.</p>
+<p>For some common issues, troubleshooting tips, and exercises, visit the <a href="https://hutchdatascience.org/Containers_for_Scientists/09-troubleshooting.html">ITN’s Containers for Scientists course</a>.</p>
+<hr>
 </section>
 <section id="continued-learning" class="level1 page-columns page-full">
 <h1><strong>Continued Learning</strong></h1>
 <hr>
 <section id="reinforcement-exercises" class="level2">
 <h2 class="anchored" data-anchor-id="reinforcement-exercises">Reinforcement Exercises</h2>
+<hr>
 <p>A good way to practice the skills from this case study is to practice the containerization process again.</p>
 <p>We noted that in the combined scatter plot, text labels were both cutoff along axes edges and text labels were overlapping each other. The <code>ggrepel</code> package can be useful in fixing these problems.</p>
 <ul>
 <li>Add <code>ggrepel</code> to the Dockerfile.</li>
-<li><button class="glossary"><span class="def">Verb for creating a container image from a Dockerfile.</span>build</button> the Dockerfile.</li>
+<li><button class="glossary"><span class="def"></span>build</button> the Dockerfile.</li>
 <li>Run the image, mounting the <code>ocs-bio-containers-scaffold-main</code> volume as you’ve done previously.</li>
 <li>Look at the <code>continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R</code> script within the <code>ocs-bio-containers-scaffold-main</code> directory and try to understand what it’s doing.</li>
 <li>Use the <code>continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R</code> script to create a modified visualization to fix the overlapping and cutoff text labels.</li>
@@ -3988,6 +4004,7 @@ Pushing an image to Docker Hub
 </section>
 <section id="advancement-exercises" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="advancement-exercises">Advancement Exercises</h2>
+<hr>
 <section id="beginner" class="level3">
 <h3 class="anchored" data-anchor-id="beginner">Beginner</h3>
 <p>The table provides cohort descriptions about each dataset that are lost within the scatter plot. We can add some interactivity with <code>plotly</code> that will allow us to display info like the dataset description when we hover over the points.</p>
@@ -4023,7 +4040,7 @@ Pushing an image to Docker Hub
 <div class="inner_block">
 <p><u>Context</u> AI can be especially useful in refactoring code from one language to another. For each script, provide an AI chatbot with the goal of refactoring the code, which relevant Python packages will be available, the original R code, and what the goal of that code is.</p>
 <p><u>Suggested Prompt:</u></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource default code-overflow-wrap number-lines code-with-copy"><code class="sourceCode default"><span id="cb48-1"><a href="#cb48-1"></a>I would like to refactor this R script that [goal of the code], to create a python equivalent. I would like to use the following Python packages within the scripts [Python packages]. </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode default code-overflow-wrap code-with-copy"><code class="sourceCode default"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>I would like to refactor this R script that [goal of the code], to create a python equivalent. I would like to use the following Python packages within the scripts [Python packages]. </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><u>Validation:</u> Test the scripts that AI suggests within the container created from your new Dockerfile. Do you successfully create the outputs seen from the R analysis?</p>
 </div>
 </div>
@@ -4066,7 +4083,7 @@ Pushing an image to Docker Hub
 </div></div></section>
 <section id="advanced" class="level3">
 <h3 class="anchored" data-anchor-id="advanced">Advanced</h3>
-<p><a href="https://hutchdatascience.org/reproducibility_capstone/building-a-github-action.html">Build a GitHub action</a> that uses the original container pulled from Docker Hub to run the <code>01_extract_data.R</code> script. Can you extend the GitHub action to perform the whole analysis with the second container (<a href="https://hub.docker.com/r/bioocs/ocs-bio-containers-wrangling">available from Docker Hub here</a>?</p>
+<p><a href="https://hutchdatascience.org/reproducibility_capstone/building-a-github-action.html">Build a GitHub action</a> that uses the original container pulled from Docker Hub to run the <code>01_extract_data.R</code> script. Can you extend the GitHub action to perform the whole analysis with the second container (<a href="https://hub.docker.com/r/bioocs/ocs-bio-containers-wrangling">available from Docker Hub here</a>)?</p>
 <hr>
 </section>
 </section>
@@ -4087,11 +4104,9 @@ Pushing an image to Docker Hub
 <li><a href="https://docs.sylabs.io/guides/latest/user-guide/">Singularity / Apptainer</a></li>
 <li>For a discussion on security vulnerabilities, especially for images, see <span class="citation" data-cites="Kaur_Dugré_Hanna_Glatard_2021">Kaur et al. (<a href="#ref-Kaur_Dugré_Hanna_Glatard_2021" role="doc-biblioref">2021</a>)</span>.</li>
 </ul>
-<hr>
 </section>
 <section id="glossary" class="level2">
 <h2 class="anchored" data-anchor-id="glossary">Glossary</h2>
-<hr>
 <table class="glossary_table caption-top table">
 <tbody>
 <tr class="odd">
@@ -4622,7 +4637,7 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
 <section id="acknowledgments" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgments"><strong>Acknowledgments</strong></h2>
 <hr>
-<p>We would like to acknowledge Candace Savonen, Casey Greene, Emma Lathouwers, and Jeff Leek for their expert review of this case study.</p>
+<p>We would like to acknowledge <a href="https://www.cansavvy.com/">Candace Savonen</a>, <a href="https://greenelab.com/members/casey-greene.html">Casey Greene</a>, <a href="https://greenelab.com/members/emma-lathouwers.html">Emma Lathouwers</a>, and <a href="https://jtleek.com/">Jeff Leek</a> for their expert review of this case study.</p>
 <p>We would also like to acknowledge the National Institute of General Medical Sciences for funding this work (1R25GM160622).</p>
 <p>Icons are from <a href="https://www.iconpacks.net/">iconpacks</a>.</p>
 <p>Avatars are from <a href="https://getavataaars.com/">avataaars</a>.</p>
@@ -4631,6 +4646,7 @@ tzcode&nbsp;source:&nbsp;system&nbsp;(glibc)</p>
 <p>This work was primarily human-created. AI was used to make stylistic edits, such as changes to structure, wording, and clarity. AI was prompted for its contributions, or AI assistance was enabled. AI-generated content was reviewed and approved. The following model(s) or application(s) were used: Google Gemini, Microsoft 356 Copilot (GPT-5).</p>
 <p>AIA Primarily human, Stylistic edits, Human-initiated, Reviewed, Google Gemini, Microsoft 356 Copilot (GPT-5) v1.0</p>
 <p>More information about this AI attribution can be found <a href="https://aiattribution.github.io/">here</a>.</p>
+<!-- Author information -->
 
 
 </section>
