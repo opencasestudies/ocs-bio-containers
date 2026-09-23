@@ -94,11 +94,45 @@ Add a figure that shows this idea of cohorts being pooled together.
 
 Curated data resources are useful for a variety of tasks such as:
 
-* Working with more data for greater {{< glossary "Statistical power" display ="statistical power">}}
+* Working with more data for greater {{< glossary "Statistical power" display ="statistical power">}} [@Othus_Zhang_Gale_2022]
 * Perform a {{< glossary "Meta-analysis" display ="meta-analysis">}} to compare results and associations among datasets (See the [Version Control case study for an expanded discussion on meta-analyses](https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-meta-analysis).)
 * {{< glossary "Benchmarking" >}} tools
 * Comparing findings from an analysis to a different dataset (e.g., evaluating the {{< glossary "Replicability" display ="replicability">}} and {{< glossary "Generalizability" display ="generalizability">}} of the research) [@Schloss_2018]
 
+:::{.emphasis_block}
+<details><summary>Why does a higher number of samples lead to higher power?</summary>
+
+:::{.definition_box}
+::::{.definition_box_header}
+Power
+::::
+::::{.inner_block}
+The probability that a statistical test will detect an effect of a specified magnitude, assuming that an effect of that magnitude truly exists. Power is useful for designing studies and determining study feasibility. 
+::::
+:::
+
+:::{.definition_box}
+::::{.definition_box_header}
+Type II Error Rate (&beta;)
+::::
+::::{.inner_block}
+A Type II error is when the alternative hypothesis is true (there is a meaningful effect), but you fail to reject the null hypothesis (that there is no effect). The Type II error rate (&beta;) is the probability of failing to reject a false null hypothesis in a statistical test. 
+::::
+:::
+
+Power is related to the Type II Error Rate (&beta;). Specifically power is 1 - &beta;. The statistical power is calculated using the probability distributions of a hypothesis test statistic under both the null hypothesis (one distribution) and the alternative hypothesis (another distribution). The Power is the area under the alternative hypothesis distribution that falls past some critical value or rejection cutoff [@Krzywinski_Altman_2013]. 
+
+
+Typically, [a higher number of samples leads to higher statistical power](https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/) because a greater number of samples narrows the sampling distribution of test statistics that will be observed (e.g., more samples lead to lower variance sampling distributions). As the sampling distribution narrows, a greater area under the curve is shifted past the critical value [@Krzywinski_Altman_2013].
+
+:::{.column_margin}
+Adapt figure from [this resource](https://web.ma.utexas.edu/users/mks/statmistakes/powersamplesize.html) or the @Krzywinski_Altman_2013 review to show this.
+:::
+
+However, researchers can't just keep collecting data from more and more patients [@Andrade_2020]. This would be an inefficient use of time and resources. On the other hand, collecting too few samples leads to under-powered science and failures to replicate scientific findings may sometimes be due to under-powered studies [@Krzywinski_Altman_2013]. Curated data resources can help to increase the sample size of a study without the researchers having to collect more new data.
+
+</details>
+:::
 
 ## The need for containerization
 
