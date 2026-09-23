@@ -119,7 +119,7 @@ A Type II error is when the alternative hypothesis is true (there is a meaningfu
 ::::
 :::
 
-Power is related to the Type II Error Rate (&beta;). Specifically power is 1 - &beta;. The statistical power is calculated using the probability distributions of a hypothesis test statistic under both the null hypothesis (one distribution) and the alternative hypothesis (another distribution). The power is the area under the alternative hypothesis distribution that falls past some critical value or rejection cutoff [@Krzywinski_Altman_2013]. 
+Power is related to the Type II Error Rate (&beta;). Specifically power is 1 - &beta;. The statistical power is calculated using the probability distributions of a hypothesis test statistic under both the null hypothesis (one distribution) and the alternative hypothesis for an effect size of a specific magnitude (another distribution). The power is the area under the alternative hypothesis distribution that falls past some critical value or rejection cutoff [@Krzywinski_Altman_2013]. 
 
 Typically, [a higher number of samples leads to higher statistical power](https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/) because a greater number of samples narrows the sampling distribution of test statistics that will be observed (e.g., more samples lead to lower variance sampling distributions). As the sampling distribution narrows, a greater area under the curve is shifted past the critical value [@Krzywinski_Altman_2013].
 
