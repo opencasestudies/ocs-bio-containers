@@ -94,7 +94,7 @@ Add a figure that shows this idea of cohorts being pooled together.
 
 Curated data resources are useful for a variety of tasks such as:
 
-* Working with more data for greater {{< glossary "Statistical power" display ="statistical power">}} [@Othus_Zhang_Gale_2022]
+* Working with more data for greater {{< glossary "Statistical power" display ="statistical power">}} [@Othus_Zhang_Gale_2022; @Krzywinski_Altman_2013]
 * Perform a {{< glossary "Meta-analysis" display ="meta-analysis">}} to compare results and associations among datasets (See the [Version Control case study for an expanded discussion on meta-analyses](https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-meta-analysis).)
 * {{< glossary "Benchmarking" >}} tools
 * Comparing findings from an analysis to a different dataset (e.g., evaluating the {{< glossary "Replicability" display ="replicability">}} and {{< glossary "Generalizability" display ="generalizability">}} of the research) [@Schloss_2018]
