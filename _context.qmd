@@ -65,10 +65,9 @@ Some applications:
 
 The microbiome is discussed in more [detail within the Version Control Case Study](https://www.opencasestudies.org/ocs-bio-version-control/#what-is-a-microbiome), but briefly, the microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. These microorganisms can impact metabolism and have been found to be associated with greater human health.
 
-{{< glossary "Sequencing" >}} the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful. 
+{{< glossary "Sequencing" >}} the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut. Different proportions of different organisms can have an impact on human health [@Han_etal_2026]. However, to actually see the activity of or impact caused by the presence of those microorganisms, other experiments such as the identification of metabolites in the samples are helpful. 
 
-Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will "pair" microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@]. The data is then termed {{< glossary "Paired" display="paired" >}} data. Considering connected data like this in an analysis is termed an {{< glossary "Integrative analysis" display="integrative analysis" >}} because it is integrating multiple sources of data.
-
+Because microbiome and metabolome data can be integrated together for a greater depth of scientific insight and conclusions, often studies will "pair" microbiome and metabolome data, meaning that for each sample in the study, the researchers will perform experiments to survey both the microbiome and the metabolome of that sample [@Visconti_etal_2019; @Franzosa_etal_2019]. The data is then termed {{< glossary "Paired" display="paired" >}} data. Considering connected data like this in an analysis is termed an {{< glossary "Integrative analysis" display="integrative analysis" >}} because it is integrating multiple sources of data.
 
 ## What is a curated data resource?
 
@@ -120,18 +119,17 @@ A Type II error is when the alternative hypothesis is true (there is a meaningfu
 ::::
 :::
 
-Power is related to the Type II Error Rate (&beta;). Specifically power is 1 - &beta;. The statistical power is calculated using the probability distributions of a hypothesis test statistic under both the null hypothesis (one distribution) and the alternative hypothesis (another distribution). The Power is the area under the alternative hypothesis distribution that falls past some critical value or rejection cutoff [@Krzywinski_Altman_2013]. 
-
+Power is related to the Type II Error Rate (&beta;). Specifically power is 1 - &beta;. The statistical power is calculated using the probability distributions of a hypothesis test statistic under both the null hypothesis (one distribution) and the alternative hypothesis (another distribution). The power is the area under the alternative hypothesis distribution that falls past some critical value or rejection cutoff [@Krzywinski_Altman_2013]. 
 
 Typically, [a higher number of samples leads to higher statistical power](https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/) because a greater number of samples narrows the sampling distribution of test statistics that will be observed (e.g., more samples lead to lower variance sampling distributions). As the sampling distribution narrows, a greater area under the curve is shifted past the critical value [@Krzywinski_Altman_2013].
-
-:::{.column_margin}
-Adapt figure from [this resource](https://web.ma.utexas.edu/users/mks/statmistakes/powersamplesize.html) or the @Krzywinski_Altman_2013 review to show this.
-:::
 
 However, researchers can't just keep collecting data from more and more patients [@Andrade_2020]. This would be an inefficient use of time and resources. On the other hand, collecting too few samples leads to under-powered science and failures to replicate scientific findings may sometimes be due to under-powered studies [@Krzywinski_Altman_2013]. Curated data resources can help to increase the sample size of a study without the researchers having to collect more new data.
 
 </details>
+:::
+
+:::{.column_margin}
+Adapt figure from [this resource](https://web.ma.utexas.edu/users/mks/statmistakes/powersamplesize.html) or the @Krzywinski_Altman_2013 review to show this power concept.
 :::
 
 ## The need for containerization
