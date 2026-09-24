@@ -131,7 +131,7 @@ However, researchers can't just keep collecting data from more and more patients
 </details>
 :::
 
-:::{.column_margin}
+:::{.column-margin}
 Adapt figure from [this resource](https://web.ma.utexas.edu/users/mks/statmistakes/powersamplesize.html) or the @Krzywinski_Altman_2013 review to show this power concept.
 :::
 
