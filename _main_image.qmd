@@ -1,6 +1,6 @@
 :::{.outline }
 
-```{r echo=FALSE, warning = FALSE, out.width=800}
+```{r echo=FALSE, warning = FALSE, out.width=800, fig.alt = "Containers enhance reproducibility and scientific collaboration by providing a shareable and consistent computing environment. Multiple people in a team can contribute the software that they need for their part of the analysis into a visualization software container. This container can be stored on Docker Hub so they all can access it. Then the validator in the team can replicate everyone's work (perhaps data visualizations) using the same container without having to individually install the software from each team member."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1Y2UAXo61mDtFkfToWYTIzcGzGfLzbpQ79I9ccD05A8c/edit?slide=id.p#slide=id.p")
 ```
 

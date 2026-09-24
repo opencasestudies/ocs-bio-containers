@@ -35,7 +35,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 * Type `cd /home` and press the return / enter key.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directory imported (under the data directory) is starred to show that this directory needs to be created."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_291#slide=id.g3fb50cd5a7c_0_291")
 ```
 

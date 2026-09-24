@@ -25,7 +25,7 @@ To fetch the modified Dockerfile and wrangled data, follow these instructions:
     * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
     * Move the downloaded `.rda` file into the new `wrangled` folder.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directories dockerfiles (on the same level as the README) and wrangled (under the data directory) are starred to show that these directories need to be created."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
 ```
 
@@ -68,7 +68,7 @@ Now that we have added the `patchwork` package to the original Dockerfile, we ne
 
 Step 1 is completely new since previously we pulled an image from Docker Hub rather than building the image from a Dockerfile..  
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Images can be built or instead pulled from a registry. The image that was built and pushed to the registry will be the same as the image pulled from the registry."}
 ottrpal::include_slide("http://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
 ```
 
@@ -529,7 +529,7 @@ This approach uses `pivot_longer`:
 * moving the values from the columns that are being pivoted longer (`values_to`) to a new column `num_annotated`
 * piping that slightly longer but wider dataset to `ggplot`
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Two versions of the same portion of the data table are shown. The wide table is the one the data has been formatted with throughout the case study so far. It has two rows and the hmdb annotated compounds are in one column and the kegg annotated compounds are in another column. The Long version of the data is 4 rows instead but still represents the same data. It needs 2 rows to represent each 1 row of the wide format. One column names which ref database corresponds to the number stored in the second column. All other data is duplicated between the two rows."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_378#slide=id.g3fb50cd5a7c_0_378")
 ```
 

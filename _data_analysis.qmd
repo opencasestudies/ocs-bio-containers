@@ -29,7 +29,7 @@ To fetch the modified Dockerfile and wrangled data, follow these instructions:
     * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
     * Move the downloaded `.rda` file into the new `wrangled` folder.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directories dockerfiles (on the same level as the README) and wrangled (under the data directory) are starred to show that these directories need to be created."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
 ```
 
@@ -143,7 +143,7 @@ What are the possible values in the `longitudinal` column?
 
 We can find the datasets or studies whose value in the `longitudinal` column is "No". There are 8 studies. 
 
-```{r, echo = FALSE, fig.alt = "There are 8 datsets where the longitudinal column records No to represent that it is a non-longitudinal study."}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "There are 8 datsets where the longitudinal column records No to represent that it is a non-longitudinal study."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_0#slide=id.g3fb8f9fbd14_0_0")
 ```
 
@@ -196,7 +196,7 @@ We are looking at 3 different comparisons for the variables in the datasets (1-3
 
 A correlation coefficient matrix is a square table that displays the pairwise correlations between multiple variables in a dataset. Because we are comparing three variables from our dataset (for each subset of our dataset that we consider (e.g., all data, non-longitudinal, adult)), each set of our results will be in a correlation coefficient matrix.
 
-```{r, echo = FALSE, fig.alt = "Correlation coefficient matrices are square & symmetric with the diagonal being irrelevant ones."}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Correlation coefficient matrices are square & symmetric with the diagonal being irrelevant ones."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb8f9fbd14_0_22#slide=id.g3fb8f9fbd14_0_22")
 ```
 
@@ -589,7 +589,7 @@ But wait -- we need to make sure that we share the modified image with our colla
 
 Throughout this section we have discussed how someone else (perhaps the person validating the work for resubmission) can use the container to run the analysis and get the exact same results and plot that you made because of the container. 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "An email chain showing that Bio OCS learner has shared the scripts, plot, and container access information with Collab O Rator who has fowarded it to Val Ehdator the team's validator who confirms that all visualizations including the new one are reproducible with the new container."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f0102bcf57_7_5#slide=id.g3f0102bcf57_7_5")
 ```
 
