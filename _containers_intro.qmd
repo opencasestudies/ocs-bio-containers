@@ -34,7 +34,7 @@ For other tools (e.g., Singularity or Apptainer) the equivalent of these files a
 
 "Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
 
-[Best practices for writing a `Dockerfile` to optimize the building process](https://docs.docker.com/build/building/best-practices/#run) are provided by Docker documentation. Many of these will be discussed later in the [Data Exploration section[(https://www.opencasestudies.org/ocs-bio-containers/#introduction-to-containers).
+[Best practices for writing a `Dockerfile` to optimize the building process](https://docs.docker.com/build/building/best-practices/#run) are provided by Docker documentation. Many of these will be discussed later in the [Data Exploration section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1).
 
 ### Images
 
@@ -90,7 +90,7 @@ An image that is pulled from a registry will match the image that was pushed to 
 
 ### Mounting
 
-When you "run" an image to create a container you can "mount" a volume of your local files so that files from your system are available to the container. These files may be analysis scripts, data files, package that you are writing/developing. Any changes made to those files will still be available to you once the container is no longer running.
+When you "run" an image to create a container you can "mount" a volume of your local files so that files from your system are available to the container. These files may be analysis scripts, data files, package that you are writing/developing. Any changes made to those files are made to the local files themselves (e.g., they will still be available to you on your local system once the container is no longer running instead of being container file specific changes).
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
@@ -110,7 +110,7 @@ If your institution has strict security configurations set on your machine (poss
 ### Vocabulary Summary
 
 ::: {.emphasis_block}
-In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. A Dockerfile serves as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are frozen, layered snapshots of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data. Any updates made to the mounted volumes within the container are available outside the container as well.
+In summary, Dockerfiles are text-based scripts that contain commands defining how an image will be built. A Dockerfile serves as a blueprint or the starting point of the containerization process. Dockerfiles are built to produce images. Images are frozen, layered snapshots of what the container will be, containing the files for the system libraries. Images are much larger than Dockerfiles and less readable. They are the most common way to share a container and are often stored in registries (like Docker Hub). Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data. Any updates made to files (i.e., data or scripts) from the mounted volume within the container persist to your local file system once the container is no longer running.
 :::
 
 
