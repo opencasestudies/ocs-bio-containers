@@ -23,11 +23,11 @@ The first time we use a function, we will use the `::` to indicate which package
 
 
 
-This case study is focusing on **how to work with containers while performing a data analysis** (the project from Collab O. Rator described earlier in the [Motivation section](https://www.opencasestudies.org/ocs-bio-containers/#motivation)). Therefore, every subsequent section will have two portions:
+This case study is focusing on **how to work with containers while performing a data analysis** (the project from Collab O. Rator described earlier in the [Motivation section](https://www.opencasestudies.org/ocs-bio-containers/#motivation)). Therefore, every subsequent section will have two portions (not necessarily in this exact order for each section):
 
-1. **Container Infrastructure Activities**: Exploring container specific concepts and performing containerization tasks to support the project.
-2. **Container Application Activities**: Working with data with the container (whose infrastructure you've set up by doing the Container Infrastructure Activities).
-    
+A. **Container Infrastructure Activities**: Exploring container specific concepts and performing containerization tasks to support the project. <br>
+B. **Container Application Activities**: Working with data with the container (whose infrastructure you've set up by doing the Container Infrastructure Activities, perhaps in an earlier section).
+
 ::: {.panel-tabset}
 
 ## Data<br>Import
