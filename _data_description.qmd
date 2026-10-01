@@ -2,7 +2,7 @@
 
 ***
 
-The data comes from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes the curated gut {{< glossary "Microbiome" display="microbiome" >}}-{{< glossary "Metabolome" display="metabolome" >}} datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing:
+The data come from Table 1 in @Muller_Algavi_Borenstein_2022. Table 1 describes the curated gut {{< glossary "Microbiome" display="microbiome" >}}-{{< glossary "Metabolome" display="metabolome" >}} datasets that this study aggregated in order to curate a resource for the research community. This table is a 14 row 7 column table with columns showing:
 
 * the name of each dataset
 * which reference in the study relates to that data
