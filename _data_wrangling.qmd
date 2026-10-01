@@ -316,7 +316,7 @@ The [examples provided in this "Containers for Scientists" course from the ITN](
 
 Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), modify the Dockerfile to also install the `patchwork` package.
+Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -343,8 +343,8 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
 
-* Create a directory called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
-* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly.
+* Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
+* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
