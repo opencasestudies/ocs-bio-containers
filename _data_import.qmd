@@ -64,8 +64,10 @@ Within Docker Desktop, we can search for images of containers from Docker Hub.
 
 The bottom right of the Docker Desktop GUI will display progress messages such as: 
 
-  * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
-  * a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+* a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
+* a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+
+After the second message is displayed, your image should be available. To verify:
 
 * Click on the "Images" option in the left side menu.
 * Notice the `bioocs/ocs-bio-containers-base` image is listed there now.

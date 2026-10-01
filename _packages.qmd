@@ -13,21 +13,21 @@ Package    | Use
 [ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
 [patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
 
-[Loading the `tidyverse` loads several specialized packages to support data wrangling](https://tidyverse.org/packages/) such as `stringr` (used to work with strings) and `dplyr` (used to wrangle, transform, and summarize tabular data like data frames). You can think of the `tidyverse` as providing a universe of related R packages. Rather than using `library(...)` multiple times to call each package, we can call `library(tidyverse)` once to load all of them. You may still want to load a package explicitly even if it's packaged within the tidyverse for greater clarity. This [posit forum thread](https://forum.posit.co/t/teaching-install-load-packages-individually-or-use-tidyverse-package/71) provides some relevant points about the topic. Also note that the `%>%` (pipe) is loaded thanks to the `tidyverse`, `dplyr`, or `magrittr` packages. Load any of those packages and you'll have access to it.
+[Loading the `tidyverse` loads several specialized packages to support data wrangling](https://tidyverse.org/packages/) such as `stringr` (used to work with strings) and `dplyr` (used to wrangle, transform, and summarize tabular data like data frames). You can think of the `tidyverse` as providing a universe of related R packages. Rather than using `library(...)` multiple times to call each package, we can call `library(tidyverse)` once to load all of them. You may still want to load a package explicitly even if it's packaged within the tidyverse for greater clarity. This [posit forum thread](https://forum.posit.co/t/teaching-install-load-packages-individually-or-use-tidyverse-package/71) provides some relevant points about the topic. The `readr` and `ggplot2` packages are also components of the `tidyverse`. They are listed separately here because some scripts within this analysis only use functions from `readr` or `ggplot2` without using other `tidyverse` packages; therefore, in those scripts, only those libraries are loaded. Also note that the `%>%` (pipe) is loaded thanks to the `tidyverse`, `dplyr`, or `magrittr` packages. Load any of those packages and you'll have access to it.
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
 
 ::: {.emphasis_block}
-`tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. Though dependency needs can get much more complex.
+`tabulapdf` is an example of a package that you may want to use a container for because of dependencies. `tabulapdf` requires Java which you may or may not have installed in your system. In general, dependency needs can get much more complex.
 :::
 
 
 
-This case study is focusing on **how to work with containers while performing a data analysis** (the project from Collab O. Rator described earlier in the [Motivation section](https://www.opencasestudies.org/ocs-bio-containers/#motivation)). Therefore, every subsequent section will have two portions:
+This case study is focusing on **how to work with containers while performing a data analysis** (the project from Collab O. Rator described earlier in the [Motivation section](https://www.opencasestudies.org/ocs-bio-containers/#motivation)). Therefore, every subsequent section will have two portions (not necessarily in this exact order for each section):
 
-1. **Container Infrastructure Activities**: Exploring container specific concepts and performing containerization tasks to support the project.
-2. **Container Application Activities**: Working with data with the container (whose infrastructure you've set up by doing the Container Infrastructure Activities).
-    
+A. **Container Infrastructure Activities**: Exploring container specific concepts and performing containerization tasks to support the project. <br>
+B. **Container Application Activities**: Working with data with the container (whose infrastructure you've set up by doing the Container Infrastructure Activities, perhaps in an earlier section).
+
 ::: {.panel-tabset}
 
 ## Data<br>Import
@@ -75,8 +75,13 @@ You can use this Data Carpentry tutorial to explore how various `tidyverse` or `
 
 </details>
 
-::: {.emphasis_block}
-**Disclaimer:** The instructions and visuals provided for interacting with Docker Desktop (throughout the Data Import, Data Wrangling, Data Visualization, and Data Analysis sections) are based off of working with Docker Desktop version 4.91.0 (Sept 2026). They may not be completely accurate regarding layout and available functionality for different versions of Docker Desktop.
+:::{.disclaimer_box}
+::::{.disclaimer_box_header}
+Disclaimer
+::::
+::::{.inner_block}
+The instructions and visuals provided for interacting with Docker Desktop (throughout the Data Import, Data Wrangling, Data Visualization, and Data Analysis sections) are based off of working with Docker Desktop version 4.91.0 (Sept 2026). They may not be completely accurate regarding layout and available functionality for different versions of Docker Desktop.
+::::
 :::
 
 ***

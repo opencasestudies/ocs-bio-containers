@@ -80,7 +80,7 @@ ottrpal::include_slide("http://docs.google.com/presentation/d/1EFnuBBFlqjod7S1Ol
 
 * Navigate to the "Builds" tab of Docker Desktop. (This can be found on the left menu.)
     * This will list a history of builds. Likely, you will see "No build record found" unless you've used Docker / Docker Desktop previously.
-* On the bottom right of window, click the `>_ Terminal` button.
+* On the bottom right of window, click the `>_` or `>_ Terminal` button.
     * This will open a command line interface within Docker Desktop.
 * Navigate to where your `ocs-bio-containers-scaffold-main` directory is using `cd` (or a few `cd` commands). Use `pwd` and `ls` as needed to know where you are.
 
@@ -258,7 +258,7 @@ In Docker Desktop:
 * Find the script within the `/home` directory.
 * Right click on the script's name and click the "(Pencil icon) Edit file" option.
 * Alternatively, click the script's name and click the "Open file editor" button in the top right of the screen.
-* Either of these options which will open a file editor panel on the bottom of the Docker Desktop screen (like it did for `>_Terminal` earlier).
+* Either of these options which will open a file editor panel on the bottom of the Docker Desktop screen (like it did for `>_` or `>_ Terminal` earlier).
 * You can edit and save your changes to a script that way. Those changes are to the file in your mounted volume on your local system available outside of the container later.
 
 Outside of Docker Desktop:
@@ -397,7 +397,7 @@ First, we will run the `03a_visualization.R` script to create the separate plots
 * Navigate to the "Files" tab within the running container. 
 * Expand the folders within '/home' to find the plot files there as well.
 * Notice that if you double click the `.png` files you cannot view them. If you right click, there is a save option that would download the `.png`. However, you've saved the files to your mounted volume which means you can interact with them outside of the running container. They will be available there now while this container is running, once this container is no longer running, and if this container no longer exists. 
-* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_Terminal` within Docker Desktop, find and open the `.png` files within your `ocs-bio-containers-scaffold-main` directory to view them. 
+* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_` / `>_ Terminal` within Docker Desktop, find and open the `.png` files within your `ocs-bio-containers-scaffold-main` directory to view them. 
 
 ### Docker through a CLI
 
@@ -446,9 +446,9 @@ Now we will run the second visualization script `03b_visualization_patchwork.R` 
 
 * Navigate to the "Exec" tab within the running container.
 * Use the command `cd /home/analysis_scripts` to navigate to the `analysis_scripts` directory (unless you're already there).
-* Use the command `Rscript 03b_visualization_patchwork.R` to run the first visualization script.
+* Use the command `Rscript 03b_visualization_patchwork.R` to run the second visualization script.
 * Verify that the `combined_scatter.png` plot is in the `/home/results/plots` directory.
-* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_Terminal` within Docker Desktop, find and open the `combined_scatter.png` file within your `ocs-bio-containers-scaffold-main` directory to view them. 
+* Using your file exploration app (Finder on Mac and File Explorer on Windows), your CLI, or the `>_` / `>_ Terminal` within Docker Desktop, find and open the `combined_scatter.png` file within your `ocs-bio-containers-scaffold-main` directory to view them. 
 
 ### Docker through a CLI
 

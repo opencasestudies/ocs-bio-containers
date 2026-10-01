@@ -19,16 +19,21 @@ Add a figure with an example of a spectrum output
 <details><summary>Resources for more details on NMR and mass spec</summary>
 
 **NMR**
+  
+For more details on how NMR works:
 
-For more details on how NMR works, visit this [resource from the University of Wyoming about the basics of NMR spectroscopy](https://www.uwyo.edu/chemistry/instrumentation/NMR/Introduction.html).
-
-Also consider @Marion_2013 for "An Introduction to Biological NMR Spectroscopy" from the Journal of Molecular & Cellular Proteomics.
+* visit this [resource from the University of Wyoming about the basics of NMR spectroscopy](https://www.uwyo.edu/chemistry/instrumentation/NMR/Introduction.html).
+* consider @Marion_2013 for "An Introduction to Biological NMR Spectroscopy" from the Journal of Molecular & Cellular Proteomics.
 
 **Mass Spec**
 
-For more details on how mass spectrometry works, visit this [resource from the Broad Institute explaining what mass spec is](https://www.broadinstitute.org/technology-areas/what-mass-spectrometry), this [resource from Scripps Research about the basics as well a more thorough discussion on the relevant technologies](https://masspec.scripps.edu/learn/ms/) or this [resource from Michigan State University about the basics with an associated practice problem set](https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/spectrpy/massspec/masspec1.htm).
+For more details on how mass spectrometry works: 
 
-Additional resources include @Garg_Zubair_2026 and @Son_etal_2024.
+* visit this [resource from the Broad Institute explaining what mass spec is](https://www.broadinstitute.org/technology-areas/what-mass-spectrometry).
+* visit this [resource from Scripps Research about the basics as well a more thorough discussion on the relevant technologies](https://masspec.scripps.edu/learn/ms/).
+* visit this [resource from Michigan State University about the basics with an associated practice problem set](https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/spectrpy/massspec/masspec1.htm).
+* consider @Garg_Zubair_2026.
+* consider @Son_etal_2024.
 
 </details>
 
