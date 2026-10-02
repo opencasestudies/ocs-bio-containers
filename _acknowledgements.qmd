@@ -16,7 +16,7 @@ Avatars are from [avataaars](https://getavataaars.com/).
 
 This work was primarily human-created. AI was used to make stylistic edits, such as changes to structure, wording, and clarity. AI was prompted for its contributions, or AI assistance was enabled. AI-generated content was reviewed and approved. The following model(s) or application(s) were used: Google Gemini, Microsoft 356 Copilot (GPT-5).
 
-AIA Primarily human, Stylistic edits, Human-initiated, Reviewed, Google Gemini, Microsoft 356 Copilot (GPT-5) v1.0
+[AIA Primarily human, Stylistic edits, Human-initiated, Reviewed, Google Gemini, Microsoft 356 Copilot (GPT-5) v1.0](https://aiattribution.github.io/statements/AIA-Ph-Se-Hin-R-?model=Google%20Gemini%2C%20Microsoft%20356%20Copilot%20(GPT%252D5)-v1.0)
 
 More information about this AI attribution can be found [here](https://aiattribution.github.io/).
 
