@@ -47,7 +47,7 @@ Because images are the main way that containers are shared and they tend to be l
 
 Picking the right base image when writing a Dockerfile requires a balance: finding one that has the packages/ecosystem you need while not including too many extraneous components you don't need (i.e., compatibility vs size).
 
-When defining what your container should look like, there are two important considerations as [discussed in the ITN Containers for Scientists course](https://hutchdatascience.org/Conatainers_for_Scientists/05-modifying-containers.html#activity-instructions):
+When defining what your container should look like, there are two important considerations as [discussed in the ITN Containers for Scientists course](https://hutchdatascience.org/Containers_for_Scientists/05-modifying-containers.html#activity-instructions):
 
 1. Start with a small base image that provides the ecosystem you need (e.g., Python or R) and add only the fewest number of packages that you need for your specific project. 
 2. If a project has a lot of steps or would need a very large image, you could split the project into smaller units and have a Docker image for each segment of the project. This is especially useful if the project is utilizing workflows (e.g., WDL, Snakemake) where different containers can be specified for different steps.
