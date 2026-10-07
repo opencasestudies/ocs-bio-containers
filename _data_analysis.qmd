@@ -83,7 +83,7 @@ The correlation between two variables is a statistical measure of their relation
 * Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
 * Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
 
-```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Figure showing the strength and direction of correlation coefficients with negative numbers closer to negative one representing strong negative correlation and coefficients closer to 1 representing strong positive correlations. A coefficient of zero represents no correlation.}
+```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Figure showing the strength and direction of correlation coefficients with negative numbers closer to negative one representing strong negative correlation and coefficients closer to 1 representing strong positive correlations. A coefficient of zero represents no correlation.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_0#slide=id.h26570a81fc33f4d6_0_0")
 ```
 
