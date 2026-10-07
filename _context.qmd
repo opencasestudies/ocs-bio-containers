@@ -82,10 +82,9 @@ Because microbiome and metabolome data can be integrated together for a greater 
 
 Recall that the set of samples from a single study is typically referred to as being from a cohort. In a curated data resource, the different cohorts are pooled together.
 
-:::{.column-margin}
-Add a figure that shows this idea of cohorts being pooled together.
-:::
-
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Each separate study has its own cohort. Within a curated data resource or data collection, the cohorts from each study are pooled together."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_205#slide=id.h26570a81fc33f4d6_0_205")
+```
 
 ## What are possible uses of a data resource?
 

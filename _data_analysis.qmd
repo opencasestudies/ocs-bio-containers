@@ -83,17 +83,17 @@ The correlation between two variables is a statistical measure of their relation
 * Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
 * Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
 
-::: {.column-margin}
-Make a figure like this one from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Correlation_coefficient
-:::
+```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Figure showing the strength and direction of correlation coefficients with negative numbers closer to negative one representing strong negative correlation and coefficients closer to 1 representing strong positive correlations. A coefficient of zero represents no correlation.}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_0#slide=id.h26570a81fc33f4d6_0_0")
+```
 
 #### Spearman Correlation
 
 Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
 
-:::{.column-margin}
-Include a visual comparing linear (constant rate of change) vs monotonic relationships
-:::
+```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'In linear relationships, variables consistently increase or decrease together at a constant or linear rate. With monotonic relationships, variables still consistently increase or decrease together, but there is no constant rate. The curve for the relationship may have quick change (the curve will be steep) and a slow change (a sort of plateau).'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_105#slide=id.h26570a81fc33f4d6_0_105")
+```
 
 Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots:
 
