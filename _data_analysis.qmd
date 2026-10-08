@@ -591,13 +591,14 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Use the command [`docker rm [container name or ID]`](https://docs.docker.com/reference/cli/docker/container/rm/) to delete your stopped container.
 
-<details><summary>What if I wanted to delete a running container</summary>
+**You want to delete the containers for both of the containers you have been using throughout the case study.**
+
+<details><summary>What if I wanted to delete a running container?</summary>
 If you wanted to delete a running container without first stopping it, you would use the [`docker kill` command](https://docs.docker.com/reference/cli/docker/container/kill/) in a new CLI tab outside of the running container.
 </details>
 
 :::
 
-**You want to delete the containers for both of the containers you have been using throughout the case study.**
 
 #### Images
 
