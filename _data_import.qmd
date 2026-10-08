@@ -209,7 +209,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```
 
 * This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
-* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. The running container is automically on the Logs tab where various start up messages are displayed from the container creation process.
+* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. The running container is automatically on the Logs tab where various start up messages are displayed from the container creation process.
 
 ```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the automatically opened running container with a silly container name automatically created by Docker Desktop. On the left hand side, the containers section of the menu has automatically been switched to. There are tabs such as Logs, Exec, and Files in the main panel of the window along the top under the silly container name. When opened, the container will automatically be on the Logs tab. The Logs tab shows log messages associated with creating the container from the image." }
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_297#slide=id.h4f02b11d487195ec_37_297")
