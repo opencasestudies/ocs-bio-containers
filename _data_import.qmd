@@ -55,12 +55,21 @@ Within Docker Desktop, we can search for images of containers from Docker Hub.
 
 * Click on the "Docker Hub" option in the left side menu.
 * In the search bar under the "Docker Hub" header, type `bioocs` and several images from the `bioocs` organization will appear as cards. 
+
+```{r echo = FALSE, fig.align = 'center', out.width="100%", fig.alt = "Simplified illustration of Docker Desktop showing that within the Docker Hub section, which you navigate to using the left side menu, you can search for images. The search bar is highlighted with an orange arrow."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_0#slide=id.h4f02b11d487195ec_37_0")
+```
+
 * Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
 * Click on that card. 
 * Verify that in the header
   * the name of the selected image is `bioocs/ocs-bio-containers-base` 
   * the "Tag" pull-down menu shows "main" as the selected option, otherwise choose it.
 * Click the "Pull" button.
+
+```{r echo=FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of the Docker Desktop view of the ocs bio containers base image for this case study from the bioocs organization. The tag shows main and there is a pull button to use to get the image from Docker Hub. The pull button is highlighted with an orange circle."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_78#slide=id.h4f02b11d487195ec_37_78")
+```
 
 The bottom right of the Docker Desktop GUI will display progress messages such as: 
 
@@ -188,15 +197,47 @@ If we don't mount the volume when we run the image, we won't have access to thos
 
 * Ensure you are on the "Images" tab of Docker Desktop. (This can be found on the left menu.)
 * Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the image section of the GUI which you navigate to using the left side menu. There, images that you have available are listed. The bioocs ocs bio containers base image should be listed and there is a blue triangle under the actions column which is used to run the image to create a container. The blue triangle is highlighted with an orange cirlce to show that it should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_155#slide=id.h4f02b11d487195ec_37_155")
+```
+
 * In the pop-up window titled "Run a new container", click the down arrow to expand "Optional settings."
 * Under the "Volumes" section:
   * Click the three dots for "Host path" and find/select the "ocs-bio-containers-scaffold-main" file that you downloaded and unzipped (Option A) or cloned (Option B) in Step 3a.
   * Enter `/home` for the "Container path". This is the name of where those files will be stored in the running container.
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the Run a new container pop up window and the optional settings that need to be filled in to mount a volume. Use the three dots for host path to select your local file path to the ocs bio containers scaffold main folder that you previously downloaded or cloned. Use the container path to specify where those files should be located in the running container. The three dots for the host path are highlighted with an orange circle to show that those should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_226#slide=id.h4f02b11d487195ec_37_226")
+```
+
 * Click the blue "Run" button at the bottom right of the window.
 * This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
-* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. Navigate to the "Exec" tab.
+* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. The running container is automatically on the Logs tab where various start up messages are displayed from the container creation process.
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the automatically opened running container with a silly container name automatically created by Docker Desktop. On the left hand side, the containers section of the menu has automatically been switched to. There are tabs such as Logs, Exec, and Files in the main panel of the window along the top under the silly container name. When opened, the container will automatically be on the Logs tab. The Logs tab shows log messages associated with creating the container from the image." }
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_297#slide=id.h4f02b11d487195ec_37_297")
+```
+
+* Navigate to the "Exec" tab by clicking "Exec".
+
+```{r echo = FALSE, out.widht = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing how to navigate to the Exec tab, highlighting that the Exec tab name circled in orange should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h6fa8b512a04353d0_0_17#slide=id.h6fa8b512a04353d0_0_17")
+```
+
+* In the Exec tab, the first line there will start with a pound sign (`#`). Otherwise there are blank lines. The pound sign is the command prompt for the running container environment.
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the Exec tab of the running container once you've navigated there. There should be a pound sign at the beginning of an otherwise empty line that your cursor is on."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_361#slide=id.h4f02b11d487195ec_37_361")
+```
+
 * Type `ls` and press the return / enter key on your keyboard to list what files are in the running container. Notice that there are several folders like `bin`, `boot`, `home`, `init`, etc. `home` is the set of files that we added as a mounted volume when we ran the image to create the container. 
 * Type `ls home` and press the return / enter key. This will list the files in the `home` directory. As expected (described earlier in Step 3a) we see `analysis_scripts`, `continued_learning_scripts`, and the `README.md` file
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the result of the ls commands with lots of various folders in the containers root directory including home where are mounted files are and then the scripts and README from our mounted volume in the home directory."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_416#slide=id.h4f02b11d487195ec_37_416")
+```
+
 * Navigate to the "Files" tab (along the top in the running container).
 * Notice that the `home` folder has a blue oval with the word "MOUNT" on it under the "Note" column. This is because we mounted those files. 
 * Click the `home` folder to expand its contents, we again see the `README.md` file as well as the `analysis_scripts` and `continued_learning_scripts` directories.
@@ -316,6 +357,10 @@ Rscript 01_extract_data.R
 
 * Notice the output messages from the script.
 
+```{r echo = FALSE, out.width = "100%", fig.align = "center", fig.alt = "Simplified illustration of Docker Desktop showing the steps to run the script as well as the displayed output messages from running it. Specifically the dimensions are 25 rows and 7 columns and there are 80 NAs."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h7b42eebaf4b4f34a_0_0#slide=id.h7b42eebaf4b4f34a_0_0")
+```
+
 ##### Docker through a CLI
 
 Enter the following command in your CLI.
@@ -363,6 +408,11 @@ We also save `rda` and `csv` versions of the raw data. We can confirm that the `
     * There will be a subdirectory called `imported` listed. 
   * Type `ls ../data/imported` and press enter / return.
     * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
+
+```{r echo = FALSE, out.width = "100%", fig.align = "center", fig.alt = "Simplified illustration of Docker Desktop showing the addition of the ls commands to inspect the output and the results from those specifically that there is a subdirectory named imported in the data directory. That subdirectory has raw table1 CSV and RDA files."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h7b42eebaf4b4f34a_0_58#slide=id.h7b42eebaf4b4f34a_0_58")
+```
+
   * Type `wc -l ../data/imported/raw_table1.csv` and press enter / return.
     * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long (1 line for the header and the other 25 for the number of rows in the data frame).
 
