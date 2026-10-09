@@ -91,7 +91,7 @@ Lines 10-36 are the actual wrangling steps of the process:
     * This utilizes the [`lead()` function](https://dplyr.tidyverse.org/reference/lead-lag.html) from `dplyr` to look for the next value. 
     * In the case of the last row, we're using the `default` argument to pad the data with a `FALSE`. 
     * If the `lead` function returns that the next value is NA (`TRUE`), it will paste the current cohort text with the next row's text (the text that we stored in the intermediate `cohort_description_text` column in the previous step). 
-    *. Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
+    * Otherwise (e.g., if the `lead` function returns that the next value is not NA (`FALSE`) or is the last value/row), it will return the current cohort text only.
     * At the end of this, the `cohort_description` column contains complete, single line cohort descriptions. 
 * Line 33 is a filter to remove the rows where the dataset name is NA because we've already appended the important information from those rows to the previous rows and we no longer need them. Specifically, the [`filter()` function](https://dplyr.tidyverse.org/reference/filter.html) will only keep rows where the dataset name is not NA.
 * Lines 34 - 36 use the [`select()` function](https://dplyr.tidyverse.org/reference/select.html) to select all but (because of the exclamation point (`!`)) the following columns (removing them):
@@ -219,7 +219,7 @@ Advanced Question opportunity
 ::::{.inner_block}
 **A more generalizable and robust wrangling approach**:
 
-This wrangling approach using the `lead` function to assess if there is multiline data that needs combined assumes that there are only ever 1 - 2 rows for each cohort description. What changes to this process could be utilized that would be more generalizable or robust with data that doesn't meet this assumption? Specifically, how could this process be changed to combine an unknown number of rows of data to the previous row when only one column has data?
+This wrangling approach using the `lead` function to assess if there is multiline data that needs to be combined assumes that there are only ever 1 - 2 rows for each cohort description. What changes to this process could be utilized that would be more generalizable or robust with data that doesn't meet this assumption? Specifically, how could this process be changed to combine an unknown number of rows of data to the previous row when only one column has data?
 
 <details><summary>Answer</summary>
 One possible approach would:
@@ -320,7 +320,7 @@ The [examples provided in this "Containers for Scientists" course from the ITN](
 
 Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), modify the Dockerfile to also install the `patchwork` package.
+Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -347,8 +347,8 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
 
-* Create a directory called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
-* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly.
+* Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
+* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>

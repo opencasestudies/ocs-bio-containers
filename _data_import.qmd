@@ -6,15 +6,15 @@
 
 ***
 
-In order to extract the data from the table in the PDF and then work with that data to build data visualizations, we will first have to retrieve and use the {{< glossary "Container" display="container" >}} that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the `tabulapdf` package and any of its dependencies that we don't have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.
+In order to extract the data from the table in the PDF and then visualize that data, we will first have to retrieve and use the {{< glossary "Container" display="container" >}} that Collab O. Rator mentioned. Otherwise, we would (likely) have to install the `tabulapdf` package and any of its dependencies that we don't have on our system. And we may not have the same versions of the software and dependencies that other team members have. Using the container ensures that we have the same software as other team members.
 
-### Step 1: Starting docker
+### Step 1: Starting Docker
 
-To pull the docker {{< glossary "Image" display="image" >}}, {{< glossary "Docker" >}}  must first be running. 
+To pull the Docker {{< glossary "Image" display="image" >}}, {{< glossary "Docker" >}} must first be running. 
 
 :::{.emphasis_block}
 
-If you try to use a docker command like `docker pull` without first starting docker, you'll see an error message about "failure to connect" and recommending you check if the "daemon" is running. Docker Desktop can be resource intensive, so it's common to close Docker Desktop or stop docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure docker is running. 
+If you try to use a Docker command like `docker pull` without first starting Docker, you'll see an error message about "failure to connect" and recommending you check if the "daemon" is running. Docker Desktop can be resource intensive, so it's common to close Docker Desktop or stop Docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure Docker is running. 
 
 :::
 
@@ -72,8 +72,11 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```
 
 The bottom right of the Docker Desktop GUI will display progress messages such as: 
-  * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
-  * a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+
+* a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
+* a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+
+After the second message is displayed, your image should be available. To verify:
 
 * Click on the "Images" option in the left side menu.
 * Notice the `bioocs/ocs-bio-containers-base` image is listed there now.
@@ -131,11 +134,12 @@ Reproducibility considerations
 Setting up a project directory for an analysis is a best practice for reproducible data analyses [@Wilson_etal_2017].
 
 Typical practices that support reproducibility for a project folder include: 
+
 - Often the project directory will have a name associated with the project (assuming that a project is version controlled, this is likely the repository name).  
 - The project directory will often have a README file describing the contents, purpose, etc. as well as different subdirectories for the analysis scripts, the data, and the results. 
 - Analysis scripts may often be numbered to show their order (e.g., `01_extract_data.R`, `02_wrangle.R`, etc.). 
 - The data subdirectory will often have additional subdirectories separating out raw or imported data from wrangled data. 
-- Likewise, the results directory will also often  have additional subdirectories separating the different types of results (e.g., plots).
+- Likewise, the results directory will also often have additional subdirectories separating the different types of results (e.g., plots).
 
 ```{r project_directory, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "A typical project directory will have a read me file and different folders for analysis scripts, data, and results. Within the data subdirectory, you will want different subdirectories for raw or imported data and wrangled data. Within the results subdirectory, you will want different subdirectories for plots and other results such as logs with print statement or message results"}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_96#slide=id.g3f96ddc37a7_0_96")
@@ -255,7 +259,7 @@ docker run -v $(pwd):$(pwd) -w $(pwd) -it bioocs/ocs-bio-containers-base:main ba
 
 The running container will have a different command prompt than the usual command line command prompt. It will start with something like `root@` followed by some letters and numbers and then the a colon with file path for your local copy of the analysis files.
 
-`ls` and see what files or directories are shown to be there. You should see the directories `analysis_scripts` and `continued_learning_scripts` as well as the file `README.md`. 
+Use `ls` to see what files or directories are in the running container. You should see the directories `analysis_scripts` and `continued_learning_scripts` as well as the file `README.md`. 
 
 :::
 
@@ -281,11 +285,11 @@ Question Opportunity
 ::::
 :::: {.inner_block}
 
-Why do we need a script to look at a PDF file, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can just directly read-in for later steps? 
+Why do we need a script to view, extract, and eventually wrangle the data from the PDF file instead of just visually inspecting the PDF file and creating a table in a spreadsheet or other file type that we can directly read in for later steps? 
 
 <details><summary>Possible Answer</summary>
 
-Reducing manual steps and rather automating them is an important step towards more reproducible science. In this specific case for data retrieval, data retrieval through automation is not only more transparent (regarding how things were done), it also can be less error prone than manual entry. 
+Reducing manual steps by automating them is an important step towards more reproducible science. In this specific case for data retrieval, automation is not only more transparent (regarding how the data were retrieved), but it also can be less error-prone than manual entry.
 
 </details>
 
@@ -306,14 +310,14 @@ Add shebang to glossary
 
 Lines 1-5 of the script are setup lines including the script's shebang in line 1 and loading necessary packages in lines 3-5. The `tabulapdf`  package will be used to extract a table from the PDF starting on line 8.  The `here`  package will be used to build output file paths on lines 19, 27, and 31.  The `readr` package will be used to write an output `csv` file on line 30. Notice in this script we don't load the `tidyverse` package because we don't need anything from it besides `readr`. This makes our script leaner by not loading packages that will go unused.
 
-Line 7-12 are used for extracting the raw data from pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the functions most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (TRUE), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
+Line 7-12 are used for extracting the raw data from a pdf file (specifically a pdf file from a URL) and storing the raw data as a data frame or tibble (`raw_table`). The arguments used within the [`extract_tables()`](https://docs.ropensci.org/tabulapdf/reference/extract_tables.html) function from `tabulapdf` specify to extract the table from page 2 using the stream extraction algorithm (the function's most basic extraction algorithm), without trying to include column names (`col_names = FALSE`). If `col_names` is left as the default (`TRUE`), the first row is returned as the column names and in this case, that first row is real data. According to the documentation "a list of character matrices" is returned by default, therefore `[[1]]` is used at the end to access the first element of that list or this specific table.
 
 The rest of the script is used to output information about the extracted data or save the extracted data itself:
 
 * Line 15 outputs the dimensions of the extracted table using the [`dim()` function](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/dim), specifically the number of rows first followed by the number of columns with a ` x ` pasted in between the two numbers.
 * Line 16 outputs the number of NA values that are in the extracted table by [summing](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum) the number of TRUEs from the [`is.na()` function](https://www.rdocumentation.org/packages/cheapr/versions/1.5.2/topics/is_na).
 * Line 19 specifies an output directory.
-* Line 21 [checks to see if that output directory exists](https://www.rdocumentation.org/packages/logcondens.mode/versions/1.0.1/topics/dir.exists), and if not creates it in line 22. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
+* Line 21 [checks to see if that output directory exists](https://www.rdocumentation.org/packages/logcondens.mode/versions/1.0.1/topics/dir.exists), and if not line 22 creates it. Notice the `recursive = TRUE` argument means that it will create all levels of the output directory structure if they don't already exist.
 * Lines 26-28 save the extracted table as an `.rda` file.
 * Lines 30-32 save the extracted table as a `.csv` file.
 
@@ -371,7 +375,7 @@ Notice the output messages from the script.
 
 #### Step 2: Inspecting the output
 
-In the script that is grabbing the data, we output a few messages about the dimensions, number of NAs, etc about the data we have extracted.  
+In the script that is retrieving the data, we output a few messages about the dimensions, number of NAs, etc. about the data we have extracted.  
 
 ::: {.emphasis_block}
 
@@ -390,9 +394,9 @@ cat(formatted_lines, sep = "\n")
 
 :::
 
-These messages communicate the the raw data table is 25 rows and 7 columns and has 80 NAs somewhere in the 175 cells (row/column intersections) of the table.
+These messages communicate that the raw data table is 25 rows and 7 columns and has 80 NAs within the 175 cells (row/column intersections) of the table.
 
-We also save an `rda` and `csv` version of the raw data. We can confirm that the `rda` and `csv` versions of the raw data were saved in the running container.
+We also save `rda` and `csv` versions of the raw data. We can confirm that the `rda` and `csv` versions of the raw data were saved in the running container.
 
 :::{.panel-tabset}
 ##### Docker Desktop
@@ -410,7 +414,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ```
 
   * Type `wc -l ../data/imported/raw_table1.csv` and press enter / return.
-    * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
+    * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long (1 line for the header and the other 25 for the number of rows in the data frame).
 
 ##### Docker through a CLI
 
@@ -423,7 +427,7 @@ To confirm the creation of the data files:
 * Enter `ls data/imported` in the CLI.
   * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
 * Enter `wc -l data/imported/raw_table1.csv` in the CLI.
-  * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long. (1 line for the header and the other 25 for the number of rows in the data frame)
+  * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long (1 line for the header and the other 25 for the number of rows in the data frame).
 
 :::
 

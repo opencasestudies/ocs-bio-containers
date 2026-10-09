@@ -2,7 +2,7 @@
 
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the Data Visualization section. 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the [Data Visualization section](https://www.opencasestudies.org/ocs-bio-containers/#data-visualization-1). 
 
 ***
 
@@ -69,7 +69,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 We might expect that as the number of samples in a dataset increase, the number of observed metabolites would also increase [@Hubert_etal_2026]. This trend is non-linear, however; discovery rates ultimately plateau as sampling approaches saturation due to diminishing returns. We can statistically measure the trend using a correlation analysis.
 
-The correlation between two variables is a statistical measure of their relationship -- how they occur or vary together. Correlation is often used to describe relationships between variables but does not provide any evidence towards a cause and effect relationship between the two. Correlations are described with a [**correlation coefficient**](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/scatterplots-and-correlation/a/correlation-coefficient-review?referrer=share_link) which ranges from -1 to 1, describing both the strength of the relationship and the direction of the relationship. Correlation coefficients often accompany scatter plots (like the ones produced in the Data Visualization section of this case study).
+The correlation between two variables is a statistical measure of their relationship -- how they occur or vary together. Correlation is often used to describe relationships between variables but does not provide any evidence towards a cause and effect relationship between the two. Correlations are described with a [**correlation coefficient**](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/scatterplots-and-correlation/a/correlation-coefficient-review?referrer=share_link) which ranges from -1 to 1, describing both the strength of the relationship and the direction of the relationship. Correlation coefficients often accompany scatter plots (like the ones produced in the [Data Visualization section](https://www.opencasestudies.org/ocs-bio-containers/#data-visualization-1) of this case study).
 
 #### Strength of the relationship
 
@@ -97,8 +97,8 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots:
 
-*We don't know the underlying distribution of our variables (we haven't looked at that)
-* We are expecting a non-linear (but still monotonic) trend
+* We don't know the underlying distribution of our variables (we haven't looked at that).
+* We are expecting a non-linear (but still monotonic) trend.
 * From the scatter plot, there appears to be a couple of points that separate from the others and could be outliers.
 
 We are assuming that samples in each dataset are unique to that dataset (e.g., a research participant is only part of the `KIM_ADENOMAS` and none of the other studies). This seems like a fairly likely assumption. If our datasets were studying a rare condition or disease this could be an unreasonable assumption. Given the data that we have, we may have to consult with the rest of the team to confirm the veracity of this assumption. However, since it's secondary data, we may not be able to confirm this across studies.
@@ -672,7 +672,7 @@ If within the Data Import section, you made a copy of the Template `ocs-bio-cont
 2. adds the Dockerfile.
 3. adds the plots.
 4. adds the log files.
-5. updates the README file to reflect what you did and the files that are there. [see here](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/documenting-analyses.html#readmes)
+5. updates the README file to reflect what you did and the files that are there (see [this reproducibility course](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/documenting-analyses.html#readmes) for more information about README files).
 
 Consult the [Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#pull-requests) or the [ITN's course on Advanced Reproducibility](https://jhudatascience.org/Adv_Reproducibility_in_Cancer_Informatics/using-version-control-with-github.html#create-a-branch) for more information on pull requests. 
 
