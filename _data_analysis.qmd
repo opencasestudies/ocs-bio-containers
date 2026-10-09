@@ -538,7 +538,7 @@ At the top right of the screen if you are in the running container, there are ic
 
 If you are instead on the Containers window that lists all containers, the stop button (a blue rectangle) is located under the "Actions" column. Click the "Stop" button to stop the running container. 
 
-```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the containers listed in the Containers section of the GUI reached through the left side menu. The blue square under the actions tab can be used to stop the containers."}
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the containers listed in the Containers section of the GUI reached through the left side menu. The blue square under the actions tab can be used to stop the containers. A blue square is highlighted with an orange circle to show this should be clicked."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_471#slide=id.h4f02b11d487195ec_37_471")
 ```
 
@@ -575,13 +575,13 @@ Always make sure that you've completed your work and have access to any files pr
 
 At the top right of the screen if you are in the now stopped container (but still see the "Exec", "Files", etc. tabs ), click the "Delete container" button to delete it. A popup window will ask you to confirm that you want to "Delete [the container] forever". Confirm by clicking the "Delete forever" button.
 
-```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing that it will ask you to confirm if you want to delete the container forever or not."}
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing that it will ask you to confirm if you want to delete the container forever or not. An orange circle is used to highlight the Delete forever button to signify that this should be clicked."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_587#slide=id.h4f02b11d487195ec_37_587")
 ```
 
 If you are instead on the Containers window that lists all containers, the delete button (a trash can icon) is located to the right of the icons in the "Actions" column. Click the "Delete" button to delete the container. Confirm deletion if needed.
 
-```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing the containers that are no longer running. They each can be deleted by clicking the trash can icon."}
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing the containers that are no longer running. They each can be deleted by clicking the trash can icon. An orange circle is used to highlight a trash icon to show that this should be clicked."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_530#slide=id.h4f02b11d487195ec_37_530")
 ```
 

@@ -88,7 +88,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 * This will open a command line interface within Docker Desktop. Notice that the command line interface has a command prompt but this time the percent sign (`%`) separates the command prompt from where the commands are entered. The tilde (`~`) before the percent sign represents your file location in your local system. You are not in a running container so you are not in a container specific file system, rather in your system's file system.
 
-```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop, specifically showing the open terminal. The command prompt percent sign and tilde for file location are highlighted with arrow."}
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop, specifically showing the open terminal. The command prompt percent sign and tilde for file location are highlighted with an orange arrow."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h6fa8b512a04353d0_0_134#slide=id.h6fa8b512a04353d0_0_134")
 ```
 
