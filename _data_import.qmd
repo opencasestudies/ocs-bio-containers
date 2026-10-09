@@ -206,12 +206,12 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Under the "Volumes" section:
   * Click the three dots for "Host path" and find/select the "ocs-bio-containers-scaffold-main" file that you downloaded and unzipped (Option A) or cloned (Option B) in Step 3a.
   * Enter `/home` for the "Container path". This is the name of where those files will be stored in the running container.
-* Click the blue "Run" button at the bottom right of the window.
 
 ```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the Run a new container pop up window and the optional settings that need to be filled in to mount a volume. Use the three dots for host path to select your local file path to the ocs bio containers scaffold main folder that you previously downloaded or cloned. Use the container path to specify where those files should be located in the running container. The three dots for the host path are highlighted with an orange circle to show that those should be clicked."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_226#slide=id.h4f02b11d487195ec_37_226")
 ```
 
+* Click the blue "Run" button at the bottom right of the window.
 * This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
 * The running container has several tabs along the top like "Logs", "Exec", "Files", etc. The running container is automatically on the Logs tab where various start up messages are displayed from the container creation process.
 
