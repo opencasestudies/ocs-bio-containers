@@ -215,7 +215,13 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_297#slide=id.h4f02b11d487195ec_37_297")
 ```
 
-* Navigate to the "Exec" tab. There will be a pound sign (`#`) at the beginning of an otherwise blank line. The pound sign is the command prompt for the running container environment.
+* Navigate to the "Exec" tab by clicking "Exec".
+
+```{r echo = FALSE, out.widht = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing how to navigate to the Exec tab, highlighting that the Exec tab name circled in orange should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h6fa8b512a04353d0_0_17#slide=id.h6fa8b512a04353d0_0_17")
+```
+
+* In the Exec tab, the first line there will start with a pound sign (`#`). Otherwise there are blank lines. The pound sign is the command prompt for the running container environment.
 
 ```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the Exec tab of the running container once you've navigated there. There should be a pound sign at the beginning of an otherwise empty line that your cursor is on."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_361#slide=id.h4f02b11d487195ec_37_361")
