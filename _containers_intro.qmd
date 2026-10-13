@@ -245,7 +245,7 @@ There are several different (downstream) use cases for containers:
 When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. 
 
 :::{.emphasis_block}
-The first of these use cases (supporting an analysis) is the context for this case study.
+We'll focus on the first of these use cases (supporting an analysis) in this case study. 
 :::
 
 ## How do you work with containers?
@@ -259,7 +259,7 @@ Now that we've discussed vocabulary around containers as well as the why or why 
 If a container is necessary for your work, the first steps largely depend on how the container will be used and what stage the project is in. For a project that is starting from the beginning, you may need to develop the container from the beginning by defining a Dockerfile. This would include choosing a base image and specifying dependencies and the actual packages of interest. Alternatively, you may be able to find a container in a registry that meets your needs already because it was referenced in a published paper. As the project evolves, you may have to further modify the container so that it contains more or different packages than you expected. Be sure to remove any unnecessary packages that you didn't actually need. For projects that are more mature, a container may already be largely defined / available. In such cases a team member or collaborator may have to give you access instructions.
 
 :::{.emphasis_block}
-The last of these scenarios (already specified container) is the context for this case study. However, this case study will also explore how to further modify the container to contain more packages as the analysis progresses.
+In this case study, we'll focus on the last of these scenarios (an already specified container). As the analysis progresses, we will also explore how to further modify the container to include more packages.
 :::
 
 ### How do you interact with containers? 
@@ -269,7 +269,7 @@ Two common ways to work with containers (using Docker specifically as your conta
 Depending on how a container is defined / set up, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.
 
 :::{.emphasis_block}
-Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
+We will use Docker through Docker Desktop or through a CLI (locally) in this case study. 
 :::
 
 ## Summary for Why and How
@@ -278,7 +278,7 @@ Using Docker through Docker Desktop or through a CLI (locally) will be the conte
 
 ::: {.emphasis_block}
 
-Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely.
+Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you'll run the container locally or remotely.
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
