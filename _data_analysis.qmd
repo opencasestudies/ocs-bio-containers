@@ -75,14 +75,14 @@ The correlation between two variables is a statistical measure of their relation
 
 <details><summary>How do correlation coefficients describe the strenth and direction of a relationship?</summary>
 
-#### Strength of the relationship
+**Strength of the relationship**
 
 * Correlation coefficient values equal to 0 mean that two variables don't seem to exhibit a relationship at all.
 * Correlation coefficient values close to 0 mean that the two variables exhibit a weak relationship.
 * Values close to -1 or 1 mean that the two variables exhibit a strong relationship. The closer to -1 or 1, the stronger the relationship.
 * Values equal to -1 or 1 mean that the two variables exhibit perfect correlation.
 
-#### Direction of the relationship
+**Direction of the relationship**
 
 * Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
 * Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
@@ -97,7 +97,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 #### Spearman Correlation
 
-<details><summary>Background comparing Pearson and Spearman Correlation</summmary>
+<details><summary>Background comparing Pearson and Spearman Correlation</summary>
 
 Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
 
