@@ -272,7 +272,7 @@ Depending on how a container is defined / set up, it may install an interactive 
 We will use Docker through Docker Desktop or through a CLI (locally) in this case study. 
 :::
 
-## Summary for Why and How
+## Summary
 
 ***
 
