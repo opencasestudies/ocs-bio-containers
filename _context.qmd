@@ -16,9 +16,9 @@ Metabolites may be {{< glossary "Endogenous" display="endogenous" >}} or {{< glo
 
 Metabolites are detected, identified, and quantified using {{< glossary "Nuclear Magnetic Resonance (NMR)" >}}, {{< glossary "Enzyme assays" display="enzyme assays" >}} or by pairing compound separation through {{< glossary "Gas Chromatography" display="Gas Chromatography (GC)" >}} or {{< glossary "Liquid Chromatography" display="Liquid Chromatography (LC)" >}} with {{< glossary "Mass Spectrometry" display = "Mass Spectrometry (mass spec or MS) >}}, and working with the data from those experiments in downstream data processing [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. A typical output of NMR and MS experiments are visual graphs called {{< glossary "Spectra" display="spectra" >}}.  
 
-::: {.column-margin}
-Add a figure with an example of a spectrum output
-:::
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Cartoon showing a sample being processed with a spectrometer such as NMR or MS and the resulting spectra you might expect. From NMR, the spectrum will plot the chemical shift typically measured in parts per million on the x-axis versus the signal intensity on the y-axis. From MS, the spectrum will plot the mass to charge ratio on the x-axis versus the relative abundance on the y-axis."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h31dd1dc71da8ecc5_0_165#slide=id.h31dd1dc71da8ecc5_0_165")
+```
 
 <details><summary>Resources for more details on NMR and mass spec</summary>
 
