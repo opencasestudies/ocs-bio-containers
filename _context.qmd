@@ -12,8 +12,6 @@ The {{< glossary "Metabolome" display="metabolome" >}} is a collection of {{< gl
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h31dd1dc71da8ecc5_0_0#slide=id.h31dd1dc71da8ecc5_0_0")
 ```
 
-Metabolites may be {{< glossary "Endogenous" display="endogenous" >}} or {{< glossary "Exogenous" display="exogenous" >}} depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either {{< glossary "Primary" display="primary" >}} or {{< glossary "Secondary" display="secondary" >}} metabolites. Primary metabolites are required for the life-cycle: growth, development, and reproduction; and secondary metabolites are used for non-life cycle tasks such as communication, signaling, or defense. Note that within the context of the {{< glossary "Microbiome" display="microbiome" >}}, a "secondary metabolite" has an additional meaning besides referring to metabolites that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary "host" system but are then re-metabolized by the microbiome [@Liu_Tan_Cheng_Zhang_Feng_Peng_2022]. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. 
-
 Metabolites are detected, identified, and quantified using {{< glossary "Nuclear Magnetic Resonance (NMR)" >}}, {{< glossary "Enzyme assays" display="enzyme assays" >}} or by pairing compound separation through {{< glossary "Gas Chromatography" display="Gas Chromatography (GC)" >}} or {{< glossary "Liquid Chromatography" display="Liquid Chromatography (LC)" >}} with {{< glossary "Mass Spectrometry" display = "Mass Spectrometry (mass spec or MS) >}}, and working with the data from those experiments in downstream data processing [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. A typical output of NMR and MS experiments are visual graphs called {{< glossary "Spectra" display="spectra" >}}.  
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Cartoon showing a sample being processed with a spectrometer such as NMR or MS and the resulting spectra you might expect. From NMR, the spectrum will plot the chemical shift typically measured in parts per million on the x-axis versus the signal intensity on the y-axis. From MS, the spectrum will plot the mass to charge ratio on the x-axis versus the relative abundance on the y-axis."}
@@ -41,16 +39,25 @@ For more details on how mass spectrometry works:
 
 </details>
 
+:::{.emphasis_block}
+
+<details><summary>More metabolite terminology</summary>
+
+Metabolites may be {{< glossary "Endogenous" display="endogenous" >}} or {{< glossary "Exogenous" display="exogenous" >}} depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either {{< glossary "Primary" display="primary" >}} or {{< glossary "Secondary" display="secondary" >}} metabolites. Primary metabolites are required for the life-cycle: growth, development, and reproduction; and secondary metabolites are used for non-life cycle tasks such as communication, signaling, or defense. Note that within the context of the {{< glossary "Microbiome" display="microbiome" >}}, a "secondary metabolite" has an additional meaning besides referring to metabolites that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary "host" system but are then re-metabolized by the microbiome [@Liu_Tan_Cheng_Zhang_Feng_Peng_2022]. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. 
+
 In human fecal samples, a mixture of metabolites would be expected -- both endogenous and exogenous -- due to physiology (endogenous), dietary intake (exogenous), and {{< glossary "Gut microbiota" display="gut microbiota" >}} metabolism (considered exogenous due to the secondary metabolism of endogenous metabolites) [@Liu_Tan_Cheng_Zhang_Feng_Peng_2022]. Classes of expected metabolites that will be observed include fatty acids (a lipid building block), bile acid (steroid derivatives synthesized from cholesterol), amino acids and protein derivatives, intermediates of carbohydrate metabolism, and undigested dietary sugars [@Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018]. 
 
 Historically, the "low-molecular weight" part of the definition of metabolites has been thresholded with a cutoff for molecules: <1500 {{< glossary "Daltons" >}} in {{< glossary "Molecular weight" display="molecular weight" >}}. A recent article [@Moreno-Ulloa_2026] proposed a re-definition of metabolites that no longer restricts their identity based on size. However, this definition does not seem to be a widely accepted by the field at this time.
+
+</details>
+
+:::
 
 To aide the downstream data processing (because of the vast number of metabolites that have been discovered and studied, their possible locations, and their many associations with different {{< glossary "Signaling pathways" display ="signaling">}}, {{< glossary "Gene-regulatory pathways" display="gene-regulatory" >}}, and {{< glossary "Metabolic pathways" display="metabolic pathways" >}} or disease implications), dedicated {{< glossary "Reference databases" display="reference databases" >}} with known metabolites and related information were developed and are maintained by the scientific community. Some of these databases provide specialized metabolite information across a range of organisms where these metabolites would be found such as spectra from NMR or MS experiments (e.g., MassBank of North America or MoNA) [@MassBank], names, structural, or chemical information about a specific class of metabolite (e.g., LIPID MAPS) [@Conroy_etal_2024], or metabolic pathways/networks (e.g., Kyoto Encyclopedia of Genes and Genomes or {{< glossary "KEGG" >}}) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025], while other databases provide more comprehensive, but organism-specific information (e.g., the Human Metabolome Database or {{< glossary "HMDB" >}} [@Wishart_etal_2009]).
 
 From the 2009 paper introducing HMDB [@Wishart_etal_2009], the database is described in the following way:
 
 > HMDB is ... [an] organism-specific metabolomics database .... It contains spectroscopic, quantitative, analytic and molecular-scale information about human metabolites, their associated enzymes or transporters, their abundance and disease-related properties.
-
 
 The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a {{< glossary "Longitudinal" display="longitudinal" >}} study. Research participants within the same study (whether it is longitudinal or not) are termed a {{< glossary "Cohort" display="cohort" >}}. 
 
@@ -139,9 +146,9 @@ However, researchers can't just keep collecting data from more and more patients
 </details>
 :::
 
-:::{.column-margin}
+<!--
 Adapt figure from [this resource](https://web.ma.utexas.edu/users/mks/statmistakes/powersamplesize.html) or the @Krzywinski_Altman_2013 review to show this power concept.
-:::
+-->
 
 ## The need for containerization
 

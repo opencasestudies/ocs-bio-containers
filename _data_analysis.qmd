@@ -71,6 +71,10 @@ We might expect that as the number of samples in a dataset increase, the number 
 
 The correlation between two variables is a statistical measure of their relationship -- how they occur or vary together. Correlation is often used to describe relationships between variables but does not provide any evidence towards a cause and effect relationship between the two. Correlations are described with a [**correlation coefficient**](https://www.khanacademy.org/math/statistics-probability/describing-relationships-quantitative-data/scatterplots-and-correlation/a/correlation-coefficient-review?referrer=share_link) which ranges from -1 to 1, describing both the strength of the relationship and the direction of the relationship. Correlation coefficients often accompany scatter plots (like the ones produced in the [Data Visualization section](https://www.opencasestudies.org/ocs-bio-containers/#data-visualization-1) of this case study).
 
+:::{.emphasis_block}
+
+<details><summary>How do correlation coefficients describe the strenth and direction of a relationship?</summary>
+
 #### Strength of the relationship
 
 * Correlation coefficient values equal to 0 mean that two variables don't seem to exhibit a relationship at all.
@@ -87,7 +91,13 @@ The correlation between two variables is a statistical measure of their relation
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_0#slide=id.h26570a81fc33f4d6_0_0")
 ```
 
+</details>
+
+:::
+
 #### Spearman Correlation
+
+<details><summary>Background comparing Pearson and Spearman Correlation</summmary>
 
 Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
 
@@ -95,11 +105,15 @@ Often the Pearson method is used to find the correlation between two variables. 
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_105#slide=id.h26570a81fc33f4d6_0_105")
 ```
 
+</details>
+
 Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots:
 
 * We don't know the underlying distribution of our variables (we haven't looked at that).
 * We are expecting a non-linear (but still monotonic) trend.
 * From the scatter plot, there appears to be a couple of points that separate from the others and could be outliers.
+
+Consult the click to expand section above on "Background comparing Pearson and Spearman Correlation" if you'd like further explanations concerning why these considerations point to using Spearman correlation in our correlation analysis.
 
 We are assuming that samples in each dataset are unique to that dataset (e.g., a research participant is only part of the `KIM_ADENOMAS` and none of the other studies). This seems like a fairly likely assumption. If our datasets were studying a rare condition or disease this could be an unreasonable assumption. Given the data that we have, we may have to consult with the rest of the team to confirm the veracity of this assumption. However, since it's secondary data, we may not be able to confirm this across studies.
 
