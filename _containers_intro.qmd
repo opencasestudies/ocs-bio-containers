@@ -36,7 +36,13 @@ The illustration above oversimplifies the containerization process because sever
 
 ### Building
 
-"Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
+"Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. 
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt= "'Building' produces images from Dockerfiles, creating a snapshot of frozen layers of software libraries."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_122#slide=id.hb8139f07d24a7af_2_122")
+```
+
+Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
 
 [Best practices for writing a `Dockerfile` to optimize the building process](https://docs.docker.com/build/building/best-practices/#run) are provided by Docker documentation. Many of these will be discussed later in the [Data Exploration section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1).
 
@@ -97,6 +103,10 @@ An image that is pulled from a registry will match the image that was pushed to 
 ### Running
 
 "Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. 
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "'Running' an image creates a container with an active and isolated computing environment."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_68#slide=id.hb8139f07d24a7af_2_68")
+```
 
 ### Mounting
 
