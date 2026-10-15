@@ -48,7 +48,7 @@ Images are built in a way that the resulting containers will be able to run on s
 
 ### Images
 
-[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process.
+[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Images are stored in and shared through registries (which will be discussed next).
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are a blueprint, specifying what the eventual container will have available while Images are 'built' layers of software libraries stored in registries."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f0c8908d3750b57_0_49#slide=id.h4f0c8908d3750b57_0_49")
@@ -60,7 +60,7 @@ Each layer is related to a command from the Dockerfile: adding to or modifying w
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
 ```
 
-Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared. Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
+Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared (typically using registries which will be discussed next). Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
 
 :::{.emphasis_block}
 <details><summary>Picking base images and keeping an image "minimal"</summary>
