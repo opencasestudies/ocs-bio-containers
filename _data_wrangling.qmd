@@ -57,7 +57,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 ***
 
-## Container Application
+## Put the container to work
 
 ***
 
@@ -266,7 +266,7 @@ Execution halted
 :::
 
 
-## Container Infrastructure
+## Configure the container
 
 ***
 
