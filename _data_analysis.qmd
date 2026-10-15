@@ -2,7 +2,7 @@
 
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the [Data Visualization section](https://www.opencasestudies.org/ocs-bio-containers/#data-visualization-1). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- "Configure the container" section), or create a new container. In this Data Analysis section, you will continue to use the new container created within the [Data Visualization section](https://www.opencasestudies.org/ocs-bio-containers/#data-visualization-1). 
 
 ***
 
@@ -10,9 +10,9 @@ If you have been following along but stopped, the scripts we are using are set u
 
 If you only skipped the Data Wrangling section and went through the Data Visualization section, you should be fine to proceed with the Data Analysis section.
 
-If you only skipped the Data Visualization section but went through the Data Wrangling section, you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+If you only skipped the Data Visualization section but went through the Data Wrangling section, you will need to create the new container as was done in the Data Visualization -- "Configure the container" steps.
 
-If you skipped the data wrangling and the data visualization section, then you will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section and you will need to create the new container as was done in the Data Visualization -- Container Infrastructure steps.
+If you skipped the data wrangling and the data visualization section, then you will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section and you will need to create the new container as was done in the Data Visualization -- "Configure the container" steps.
 
 To fetch the modified Dockerfile and wrangled data, follow these instructions:
 
@@ -61,7 +61,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 ***
 
-## Container Application
+## Put the container to work
 
 ***
 
@@ -513,7 +513,7 @@ Yes, you should still get the same results. To confirm this, you can create a ne
 :::
 
 
-## Container Infrastructure
+## Configure the container
 
 ***
 
