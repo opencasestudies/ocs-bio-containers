@@ -3,7 +3,7 @@ title: "**Biomedical Open Case Studies: Using containers for collaborative, repr
 bibliography: resources/references.bib
 include-sections:
   stat-los: true
-  lo-map: false
+  lo-map: true
   data-import: true
   data-exploration: true
   data-wrangling: true

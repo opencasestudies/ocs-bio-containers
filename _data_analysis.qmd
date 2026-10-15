@@ -83,17 +83,17 @@ The correlation between two variables is a statistical measure of their relation
 * Negative correlation coefficients (< 0) mean that two variables are inversely related, moving in opposite directions. As one variable increases, the other decreases.
 * Positive correlation coefficients (> 0) mean that two variables are directly related, moving in the same direction. As one variable increases, the other also increases.
 
-::: {.column-margin}
-Make a figure like this one from a previous case study: https://www.opencasestudies.org/ocs-bp-co2-emissions/#Correlation_coefficient
-:::
+```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'Figure showing the strength and direction of correlation coefficients with negative numbers closer to negative one representing strong negative correlation and coefficients closer to 1 representing strong positive correlations. A coefficient of zero represents no correlation.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_0#slide=id.h26570a81fc33f4d6_0_0")
+```
 
 #### Spearman Correlation
 
 Often the Pearson method is used to find the correlation between two variables. However this is a parametric method that assumes that the variables both have Normal (or Gaussian distributions), an important assumption if the analysis utilizes a hypothesis test together with finding the correlation coefficient. Another method is the Spearman method which is non-parametric and does not make this normality (or any underlying distributional) assumption about the data. Assumption-wise, the Spearman correlation does assume that each pair of values are paired but independent from other pairs. The Spearman correlation is found by ordering values from least to greatest (or the ordinal level of the variables) and using their ranks rather than numerical values. In this way, the Spearman correlation is reporting on the strength and direction of a monotonic relationship rather than a linear one and it is not sensitive to outliers.
 
-:::{.column-margin}
-Include a visual comparing linear (constant rate of change) vs monotonic relationships
-:::
+```{r, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = 'In linear relationships, variables consistently increase or decrease together at a constant or linear rate. With monotonic relationships, variables still consistently increase or decrease together, but there is no constant rate. The curve for the relationship may have quick change (the curve will be steep) and a slow change (a sort of plateau).'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_105#slide=id.h26570a81fc33f4d6_0_105")
+```
 
 Spearman correlation seems like a good choice to assess the relationship between the variables in our scatter plots:
 
@@ -538,6 +538,12 @@ At the top right of the screen if you are in the running container, there are ic
 
 If you are instead on the Containers window that lists all containers, the stop button (a blue rectangle) is located under the "Actions" column. Click the "Stop" button to stop the running container. 
 
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the containers listed in the Containers section of the GUI reached through the left side menu. The blue square under the actions tab can be used to stop the containers. A blue square is highlighted with an orange circle to show this should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_471#slide=id.h4f02b11d487195ec_37_471")
+```
+
+**You want to stop the containers for both of the containers you have been using throughout the case study.**
+
 <details><summary>What if I were pausing a container instead</summary>
 
 The containers window allows you to pause a container instead of stopping it by clicking the three vertical dots under the "Actions" column and selecting pause from there.
@@ -549,6 +555,8 @@ The containers window allows you to pause a container instead of stopping it by 
 Type `exit` and press the enter / return key to stop the running container. Your usual CLI command prompt should return at the beginning of the line.
 
 If you are now or in the future using another CLI tab or window that isn't part of your interactive bash / running container, you can use [`docker stop [container name or ID]`](https://docs.docker.com/reference/cli/docker/container/stop/) to stop a container.
+
+**You want to stop the containers for both of the containers you have been using throughout the case study.**
 
 <details><summary>What if I were pausing a container instead</summary>
 
@@ -567,17 +575,30 @@ Always make sure that you've completed your work and have access to any files pr
 
 At the top right of the screen if you are in the now stopped container (but still see the "Exec", "Files", etc. tabs ), click the "Delete container" button to delete it. A popup window will ask you to confirm that you want to "Delete [the container] forever". Confirm by clicking the "Delete forever" button.
 
-If you are instead on the Containers window that lists all containers, the delete button (a trash can icon) is located to the right of the icons in the "Actions" column. Click the "Delete" button to delete the container.
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing that it will ask you to confirm if you want to delete the container forever or not. An orange circle is used to highlight the Delete forever button to signify that this should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_587#slide=id.h4f02b11d487195ec_37_587")
+```
+
+If you are instead on the Containers window that lists all containers, the delete button (a trash can icon) is located to the right of the icons in the "Actions" column. Click the "Delete" button to delete the container. Confirm deletion if needed.
+
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Simplified illustration of Docker Desktop showing the containers that are no longer running. They each can be deleted by clicking the trash can icon. An orange circle is used to highlight a trash icon to show that this should be clicked."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_530#slide=id.h4f02b11d487195ec_37_530")
+```
+
+**You want to delete the containers for both of the containers you have been using throughout the case study.**
 
 ##### Docker through a CLI
 
 Use the command [`docker rm [container name or ID]`](https://docs.docker.com/reference/cli/docker/container/rm/) to delete your stopped container.
 
-<details><summary>What if I wanted to delete a running container</summary>
+**You want to delete the containers for both of the containers you have been using throughout the case study.**
+
+<details><summary>What if I wanted to delete a running container?</summary>
 If you wanted to delete a running container without first stopping it, you would use the [`docker kill` command](https://docs.docker.com/reference/cli/docker/container/kill/) in a new CLI tab outside of the running container.
 </details>
 
 :::
+
 
 #### Images
 
@@ -730,6 +751,8 @@ Now that we've discussed how we would (theoretically) share our image, we can re
 * A popup window will ask you to confirm that you want to "Delete [the image] forever". Confirm by clicking the "Delete forever" button.
 * Repeat for any images associated with this project.
 
+**You want to delete the images for both of the images you have been using throughout the case study.**
+
 ##### Docker through a CLI
 
 Use [`docker image ls`](https://docs.docker.com/reference/cli/docker/image/ls/) to list images and their IDs.
@@ -737,6 +760,8 @@ Use [`docker image ls`](https://docs.docker.com/reference/cli/docker/image/ls/) 
 The [`docker image rm`](https://docs.docker.com/reference/cli/docker/image/rm/) command remove any listed images that are from this case study (e.g., `bioocs/ocs-bio-containers-base:main` and `ocs-bio-containers-activity:latest`). Note that if you don't include the word `image` as part of that command, then Docker will try to find and delete a container, not an image. Therefore, follow this pattern to remove the listed images:
 
 `docker image rm [image name or ID]`
+
+**You want to delete the images for both of the images you have been using throughout the case study.**
 
 :::
 

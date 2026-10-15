@@ -6,15 +6,19 @@
 
 ***
 
-The {{< glossary "Metabolome" display="metabolome" >}} is a collection of {{< glossary "Metabolites" display="metabolites" >}} or low-molecular weight {{< glossary "Organic" display="organic" >}} (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: {{< glossary "Nucleic acids" display="nucleic acids" >}} (DNA or RNA), {{< glossary "Proteins" display="proteins" >}}, {{< glossary "Carbohydrates" display="carbohydrates" >}}, and {{< glossary "Lipids" display="lipids" >}} [@Cooper_2000]. These categories represent large biomolecules ({{< glossary "Macromolecules" display="macromolecules" >}}) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include {{< glossary "Vitamins" display="vitamins" >}}, {{< glossary "Organic acids" display="organic acids" >}}, and other small organic molecules that don't neatly relate to the larger classes of biomolecules [@Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018]. 
+The {{< glossary "Metabolome" display="metabolome" >}} is a collection of {{< glossary "Metabolites" display="metabolites" >}} or low-molecular weight {{< glossary "Organic" display="organic" >}} (containing carbon-hydrogen bonds) molecules found in a specific sample or organism. Large organic biomolecules in the cell are primarily categorized among four groups: {{< glossary "Nucleic acids" display="nucleic acids" >}} (DNA or RNA), {{< glossary "Proteins" display="proteins" >}}, {{< glossary "Carbohydrates" display="carbohydrates" >}}, and {{< glossary "Lipids" display="lipids" >}} [@Cooper_2000]. These categories represent large biomolecules ({{< glossary "Macromolecules" display="macromolecules" >}}) broadly responsible for cellular structure, energy storage, enzymatic catalysis, and genetic information storage and transmission. Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules. They also include {{< glossary "Vitamins" display="vitamins" >}}, {{< glossary "Organic acids" display="organic acids" >}}, and other small organic molecules that don't neatly relate to the larger classes of biomolecules [@Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018].
+
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Cartoon showing the metabolome is a collection of low-molecular weight molecules within a sample. Because of how small the molecules are, the sample is processed with a spectrometer."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h31dd1dc71da8ecc5_0_0#slide=id.h31dd1dc71da8ecc5_0_0")
+```
 
 Metabolites may be {{< glossary "Endogenous" display="endogenous" >}} or {{< glossary "Exogenous" display="exogenous" >}} depending on their origin. Endogenous metabolites originate from the organism or source of the sample while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either {{< glossary "Primary" display="primary" >}} or {{< glossary "Secondary" display="secondary" >}} metabolites. Primary metabolites are required for the life-cycle: growth, development, and reproduction; and secondary metabolites are used for non-life cycle tasks such as communication, signaling, or defense. Note that within the context of the {{< glossary "Microbiome" display="microbiome" >}}, a "secondary metabolite" has an additional meaning besides referring to metabolites that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary "host" system but are then re-metabolized by the microbiome [@Liu_Tan_Cheng_Zhang_Feng_Peng_2022]. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. 
 
 Metabolites are detected, identified, and quantified using {{< glossary "Nuclear Magnetic Resonance (NMR)" >}}, {{< glossary "Enzyme assays" display="enzyme assays" >}} or by pairing compound separation through {{< glossary "Gas Chromatography" display="Gas Chromatography (GC)" >}} or {{< glossary "Liquid Chromatography" display="Liquid Chromatography (LC)" >}} with {{< glossary "Mass Spectrometry" display = "Mass Spectrometry (mass spec or MS) >}}, and working with the data from those experiments in downstream data processing [@Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017]. A typical output of NMR and MS experiments are visual graphs called {{< glossary "Spectra" display="spectra" >}}.  
 
-::: {.column-margin}
-Add a figure with an example of a spectrum output
-:::
+```{r echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Cartoon showing a sample being processed with a spectrometer such as NMR or MS and the resulting spectra you might expect. From NMR, the spectrum will plot the chemical shift typically measured in parts per million on the x-axis versus the signal intensity on the y-axis. From MS, the spectrum will plot the mass to charge ratio on the x-axis versus the relative abundance on the y-axis."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h31dd1dc71da8ecc5_0_165#slide=id.h31dd1dc71da8ecc5_0_165")
+```
 
 <details><summary>Resources for more details on NMR and mass spec</summary>
 
@@ -87,10 +91,9 @@ Because microbiome and metabolome data can be integrated together for a greater 
 
 Recall that the set of samples from a single study is typically referred to as being from a cohort. In a curated data resource, samples from different study cohorts are pooled together.
 
-:::{.column-margin}
-Add a figure that shows this idea of cohorts being pooled together.
-:::
-
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Each separate study has its own cohort. Within a curated data resource or data collection, the cohorts from each study are pooled together."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h26570a81fc33f4d6_0_205#slide=id.h26570a81fc33f4d6_0_205")
+```
 
 ## What are possible uses of a data resource?
 

@@ -22,25 +22,45 @@ We will discuss the containerization process that leads to containers, starting 
 
 ### Dockerfiles
 
-Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image. In this way, a Dockerfile is a blueprint, specifying what the eventual container will have available in its computing environment for the user. Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include specifying a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
+Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image (discussed soon). In this way, a Dockerfile is a blueprint, specifying what the eventual container will have available in its computing environment for the user. 
 
-```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are the starting point in the containerization process "}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f3ca37d253_0_0#slide=id.g3f3ca37d253_0_0")
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are the starting point in the containerization process. Dockerfiles are a blueprint, specifying what the eventual container will have available. The illustration shows a Dockerfile with a dashed line leading to a container."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_0#slide=id.hb8139f07d24a7af_2_0")
 ```
+
+Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include specifying a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
 
 For other tools (e.g., Singularity or Apptainer) the equivalent of these files are instead called definition files.
 
+The illustration above oversimplifies the containerization process because several steps have to happen between a text-based Dockerfile and a running container with an active computing environment. Those steps are represented by the dashed line in the illustration, and we will discuss those intermediate steps now.
+
 ### Building
 
-"Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
+"Build" is the verb that is used to move from a Dockerfile to an image within the containerization process. Dockerfiles are built to produce images. 
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt= "'Building' produces images from Dockerfiles, creating a snapshot of frozen layers of software libraries."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_122#slide=id.hb8139f07d24a7af_2_122")
+```
+
+Images are built in a way that the resulting containers will be able to run on specific platforms or architectures (e.g., hardware + operating system: linux or windows). [Multi-platform builds](https://docs.docker.com/build/building/multi-platform/) allow for even greater flexibility in who can use a container no matter what hardware + operating system they have. For example, newer Macs have a different processor chip (Apple silicon) than older macs (Intel) and may have more difficulty building, pulling, or running older images. [See this description about known issues](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/known-issues/) for ways around this. 
 
 [Best practices for writing a `Dockerfile` to optimize the building process](https://docs.docker.com/build/building/best-practices/#run) are provided by Docker documentation. Many of these will be discussed later in the [Data Exploration section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1).
 
 ### Images
 
-[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Each layer is related to a command from the Dockerfile: adding to or modifying what the container will contain. Once images are created they are immutable (i.e., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it (e.g., the [base image](https://docs.docker.com/build/building/base-images/) that is specified in the Dockerfile). Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared. 
+[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process.
 
-Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are a blueprint, specifying what the eventual container will have available while Images are 'built' layers of software libraries stored in registries."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f0c8908d3750b57_0_49#slide=id.h4f0c8908d3750b57_0_49")
+```
+
+Each layer is related to a command from the Dockerfile: adding to or modifying what the container will contain. Once images are created they are immutable (i.e., cannot be changed or modified). If you need something to be changed, you would have to create a new image. You may want to use the same image name but a different "tag" if it is a small change or updated version of an old/no longer necessary image. Common tags include "main", "latest", "dev", "v#", etc. Because images are immutable and layered, you can use images as bases for other images, starting with an existing image and adding a package or set of packages on top of it (e.g., the [base image](https://docs.docker.com/build/building/base-images/) that is specified in the Dockerfile). 
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Images are layered and built by processing the sequential commands in a Dockerfile, stacking each layer on the previous layer according to the commands in the Dockerfile."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
+```
+
+Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared. Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
 
 :::{.emphasis_block}
 <details><summary>Picking base images and keeping an image "minimal"</summary>
@@ -57,16 +77,12 @@ Some base images on Docker Hub (such as Python) provide [`slim`](https://hub.doc
 </details>
 :::
 
-```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Images are layered and built by processing the sequential commands in a Dockerfile, stacking each layer on the previous layer according to the commands in the Dockerfile."}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
-```
-
 ### Registries
 
 Images can be stored within your local file system but you might want to free up space (due to their large size) or share them with team members, collaborators, another machine you use, or publicly because you are publishing a study. This is where [registries](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) are useful. A registry is a centralized location for storing and sharing container images. Docker Hub is a common, but not the only, registry used to share Docker images. Registries like Docker Hub are useful for finding base images or full images that can be used as is for your particular use case.
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Images are stored in registries and can be pushed or pulled from a registry. The images that are pushed to a registry are built from a Dockerfile. The images that are pulled from the registry will match the images that were pushed. If you pull an image and later use the original Dockerfile to build an image, these could be the same image or they might be different if undefined package or dependency versions have changed."}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_323#slide=id.g3fb50cd5a7c_0_323")
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f0c8908d3750b57_0_190#slide=id.h4f0c8908d3750b57_0_190")
 ```
 
 Images can be "pushed" or "pulled" from a registry. If an image has multiple tags or is built for multiple architectures, the related images (with different tags or versions built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository). If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
@@ -87,6 +103,10 @@ An image that is pulled from a registry will match the image that was pushed to 
 ### Running
 
 "Run" is the verb that is used to move from an image to a container within the containerization process. Images are run to create or launch a container -- the active, usable computing environment. Once a container is running, files from your system cannot be added to the container because the container is isolated. You can likely use [`wget`](https://www.geeksforgeeks.org/linux-unix/wget-command-in-linux-unix/) to fetch files from the internet, but those files will not be available to others using the same image to run another version of the container unless they fetch them as well. 
+
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "'Running' an image creates a container with an active and isolated computing environment."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_68#slide=id.hb8139f07d24a7af_2_68")
+```
 
 ### Mounting
 

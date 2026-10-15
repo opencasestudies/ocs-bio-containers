@@ -130,6 +130,10 @@ Rscript 02_wrangle.R
 
 * Notice the output messages from the script.
 
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the commands for running the wrangling script and the output. Note there are messages from loading tidyverse that are not shown in full. Specifically the output shows that the dimensions of the data frame are 14 rows and 7 columns. There are 0 NAs and the name of the dataset in row 4 is HE_INFANTS_MFGM_2019."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h7b42eebaf4b4f34a_0_113#slide=id.h7b42eebaf4b4f34a_0_113")
+```
+
 ### Docker through a CLI
 
 Verify that you are in the top directory (`ocs-bio-containers-scaffold-main`) and Enter the following command in your CLI.
@@ -395,10 +399,6 @@ You could push the image after building it (in order to share it), but don't nee
 ::::
 :::
 
-We will perform these next steps of the containerization process in the Data Visualization section.
-
-:::{.column-margin}
-Add instructions about container clean up for the starting container that doesn't have patchwork.
-:::
+We will perform these next steps of the containerization process in the Data Visualization section next. Container housekeeping and clean up will be discussed in the [Data Analysis](https://www.opencasestudies.org/ocs-bio-containers/#container-housekeeping) section. 
 
 ***
