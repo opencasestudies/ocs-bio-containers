@@ -2,7 +2,7 @@
 
 ***
 
-## Container Infrastructure
+## Configure the container
 
 ***
 
@@ -265,7 +265,7 @@ Use `ls` to see what files or directories are in the running container. You shou
 
 The container is running and now can be used for the project with Collab O. Rator!
 
-## Container Application
+## Put the container to work
 
 ***
 
