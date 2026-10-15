@@ -2,13 +2,13 @@
 
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- Container Infrastructure section), or create a new container. In this Data Visualization section, you will be creating a new container from the modified {{< glossary "Dockerfile" >}} in the previous section.
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, re-create the container (Step 3b from the Data Import -- "Configure the container" section), or create a new container. In this Data Visualization section, you will be creating a new container from the modified {{< glossary "Dockerfile" >}} in the previous section.
 
 ***
 
 <details> <summary> If you skipped the data wrangling section click here. </summary>
 
-You will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section.
+You will need to fetch both the modified Dockerfile and the wrangled data, storing them in the `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section.
 
 To fetch the modified Dockerfile and wrangled data, follow these instructions:
 
@@ -57,7 +57,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 ***
 
-## Container Infrastructure
+## Configure the container
 
 ***
 
@@ -180,7 +180,7 @@ Include a thought question to give learners the opportunity to build a flowchart
 -->
 
 
-## Container Application
+## Put the container to work
 
 ***
 
