@@ -48,7 +48,7 @@ Images are built in a way that the resulting containers will be able to run on s
 
 ### Images
 
-[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process.
+[Images are layered, frozen snapshots](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/) that contain all of the necessary files, configurations, package libraries, etc. that are necessary to produce the active running container. An image is not an active environment, but rather an intermediate step in the containerization process. Images are stored in and shared through registries (which will be discussed next).
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are a blueprint, specifying what the eventual container will have available while Images are 'built' layers of software libraries stored in registries."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f0c8908d3750b57_0_49#slide=id.h4f0c8908d3750b57_0_49")
@@ -60,7 +60,7 @@ Each layer is related to a command from the Dockerfile: adding to or modifying w
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f01a9d8250_0_17#slide=id.g3f01a9d8250_0_17")
 ```
 
-Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared. Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
+Images are much larger than Dockerfiles (often Gigabytes (GB) in size) because they contain the actual software libraries. Although images are not as readable as Dockerfiles, images are the main way that containers are shared (typically using registries which will be discussed next). Because images are the main way that containers are shared and they tend to be large already, it's an important best practice when working with containers to keep a container "minimal" -- being careful to include only what you need. Larger images require more storage space, may require more memory, take longer to "build" and "pull" (slowing down a project), and pose greater security vulnerabilities because they include more. Smaller images are also easier to debug and maintain.
 
 :::{.emphasis_block}
 <details><summary>Picking base images and keeping an image "minimal"</summary>
@@ -215,15 +215,17 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 :::
 
-:::{.column-margin}
+<!--
 Will embed a survey to ask learners to suggest other analogies.
-:::
+-->
 
 ## Why containers?
 
 ***
 
 As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
+
+### When are containers not necessarily the answer?
 
 Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
 
@@ -244,7 +246,7 @@ Containers are especially useful in the following cases because of their portabi
 * If a team wants to both replicate and/or extend an analysis.
 * If there are many dependencies that could cause nightmares.
 
-Especially in those cases, containers are extremely useful (but not necessary) for reproducibility, extensibility, and replicability in scientific research.
+Within those cases, containers are extremely useful (but not necessary) for the reproducibility, extensibility, and replicability of scientific research.
 
 ```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = 'Containers promote reproducibility, extensibility, and replicability of scientific research allowing collaborative teams or other researchers to apply the same software and methods to data in a more reproducible way. Containers are not necessary for but support a new researcher using the same data and the same process to reproduce the same result. Containers are not necessary for but support a new researcher using the same data and expanding an existing process to produce an extended result. Containers are not necessary for but support a new researcher using new data with an existing process to replicate a result. Containers do this by providing consistent and portable computing environments.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
@@ -260,24 +262,35 @@ There are several different (downstream) use cases for containers:
 * Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software [@Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015].
 * Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash it won't impact other apps on the server because of the app's isolated environment.
 
-When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. The first of these use cases (supporting an analysis) is the context for this case study.
+When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. 
+
+:::{.emphasis_block}
+We'll focus on the first of these use cases (supporting an analysis) in this case study. 
+:::
+
+## How do you work with containers?
+
+***
+
+Now that we've discussed vocabulary around containers as well as the why or why not you may want to work with containers, we will discuss the **how** of working with containers.
 
 ### What are the first steps for working with a container?
 
 If a container is necessary for your work, the first steps largely depend on how the container will be used and what stage the project is in. For a project that is starting from the beginning, you may need to develop the container from the beginning by defining a Dockerfile. This would include choosing a base image and specifying dependencies and the actual packages of interest. Alternatively, you may be able to find a container in a registry that meets your needs already because it was referenced in a published paper. As the project evolves, you may have to further modify the container so that it contains more or different packages than you expected. Be sure to remove any unnecessary packages that you didn't actually need. For projects that are more mature, a container may already be largely defined / available. In such cases a team member or collaborator may have to give you access instructions.
 
-The last of these scenarios (already specified container) is the context for this case study.
+:::{.emphasis_block}
+In this case study, we'll focus on the last of these scenarios (an already specified container). As the analysis progresses, we will also explore how to further modify the container to include more packages.
+:::
 
-## How do you work with a container?
-
-***
+### How do you interact with containers? 
 
 Two common ways to work with containers (using Docker specifically as your containerization tool) are to use Docker through Docker Desktop or through a Command Line Interface (CLI). Using Docker through Docker Desktop vs through a CLI has some trade-offs. Beginners may find it easier to work within Docker Desktop because of its Graphical User Interface (GUI): users will be able to see lists of images and containers, buttons to control container actions (such as running or stopping), lists of files within mounted volumes, and can do everything within the GUI without having to switch between windows ([Explore what the Docker Desktop GUI has.](https://docs.docker.com/desktop/use-desktop/)). Docker Desktop also has [extensive documentation](https://docs.docker.com/desktop/) about working with the GUI. However, [Docker Desktop does not provide tab completion by default](https://docs.docker.com/desktop/settings-and-maintenance/settings/), and once you enable it, it doesn't work quite in the way you would expect it to while interacting with and running files in the "Exec" tab. Additionally, Docker Desktop can be a (manageable) resource drain on a system, utilizing a large amount of memory and battery.
 
 Depending on how a container is defined / set up, it may install an interactive Integrated Development Environment (IDE), such that you can work within an IDE (e.g., RStudio/Positron, Visual Studio Code, Jupyter Notebooks, etc.) within a running container. Docker can also be used with workflows (e.g., WDL, Snakemake, GitHub Actions). Using containers with GitHub Actions or within the cloud moves where you run the downstream interaction from your local machine to a remote location.
 
-Using Docker through Docker Desktop or through a CLI (locally) will be the context of this case study.
-
+:::{.emphasis_block}
+We will use Docker through Docker Desktop or through a CLI (locally) in this case study. 
+:::
 
 ## Summary
 
@@ -285,7 +298,7 @@ Using Docker through Docker Desktop or through a CLI (locally) will be the conte
 
 ::: {.emphasis_block}
 
-Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely.
+Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you'll run the container locally or remotely.
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
