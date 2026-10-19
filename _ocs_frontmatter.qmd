@@ -107,10 +107,12 @@ You will need the following installed:
 
 To follow along with this case study, you’ll need the following installed:
 
-* **Docker Engine** () **Need to provide instructions**
-* **Docker CLI** () **Need to provide instructions**
+* **Docker Engine**
+* **Docker CLI**
 * Have access to and familiarity with a local command line interface (CLI)
 * Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
+
+Both the Docker Engine and Docker CLI are provided through Docker Desktop. So even if you do not want to use Docker Desktop, and instead want to use Docker through a CLI, please install Docker Desktop [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/)
 
 :::
 
@@ -150,12 +152,10 @@ For following along with later steps in this containers case study, you may want
 ::::
 :::
 
-::: {.column-margin}
-What is your preferred way to install Docker if not using Docker Desktop? The Docker documentation still recommends installing Docker Desktop and then just not using it.
-:::
 
-:::{.column-margin}
+
+<!--
 To Do: Need to create a cheatsheet on installation and verification instructions for Docker
-:::
+-->
 
 

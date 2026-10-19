@@ -2,7 +2,7 @@
 
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- Container Infrastructure section). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- "Configure the container" section). 
 
 ::: {.column-margin}
 Add instructions on pausing, stopping, and deleting containers.
@@ -12,9 +12,9 @@ Add instructions on pausing, stopping, and deleting containers.
 
 <details> <summary> If you skipped the data import section click here. </summary>
 
-At the minimum, you will need to repeat the steps from the Data Import -- Container Infrastructure section. 
+At the minimum, you will need to repeat the steps from the Data Import -- "Configure the container" section. 
 
-You can either perform Step 1 from the Data Import -- Container Application section, or in your now running container, you can use `wget` to fetch the data. 
+You can either perform Step 1 from the Data Import -- "Put the container to work" section, or in your now running container, you can use `wget` to fetch the data. 
 
 If using `wget` to fetch the data:
 
@@ -57,7 +57,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 
 ***
 
-## Container Application
+## Put the container to work
 
 ***
 
@@ -129,6 +129,10 @@ Rscript 02_wrangle.R
 ```
 
 * Notice the output messages from the script.
+
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the commands for running the wrangling script and the output. Note there are messages from loading tidyverse that are not shown in full. Specifically the output shows that the dimensions of the data frame are 14 rows and 7 columns. There are 0 NAs and the name of the dataset in row 4 is HE_INFANTS_MFGM_2019."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h7b42eebaf4b4f34a_0_113#slide=id.h7b42eebaf4b4f34a_0_113")
+```
 
 ### Docker through a CLI
 
@@ -206,7 +210,7 @@ Specific value check| `HE_INFANTS_MFGM_2019` | `HE_INFANTS_MFGM_2019`
 ::::
 :::
 
-We can verify that the wrangled data was saved by following the same process that we did in the Data Import -- Container Application Step 2 section above. 
+We can verify that the wrangled data was saved by following the same process that we did in the Data Import -- "Put the container to work" Step 2 section above. 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -262,7 +266,7 @@ Execution halted
 :::
 
 
-## Container Infrastructure
+## Configure the container
 
 ***
 
@@ -316,7 +320,7 @@ The [examples provided in this "Containers for Scientists" course from the ITN](
 
 Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-Copy the [Dockerfile from the Data Exploration -- Container Infrastructure section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
+Copy the [Dockerfile from the Data Exploration -- "Configure the container" section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -341,7 +345,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- Container Infrastructure section: 
+Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section: 
 
 * Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
 * Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
@@ -395,10 +399,6 @@ You could push the image after building it (in order to share it), but don't nee
 ::::
 :::
 
-We will perform these next steps of the containerization process in the Data Visualization section.
-
-:::{.column-margin}
-Add instructions about container clean up for the starting container that doesn't have patchwork.
-:::
+We will perform these next steps of the containerization process in the Data Visualization section next. Container housekeeping and clean up will be discussed in the [Data Analysis](https://www.opencasestudies.org/ocs-bio-containers/#container-housekeeping) section. 
 
 ***

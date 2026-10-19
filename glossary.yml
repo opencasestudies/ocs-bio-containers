@@ -6,6 +6,8 @@ Carbohydrates: |
   Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
 Clinical data: |
   Health-related data gathered from patients or research participants.
+Coenzyme: |
+  A small, non-protein, organic molecule that acts as a cofactor or helper molecule of enzymes in speeding up chemical reactions. Other cofactors can be inorganic (such as metal ions), but coenzymes are specifically organic molecules. Commonly derived from vitamins.
 Cohort: |
   Research participants within the same study.
 Command Line Interface (CLI): |
@@ -32,6 +34,8 @@ Dockerfile: |
   A text document that includes commands that are needed to build a Docker image and specify what will be available in a container. 
 Endogenous: |
   Metabolites that originate from the organism or source of the sample.
+Enzymatic catalysis: |
+  The process by which an enzyme (typically a protein and its cofactors) accelerate the rate of a chemical reaction without the enzyme being consumed or permanently altered by the chemical reaction.
 Enzyme assays: |
   A technique to detect and quantify metabolites using enzyme-catalyzed reactions.
 Exogenous: |
