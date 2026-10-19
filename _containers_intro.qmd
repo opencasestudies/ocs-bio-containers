@@ -28,7 +28,7 @@ Dockerfiles are the starting point in the containerization process. Dockerfiles 
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_0#slide=id.hb8139f07d24a7af_2_0")
 ```
 
-Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include specifying a base image, which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
+Dockerfiles are small and relatively easy to store and read. Because they are text-based, they can be version-controlled. The sorts of [commands that will be in Dockerfiles](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) include specifying a base image (an existing image to add on to), which dependencies or software packages should be installed, a file structure to set up, defining persistent environment variables, etc. 
 
 For other tools (e.g., Singularity or Apptainer) the equivalent of these files are instead called definition files.
 
