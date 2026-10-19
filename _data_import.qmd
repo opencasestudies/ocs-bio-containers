@@ -60,6 +60,21 @@ Within Docker Desktop, we can search for images of containers from Docker Hub.
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_0#slide=id.h4f02b11d487195ec_37_0")
 ```
 
+:::{.emphasis_block}
+<details><summary>FAQ: My Docker Desktop doesn't match this illustration</summary>
+
+:::{.disclaimer_box}
+::::{.disclaimer_box_header}
+Disclaimer
+::::
+::::{.inner_block}
+The instructions and visuals provided for interacting with Docker Desktop (throughout the Data Import, Data Wrangling, Data Visualization, and Data Analysis sections) are based off of working with Docker Desktop version 4.91.0 (Sept 2026). They may not be completely accurate for different Docker Desktop versions in terms of layout and available functionality. The visuals are simplified illustrations rather than screenshots to create a more general experience for users of other versions of Docker Desktop.
+::::
+:::
+
+</details>
+:::
+
 * Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
 * Click on that card. 
 * Verify that in the header
