@@ -1,3 +1,12 @@
+:::{.disclaimer_box}
+::::{.disclaimer_box_header}
+Disclaimer
+::::
+::::{.inner_block}
+This case study is still under review by a team of experts. While it is complete and has undergone some review by experts, we are continuing to improve the case study. If you have any suggestions, please email us at <bioOCS@fredhutch.org>. This case study is scheduled to be finalized by December 1, 2026.
+::::
+:::
+
 ::: {.panel-tabset .frontmatter-tabs}
 
 #### Disclaimer

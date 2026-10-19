@@ -2,7 +2,7 @@
 
 ***
 
-We would like to acknowledge [Candace Savonen], [Casey Greene], [Emma Lathouwers], and [Jeff Leek] for their expert review of this case study.
+We would like to acknowledge [Candace Savonen], [Casey Greene], [Emma Lathouwers], [Jeff Leek], and ethicist [Jodyn Platt] for their expert review of this case study.
 
 We would also like to acknowledge the National Institute of General Medical Sciences for funding this work (1R25GM160622).
 
@@ -16,7 +16,9 @@ Avatars are from [avataaars](https://getavataaars.com/).
 
 This work was primarily human-created. AI was used to make stylistic edits, such as changes to structure, wording, and clarity. AI was prompted for its contributions, or AI assistance was enabled. AI-generated content was reviewed and approved. The following model(s) or application(s) were used: Google Gemini, Microsoft 356 Copilot (GPT-5).
 
-AIA Primarily human, Stylistic edits, Human-initiated, Reviewed, Google Gemini, Microsoft 356 Copilot (GPT-5) v1.0
+<a href="https://aiattribution.github.io/statements/AIA-Ph-Se-Hin-R-?model=Google%20Gemini%2C%20Microsoft%20356%20Copilot%20(GPT%252D5)-v1.0">
+    <img src="img/full_statement.svg" alt="AI Attribution statement" style="height: 25px; display: block;">
+</a>
 
 More information about this AI attribution can be found [here](https://aiattribution.github.io/).
 
@@ -26,3 +28,4 @@ More information about this AI attribution can be found [here](https://aiattribu
 [Casey Greene]: https://greenelab.com/members/casey-greene.html
 [Emma Lathouwers]: https://greenelab.com/members/emma-lathouwers.html
 [Jeff Leek]: https://jtleek.com/
+[Jodyn Platt]: https://sph.umich.edu/faculty-profiles/platt-jodyn.html

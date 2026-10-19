@@ -26,8 +26,8 @@ There are some important ethical considerations when working with containerizati
 
 *Use of secondary and/or clinical/health data considerations:*
 
-1. Researchers may need to carefully study {{< glossary "Secondary data" display="secondary data" >}} (data collected originally by others) to ensure that they understand how the data were collected and what the variables represent. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data are being combined in comparable and compatible ways [@Cheng_etal_2024].
-2. Use of secondary data, especially participant-level {{< glossary "Clinical data" display="clinical data" >}} (e.g., from patients or research participants) requires consideration about [how that data was collected and shared and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html) [@Sterling_2011].
+1. Researchers need to carefully study {{< glossary "Secondary data" display="secondary data" >}} (data collected originally by others) to ensure that they understand how the data were collected and what the variables represent. Especially if aggregating multiple secondary sources of data, special considerations may be necessary to ensure that the data are being combined in comparable and compatible ways [@Cheng_etal_2024].
+2. Use of secondary data, especially participant-level {{< glossary "Clinical data" display="clinical data" >}} (e.g., from patients or research participants) requires consideration about [how that data was collected and shared, and the consent of participants](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/current-data-concerns.html) [@Sterling_2011].
 
 
 ***
