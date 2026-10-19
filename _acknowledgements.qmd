@@ -2,7 +2,7 @@
 
 ***
 
-We would like to acknowledge [Candace Savonen], [Casey Greene], [Emma Lathouwers], and [Jeff Leek] for their expert review of this case study.
+We would like to acknowledge [Candace Savonen], [Casey Greene], [Emma Lathouwers], [Jeff Leek], and ethicist [Jodyn Platt] for their expert review of this case study.
 
 We would also like to acknowledge the National Institute of General Medical Sciences for funding this work (1R25GM160622).
 
@@ -28,3 +28,4 @@ More information about this AI attribution can be found [here](https://aiattribu
 [Casey Greene]: https://greenelab.com/members/casey-greene.html
 [Emma Lathouwers]: https://greenelab.com/members/emma-lathouwers.html
 [Jeff Leek]: https://jtleek.com/
+[Jodyn Platt]: https://sph.umich.edu/faculty-profiles/platt-jodyn.html
