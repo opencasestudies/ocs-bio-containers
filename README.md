@@ -1,22 +1,9 @@
-# Bio-OCS Quarto Template
+# Biomedical Open Case Studies: Using containers for collaborative, reproducible research
 
-This is a template for creating websites from qmd files hosted on GitHub with three helpful automations following a pull request to the repository:
+This work is funded through the National Institutes of Health, specifically the National Institute of General Medical Sciences: Grant Number 1R25GM160622.
 
-- Spelling check
-- Broken link check
-- Website rendering.
 
-This is all supported by the OTTR Template, specifically the [OTTR Quarto Web](https://github.com/ottrproject/OTTR_Quarto_Website) version.
-
-- Check for spelling errors more intensively than RStudio and allow you to add words to the dictionary
-- Check for broken links - you will be warned about broken links
-- Automatic rendering of the website for previewing before merges
-- Automatic rendering of the website upon merging to main
-- Docker images that can be customized.
-
-This specific template sets up the style and content template for Biomedical Open Case Studies (Bio-OCS).
-
-## Repository Structure + Checklist for files to update when using the template
+## Repository Structure + Checklist for files to update
 
 ### Style and Configuration
 
