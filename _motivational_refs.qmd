@@ -1,3 +1,16 @@
+:::{.reference_box}
+::::{.reference_box_header}
+Motivating resources:
+::::
+::::{.inner_block}
+
+This case study is motivated by these guiding resources to discuss the following topics:
+
+::: {#refs-motivational}
+:::
+::::
+:::
+
 <!--
 Script suggested by Google Gemini
 -->
@@ -31,16 +44,3 @@ Script suggested by Google Gemini
 });
 </script>
 ```
-
-:::{.reference_box}
-::::{.reference_box_header}
-Motivating resources:
-::::
-::::{.inner_block}
-
-This case study is motivated by these guiding resources to discuss the following topics:
-
-::: {#refs-motivational}
-:::
-::::
-:::
