@@ -1,8 +1,45 @@
+<!--
+Script suggested by Google Gemini
+-->
+
+```{=html}
+<script src="https://jquery.com"></script>
+<script>
+\$(document).ready(function() {
+  
+  // Note before Muller_Algavi_Borenstein_2022
+  \$('[id="ref-Muller_Algavi_Borenstein_2022"]').prepend(
+    '<div style="font-size: 0.9em; padding-left: 15px; border-left: 2px;">' +
+    '<strong>Microbiome and metabolome data:</strong>' +
+    '</div>'
+  );
+
+  // Note before Beaulieu-Jones_Greene_2017
+  \$('[id="ref-Beaulieu-Jones_Greene_2017"]').prepend(
+    '<div style="font-size: 0.9em; padding-left: 15px; border-left: 2px;">' +
+    '<strong>Reproducibility and transparency:</strong>' +
+    '</div>'
+  );
+
+  // Note before Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015
+  \$('[id="ref-Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015"]').prepend(
+    '<div style="font-size: 0.9em; padding-left: 15px; border-left: 2px;">' +
+    '<strong>Containers:</strong>' +
+    '</div>'
+  );
+
+});
+</script>
+```
+
 :::{.reference_box}
 ::::{.reference_box_header}
 Motivating resources:
 ::::
 ::::{.inner_block}
+
+This case study is motivated by these guiding resources to discuss the following topics:
+
 ::: {#refs-motivational}
 :::
 ::::
