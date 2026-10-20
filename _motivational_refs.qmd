@@ -1,0 +1,9 @@
+:::{.reference_box}
+::::{.reference_box_header}
+Motivating resources:
+::::
+::::{.inner_block}
+::: {#refs-motivational}
+:::
+::::
+:::
