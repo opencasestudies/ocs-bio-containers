@@ -3,6 +3,6 @@
 To cite this case study, please use:
 ::::
 ::::{.inner_block}
-Isaac, Kathryn J and Teichman, Sarah, and Thomas, Oshane and Wright, Carrie. (2026). [https://github.com/opencasestudies/ocs-bio-containers/](https://github.com/opencasestudies/ocs-bio-containers). Using containers for collaborative, reproducible research (Version v1.0.0).
+Isaac, Kathryn J and Teichman, Sarah, and Thomas, Oshane O and Hoffman, Ava M and Wright, Carrie. (2026). [https://github.com/opencasestudies/ocs-bio-containers/](https://github.com/opencasestudies/ocs-bio-containers). Using containers for collaborative, reproducible research (Version v1.0.0).
 ::::
 :::
