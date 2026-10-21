@@ -1,6 +1,8 @@
 ---
 title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
-bibliography: resources/references.bib
+bibliography: 
+  main: resources/references.bib
+  motivational: resources/motivational_refs.bib
 include-sections:
   stat-los: true
   lo-map: true
@@ -26,6 +28,8 @@ include-sections:
 {{< include _ocs_frontmatter.qmd >}}
 
 {{< include _motivation.qmd >}}
+
+{{< include _motivational_refs.qmd >}}
 
 {{< include _main_question.qmd >}}
 

@@ -1,0 +1,71 @@
+<!--
+This file creates a motivating resources reference box that lists citations motivating this case study.
+
+For citations that you want in this box
+1. add the bib entry for the citation to the resources/motivational_refs.bib file
+2. Use the citation key or bib ID for that reference (the one you'd use with an at sign for an in text citation), together with a short topic note about the resource with the `addNoteBefore()` function call below to add a short bolded description in front of the rendered citation
+-->
+
+<!--
+No edits are needed for this .reference_box section
+Note that this reference box and multiple bib file setup is supported by the multibib quarto extension
+-->
+
+:::{.reference_box}
+::::{.reference_box_header}
+Motivating resources:
+::::
+::::{.inner_block}
+
+This case study is motivated by these guiding resources to discuss the following topics:
+
+::: {#refs-motivational}
+:::
+::::
+:::
+
+<!--
+Script suggested by Google Gemini with style updates from Ava
+Documentation written in collaboration with Google Gemini.
+
+Only edit the `addNoteBefore()` function calls within this script in the "//Inject your specific notes using the citation keys" portion of the script
+
+Script is below the reference box where quarto will render the citations so it makes changes to that rendered HTML material
+-->
+
+```{=html}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  /**
+   * Helper function to inject bolded text cleanly above citations
+   * @param {string} refId - The citation key from your .bib file
+   * @param {string} text - the short label (topic) you want to display before the citation as bolded text
+   */
+  function addNoteBefore(refId, text) {
+    //Quarto adds 'ref-' to the front of citation keys when rendering the HTML elements
+    //search and find element in rendered document using the provided citation key from .bib file to find the combined ref- string
+    //that reference is named el
+    const el = document.getElementById('ref-' + refId);
+    // verify that an element corresponding to that citation key is found. Won't break rendering if citation key is missing, misspelled, etc.
+    if (el) {
+      // create a new, empty HTML div named noteDiv
+      const noteDiv = document.createElement('div');
+      // apply custom styling to the new div such as using display:block to force the label onto its own line above the citation and font-weight: bold to bold the label
+      noteDiv.style.cssText = "margin-top: 20px; color: #000000; font-size: 0.9em; text-indent: 0; padding-left: 0; display: block; font-weight: bold;";
+      // add label to noteDiv
+      noteDiv.innerHTML = text;
+      // insert the html div with the bolded label before the first child node of the reference (author's name)
+      el.insertBefore(noteDiv, el.firstChild);
+      el.style.cssText = "margin-left: -20px;";
+    }
+  }
+
+  // Inject specific notes using the corresponding citation keys by calling the function defined above
+  addNoteBefore('Muller_Algavi_Borenstein_2022', 'Microbiome and metabolome data:');
+  addNoteBefore('Beaulieu-Jones_Greene_2017', 'Reproducibility and transparency:');
+  addNoteBefore('Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015', 'Containers:');
+  // Add or remove citation notes here as needed for each reference in resources/motivational_refs.bib following the pattern addNoteBefore('{Reference ID from .bib file}', '{Topic description}:');
+
+});
+</script>
+```
