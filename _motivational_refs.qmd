@@ -24,9 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const el = document.getElementById('ref-' + refId);
     if (el) {
       const noteDiv = document.createElement('div');
-      noteDiv.style.cssText = "margin-bottom: 5px; color: #000000; font-size: 0.9em; text-indent: 0; padding-left: 0; display: block; font-weight: bold;";
+      noteDiv.style.cssText = "margin-top: 20px; color: #000000; font-size: 0.9em; text-indent: 0; padding-left: 0; display: block; font-weight: bold;";
       noteDiv.innerHTML = text;
       el.insertBefore(noteDiv, el.firstChild);
+      el.style.cssText = "margin-left: -20px;";
     }
   }
 
