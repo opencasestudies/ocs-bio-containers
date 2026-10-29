@@ -140,10 +140,21 @@ A container is often used to standardize the computing environment within a team
 
 ### Introduction to Containers
 
+This section introduces the learner to many components of the containerization process, and explores when and why to use containers.
 
+Dockerfiles are text-based scripts that contain commands defining how an image will be built. 
+A Dockerfile serves as a blueprint or the starting point of the containerization process. 
+Dockerfiles are built to produce images. 
+Images are frozen, layered snapshots of what the container will be, containing the files for the system libraries. 
+Images are much larger than Dockerfiles and less readable. 
+They are the most common way to share a container and are often stored in registries (like Docker Hub). 
+Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data. 
+Any updates made to files (i.e., data or scripts) from the mounted volume within the container persist to your local file system once the container is no longer running.
 
+Containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
+While containers are not always necessary, they are especially useful if a collaborative team is working on a large analysis and if software has many dependencies. 
+This case study focuses on using an existing container to support an analysis. 
+In the case study, the learner will use Docker to work with containers, through either Docker Desktop or through a command line interface. 
 
-
-
-
+### What are the Data? 
 
