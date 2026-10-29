@@ -77,3 +77,7 @@ Both the Docker Engine and Docker CLI are provided through Docker Desktop. So ev
 * minimal Git and GitHub knowledge or experience (see [this related case study](https://www.opencasestudies.org/ocs-bio-version-control/) for necessary skills)
 * a **GitHub account** (see [here to signup](https://github.com/signup))
 
+### Target Audience
+
+The target audience for this case study is scientists and researchers who work with files in collaborative teams, but do not yet use containers.
+
