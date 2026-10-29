@@ -1,77 +1,95 @@
 # Biomedical Open Case Studies: Using containers for collaborative, reproducible research
 
+### Useful Links
+
+-   HTML: <https://www.opencasestudies.org/ocs-bio-containers/>
+-   GitHub:
+    <https://github.com/opencasestudies/ocs-bio-containers>
+
+### Disclaimer
+
+The purpose of the [Open Case
+Studies](https://opencasestudies.github.io) project is **to demonstrate
+the use of various data science methods, tools, and software in the
+context of messy, real-world data**. A given case study does not cover all 
+aspects of the research process, is not claiming to be the most appropriate 
+way to analyze a given data set, and should not be used in the context of 
+making policy or clinical decisions without external consultation from scientific 
+experts or medical care professionals. In addition, due to size constraints, 
+datasets used within a case study may be a subset of the original/full dataset.
+
+### License
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 [(CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/deed.en) United States License unless otherwise noted.
+
+### Citation
+
+To cite this case study:
+
+Isaac, Kathryn J and Teichman, Sarah, and Thomas, Oshane O and Hoffman, Ava M and Wright, Carrie. (2026). [https://github.com/opencasestudies/ocs-bio-containers/](https://github.com/opencasestudies/ocs-bio-containers). Using containers for collaborative, reproducible research (Version v1.0.0).
+
+### Funding
+
 This work is funded through the National Institutes of Health, specifically the National Institute of General Medical Sciences: Grant Number 1R25GM160622.
 
+### Acknowledgments
 
-## Repository Structure + Checklist for files to update
+We would like to acknowledge [Candace Savonen](https://www.cansavvy.com), [Casey Greene](https://greenelab.com/members/casey-greene.html), [Emma Lathouwers](https://greenelab.com/members/emma-lathouwers.html), [Jeff Leek](https://jtleek.com), and ethicist [Jodyn Platt](https://medschool.umich.edu/profile/3774/jodyn-platt) for their expert review of this case study.
 
-### Style and Configuration
+Icons are from [iconpacks](https://www.iconpacks.net/).
 
-* _quarto.yml -- Configurations for how the rendered website will look.
-  * [ ] Update the title on line 6
-  * [ ] Replace the Google analytics tracking ID ("G-XXXXXXXXXX") with the appropriate Bio_OCS case study specific tracking ID on line 17
-  * [ ] Update the GitHub Repository link to point to the specific open case studies repository instead of the template
-    * [ ] line 11
-    * [ ] line 28
+Avatars are from [avataaars](https://getavataaars.com/).
 
-The rest of these files will largely not need updated though a brief description of what each contains is provided.
+### Title
 
-* styles.css -- Defines html elements
-* _brand.yml -- Logo and favicon definition
-* config_automation.yml	-- Configurations for the OTTR Template automations. Update this file to toggle spelling or url check as well as minimum errors allowed for those checks or to update the docker image.
+Using containers for collaborative, reproducible research
 
-### Directories
+### Prerequisites
 
-* `data/`: Raw, imported, and wrangled datasets. `raw/pm25_data.csv`, `imported/pm25_data_imported.rda`, and `wrangled_data.csv` are template files that can be removed or overwritten by case study repositories.
-* `assets/`: Template images such as the logo or icons.
-* `img/`: This is where images should go for the case study background, motivation, etc.
-  - [ ] Replace the `mainplot.png` from the template with your main plot
-  - [ ] Add any additional case study specific (non-template) images in this directory
-* `resources/`: Files related to OTTR checks (e.g., dictionary and a file of URLs to exclude/ignore from checking.).
-* `.github/`: workflow files supporting the OTTR template automations
-* `docs/`: the rendered files that GitHub pages will use -- refreshed through OTTR template automations.
+:::{.prereq_box}
+::::{.prereq_box_header}
+Prerequisites
+::::
+::::{.inner_block}
+
+This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. Note that you can still use command line within Docker Desktop and the application provides additional tools, documentation, and an [AI assistant, Gordon](https://docs.docker.com/ai/gordon/). 
+
+However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you follow along with this case study using Docker Desktop.
+
+Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Click the "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
+
+:::{.panel-tabset}
+
+### Docker Desktop
+
+You will need the following installed:
+
+* Docker Desktop (install [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/))
+* Notepad, Sublime, Visual Studio Code or another **text editor**
+
+### Docker through a CLI
+
+To follow along with this case study, you’ll need the following installed:
+
+* **Docker Engine**
+* **Docker CLI**
+* Have access to and familiarity with a local command line interface (CLI)
+* Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
+
+Both the Docker Engine and Docker CLI are provided through Docker Desktop. So even if you do not want to use Docker Desktop, and instead want to use Docker through a CLI, please install Docker Desktop [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/)
+
+:::
+
+<u>It will also be helpful to be have the following skills:</u>
+
+* ability to navigate file systems. Please use or review the [Software Carpentry "Navigating Files and Directories" tutorial](https://swcarpentry.github.io/shell-novice/02-filedir.html) if needed.
+* basic R skills (many introductory courses can be found online, including [this one](https://hutchdatascience.org/Intro_to_R/))
+* familiarity with dplyr and ggplot2, or willingness to learn (these [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf) and [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf) cheatsheets may be helpful, as well as the original [open case studies](https://www.opencasestudies.org/search.html))
 
 
-### Content
+<u>For optional, more extensive reproducibility activities, you will need the following:</u>
 
-For the overall content of the Open Case Study, each portion of the case study is split into individual `.qmd` files. They are included in order within the `index.qmd` file. Certain case studies will not have every component, and so we can toggle those on and off using short code and header booleans.  This is mostly for others using our case studies to teach, as they might want to have a version that only has part of the case study.  For our core team, we will likely have all components for our case studies. Below is a list of all of the sub-component `.qmd` files in checklist form. Besides the listed changes below, `index.qmd` should not need updated.
 
-* [ ] `index.qmd`
-  * [ ] Update Case Study Title
-  * [ ] Update any header booleans for section inclusion or add additional short code content-hidden sections as necessary
-* [ ] _main_image.qmd
-  * Provides an example of including images with Quarto
-  * [ ] switch out `mainplot.png` within the `img` directory to be the case study main plot.
-* [ ] _ocs_frontmatter.qmd
-* [ ] _cite.qmd
-* [ ] _motivation.qmd
-  * Provides an example of including images with Quarto (including those that you can click to open in a larger preview)
-  * Provides an example of a custom definition box
-* [ ] _main_question.qmd
-* [ ] _los.qmd
-  * [ ] _data_science_los.qmd
-  * [ ] _statistical_los.qmd
-  * [ ] _biological_los.qmd
-* [ ] _packages.qmd
-* [ ] _context.qmd
-  * Provides an example of including a video with Quarto
-* [ ] _data_description.qmd
-* [ ] _limitations.qmd
-* [ ] _bioethics.qmd
-* [ ] _data_import.qmd
-* [ ] _data_exploration.qmd
-* [ ] _data_wrangling.qmd
-  * Provides an example of including code annotations with Quarto
-* [ ] _data_visualization.qmd
-* [ ] _data_analysis.qmd
-  * Provides an example of using a column margin note with Quarto
-  * Provides an example of a custom question opportunity box
-* [ ] _summary.qmd
-* [ ] _suggested_hw.qmd
-* [ ] _additional_info.qmd
-* [ ] _acknowledgements.qmd
+* minimal Git and GitHub knowledge or experience (see [this related case study](https://www.opencasestudies.org/ocs-bio-version-control/) for necessary skills)
+* a **GitHub account** (see [here to signup](https://github.com/signup))
 
-* [ ] **Verify**
-  * [ ] Every image ....
-    * [ ] has accompanying alt text (using `{fig-alt=""}`)
-    * [ ] has lightbox capability enabled (using `{.lightbox}`) so that images can be opened in a larger preview
