@@ -196,19 +196,55 @@ This section also describes the structure of the next several sections, which ea
 
 ### Data Import 
 
+In this section, the learner will pull a Docker image from Docker Hub and run the image in order to create the container. 
+The learner will run a script within the container to extract the data used in this case study from a PDF. 
+
 ### Data Exploration
+
+In this section, the learner will inspect the Dockerfile that is used to create the image and container used in the case study. 
+They will also inspect the data imported in the previous section, to determine what data wrangling will be necessary. 
 
 ### Data Wrangling
 
+In this section, the learner will run a script to wrangle the data into a format that can be used more easily for visualization and analysis.
+Additionally, they will add a package to the Dockerfile.
+
 ### Data Visualization 
+
+In this section, the learner will build a new image from the modified Dockerfile, and run that image to create a container that includes the additional package.
+They will also run a visualization script to create scatterplots to compare the number of annotated compounds to the number of samples with paired data in the curated data resource.
 
 ### Data Analysis
 
+In this section, the learner will run a script to calculate correlations between the number of annotated compounds and the number of samples in the datasets included in the curated data resource.
+After completing the analysis, they will stop and delete the container. 
+They will also learn about how to share scripts and Dockerfiles or images with collaborators. 
+
 ### Summary
+
+This section summarizes the case study, describing the "Dockerfile -(build)-> image -(mount and run)-> container" process. 
+It also provides a reminder of the steps that the learner took throughout the case study. 
+It includes a process and decision points image, which emphasizes the decisions that are made throughout the containerization process. 
+It also includes a summary plot, which reminds the learner of the motivation for using containers as part of a reproducible and collaborative scientific project.
 
 ### Troubleshooting Containers
 
+This section describes resources that can be helpful for troubleshooting issues with containers, and provides considerations for using AI with containers.
+
 ### Continued Learning
 
-### Additional Information 
+This section provides exercises for the learner to keep practicing their container skills and to learn new ones. 
+These include adding another package to the container used in the case study, editing the Dockerfile to run additional scripts, creating a Dockerfile from scratch to run a similar analysis with Python, and using GitHub actions to use a container.
+
+### Helpful links and resources
+
+* [ITN Containers for Scientists course](https://hutchdatascience.org/ITN_course_search/Containers_for_Scientists_coursePage.html)
+* [ITN Making Science Reproducible - A Capstone Project Course](https://hutchdatascience.org/ITN_course_search/reproducibility_capstone_coursePage.html)
+* [Docker Documentation](https://docs.docker.com/)
+* [Docker 101 Tutorial](https://www.docker.com/101-tutorial/)
+* [Gordon AI](https://docs.docker.com/ai/gordon/)
+* [Podman](https://docs.podman.io/en/latest/)
+* [Singularity / Apptainer](https://docs.sylabs.io/guides/latest/user-guide/)
+* For a discussion on security vulnerabilities, especially for images, see [this paper](https://academic.oup.com/gigascience/article/10/6/giab025/6291571) by Kaur, Dugré, Hannah, and Glatard (2021).
+
 
