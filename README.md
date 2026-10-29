@@ -84,7 +84,7 @@ The target audience for this case study is scientists and researchers who work w
 ### Motivation
 
 This case study introduces the use of containers in the context of a realistic collaborative scientific project. 
-Learners will use a pre-existing Docker container to run an analysis of microbiome and metabolome data from a curated data resource. 
+Learners will use a pre-existing Docker container to run an analysis of metadata from a curated data resource with microbiome and metabolome data. 
 This case study introduces containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments.
 Additional topics that will be covered include how to find and share container images, how to mount a volume of analysis scripts, and how to explore output and save results from an analysis performed in a container.
 
@@ -157,4 +157,58 @@ This case study focuses on using an existing container to support an analysis.
 In the case study, the learner will use Docker to work with containers, through either Docker Desktop or through a command line interface. 
 
 ### What are the Data? 
+
+The data used in the case study come from Table 1 in [this paper](https://www.nature.com/articles/s41522-022-00345-5) by Muller, Algavi, and Borenstein (2022). 
+Table 1 describes the curated gut microbiome-metabolome datasets that this study aggregated in order to curate a resource for the research community. 
+
+The variables that are used in the case study include: 
+
+Variable   | Details
+---------- |-------------
+**`dataset_name`**  | A character/string identifying the dataset (often containing author, studied illness, and year of the study).
+**`num_paired_samples`**  | The number of samples within the dataset that have paired fecal microbiome-metabolome data.
+**`longitudinal`** | A character/string reporting whether that dataset has longitudinal data ("Yes" or "No").
+**`hmdb_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with the Human Metabolome Database (HMDB) [@Wishart_etal_2009].
+**`kegg_annotated_compounds`** | The number of metabolites that were identified within that dataset and annotated with Kyoto Encyclopedia of Genes and Genomes (KEGG) [@Kanehisa_Goto_2000; @Kanehisa_etal_2025].
+
+### Limitations
+
+This section describes limitations of this case study, including the scope of the use of containers in the case study and the scope of the data analysis, when Docker is not an appropriate tool, and limitations of curated data resources. 
+
+### Ethical Considerations
+
+This section lists several ethical considerations of working with containers, including considerations for using containers with clinical and health data (never including PII or PHI in a container image), considerations for work in large collaborative teams, and considerations for using secondary data.
+
+### Packages and Setup
+
+R packages used in this case study include the following: 
+
+Package    | Use
+---------- |-------------
+[here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Constructs paths within project
+[tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
+[readr](https://cran.r-project.org/web/packages/readr/refman/readr.html){target="_blank"} | Read and write rectangular data (like `.csv`, `.tsv`, etc.)
+[tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Data wrangling
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
+[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
+
+This section also describes the structure of the next several sections, which each involve activities related to configuring the container, as well as activities related to using the container for an analysis.
+
+### Data Import 
+
+### Data Exploration
+
+### Data Wrangling
+
+### Data Visualization 
+
+### Data Analysis
+
+### Summary
+
+### Troubleshooting Containers
+
+### Continued Learning
+
+### Additional Information 
 
