@@ -81,3 +81,66 @@ Both the Docker Engine and Docker CLI are provided through Docker Desktop. So ev
 
 The target audience for this case study is scientists and researchers who work with files in collaborative teams, but do not yet use containers.
 
+### Motivation
+
+This case study introduces the use of containers in the context of a realistic collaborative scientific project. 
+Learners will use a pre-existing Docker container to run an analysis of microbiome and metabolome data from a curated data resource. 
+This case study introduces containers as a tool for increasing the reproducibility of a scientific analysis within a team project, describing why and how to use them to standardize computing environments.
+Additional topics that will be covered include how to find and share container images, how to mount a volume of analysis scripts, and how to explore output and save results from an analysis performed in a container.
+
+### Main Questions
+
+The main questions in this case study are the following:
+
+1. How does one use containers to improve the reproducibility of their work? (Are containers always necessary?)
+1. How does one use a container and modify a container?
+1. What are microbiome and metabolome data and how can they be used together?
+
+### Learning Objectives
+
+The learning objectives of this case study are the following:
+
+<u>**Data Science Learning Objectives**</u>
+
+1. Discuss ways in which containerization promotes reproducibility within collaborative scientific research.
+1. Describe how containerization is one of several tools to increase the reproducibility of scientific research.
+1. Employ multiple reproducibility best practices together within the context of containerization (e.g., mounting a volume of version-controlled scripts, sharing a container image).
+1. Evaluate what should or should not be included in a container.
+1. Identify contexts where containerization (potentially with Docker) is not appropriate or needed.
+1. Practice the containerization process to reproduce, extend, and share a data analysis and its results.
+1. Verify that results or outputs (e.g., messages in logs from analyses run in containers) match expectations.
+
+<u>**Statistical Learning Objectives**</u>
+
+1. Explain how statistical power is impacted by the number of samples in an analysis.
+1. Recognize the need and considerations for data harmonization when utilizing multiple data sources.
+1. Describe how the number of observed metabolites is impacted by the number of samples in a dataset.
+
+<u>**Biological/Bioinformatics Objectives:**</u>
+
+1. List the value and potential applications of Data collection or resource.
+1. Explain the limitations and cautions associated with using a data collection or curated data resource for your own work.
+1. Relate the utility of pairing microbiome and metabolome data for biological research.
+1. Build visualizations to communicate the relationship among variables in a table.
+
+### Context 
+
+The metabolome is a collection of metabolites or low-molecular weight organic (containing carbon-hydrogen bonds) molecules found in a specific sample or organism.
+Metabolites may be by-products from, precursors, intermediates, or building blocks of the various macromolecules (nucleic acids, proteins, carbohydates, and lipis). 
+They may also be involved with vitamins, organic acids, and other small organic molecules (that don’t neatly relate to the larger categories or classes of biomolecules). 
+These other molecules (vitamins, organic acids, etc.) are essential for metabolism (acting as regulators, coenzymes, and more).
+
+The microbiome is the set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment such as the human gut. 
+These microorganisms can impact metabolism and have been found to be associated with greater human health.
+Sequencing the microbiome can help us to identify what bacteria and other microorganisms are present in the human gut, which can have an impact on human health.
+However, to actually see the activity of or impact caused by the presence of those microorganisms, the identification of metabolites in the samples are helpful.
+Studies will often pair microbiome and metabolome data for a greater depth of scientific insight and conclusions.
+
+A curated data resource is a collection of datasets that have been gathered or curated by a group for secondary use within the scientific field. 
+This often goes further than just collecting references of different studies whose data have been made publicly available and includes reprocessing the datasets from those studies to make sure that they have been handled in the same way and can be used together in future work.
+In this case study, we work with a [curated data resource introduced by Muller, Algavi, and Borenstein (2022)](https://www.nature.com/articles/s41522-022-00345-5). 
+
+Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different computing environments (potentially differences in operating systems, software, software versions, etc.).
+The differences between computers can be problematic for performing and sharing reproducible research.
+Containers are often the solution used to standardize the computing environment within a team. 
+A container provides a standardized computing environment for everyone using it no matter what the software landscape of their personal laptop or workstation looks like.
