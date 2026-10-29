@@ -46,30 +46,16 @@ Using containers for collaborative, reproducible research
 
 ### Prerequisites
 
-:::{.prereq_box}
-::::{.prereq_box_header}
-Prerequisites
-::::
-::::{.inner_block}
-
 This case study provides instructions for following along using either **Docker Desktop** or **Docker through a Command Line Interface (CLI)**. If you are comfortable working with a command line interface, you do not need to install/use Docker Desktop. Note that you can still use command line within Docker Desktop and the application provides additional tools, documentation, and an [AI assistant, Gordon](https://docs.docker.com/ai/gordon/). 
 
 However, if you are a beginner, or largely uncomfortable working with a command line interface, it is recommended that you follow along with this case study using Docker Desktop.
 
-Throughout the case study, a tab structure will be used. By default instructions for using Docker Desktop will be shown. Click the "Docker through a CLI" tabs if you would prefer not to use Docker Desktop. Installation instructions are provided using this tab structure as well.
-
-:::{.panel-tabset}
-
-### Docker Desktop
-
-You will need the following installed:
+To use Docker Desktop, you will need the following installed:
 
 * Docker Desktop (install [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/))
 * Notepad, Sublime, Visual Studio Code or another **text editor**
 
-### Docker through a CLI
-
-To follow along with this case study, you’ll need the following installed:
+To use Docker through a CLI, you will need the following installed:
 
 * **Docker Engine**
 * **Docker CLI**
@@ -77,8 +63,6 @@ To follow along with this case study, you’ll need the following installed:
 * Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
 
 Both the Docker Engine and Docker CLI are provided through Docker Desktop. So even if you do not want to use Docker Desktop, and instead want to use Docker through a CLI, please install Docker Desktop [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/)
-
-:::
 
 <u>It will also be helpful to be have the following skills:</u>
 
