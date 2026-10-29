@@ -51,3 +51,4 @@ filters:
   - auto-add-ai-disclaimer.lua
   - multibib
 validate-yaml: false
+citeproc: false
