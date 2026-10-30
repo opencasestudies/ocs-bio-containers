@@ -123,7 +123,7 @@ The learning objectives of this case study are the following:
 
 <u>**Biological/Bioinformatics Objectives:**</u>
 
-1. List the value and potential applications of Data collection or resource.
+1. List the value and potential applications of a curated data collection/resource.
 1. Explain the limitations and cautions associated with using a data collection or curated data resource for your own work.
 1. Relate the utility of pairing microbiome and metabolome data for biological research.
 1. Build visualizations to communicate the relationship among variables in a table.
@@ -141,7 +141,7 @@ In this case study, we work with a [curated data resource introduced by Muller, 
 
 Different researchers, especially those located at different institutions, those at different career stages, and those who have different research focuses have different computing environments (potentially differences in operating systems, software, software versions, etc.).
 The differences between computers can be problematic for performing and sharing reproducible research.
-A container is often used to standardize the computing environment within a team by providing a standardized computing environment for everyone using it. 
+A container is often used to standardize the computing environment within a team by providing a shareable standardized computing environment for everyone using it. 
 
 ### Introduction to Containers
 
@@ -153,7 +153,7 @@ Dockerfiles are built to produce images.
 Images are frozen, layered snapshots of what the container will be, containing the files for the system libraries. 
 Images are much larger than Dockerfiles and less readable. 
 They are the most common way to share a container and are often stored in registries (like Docker Hub). 
-Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to scripts or data. 
+Images are run to create containers and file systems or volumes may be mounted during the run process so that isolated containers have access to pre-existing scripts or data. 
 Any updates made to files (i.e., data or scripts) from the mounted volume within the container persist to your local file system once the container is no longer running.
 
 Containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
@@ -206,7 +206,7 @@ The learner will run a script within the container to extract the data used in t
 
 ### Data Exploration
 
-In this section, the learner will inspect the Dockerfile that is used to create the image and container used in the case study. 
+In this section, the learner will inspect the Dockerfile that is used to build the image that creates the container used in the Data import and Data wrangling sections of the case study. 
 They will also inspect the data imported in the previous section, to determine what data wrangling will be necessary. 
 
 ### Data Wrangling
@@ -217,7 +217,7 @@ Additionally, they will add a package to the Dockerfile.
 ### Data Visualization 
 
 In this section, the learner will build a new image from the modified Dockerfile, and run that image to create a container that includes the additional package.
-They will also run a visualization script to create scatterplots to compare the number of annotated compounds to the number of samples with paired data in the curated data resource.
+They will also run visualization scripts to create scatterplots to compare the number of annotated compounds to the number of samples with paired data in the curated data resource.
 
 ### Data Analysis
 
@@ -239,7 +239,12 @@ This section describes resources that can be helpful for troubleshooting issues 
 ### Continued Learning
 
 This section provides exercises for the learner to keep practicing their container skills and to learn new ones. 
-These include adding another package to the container used in the case study, editing the Dockerfile to run additional scripts, creating a Dockerfile from scratch to run a similar analysis with Python, and using GitHub actions to use a container.
+These include 
+
+* Reinforcement exercise: Modifying the Dockerfile to add a CRAN package to the container and using the new container to run an additional script that utilizes this package.
+* Beginner advancement exercise: Modifying the Dockerfile to add two packages from GitHub rather than CRAN to the container and using the new container to add another script utilizing these packages to the analysis.
+* Intermediate advancement exercise: Creating a Dockerfile from scratch to run a similar analysis with Python.
+* Advanced advancement exercise: Using GitHub Actions to remotely run part of the analysis with a specified container (rather than locally).
 
 ### Helpful links and resources
 
