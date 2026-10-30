@@ -79,7 +79,12 @@ Both the Docker Engine and Docker CLI are provided through Docker Desktop. So ev
 
 ### Target Audience
 
-The target audience for this case study is scientists and researchers who work with files in collaborative teams, but do not yet use containers.
+The target audience for this case study is scientists and researchers who 
+
+* work on analyses within collaborative teams 
+* use software that may be updated frequently or have several necessary dependencies in order to install
+* want to create more reproducible analyses
+* do not yet use containers or want to get more comfortable with modifying what is available in a container.
 
 ### Motivation
 
