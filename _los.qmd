@@ -4,7 +4,7 @@
 
 In this case study, we will use {{< glossary "Docker" >}} to specify and run our {{< glossary "Container" display="container" >}} environments in order to create several data visualizations of a table describing samples within a curated {{< glossary "Data collection or resource" display="data resource" >}}.
 
-The skills, methods, and concepts that students will be familiar with by the end of this case study are:
+The skills, methods, and concepts that learners will be familiar with by the end of this case study are:
 
 {{< include _data_science_los.qmd >}}
 
