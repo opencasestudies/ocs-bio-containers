@@ -11,7 +11,7 @@ A good way to practice the skills from this case study is to practice the contai
 We noted that in the combined scatter plot, text labels were both cutoff along axes edges and text labels were overlapping each other. The `ggrepel` package can be useful in fixing these problems.
 
 * Add `ggrepel` to the Dockerfile.
-* {{< glossary "Build" display = "build">}} the Dockerfile.
+* {{< glossary "Build" >}} the Dockerfile.
 * Run the image, mounting the `ocs-bio-containers-scaffold-main` volume as you've done previously.
 * Look at the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script within the `ocs-bio-containers-scaffold-main` directory and try to understand what it's doing.
 * Use the `continued_learning_scripts/refinement/03_alt_visualization_ggrepel.R` script to create a modified visualization to fix the overlapping and cutoff text labels.
@@ -41,11 +41,11 @@ Create a Dockerfile from scratch which could be used to perform a similar analys
 
 Packages that you should add to the Dockerfile include:
 
-  * https://pypi.org/project/tabula-py/
+  * [https://pypi.org/project/tabula-py/](https://pypi.org/project/tabula-py/)
   * pandas
   * matplotlib
-  * https://github.com/ponnhide/patchworklib
-  * https://github.com/Phlya/adjustText
+  * [https://github.com/ponnhide/patchworklib](https://github.com/ponnhide/patchworklib)
+  * [https://github.com/Phlya/adjustText](https://github.com/Phlya/adjustText)
 
 Consult the [ITN's Reproducibility Capstone Project Course for additional guidance](https://hutchdatascience.org/reproducibility_capstone/building-a-docker-image.html#phase-2-dockerfile-development) on developing a Dockerfile from scratch.
 
