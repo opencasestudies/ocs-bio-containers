@@ -220,7 +220,14 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#introduction-to-containers" id="toc-introduction-to-containers" class="nav-link" data-scroll-target="#introduction-to-containers"><strong>Introduction to Containers</strong></a>
   <ul class="collapse">
-  <li><a href="#what-is-a-container" id="toc-what-is-a-container" class="nav-link" data-scroll-target="#what-is-a-container">What is a container?</a>
+  <li><a href="#what-is-a-container" id="toc-what-is-a-container" class="nav-link" data-scroll-target="#what-is-a-container">What is a container?</a></li>
+  <li><a href="#why-containers" id="toc-why-containers" class="nav-link" data-scroll-target="#why-containers">Why containers?</a>
+  <ul class="collapse">
+  <li><a href="#when-are-containers-not-necessarily-the-answer" id="toc-when-are-containers-not-necessarily-the-answer" class="nav-link" data-scroll-target="#when-are-containers-not-necessarily-the-answer">When are containers not necessarily the answer?</a></li>
+  <li><a href="#when-is-a-container-especially-useful" id="toc-when-is-a-container-especially-useful" class="nav-link" data-scroll-target="#when-is-a-container-especially-useful">When is a container especially useful?</a></li>
+  <li><a href="#what-are-general-use-cases-for-containers" id="toc-what-are-general-use-cases-for-containers" class="nav-link" data-scroll-target="#what-are-general-use-cases-for-containers">What are general use cases for containers?</a></li>
+  </ul></li>
+  <li><a href="#the-containerization-process" id="toc-the-containerization-process" class="nav-link" data-scroll-target="#the-containerization-process">The containerization process</a>
   <ul class="collapse">
   <li><a href="#dockerfiles" id="toc-dockerfiles" class="nav-link" data-scroll-target="#dockerfiles">Dockerfiles</a></li>
   <li><a href="#building" id="toc-building" class="nav-link" data-scroll-target="#building">Building</a></li>
@@ -231,12 +238,6 @@ gtag('config', 'G-SP7FDE2GBQ', { 'anonymize_ip': true});
   <li><a href="#vocabulary-summary" id="toc-vocabulary-summary" class="nav-link" data-scroll-target="#vocabulary-summary">Vocabulary Summary</a></li>
   </ul></li>
   <li><a href="#containerization-analogies" id="toc-containerization-analogies" class="nav-link" data-scroll-target="#containerization-analogies">Containerization Analogies</a></li>
-  <li><a href="#why-containers" id="toc-why-containers" class="nav-link" data-scroll-target="#why-containers">Why containers?</a>
-  <ul class="collapse">
-  <li><a href="#when-are-containers-not-necessarily-the-answer" id="toc-when-are-containers-not-necessarily-the-answer" class="nav-link" data-scroll-target="#when-are-containers-not-necessarily-the-answer">When are containers not necessarily the answer?</a></li>
-  <li><a href="#when-is-a-container-especially-useful" id="toc-when-is-a-container-especially-useful" class="nav-link" data-scroll-target="#when-is-a-container-especially-useful">When is a container especially useful?</a></li>
-  <li><a href="#what-are-general-use-cases-for-containers" id="toc-what-are-general-use-cases-for-containers" class="nav-link" data-scroll-target="#what-are-general-use-cases-for-containers">What are general use cases for containers?</a></li>
-  </ul></li>
   <li><a href="#how-do-you-work-with-containers" id="toc-how-do-you-work-with-containers" class="nav-link" data-scroll-target="#how-do-you-work-with-containers">How do you work with containers?</a>
   <ul class="collapse">
   <li><a href="#what-are-the-first-steps-for-working-with-a-container" id="toc-what-are-the-first-steps-for-working-with-a-container" class="nav-link" data-scroll-target="#what-are-the-first-steps-for-working-with-a-container">What are the first steps for working with a container?</a></li>
@@ -814,7 +815,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>
 </div>
-<p>Metabolites are detected, identified, and quantified using <button class="glossary"><span class="def">A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.</span>Nuclear Magnetic Resonance (NMR)</button>, <button class="glossary"><span class="def">A technique to detect and quantify metabolites using enzyme-catalyzed reactions.</span>enzyme assays</button> or by pairing compound separation through <button class="glossary"><span class="def">A technique to detect and quantify metabolites by vaporizing and separating compounds.</span>Gas Chromatography (GC)</button> or <button class="glossary"><span class="def">A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.</span>Liquid Chromatography (LC)</button> with <button class="glossary"><span class="def">A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.</span>spectra</button>.</p>
+<p>Metabolites are detected, identified, and quantified using <button class="glossary"><span class="def">A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.</span>Nuclear Magnetic Resonance (NMR)</button>, <button class="glossary"><span class="def"></span>enzyme assays</button> or by pairing compound separation through <button class="glossary"><span class="def">A technique to detect and quantify metabolites by vaporizing and separating compounds.</span>Gas Chromatography (GC)</button> or <button class="glossary"><span class="def">A technique to detect and quantify metabolites by separating compounds that are dissolved in a liquid.</span>Liquid Chromatography (LC)</button> with <button class="glossary"><span class="def">A technique to identify and quantify metabolites by measuring the mass-to-charge ratio of ionized molecules.</span>spectra</button>.</p>
 <details>
 <summary>
 Resources for more details on NMR and mass spec
@@ -849,7 +850,7 @@ Resources for more details on NMR and mass spec
 <summary>
 More metabolite terminology
 </summary>
-<p>Metabolites may be <button class="glossary"><span class="def">Metabolites that originate from the organism or source of the sample.</span>endogenous</button> or <button class="glossary"><span class="def">Metabolites that originate from outside of the organism or source of the sample.</span>exogenous</button> depending on their origin. Endogenous metabolites originate from the organism or source of the sample, while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either <button class="glossary"><span class="def">Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</span>primary</button> or <button class="glossary"><span class="def">Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary “host” system but are then re-metabolized by the microbiome.</span>secondary</button> metabolites. Primary metabolites are required for the life-cycle: growth, development, and reproduction; and secondary metabolites are used for non-life cycle tasks such as communication, signaling, or defense. Note that within the context of the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>, a “secondary metabolite” has an additional meaning besides referring to metabolites that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
+<p>Metabolites may be <button class="glossary"><span class="def"></span>endogenous</button> or <button class="glossary"><span class="def">Metabolites that originate from outside of the organism or source of the sample.</span>exogenous</button> depending on their origin. Endogenous metabolites originate from the organism or source of the sample, while exogenous metabolites originate from outside of the organism / source of the sample. Metabolites may be classified as either <button class="glossary"><span class="def">Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).</span>primary</button> or <button class="glossary"><span class="def">Metabolites that are used for non-life-cycle tasks such as communication, signaling, or defense; may also refer to (within the context of the microbiome) metabolites that are from the primary “host” system but are then re-metabolized by the microbiome.</span>secondary</button> metabolites. Primary metabolites are required for the life-cycle: growth, development, and reproduction; and secondary metabolites are used for non-life cycle tasks such as communication, signaling, or defense. Note that within the context of the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>, a “secondary metabolite” has an additional meaning besides referring to metabolites that are used for non-life cycle tasks. Secondary metabolites may also refer to metabolites that are from the primary “host” system but are then re-metabolized by the microbiome <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Additionally, metabolites may be water-soluble or water-insoluble, each requiring their own sample extraction techniques <span class="citation" data-cites="Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017">(<a href="#ref-Lu_Su_Klein_Lewis_Fiehn_Rabinowitz_2017" role="doc-biblioref">Lu et al. 2017</a>)</span>.</p>
 <p>In human fecal samples, a mixture of metabolites would be expected – both endogenous and exogenous – due to physiology (endogenous), dietary intake (exogenous), and <button class="glossary"><span class="def">The set or collection of microorganisms whose particular environment is the gut.</span>gut microbiota</button> metabolism (considered exogenous due to the secondary metabolism of endogenous metabolites) <span class="citation" data-cites="Liu_Tan_Cheng_Zhang_Feng_Peng_2022">(<a href="#ref-Liu_Tan_Cheng_Zhang_Feng_Peng_2022" role="doc-biblioref">Liu et al. 2022</a>)</span>. Classes of expected metabolites that will be observed include fatty acids (a lipid building block), bile acid (steroid derivatives synthesized from cholesterol), amino acids and protein derivatives, intermediates of carbohydrate metabolism, and undigested dietary sugars <span class="citation" data-cites="Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018">(<a href="#ref-Karu_Deng_Slae_Guo_Sajed_Huynh_Wine_Wishart_2018" role="doc-biblioref">Karu et al. 2018</a>)</span>.</p>
 <p>Historically, the “low-molecular weight” part of the definition of metabolites has been thresholded with a cutoff for molecules: &lt;1500 <button class="glossary"><span class="def">Standard units of molecular mass used to measure the weight of molecules.</span>Daltons</button> in <button class="glossary"><span class="def">The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.</span>molecular weight</button>. A recent article <span class="citation" data-cites="Moreno-Ulloa_2026">(<a href="#ref-Moreno-Ulloa_2026" role="doc-biblioref">Moreno-Ulloa 2026</a>)</span> proposed a re-definition of metabolites that no longer restricts their identity based on size. However, this definition does not seem to be a widely accepted by the field at this time.</p>
 </details>
@@ -859,7 +860,7 @@ More metabolite terminology
 <blockquote class="blockquote">
 <p>HMDB is … [an] organism-specific metabolomics database …. It contains spectroscopic, quantitative, analytic and molecular-scale information about human metabolites, their associated enzymes or transporters, their abundance and disease-related properties.</p>
 </blockquote>
-<p>The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a <button class="glossary"><span class="def">A study that looks at the same set of research participants over a course of time.</span>longitudinal</button> study. Research participants within the same study (whether it is longitudinal or not) are termed a <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button>.</p>
+<p>The metabolome of an individual may change over time. Therefore, some research looks at the metabolome of the same research participants over a course of time. This is called a <button class="glossary"><span class="def">A study that looks at the same set of research participants over a course of time.</span>longitudinal</button> study. Research participants within the same study (whether it is longitudinal or not) are termed a <button class="glossary"><span class="def"></span>cohort</button>.</p>
 <details>
 <summary>
 What are different applications of metabolomics within the scientific field?
@@ -1017,7 +1018,7 @@ What is reproducible research within the greater context of scientific discovery
 <h1><strong>Introduction to Containers</strong></h1>
 <hr>
 <p>Before we start to address your project with Collab O. Rator, we will provide an introduction to <button class="glossary"><span class="def">The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.</span>containerization</button> with <button class="glossary"><span class="def">A software platform for building, testing, and deploying containers.</span>Docker</button>. In this section, you will learn more about what containers are, why they are useful, and when they may be unnecessary. In additional you will learn about different software tools or technologies that support containerization, when certain technologies are more appropriate to use, as well as how to find, share, and work with containers. Towards the end of this section we will return to the <button class="glossary"><span class="def">A set or collection of microorganisms (e.g., bacteria, viruses, fungi, etc.) that live in a particular environment.</span>microbiome</button>-<button class="glossary"><span class="def">A collection of metabolites or low-molecular weight organic molecules found in a specific sample or organism.</span>metabolome</button> data collection project.</p>
-<section id="what-is-a-container" class="level2 page-columns page-full">
+<section id="what-is-a-container" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-container">What is a container?</h2>
 <hr>
 <p>A <a href="https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/">container is an active computing environment</a> that is isolated from the rest of the user’s system. Containers are the operational ending point of the containerization process. The containerization process also involves <button class="glossary"><span class="def">A text document that includes commands that are needed to build a Docker image and specify what will be available in a container.</span>Dockerfiles</button> and <button class="glossary"><span class="def">Main way to share containers because an image is a static, read-only configuration for creating a running container.</span>images</button> (upstream of containers) which define and instantiate or produce containers.</p>
@@ -1032,7 +1033,61 @@ What is reproducible research within the greater context of scientific discovery
 </div>
 </div>
 <p>Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is considered one of the industry-standard tools and is also the most popular. We primarily will discuss and utilize it within this case study. However, Docker is not always the appropriate tool to use in every context.</p>
-<p>We will discuss the containerization process that leads to containers, starting at the beginning:</p>
+</section>
+<section id="why-containers" class="level2">
+<h2 class="anchored" data-anchor-id="why-containers">Why containers?</h2>
+<hr>
+<p>As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).</p>
+<section id="when-are-containers-not-necessarily-the-answer" class="level3">
+<h3 class="anchored" data-anchor-id="when-are-containers-not-necessarily-the-answer">When are containers not necessarily the answer?</h3>
+<p>Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include:</p>
+<ul>
+<li>If you’re working on an analysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn’t expect many people in your field to work with.</li>
+<li>If you’re <strong>not</strong> working within a large collaborative team.</li>
+<li>If your analysis is tied to a single machine or static compute environment, and won’t need to move between systems or machines.</li>
+<li>If the computing platform already supports analyses through the use of containers (e.g., the NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.</li>
+</ul>
+<p>In cases where you don’t need a container, consider printing out <a href="https://sessioninfo.r-lib.org/">Session Info</a> or setting up an <a href="https://rstudio.github.io/renv/"><code>renv</code></a> to more transparently report your reproducible environments for your analyses.</p>
+</section>
+<section id="when-is-a-container-especially-useful" class="level3">
+<h3 class="anchored" data-anchor-id="when-is-a-container-especially-useful">When is a container especially useful?</h3>
+<p>Containers are especially useful in the following cases because of their portability and consistency:</p>
+<ul>
+<li>If you need to move an analysis to another machine or environment like an HPC or the cloud.</li>
+<li>If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.</li>
+<li>If a collaborative team is having difficulty replicating results within the team.</li>
+<li>If a team wants to both replicate and/or extend an analysis.</li>
+<li>If there are many dependencies that could cause major challenges.</li>
+</ul>
+<p>Within those cases, containers are extremely useful (but not necessary) for the reproducibility, extensibility, and replicability of scientific research.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Containers promote reproducibility, extensibility, and replicability of scientific research allowing collaborative teams or other researchers to apply the same software and methods to data in a more reproducible way. Containers are not necessary for but support a new researcher using the same data and the same process to reproduce the same result. Containers are not necessary for but support a new researcher using the same data and expanding an existing process to produce an extended result. Containers are not necessary for but support a new researcher using new data with an existing process to replicate a result. Containers do this by providing consistent and portable computing environments."></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.</p>
+</section>
+<section id="what-are-general-use-cases-for-containers" class="level3">
+<h3 class="anchored" data-anchor-id="what-are-general-use-cases-for-containers">What are general use cases for containers?</h3>
+<p>There are several different (downstream) use cases for containers:</p>
+<ul>
+<li><strong>Supporting collaborative work</strong>: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis or other work. Containers are especially useful in the team environment for supporting debugging and reproducibility. Team members may find that analyses have different results if they do not have the standardized software versions and computing environments that containers can offer.</li>
+<li><strong>Sandboxed software evaluation</strong>: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software <span class="citation" data-cites="Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015">(<a href="#ref-Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015" role="doc-biblioref">Tommaso et al. 2015</a>)</span>.</li>
+<li><strong>Deploying an app</strong>: Containers support deploying applications because of their consistency, portability, and isolation. The application’s code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there’s an error, bug, or crash, it won’t impact other apps on the server because of the app’s isolated environment.</li>
+</ul>
+<p>When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don’t need the ability to share and integrate with workflows, a container may be unnecessary.</p>
+<div class="emphasis_block">
+<p>We’ll focus on the first of these use cases (supporting an analysis) in this case study.</p>
+</div>
+</section>
+</section>
+<section id="the-containerization-process" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-containerization-process">The containerization process</h2>
+<p>We will now discuss the components of the containerization process that leads to containers, starting at the beginning:</p>
 <section id="dockerfiles" class="level3">
 <h3 class="anchored" data-anchor-id="dockerfiles">Dockerfiles</h3>
 <p>Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is “built” to produce an image (discussed more soon). In this way, a Dockerfile is a blueprint, specifying what the eventual container will have available in its computing environment for the user.</p>
@@ -1240,57 +1295,6 @@ Alternatives for machines with strict security configurations
 Will embed a survey to ask learners to suggest other analogies.
 -->
 </section>
-<section id="why-containers" class="level2">
-<h2 class="anchored" data-anchor-id="why-containers">Why containers?</h2>
-<hr>
-<p>As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).</p>
-<section id="when-are-containers-not-necessarily-the-answer" class="level3">
-<h3 class="anchored" data-anchor-id="when-are-containers-not-necessarily-the-answer">When are containers not necessarily the answer?</h3>
-<p>Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include:</p>
-<ul>
-<li>If you’re working on an analysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn’t expect many people in your field to work with.</li>
-<li>If you’re <strong>not</strong> working within a large collaborative team.</li>
-<li>If your analysis is tied to a single machine or static compute environment, and won’t need to move between systems or machines.</li>
-<li>If the computing platform already supports analyses through the use of containers (e.g., the NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.</li>
-</ul>
-<p>In cases where you don’t need a container, consider printing out <a href="https://sessioninfo.r-lib.org/">Session Info</a> or setting up an <a href="https://rstudio.github.io/renv/"><code>renv</code></a> to more transparently report your reproducible environments for your analyses.</p>
-</section>
-<section id="when-is-a-container-especially-useful" class="level3">
-<h3 class="anchored" data-anchor-id="when-is-a-container-especially-useful">When is a container especially useful?</h3>
-<p>Containers are especially useful in the following cases because of their portability and consistency:</p>
-<ul>
-<li>If you need to move an analysis to another machine or environment like an HPC or the cloud.</li>
-<li>If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.</li>
-<li>If a collaborative team is having difficulty replicating results within the team.</li>
-<li>If a team wants to both replicate and/or extend an analysis.</li>
-<li>If there are many dependencies that could cause nightmares.</li>
-</ul>
-<p>Within those cases, containers are extremely useful (but not necessary) for the reproducibility, extensibility, and replicability of scientific research.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html//1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg_g3f020ee26d5_4_12.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" alt="Containers promote reproducibility, extensibility, and replicability of scientific research allowing collaborative teams or other researchers to apply the same software and methods to data in a more reproducible way. Containers are not necessary for but support a new researcher using the same data and the same process to reproduce the same result. Containers are not necessary for but support a new researcher using the same data and expanding an existing process to produce an extended result. Containers are not necessary for but support a new researcher using new data with an existing process to replicate a result. Containers do this by providing consistent and portable computing environments."></p>
-</figure>
-</div>
-</div>
-</div>
-<p>If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.</p>
-</section>
-<section id="what-are-general-use-cases-for-containers" class="level3">
-<h3 class="anchored" data-anchor-id="what-are-general-use-cases-for-containers">What are general use cases for containers?</h3>
-<p>There are several different (downstream) use cases for containers:</p>
-<ul>
-<li>Supporting an analysis: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis. Containers are especially useful in the team environment for supporting an analysis when it comes to debugging and reproducibility. Team members may find that analyses have different results if they do not have standardized software versions and computing environments.</li>
-<li>Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software <span class="citation" data-cites="Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015">(<a href="#ref-Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015" role="doc-biblioref">Tommaso et al. 2015</a>)</span>.</li>
-<li>Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application’s code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there’s an error, bug, or crash it won’t impact other apps on the server because of the app’s isolated environment.</li>
-</ul>
-<p>When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don’t need the ability to share and integrate with workflows, a container may be unnecessary.</p>
-<div class="emphasis_block">
-<p>We’ll focus on the first of these use cases (supporting an analysis) in this case study.</p>
-</div>
-</section>
-</section>
 <section id="how-do-you-work-with-containers" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-you-work-with-containers">How do you work with containers?</h2>
 <hr>
@@ -1313,9 +1317,16 @@ Will embed a survey to ask learners to suggest other analogies.
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>We’ve now learned that containers can help us to create an isolated computing environment that we can share with others. we’ve learned that containers are especially useful when we have lots of sofware to use for our work, especially if we have many software dependencies, or we want to work collaboratively with others. We also learned how containers are made: that a <strong>Dockerfile</strong> provides the instructions for what software to include, that we <strong>build</strong> from that file to create an <strong>image</strong> that we can share with others (which is like a snapshot of the software that can work on different kinds of machines), that we then <strong>run</strong> to create a <strong>container</strong> from an image to actively do work within, and that we have to <strong>mount</strong> data or other files if we want to access and use anything outside of the container. In many cases, it is <a href="https://hutchdatascience.org/Containers_for_Scientists/07-sharing-images.html">best practice</a> to mount your data and keep our data local rather than building it into the container, as we want to keep the image small and sharable. This also helps ensure we don’t accidentally share private data publicily and we can more easily update the data if needed.</p>
 <hr>
 <div class="emphasis_block">
-<p>Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you’ll need to mount (if any) when you run the container; whether you’ll run the container locally or remotely.</p>
+<p>Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions:</p>
+<ul>
+<li>what you need available in your container</li>
+<li>what can be shared and where</li>
+<li>what files you’ll need to mount (if any) when you run the container</li>
+<li>whether you’ll run the container locally or remotely</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1336,7 +1347,7 @@ Will embed a survey to ask learners to suggest other analogies.
 <ul>
 <li>the name of each dataset</li>
 <li>which reference in the study relates to that data</li>
-<li>a brief description of the <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button> within that study</li>
+<li>a brief description of the <button class="glossary"><span class="def"></span>cohort</button> within that study</li>
 <li>the number of samples with paired fecal microbiome-metabolome data within that cohort</li>
 <li>whether the study contained <button class="glossary"><span class="def">A study that looks at the same set of research participants over a course of time.</span>longitudinal</button> data</li>
 <li>the number of <button class="glossary"><span class="def">A reference database that provides information about known metabolites within humans.</span>HMDB</button> annotated compounds</li>
@@ -2371,7 +2382,7 @@ A possible answer
 </div>
 </div>
 </div>
-<p>We would have expected the <button class="glossary"><span class="def">Research participants within the same study.</span>cohort</button> descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that <code>X3</code> contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (<code>X4</code>) has all <code>NAs</code>. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have <code>NAs</code> in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.</p>
+<p>We would have expected the <button class="glossary"><span class="def"></span>cohort</button> descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that <code>X3</code> contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (<code>X4</code>) has all <code>NAs</code>. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have <code>NAs</code> in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
