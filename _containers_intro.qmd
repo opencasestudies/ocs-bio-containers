@@ -16,13 +16,13 @@ An image is a frozen snapshot of what the computing environment will be in a con
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_2_0#slide=id.g3f020ee26d5_2_0")
 ```
 
-Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is one of the industry-standard and most popular of the tools and primarily will be the one discussed and utilized within this case study. However, Docker is not always the appropriate tool to use in every context.
+Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is considered one of the industry-standard tools and is also the most popular. We primarily will discuss and utilize it within this case study. However, Docker is not always the appropriate tool to use in every context.
 
 We will discuss the containerization process that leads to containers, starting at the beginning:
 
 ### Dockerfiles
 
-Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image (discussed soon). In this way, a Dockerfile is a blueprint, specifying what the eventual container will have available in its computing environment for the user. 
+Dockerfiles are the starting point in the containerization process. Dockerfiles are text-based scripts that contain the commands that will be used to provision the eventual container computing environment. These commands will be evaluated sequentially one after the other when the Dockerfile is "built" to produce an image (discussed more soon). In this way, a Dockerfile is a blueprint, specifying what the eventual container will have available in its computing environment for the user. 
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Dockerfiles are the starting point in the containerization process. Dockerfiles are a blueprint, specifying what the eventual container will have available. The illustration shows a Dockerfile with a dashed line leading to a container."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.hb8139f07d24a7af_2_0#slide=id.hb8139f07d24a7af_2_0")
