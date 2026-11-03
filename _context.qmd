@@ -145,6 +145,64 @@ Typically, [a higher number of samples leads to higher statistical power](https:
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h1167dfe38e2ea764_0_6#slide=id.h1167dfe38e2ea764_0_6")
 ```
 
+<details><summary>Code to make the distributions in this figure:</summary>
+
+```{r, eval = FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Parameters
+mu0   <- 0      # null hypothesis value
+mu1   <- 1.5      # specific alternative hypothesis value
+sigma <- 3.5      # population SD
+alpha <- 0.05   # one-sided test, with 5% type I error rate
+
+make_power_plot <- function(n, color) {
+  
+  # Sampling distribution under H0 and H1
+  se <- sigma / sqrt(n)
+  
+  # One-sided critical value
+  z_crit <- qnorm(1 - alpha)
+  critical_value <- mu0 + z_crit * se
+  
+  # Grid for plotting
+  x <- seq(-0.5, 3.5, length.out = 2000)
+  
+  df <- tibble(x = x, density = dnorm(x, mean = mu1, sd = se))
+  
+  # Plot with density and area past critical value
+  ggplot(df, aes(x, density)) +
+    geom_area(data = df %>% filter(x >= critical_value),
+      fill = color, alpha = 0.20) +
+    geom_line(color = color, linewidth = 1.2) +
+    annotate("segment", x = critical_value, 
+             xend = critical_value, y = 0, 
+             yend = dnorm(critical_value, mean = mu1, sd = se),
+                 linetype = "dotted", linewidth = 1) + 
+    scale_x_continuous(limits = c(-0.5, 3.5), 
+                       breaks = c(mu0, critical_value, mu1),
+                       labels = c(paste0("H0:\n", round(mu0, 2)),
+                                  paste0("CV:\n", 
+                                         round(critical_value, 2)),
+                                  paste0("H1:\n", round(mu1, 2)))) + 
+    scale_y_continuous(limits = c(0, 1.15)) + 
+    theme_void() +
+    theme(axis.line.x = element_line(color = "black", 
+                                     linewidth = 1),
+          axis.ticks.x = element_line(color = "black", 
+                                      linewidth = 1.5),
+          axis.ticks.length = unit(4, "pt"),
+          axis.text.x = element_text(size = 20, color = "black",
+            margin = margin(t = 5))) 
+}
+
+make_power_plot(n = 30,  color = "#3B82F6") 
+make_power_plot(n = 100, color = "#7C3AED") 
+```
+
+</details>
+
 However, researchers can't just keep collecting data from more and more patients [@Andrade_2020]. This would be an inefficient use of time and resources. On the other hand, collecting too few samples leads to under-powered science and failures to replicate scientific findings may sometimes be due to under-powered studies [@Krzywinski_Altman_2013]. Curated data resources can help to increase the sample size of a study without the researchers having to collect more new data.
 
 </details>
