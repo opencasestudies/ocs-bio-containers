@@ -141,6 +141,10 @@ Typically, [a higher number of samples leads to higher statistical power](https:
 * Estimation & Uncertainty: A greater number of samples offers more data to estimate the effect size, reducing estimation uncertainty (or standard error). This decrease in estimation uncertainty or standard error in turn increases the test statistic (for that specific effect size), and therefore there is a higher probability of correctly rejecting the null hypothesis.
 * Sampling Distributions (a more statistical explanation): a greater number of samples narrows the sampling distribution of estimated values (e.g., sample means) that will be observed (e.g., more samples lead to lower variance sampling distributions). As the sampling distribution narrows, a greater area under the curve is shifted past the critical value [@Krzywinski_Altman_2013].
 
+```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Larger sample sizes lead to narrow sampling distributions of estimated values (e.g. sample means), and therefore higher power."}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h1167dfe38e2ea764_0_6#slide=id.h1167dfe38e2ea764_0_6")
+```
+
 However, researchers can't just keep collecting data from more and more patients [@Andrade_2020]. This would be an inefficient use of time and resources. On the other hand, collecting too few samples leads to under-powered science and failures to replicate scientific findings may sometimes be due to under-powered studies [@Krzywinski_Altman_2013]. Curated data resources can help to increase the sample size of a study without the researchers having to collect more new data.
 
 </details>
