@@ -2,21 +2,21 @@
 
 ***
 
-There are some important considerations regarding this data analysis to keep in mind:
-
-This case study specifically uses the technology {{< glossary "Docker" >}} to {{< glossary "Build" display="build" >}} {{< glossary "Container" display="containers" >}} and run analyses within these isolated environments, on a local machine.
+There are some important considerations regarding this data analysis to keep in mind.
 
 *Limitations regarding containerization and the scope of this case study:*
+
+This case study specifically uses the technology {{< glossary "Docker" >}} to {{< glossary "Build" display="build" >}} {{< glossary "Container" display="containers" >}} and run analyses within these isolated environments, on a local machine. As with any technology, there are some associated limitations.
 
 This case study does **not** describe how to:
 
   * develop containers from the ground up
-  * use containers within a workflow using tools like Nextflow or Workflow Description Language (WDL)
+  * use containers within a workflow using tools like [Nextflow](https://www.nextflow.io/) or [Workflow Description Language (WDL)](https://openwdl.org/)
   * use containers to support a remote analysis (e.g., in the cloud)
   * use containers to deploy or support an application
-  * use technologies other than Docker such as Apptainer or Singularity
+  * use technologies such as [Apptainer](https://apptainer.org/) (previously called Singularity) on its own or [with Docker images](https://apptainer.org/docs/user/main/docker_and_oci.html) to work with private data
 
-Docker is a widely used tool for {{< glossary "Containerization" display="containerization" >}}. However, it is not the most appropriate tool for all use cases and within all contexts. For example, {{< glossary "Institutional high performance computing (HPC)" display ="institutional high performance computing (HPC)">}} often utilizes Apptainer due to its need of fewer user privileges (e.g., greater security). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
+Docker is a widely used tool for {{< glossary "Containerization" display="containerization" >}}. However, it is not the most appropriate tool for all use cases and within all contexts. For example, {{< glossary "Institutional high performance computing (HPC)" display ="institutional high performance computing (HPC)">}} often utilizes Apptainer due to its longer standing greater security, although Docker is starting to offer [higher security options that don't require root privileges](https://docs.docker.com/engine/security/rootless/). As a software tool, the long-term availability of Docker is not guaranteed. Containerization and the principles discussed within this case study will remain integral to reproducible research especially for dispersed teams. However, the specific technologies used to implement these principles may change over time and within different contexts.
 
 *Limitations regarding the data analysis and using aggregated data:*
 
