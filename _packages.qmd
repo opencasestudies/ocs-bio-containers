@@ -6,14 +6,14 @@ Before we get into fetching {{< glossary "Image" display="images" >}}, creating 
 
 Package    | Use
 ---------- |-------------
-[here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Constructs paths within project
+[here](https://cran.r-project.org/web/packages/here/refman/here.html){target="_blank"} | Construct paths within a project
 [tabulapdf](https://cran.r-project.org/web/packages/tabulapdf/refman/tabulapdf.html){target="_blank"}      | Extract data from a PDF
 [readr](https://cran.r-project.org/web/packages/readr/refman/readr.html){target="_blank"} | Read and write rectangular data (like `.csv`, `.tsv`, etc.)
-[tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Data wrangling
+[tidyverse](https://cran.r-project.org/web/packages/tidyverse/refman/tidyverse.html){target="_blank"} | Wrangle data
 [ggplot2](https://cran.r-project.org/web/packages/ggplot2/refman/ggplot2.html){target="_blank"}      | Visualize data
-[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combining multiple plots
+[patchwork](https://cran.r-project.org/web/packages/patchwork/refman/patchwork.html){target="_blank"} | Combine multiple plots
 
-[Loading the `tidyverse` loads several specialized packages to support data wrangling](https://tidyverse.org/packages/) such as `stringr` (used to work with strings) and `dplyr` (used to wrangle, transform, and summarize tabular data like data frames). You can think of the `tidyverse` as providing a universe of related R packages. Rather than using `library(...)` multiple times to call each package, we can call `library(tidyverse)` once to load all of them. You may still want to load a package explicitly even if it's packaged within the tidyverse for greater clarity. This [posit forum thread](https://forum.posit.co/t/teaching-install-load-packages-individually-or-use-tidyverse-package/71) provides some relevant points about the topic. The `readr` and `ggplot2` packages are also components of the `tidyverse`. They are listed separately here because some scripts within this analysis only use functions from `readr` or `ggplot2` without using other `tidyverse` packages; therefore, in those scripts, only those libraries are loaded. Also note that the `%>%` (pipe) is loaded thanks to the `tidyverse`, `dplyr`, or `magrittr` packages. Load any of those packages and you'll have access to it.
+[Loading the `tidyverse` loads several specialized packages to support data wrangling](https://tidyverse.org/packages/) such as `stringr` (used to work with strings) and `dplyr` (used to wrangle, transform, and summarize tabular data like data frames) in order to prepare it for visualization and analysis. You can think of the `tidyverse` as providing a universe of related R packages. Rather than using `library(...)` multiple times to call each package, we can call `library(tidyverse)` once to load all of them. You may still want to load a package explicitly even if it's packaged within the tidyverse for greater clarity. This [posit forum thread](https://forum.posit.co/t/teaching-install-load-packages-individually-or-use-tidyverse-package/71) provides some relevant points about the topic. The `readr` and `ggplot2` packages are also components of the `tidyverse`. They are listed separately here because some scripts within this analysis only use functions from `readr` or `ggplot2` without using other `tidyverse` packages; therefore, in those scripts, only those libraries are loaded. Also note that the `%>%` (pipe) is loaded thanks to the `tidyverse`, `dplyr`, or `magrittr` packages. Load any of those packages and you'll have access to it.
 
 The first time we use a function, we will use the `::` to indicate which package we are using. Unless we have overlapping function names, this is not necessary, but we will include it here to be informative about where the functions we will use come from.
 
@@ -71,7 +71,7 @@ In all cases, code and scripts for the tasks within the **Put the container to w
 
 <details><summary>If you want to learn more about the R code used throughout...</summary>
 
-You can use this Data Carpentry tutorial to explore how various `tidyverse` or `dplyr` commands are used to wrangle data: [https://datacarpentry.github.io/R-ecology-lesson/instructor/03-dplyr.html](https://datacarpentry.github.io/R-ecology-lesson/instructor/03-dplyr.html)
+You can use this Data Carpentry tutorial to explore how various `tidyverse` or `dplyr` commands are used to wrangle data: [https://datacarpentry.github.io/R-ecology-lesson/instructor/03-dplyr.html](https://datacarpentry.github.io/R-ecology-lesson/instructor/03-dplyr.html). You can also check out some of the [public health case studies from OCS](https://www.opencasestudies.org/bloomberg.html).
 
 </details>
 
