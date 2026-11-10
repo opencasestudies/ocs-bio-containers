@@ -18,7 +18,59 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is considered one of the industry-standard tools and is also the most popular. We primarily will discuss and utilize it within this case study. However, Docker is not always the appropriate tool to use in every context.
 
-We will discuss the containerization process that leads to containers, starting at the beginning:
+
+## Why containers?
+
+***
+
+As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
+
+### When are containers not necessarily the answer?
+
+Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
+
+* If you're working on an analysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn't expect many people in your field to work with.
+* If you're **not** working within a large collaborative team.
+* If your analysis is tied to a single machine or static compute environment, and won't need to move between systems or machines.
+* If the computing platform already supports analyses through the use of containers (e.g., the NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.
+
+In cases where you don't need a container, consider printing out [Session Info](https://sessioninfo.r-lib.org/) or setting up an [`renv`](https://rstudio.github.io/renv/) to more transparently report your reproducible environments for your analyses.
+
+### When is a container especially useful?
+
+Containers are especially useful in the following cases because of their portability and consistency:
+
+* If you need to move an analysis to another machine or environment like an HPC or the cloud.
+* If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.
+* If a collaborative team is having difficulty replicating results within the team.
+* If a team wants to both replicate and/or extend an analysis.
+* If there are many dependencies that could cause major challenges.
+
+Within those cases, containers are extremely useful (but not necessary) for the reproducibility, extensibility, and replicability of scientific research.
+
+```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = 'Containers promote reproducibility, extensibility, and replicability of scientific research allowing collaborative teams or other researchers to apply the same software and methods to data in a more reproducible way. Containers are not necessary for but support a new researcher using the same data and the same process to reproduce the same result. Containers are not necessary for but support a new researcher using the same data and expanding an existing process to produce an extended result. Containers are not necessary for but support a new researcher using new data with an existing process to replicate a result. Containers do this by providing consistent and portable computing environments.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
+```
+
+If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.
+
+### What are general use cases for containers?
+
+There are several different (downstream) use cases for containers: 
+
+* **Supporting collaborative work**: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis or other work. Containers are especially useful in the team environment for supporting debugging and reproducibility. Team members may find that analyses have different results if they do not have the standardized software versions and computing environments that containers can offer.
+* **Sandboxed software evaluation**: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software [@Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015].
+* **Deploying an app**: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash, it won't impact other apps on the server because of the app's isolated environment.
+
+When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. 
+
+:::{.emphasis_block}
+We'll focus on the first of these use cases (supporting an analysis) in this case study. 
+:::
+
+## The containerization process
+
+We will now discuss the components of the containerization process that leads to containers, starting at the beginning:
 
 ### Dockerfiles
 
@@ -219,54 +271,6 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 Will embed a survey to ask learners to suggest other analogies.
 -->
 
-## Why containers?
-
-***
-
-As previously described, containers are useful for standardizing the computing environment within a team or between different machines (e.g., local laptop and institutional HPC or cloud computing environment).
-
-### When are containers not necessarily the answer?
-
-Containers are not always necessary. The complexity of setting up, sharing, and documenting containers may not be worth what you gain in regards to reproducibility. In such cases reporting software used and their versions is often enough. Such cases include: 
-
-* If you're working on an analysis without specialized software. Specialized software is software that may be hard to install because of dependencies or software that you wouldn't expect many people in your field to work with.
-* If you're **not** working within a large collaborative team.
-* If your analysis is tied to a single machine or static compute environment, and won't need to move between systems or machines.
-* If the computing platform already supports analyses through the use of containers (e.g., the NHGRI AnVIL Platform), then you may not need to set up your own container if theirs already provides the software you need.
-
-In cases where you don't need a container, consider printing out [Session Info](https://sessioninfo.r-lib.org/) or setting up an [`renv`](https://rstudio.github.io/renv/) to more transparently report your reproducible environments for your analyses.
-
-### When is a container especially useful?
-
-Containers are especially useful in the following cases because of their portability and consistency:
-
-* If you need to move an analysis to another machine or environment like an HPC or the cloud.
-* If a collaborative team is working on a large analysis within a workflow (e.g., WDL, Snakemake) or in different environments.
-* If a collaborative team is having difficulty replicating results within the team.
-* If a team wants to both replicate and/or extend an analysis.
-* If there are many dependencies that could cause nightmares.
-
-Within those cases, containers are extremely useful (but not necessary) for the reproducibility, extensibility, and replicability of scientific research.
-
-```{r, fig.align = 'center', out.width = "100%", echo = FALSE, fig.alt = 'Containers promote reproducibility, extensibility, and replicability of scientific research allowing collaborative teams or other researchers to apply the same software and methods to data in a more reproducible way. Containers are not necessary for but support a new researcher using the same data and the same process to reproduce the same result. Containers are not necessary for but support a new researcher using the same data and expanding an existing process to produce an extended result. Containers are not necessary for but support a new researcher using new data with an existing process to replicate a result. Containers do this by providing consistent and portable computing environments.'}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f020ee26d5_4_12#slide=id.g3f020ee26d5_4_12")
-```
-
-If you need to move an analysis to another machine or environment like an HPC, it is important to know which containerization tool is the most appropriate. Many institutional HPCs do not allow Docker use because of its required root-level execution. This would give users higher permissions than they generally need, acting counter to the principle of least privilege, and creating unnecessary security vulnerabilities. Singularity and Apptainer are more commonly supported / used by institutional HPCs. When working on the cloud, Kubernetes is a common tool to orchestrate container deployment and manage large-scale Docker container infrastructure.
-
-### What are general use cases for containers?
-
-There are several different (downstream) use cases for containers: 
-
-* Supporting an analysis: Due to the clear and consistent definition and packaging of what is in a container, the ability to share it among a team or across platforms (portability), and the ease with which it can be integrated into workflows, containers are useful for supporting a computational analysis. Containers are especially useful in the team environment for supporting an analysis when it comes to debugging and reproducibility. Team members may find that analyses have different results if they do not have standardized software versions and computing environments.
-* Sandboxed software evaluation: Due to the isolation of the container environment, containers provide an isolated sandbox where software can be tested or evaluated without risking the security of the rest of the system or being impacted by other software [@Tommaso_Palumbo_Chatzou_Prieto_Heuer_Notredame_2015].
-* Deploying an app: Containers support deploying applications because of their consistency, portability, and isolation. The application's code and dependencies are all packaged together and will run the same way every time no matter what servers or cloud services the app is on (portability). If there's an error, bug, or crash it won't impact other apps on the server because of the app's isolated environment.
-
-When trying to decide if containers are useful for you and your work, consider which of these use cases you need. If your use case is supporting an analysis and you don't need the ability to share and integrate with workflows, a container may be unnecessary. 
-
-:::{.emphasis_block}
-We'll focus on the first of these use cases (supporting an analysis) in this case study. 
-:::
 
 ## How do you work with containers?
 
@@ -294,11 +298,18 @@ We will use Docker through Docker Desktop or through a CLI (locally) in this cas
 
 ## Summary
 
+We've now learned that containers can help us to create an isolated computing environment that we can share with others. we've learned that containers are especially useful when we have lots of software to use for our work, especially if we have many software dependencies, or we want to work collaboratively with others. We also learned how containers are made: that a **Dockerfile** provides the instructions for what software to include, that we **build** from that file to create an **image** that we can share with others (which is like a snapshot of the software that can work on different kinds of machines), that we then **run** to create a **container** from an image to actively do work within, and that we have to **mount** data or other files if we want to access and use anything outside of the container. In many cases, it is [best practice](https://hutchdatascience.org/Containers_for_Scientists/07-sharing-images.html) to mount your data and keep our data local rather than building it into the container, as we want to keep the image small and shareable. This also helps ensure we don't accidentally share private data publicly and we can more easily update the data if needed. 
+
 ***
 
 ::: {.emphasis_block}
 
-Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you'll run the container locally or remotely.
+Beyond the decision of whether containers are the right choice for you and your downstream use/work, how you work within the containerization process requires decisions: 
+
+* what you need available in your container
+* what can be shared and where
+* what files you'll need to mount (if any) when you run the container
+* whether you'll run the container locally or remotely
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Beyond the decision of whether containers are the right choice for you and your downstream use/work, working within the containerization process requires decisions: what you need available in your container; what can be shared and where; what files you'll need to mount (if any) when you run the container; whether you're running the container locally or remotely."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f98af6272b_0_12#slide=id.g3f98af6272b_0_12")
