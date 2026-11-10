@@ -21,6 +21,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 After using `tabulapdf` to extract the table from the PDF (see the `Data Import` section) and some basic wrangling with `tidyverse` (see the `Data Wrangling` section), we will extract a tidy dataframe with all of the columns displayed in the original table, but those boxed in purple and listed below are the most important for our visualization task (as outlined in Collab O. Rator's email).
 
+Click to expand the view of the image below: 
+
+
 ```{r data_table_highlight, echo = FALSE, out.width = "100%", lightbox = TRUE, fig.align = 'center', fig.alt = 'The dataset name, number of paired samples, whether the sample is longitudinal, the number of HMDB annotated compounds, and the number of KEGG annotated compounds are the columns that we will use in building data visualizations.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_46#slide=id.g3f5db0d7ede_0_46")
 ```
