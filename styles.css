@@ -237,33 +237,19 @@
 
 /* main image outline styling */
 
-.outline {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;       
-    background-color: #000000;
-    width: 100%;          
-    max-width: 800px;     /* Limits how big it can grow on large screens */
-    line-height: 0;        /* helps reduce space below image */
-    font-size: 0;         /* helps reduce space below image */
+.outline-img {
+  box-sizing: border-box;
+  display: block;
+  border: 10px solid #000000; /* Guaranteed 10px on top, right, bottom, left */
+  width: 100%;
+  max-width: 800px;
+  height: auto;
 }
 
-/* outline .anchor {
-    display: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 0 !important;
-}
-*/
 
-.outline img {
-    display: block;
-    /* Forces smaller images to stretch and larger images to shrink */
-    width: auto;          
-    height: auto;         /* Keeps the aspect ratio */
-}
+
+
+
 
 .blue-outline {
    background-color: #bdeffc;
