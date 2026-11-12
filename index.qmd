@@ -12,6 +12,7 @@ include-sections:
   data-viz: true
   data-analysis: true
   main-q-table: false
+  lightbox: true
 ---
 
 <!--
