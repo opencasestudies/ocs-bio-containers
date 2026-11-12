@@ -244,7 +244,8 @@
     align-items: center;
     padding: 10px;       
     background-color: #000000;
-    width: 100%;          
+    width: 100%; 
+    height: auto;
     max-width: 800px;     /* Limits how big it can grow on large screens */
     line-height: 0;        /* helps reduce space below image */
     font-size: 0;         /* helps reduce space below image */
