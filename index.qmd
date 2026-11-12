@@ -1,5 +1,6 @@
 ---
 title: "**Biomedical Open Case Studies: Using containers for collaborative, reproducible research**"
+lightbox: true
 bibliography: 
   main: resources/references.bib
   motivational: resources/motivational_refs.bib
@@ -12,7 +13,6 @@ include-sections:
   data-viz: true
   data-analysis: true
   main-q-table: false
-  lightbox: true
 ---
 
 <!--
