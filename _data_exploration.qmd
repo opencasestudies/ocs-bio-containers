@@ -61,6 +61,7 @@ Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/docke
   * The ecosystem impacts what tool is used after the `RUN` instruction. `apt-get` is used here because the base image (`rocker/tidyverse`) is based on Ubuntu. `apk` is an alternative to `apt-get` for certain ecosystems like those supported by Alpine instead of Ubuntu. You can trace the "image ancestry chain" by looking at each image's base image if you are unsure which ecosystem is being used.
 * Line 12 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
 * Line 13 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
+
 </details>
 
 * The backslash (`\`) acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
