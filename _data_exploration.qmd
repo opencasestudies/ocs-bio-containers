@@ -49,7 +49,7 @@ Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com
 
 ### RUN: Dependencies
 
-Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openajdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
+Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openjdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
 
 * Lines 6-11 use `apt-get` to install the listed dependencies.
   * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
@@ -104,7 +104,7 @@ Rather than copy/pasting any `Dockerfile` or lines that chatbot recommends for y
 
 ### RUN: Packages
 
-Lines 16 - 23 install the libraries for R packages. These are the packages of major interest for our analysis. Every package here is a data visualization package (or will support data extraction and wrangling from a table for a data visualization). Notice that every package is on a separate line and lines are separated by a backslash again (`\`). This time, these packages are listed alphabetically following the best practices recommendations. While we won't be using every listed package within this case study, they are included to demonstrate a scenario where a team may break a project up into steps and have different containers for those steps. In this case, Collab O. Rator's team has broken the project up into steps where one step in the process is data visualization. This container will then be used to create all of the data visualizations for the project. If the steps within this case study were the only parts of the analysis utilizing this container, we should remove any packages we do not directly use (e.g., `bubbleHeatmap`, `ggnetwork`, etc.)
+Lines 16 - 23 install the libraries for R packages. These are the packages of major interest for our analysis. Every package here directly supports our data visualization task as well as the rest of the data visualization needs of the overall team. Notice that every package is on a separate line and lines are separated by a backslash again (`\`). This time, these packages are listed alphabetically following the best practices recommendations. While we won't be using every listed package within this case study, they are included to demonstrate a scenario where a team may break a project up into steps and have different containers for those steps. In this case, Collab O. Rator's team has broken the project up into steps where one step in the process is data visualization. This container will then be used to create all of the data visualizations for the project. If the steps within this case study were the only parts of the analysis utilizing this container, we should remove any packages we do not directly use (e.g., `bubbleHeatmap`, `ggnetwork`, etc.)
 
 This `Dockerfile` uses [`install2.r`](https://rocker-project.org/use/extending.html) to install packages from CRAN. The `--error` option specifies that the build process will halt if there are any installation issues. The `--deps TRUE` specifies that all dependencies (e.g., suggestions) whether required or not are installed. By default, if we didn't include this argument, it would only install needed dependencies. For a more minimal image, it may be better to not set `--deps` to TRUE.
 
@@ -134,7 +134,7 @@ Notice what is **not** in this container image: Data! When we run a container fr
 
 ***
 
-Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
+Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a data frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
 
 ::: {.emphasis_block}
 
@@ -154,7 +154,7 @@ raw_table %>% print(n=25)
 
 :::
 
-Rather than having 14 rows and 7 columns of data as we expected, we observe a Data Frame with 25 rows of data. And while our Data Frame does have 7 columns, one of them (`X4`) is all NAs.
+Rather than having 14 rows and 7 columns of data as we expected, we observe a data frame with 25 rows of data. And while our data frame does have 7 columns, one of them (`X4`) is all NAs.
 
 ```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
 ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
