@@ -168,13 +168,16 @@ When you "run" an image to create a container you can "mount" a volume of your l
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
 ```
 
-If your institution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
+If your institution has strict security configurations set on your machine (possibly due to sensitive data), you may not be able to mount volumes when running a Docker container. This is because Docker as a tool (in its current default mode by itself) requires root-level permissions and this goes against the [principle of least privilege](https://hutchdatascience.org/Ethical_Data_Handling_for_Cancer_Research/data-security.html#the-principal-of-least-privilege), an important consideration for data management. 
 
 :::{.emphasis_block}
 <details><summary>Alternatives for machines with strict security configurations</summary>
 
 * [Podman](https://podman.io/) may be able to be used and has many similarities to Docker while more closely aligning with the principle of least privilege.
-* [Docker can work with Singularity](https://docs.sylabs.io/guides/2.6/user-guide/singularity_and_docker.html), enabling you to still use Docker and Docker containers without needing root access.
+* [Docker can work with Singularity](https://docs.sylabs.io/guides/latest/user-guide/singularity_and_docker.html), enabling you to still use Docker and Docker containers without needing root access.
+* [Docker rootless mode](https://docs.docker.com/engine/security/rootless/)
+
+Be sure to use what is permitted and supported by your institution.
 
 </details>
 :::
