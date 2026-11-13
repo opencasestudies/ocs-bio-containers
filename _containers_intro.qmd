@@ -298,16 +298,16 @@ We will use Docker through Docker Desktop or through a CLI (locally) in this cas
 
 ## Summary
 
-We've now learned that containers can help us to create an isolated computing environment that we can share with others. we've learned that containers are especially useful when we have lots of software to use for our work, especially if we have many software dependencies, or we want to work collaboratively with others. 
+We've now learned that containers can help us to create an isolated computing environment that we can share with others. We've learned that containers are especially useful when we have lots of software to use for our work, especially if we have many software dependencies, or we want to work collaboratively with others. 
 
 We also learned how containers are made: 
 
-* A **Dockerfile** provides the instructions for what software to include
-* We **build** from that file to create an **image** that we can share with others (which is like a snapshot of the software that can work on different kinds of machines)
-* We then **run** to create a **container** from an image to actively do work within
-* We have to **mount** data or other files if we want to access and use anything outside of the container
+* A **Dockerfile** provides the instructions for what software to include.
+* We **build** from that file to create an **image** that we can share with others (which is like a snapshot of the software that can work on different kinds of machines).
+* We then **run** to create a **container** from an image to actively do work within.
+* We have to **mount** data or other files if we want to access and use anything outside of the container.
 
-In many cases, it is [best practice](https://hutchdatascience.org/Containers_for_Scientists/07-sharing-images.html) to mount your data and keep our data local rather than building it into the container, as we want to keep the image small and shareable. This also helps ensure we don't accidentally share private data publicly and we can more easily update the data if needed. 
+In many cases, it is [best practice](https://hutchdatascience.org/Containers_for_Scientists/07-sharing-images.html) to mount your data and keep our data local rather than building it into the container, as we want to keep the image small and shareable. This also helps ensure we don't accidentally share private data publicly, and we can more easily update the data if needed. 
 
 ***
 
