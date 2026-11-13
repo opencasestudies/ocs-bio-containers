@@ -533,9 +533,9 @@ You may still be viewing the running container (e.g., can see the "Exec", "Files
 
 ##### Docker through a CLI
 
-In a CLI tab separate from your running container, use the [`docker ps`](https://docs.docker.com/reference/cli/docker/container/ls/) command to list all of your containers. 
+In a CLI tab separate from your running container, use the [`docker ps`](https://docs.docker.com/reference/cli/docker/container/ls/) command to list your running containers. Adding a `-a` flag lists all containers. 
 
-Copy or take note of the CONTAINER ID(s) for the container(s) you've been using for this case study. They should have names with `ocs-bio-` in them.
+Copy or take note of the CONTAINER ID(s) for the container(s) you've been using for this case study. The listed image they are based on should have names with `ocs-bio-` in them.
 
 :::
 
@@ -715,9 +715,9 @@ Typically, sharing a container **image** is better for reproducibility, even tho
 | Transparency / Readability | High -- mostly exact record of how the environment was built (exception: unless versions were not included) | Low -- Often need to run the image, rely on documentation, or use Docker Desktop to "Inspect" it in order to know what's available in the image |
 
 
-We have the modified Dockerfile and will be able to share that (which well help with the readability/transparency). Let's make sure we know how to (theoretically) share the image as well. 
+We have the modified Dockerfile and will be able to share that (which will help with the readability/transparency). Let's make sure we know how to (theoretically) share the image as well. 
 
-We've seen that images can be pulled from a registry (e.g., Docker Hub) which means that they can added or "pushed" to the registries as well. However, to push an image to Docker Hub, you'll need an account and credentials. Likely your collaborative team would have an account and how to access it would need to be discussed within the team. Alternatively, you can share a compressed version of the image itself through private communication (like over email, through OneDrive, etc.). This is done by using the [`docker image save`](https://docs.docker.com/reference/cli/docker/image/save/) command. This command typically sends the output to standard out and needs to be redirected or combined with the `-o` flag to save the output to a `.tar` file. If you redirect it, you can further compress it using the [bash shell command `gzip`](https://www.geeksforgeeks.org/linux-unix/gzip-command-linux/). In Docker Desktop, you would have to run this command with the `>_ Terminal` window. Note size could still be prohibitive for sharing this way even if you compress it. Therefore, setting up an account or access to a group account on Docker Hub is likely preferable for your day-to-day collaborative team work.
+We've seen that images can be pulled from a registry (e.g., Docker Hub) which means that they can be added or "pushed" to the registries as well. However, to push an image to Docker Hub, you'll need an account and credentials. Likely your collaborative team would have an account and how to access it would need to be discussed within the team. Alternatively, you can share a compressed version of the image itself through private communication (like over email, through OneDrive, etc.). This is done by using the [`docker image save`](https://docs.docker.com/reference/cli/docker/image/save/) command. This command typically sends the output to standard out and needs to be redirected or combined with the `-o` flag to save the output to a `.tar` file. If you redirect it, you can further compress it using the [bash shell command `gzip`](https://www.geeksforgeeks.org/linux-unix/gzip-command-linux/). In Docker Desktop, you would have to run this command with the `>_ Terminal` window. Note size could still be prohibitive for sharing this way even if you compress it. Therefore, setting up an account or access to a group account on Docker Hub is likely preferable for your day-to-day collaborative team work.
 
 We don't recommend running this because the compressed file is still over a GB, but for this image, you could use the following command:
 
