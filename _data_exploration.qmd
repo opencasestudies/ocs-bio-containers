@@ -22,7 +22,7 @@ The `Dockerfile` below is the Dockerfile that was used to define the image that 
 
 ### FROM: Base image
 
-Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. Our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, RStudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
+Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. A base image provides the foundation of software for our container. This is not required, but very helpful for avoiding adding packages yourself, when writing your own Dockerfiles. In this case, our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, RStudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
 
 Specifically this is a [version-pinned base image](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions) meaning that it's specifying a tag for the base image (R version 4.5.3 as opposed to `latest` -- whichever is the most recent version) and a ["digest"](https://docs.docker.com/dhi/explore/security-concepts/digests/) (everything after the at sign /`@`) -- a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a "digest" from the "Tag summary" panel under the "Overview" tab on Docker Hub. Pinning the version of the base image is a good practice. If you don't version pin the base image, any additional dependencies or packages may not be able to be version pinned long-term because the base image will be updated and compatible package versions will change.
 
@@ -51,16 +51,21 @@ Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com
 
 Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openajdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
 
+<details> <summary> See here for deeper information about the installations<\summary>
 * Lines 6-11 use `apt-get` to install the listed dependencies.
   * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
   * In shell commands where successful execution is important, commands are often chained together using a double ampersand (`&&`) representing "and". It ensures the second command is executed if and only if the first command completes successfully. [Docker documentation stipulates that `apt-get update` and `apt-get install` should always be chained together this way.](https://docs.docker.com/build/building/best-practices/#run)
   * [The `-y` flag](https://linux.die.net/man/8/apt-get) for `apt-get install` tells the command to assume an automatic yes to prompts so installations can happen non-interactively (important for a non-interactive building of an image). 
   * The [`--no-install-recommends` option](https://askubuntu.com/questions/65081/what-are-the-implications-of-no-install-recommends-apt-get-install) specifies that recommended but non-required packages should not be installed (important when building a minimal image).
-  * Lines within this block end with a backslash (`\`) which acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
-  * Note that the [Docker documentation highly recommends](https://docs.docker.com/build/building/best-practices/#run) the use of the double ampersand (`&&`) and backslash (`\`) to keep `Dockerfiles` readable.
   * The ecosystem impacts what tool is used after the `RUN` instruction. `apt-get` is used here because the base image (`rocker/tidyverse`) is based on Ubuntu. `apk` is an alternative to `apt-get` for certain ecosystems like those supported by Alpine instead of Ubuntu. You can trace the "image ancestry chain" by looking at each image's base image if you are unsure which ecosystem is being used.
 * Line 12 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
 * Line 13 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
+</details>
+
+* The backslash (`\`) acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
+* The double ampersand (`&&`)  acts to chain different commands together. A subsequent command will only run if the previous command was successful.
+ * Note that the [Docker documentation highly recommends](https://docs.docker.com/build/building/best-practices/#run) the use of the double ampersand (`&&`) and backslash (`\`) to keep `Dockerfiles` readable.
+
 
 We could improve this `Dockerfile` by [sorting multi-line arguments alphabetically](https://docs.docker.com/build/building/best-practices/#sort-multi-line-arguments) -- not super necessary for a small list like this, but if the list was longer, sorting alphabetically could help to ensure there are no duplications. 
 
@@ -85,6 +90,8 @@ The dependencies specified within this Dockerfile are not version-pinned, meanin
 AI use considerations
 ::::
 ::::{.inner_block}
+
+**Using AI for troubleshooting using or writing Dockerfiles**
 <u>Context:</u>
 Within your prompt, provide the chatbot 1) what base image your Dockerfile is using, 2) any other dependencies you know you need to include, 3) a list of packages that you want to install, and 4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
 
