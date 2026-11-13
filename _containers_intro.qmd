@@ -230,7 +230,7 @@ In a kitchen, you may make multiple courses for a meal: an appetizer, the main c
 
 The containerization process can be thought of like hotels. 
 
-```{r eval = FALSE, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as hotels.'}
+```{r, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as hotels.'}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_21#slide=id.g3f8b4188434_0_21")
 ```
 
@@ -248,8 +248,8 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 The containerization process can be thought of like building with LEGOs.
 
-```{r eval = FALSE, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
-ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f8b4188434_0_63#slide=id.g3f8b4188434_0_63")
+```{r, fig.align = 'center', out.width = '100%', echo = FALSE, fig.alt = 'Diagram showing how the containerization process can be thought of as building legos.'}
+ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h38948aeada7bcce9_0_0#slide=id.h38948aeada7bcce9_0_0")
 ```
 
 * Dockerfile: Instruction booklet that comes with a set
