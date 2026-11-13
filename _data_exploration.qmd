@@ -51,7 +51,8 @@ Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com
 
 Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openajdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
 
-<details> <summary> See here for deeper information about the installations<\summary>
+<details> <summary> See here for deeper information about the installations</summary>
+
 * Lines 6-11 use `apt-get` to install the listed dependencies.
   * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
   * In shell commands where successful execution is important, commands are often chained together using a double ampersand (`&&`) representing "and". It ensures the second command is executed if and only if the first command completes successfully. [Docker documentation stipulates that `apt-get update` and `apt-get install` should always be chained together this way.](https://docs.docker.com/build/building/best-practices/#run)
