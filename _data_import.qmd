@@ -21,7 +21,7 @@ If you try to use a Docker command like `docker pull` without first starting Doc
 :::{.panel-tabset}
 #### Docker Desktop
 
-Open the Docker Desktop app.
+Open the Docker Desktop app. You may get a message about loggin in. This is not required, but can be helpful for extensions to the case study.
 
 <details><summary>What if Docker Desktop isn't opening?</summary>
 
@@ -75,7 +75,7 @@ The instructions and visuals provided for interacting with Docker Desktop (throu
 </details>
 :::
 
-* Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." 
+* Find `bioocs/ocs-bio-containers-base`. Its description will read "BioOCS Containers Case Study companion container image - for the beginning activities." Note that there are two similar containers. Please select the one that says **"beginning activities"**.
 * Click on that card. 
 * Verify that in the header
   * the name of the selected image is `bioocs/ocs-bio-containers-base` 
@@ -89,7 +89,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 The bottom right of the Docker Desktop GUI will display progress messages such as: 
 
 * a spinning circle + "Pulling bioocs/ocs-bio-containers-base:main" 
-* a green check mark + "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
+* a green check mark next to "main" + possibly "Status: Downloaded newer image for bioocs/ocs-bio-containers-base:main"
 
 After the second message is displayed, your image should be available. To verify:
 
@@ -211,7 +211,9 @@ If we don't mount the volume when we run the image, we won't have access to thos
 ##### Docker Desktop
 
 * Ensure you are on the "Images" tab of Docker Desktop. (This can be found on the left menu.)
-* Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle.
+* Find the `bioocs/ocs-bio-containers-base` image and to the right under the "Actions" column, click the blue "Run" triangle. Please pause for the pop-up that shows up, as we will have instructions about how to mount the scripts. 
+
+If you skip the pop-up on accident you can trash the running image by clicking on the trashcan icon to the right of the actions, and then repeat the previous steps. 
 
 ```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the image section of the GUI which you navigate to using the left side menu. There, images that you have available are listed. The bioocs ocs bio containers base image should be listed and there is a blue triangle under the actions column which is used to run the image to create a container. The blue triangle is highlighted with an orange cirlce to show that it should be clicked."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_155#slide=id.h4f02b11d487195ec_37_155")
@@ -226,9 +228,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_226#slide=id.h4f02b11d487195ec_37_226")
 ```
 
-* Click the blue "Run" button at the bottom right of the window.
+* Click the blue "Run" button at the bottom right of the window. You may get a message requesting that Docker have access to your files. Select "Allow".
 * This will automatically open a running container (likely with a funny/random name unless you entered one in the popup window).
-* The running container has several tabs along the top like "Logs", "Exec", "Files", etc. The running container is automatically on the Logs tab where various start up messages are displayed from the container creation process.
+* Inside the running container on Docker Desktop, there are several tabs along the top like "Logs", "Exec", "Files", etc. The "Logs" tab should show various start up messages from the container creation process.
 
 ```{r echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "Simplified illustration of Docker Desktop showing the automatically opened running container with a silly container name automatically created by Docker Desktop. On the left hand side, the containers section of the menu has automatically been switched to. There are tabs such as Logs, Exec, and Files in the main panel of the window along the top under the silly container name. When opened, the container will automatically be on the Logs tab. The Logs tab shows log messages associated with creating the container from the image." }
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_297#slide=id.h4f02b11d487195ec_37_297")
@@ -253,7 +255,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f02b11d487195ec_37_416#slide=id.h4f02b11d487195ec_37_416")
 ```
 
-* Navigate to the "Files" tab (along the top in the running container).
+* Navigate to the "Files" tab (along the top in the running container) and scroll through to look at the files.
 * Notice that the `home` folder has a blue oval with the word "MOUNT" on it under the "Note" column. This is because we mounted those files. 
 * Click the `home` folder to expand its contents, we again see the `README.md` file as well as the `analysis_scripts` and `continued_learning_scripts` directories.
 
@@ -263,9 +265,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 * Change directories (`cd`) to your local copy of the analysis files (from Step 3a). 
 * Use the following command in your CLI to start a container
-  * This will mount the current directory as the volume (`-v`)
-  * The working directory within the running container will point to your current directory (`-w`)
-  * `-it` + `bash` opens an interactive CLI in the running container
+  * The `-v` specifies that the current directory will be mounted as a volume
+  * The `-w` specifies that the working directory within the running container shoudl point to your current directory 
+  * The `-it` + `bash` open an interactive CLI in the running container
   * Note that the image name `bioocs/ocs-bio-containers-base:main` must be specified after all of the flags (`-w`, `-v`, `-it`, etc.), but before the `bash` specification or there will be errors such as "Error response from daemon" if specified before the flags or "No such file or directory" if specified after `bash`.  
 
 ```{.bash}
@@ -288,7 +290,7 @@ Now that the container is running, it can be used to work with data and perform 
 
 ### Extracting data from a PDF within a running container
 
-Collab O. Rator previously wrote a script to extract the data from the PDF using the `tabulapdf` file. Rather than providing a file with the extracted data, Collab O. Rator provided the container information and the script. Therefore, in this case, we'll need to run the script from Collab O. Rator within the running container to extract and save the data so that we can work with it in other scripts.
+Collab O. Rator previously wrote a script to extract the data from the PDF using the `tabulapdf` file. Rather than providing a file with the extracted data, Collab O. Rator provided the container information and the script. Therefore, in this case, we'll need to run the script from Collab O. Rator within the running container to extract and save the data so that we can work with it in other scripts. 
 
 #### Step 1: Running the analysis
 
@@ -363,7 +365,12 @@ To run the script to fetch the data in the running container, follow these steps
 ##### Docker Desktop
 
 * Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
-* Enter `cd /home/analysis_scripts` (`cd` stands for "change directory") and press the return / enter key.
+* Enter the following command to navigate to the scripts directory (`cd` stands for "change directory") and press the return / enter key.
+
+```{.bash}
+cd /home/analysis_scripts
+```
+
 * Enter the following command and press the return / enter key.
 
 ```{.bash}
@@ -384,7 +391,7 @@ Enter the following command in your CLI.
 Rscript analysis_scripts/01_extract_data.R
 ```
 
-Notice the output messages from the script.
+Notice the output messages from the script. If you get an error about the file not being found, be sure that you have navigated to the folder on your computer called `ocs-bio-containers-scaffold-main` from downloading the zip file or cloning the repo in the previous steps and also run the docker run command as described above. If you have done all that, and you navigate into the script folder this command will not work, as it specifies that the script should be found in a directory called `analysis_scripts`.
 
 :::
 
@@ -417,19 +424,19 @@ We also save `rda` and `csv` versions of the raw data. We can confirm that the `
 ##### Docker Desktop
 
 * While still on the "Exec" tab within the running container:
-  * Type `ls ../` and press enter / return. 
+  * Type `ls ../` and press enter / return (this helps us move out of the `analysis_scripts` directory)
     * There will be a new directory `data` listed.
-  * Type `ls ../data` and press enter / return.
+  * Type `ls data` and press enter / return (this helps us see inside the `data` directory).
     * There will be a subdirectory called `imported` listed. 
-  * Type `ls ../data/imported` and press enter / return.
+  * Type `ls data/imported` and press enter / return (this helps us see inside the `imported directory inside the`data` directory).
     * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
 
 ```{r echo = FALSE, out.width = "100%", fig.align = "center", fig.alt = "Simplified illustration of Docker Desktop showing the addition of the ls commands to inspect the output and the results from those specifically that there is a subdirectory named imported in the data directory. That subdirectory has raw table1 CSV and RDA files."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h7b42eebaf4b4f34a_0_58#slide=id.h7b42eebaf4b4f34a_0_58")
 ```
 
-  * Type `wc -l ../data/imported/raw_table1.csv` and press enter / return.
-    * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long (1 line for the header and the other 25 for the number of rows in the data frame).
+  * Type `head data/imported/raw_table1.csv` and press enter / return.
+    * There will be a preview of waht the file looks like we can see that there are headers called `X1,X2,X3,X4,X5,X6,X7`.
 
 ##### Docker through a CLI
 
@@ -441,11 +448,12 @@ To confirm the creation of the data files:
   * There will be a subdirectory called `imported` listed. 
 * Enter `ls data/imported` in the CLI.
   * There will be two files `raw_table1.csv` and `raw_table1.rda` listed.
-* Enter `wc -l data/imported/raw_table1.csv` in the CLI.
-  * The beginning of the line will say 26 before listing the path and filename, reflecting that the file is 26 lines long (1 line for the header and the other 25 for the number of rows in the data frame).
+* Enter `head data/imported/raw_table1.csv` in the CLI.
+  * There will be a preview of waht the file looks like we can see that there are headers called `X1,X2,X3,X4,X5,X6,X7`.
 
 :::
 
 We now have the table data extracted from the PDF as a data frame in R  -- ready to be used within our running container for the next steps. But is it in a clean format or do we need to first wrangle it before we can visualize it?
+
 
 ***
