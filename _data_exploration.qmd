@@ -151,7 +151,7 @@ When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to e
 
 ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
 
-Now' let's take a look at the data. We can use the `cat` command and the `-n` flag to see a preview of the table with the row numbers listed.
+Now let's take a look at the data a bit more deeply than before. We can use the `cat` command, which stands for "concatenate" and can help us see the entirety of short files like this one. Adding the `-n` flag will help us to see a preview of the table with row numbers listed.
 
 ```{.bash}
 cat -n raw_table1.csv
