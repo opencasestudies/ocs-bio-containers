@@ -143,8 +143,13 @@ Notice what is **not** in this container image: Data! When we run a container fr
 
 ***
 
-When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to extract the data table from the research study PDF. We defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
+When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to extract the data table from the research study PDF. We defined a Data Frame (`raw_table1.csv`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022.
 
+Now' let's take a look at the data. We can use the `cat` command and the `-n` flag to see a preview of the table with the row numbers listed.
+
+```{.bash}
+cat -n raw_table1.csv
+```
 ::: {.emphasis_block}
 
 ```{r}
