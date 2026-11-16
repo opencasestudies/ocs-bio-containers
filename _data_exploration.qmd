@@ -143,7 +143,7 @@ Notice what is **not** in this container image: Data! When we run a container fr
 
 ***
 
-Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
+When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to extract the data table from the research study PDF. We defined a Data Frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
 
 ::: {.emphasis_block}
 
