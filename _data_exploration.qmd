@@ -146,7 +146,9 @@ Notice what is **not** in this container image: Data! When we run a container fr
 
 When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to extract the data table from the research study PDF. We defined a Data Frame (`raw_table1.csv`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022:
 
-```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
+<iframe src="https://www.nature.com/articles/s41522-022-00345-5/tables/1" width="100%" " style="border:1px solid #ccc;">
+</iframe>
+
 ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
 
 Now' let's take a look at the data. We can use the `cat` command and the `-n` flag to see a preview of the table with the row numbers listed.
