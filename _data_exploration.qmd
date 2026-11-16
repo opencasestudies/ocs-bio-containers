@@ -154,6 +154,7 @@ Now' let's take a look at the data. We can use the `cat` command and the `-n` fl
 ```{.bash}
 cat -n raw_table1.csv
 ```
+
 ::: {.emphasis_block}
 
 ```{r}
