@@ -201,7 +201,7 @@ If you wanted to explore the dataset to see these things for yourself, you could
 
 ::: {.emphasis_block}
 
-```{r, eval = false, echo = true, warning: false, message = false}
+```{r}
 #| echo: true
 #| eval: false
 #| warning: false
