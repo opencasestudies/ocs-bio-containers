@@ -19,7 +19,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is considered one of the industry-standard tools and is also the most popular. We primarily will discuss and utilize it within this case study. However, Docker is not always the appropriate tool to use in every context.
 
 
-## Why containers?
+## Uses for containers
 
 ***
 
