@@ -266,7 +266,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 * Change directories (`cd`) to your local copy of the analysis files (from Step 3a). 
 * Use the following command in your CLI to start a container
   * The `-v` specifies that the current directory will be mounted as a volume
-  * The `-w` specifies that the working directory within the running container shoudl point to your current directory 
+  * The `-w` specifies that the working directory within the running container should point to your current directory 
   * The `-it` + `bash` open an interactive CLI in the running container
   * Note that the image name `bioocs/ocs-bio-containers-base:main` must be specified after all of the flags (`-w`, `-v`, `-it`, etc.), but before the `bash` specification or there will be errors such as "Error response from daemon" if specified before the flags or "No such file or directory" if specified after `bash`.  
 
