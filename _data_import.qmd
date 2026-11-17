@@ -21,7 +21,7 @@ If you try to use a Docker command like `docker pull` without first starting Doc
 :::{.panel-tabset}
 #### Docker Desktop
 
-Open the Docker Desktop app. You may get a message about loggin in. This is not required, but can be helpful for extensions to the case study.
+Open the Docker Desktop app. You may get a message about logging in. This is not required, but can be helpful for extensions to the case study.
 
 <details><summary>What if Docker Desktop isn't opening?</summary>
 
