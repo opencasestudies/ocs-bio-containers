@@ -202,13 +202,10 @@ If you wanted to explore the dataset to see these things for yourself, you could
 ::: {.emphasis_block}
 
 ```{r}
-#| echo: true
-#| eval: false
 #| warning: false
 #| message: false
 
 library(tidyverse)
-library(readr)
 
 raw_table <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv")
 ```
