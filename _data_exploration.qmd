@@ -154,9 +154,25 @@ ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 Now let's take a look at the data we extracted a bit more deeply than before. We can use the `cat` command, which stands for "concatenate". This command can help us see the entirety of short files like this one. Adding the `-n` flag will help us to row numbers listed.
 
+:::{.panel-tabset}
+##### Docker Desktop
+
+
+* Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
+* Enter the following command and press the return / enter key.
+
 ```{.bash}
 cat -n data/imported/raw_table1.csv
 ```
+
+##### Docker through a CLI
+
+Enter the following command in your CLI.
+```{.bash}
+cat -n data/imported/raw_table1.csv
+```
+
+:::
 
 
 This will give us output that looks something like this:
@@ -181,34 +197,26 @@ Because our data is in a mounted volume, we have access to it outside of the con
 
 Our `01_extract_data.R` script saves the extracted data in both a `.csv` and an `.rda` file. [`.rda` files](https://www.r-bloggers.com/2017/04/load-save-and-rda-files/) allow users to store and load R data structures or objects (in a compressed format).
 
-If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE using the `load()` function: 
-
-```{r, eval = FALSE}
-file_path <- "[your_path_to_]/ocs-bio-containers-scaffold-main/data/imported/raw_table1.rda"
-load(file_path)
-```
-
-This will load an R object named `raw_table` that you can interact with in your IDE. You can use [`View()`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View) to look at the object and other functions to look at unique values, counts of values, etc. in columns.
-
-</details>
+If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE by loading the tidvyerse (and installing it if needed), and using the `read_csv`()` function: 
 
 ::: {.emphasis_block}
 
 ```{r}
-#| echo: false
+#| echo: true
+#| eval: false
 #| warning: false
 #| message: false
 
 library(tidyverse)
-library(readr)
 
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv"
-
-raw_table <- read_csv(url)
-raw_table %>% print(n=25)
+raw_table <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv")
 ```
-
 :::
+
+This will create an R object named `raw_table` that you can interact with in your IDE. You can use [`View()`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View) to look at the object and other functions to look at unique values, counts of values, etc. in columns.
+
+</details>
+
 
 
 We would have expected the {{< glossary "Cohort" display="cohort" >}} descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that `X3` contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (`X4`) has all `NAs`. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have `NAs` in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.
