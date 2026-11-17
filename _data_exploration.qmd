@@ -197,7 +197,7 @@ Because our data is in a mounted volume, we have access to it outside of the con
 
 Our `01_extract_data.R` script saves the extracted data in both a `.csv` and an `.rda` file. [`.rda` files](https://www.r-bloggers.com/2017/04/load-save-and-rda-files/) allow users to store and load R data structures or objects (in a compressed format).
 
-If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE by loading the tidvyerse (and installing it if needed), and using the `read_csv`()` function: 
+If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE by loading the tidyverse (and installing it if needed), and using the `read_csv`()` function: 
 
 ::: {.emphasis_block}
 
