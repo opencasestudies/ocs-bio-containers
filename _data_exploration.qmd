@@ -96,7 +96,7 @@ AI use considerations
 **Using AI for to help with using or writing Dockerfiles**
 
 <u>Context:</u>
-Within your prompt, provide the chatbot 
+Within your prompt, provide the chatbot: 
 
 1) what base image your Dockerfile is using, <br>
 2) any other dependencies you know you need to include, <br>
