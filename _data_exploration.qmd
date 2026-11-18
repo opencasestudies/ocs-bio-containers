@@ -93,7 +93,8 @@ AI use considerations
 ::::
 ::::{.inner_block}
 
-**Using AI for troubleshooting using or writing Dockerfiles**
+**Using AI for to help with using or writing Dockerfiles**
+
 <u>Context:</u>
 Within your prompt, provide the chatbot 
 
