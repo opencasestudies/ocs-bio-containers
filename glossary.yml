@@ -19,7 +19,7 @@ Computing environment: |
 Consistency: |
   The property of behaving the same way each time an analysis or software is run, regardless of where it is executed.
 Container: |
-  Defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable (portable) and consistent computing environment.
+  Defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable, portable, and consistent computing environment.
 Containerization: |
   The process of defining and packaging code, dependencies, software packages, etc. within an isolated computing environment that can be shared.
 Correlation: |
