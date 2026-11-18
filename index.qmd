@@ -37,7 +37,6 @@ include-sections:
 
 {{< include _ocs_frontmatter.qmd >}}
 
-
 {{< include _motivation.qmd >}}
 
 {{< include _motivational_refs.qmd >}}
