@@ -16,6 +16,8 @@ Command Line Interface (CLI): |
   A window that lets a user interact with a computer through typing commands.
 Computing environment: |
   Specific features of a computational resource, including operating system, software, and software versions.
+Consistency: |
+  The property of behaving the same way each time an analysis or software is run, regardless of where it is executed.
 Container: |
   Defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable (portable) and consistent computing environment.
 Containerization: |
@@ -104,6 +106,8 @@ Paired: |
   Data that is collected from the same sample in a study.
 Personally Identifiable Information: |
   Data unique to an individual person that can be used to distinguish their identity, including full names, Social Security numbers, contact information, etc.; abbreviated as "PII".
+Portability: |
+  The property of being easily moved, transferred, or used across different systems or environments; usable or runnable in many different computing environments with little or no modification required. 
 Primary: |
   Metabolites that are required for the life-cycle (e.g., growth, development, and reproduction).
 Protected Health Information: |

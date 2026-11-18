@@ -35,17 +35,23 @@ Docker Desktop may not appear to open if it was previously opened and closed bec
 
 Open your {{< glossary "Command Line Interface (CLI)" display = "command line interface (CLI)" >}} (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows). The instructions in this case study best align with PowerShell for Windows machines. You may need to use backslashes (`\`) in place of forward slashes (`/`) when file navigation commands are provided for use outside of a running container.
 
-In your command line interface, use the following command to start docker.
+In your command line interface, use the following command to start docker (for Mac).
 
 ```{.bash}
 open -a Docker
+```
+
+Or the following command for Windows:
+
+```{.bash}
+& "Docker Desktop"
 ```
 
 :::
 
 ### Step 2: Pulling the container image from Docker Hub
 
-Recall that a container image is the main way that containers are shared and these are often stored in {{< glossary "Registry" display="registries" >}} like {{< glossary "Docker Hub" >}}. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-main` with a tag of "main". 
+Recall that a container image is the main way that containers are shared and these are often stored in {{< glossary "Registry" display="registries" >}} like {{< glossary "Docker Hub" >}}. For this activity, the data visualization container image is stored on Docker Hub by the `bioocs` organization. Specifically the image is named `ocs-bio-containers-base` with a tag of "main". 
 
 :::{.panel-tabset}
 #### Docker Desktop
@@ -176,7 +182,7 @@ We recommend either keeping it in the Downloads folder or moving it to your Desk
 
 ##### Option B: Use GitHub
 
-This options allows you to practice more reproducibility best practices, specifically version-controlling an analysis.
+This option allows you to practice more reproducibility best practices, specifically version-controlling an analysis.
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
@@ -272,7 +278,9 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 docker run -v $(pwd):$(pwd) -w $(pwd) -it bioocs/ocs-bio-containers-base:main bash
 ```
 
-The running container will have a different command prompt than the usual command line command prompt. It will start with something like `root@` followed by some letters and numbers and then the a colon with file path for your local copy of the analysis files.
+(Note this command may need to be altered if using a Windows machine. Try replacing `pwd` with `PWD`.)
+
+The running container will have a different command prompt than the usual command line command prompt. It will start with something like `root@` followed by some letters and numbers and then a colon with the file path for your local copy of the analysis files.
 
 Use `ls` to see what files or directories are in the running container. You should see the directories `analysis_scripts` and `continued_learning_scripts` as well as the file `README.md`. 
 
