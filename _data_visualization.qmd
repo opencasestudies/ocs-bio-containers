@@ -32,7 +32,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ### Command Line
 
 * Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
-    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
+    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should be the final part of the printed path.
 * Enter `mkdir -p dockerfiles data/wrangled`. 
     * This will create directories named `dockerfiles` in the top and `wrangled` under the `data` directory.
 * Enter `cd dockerfiles`
@@ -223,7 +223,7 @@ Lines 42 - 56 are the actual data visualization steps of the process (for the KE
 
 Lines 59 - 62 save the KEGG plot and prints a log message about completing that plot.
 
-Lines 65 - 57 save the `ggplot` objects in an `.rda` file.
+Lines 65 - 67 save the `ggplot` objects in an `.rda` file.
 
 </details>
 
@@ -312,7 +312,7 @@ Edit the script to replace lines 11-27 with this instead:
 #' `hmdb_annotated_compounds` (integers), 
 #' and `dataset_name` (strings).
 #' @param y_axis_var name of variable / column in the data frame will be used for the y-axis
-#' @param ref_deb a string representing which reference database is being visualized (for the title, axis label, etc.) (e.g, "HMDBB" or "KEGG").
+#' @param ref_db a string representing which reference database is being visualized (for the title, axis label, etc.) (e.g, "HMDBB" or "KEGG").
 #'
 #' @return scatter_plot the ggplot object
 
@@ -544,7 +544,7 @@ table1_extract %>%
 This approach uses `pivot_longer`:
 
 * selecting the columns that end with the string "annotated_compounds" (because both of the column names `hmdb_annotated_compounds` and `kegg_annotated_compounds` end with that string and no other column names end with that string)
-* moving the name of the columns that are being pivoted longer (`names_to` ) to a new column `ref_databse`
+* moving the name of the columns that are being pivoted longer (`names_to` ) to a new column `ref_database`
 * moving the values from the columns that are being pivoted longer (`values_to`) to a new column `num_annotated`
 * piping that slightly longer but wider dataset to `ggplot`
 
@@ -561,9 +561,5 @@ The `ggplot` code is mostly the same as was used in `03a_visualization.R` howeve
 :::
 
 If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the trends between the variables in the plot (e.g., their correlation). Therefore, we can formally analyze these trends/the correlation among variables before we share this plot with Collab O. Rator!
-
-:::{.column-margin}
-Add Correlation to glossary
-:::
 
 ***
