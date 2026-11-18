@@ -2,7 +2,7 @@
 
 ***
 
-If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- "Configure the container" section). 
+If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (e.g., the `ocs-bio-containers-scaffold-main` directory that you downloaded and unzipped (Data Import section Option A) or whatever you named it, possibly `containers-case-study-yourinitials`, prior to cloning (Data Import section Option B) in Step 3a). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- "Configure the container" section). 
 
 ***
 
