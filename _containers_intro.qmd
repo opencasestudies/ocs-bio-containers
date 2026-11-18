@@ -162,7 +162,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ### Mounting
 
-When you "run" an image to create a container you can "mount" a "volume" of your local files so that files from your system are available to the container. The volume (these folders or files) may include analysis scripts, data files, or packages that you are writing/developing. Any changes made to those files are made to the local files themselves (e.g., they will still be available to you on your local system once the container is no longer running instead of being container file specific changes).
+When you "run" an image to create a container you can "mount" a {{< glossary "Volume" display='"volume"' >}} of your local files so that files from your system are available to the container. The volume (these folders or files) may include analysis scripts, data files, or packages that you are writing/developing. Any changes made to those files are made to the local files themselves (e.g., they will still be available to you on your local system once the container is no longer running instead of being container file specific changes).
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
