@@ -84,7 +84,7 @@ The dependencies specified within this Dockerfile are not version-pinned, meanin
 
 * Some packages may tell you that you will need a specific library or dependency in order to install it. `tabulapdf` is an example of this where it [lists Java under the System Requirements](https://cran.r-project.org/web/packages/tabulapdf/index.html).
 * Sometimes you will try to build a `Dockerfile` and get a message saying it doesn't have a library it needs.
-* You could list common dependencies for your ecosystem and then remove one at a time to see if the image still builds and the analysis still run successfully.
+* You could list common dependencies for your ecosystem and then remove one at a time to see if the image still builds and the analysis still runs successfully.
 * You could ask a chatbot to suggest dependencies that may be necessary given your base image and the packages you need to include.
 
 :::{.ai_box}
