@@ -235,7 +235,7 @@ Now that we've wrangled the extracted table data into a Data Frame, we want to p
 
 Collab O. Rator's email provided the following guidance regarding the data visualizations:
 
->Specifically, I’d like to see scatter plots comparing the data from the final four columns for each dataset (No. samples w/ paired data, Longitudinal, No. HMDB-annotated compounds, and No. KEGG-annotated compounds).
+>Specifically, I’d like to see scatter plots comparing the data from the final four columns for each dataset (number of samples w/ paired data, Longitudinal, number of HMDB-annotated compounds, and number of KEGG-annotated compounds).
 
 Collab O. Rator's instructions have asked us to visualize 4 variables or dimensions of the data with scatter plots. The axes (x- and y-) will account for two of those variables, and we can adjust the points (e.g., color or shape) to represent a third variable -- likely the `longitudinal` value as this is categorical ("Yes" vs "No"). To visualize the fourth variable, we would need to add a third axis (z-) or some other means of encoding the data, but this adds to the complexity of the plot. Instead, we could make two separate panels.
 
