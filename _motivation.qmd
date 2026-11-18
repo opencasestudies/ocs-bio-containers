@@ -17,7 +17,7 @@ In this case study, we will introduce containers as a tool for increasing the re
 Container
 ::::
 ::::{.inner_block}
-A container is a defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
+A container is a defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable (portable) and consistent computing environment.
 ::::
 :::
 

@@ -560,10 +560,6 @@ The `ggplot` code is mostly the same as was used in `03a_visualization.R` howeve
 ::::
 :::
 
-If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the trends between the variables in the plot (e.g., their correlation). Therefore, we can formally analyze these trends/the correlation among variables before we share this plot with Collab O. Rator!
-
-:::{.column-margin}
-Add Correlation to glossary
-:::
+If someone needs to validate the process, visually comparing plots can be somewhat difficult, especially for plots containing lots of data. We also made several observations about the trends between the variables in the plot (e.g., their correlation). Therefore, we can formally analyze these trends/the {{< glossary Correlation display="correlation" >}} among variables before we share this plot with Collab O. Rator!
 
 ***
