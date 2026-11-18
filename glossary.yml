@@ -23,7 +23,7 @@ Container: |
 Containerization: |
   The process of defining and packaging code, dependencies, software packages, etc. within an isolated computing environment that can be shared.
 Correlation: |
-  A statistical measure of the relationship between two variables, specifically how those variables tend to change.
+  A statistical measure of the relationship between two variables, specifically how those variables tend to vary together.
 Correlation coefficient: |
   Describes the strength and direction of a relationship or correlation between two variables; ranges from -1 to 1 with negative correlation reflecting an inverse relationship (as one variable increases, another decreases) and positive correlation representing a direct relationship (as one variable increases, so does the other). A correlation coefficient of zero represents no correlation between variables.
 Daltons: |
