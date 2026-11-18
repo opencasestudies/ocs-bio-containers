@@ -32,6 +32,11 @@ include-sections:
   background-color: lightyellow;
 ```
 
+```{css, echo = FALSE}
+.panel-tabset.white .tab-content{
+  background-color: white;
+```
+
 
 {{< include _main_image.qmd >}}
 
