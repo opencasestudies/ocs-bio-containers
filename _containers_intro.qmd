@@ -19,7 +19,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 Containers and the containerization process are supported by different tools such as Docker, Podman, Apptainer, and Singularity. Docker is considered one of the industry-standard tools and is also the most popular. We primarily will discuss and utilize it within this case study. However, Docker is not always the appropriate tool to use in every context.
 
 
-## Uses for containers
+## Why use containers?
 
 ***
 
@@ -148,7 +148,7 @@ Add push and pull to the glossary as well as a dictionary box.
 Reproducibility considerations
 ::::
 ::::{.inner_block}
-Images are typically stored in registries to share rather than Dockerfiles. This is because an image that is pulled from a registry will match the image that was pushed to the registry. In contrast, rebuilding an image from the same Dockerfile at a later date may yield a different result. Dependencies can change or become unavailable over time, and base images referenced with tags such as "latest" may also be updated. Therefore, unless versions are explicitly controlled within the Dockerfile ([see this blog for more information](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view)), rebuilt images may not match images on a registry even if they originate from the same Dockerfile. Additionally, the image may be rebuilt using different build options or parameters than those used originally. Small changes from differing build options or changes over time can impact how reproducible a container actually is in practice. 
+Images are typically stored in registries as a means to share a container, rather than sharing Dockerfiles. This is because an image that is pulled from a registry will match the image that was pushed to the registry. In contrast, rebuilding an image from the same Dockerfile at a later date may yield a different result. Dependencies can change or become unavailable over time, and base images referenced with tags such as "latest" may also be updated. Therefore, unless versions are explicitly controlled within the Dockerfile ([see this blog for more information](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view)), rebuilt images may not match images on a registry even if they originate from the same Dockerfile. Additionally, the image may be rebuilt using different build options or parameters than those used originally. Small changes from differing build options or changes to packages / dependencies over time can impact how reproducible a container actually is in practice. 
 ::::
 :::
 
@@ -162,7 +162,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 
 ### Mounting
 
-When you "run" an image to create a container you can "mount" a "volume" of your local files so that files from your system are available to the container. The volume (these folders or files) may include analysis scripts, data files, packages that you are writing/developing. Any changes made to those files are made to the local files themselves (e.g., they will still be available to you on your local system once the container is no longer running instead of being container file specific changes).
+When you "run" an image to create a container you can "mount" a "volume" of your local files so that files from your system are available to the container. The volume (these folders or files) may include analysis scripts, data files, or packages that you are writing/developing. Any changes made to those files are made to the local files themselves (e.g., they will still be available to you on your local system once the container is no longer running instead of being container file specific changes).
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "Volumes have to be mounted when running an image to have access to outside files such as scripts or data."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f613e4255f_0_0#slide=id.g3f613e4255f_0_0")
