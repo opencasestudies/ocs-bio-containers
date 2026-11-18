@@ -231,7 +231,7 @@ One possible approach would:
 
 ### Planning data visualizations
 
-Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this Data Frame!
+Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this data!
 
 Collab O. Rator's email provided the following guidance regarding the data visualizations:
 
