@@ -95,7 +95,12 @@ AI use considerations
 
 **Using AI for troubleshooting using or writing Dockerfiles**
 <u>Context:</u>
-Within your prompt, provide the chatbot 1) what base image your Dockerfile is using, 2) any other dependencies you know you need to include, 3) a list of packages that you want to install, and 4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
+Within your prompt, provide the chatbot 
+
+1) what base image your Dockerfile is using, <br>
+2) any other dependencies you know you need to include, <br>
+3) a list of packages that you want to install, and <br>
+4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
 
 <u>Suggested Prompt:</u>
 
