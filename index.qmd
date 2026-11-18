@@ -15,6 +15,7 @@ include-sections:
   main-q-table: false
 ---
 
+```{=html}
 <!--
   Update above to exclude optional or new sections by changing from true to false.
   Update the various qmd documents below with each component of a Bio-OCS case study.
@@ -23,10 +24,19 @@ include-sections:
   For documentation on quarto syntax possibilities, use https://quarto.org/docs/authoring/markdown-basics.html.
   Examples in the documentation range from including images and videos to including margin notes, annotating code, and linking within a document.
 -->
+```
+
+
+```{css, echo = FALSE}
+.panel-tabset .tab-content{
+  background-color: lightyellow;
+```
+
 
 {{< include _main_image.qmd >}}
 
 {{< include _ocs_frontmatter.qmd >}}
+
 
 {{< include _motivation.qmd >}}
 
@@ -37,9 +47,7 @@ include-sections:
 {{< include _los.qmd >}}
 
 ::: {.content-hidden unless-meta="include-sections.lo-map"}
-
 {{< include _lo_map.qmd >}}
-
 :::
 
 {{< include _context.qmd >}}
@@ -55,41 +63,29 @@ include-sections:
 {{< include _packages.qmd >}}
 
 ::: {.content-hidden unless-meta="include-sections.data-import"}
-
 {{< include _data_import.qmd >}}
-
 :::
 
 ::: {.content-hidden unless-meta="include-sections.data-exploration"}
-
 {{< include _data_exploration.qmd >}}
-
 :::
 
 ::: {.content-hidden unless-meta="include-sections.data-wrangling"}
-
 {{< include _data_wrangling.qmd >}}
-
 :::
 
 ::: {.content-hidden unless-meta="include-sections.data-viz"}
-
 {{< include _data_visualization.qmd >}}
-
 :::
 
 ::: {.content-hidden unless-meta="include-sections.data-analysis"}
-
 {{< include _data_analysis.qmd >}}
-
 :::
 
 {{< include _summary.qmd >}}
 
 ::: {.content-hidden unless-meta="include-sections.main-q-table"}
-
 {{< include _main_qs_answers_table.qmd >}}
-
 :::
 
 {{< include _containers_troubleshooting.qmd >}}
@@ -103,12 +99,12 @@ include-sections:
 {{< include _bibliography.qmd >}}
 
 ## **Session Info**
-***
+
+------------------------------------------------------------------------
 
 ### For the container infrastructure and application steps within this case study
 
 ::: {.emphasis_block style="font-family: monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; display: block; line-height: 0.8;"}
-
 ```{r}
 #| echo: false
 #| output: asis
@@ -123,7 +119,6 @@ file_lines <- gsub(" ", "&nbsp;", file_lines)
 formatted_lines <- paste0(file_lines, "  ")
 cat(formatted_lines, sep = "\n")
 ```
-
 :::
 
 ### For publishing of this case study
