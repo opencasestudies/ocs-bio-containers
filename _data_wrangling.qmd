@@ -4,10 +4,6 @@
 
 If you have been following along but stopped, the scripts we are using are set up to both save and import the data to/from our {{< glossary "Mount" display="mounted" >}} {{< glossary "Volume" display="volume" >}} (the `ocs-bio-containers-scaffold-main` directory). Therefore in between sections, you should be able to pause, stop, or even delete a {{< glossary "Container" display="container" >}} and either unpause, re-start, or re-create the container (Step 3b from the Data Import -- "Configure the container" section). 
 
-::: {.column-margin}
-Add instructions on pausing, stopping, and deleting containers.
-:::
-
 ***
 
 <details> <summary> If you skipped the data import section click here. </summary>
@@ -235,7 +231,7 @@ One possible approach would:
 
 ### Planning data visualizations
 
-Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this Data Frame!
+Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this data!
 
 Collab O. Rator's email provided the following guidance regarding the data visualizations:
 

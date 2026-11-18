@@ -93,7 +93,7 @@ Because microbiome and metabolome data can be integrated together for a greater 
 
 1. Download the data associated with each study.
 2. Link the paired data (microbiome and metabolome) for each sample within each study.
-3. Jointly reprocess all raw data from across the studies
+3. Jointly reprocess all raw microbiome data from across the studies
 4. Annotate microbiome {{< glossary "Taxa" display="taxa">}} and metabolite molecules according to relevant databases (e.g., KEGG and HMDB)
 
 Recall that the set of samples from a single study is typically referred to as being from a cohort. In a curated data resource, samples from different study cohorts are pooled together.
