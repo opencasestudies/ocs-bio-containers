@@ -424,7 +424,7 @@ We also save `rda` and `csv` versions of the raw data. We can confirm that the `
 ##### Docker Desktop
 
 * While still on the "Exec" tab within the running container:
-  * Type `ls ../` and press enter / return (this helps us move out of the `analysis_scripts` directory)
+  * Type `cd ../` and press enter / return (this helps us move out of the `analysis_scripts` directory)
     * There will be a new directory `data` listed.
   * Type `ls data` and press enter / return (this helps us see inside the `data` directory).
     * There will be a subdirectory called `imported` listed. 
