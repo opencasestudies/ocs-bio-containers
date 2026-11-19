@@ -1,7 +1,9 @@
+Base image: |
+  A foundation or base for a container image. Provides a starting layer of software or libraries that will be available to the container.
 Benchmarking: |
   Comparing the performance, evaluation metrics (e.g., accuracy, precision, reliability, etc.), and/or runtime of multiple tools that perform the same task. 
 Build: |
-  Verb for creating a container image from a Dockerfile.
+  Verb for creating a container image from a Dockerfile, specifically preparing the environment by gathering the necessary software libraries.
 Carbohydrates: |
   Macromolecules made up of carbon, hydrogen, and oxygen that provide and store energy for cells. 
 Clinical data: |
@@ -17,9 +19,13 @@ Computing environment: |
 Consistency: |
   The property of behaving the same way each time an analysis or software is run, regardless of where it is executed.
 Container: |
-  Defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
+  Defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable, portable, and consistent computing environment.
 Containerization: |
-  The process of packaging code, dependencies, software packages, etc. within an isolated computing environment.
+  The process of defining and packaging code, dependencies, software packages, etc. within an isolated computing environment that can be shared.
+Correlation: |
+  A statistical measure of the relationship between two variables, specifically how those variables tend to vary together.
+Correlation coefficient: |
+  Describes the strength and direction of a relationship or correlation between two variables; ranges from -1 to 1 with negative correlation reflecting an inverse relationship (as one variable increases, another decreases) and positive correlation representing a direct relationship (as one variable increases, so does the other). A correlation coefficient of zero represents no correlation between variables.
 Daltons: |
   Standard units of molecular mass used to measure the weight of molecules.
 Data collection or resource: |
@@ -86,6 +92,8 @@ Molecular weight: |
   The total mass of a single molecule, which is the sum of the atomic masses of all atoms in a molecule.
 Mount: |
   Connect a file or directory from the local machine to a location inside of a container.
+Non-parametric: |
+  Statistical methods that make minimal assumptions about the distribution of the data.
 Nuclear Magnetic Resonance (NMR): |
   A technique to detect and quantify metabolites using the magnetic properties of atomic nuclei.
 Nucleic acids: |
@@ -106,6 +114,10 @@ Protected Health Information: |
   A subset of PII that includes any health information that can identify an individual that is regulated by HIPAA, including full name, contact information, medical records, health insurance information, biometric elements, etc.; abbreviated as "PHI".
 Proteins: |
   Macromolecules made up of folded chains of amino acids that perform specific functions within organisms. 
+Pull: |
+  From remote to local: Getting something (e.g., an image) from a remote location (e.g., Docker Hub) to use locally.
+Push: |
+  From local to remote: Sending something (e.g., an image) from your local machine to a remote registry (e.g., Docker Hub).
 Reference databases: |
   Databases including known information about a topic. For metabolomics, reference databases may include known metabolites and related information such as associated spectra from NMR or mass spec, names, structural information, chemical information, or metabolic pathways.
 Registry: |
@@ -124,6 +136,8 @@ Secondary data: |
   Data collected originally by others for a different purpose.
 Sequencing: |
   A laboratory technique that extracts and analyzes the genetic material from a sample.
+Shebang: |
+  Character sequence located at the top of a script used to tell the operating system which programming language should be used to interpret and run the code (e.g., Bash, Python, R, etc.).
 Signaling pathways: |
   Series of chemical reactions that let groups of molecules control a cell function (e.g., cell growth, gene expression, inflammation, or cell death).
 Spectra: |

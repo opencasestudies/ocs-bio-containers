@@ -15,7 +15,7 @@ In addition to the background and visualization request, your collaborator sends
 Container
 ::::
 ::::{.inner_block}
-A container is a defined packaging of code, dependencies, packages, etc. within an isolated environment supporting the deployment of applications or running of analyses.
+A container is a defined packaging of code, dependencies, packages, etc. within an isolated but active computing environment supporting the deployment of applications or running of analyses. Containers provide a shareable, {{< glossary Portability display="portable" >}}, and {{< glossary Consistency display="consistent" >}} computing environment.
 ::::
 :::
 

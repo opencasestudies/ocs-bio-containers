@@ -137,11 +137,30 @@ Images can be stored within your local file system but you might want to free up
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h4f0c8908d3750b57_0_190#slide=id.h4f0c8908d3750b57_0_190")
 ```
 
-Images can be "pushed" or "pulled" from a registry. If an image has multiple tags or is built for multiple architectures, the related images (with different tags or versions built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository). If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
+Images can be {{< glossary Push display='"pushed"' >}} or {{< glossary Pull display='"pulled"' >}} from a registry. If an image has multiple tags or is built for multiple architectures, the related images (with different tags or versions built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository). If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
 
-:::{.column-margin}
-Add push and pull to the glossary as well as a dictionary box.
-:::
+:::::::: {.definition_box}
+::::::: {.panel-tabset}
+
+#### **Definition**: Push
+
+::::{.definition_box_header}
+Push
+::::
+::::{.inner_block}
+The act of sending something from your local machine to a remote location. Within the context of containerization, this often means pushing an image to a registry like Docker Hub in order to share it.
+::::
+
+#### **Definition**: Pull
+
+::::{.definition_box_header}
+Pull
+::::
+::::{.inner_block}
+The act of retrieving something from a remote location to your local machine. Within the context of containerization, this often means pulling an image from a registry like Docker Hub to your local machine in order to use it. Each layer of the image is pulled sequentially.
+::::
+:::::::
+::::::::
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
