@@ -159,7 +159,7 @@ Certain lines have certain information about the data -- what are they reporting
 
 <details><summary>Answer</summary>
 
-If we were to inspect the `table1_extract` Data Frame, we would observe that the data now appears to match our expectations. 
+If we were to inspect the `table1_extract` data frame, we would observe that the data now appears to match our expectations. 
 
 ```{r}
 #| echo: false
@@ -231,7 +231,7 @@ One possible approach would:
 
 ### Planning data visualizations
 
-Now that we've wrangled the extracted table data into a Data Frame, we want to plan out the visualizations we'll make using this data!
+Now that we've wrangled the extracted table data into a data frame, we want to plan out the visualizations we'll make using this data!
 
 Collab O. Rator's email provided the following guidance regarding the data visualizations:
 
