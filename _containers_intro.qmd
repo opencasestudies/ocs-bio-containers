@@ -218,7 +218,9 @@ In this section we use several analogies to help you understand the process of c
 
 <details><summary><b>Containerization Analogies</b></summary>
 
-::: {.panel-tabset}
+
+
+::: {.panel-tabset .white}
 
 ### Kitchen and cooking analogy
 

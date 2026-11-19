@@ -30,7 +30,7 @@ This case study is focusing on **how to work with containers while performing a 
 A. **"Configure the container" Activities**: Exploring container specific concepts and performing containerization tasks to support the project. <br>
 B. **"Put the container to work" Activities**: Working with data using the container (whose configuration you've set up by doing the "Configure the container" Activities, perhaps in an earlier section).
 
-::: {.panel-tabset}
+::: {.panel-tabset .white}
 
 ## Data<br>Import
 

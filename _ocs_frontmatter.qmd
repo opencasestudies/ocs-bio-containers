@@ -7,7 +7,7 @@ This case study is still under review by a team of experts. While it is complete
 ::::
 :::
 
-::: {.panel-tabset .frontmatter-tabs}
+::: {.panel-tabset .white .frontmatter-tabs}
 
 #### Disclaimer
 
