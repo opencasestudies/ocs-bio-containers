@@ -357,7 +357,20 @@ Now we will add `patchwork` to the container -- or at least get started with the
 
 ### Docker Desktop
 
-Copy the [Dockerfile from the Data Exploration -- "Configure the container" section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
+Open your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
+
+Create a new a "Text file" if Dockerfile is not an option (which it most likely will not be).  
+
+You will name the file in a moment when you save it. 
+
+Copy/paste the following text from the Dockerfile that we used previously: 
+
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/base/Dockerfile >}}
+```
+
+
+Modify the file to add the `patchwork` package. 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -382,7 +395,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section: 
+Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory: 
 
 * Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
 * Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
@@ -400,7 +413,21 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 
 ### Docker through a CLI
 
-Copy the [Dockerfile from the Data Exploration -- "Configure the container" section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
+
+Open your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
+
+Create a new a "Text file" if Dockerfile is not an option (which it most likely will not be).  
+
+You will name the file in a moment when you save it. 
+
+Copy/paste the following text from the Dockerfile that we used previously: 
+
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/base/Dockerfile >}}
+```
+
+
+Modify the file to add the `patchwork` package.
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -425,7 +452,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section: 
+Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory: 
 
 * Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
 * Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
