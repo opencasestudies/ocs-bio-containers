@@ -195,7 +195,7 @@ Version controlling your analysis scripts is a best practice for reproducible da
 
 Navigate to the scaffold GitHub repository on your web browser: [https://github.com/opencasestudies/ocs-bio-containers-scaffold](https://github.com/opencasestudies/ocs-bio-containers-scaffold). Click the green "Use this template" button in the top right, and select "Create a new repository" option from the dropdown menu. 
 
-On the new window "Create a new repository", fill in a repository name under "General" (possibly something like "containers-case-study-yourinitials"). Because this is using a template to create a new repository, this screen doesn't have as many options as you might see if you are [creating a new repository from scratch on GitHub](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-new-github-repository). Click the green "Create repository" button on the bottom right.
+In the "Create a new repository" window under "General", fill in the "Repository name" field with the name "ocs-bio-containers-scaffold-main". Because you are using a template to create a new repository, you don't have as many options compared to the ones you have when [creating a new repository from scratch on GitHub](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-new-github-repository). Click the green "Create repository" button on the bottom right.
 
 
 It will take a little time to generate the new repository. Once your new repository is generated from the scaffold template, click the green "<> Code" button to clone the repository for a local copy.  Refer to and follow [the instructions from the Version Control case study](https://www.opencasestudies.org/ocs-bio-version-control/#creating-a-local-clone-of-your-github-repository) if needed. 
