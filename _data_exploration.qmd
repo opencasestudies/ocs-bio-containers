@@ -22,7 +22,7 @@ The `Dockerfile` below is the Dockerfile that was used to define the image that 
 
 ### FROM: Base image
 
-Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. Our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, RStudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
+Line 1 of this `Dockerfile` uses the [`FROM` instruction](https://docs.docker.com/reference/dockerfile/#from) to define the base image. A base image provides the foundation of software for our container. This is very helpful for avoiding adding packages yourself when writing your own Dockerfiles. In this case, our base image is the [`rocker/tidyverse`](https://hub.docker.com/r/rocker/tidyverse) image which includes R, RStudio, and common R packages like `tidyverse`. You can [explore this image on Docker Hub](https://hub.docker.com/r/rocker/tidyverse) to see its description of what is included and the various tags that are available for it.
 
 Specifically this is a [version-pinned base image](https://docs.docker.com/build/building/best-practices/#pin-base-image-versions) meaning that it's specifying a tag for the base image (R version 4.5.3 as opposed to `latest` -- whichever is the most recent version) and a ["digest"](https://docs.docker.com/dhi/explore/security-concepts/digests/) (everything after the at sign /`@`) -- a unique identifier representing a specific image so that the exact same image will be pulled every time. You can copy a "digest" from the "Tag summary" panel under the "Overview" tab on Docker Hub. Pinning the version of the base image is a good practice. If you don't version pin the base image, any additional dependencies or packages may not be able to be version pinned long-term because the base image will be updated and compatible package versions will change.
 
@@ -51,16 +51,23 @@ Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com
 
 Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openjdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
 
+<details> <summary> See here for deeper information about the installations</summary>
+
 * Lines 6-11 use `apt-get` to install the listed dependencies.
   * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
   * In shell commands where successful execution is important, commands are often chained together using a double ampersand (`&&`) representing "and". It ensures the second command is executed if and only if the first command completes successfully. [Docker documentation stipulates that `apt-get update` and `apt-get install` should always be chained together this way.](https://docs.docker.com/build/building/best-practices/#run)
   * [The `-y` flag](https://linux.die.net/man/8/apt-get) for `apt-get install` tells the command to assume an automatic yes to prompts so installations can happen non-interactively (important for a non-interactive building of an image). 
   * The [`--no-install-recommends` option](https://askubuntu.com/questions/65081/what-are-the-implications-of-no-install-recommends-apt-get-install) specifies that recommended but non-required packages should not be installed (important when building a minimal image).
-  * Lines within this block end with a backslash (`\`) which acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
-  * Note that the [Docker documentation highly recommends](https://docs.docker.com/build/building/best-practices/#run) the use of the double ampersand (`&&`) and backslash (`\`) to keep `Dockerfiles` readable.
   * The ecosystem impacts what tool is used after the `RUN` instruction. `apt-get` is used here because the base image (`rocker/tidyverse`) is based on Ubuntu. `apk` is an alternative to `apt-get` for certain ecosystems like those supported by Alpine instead of Ubuntu. You can trace the "image ancestry chain" by looking at each image's base image if you are unsure which ecosystem is being used.
 * Line 12 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
 * Line 13 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
+
+</details>
+
+* The backslash (`\`) acts as a continuation character so that the shell recognizes the multi-line command as a single unit.
+* The double ampersand (`&&`)  acts to chain different commands together. A subsequent command will only run if the previous command was successful.
+ * Note that the [Docker documentation highly recommends](https://docs.docker.com/build/building/best-practices/#run) the use of the double ampersand (`&&`) and backslash (`\`) to keep `Dockerfiles` readable.
+
 
 We could improve this `Dockerfile` by [sorting multi-line arguments alphabetically](https://docs.docker.com/build/building/best-practices/#sort-multi-line-arguments) -- not super necessary for a small list like this, but if the list was longer, sorting alphabetically could help to ensure there are no duplications. 
 
@@ -77,7 +84,7 @@ The dependencies specified within this Dockerfile are not version-pinned, meanin
 
 * Some packages may tell you that you will need a specific library or dependency in order to install it. `tabulapdf` is an example of this where it [lists Java under the System Requirements](https://cran.r-project.org/web/packages/tabulapdf/index.html).
 * Sometimes you will try to build a `Dockerfile` and get a message saying it doesn't have a library it needs.
-* You could list common dependencies for your ecosystem and then remove one at a time to see if the image still builds and the analysis still run successfully.
+* You could list common dependencies for your ecosystem and then remove one at a time to see if the image still builds and the analysis still runs successfully.
 * You could ask a chatbot to suggest dependencies that may be necessary given your base image and the packages you need to include.
 
 :::{.ai_box}
@@ -85,8 +92,16 @@ The dependencies specified within this Dockerfile are not version-pinned, meanin
 AI use considerations
 ::::
 ::::{.inner_block}
+
+**Using AI for to help with using or writing Dockerfiles**
+
 <u>Context:</u>
-Within your prompt, provide the chatbot 1) what base image your Dockerfile is using, 2) any other dependencies you know you need to include, 3) a list of packages that you want to install, and 4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
+Within your prompt, provide the chatbot: 
+
+1) what base image your Dockerfile is using, <br>
+2) any other dependencies you know you need to include, <br>
+3) a list of packages that you want to install, and <br>
+4) (if you've already tried to unsuccessfully build the image or run the analysis) what error message you are observing and whether it's an error message from the build process or an error message while working on your analysis within a running container.
 
 <u>Suggested Prompt:</u>
 
@@ -134,31 +149,79 @@ Notice what is **not** in this container image: Data! When we run a container fr
 
 ***
 
-Using the `tabulapdf` package to extract the data table from the research study PDF, we defined a data frame (`raw_table`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022. 
 
-::: {.emphasis_block}
+When we ran the `01_extract_data.R` script, we used the `tabulapdf` package to extract the data table from the research study PDF. We defined a data frame (saved to `raw_table1.csv`) that will need some wrangling to make it more accurately reflect Table 1 from @Muller_Algavi_Borenstein_2022:
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
+```{r table_1, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
+ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f5db0d7ede_0_25#slide=id.g3f5db0d7ede_0_25')
+```
 
-library(tidyverse)
-library(readr)
+[[source](https://www.nature.com/articles/s41522-022-00345-5/tables/1)]
 
-url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv"
+Now let's take a look at the data we extracted a bit more deeply than before. We can use the `cat` command, which stands for "concatenate". This command can help us see the entirety of short files like this one. Adding the `-n` flag will help us to row numbers listed.
 
-raw_table <- read_csv(url)
-raw_table %>% print(n=25)
+:::{.panel-tabset}
+##### Docker Desktop
+
+
+* Navigate to the "Exec" tab (along the top of of the running container) if you are not already there. 
+* Enter the following command and press the return / enter key.
+
+```{.bash}
+cat -n data/imported/raw_table1.csv
+```
+
+##### Docker through a CLI
+
+Enter the following command in your CLI.
+```{.bash}
+cat -n data/imported/raw_table1.csv
 ```
 
 :::
 
-Rather than having 14 rows and 7 columns of data as we expected, we observe a data frame with 25 rows of data. And while our data frame does have 7 columns, one of them (`X4`) is all NAs.
+
+This will give us output that looks something like this:
+
+```{r raw_table_bash, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data directly from executing the above command showing 25 rows"}
+ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h313de2fdb69e1bf2_0_6#slide=id.h313de2fdb69e1bf2_0_6')
+```
+Rather than having 14 rows and 7 columns of data as we expected, we observe a data frame with 25 rows of data (and 1 row of header). And while our data frame does have 7 columns, one of them (`X4`) is all NAs.
+
+
+
+Here is what exploring the data looks like after reading into R and using an IDE:
 
 ```{r raw_table_visualized, echo = FALSE, out.width = "100%", fig.align = 'center', fig.alt = "The extracted data has 25 rows instead of the expected 14. While it has 7 columns as expected, one of those columns does not have data."}
 ottrpal::include_slide('https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3f96ddc37a7_0_131#slide=id.g3f96ddc37a7_0_131')
 ```
+
+
+<details><summary>Click here for details on how to explore this dataset in RStudio, Positron, or another IDE</summary>
+
+Because our data is in a mounted volume, we have access to it outside of the container.
+
+Our `01_extract_data.R` script saves the extracted data in both a `.csv` and an `.rda` file. [`.rda` files](https://www.r-bloggers.com/2017/04/load-save-and-rda-files/) allow users to store and load R data structures or objects (in a compressed format).
+
+If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE by loading the tidyverse (and installing it if needed), and using the `read_csv`()` function: 
+
+::: {.emphasis_block}
+
+```{r}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+raw_table <- read_csv("https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/import_data/imported/raw_table1.csv")
+```
+:::
+
+This will create an R object named `raw_table` that you can interact with in your IDE. You can use [`View()`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View) to look at the object and other functions to look at unique values, counts of values, etc. in columns.
+
+</details>
+
+
 
 We would have expected the {{< glossary "Cohort" display="cohort" >}} descriptions to be in that third column and the number of paired samples to be in the fourth column. By more closely inspecting the data we have extracted, we instead see that `X3` contains both the cohort descriptions (boxed in purple below) and the number of paired samples information (circled in teal below); the fourth column (`X4`) has all `NAs`. The number of paired samples information seems to have been appended to the end of the cohort description rather than being in its own column. In addition, we would have also expected the data to have only 14 rows, but instead we are observing 25 rows. Several rows have `NAs` in all columns except for the third column. This is because some of the longer cohort descriptions are being split across more than one row.
 
@@ -179,21 +242,6 @@ Therefore, when we wrangle the data we will need to:
       - The column containing a mixture of cohort descriptions and the number of paired samples 
       - Any unnecessary/intermediate columns we make while performing the previous wrangling steps
 
-<details><summary>If you want to explore this dataset in RStudio, Positron, or another IDE</summary>
 
-Because our data is in a mounted volume, we have access to it outside of the container.
-
-Our `01_extract_data.R` script saves the extracted data in both a `.csv` and an `.rda` file. [`.rda` files](https://www.r-bloggers.com/2017/04/load-save-and-rda-files/) allow users to store and load R data structures or objects (in a compressed format).
-
-If you wanted to explore the dataset to see these things for yourself, you could load the dataset in RStudio, Positron, or another IDE using the `load()` function: 
-
-```{r, eval = FALSE}
-file_path <- "[your_path_to_]/ocs-bio-containers-scaffold-main/data/imported/raw_table1.rda"
-load(file_path)
-```
-
-This will load an R object named `raw_table` that you can interact with in your IDE. You can use [`View()`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/View) to look at the object and other functions to look at unique values, counts of values, etc. in columns.
-
-</details>
 
 ***
