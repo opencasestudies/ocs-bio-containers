@@ -104,7 +104,7 @@ include-sections:
 
 ## **Session Info**
 
-------------------------------------------------------------------------
+***
 
 ### For the container infrastructure and application steps within this case study
 
