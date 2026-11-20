@@ -92,7 +92,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.h6fa8b512a04353d0_0_134#slide=id.h6fa8b512a04353d0_0_134")
 ```
 
-* Navigate to where your `ocs-bio-containers-scaffold-main` directory is using `cd` (or a few `cd` commands). Note that if you didn't move it previously, it should be in your **Downloads** directory. You may need to give Docker Desktop permission to access this directory. Use `pwd`  (which stands for `print working directory` and shows you where you currently are in your file system) and `ls` (which shows you the files in a directory), `cd` (to change directory) as needed to find and move to the `ocs-bio-containers-scaffold-main` directory.
+* Navigate to where your `ocs-bio-containers-scaffold-main` directory is using `cd` (or a few `cd` commands). Note that if you didn't move it previously, it should be in your **Downloads** directory. You may need to give Docker Desktop permission to access this directory. Use `pwd`  (which stands for `print working directory` and shows you where you currently are in your file system) and `ls` (which shows you the files in a directory), to `cd` (to change directory) as needed to find and move to the `ocs-bio-containers-scaffold-main` directory.
 
 Notice that if you saw the tilde (`~`), it is replaced with the name of the directory you are currently in / have changed into.
 
