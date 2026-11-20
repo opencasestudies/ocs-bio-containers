@@ -14,7 +14,7 @@ To pull the Docker {{< glossary "Image" display="image" >}}, {{< glossary "Docke
 
 :::{.emphasis_block}
 
-If you try to use a Docker command like `docker pull` without first starting Docker, you'll see an error message about "failure to connect" and recommending you check if the "daemon" is running. Docker Desktop can be resource intensive, so it's common to close Docker Desktop or stop Docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure Docker is running. 
+If you try to use a Docker command like `docker pull` without first starting Docker, you'll see an error message about "failure to connect" and recommending you check if the "daemon" is running (on a Mac) or "error during connect ... dockerDesktopLinuxEngine: The system cannot find the file specified." (on a Windows machine). Docker Desktop can be resource intensive, so it's common to close Docker Desktop or stop Docker from running in the background when not using it, and therefore, an important first step when working with Docker containers is to make sure Docker is running. 
 
 :::
 
@@ -35,7 +35,7 @@ Docker Desktop may not appear to open if it was previously opened and closed bec
 
 Open your {{< glossary "Command Line Interface (CLI)" display = "command line interface (CLI)" >}} (e.g., Terminal on a Mac and Command Prompt or PowerShell on Windows). The instructions in this case study best align with PowerShell for Windows machines. You may need to use backslashes (`\`) in place of forward slashes (`/`) when file navigation commands are provided for use outside of a running container.
 
-In your command line interface, use the following command to start docker (for Mac).
+In your command line interface, use the following command to start docker for Mac.
 
 ```{.bash}
 open -a Docker
@@ -44,8 +44,10 @@ open -a Docker
 Or the following command for Windows:
 
 ```{.bash}
-& "Docker Desktop"
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 ```
+
+The Windows command will open the Docker Desktop app. You can close it, and Docker will still run as a background process.
 
 :::
 
@@ -274,11 +276,18 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
   * `-it` + `bash` opens an interactive CLI in the running container
   * Note that the image name `bioocs/ocs-bio-containers-base:main` must be specified after all of the flags (`-w`, `-v`, `-it`, etc.), but before the `bash` specification or there will be errors such as "Error response from daemon" if specified before the flags or "No such file or directory" if specified after `bash`.  
 
+For Mac:
+
 ```{.bash}
 docker run -v $(pwd):$(pwd) -w $(pwd) -it bioocs/ocs-bio-containers-base:main bash
 ```
 
-(Note this command may need to be altered if using a Windows machine. Try replacing `pwd` with `PWD`.)
+For Windows:
+
+```{.bash}
+docker run -v "${PWD}:/home" -w /home -it bioocs/ocs-bio-containers-base:main bash
+```
+
 
 The running container will have a different command prompt than the usual command line command prompt. It will start with something like `root@` followed by some letters and numbers and then a colon with the file path for your local copy of the analysis files.
 
