@@ -357,18 +357,7 @@ Now we will add `patchwork` to the container -- or at least get started with the
 
 ### Docker Desktop
 
-Open your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
-
-Create a new a "Text file" if Dockerfile is not an option (which it most likely will not be).  
-
-You will name the file in a moment when you save it. 
-
-Copy/paste the following text from the Dockerfile that we used previously: 
-
-```{.dockerfile filename="Dockerfile"}
-{{< include resources/dockerfiles/base/Dockerfile >}}
-```
-
+Open the file called "Dockerfile" within the dockerfiles directory of your `ocs-bio-containers-scaffold-main` directory with your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
 
 Modify the file to add the `patchwork` package. 
 
@@ -395,10 +384,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory: 
-
-* Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
-* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
+* Save the modified Dockerfile without changing the name of the file. Esure that it has no file extension and is just called "Dockerfile".
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
@@ -407,6 +393,11 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
 
+Note that if we were to do this from scratch:
+
+* We would create a new a "Text file" if Dockerfile was not an option (which it most likely will not be).  
+* We would name the file "Dockerfile" with no file extension in the filename.
+
 </details>
 :::
 
@@ -414,18 +405,7 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 ### Docker through a CLI
 
 
-Open your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
-
-Create a new a "Text file" if Dockerfile is not an option (which it most likely will not be).  
-
-You will name the file in a moment when you save it. 
-
-Copy/paste the following text from the Dockerfile that we used previously: 
-
-```{.dockerfile filename="Dockerfile"}
-{{< include resources/dockerfiles/base/Dockerfile >}}
-```
-
+Open the file called "Dockerfile" within the dockerfiles directory of your `ocs-bio-containers-scaffold-main` directory with your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
 
 Modify the file to add the `patchwork` package.
 
@@ -452,10 +432,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory: 
-
-* Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
-* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
+* Save the modified Dockerfile without changing the name of the file. Esure that it has no file extension and is just called "Dockerfile".
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
@@ -463,6 +440,10 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 ```{.dockerfile filename="Dockerfile"}
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
+Note that if we were to do this from scratch:
+
+* We would create a new a "Text file" if Dockerfile was not an option (which it most likely will not be).  
+* We would name the file "Dockerfile" with no file extension in the filename.
 
 </details>
 :::
