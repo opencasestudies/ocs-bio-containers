@@ -20,16 +20,35 @@ If using `wget` to fetch the data:
 
 * Navigate to the "Exec" tab (along the top of the running container).
 * Type `cd /home` and press the return / enter key.
+
+```{.bash}
+cd /home
+```
+
 * Type `mkdir -p data/imported` and press the return / enter key.
     * This will make the "imported" directory under the "data" directory (and create the "data" directory if it doesn't already exist).
-* Type `cd data/imported` and press the return / enter key.
-* Copy and paste the following: 
+
+```{.bash}
+mkdir -p data/imported
+```
+
+* Type `cd data/imported` and press the return / enter key. This moves us into the imported subdirectory of the data directory.
+
+```{.bash}
+cd data/imported
+```
+
+* Copy and paste the following to use the `wget` command to download the data file (R version):
 
 ```{.bash}
 wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
 ```
 
-* Type `cd /home` and press the return / enter key.
+* Type `cd /home` and press the return / enter key to move back into the main directory for these files.
+
+```{.bash}
+cd /home
+```
 
 ```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directory imported (under the data directory) is starred to show that this directory needs to be created."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_291#slide=id.g3fb50cd5a7c_0_291")
@@ -38,15 +57,28 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ### Docker through a CLI 
 
 * Enter `mkdir -p data/imported`
+
+```{.bash}
+mkdir -p data/imported`
+```
+
 * Enter `cd data/imported`
-* Copy and paste the following: 
+
+```{.bash}
+cd data/imported
+```
+
+* Copy and paste the following to use the `wget` command to download the data file (R version):
 
 ```{.bash}
 wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
 ```
 
-* Enter `cd ../../`
+* Enter `cd ../../` to move out of the imported directory of the data directory, back to the main directory
 
+```{.bash}
+cd /home
+```
 :::
 
 </details>
@@ -165,6 +197,9 @@ If we were to inspect the `table1_extract` data frame, we would observe that the
 #| echo: false
 #| warning: false
 #| message: false
+
+library(readr)
+library(dplyr)
 
 url <- "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers-analysis/refs/heads/main/wrangle_data/wrangled/wrangled_data.csv"
 
@@ -314,9 +349,17 @@ The [examples provided in this "Containers for Scientists" course from the ITN](
 
 ### Adding a package
 
+
 Now we will add `patchwork` to the container -- or at least get started with the process of adding the `patchwork` package to the container.
 
-Copy the [Dockerfile from the Data Exploration -- "Configure the container" section](https://www.opencasestudies.org/ocs-bio-containers/#container-infrastructure-1) above. With your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.), create a new file and modify the copy/pasted text from the Dockerfile to also install the `patchwork` package. When creating a new file, you should select a "Text file" if Dockerfile is not an option (which it most likely will not be). 
+
+::: {.panel-tabset}
+
+### Docker Desktop
+
+Open the file called "Dockerfile" within the dockerfiles directory of your `ocs-bio-containers-scaffold-main` directory with your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
+
+Modify the file to add the `patchwork` package. 
 
 :::{.think_question}
 ::::{.think_question_header}
@@ -341,10 +384,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` directory from Step 3a in the Data Import -- "Configure the container" section: 
-
-* Create a directory (using [`mkdir`](https://man7.org/linux/man-pages/man1/mkdir.1.html) on a CLI) called `dockerfiles` within the top layer of this directory (e.g., on the same level as `analysis_scripts`, `data`, `results`, etc.).
-* Save the modified Dockerfile within this new `dockerfiles` directory, naming it `Dockerfile` exactly. Do not include a file extension in the filename.
+* Save the modified Dockerfile without changing the name of the file. Ensure that it has no file extension and is just called "Dockerfile".
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
@@ -353,7 +393,61 @@ Save the modified Dockerfile within your `ocs-bio-containers-scaffold-main` dire
 {{< include resources/dockerfiles/activity/Dockerfile >}}
 ```
 
+Note that if we were to do this from scratch:
+
+* We would create a new a "Text file" if Dockerfile was not an option (which it most likely will not be).  
+* We would name the file "Dockerfile" with no file extension in the filename.
+
 </details>
+:::
+
+
+### Docker through a CLI
+
+
+Open the file called "Dockerfile" within the dockerfiles directory of your `ocs-bio-containers-scaffold-main` directory with your favorite text editor (e.g., RStudio, Visual Studio Code, Notepad++, etc.).
+
+Modify the file to add the `patchwork` package.
+
+:::{.think_question}
+::::{.think_question_header}
+Question opportunity
+::::
+::::{.inner_block}
+**What steps do you need to do to add `patchwork` as a package that will be installed and available within the eventual running container?**
+
+<details><summary>Hint</summary>
+
+Several CRAN packages are already being installed in this Dockerfile. You can just add `patchwork` to the list.
+
+</details>
+
+<details><summary>Answer</summary>
+
+1. Add a newline after line 21 (`p` comes after `h` but before `r` alphabetically).
+2. Add `patchwork` to line 22, indented the same way that the rest of the packages in that section are.
+3. Add a space and a backslash (`\`) after the name of the package (to the end of the new line).
+
+</details>
+::::
+:::
+
+* Save the modified Dockerfile without changing the name of the file. Ensure that it has no file extension and is just called "Dockerfile".
+
+:::{.emphasis_block}
+<details><summary>Your modified Dockerfile should look like...</summary>
+
+```{.dockerfile filename="Dockerfile"}
+{{< include resources/dockerfiles/activity/Dockerfile >}}
+```
+Note that if we were to do this from scratch:
+
+* We would create a new a "Text file" if Dockerfile was not an option (which it most likely will not be).  
+* We would name the file "Dockerfile" with no file extension in the filename.
+
+</details>
+:::
+
 :::
 
 Note that another alternative is that you could create a completely new `Dockerfile`, use the original image as your base image (`FROM bioocs/ocs-bio-containers-base:main@[digest]`), and then install the single R package (in essence using a [reusable stage](https://docs.docker.com/build/building/best-practices/#create-reusable-stages)).
