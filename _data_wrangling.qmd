@@ -384,7 +384,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-* Save the modified Dockerfile without changing the name of the file. Esure that it has no file extension and is just called "Dockerfile".
+* Save the modified Dockerfile without changing the name of the file. Ensure that it has no file extension and is just called "Dockerfile".
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
@@ -432,7 +432,7 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 ::::
 :::
 
-* Save the modified Dockerfile without changing the name of the file. Esure that it has no file extension and is just called "Dockerfile".
+* Save the modified Dockerfile without changing the name of the file. Ensure that it has no file extension and is just called "Dockerfile".
 
 :::{.emphasis_block}
 <details><summary>Your modified Dockerfile should look like...</summary>
