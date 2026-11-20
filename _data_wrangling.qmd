@@ -77,7 +77,7 @@ wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/
 * Enter `cd ../../` to move out of the imported directory of the data directory, back to the main directory
 
 ```{.bash}
-cd ../../
+cd /home
 ```
 :::
 
