@@ -170,7 +170,13 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 ::::
 :::
 
-This scaffold directory doesn't match the suggested project directory structure from above at first appearance. Besides a README file, it only contains the directory for `analysis_scripts` (and a directory with another set of scripts called `continued_learning_scripts`). The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs (though the scripts wouldn't overwrite existing directories).
+This scaffold directory doesn't match the suggested project directory structure from above at first appearance. Besides a README file, it only contains one of the suggested folders, plus two additional folders: 
+
+1. the directory for `analysis_scripts` (matching the typical suggestion)
+2. a directory with another set of scripts called `continued_learning_scripts`. 
+3. a directory named `dockerfiles` (with the project Dockerfile).
+
+The `data` and `results` directories as well as their subdirectories are automatically created by the scripts to store the outputs (though the scripts wouldn't overwrite existing directories).
 
 :::{.panel-tabset}
 
