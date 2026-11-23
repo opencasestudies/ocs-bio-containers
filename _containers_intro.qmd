@@ -140,7 +140,7 @@ ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1O
 Images can be {{< glossary Push display='"pushed"' >}} or {{< glossary Pull display='"pulled"' >}} from a registry. If an image has multiple tags or is built for multiple architectures, the related images (with different tags or versions built for different architectures) will be stored in a [repository within the registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/#registry-vs-repository). If an image contains proprietary information, it likely shouldn't be shared in a public registry like Docker Hub.
 
 :::::::: {.definition_box}
-::::::: {.panel-tabset}
+::::::: {.panel-tabset .white}
 
 #### **Definition**: Push
 
