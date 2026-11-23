@@ -61,7 +61,7 @@ To use Docker through a CLI, you will need the following installed:
 * Have access to and familiarity with a local command line interface (CLI)
 * Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
 
-Both the Docker Engine and Docker CLI are provided through Docker Desktop. So even if you do not want to use Docker Desktop, and instead want to use Docker through a CLI, please install Docker Desktop [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/)
+Please install Docker Desktop [for Windows](https://docs.docker.com/desktop/setup/install/windows-install/), [for Mac](https://docs.docker.com/desktop/setup/install/mac-install/), or [for Linux](https://docs.docker.com/desktop/setup/install/linux/) for an efficient packaging of Docker Engine and Docker CLI. You can still use Docker through a CLI if you prefer, and do not need to use the Docker Desktop app.
 
 <u>It will also be helpful to be have the following skills:</u>
 
