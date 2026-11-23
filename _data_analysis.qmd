@@ -22,38 +22,37 @@ To fetch the modified Dockerfile and wrangled data, follow these instructions:
 
 * Modified Dockerfile
     * Use this link to <a href="https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/main/resources/dockerfiles/activity/Dockerfile" download> download the modified Dockerfile</a>.
-    * Create a `dockerfiles` folder in the top directory of your `ocs-bio-containers-scaffold-main` folder (e.g., the one with `analysis_scripts`, `continued_learning_scripts`, the `README.md`)
-    * Move the downloaded Dockerfile into the new `dockerfiles` folder. 
+    * Move the downloaded Dockerfile into the `dockerfiles` folder of the `ocs-bio-containers-scaffold-main` set of files. It should replace the Dockerfile that is there. 
 * Wrangled data
     * Use this link to [download the wrangled data as an `.rda` file](https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda)
     * Create a `wrangled` folder within the `data` folder of `ocs-bio-containers-scaffold-main`.
     * Move the downloaded `.rda` file into the new `wrangled` folder.
 
-```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directories dockerfiles (on the same level as the README) and wrangled (under the data directory) are starred to show that these directories need to be created."}
+```{r, echo = FALSE, fig.align = 'center', out.width = "100%", fig.alt = "The directory wrangled (under the data directory) is starred to show that this directories need to be created."}
 ottrpal::include_slide("https://docs.google.com/presentation/d/1EFnuBBFlqjod7S1OlOoj_9-29nPO3ZhL6iJ-Pf8xzpg/edit?slide=id.g3fb50cd5a7c_0_246#slide=id.g3fb50cd5a7c_0_246")
 ```
 
 ### Command Line
 
 * Ensure that you are in the `ocs-bio-containers-scaffold-main` top directory. 
-    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should the final part of the printed path.
-* Enter `mkdir -p dockerfiles data/wrangled`. 
-    * This will create directories named `dockerfiles` in the top and `wrangled` under the `data` directory.
+    * If you type `pwd` (for print working directory), the `ocs-bio-containers-scaffold-main` should be the final part of the printed path.
+* Enter `mkdir -p data/wrangled`. 
+    * This will create the directory named `wrangled` under the `data` directory.
 * Enter `cd dockerfiles`
-* Copy and paste the following:
+* Copy and paste the following (to replace the original Dockerfile):
 
 ```{.bash}
-wget "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/refs/heads/main/resources/dockerfiles/activity/Dockerfile" .
+wget -O Dockerfile "https://raw.githubusercontent.com/opencasestudies/ocs-bio-containers/refs/heads/main/resources/dockerfiles/activity/Dockerfile" .
 ```
 
-* Enter `cd ../data/wrangled`
+* Enter `cd /home/data/wrangled`
 * Copy and paste the following: 
 
 ```{.bash}
 wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/wrangled/wrangled_data.rda" .
 ```
 
-* Enter `cd ../../`
+* Enter `cd /home`
 
 :::
 
