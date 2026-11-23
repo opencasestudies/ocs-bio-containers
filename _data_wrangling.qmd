@@ -74,7 +74,7 @@ cd data/imported
 wget "https://github.com/opencasestudies/ocs-bio-containers/raw/refs/heads/main/data/imported/raw_table1.rda" .
 ```
 
-* Enter `cd ../../` to move out of the imported directory of the data directory, back to the main directory
+* Enter `cd /home` to move out of the imported directory of the data directory, back to the main directory
 
 ```{.bash}
 cd /home
