@@ -57,8 +57,7 @@ To use Docker Desktop, you will need the following installed:
 
 To use Docker through a CLI, you will need the following installed:
 
-* **Docker Engine**
-* **Docker CLI**
+* **Docker Engine** and **Docker CLI** (which are installed with Docker Desktop)
 * Have access to and familiarity with a local command line interface (CLI)
 * Notepad, Sublime, Visual Studio Code, nano, vim, or another **text editor**
 
@@ -79,12 +78,12 @@ Both the Docker Engine and Docker CLI are provided through Docker Desktop. So ev
 
 ### Target Audience
 
-The target audience for this case study is scientists and researchers who 
+The target audiences for this case study are scientists, researchers, and trainees who: 
 
-* work on analyses within collaborative teams 
-* use software that may be updated frequently or have several necessary dependencies in order to install
-* want to create more reproducible analyses
-* do not yet use containers or want to get more comfortable with modifying what is available in a container.
+* work on analyses within collaborative teams.
+* use software that may be updated frequently or have several necessary dependencies in order to install.
+* want to create more reproducible analyses.
+* do not yet use containers or want to get more comfortable with modifying what is available in a container
 
 ### Motivation
 
@@ -239,7 +238,7 @@ This section describes resources that can be helpful for troubleshooting issues 
 ### Continued Learning
 
 This section provides exercises for the learner to keep practicing their container skills and to learn new ones. 
-These include 
+These include:
 
 * Reinforcement exercise: Modifying the Dockerfile to add a CRAN package to the container and using the new container to run an additional script that utilizes this package.
 * Beginner advancement exercise: Modifying the Dockerfile to add two packages from GitHub rather than CRAN to the container and using the new container to add another script utilizing these packages to the analysis.
