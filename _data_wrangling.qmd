@@ -376,8 +376,8 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 <details><summary>Answer</summary>
 
-1. Add a newline after line 21 (`p` comes after `h` but before `r` alphabetically).
-2. Add `patchwork` to line 22, indented the same way that the rest of the packages in that section are.
+1. Add a newline after line 19 (`p` comes after `h` but before `r` alphabetically).
+2. Add `patchwork` to line 20, indented the same way that the rest of the packages in that section are.
 3. Add a space and a backslash (`\`) after the name of the package (to the end of the new line).
 
 </details>
@@ -424,8 +424,8 @@ Several CRAN packages are already being installed in this Dockerfile. You can ju
 
 <details><summary>Answer</summary>
 
-1. Add a newline after line 21 (`p` comes after `h` but before `r` alphabetically).
-2. Add `patchwork` to line 22, indented the same way that the rest of the packages in that section are.
+1. Add a newline after line 19 (`p` comes after `h` but before `r` alphabetically).
+2. Add `patchwork` to line 20, indented the same way that the rest of the packages in that section are.
 3. Add a space and a backslash (`\`) after the name of the package (to the end of the new line).
 
 </details>
