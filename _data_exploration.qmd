@@ -35,7 +35,7 @@ Question Opportunity
 If we wanted to make the image more minimal, we could use a base image that doesn't have RStudio in it (because we don't exactly need RStudio). **What are some alternative base images that would give us the R ecosystem? Would they have `tidyverse` already or would we need to install it?**
 
 <details><summary>Hint</summary>
-A good place to look for other base images is on Docker Hub. You could also try an online search or see if similar questions have been asked on Stack Overflow. 
+A good place to look for other base images is on Docker Hub. You could also try an online search or see if images meeting your needs have been mentioned on Stack Overflow. 
 </details>
 
 <details><summary>A possible answer</summary>
