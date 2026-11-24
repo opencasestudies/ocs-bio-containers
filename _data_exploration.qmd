@@ -34,6 +34,10 @@ Question Opportunity
 ::::{.inner_block}
 If we wanted to make the image more minimal, we could use a base image that doesn't have RStudio in it (because we don't exactly need RStudio). **What are some alternative base images that would give us the R ecosystem? Would they have `tidyverse` already or would we need to install it?**
 
+<details><summary>Hint</summary>
+A good place to look for other base images is on Docker Hub. You could also try an online search or see if images meeting your needs have been mentioned on Stack Overflow. 
+</details>
+
 <details><summary>A possible answer</summary>
 
 * [`r-base`](https://hub.docker.com/_/r-base): Supports the use of R/the R ecosystem. It does not have `tidyverse` and we would have to install `tidyverse` explicitly in our Dockerfile.
@@ -95,6 +99,8 @@ AI use considerations
 
 **Using AI for to help with using or writing Dockerfiles**
 
+AI can be a helpful tool for working with Dockerfiles. Consider using Gordon, [the AI assistant built into Docker Desktop](https://docs.docker.com/ai/gordon/), or a general use chatbot. 
+
 <u>Context:</u>
 Within your prompt, provide the chatbot: 
 
@@ -134,7 +140,7 @@ Finally lines 24-25 clean up temporary files much like line 13 did earlier.
 Reproducibility considerations
 ::::
 ::::{.inner_block}
-The dependencies specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same packages available as those in the original image. To version pin R packages in a Dockerfile, consider using an [`renv` file to specify packages and their versions](https://rstudio.github.io/renv/articles/docker.html) or utilizing the [`remotes` `install_version()`](https://remotes.r-lib.org/reference/install_version.html) function. 
+The packages specified within this Dockerfile are not version-pinned, meaning that someone building an image from this Dockerfile at a later time after original development may not have the exact same packages available as those in the original image. To version pin R packages in a Dockerfile, consider using an [`renv` file to specify packages and their versions](https://rstudio.github.io/renv/articles/docker.html) or utilizing the [`remotes` `install_version()`](https://remotes.r-lib.org/reference/install_version.html) function. 
 
 For more information about the motivation for version-pinning throughout a Dockerfile, examples beyond `apt-get` and `R`, and a discussion on balancing version pinning with maintenance or development, [review this blog](https://oneuptime.com/blog/post/2026-02-08-how-to-pin-package-versions-in-dockerfiles-for-reproducible-builds/view).
 ::::
