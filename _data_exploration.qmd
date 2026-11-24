@@ -43,24 +43,32 @@ If we wanted to make the image more minimal, we could use a base image that does
 ::::
 :::
 
-### ENV
-
-Line 3 of this `Dockerfile` uses the [`ENV` instruction](https://docs.docker.com/reference/dockerfile/#env) to set an environment variable for the build process and will persist in the eventual running container. This environment variable [`DEBIAN_FRONTEND` specifically controls the user interface](https://unix.stackexchange.com/questions/701285/is-debian-frontend-noninteractive-redundant-with-apt-get-yqq) during Debian and Ubuntu package installations, setting it to non-interactive, ensuring that default answers are automatically accepted. It's [not necessarily a good idea to set it as an environment variable](https://github.com/moby/moby/issues/4032) because this can impact behavior in the running container in unintentional ways later.
 
 ### RUN: Dependencies
 
-Lines 6 - 13 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openjdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
+Lines 4 - 11 use the [`RUN` instruction](https://docs.docker.com/reference/dockerfile/#run) to install dependencies with `apt-get` -- specifically Java (`openjdk-11-jdk`) and some other minimal system libraries needed for the R packages. 
 
 <details> <summary> See here for deeper information about the installations</summary>
 
-* Lines 6-11 use `apt-get` to install the listed dependencies.
-  * [Typically you run `apt-get update` followed by `apt-get-install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
+* Lines 4-9 use `apt-get` to install the listed dependencies.
+  * We set a value inline that controls the behavior of `apt-get`. [`DEBIAN_FRONTEND` specifically controls the user interface](https://unix.stackexchange.com/questions/701285/is-debian-frontend-noninteractive-redundant-with-apt-get-yqq) during Debian and Ubuntu package installations, setting it to non-interactive, ensuring that default answers are automatically accepted.
+
+    <details><summary> For more details comparing the inline approach to other possibilities </summary>
+    This inline approach is used instead of setting the value using an [`ENV` or an `ARG` command](https://docs.docker.com/reference/dockerfile/#env). 
+    
+    * Using an `ENV` command sets an environmental variable that can be used during the build process, and persists into the eventual running container. It's [not necessarily a good idea to set it as an environment variable](https://github.com/moby/moby/issues/4032) because this can impact behavior in the running container in unintentional ways. However, [using `ENV` commands can be useful when using containers to [deploy and app or support an analysis that uses a workflow](https://envmanager.com/blog/docker-environment-variables) (e.g., to set defaults/limits for resource usage). 
+    * Using an 'ARG' command sets a variable that is only available during the build process, not persisting into the running container. The inline approach makes sure that the variable is applied only to the step where it applicable, while the `ARG` approach could impact multiple steps or commands in a Dockerfile. 
+    * `ENV` and `ARG` commands should [never be used to store secrets or credentials](https://www.geeksforgeeks.org/devops/docker-environmental-variables/) as this sensitive information could be embedded in image layers or metadata and inadvertently shared.
+
+    </details>
+
+  * [Typically you run `apt-get update` followed by `apt-get install`](https://www.debian.org/doc/manuals/apt-guide/ch2.en.html) in order for the system to refresh what software is available (update) and then install it. If running `apt-get install` without first run`apt-get update`, the system may try to install packages that no longer exist or aren't available in the expected location any longer. 
   * In shell commands where successful execution is important, commands are often chained together using a double ampersand (`&&`) representing "and". It ensures the second command is executed if and only if the first command completes successfully. [Docker documentation stipulates that `apt-get update` and `apt-get install` should always be chained together this way.](https://docs.docker.com/build/building/best-practices/#run)
   * [The `-y` flag](https://linux.die.net/man/8/apt-get) for `apt-get install` tells the command to assume an automatic yes to prompts so installations can happen non-interactively (important for a non-interactive building of an image). 
   * The [`--no-install-recommends` option](https://askubuntu.com/questions/65081/what-are-the-implications-of-no-install-recommends-apt-get-install) specifies that recommended but non-required packages should not be installed (important when building a minimal image).
   * The ecosystem impacts what tool is used after the `RUN` instruction. `apt-get` is used here because the base image (`rocker/tidyverse`) is based on Ubuntu. `apk` is an alternative to `apt-get` for certain ecosystems like those supported by Alpine instead of Ubuntu. You can trace the "image ancestry chain" by looking at each image's base image if you are unsure which ecosystem is being used.
-* Line 12 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
-* Line 13 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
+* Line 10 uses the internal R sub-command to configure R to recognize and use Java, updating R's internal configuration files to match the path of the newly installed Java. This is a different `CMD` than the [instruction header that can be written in a `Dockerfile`](https://docs.docker.com/reference/dockerfile/#cmd).
+* Line 11 deletes the metadata lists downloaded by `apt-get update` to save space in the final Docker image.
 
 </details>
 
@@ -119,7 +127,7 @@ Rather than copy/pasting any `Dockerfile` or lines that chatbot recommends for y
 
 ### RUN: Packages
 
-Lines 16 - 23 install the libraries for R packages. These are the packages of major interest for our analysis. Every package here directly supports our data visualization task as well as the rest of the data visualization needs of the overall team. Notice that every package is on a separate line and lines are separated by a backslash again (`\`). This time, these packages are listed alphabetically following the best practices recommendations. While we won't be using every listed package within this case study, they are included to demonstrate a scenario where a team may break a project up into steps and have different containers for those steps. In this case, Collab O. Rator's team has broken the project up into steps where one step in the process is data visualization. This container will then be used to create all of the data visualizations for the project. If the steps within this case study were the only parts of the analysis utilizing this container, we should remove any packages we do not directly use (e.g., `bubbleHeatmap`, `ggnetwork`, etc.)
+Lines 14 - 21 install the libraries for R packages. These are the packages of major interest for our analysis. Every package here directly supports our data visualization task as well as the rest of the data visualization needs of the overall team. Notice that every package is on a separate line and lines are separated by a backslash again (`\`). This time, these packages are listed alphabetically following the best practices recommendations. While we won't be using every listed package within this case study, they are included to demonstrate a scenario where a team may break a project up into steps and have different containers for those steps. In this case, Collab O. Rator's team has broken the project up into steps where one step in the process is data visualization. This container will then be used to create all of the data visualizations for the project. If the steps within this case study were the only parts of the analysis utilizing this container, we should remove any packages we do not directly use (e.g., `bubbleHeatmap`, `ggnetwork`, etc.)
 
 This `Dockerfile` uses [`install2.r`](https://rocker-project.org/use/extending.html) to install packages from CRAN. The `--error` option specifies that the build process will halt if there are any installation issues. The `--deps TRUE` specifies that all dependencies (e.g., suggestions) whether required or not are installed. By default, if we didn't include this argument, it would only install needed dependencies. For a more minimal image, it may be better to not set `--deps` to TRUE.
 
@@ -127,7 +135,7 @@ Both `install2.r` or `Rscript -e 'install.packages()'` can be used to install R 
 
 If packages aren't available on CRAN, but are available on GitHub, `rocker` images include the [`installGithub.r`](https://cran.r-project.org/web/packages/littler/vignettes/littler-examples.html) helper script (from `littler` like the `install2.r` script) or you can use [`pak`](https://pak.r-lib.org/), [`remotes`](https://remotes.r-lib.org/reference/install_github.html), or [`devtools`](https://www.rdocumentation.org/packages/devtools/versions/1.13.6/topics/install_github) to install from GitHub. If packages are available from Bioconductor, you can use `BiocManager` or the `installBioc.r` `littler` script. Note, if not using the `littler helper scripts` or using a non-rocker base image, you may first need to install these packages before you can use them within the `Dockerfile`, but then following the `Run Rscript -e ''` template, you can use functions later in the `Dockerfile`. [For `Bioconductor` packages](https://support.bioconductor.org/p/p134101/), it may be worthwhile to use a [multi-stage build (a second `FROM`)](https://docs.docker.com/build/building/multi-stage/) to use a [Bioconductor image as a second base image](https://www.bioconductor.org/help/docker/).
 
-Finally lines 24-25 clean up temporary files much like line 13 did earlier. 
+Finally lines 22-23 clean up temporary files much like line 11 did earlier. 
 
 :::{.reproducibility_box}
 ::::{.reproducibility_box_header}
