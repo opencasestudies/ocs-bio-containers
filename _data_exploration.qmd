@@ -99,6 +99,8 @@ AI use considerations
 
 **Using AI for to help with using or writing Dockerfiles**
 
+AI can be a helpful tool for working with Dockerfiles. Consider using Gordon, [the AI assistant built into Docker Desktop](https://docs.docker.com/ai/gordon/), or a general use chatbot. 
+
 <u>Context:</u>
 Within your prompt, provide the chatbot: 
 
